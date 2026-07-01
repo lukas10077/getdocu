@@ -8,26 +8,83 @@ export default async function Impressum({ params }: { params: { locale: Locale }
   return (
     <main>
       <Nav locale={params.locale} dict={dict} />
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-content">
-          <h1 className="text-4xl font-medium tracking-tighter text-swiss-black">
-            {dict.footer.impressum}
+
+      <section className="px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-2xl">
+          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
+            Rechtliches
+          </p>
+          <h1 className="font-serif text-4xl font-light text-swiss-black md:text-5xl">
+            Impressum
           </h1>
-          <div className="mt-8 space-y-1 text-base leading-relaxed text-swiss-gray-700">
-            <p>GetDocu</p>
-            <p>c/o F2BII E-Commerce #942</p>
-            <p>Hintergoldingerstrasse 30</p>
-            <p>8638 Goldingen</p>
-            <p>Schweiz</p>
-            <p className="mt-4">
-              E-Mail:{" "}
-              <a href="mailto:lukaslast@gmail.com" className="text-swiss-red">
-                lukaslast@gmail.com
-              </a>
-            </p>
+          <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
+
+          <div className="mt-10 space-y-8 text-sm leading-relaxed text-swiss-gray-500">
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Betreiber
+              </h2>
+              <p>GetDocu</p>
+              <p>c/o F2BII E-Commerce #942</p>
+              <p>Hintergoldingerstrasse 30</p>
+              <p>8638 Goldingen</p>
+              <p>Schweiz</p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Kontakt
+              </h2>
+              <p>
+                E-Mail:{" "}
+                <a
+                  href="mailto:lukaslast@gmail.com"
+                  className="text-swiss-gold underline hover:opacity-80"
+                >
+                  lukaslast@gmail.com
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Haftungsausschluss
+              </h2>
+              <p>
+                Der Betreiber übernimmt keine Gewähr für die Richtigkeit, Vollständigkeit und
+                Aktualität der bereitgestellten Inhalte. Die Nutzung der Inhalte erfolgt auf eigene
+                Gefahr. Haftungsansprüche gegen den Betreiber, die sich auf Schäden materieller oder
+                ideeller Art beziehen, welche durch die Nutzung oder Nichtnutzung der dargebotenen
+                Informationen entstanden sind, werden grundsätzlich abgelehnt.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Keine Rechtsberatung
+              </h2>
+              <p>
+                Die von GetDocu generierten Dokumente sind Formulierungsvorschläge und stellen keine
+                Rechtsberatung dar. Bei rechtlichen Fragen wenden Sie sich an eine zugelassene
+                Rechtsberaterin oder einen zugelassenen Rechtsberater.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Anwendbares Recht
+              </h2>
+              <p>
+                Für sämtliche Streitigkeiten gilt Schweizer Recht. Gerichtsstand ist der Sitz des
+                Betreibers.
+              </p>
+            </div>
+
+            <p className="pt-4 text-xs text-swiss-gray-300">Stand: Juli 2025</p>
           </div>
         </div>
       </section>
+
       <Footer locale={params.locale} dict={dict} />
     </main>
   );

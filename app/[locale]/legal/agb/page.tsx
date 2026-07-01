@@ -8,61 +8,146 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
   return (
     <main>
       <Nav locale={params.locale} dict={dict} />
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-content">
-          <h1 className="text-4xl font-medium tracking-tighter text-swiss-black">{dict.footer.agb}</h1>
 
-          <div className="mt-8 max-w-2xl space-y-6 text-base leading-relaxed text-swiss-gray-700">
-            <h2 className="text-xl font-medium text-swiss-black">1. Geltungsbereich</h2>
-            <p>
-              Diese Allgemeinen Geschäftsbedingungen regeln die Nutzung von GetDocu, einer Plattform
-              der c/o F2BII E-Commerce #942, Hintergoldingerstrasse 30, 8638 Goldingen, Schweiz.
-            </p>
+      <section className="px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-2xl">
+          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
+            Rechtliches
+          </p>
+          <h1 className="font-serif text-4xl font-light text-swiss-black md:text-5xl">
+            Allgemeine Geschäftsbedingungen
+          </h1>
+          <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
 
-            <h2 className="text-xl font-medium text-swiss-black">2. Leistung</h2>
-            <p>
-              GetDocu erstellt mittels KI-Technologie (Claude API von Anthropic) auf Basis deiner
-              Angaben Dokumente wie Mietbewerbungen, Bewerbungsschreiben und Kündigungen. Die Zahlung
-              erfolgt vor Erstellung pro Dokument, kein Abonnement erforderlich.
-            </p>
+          <div className="mt-10 space-y-8 text-sm leading-relaxed text-swiss-gray-500">
 
-            <h2 className="text-xl font-medium text-swiss-black">3. Keine Rechtsberatung</h2>
-            <p>
-              <strong>
-                Die von GetDocu generierten Dokumente stellen keine Rechtsberatung dar.
-              </strong>{" "}
-              Sie sind als Hilfsmittel und Formulierungsvorschlag gedacht. Du bist selbst dafür
-              verantwortlich, die inhaltliche Richtigkeit, Vollständigkeit und Rechtskonformität des
-              Dokuments vor dessen Verwendung zu prüfen. Bei rechtlichen Fragen empfehlen wir, eine
-              Fachperson (z.B. Mieterverband, Rechtsberatung) zu konsultieren.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                1. Geltungsbereich
+              </h2>
+              <p>
+                Diese Allgemeinen Geschäftsbedingungen (AGB) regeln die Nutzung von GetDocu
+                (getdocu.ch), betrieben von c/o F2BII E-Commerce #942, Hintergoldingerstrasse 30,
+                8638 Goldingen, Schweiz. Mit der Nutzung des Dienstes akzeptierst du diese AGB.
+              </p>
+            </div>
 
-            <h2 className="text-xl font-medium text-swiss-black">4. Haftungsausschluss</h2>
-            <p>
-              GetDocu und der Betreiber übernehmen keine Haftung für Schäden, die durch die Nutzung
-              oder Verwendung der generierten Dokumente entstehen, insbesondere nicht für inhaltliche
-              Fehler, Fristversäumnisse oder rechtliche Konsequenzen. Die Nutzung erfolgt auf eigenes
-              Risiko.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                2. Leistungsbeschreibung
+              </h2>
+              <p>
+                GetDocu erstellt mittels KI-Technologie (Claude API, Anthropic PBC, USA) auf Basis
+                deiner Eingaben Dokumente wie Mietbewerbungen, Bewerbungsschreiben, Kündigungen und
+                weitere. Die Dienstleistung wird einmalig pro Dokument abgerechnet; es besteht kein
+                Abonnement. Der Dienst ist ausschliesslich für natürliche Personen und nicht für
+                kommerzielle Weiterverwendung bestimmt.
+              </p>
+            </div>
 
-            <h2 className="text-xl font-medium text-swiss-black">5. Zahlung & Rückerstattung</h2>
-            <p>
-              Die Zahlung erfolgt über Stripe vor der Dokumentenerstellung. Da die Leistung unmittelbar
-              nach Zahlung digital erbracht wird, besteht grundsätzlich kein Widerrufsrecht nach
-              erfolgter Generierung. Bei technischen Fehlern (z.B. fehlgeschlagene Generierung trotz
-              erfolgter Zahlung) kontaktiere uns für eine Rückerstattung.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                3. Keine Rechtsberatung
+              </h2>
+              <p>
+                <strong className="font-medium text-swiss-black">
+                  Die von GetDocu generierten Dokumente stellen keine Rechtsberatung dar.
+                </strong>{" "}
+                Sie sind als Formulierungshilfe gedacht. Du bist allein verantwortlich für die
+                inhaltliche Richtigkeit, Vollständigkeit und rechtliche Konformität des verwendeten
+                Dokuments. Bei Unsicherheiten empfehlen wir die Konsultation einer Fachperson
+                (Mieterverband, Anwältin, Rechtsberatungsstelle).
+              </p>
+            </div>
 
-            <h2 className="text-xl font-medium text-swiss-black">6. Datenschutz</h2>
-            <p>
-              Informationen zur Verarbeitung deiner Daten findest du in unserer Datenschutzerklärung.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                4. Haftungsausschluss
+              </h2>
+              <p>
+                GetDocu und der Betreiber haften nicht für Schäden, die durch die Nutzung oder
+                Nichtnutzung der generierten Dokumente entstehen, insbesondere nicht für inhaltliche
+                Fehler, Fristversäumnisse, abgelehnte Bewerbungen oder rechtliche Konsequenzen.
+                Die Nutzung des Dienstes erfolgt auf eigene Verantwortung.
+              </p>
+            </div>
 
-            <h2 className="text-xl font-medium text-swiss-black">7. Anwendbares Recht</h2>
-            <p>Es gilt Schweizer Recht. Gerichtsstand ist der Sitz des Betreibers.</p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                5. Zahlung
+              </h2>
+              <p>
+                Die Zahlung erfolgt vor der Dokumentenerstellung über den Zahlungsdienstleister
+                Stripe (inkl. TWINT). Preise in Schweizer Franken (CHF), inklusive MwSt. Da die
+                digitale Leistung unmittelbar nach erfolgter Zahlung erbracht wird, besteht
+                grundsätzlich kein Widerrufsrecht nach abgeschlossener Generierung.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                6. Rückerstattung
+              </h2>
+              <p>
+                Bei technisch fehlgeschlagener Dokumentenerstellung trotz erfolgter Zahlung
+                erstatten wir den bezahlten Betrag vollständig. Bitte kontaktiere uns dafür unter{" "}
+                <a href="mailto:lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
+                  lukaslast@gmail.com
+                </a>{" "}
+                mit Angabe des Fehlers und der Transaktions-ID.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                7. Datenschutz
+              </h2>
+              <p>
+                Informationen zur Verarbeitung deiner Daten findest du in unserer{" "}
+                <a href="../datenschutz" className="text-swiss-gold underline hover:opacity-80">
+                  Datenschutzerklärung
+                </a>
+                . Formulardaten werden ausschliesslich zur Dokumentenerstellung verwendet und
+                danach sofort gelöscht.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                8. Verfügbarkeit
+              </h2>
+              <p>
+                GetDocu strebt eine hohe Verfügbarkeit an, übernimmt jedoch keine Garantie für
+                ununterbrochene Erreichbarkeit. Bei technischen Störungen besteht kein Anspruch
+                auf Entschädigung.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                9. Änderungen der AGB
+              </h2>
+              <p>
+                GetDocu behält sich vor, diese AGB jederzeit zu ändern. Massgeblich ist die zum
+                Zeitpunkt der Nutzung auf dieser Seite veröffentlichte Fassung.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                10. Anwendbares Recht &amp; Gerichtsstand
+              </h2>
+              <p>
+                Es gilt ausschliesslich Schweizer Recht unter Ausschluss des UN-Kaufrechts.
+                Gerichtsstand für Streitigkeiten ist der Sitz des Betreibers (Kanton St. Gallen).
+              </p>
+            </div>
+
+            <p className="pt-4 text-xs text-swiss-gray-300">Stand: Juli 2025</p>
           </div>
         </div>
       </section>
+
       <Footer locale={params.locale} dict={dict} />
     </main>
   );

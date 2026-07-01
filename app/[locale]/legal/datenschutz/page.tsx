@@ -8,58 +8,136 @@ export default async function Datenschutz({ params }: { params: { locale: Locale
   return (
     <main>
       <Nav locale={params.locale} dict={dict} />
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-content prose-content">
-          <h1 className="text-4xl font-medium tracking-tighter text-swiss-black">
-            {dict.footer.datenschutz}
+
+      <section className="px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-2xl">
+          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
+            Rechtliches
+          </p>
+          <h1 className="font-serif text-4xl font-light text-swiss-black md:text-5xl">
+            Datenschutzerklärung
           </h1>
+          <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
 
-          <div className="mt-8 max-w-2xl space-y-6 text-base leading-relaxed text-swiss-gray-700">
-            <p>
-              GetDocu wird betrieben von: c/o F2BII E-Commerce #942, Hintergoldingerstrasse 30, 8638
-              Goldingen, Schweiz (lukaslast@gmail.com).
-            </p>
+          <div className="mt-10 space-y-8 text-sm leading-relaxed text-swiss-gray-500">
 
-            <h2 className="text-xl font-medium text-swiss-black">Keine dauerhafte Speicherung</h2>
-            <p>
-              Wenn du ein GetDocu-Tool nutzt, gibst du persönliche Angaben (z.B. Name, Adresse,
-              Lohnangaben) in ein Formular ein. Diese Angaben werden ausschliesslich zur Erstellung
-              deines Dokuments verwendet. Nach der Erstellung und dem Download deines Dokuments werden
-              diese Eingabedaten unverzüglich gelöscht. Wir führen keine Datenbank mit deinen
-              persönlichen Inhalten.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Verantwortliche Stelle
+              </h2>
+              <p>
+                GetDocu, c/o F2BII E-Commerce #942, Hintergoldingerstrasse 30, 8638 Goldingen,
+                Schweiz.{" "}
+                <a href="mailto:lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
+                  lukaslast@gmail.com
+                </a>
+              </p>
+            </div>
 
-            <h2 className="text-xl font-medium text-swiss-black">Verarbeitung durch Anthropic (USA)</h2>
-            <p>
-              Zur Erstellung des Dokuments werden deine Eingaben an Anthropic, PBC (USA) übermittelt,
-              die die Claude-API betreibt, mit der dein Dokument generiert wird. Diese Übermittlung
-              erfolgt ausschliesslich zum Zweck der Dokumentenerstellung. Die Daten werden nicht für
-              das Training von KI-Modellen verwendet und nicht dauerhaft bei uns gespeichert.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Grundsatz: Keine dauerhafte Datenspeicherung
+              </h2>
+              <p>
+                GetDocu verarbeitet deine persönlichen Angaben (Name, Adresse, Lohndaten etc.)
+                ausschliesslich zum Zweck der Dokumentenerstellung. Nach erfolgreicher Generierung
+                werden diese Eingabedaten sofort und vollständig gelöscht. Wir führen keine
+                Datenbank mit deinen persönlichen Inhalten.
+              </p>
+            </div>
 
-            <h2 className="text-xl font-medium text-swiss-black">Zahlungsabwicklung</h2>
-            <p>
-              Zahlungen werden über Stripe abgewickelt. Stripe verarbeitet deine Zahlungsdaten gemäss
-              eigener Datenschutzerklärung. Wir erhalten keine vollständigen Kartendaten.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Verarbeitung durch Anthropic (USA)
+              </h2>
+              <p>
+                Zur Erstellung des Dokuments werden deine Eingaben einmalig an die Claude API von
+                Anthropic PBC (San Francisco, USA) übermittelt. Diese Übermittlung dient
+                ausschliesslich der Dokumentenerstellung und erfolgt verschlüsselt (HTTPS).
+                Anthropic verwendet die Daten gemäss eigener Datenschutzrichtlinie; sie werden
+                nicht für das Training von KI-Modellen verwendet (API-Nutzungsbedingungen
+                von Anthropic).
+              </p>
+            </div>
 
-            <h2 className="text-xl font-medium text-swiss-black">Anonyme Statistik</h2>
-            <p>
-              Wir speichern ausschliesslich anonyme, aggregierte Nutzungsdaten (z.B. "Tool X wurde Y
-              mal verwendet") zur Verbesserung unseres Angebots. Diese Daten enthalten keine Namen,
-              Adressen oder Dokumentinhalte und lassen keinen Rückschluss auf einzelne Personen zu.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Zahlungsabwicklung (Stripe)
+              </h2>
+              <p>
+                Zahlungen werden über Stripe Payments Europe Ltd. abgewickelt. Stripe verarbeitet
+                deine Zahlungsdaten (Kreditkarte, TWINT) gemäss eigener Datenschutzerklärung
+                (stripe.com/privacy). GetDocu erhält keine vollständigen Kartendaten — nur eine
+                Bestätigung der erfolgreichen Zahlung sowie die Tool-Bezeichnung.
+              </p>
+            </div>
 
-            <h2 className="text-xl font-medium text-swiss-black">Deine Rechte</h2>
-            <p>
-              Da wir keine personenbezogenen Daten dauerhaft speichern, entfallen die meisten
-              datenschutzrechtlichen Auskunfts- oder Löschansprüche faktisch — es existieren ab
-              Abschluss deiner Bestellung keine gespeicherten Daten mehr, die gelöscht werden könnten.
-              Für Fragen kontaktiere uns unter lukaslast@gmail.com.
-            </p>
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Anonyme Nutzungsstatistik
+              </h2>
+              <p>
+                Wir erfassen ausschliesslich anonyme, aggregierte Nutzungsdaten (z.B. «Mietbewerbung
+                wurde 42× erstellt»). Diese Daten enthalten keine Namen, Adressen oder
+                Dokumentinhalte und ermöglichen keinen Rückschluss auf einzelne Personen.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Server-Logs (Vercel)
+              </h2>
+              <p>
+                Die Website wird auf Vercel Inc. (USA) gehostet. Vercel speichert technische
+                Zugriffsdaten (IP-Adresse, Zeitstempel, aufgerufene URL) für einen kurzen Zeitraum
+                aus Sicherheitsgründen. Weitere Informationen findest du in der Datenschutzerklärung
+                von Vercel (vercel.com/legal/privacy-policy).
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Cookies
+              </h2>
+              <p>
+                GetDocu setzt keine Tracking-Cookies und verwendet kein Analytics-Tool
+                (kein Google Analytics, kein Meta Pixel). Es werden lediglich technisch notwendige,
+                kurzlebige Session-Daten im Browser (sessionStorage) verwendet, die nach
+                Abschluss der Transaktion automatisch gelöscht werden.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Deine Rechte (DSG / DSGVO)
+              </h2>
+              <p>
+                Da GetDocu keine personenbezogenen Daten dauerhaft speichert, sind
+                Auskunfts-, Berichtigungs- und Löschansprüche faktisch bereits erfüllt — es
+                existieren nach Abschluss deiner Bestellung keine gespeicherten persönlichen Daten
+                mehr. Für Fragen wende dich an{" "}
+                <a href="mailto:lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
+                  lukaslast@gmail.com
+                </a>.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+                Datensicherheit
+              </h2>
+              <p>
+                Alle Datenübertragungen erfolgen verschlüsselt über HTTPS/TLS. API-Schlüssel und
+                Zugangsdaten werden nie im Quellcode gespeichert und sind als Umgebungsvariablen
+                auf dem Server hinterlegt.
+              </p>
+            </div>
+
+            <p className="pt-4 text-xs text-swiss-gray-300">Stand: Juli 2025</p>
           </div>
         </div>
       </section>
+
       <Footer locale={params.locale} dict={dict} />
     </main>
   );
