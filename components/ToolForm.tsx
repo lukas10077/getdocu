@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ToolDefinition } from "@/lib/tools";
 
-type Stage = "form" | "redirecting" | "generating" | "done" | "error";
+type Stage = "form" | "previewing" | "preview" | "redirecting" | "generating" | "done" | "error";
 
 interface Props {
   tool: ToolDefinition;
@@ -16,6 +16,7 @@ export default function ToolForm({ tool, locale }: Props) {
   const [stage, setStage] = useState<Stage>("form");
   const [values, setValues] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [previewText, setPreviewText] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const hasFetched = useRef(false);
@@ -23,7 +24,7 @@ export default function ToolForm({ tool, locale }: Props) {
   const sessionId = searchParams.get("session_id");
   const storageKey = `getdocu_form_${tool.slug}`;
 
-  // ── After Stripe redirect: auto-generate ─────────────────────
+  // ── Nach Stripe-Redirect: auto-generieren ─────────────────────
   useEffect(() => {
     if (!sessionId || hasFetched.current) return;
     hasFetched.current = true;
@@ -52,7 +53,7 @@ export default function ToolForm({ tool, locale }: Props) {
       })
       .then(({ documentText }) => {
         setResult(documentText);
-        sessionStorage.removeItem(storageKey); // Daten sofort löschen
+        sessionStorage.removeItem(storageKey);
         setStage("done");
       })
       .catch((err) => {
@@ -61,7 +62,7 @@ export default function ToolForm({ tool, locale }: Props) {
       });
   }, [sessionId]);
 
-  // ── Form validation ───────────────────────────────────────────
+  // ── Validierung ───────────────────────────────────────────────
   function validate() {
     const newErrors: Record<string, string> = {};
     for (const field of tool.fields) {
@@ -73,11 +74,29 @@ export default function ToolForm({ tool, locale }: Props) {
     return Object.keys(newErrors).length === 0;
   }
 
-  // ── Submit → Stripe ───────────────────────────────────────────
+  // ── Submit → Vorschau ─────────────────────────────────────────
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validate()) return;
 
+    setStage("previewing");
+
+    try {
+      const res = await fetch("/api/preview", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ toolSlug: tool.slug, formData: values }),
+      });
+      const { previewText } = await res.json();
+      setPreviewText(previewText);
+      setStage("preview");
+    } catch {
+      await proceedToCheckout();
+    }
+  }
+
+  // ── Zur Zahlung weiterleiten ──────────────────────────────────
+  async function proceedToCheckout() {
     setStage("redirecting");
     sessionStorage.setItem(storageKey, JSON.stringify(values));
 
@@ -95,9 +114,9 @@ export default function ToolForm({ tool, locale }: Props) {
     }
   }
 
-  const priceChf = (tool.priceChfRappen / 100).toFixed(2).replace(".", ".");
+  const priceChf = (tool.priceChfRappen / 100).toFixed(2);
 
-  // ── Render: Done ─────────────────────────────────────────────
+  // ── Done ──────────────────────────────────────────────────────
   if (stage === "done") {
     return (
       <div className="mt-10">
@@ -105,15 +124,9 @@ export default function ToolForm({ tool, locale }: Props) {
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-swiss-gold text-sm text-white">✓</span>
           <h2 className="text-lg font-medium text-swiss-black">Dein Dokument ist fertig</h2>
         </div>
-
-        {/* Document preview */}
         <div className="rounded-sm border border-swiss-gray-200 bg-swiss-gray-50 p-6 md:p-8">
-          <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-swiss-gray-700">
-            {result}
-          </pre>
+          <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-swiss-gray-700">{result}</pre>
         </div>
-
-        {/* Actions */}
         <div className="mt-6 flex flex-wrap gap-4">
           <button
             onClick={() => {
@@ -138,8 +151,7 @@ export default function ToolForm({ tool, locale }: Props) {
                 @media print{.no-print{display:none}}</style></head>
                 <body><button class="no-print" onclick="window.print()" style="margin-bottom:20px;padding:8px 16px;cursor:pointer">Drucken / Als PDF speichern</button>
                 <pre style="white-space:pre-wrap;font-family:Georgia,serif">${result}</pre>
-                <div class="disclaimer">Dieses Dokument wurde mit GetDocu.ch generiert und stellt keine Rechtsberatung dar.
-                Der Nutzer trägt die Verantwortung für Richtigkeit und Vollständigkeit.</div>
+                <div class="disclaimer">Dieses Dokument wurde mit GetDocuNow.com generiert und stellt keine Rechtsberatung dar.</div>
                 </body></html>`);
               w.document.close();
             }}
@@ -148,27 +160,96 @@ export default function ToolForm({ tool, locale }: Props) {
             Als PDF drucken / speichern
           </button>
         </div>
-
         <p className="mt-6 text-xs text-swiss-gray-500">
-          Deine Formulardaten wurden nach der Generierung sofort gelöscht. Es sind keine persönlichen
-          Angaben mehr auf unseren Servern gespeichert.
+          Deine Formulardaten wurden nach der Generierung sofort gelöscht.
         </p>
       </div>
     );
   }
 
-  // ── Render: Generating ────────────────────────────────────────
+  // ── Vorschau ──────────────────────────────────────────────────
+  if (stage === "preview") {
+    return (
+      <div className="mt-10">
+        <div className="mb-4 flex items-center gap-2">
+          <span className="text-xs font-medium uppercase tracking-widest text-swiss-gold">Vorschau</span>
+          <span className="text-xs text-swiss-gray-400">— Bezahle um das vollständige Dokument zu erhalten</span>
+        </div>
+
+        <div className="relative overflow-hidden rounded-sm border border-swiss-gray-200 bg-white">
+          {/* Wasserzeichen */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center" style={{ zIndex: 2 }}>
+            <span
+              className="select-none text-4xl font-medium uppercase text-swiss-gray-200"
+              style={{ transform: "rotate(-30deg)", opacity: 0.7, letterSpacing: "0.3em" }}
+            >
+              VORSCHAU
+            </span>
+          </div>
+
+          {/* Text */}
+          <div className="relative p-6 md:p-8" style={{ zIndex: 1 }}>
+            <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-swiss-gray-700">
+              {previewText}
+            </pre>
+          </div>
+
+          {/* Fade-out */}
+          <div
+            className="pointer-events-none absolute bottom-0 left-0 right-0 h-32"
+            style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.97) 100%)", zIndex: 3 }}
+          />
+        </div>
+
+        {/* CTA Box */}
+        <div className="mt-6 rounded-sm border border-swiss-gray-100 bg-swiss-gray-50 p-5">
+          <p className="mb-4 text-sm text-swiss-gray-700">
+            <strong className="font-medium text-swiss-black">Dein persönliches Dokument ist bereit.</strong>{" "}
+            Bezahle einmalig CHF {priceChf} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <button
+              onClick={proceedToCheckout}
+              className="bg-swiss-black px-8 py-4 text-sm font-medium uppercase tracking-widest text-white transition hover:bg-swiss-gray-900"
+            >
+              Vollständiges Dokument — CHF {priceChf}
+            </button>
+            <button
+              onClick={() => setStage("form")}
+              className="text-sm text-swiss-gray-400 underline hover:text-swiss-gray-700"
+            >
+              Angaben ändern
+            </button>
+          </div>
+          <p className="mt-3 text-xs text-swiss-gray-400">
+            💳 Kreditkarte · TWINT · Apple Pay · Google Pay
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Spinners ──────────────────────────────────────────────────
+  if (stage === "previewing") {
+    return (
+      <div className="mt-16 flex flex-col items-center gap-4 text-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-swiss-gray-200 border-t-swiss-gold" />
+        <p className="text-sm text-swiss-gray-500">Vorschau wird erstellt…</p>
+        <p className="text-xs text-swiss-gray-300">Dauert ca. 5 Sekunden.</p>
+      </div>
+    );
+  }
+
   if (stage === "generating") {
     return (
       <div className="mt-16 flex flex-col items-center gap-4 text-center">
         <div className="h-10 w-10 animate-spin rounded-full border-2 border-swiss-gray-200 border-t-swiss-gold" />
-        <p className="text-sm text-swiss-gray-500">Dokument wird erstellt…</p>
+        <p className="text-sm text-swiss-gray-500">Vollständiges Dokument wird erstellt…</p>
         <p className="text-xs text-swiss-gray-300">Das dauert ca. 10–20 Sekunden.</p>
       </div>
     );
   }
 
-  // ── Render: Redirecting ───────────────────────────────────────
   if (stage === "redirecting") {
     return (
       <div className="mt-16 flex flex-col items-center gap-4 text-center">
@@ -178,23 +259,19 @@ export default function ToolForm({ tool, locale }: Props) {
     );
   }
 
-  // ── Render: Error ─────────────────────────────────────────────
   if (stage === "error") {
     return (
       <div className="mt-10 rounded-sm border border-red-200 bg-red-50 p-6">
         <p className="text-sm font-medium text-red-700">Ein Fehler ist aufgetreten</p>
         <p className="mt-1 text-sm text-red-600">{errorMsg}</p>
-        <button
-          onClick={() => { setStage("form"); setErrorMsg(""); }}
-          className="mt-4 text-sm underline text-red-700"
-        >
+        <button onClick={() => { setStage("form"); setErrorMsg(""); }} className="mt-4 text-sm underline text-red-700">
           Zurück zum Formular
         </button>
       </div>
     );
   }
 
-  // ── Render: Form ─────────────────────────────────────────────
+  // ── Formular ──────────────────────────────────────────────────
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
       <div className="space-y-10">
@@ -211,29 +288,20 @@ export default function ToolForm({ tool, locale }: Props) {
                   </h3>
                 </div>
               )}
-
               <div className={showSection ? "" : "-mt-4"}>
-                <label
-                  htmlFor={field.key}
-                  className="mb-1.5 block text-sm font-medium text-swiss-black"
-                >
+                <label htmlFor={field.key} className="mb-1.5 block text-sm font-medium text-swiss-black">
                   {field.label}
                   {field.required && <span className="ml-1 text-swiss-gold">*</span>}
                 </label>
-
                 {field.type === "select" ? (
                   <select
                     id={field.key}
                     value={values[field.key] ?? ""}
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
-                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition
-                      focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold
-                      ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
+                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
                   >
                     <option value="">— bitte wählen —</option>
-                    {field.options!.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
+                    {field.options!.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
                 ) : field.type === "textarea" ? (
                   <textarea
@@ -242,9 +310,7 @@ export default function ToolForm({ tool, locale }: Props) {
                     placeholder={field.placeholder}
                     value={values[field.key] ?? ""}
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
-                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition resize-y
-                      focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold
-                      ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
+                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition resize-y focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
                   />
                 ) : (
                   <input
@@ -253,39 +319,32 @@ export default function ToolForm({ tool, locale }: Props) {
                     placeholder={field.placeholder}
                     value={values[field.key] ?? ""}
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
-                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition
-                      focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold
-                      ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
+                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
                   />
                 )}
-
-                {errors[field.key] && (
-                  <p className="mt-1 text-xs text-red-500">{errors[field.key]}</p>
-                )}
+                {errors[field.key] && <p className="mt-1 text-xs text-red-500">{errors[field.key]}</p>}
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Disclaimer */}
       <p className="mt-10 text-xs leading-relaxed text-swiss-gray-500">
-        Mit dem Klick auf «Bezahlen» stimmst du unseren{" "}
+        Mit dem Klick auf «Vorschau erstellen» stimmst du unseren{" "}
         <a href={`/${locale}/legal/agb`} className="underline hover:text-swiss-black">AGB</a> zu.
         Das generierte Dokument ist kein Ersatz für eine Rechtsberatung.
         Deine Formulardaten werden nach der Generierung sofort gelöscht.
       </p>
 
-      {/* Submit */}
       <div className="mt-6 flex flex-wrap items-center gap-6">
         <button
           type="submit"
-          className="bg-swiss-black px-8 py-4 text-sm font-medium uppercase tracking-widest text-white transition hover:bg-swiss-gray-900 disabled:opacity-50"
+          className="bg-swiss-black px-8 py-4 text-sm font-medium uppercase tracking-widest text-white transition hover:bg-swiss-gray-900"
         >
-          Bezahlen &amp; Dokument erstellen — CHF {priceChf}
+          Vorschau erstellen — kostenlos
         </button>
         <span className="text-xs text-swiss-gray-500">
-          Sichere Zahlung via Stripe · TWINT möglich
+          Danach CHF {priceChf} für das vollständige Dokument
         </span>
       </div>
     </form>
