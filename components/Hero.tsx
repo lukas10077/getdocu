@@ -4,28 +4,27 @@ import { Locale } from "@/i18n/config";
 
 export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
   return (
-    <section className="relative min-h-[88vh] overflow-hidden bg-ink-950 flex items-center">
+    <section className="relative min-h-[90vh] overflow-hidden bg-ink-950 flex items-center">
 
-      {/* Full-bleed photo — right half, bleeds to viewport edge */}
-      <div className="absolute inset-y-0 right-0 w-[58%]">
+      {/* Photo — covers right 60%, bleeds to edge */}
+      <div className="absolute inset-y-0 right-0 w-[62%]">
         <Image
           src="/hero.jpg"
           alt="Professionelles Dokument mit Stift"
           fill
-          className="object-cover object-center"
+          quality={95}
+          className="object-cover object-left"
           priority
         />
-        {/* Blend left edge into ink-950 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/55 to-transparent" />
-        {/* Subtle top + bottom fade */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/50 via-transparent to-ink-950/60" />
-        {/* Very light gold tint to tie into brand */}
-        <div className="absolute inset-0 bg-[rgba(200,144,46,0.03)]" />
+        {/* Only a narrow left-edge fade so text stays readable */}
+        <div className="absolute inset-y-0 left-0 w-[38%] bg-gradient-to-r from-ink-950 to-transparent" />
+        {/* Very subtle bottom-only vignette */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink-950/70 to-transparent" />
       </div>
 
-      {/* Text content */}
-      <div className="relative z-10 mx-auto w-full max-w-content px-6 py-24 md:py-36">
-        <div className="max-w-xl">
+      {/* Text */}
+      <div className="relative z-10 mx-auto w-full max-w-content px-6 py-28 md:py-40">
+        <div className="max-w-[480px]">
           <h1 className="font-serif text-5xl font-medium leading-[1.05] text-cream md:text-6xl lg:text-7xl">
             {dict.hero.headline
               .split(/\.\s+/)
