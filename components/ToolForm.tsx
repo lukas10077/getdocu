@@ -16,6 +16,8 @@ export default function ToolForm({ tool, locale }: Props) {
   const [stage, setStage] = useState<Stage>("form");
   const [values, setValues] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [withdrawalConsent, setWithdrawalConsent] = useState(false);
+  const [withdrawalError, setWithdrawalError] = useState(false);
   const [previewText, setPreviewText] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
@@ -75,6 +77,11 @@ export default function ToolForm({ tool, locale }: Props) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validate()) return;
+    if (!withdrawalConsent) {
+      setWithdrawalError(true);
+      return;
+    }
+    setWithdrawalError(false);
     setStage("previewing");
     try {
       const res = await fetch("/api/preview", {
@@ -283,9 +290,26 @@ export default function ToolForm({ tool, locale }: Props) {
         })}
       </div>
 
-      <p className="mt-10 text-xs leading-relaxed text-cream-subtle">
-        Mit dem Klick auf «Vorschau erstellen» stimmst du unseren{" "}
-        <a href={`/${locale}/legal/agb`} className="underline hover:text-cream-muted">AGB</a> zu.{" "}
+      {/* Widerrufsrecht-Checkbox (EU-Konformität) */}
+      <div className="mt-10">
+        <label className={`flex cursor-pointer items-start gap-3 ${withdrawalError ? "text-red-400" : "text-cream-muted"}`}>
+          <input
+            type="checkbox"
+            checked={withdrawalConsent}
+            onChange={(e) => { setWithdrawalConsent(e.target.checked); setWithdrawalError(false); }}
+            className="mt-0.5 h-4 w-4 flex-shrink-0 accent-swiss-gold"
+          />
+          <span className="text-xs leading-relaxed">
+            Ich stimme zu, dass die Lieferung des digitalen Dokuments sofort nach der Zahlung beginnt, und ich bestätige, dass ich damit mein gesetzliches Widerrufsrecht verliere. Ich habe die{" "}
+            <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a> gelesen und akzeptiere sie.
+          </span>
+        </label>
+        {withdrawalError && (
+          <p className="mt-2 text-xs text-red-400">Bitte bestätige die Zustimmung, um fortzufahren.</p>
+        )}
+      </div>
+
+      <p className="mt-4 text-xs leading-relaxed text-cream-subtle">
         Das generierte Dokument ist kein Ersatz für eine Rechtsberatung.
         Deine Formulardaten werden nach der Generierung sofort gelöscht.
       </p>
