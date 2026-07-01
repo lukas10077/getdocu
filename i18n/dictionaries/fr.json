@@ -56,6 +56,9 @@
     "step4": { "title": "Téléchargez et c'est fait", "description": "Téléchargez votre PDF. Vos données sont immédiatement supprimées après." }
   },
   "trust": {
+    "guaranteeTitle": "Garantie de remboursement",
+    "guaranteeBody": "Si votre document ne convient pas ou si vous n'êtes pas satisfait, nous vous remboursons intégralement. Envoyez-nous simplement un e-mail.",
+    "paymentTitle": "Modes de paiement acceptés",
     "title": "Vos données vous appartiennent",
     "subtitle": "La protection des données n'est pas un détail, c'est un principe fondamental.",
     "point1Title": "Aucun stockage permanent",
@@ -64,6 +67,17 @@
     "point2": "Vous n'avez pas besoin de compte. Vous ne payez que pour le document dont vous avez réellement besoin.",
     "point3Title": "Traitement transparent",
     "point3": "Pour générer le document, votre texte est transmis à Anthropic (USA) pour traitement — puis supprimé. Plus d'informations dans notre politique de confidentialité."
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      { "q": "Dois-je créer un compte ?", "a": "Non. Pas de compte, pas d'inscription. Remplissez le formulaire, payez et téléchargez votre document immédiatement." },
+      { "q": "Que se passe-t-il avec mes données ?", "a": "Vos données ne sont utilisées que pour générer votre document et supprimées immédiatement après. Aucun stockage permanent." },
+      { "q": "Y a-t-il un abonnement ou des frais cachés ?", "a": "Non. Vous payez une fois 3 à 5 CHF par document. Pas d'abonnement, pas de frais supplémentaires." },
+      { "q": "Dans quelle langue le document est-il créé ?", "a": "Le document est créé en allemand — correctement formulé pour les autorités, propriétaires et employeurs en Suisse." },
+      { "q": "Que faire si je ne suis pas satisfait ?", "a": "Nous vous remboursons intégralement. Envoyez-nous un e-mail — sans tracas." },
+      { "q": "Quels modes de paiement sont acceptés ?", "a": "TWINT, carte de crédit (Visa, Mastercard), Apple Pay ou Google Pay. Le paiement est sécurisé via Stripe." }
+    ]
   },
   "footer": {
     "tagline": "Des documents importants pour la Suisse — en toute simplicité.",

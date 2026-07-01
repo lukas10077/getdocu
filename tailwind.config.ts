@@ -22,6 +22,19 @@ const config: Config = {
           gold: "#C8902E",
           goldDark: "#A87020",
         },
+        // Dark premium palette
+        ink: {
+          950: "#0D0B08",
+          900: "#181511",
+          800: "#201D18",
+          700: "#2A2520",
+          600: "#3A3328",
+        },
+        cream: {
+          DEFAULT: "#F0E8D8",
+          muted: "#9A9080",
+          subtle: "#635B50",
+        },
       },
       fontFamily: {
         sans: [

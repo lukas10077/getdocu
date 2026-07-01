@@ -56,6 +56,9 @@
     "step4": { "title": "Herunterladen & fertig", "description": "Lade dein PDF herunter. Deine Eingaben werden danach sofort gelöscht." }
   },
   "trust": {
+    "guaranteeTitle": "Geld-zurück-Garantie",
+    "guaranteeBody": "Wenn dein Dokument nicht passt oder du nicht zufrieden bist, erstatten wir dir den vollen Betrag. Einfach per E-Mail melden.",
+    "paymentTitle": "Akzeptierte Zahlungsmethoden",
     "title": "Deine Daten gehören dir",
     "subtitle": "Datenschutz ist kein Zusatz, sondern Grundprinzip.",
     "point1Title": "Keine dauerhafte Speicherung",
@@ -64,6 +67,35 @@
     "point2": "Du brauchst kein Konto. Du zahlst nur für das Dokument, das du wirklich brauchst.",
     "point3Title": "Transparente Verarbeitung",
     "point3": "Zur Erstellung wird dein Text an Anthropic (USA) zur Verarbeitung übermittelt — danach gelöscht. Mehr dazu in unserer Datenschutzerklärung."
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "items": [
+      {
+        "q": "Muss ich ein Konto erstellen?",
+        "a": "Nein. Kein Konto, keine Registrierung. Du füllst das Formular aus, bezahlst, und lädst dein Dokument sofort herunter."
+      },
+      {
+        "q": "Was passiert mit meinen Daten?",
+        "a": "Deine Eingaben werden ausschliesslich für die Erstellung deines Dokuments verwendet und danach sofort gelöscht. Es gibt keine dauerhafte Speicherung."
+      },
+      {
+        "q": "Gibt es ein Abo oder versteckte Kosten?",
+        "a": "Nein. Du bezahlst einmalig 3–5 CHF pro Dokument. Kein Abo, keine Folgekosten, keine Überraschungen."
+      },
+      {
+        "q": "In welcher Sprache wird das Dokument erstellt?",
+        "a": "Das Dokument wird auf Deutsch erstellt — korrekt formuliert für Behörden, Vermieter und Arbeitgeber in der Schweiz."
+      },
+      {
+        "q": "Was mache ich, wenn ich nicht zufrieden bin?",
+        "a": "Wir erstatten dir den vollen Betrag. Schick uns einfach eine E-Mail — kein Aufwand, keine Diskussion."
+      },
+      {
+        "q": "Welche Zahlungsmethoden werden akzeptiert?",
+        "a": "Du kannst per TWINT, Kreditkarte (Visa, Mastercard), Apple Pay oder Google Pay bezahlen. Die Zahlung läuft sicher über Stripe."
+      }
+    ]
   },
   "footer": {
     "tagline": "Wichtige Dokumente für die Schweiz — einfach erstellt.",

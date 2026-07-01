@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "Kako funkcioniše",
     "subtitle": "Četiri jednostavna koraka. Nije potreban nalog.",
-    "step1": { "title": "Popunite formular", "description": "Odgovorite na nekoliko jednostavnih pitanja — objašnjeno na vašem jeziku." },
-    "step2": { "title": "Plaćanje na siguran način", "description": "Platite 3–5 CHF karticom putem Stripe-a. Bez pretplate, bez skrivenih troškova." },
-    "step3": { "title": "Dokument se kreira", "description": "Naš AI kreira vaš dokument na njemačkom, spreman za vlasti, izdavače stanova ili poslodavce." },
-    "step4": { "title": "Preuzmite i gotovo", "description": "Preuzmite svoj PDF. Vaši podaci se odmah brišu nakon toga." }
+    "step1": {
+      "title": "Popunite formular",
+      "description": "Odgovorite na nekoliko jednostavnih pitanja — objašnjeno na vašem jeziku."
+    },
+    "step2": {
+      "title": "Plaćanje na siguran način",
+      "description": "Platite 3–5 CHF karticom putem Stripe-a. Bez pretplate, bez skrivenih troškova."
+    },
+    "step3": {
+      "title": "Dokument se kreira",
+      "description": "Naš AI kreira vaš dokument na njemačkom, spreman za vlasti, izdavače stanova ili poslodavce."
+    },
+    "step4": {
+      "title": "Preuzmite i gotovo",
+      "description": "Preuzmite svoj PDF. Vaši podaci se odmah brišu nakon toga."
+    }
   },
   "trust": {
     "title": "Vaši podaci su vaši",
@@ -63,7 +75,10 @@
     "point2Title": "Bez naloga, bez pretplata",
     "point2": "Ne treba vam nalog. Plaćate samo za dokument koji vam je zaista potreban.",
     "point3Title": "Transparentna obrada",
-    "point3": "Za kreiranje dokumenta vaš tekst se šalje Anthropic-u (SAD) na obradu — zatim se briše. Više u našoj politici privatnosti."
+    "point3": "Za kreiranje dokumenta vaš tekst se šalje Anthropic-u (SAD) na obradu — zatim se briše. Više u našoj politici privatnosti.",
+    "guaranteeTitle": "Garancija povrata novca",
+    "guaranteeBody": "Ako dokument nije odgovarajući ili niste zadovoljni, vraćamo vam puni iznos. Samo nam pošaljite email.",
+    "paymentTitle": "Prihvaćeni načini plaćanja"
   },
   "footer": {
     "tagline": "Važni dokumenti za Švajcarsku — jednostavno napravljeni.",
@@ -74,5 +89,34 @@
   },
   "legal": {
     "disclaimer": "GetDocu ne pruža pravne savjete. Generisani dokumenti su pomagala — vi ste odgovorni za tačnost sadržaja."
+  },
+  "faq": {
+    "title": "Često postavljana pitanja",
+    "items": [
+      {
+        "q": "Moram li kreirati nalog?",
+        "a": "Ne. Bez naloga, bez registracije. Popunite obrazac, platite i preuzmite dokument odmah."
+      },
+      {
+        "q": "Šta se dešava sa mojim podacima?",
+        "a": "Vaši podaci se koriste samo za generisanje dokumenta i odmah se brišu. Bez trajnog čuvanja."
+      },
+      {
+        "q": "Postoji li pretplata ili skriveni troškovi?",
+        "a": "Ne. Plaćate jednom 3–5 CHF po dokumentu. Bez pretplate, bez iznenađenja."
+      },
+      {
+        "q": "Na kom jeziku se kreira dokument?",
+        "a": "Dokument se kreira na njemačkom — ispravno formulisan za vlasti, stanodavce i poslodavce u Švicarskoj."
+      },
+      {
+        "q": "Šta ako nisam zadovoljan?",
+        "a": "Vraćamo vam puni iznos. Samo nam pošaljite email — bez komplikacija."
+      },
+      {
+        "q": "Koji načini plaćanja su prihvaćeni?",
+        "a": "TWINT, kreditna kartica (Visa, Mastercard), Apple Pay ili Google Pay. Plaćanje je sigurno putem Stripe-a."
+      }
+    ]
   }
 }

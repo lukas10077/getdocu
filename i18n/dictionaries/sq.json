@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "Si funksionon",
     "subtitle": "Katër hapa të thjeshtë. Nuk nevojitet llogari.",
-    "step1": { "title": "Plotëso formularin", "description": "Përgjigju disa pyetjeve të thjeshta — shpjeguar në gjuhën tënde." },
-    "step2": { "title": "Paguaj në mënyrë të sigurt", "description": "Paguaj 3–5 CHF me kartë përmes Stripe. Pa abonim, pa kosto të fshehura." },
-    "step3": { "title": "Dokumenti krijohet", "description": "AI-ja jonë krijon dokumentin tënd në gjermanisht, gati për autoritetet, qiradhënësin ose punëdhënësin." },
-    "step4": { "title": "Shkarko dhe mbarove", "description": "Shkarko PDF-në tënde. Të dhënat e tua fshihen menjëherë pas kësaj." }
+    "step1": {
+      "title": "Plotëso formularin",
+      "description": "Përgjigju disa pyetjeve të thjeshta — shpjeguar në gjuhën tënde."
+    },
+    "step2": {
+      "title": "Paguaj në mënyrë të sigurt",
+      "description": "Paguaj 3–5 CHF me kartë përmes Stripe. Pa abonim, pa kosto të fshehura."
+    },
+    "step3": {
+      "title": "Dokumenti krijohet",
+      "description": "AI-ja jonë krijon dokumentin tënd në gjermanisht, gati për autoritetet, qiradhënësin ose punëdhënësin."
+    },
+    "step4": {
+      "title": "Shkarko dhe mbarove",
+      "description": "Shkarko PDF-në tënde. Të dhënat e tua fshihen menjëherë pas kësaj."
+    }
   },
   "trust": {
     "title": "Të dhënat e tua janë tuajat",
@@ -63,7 +75,10 @@
     "point2Title": "Pa llogari, pa abonime",
     "point2": "Nuk të duhet llogari. Paguan vetëm për dokumentin që të duhet vërtet.",
     "point3Title": "Përpunim transparent",
-    "point3": "Për krijimin e dokumentit, teksti yt dërgohet tek Anthropic (SHBA) për përpunim — më pas fshihet. Më shumë në politikën tonë të privatësisë."
+    "point3": "Për krijimin e dokumentit, teksti yt dërgohet tek Anthropic (SHBA) për përpunim — më pas fshihet. Më shumë në politikën tonë të privatësisë.",
+    "guaranteeTitle": "Garanci rimbursimi",
+    "guaranteeBody": "Nëse dokumenti nuk është i përshtatshëm ose nuk jeni të kënaqur, ju rimbursojmë shumën e plotë. Dërgojini thjesht një email.",
+    "paymentTitle": "Metodat e pranuara të pagesës"
   },
   "footer": {
     "tagline": "Dokumente të rëndësishme për Zvicrën — krijuar thjesht.",
@@ -74,5 +89,34 @@
   },
   "legal": {
     "disclaimer": "GetDocu nuk ofron këshillim ligjor. Dokumentet e krijuara janë mjete ndihmëse — ti vetë je përgjegjës për saktësinë e përmbajtjes."
+  },
+  "faq": {
+    "title": "Pyetje të shpeshta",
+    "items": [
+      {
+        "q": "A duhet të krijoj një llogari?",
+        "a": "Jo. Pa llogari, pa regjistrim. Plotëso formularin, paguaj dhe shkarko dokumentin menjëherë."
+      },
+      {
+        "q": "Çfarë ndodh me të dhënat e mia?",
+        "a": "Të dhënat tuaja përdoren vetëm për të gjeneruar dokumentin dhe fshihen menjëherë pas. Pa ruajtje të përhershme."
+      },
+      {
+        "q": "A ka abonime ose kosto të fshehura?",
+        "a": "Jo. Paguan një herë 3–5 CHF për dokument. Pa abonime, pa surpriza."
+      },
+      {
+        "q": "Në çfarë gjuhe krijohet dokumenti?",
+        "a": "Dokumenti krijohet në gjermanisht — i formuluar saktë për autoritetet, qiradhënësit dhe punëdhënësit në Zvicër."
+      },
+      {
+        "q": "Çfarë bëj nëse nuk jam i kënaqur?",
+        "a": "Ne ju rimbursojmë shumën e plotë. Thjesht dërgojini një email — pa probleme."
+      },
+      {
+        "q": "Cilat metoda pagese pranohen?",
+        "a": "TWINT, kartë krediti (Visa, Mastercard), Apple Pay ose Google Pay. Pagesa është e sigurt nëpërmjet Stripe."
+      }
+    ]
   }
 }

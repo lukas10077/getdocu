@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "Jak to działa",
     "subtitle": "Cztery proste kroki. Nie wymaga konta.",
-    "step1": { "title": "Wypełnij formularz", "description": "Odpowiedz na kilka prostych pytań — wyjaśnionych w Twoim języku." },
-    "step2": { "title": "Bezpieczna płatność", "description": "Zapłać 3–5 CHF kartą przez Stripe. Bez abonamentu, bez ukrytych kosztów." },
-    "step3": { "title": "Dokument zostaje utworzony", "description": "Nasza AI tworzy dokument po niemiecku, gotowy dla urzędów, wynajmujących lub pracodawców." },
-    "step4": { "title": "Pobierz i gotowe", "description": "Pobierz swój PDF. Twoje dane są natychmiast usuwane." }
+    "step1": {
+      "title": "Wypełnij formularz",
+      "description": "Odpowiedz na kilka prostych pytań — wyjaśnionych w Twoim języku."
+    },
+    "step2": {
+      "title": "Bezpieczna płatność",
+      "description": "Zapłać 3–5 CHF kartą przez Stripe. Bez abonamentu, bez ukrytych kosztów."
+    },
+    "step3": {
+      "title": "Dokument zostaje utworzony",
+      "description": "Nasza AI tworzy dokument po niemiecku, gotowy dla urzędów, wynajmujących lub pracodawców."
+    },
+    "step4": {
+      "title": "Pobierz i gotowe",
+      "description": "Pobierz swój PDF. Twoje dane są natychmiast usuwane."
+    }
   },
   "trust": {
     "title": "Twoje dane należą do Ciebie",
@@ -63,7 +75,10 @@
     "point2Title": "Bez kont, bez abonamentów",
     "point2": "Nie potrzebujesz konta. Płacisz tylko za dokument, którego naprawdę potrzebujesz.",
     "point3Title": "Przejrzyste przetwarzanie",
-    "point3": "Aby utworzyć dokument, Twój tekst jest wysyłany do Anthropic (USA) w celu przetworzenia — a następnie usuwany. Więcej w naszej polityce prywatności."
+    "point3": "Aby utworzyć dokument, Twój tekst jest wysyłany do Anthropic (USA) w celu przetworzenia — a następnie usuwany. Więcej w naszej polityce prywatności.",
+    "guaranteeTitle": "Gwarancja zwrotu pieniędzy",
+    "guaranteeBody": "Jeśli dokument nie spełnia oczekiwań lub nie jesteś zadowolony, zwrócimy ci pełną kwotę. Wystarczy napisać e-mail.",
+    "paymentTitle": "Akceptowane metody płatności"
   },
   "footer": {
     "tagline": "Ważne dokumenty dla Szwajcarii — w prosty sposób.",
@@ -74,5 +89,34 @@
   },
   "legal": {
     "disclaimer": "GetDocu nie świadczy porad prawnych. Generowane dokumenty są pomocą — odpowiedzialność za poprawność treści leży na użytkowniku."
+  },
+  "faq": {
+    "title": "Często zadawane pytania",
+    "items": [
+      {
+        "q": "Czy muszę zakładać konto?",
+        "a": "Nie. Bez konta, bez rejestracji. Wypełnij formularz, zapłać i pobierz dokument od razu."
+      },
+      {
+        "q": "Co się dzieje z moimi danymi?",
+        "a": "Twoje dane są używane wyłącznie do wygenerowania dokumentu i natychmiast usuwane. Bez trwałego przechowywania."
+      },
+      {
+        "q": "Czy jest subskrypcja lub ukryte opłaty?",
+        "a": "Nie. Płacisz jednorazowo 3–5 CHF za dokument. Bez subskrypcji, bez niespodzianek."
+      },
+      {
+        "q": "W jakim języku tworzony jest dokument?",
+        "a": "Dokument jest tworzony w języku niemieckim — poprawnie sformułowany dla urzędów, wynajmujących i pracodawców w Szwajcarii."
+      },
+      {
+        "q": "Co zrobić, jeśli nie jestem zadowolony?",
+        "a": "Zwrócimy ci pełną kwotę. Wystarczy napisać do nas e-mail — bez komplikacji."
+      },
+      {
+        "q": "Jakie metody płatności są akceptowane?",
+        "a": "TWINT, karta kredytowa (Visa, Mastercard), Apple Pay lub Google Pay. Płatność jest bezpieczna przez Stripe."
+      }
+    ]
   }
 }

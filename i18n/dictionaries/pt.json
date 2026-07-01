@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "Como funciona",
     "subtitle": "Quatro passos simples. Sem necessidade de conta.",
-    "step1": { "title": "Preenche o formulário", "description": "Responde a algumas perguntas simples — explicadas no teu idioma." },
-    "step2": { "title": "Paga com segurança", "description": "Paga 3–5 CHF por cartão via Stripe. Sem subscrição, sem custos ocultos." },
-    "step3": { "title": "O documento é criado", "description": "A nossa IA cria o teu documento em alemão, pronto para autoridades, senhorios ou empregadores." },
-    "step4": { "title": "Descarrega e está feito", "description": "Descarrega o teu PDF. Os teus dados são eliminados imediatamente depois." }
+    "step1": {
+      "title": "Preenche o formulário",
+      "description": "Responde a algumas perguntas simples — explicadas no teu idioma."
+    },
+    "step2": {
+      "title": "Paga com segurança",
+      "description": "Paga 3–5 CHF por cartão via Stripe. Sem subscrição, sem custos ocultos."
+    },
+    "step3": {
+      "title": "O documento é criado",
+      "description": "A nossa IA cria o teu documento em alemão, pronto para autoridades, senhorios ou empregadores."
+    },
+    "step4": {
+      "title": "Descarrega e está feito",
+      "description": "Descarrega o teu PDF. Os teus dados são eliminados imediatamente depois."
+    }
   },
   "trust": {
     "title": "Os teus dados são teus",
@@ -63,7 +75,10 @@
     "point2Title": "Sem contas, sem subscrições",
     "point2": "Não precisas de conta. Pagas apenas pelo documento de que realmente precisas.",
     "point3Title": "Processamento transparente",
-    "point3": "Para gerar o documento, o teu texto é enviado para a Anthropic (EUA) para processamento — depois eliminado. Mais informações na nossa política de privacidade."
+    "point3": "Para gerar o documento, o teu texto é enviado para a Anthropic (EUA) para processamento — depois eliminado. Mais informações na nossa política de privacidade.",
+    "guaranteeTitle": "Garantia de reembolso",
+    "guaranteeBody": "Se o documento não for adequado ou não estiver satisfeito, reembolsamos o valor total. Basta enviar um e-mail.",
+    "paymentTitle": "Métodos de pagamento aceites"
   },
   "footer": {
     "tagline": "Documentos importantes para a Suíça — feitos de forma simples.",
@@ -74,5 +89,34 @@
   },
   "legal": {
     "disclaimer": "A GetDocu não presta aconselhamento jurídico. Os documentos gerados são ferramentas de apoio — és responsável pela exatidão do conteúdo."
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "items": [
+      {
+        "q": "Preciso criar uma conta?",
+        "a": "Não. Sem conta, sem registo. Preencha o formulário, pague e faça o download imediatamente."
+      },
+      {
+        "q": "O que acontece com os meus dados?",
+        "a": "Os seus dados são usados apenas para gerar o documento e eliminados de imediato. Sem armazenamento permanente."
+      },
+      {
+        "q": "Existe subscrição ou custos ocultos?",
+        "a": "Não. Paga uma vez 3–5 CHF por documento. Sem subscrição, sem surpresas."
+      },
+      {
+        "q": "Em que língua é criado o documento?",
+        "a": "O documento é criado em alemão — formulado corretamente para autoridades, senhorios e empregadores na Suíça."
+      },
+      {
+        "q": "O que faço se não estiver satisfeito?",
+        "a": "Reembolsamos o valor total. Basta enviar-nos um e-mail — sem complicações."
+      },
+      {
+        "q": "Que métodos de pagamento são aceites?",
+        "a": "TWINT, cartão de crédito (Visa, Mastercard), Apple Pay ou Google Pay. O pagamento é seguro via Stripe."
+      }
+    ]
   }
 }

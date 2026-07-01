@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "Hogyan működik",
     "subtitle": "Négy egyszerű lépés. Nincs szükség fiókra.",
-    "step1": { "title": "Töltsd ki az űrlapot", "description": "Válaszolj néhány egyszerű kérdésre — a saját nyelveden elmagyarázva." },
-    "step2": { "title": "Biztonságos fizetés", "description": "Fizess 3–5 CHF-ot kártyával a Stripe-on keresztül. Nincs előfizetés, nincs rejtett költség." },
-    "step3": { "title": "A dokumentum elkészül", "description": "AI-nk németül készíti el a dokumentumot, készen a hatóságok, bérbeadók vagy munkáltatók számára." },
-    "step4": { "title": "Letöltés és kész", "description": "Töltsd le a PDF-et. Az adataidat azonnal töröljük utána." }
+    "step1": {
+      "title": "Töltsd ki az űrlapot",
+      "description": "Válaszolj néhány egyszerű kérdésre — a saját nyelveden elmagyarázva."
+    },
+    "step2": {
+      "title": "Biztonságos fizetés",
+      "description": "Fizess 3–5 CHF-ot kártyával a Stripe-on keresztül. Nincs előfizetés, nincs rejtett költség."
+    },
+    "step3": {
+      "title": "A dokumentum elkészül",
+      "description": "AI-nk németül készíti el a dokumentumot, készen a hatóságok, bérbeadók vagy munkáltatók számára."
+    },
+    "step4": {
+      "title": "Letöltés és kész",
+      "description": "Töltsd le a PDF-et. Az adataidat azonnal töröljük utána."
+    }
   },
   "trust": {
     "title": "Az adataid a tieid",
@@ -63,7 +75,10 @@
     "point2Title": "Nincs fiók, nincs előfizetés",
     "point2": "Nincs szükséged fiókra. Csak azért fizetsz, amire valóban szükséged van.",
     "point3Title": "Átlátható feldolgozás",
-    "point3": "A dokumentum elkészítéséhez szövegedet az Anthropic (USA) felé továbbítjuk feldolgozásra — majd töröljük. Bővebben adatvédelmi nyilatkozatunkban."
+    "point3": "A dokumentum elkészítéséhez szövegedet az Anthropic (USA) felé továbbítjuk feldolgozásra — majd töröljük. Bővebben adatvédelmi nyilatkozatunkban.",
+    "guaranteeTitle": "Pénzvisszafizetési garancia",
+    "guaranteeBody": "Ha a dokumentum nem megfelelő, vagy nem elégedett, teljes összeget visszafizetjük. Csak küldjön egy e-mailt.",
+    "paymentTitle": "Elfogadott fizetési módok"
   },
   "footer": {
     "tagline": "Fontos dokumentumok Svájc számára — egyszerűen elkészítve.",
@@ -74,5 +89,34 @@
   },
   "legal": {
     "disclaimer": "A GetDocu nem ad jogi tanácsot. A generált dokumentumok segédeszközök — a tartalom helyességéért te vagy felelős."
+  },
+  "faq": {
+    "title": "Gyakori kérdések",
+    "items": [
+      {
+        "q": "Létre kell hoznom egy fiókot?",
+        "a": "Nem. Nincs fiók, nincs regisztráció. Töltse ki az űrlapot, fizessen és töltse le a dokumentumot azonnal."
+      },
+      {
+        "q": "Mi történik az adataimmal?",
+        "a": "Az adatait kizárólag a dokumentum létrehozásához használjuk, majd azonnal töröljük. Nincs állandó tárolás."
+      },
+      {
+        "q": "Van előfizetés vagy rejtett díj?",
+        "a": "Nem. Egyszer fizet 3–5 CHF-t dokumentumonként. Nincs előfizetés, nincs meglepetés."
+      },
+      {
+        "q": "Milyen nyelven készül a dokumentum?",
+        "a": "A dokumentum németül készül — helyesen megfogalmazva a svájci hatóságok, bérbeadók és munkáltatók számára."
+      },
+      {
+        "q": "Mit tegyek, ha nem vagyok elégedett?",
+        "a": "Teljes összeget visszafizetjük. Csak küldjön e-mailt — bonyodalmak nélkül."
+      },
+      {
+        "q": "Milyen fizetési módok elfogadottak?",
+        "a": "TWINT, hitelkártya (Visa, Mastercard), Apple Pay vagy Google Pay. A fizetés biztonságos a Stripe-on keresztül."
+      }
+    ]
   }
 }

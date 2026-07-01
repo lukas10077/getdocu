@@ -7,12 +7,13 @@ html {
 }
 
 body {
-  background-color: #ffffff;
-  color: #0a0a0a;
+  background-color: #0D0B08;
+  color: #F0E8D8;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+/* reveal animation - not used on most components but kept for Hero */
 .reveal {
   opacity: 0;
 }
@@ -32,7 +33,6 @@ body {
   }
 }
 
-/* Sanfter Fokus-Stil statt Browser-Default, ohne Barrierefreiheit zu verlieren */
 :focus-visible {
   outline: 2px solid #C8902E;
   outline-offset: 2px;

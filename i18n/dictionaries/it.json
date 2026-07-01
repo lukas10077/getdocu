@@ -56,6 +56,9 @@
     "step4": { "title": "Scarica e hai finito", "description": "Scarica il tuo PDF. I tuoi dati vengono eliminati immediatamente dopo." }
   },
   "trust": {
+    "guaranteeTitle": "Garanzia di rimborso",
+    "guaranteeBody": "Se il documento non è adatto o non sei soddisfatto, ti rimborsiamo l'intero importo. Basta inviare una e-mail.",
+    "paymentTitle": "Metodi di pagamento accettati",
     "title": "I tuoi dati appartengono a te",
     "subtitle": "La protezione dei dati non è un extra, è un principio fondamentale.",
     "point1Title": "Nessuna memorizzazione permanente",
@@ -71,6 +74,17 @@
     "datenschutz": "Informativa sulla privacy",
     "agb": "Termini e condizioni",
     "rights": "Tutti i diritti riservati."
+  },
+  "faq": {
+    "title": "Domande frequenti",
+    "items": [
+      { "q": "Devo creare un account?", "a": "No. Nessun account, nessuna registrazione. Compila il modulo, paga e scarica il documento immediatamente." },
+      { "q": "Cosa succede ai miei dati?", "a": "I tuoi dati vengono usati solo per generare il documento e poi eliminati immediatamente. Nessuna memorizzazione permanente." },
+      { "q": "C'è un abbonamento o costi nascosti?", "a": "No. Paghi una volta sola 3–5 CHF per documento. Nessun abbonamento, nessuna sorpresa." },
+      { "q": "In quale lingua viene creato il documento?", "a": "Il documento viene creato in tedesco — formulato correttamente per autorità, locatori e datori di lavoro in Svizzera." },
+      { "q": "Cosa faccio se non sono soddisfatto?", "a": "Ti rimborsiamo l'intero importo. Basta inviarci una e-mail — senza problemi." },
+      { "q": "Quali metodi di pagamento sono accettati?", "a": "TWINT, carta di credito (Visa, Mastercard), Apple Pay o Google Pay. Il pagamento è sicuro tramite Stripe." }
+    ]
   },
   "legal": {
     "disclaimer": "GetDocu non fornisce consulenza legale. I documenti generati sono strumenti — sei responsabile della loro correttezza."

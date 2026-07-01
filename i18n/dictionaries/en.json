@@ -56,6 +56,9 @@
     "step4": { "title": "Download & done", "description": "Download your PDF. Your input is deleted immediately afterwards." }
   },
   "trust": {
+    "guaranteeTitle": "Money-back guarantee",
+    "guaranteeBody": "If your document doesn't fit or you're not satisfied, we'll refund you in full. Just send us an email.",
+    "paymentTitle": "Accepted payment methods",
     "title": "Your data belongs to you",
     "subtitle": "Privacy isn't an add-on — it's the foundation.",
     "point1Title": "No permanent storage",
@@ -64,6 +67,35 @@
     "point2": "You don't need an account. You only pay for the document you actually need.",
     "point3Title": "Transparent processing",
     "point3": "To generate your document, your text is sent to Anthropic (USA) for processing — then deleted. More in our privacy policy."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "Do I need to create an account?",
+        "a": "No. No account, no registration. Fill out the form, pay, and download your document immediately."
+      },
+      {
+        "q": "What happens to my data?",
+        "a": "Your input is used solely to generate your document and deleted immediately afterwards. There is no permanent storage."
+      },
+      {
+        "q": "Is there a subscription or hidden fees?",
+        "a": "No. You pay a one-time fee of CHF 3–5 per document. No subscription, no follow-up costs, no surprises."
+      },
+      {
+        "q": "In which language is the document created?",
+        "a": "The document is created in German — correctly worded for authorities, landlords, and employers in Switzerland."
+      },
+      {
+        "q": "What if I'm not satisfied?",
+        "a": "We'll refund you in full. Just send us an email — no hassle, no questions asked."
+      },
+      {
+        "q": "Which payment methods are accepted?",
+        "a": "You can pay via TWINT, credit card (Visa, Mastercard), Apple Pay, or Google Pay. Payment is processed securely via Stripe."
+      }
+    ]
   },
   "footer": {
     "tagline": "Important documents for Switzerland — made simple.",
