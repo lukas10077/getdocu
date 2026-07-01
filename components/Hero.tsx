@@ -50,7 +50,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
               </Link>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-widest text-cream-subtle">
+            <div className="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-widest text-cream-muted">
               <span>✓ Kein Konto</span>
               <span>✓ Kein Abo</span>
               <span>✓ Daten gelöscht</span>
