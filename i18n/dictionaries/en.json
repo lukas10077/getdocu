@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "GetDocu — Important Documents, Made Simple",
+    "description": "AI-powered documents for Switzerland: rental applications, job applications, terminations. Done in minutes."
+  },
+  "nav": {
+    "tools": "Tools",
+    "howItWorks": "How it works",
+    "pricing": "Pricing",
+    "languages": "Language"
+  },
+  "hero": {
+    "eyebrow": "Made for Switzerland",
+    "headline": "Important documents. Made simple.",
+    "subheadline": "GetDocu helps you create professional letters and applications for Switzerland — explained in your language, written in German.",
+    "cta": "Choose a tool",
+    "ctaSecondary": "How it works"
+  },
+  "tools": {
+    "title": "Our tools",
+    "subtitle": "Choose what you need. Pay only when you use it.",
+    "rentalApplication": {
+      "title": "Rental application letter",
+      "description": "A compelling application letter for the Swiss housing market — written to Swiss standards.",
+      "price": "from CHF 5"
+    },
+    "jobApplication": {
+      "title": "Job application",
+      "description": "A cover letter that meets the expectations of Swiss employers.",
+      "price": "from CHF 5"
+    },
+    "termination": {
+      "title": "Write a termination letter",
+      "description": "Rental contract, health insurance, mobile plan — terminated correctly and on time.",
+      "price": "from CHF 3"
+    },
+    "comingSoonTitle": "Coming soon",
+    "comingSoon": [
+      "Improve a reference letter",
+      "Defect notice (Mängelrüge)",
+      "Complaint letter",
+      "CV check",
+      "Explain a debt collection record",
+      "Health insurance letter",
+      "Expense report",
+      "Salary negotiation coach",
+      "Resident registration"
+    ]
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "Four simple steps. No account needed.",
+    "step1": { "title": "Fill out the form", "description": "Answer a few simple questions — explained in your language." },
+    "step2": { "title": "Pay securely", "description": "Pay CHF 3–5 by card via Stripe. No subscription, no hidden fees." },
+    "step3": { "title": "Document is generated", "description": "Our AI creates your document in German, ready for authorities, landlords, or employers." },
+    "step4": { "title": "Download & done", "description": "Download your PDF. Your input is deleted immediately afterwards." }
+  },
+  "trust": {
+    "title": "Your data belongs to you",
+    "subtitle": "Privacy isn't an add-on — it's the foundation.",
+    "point1Title": "No permanent storage",
+    "point1": "Your input (name, address, salary details) is only used to generate the document and deleted immediately afterwards.",
+    "point2Title": "No accounts, no subscriptions",
+    "point2": "You don't need an account. You only pay for the document you actually need.",
+    "point3Title": "Transparent processing",
+    "point3": "To generate your document, your text is sent to Anthropic (USA) for processing — then deleted. More in our privacy policy."
+  },
+  "footer": {
+    "tagline": "Important documents for Switzerland — made simple.",
+    "impressum": "Legal notice",
+    "datenschutz": "Privacy policy",
+    "agb": "Terms & conditions",
+    "rights": "All rights reserved."
+  },
+  "legal": {
+    "disclaimer": "GetDocu does not provide legal advice. The generated documents are tools — you are responsible for their accuracy."
+  }
+}

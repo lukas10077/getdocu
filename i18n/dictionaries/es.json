@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "GetDocu — Documentos importantes, de forma sencilla",
+    "description": "Documentos generados por IA para Suiza: solicitud de alquiler, solicitud de empleo, cancelación. Listo en minutos."
+  },
+  "nav": {
+    "tools": "Herramientas",
+    "howItWorks": "Cómo funciona",
+    "pricing": "Precios",
+    "languages": "Idioma"
+  },
+  "hero": {
+    "eyebrow": "Hecho para Suiza",
+    "headline": "Documentos importantes. Hechos de forma sencilla.",
+    "subheadline": "GetDocu te ayuda a crear cartas y solicitudes profesionales para Suiza — explicado en tu idioma, redactado en alemán.",
+    "cta": "Elegir herramienta",
+    "ctaSecondary": "Cómo funciona"
+  },
+  "tools": {
+    "title": "Nuestras herramientas",
+    "subtitle": "Elige lo que necesitas. Paga solo cuando lo uses.",
+    "rentalApplication": {
+      "title": "Carta de solicitud de alquiler",
+      "description": "Una carta de solicitud convincente para el mercado de vivienda suizo — según el estándar suizo.",
+      "price": "desde 5 CHF"
+    },
+    "jobApplication": {
+      "title": "Solicitud de empleo",
+      "description": "Una carta de motivación que cumple las expectativas de los empleadores suizos.",
+      "price": "desde 5 CHF"
+    },
+    "termination": {
+      "title": "Redactar una cancelación",
+      "description": "Contrato de alquiler, seguro de salud, plan móvil — cancelado correctamente y a tiempo.",
+      "price": "desde 3 CHF"
+    },
+    "comingSoonTitle": "Próximamente",
+    "comingSoon": [
+      "Mejorar un certificado laboral",
+      "Aviso de defectos",
+      "Carta de reclamación",
+      "Revisión de CV",
+      "Explicación de un extracto del registro de ejecuciones",
+      "Carta al seguro de salud",
+      "Informe de gastos",
+      "Coach de negociación salarial",
+      "Inscripción en el control de habitantes"
+    ]
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "Cuatro pasos sencillos. No se necesita cuenta.",
+    "step1": { "title": "Completa el formulario", "description": "Responde algunas preguntas sencillas — explicadas en tu idioma." },
+    "step2": { "title": "Paga con seguridad", "description": "Paga 3–5 CHF con tarjeta a través de Stripe. Sin suscripción, sin costos ocultos." },
+    "step3": { "title": "Se crea el documento", "description": "Nuestra IA crea tu documento en alemán, listo para autoridades, arrendadores o empleadores." },
+    "step4": { "title": "Descarga y listo", "description": "Descarga tu PDF. Tus datos se eliminan inmediatamente después." }
+  },
+  "trust": {
+    "title": "Tus datos son tuyos",
+    "subtitle": "La privacidad no es un extra, es un principio fundamental.",
+    "point1Title": "Sin almacenamiento permanente",
+    "point1": "Tus datos (nombre, dirección, salario) solo se usan para generar el documento y se eliminan inmediatamente después.",
+    "point2Title": "Sin cuentas, sin suscripciones",
+    "point2": "No necesitas una cuenta. Solo pagas por el documento que realmente necesitas.",
+    "point3Title": "Procesamiento transparente",
+    "point3": "Para generar el documento, tu texto se envía a Anthropic (EE. UU.) para su procesamiento — y luego se elimina. Más información en nuestra política de privacidad."
+  },
+  "footer": {
+    "tagline": "Documentos importantes para Suiza — hechos de forma sencilla.",
+    "impressum": "Aviso legal",
+    "datenschutz": "Política de privacidad",
+    "agb": "Términos y condiciones",
+    "rights": "Todos los derechos reservados."
+  },
+  "legal": {
+    "disclaimer": "GetDocu no ofrece asesoría legal. Los documentos generados son herramientas de apoyo — tú eres responsable de su exactitud."
+  }
+}

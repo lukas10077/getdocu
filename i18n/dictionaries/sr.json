@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "GetDocu — Važni dokumenti, jednostavno",
+    "description": "Dokumenti generisani AI-jem za Švajcarsku: prijava za stan, prijava za posao, otkazivanje. Spremno za nekoliko minuta."
+  },
+  "nav": {
+    "tools": "Alati",
+    "howItWorks": "Kako funkcioniše",
+    "pricing": "Cijene",
+    "languages": "Jezik"
+  },
+  "hero": {
+    "eyebrow": "Napravljeno za Švajcarsku",
+    "headline": "Važni dokumenti. Jednostavno napravljeni.",
+    "subheadline": "GetDocu vam pomaže da napravite profesionalna pisma i prijave za Švajcarsku — objašnjeno na vašem jeziku, napisano na njemačkom.",
+    "cta": "Izaberi alat",
+    "ctaSecondary": "Kako funkcioniše"
+  },
+  "tools": {
+    "title": "Naši alati",
+    "subtitle": "Izaberite šta vam treba. Platite samo kada koristite.",
+    "rentalApplication": {
+      "title": "Pismo prijave za stan",
+      "description": "Uvjerljivo pismo prijave za švajcarsko tržište stanova — prema švajcarskom standardu.",
+      "price": "od 5 CHF"
+    },
+    "jobApplication": {
+      "title": "Prijava za posao",
+      "description": "Motivaciono pismo koje odgovara očekivanjima švajcarskih poslodavaca.",
+      "price": "od 5 CHF"
+    },
+    "termination": {
+      "title": "Napišite otkaz",
+      "description": "Ugovor o stanu, zdravstveno osiguranje, mobilni pretplata — otkazano pravilno i na vrijeme.",
+      "price": "od 3 CHF"
+    },
+    "comingSoonTitle": "Uskoro",
+    "comingSoon": [
+      "Poboljšanje radne potvrde",
+      "Prijava nedostatka",
+      "Pismo žalbe",
+      "Provjera CV-a",
+      "Objašnjenje izvoda iz registra izvršenja",
+      "Pismo zdravstvenom osiguranju",
+      "Obračun troškova",
+      "Trener za pregovaranje o plati",
+      "Prijava boravišta"
+    ]
+  },
+  "howItWorks": {
+    "title": "Kako funkcioniše",
+    "subtitle": "Četiri jednostavna koraka. Nije potreban nalog.",
+    "step1": { "title": "Popunite formular", "description": "Odgovorite na nekoliko jednostavnih pitanja — objašnjeno na vašem jeziku." },
+    "step2": { "title": "Plaćanje na siguran način", "description": "Platite 3–5 CHF karticom putem Stripe-a. Bez pretplate, bez skrivenih troškova." },
+    "step3": { "title": "Dokument se kreira", "description": "Naš AI kreira vaš dokument na njemačkom, spreman za vlasti, izdavače stanova ili poslodavce." },
+    "step4": { "title": "Preuzmite i gotovo", "description": "Preuzmite svoj PDF. Vaši podaci se odmah brišu nakon toga." }
+  },
+  "trust": {
+    "title": "Vaši podaci su vaši",
+    "subtitle": "Zaštita podataka nije dodatak, već osnovni princip.",
+    "point1Title": "Bez trajnog čuvanja",
+    "point1": "Vaši podaci (ime, adresa, plata) koriste se samo za kreiranje dokumenta i odmah se brišu nakon toga.",
+    "point2Title": "Bez naloga, bez pretplata",
+    "point2": "Ne treba vam nalog. Plaćate samo za dokument koji vam je zaista potreban.",
+    "point3Title": "Transparentna obrada",
+    "point3": "Za kreiranje dokumenta vaš tekst se šalje Anthropic-u (SAD) na obradu — zatim se briše. Više u našoj politici privatnosti."
+  },
+  "footer": {
+    "tagline": "Važni dokumenti za Švajcarsku — jednostavno napravljeni.",
+    "impressum": "Pravne informacije",
+    "datenschutz": "Politika privatnosti",
+    "agb": "Opći uvjeti",
+    "rights": "Sva prava zadržana."
+  },
+  "legal": {
+    "disclaimer": "GetDocu ne pruža pravne savjete. Generisani dokumenti su pomagala — vi ste odgovorni za tačnost sadržaja."
+  }
+}

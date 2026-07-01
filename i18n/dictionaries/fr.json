@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "GetDocu — Des documents importants, en toute simplicité",
+    "description": "Documents générés par IA pour la Suisse : candidature de location, lettre de motivation, résiliation. En quelques minutes."
+  },
+  "nav": {
+    "tools": "Outils",
+    "howItWorks": "Comment ça marche",
+    "pricing": "Tarifs",
+    "languages": "Langue"
+  },
+  "hero": {
+    "eyebrow": "Conçu pour la Suisse",
+    "headline": "Des documents importants. En toute simplicité.",
+    "subheadline": "GetDocu vous aide à créer des lettres et candidatures professionnelles pour la Suisse — expliqué dans votre langue, rédigé en allemand.",
+    "cta": "Choisir un outil",
+    "ctaSecondary": "Comment ça marche"
+  },
+  "tools": {
+    "title": "Nos outils",
+    "subtitle": "Choisissez ce dont vous avez besoin. Payez uniquement à l'utilisation.",
+    "rentalApplication": {
+      "title": "Lettre de candidature de location",
+      "description": "Une lettre de candidature convaincante pour le marché du logement suisse — selon les standards suisses.",
+      "price": "dès 5 CHF"
+    },
+    "jobApplication": {
+      "title": "Candidature à un emploi",
+      "description": "Une lettre de motivation qui répond aux attentes des employeurs suisses.",
+      "price": "dès 5 CHF"
+    },
+    "termination": {
+      "title": "Rédiger une résiliation",
+      "description": "Bail, assurance-maladie, abonnement mobile — résilié correctement et dans les délais.",
+      "price": "dès 3 CHF"
+    },
+    "comingSoonTitle": "Bientôt disponible",
+    "comingSoon": [
+      "Améliorer un certificat de travail",
+      "Avis de défaut",
+      "Lettre de réclamation",
+      "Vérification de CV",
+      "Explication d'un extrait du registre des poursuites",
+      "Lettre à l'assurance-maladie",
+      "Note de frais",
+      "Coach de négociation salariale",
+      "Inscription au contrôle des habitants"
+    ]
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "subtitle": "Quatre étapes simples. Aucun compte nécessaire.",
+    "step1": { "title": "Remplir le formulaire", "description": "Répondez à quelques questions simples — expliquées dans votre langue." },
+    "step2": { "title": "Payer en toute sécurité", "description": "Payez 3 à 5 CHF par carte via Stripe. Pas d'abonnement, pas de frais cachés." },
+    "step3": { "title": "Le document est créé", "description": "Notre IA crée votre document en allemand, prêt pour les autorités, propriétaires ou employeurs." },
+    "step4": { "title": "Téléchargez et c'est fait", "description": "Téléchargez votre PDF. Vos données sont immédiatement supprimées après." }
+  },
+  "trust": {
+    "title": "Vos données vous appartiennent",
+    "subtitle": "La protection des données n'est pas un détail, c'est un principe fondamental.",
+    "point1Title": "Aucun stockage permanent",
+    "point1": "Vos données (nom, adresse, salaire) ne sont utilisées que pour générer le document, puis supprimées immédiatement.",
+    "point2Title": "Pas de compte, pas d'abonnement",
+    "point2": "Vous n'avez pas besoin de compte. Vous ne payez que pour le document dont vous avez réellement besoin.",
+    "point3Title": "Traitement transparent",
+    "point3": "Pour générer le document, votre texte est transmis à Anthropic (USA) pour traitement — puis supprimé. Plus d'informations dans notre politique de confidentialité."
+  },
+  "footer": {
+    "tagline": "Des documents importants pour la Suisse — en toute simplicité.",
+    "impressum": "Mentions légales",
+    "datenschutz": "Politique de confidentialité",
+    "agb": "Conditions générales",
+    "rights": "Tous droits réservés."
+  },
+  "legal": {
+    "disclaimer": "GetDocu ne fournit pas de conseil juridique. Les documents générés sont des outils — vous êtes responsable de leur exactitude."
+  }
+}

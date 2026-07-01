@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "GetDocu — Wichtige Dokumente einfach erstellen",
+    "description": "KI-gestützte Dokumente für die Schweiz: Mietbewerbung, Bewerbung, Kündigung. In Minuten erledigt."
+  },
+  "nav": {
+    "tools": "Tools",
+    "howItWorks": "So funktioniert's",
+    "pricing": "Preise",
+    "languages": "Sprache"
+  },
+  "hero": {
+    "eyebrow": "Gemacht für die Schweiz",
+    "headline": "Wichtige Dokumente. Einfach erstellt.",
+    "subheadline": "GetDocu hilft dir, professionelle Briefe und Bewerbungen für die Schweiz zu erstellen — in deiner Sprache erklärt, auf Deutsch geschrieben.",
+    "cta": "Tool wählen",
+    "ctaSecondary": "So funktioniert's"
+  },
+  "tools": {
+    "title": "Unsere Tools",
+    "subtitle": "Wähle, was du brauchst. Bezahle nur, wenn du es nutzt.",
+    "rentalApplication": {
+      "title": "Mietbewerbungsschreiben",
+      "description": "Ein überzeugendes Bewerbungsschreiben für die Wohnungssuche in der Schweiz — nach Schweizer Standard.",
+      "price": "ab 5 CHF"
+    },
+    "jobApplication": {
+      "title": "Bewerbung für Arbeitsstelle",
+      "description": "Motivationsschreiben, das den Erwartungen Schweizer Arbeitgeber entspricht.",
+      "price": "ab 5 CHF"
+    },
+    "termination": {
+      "title": "Kündigung formulieren",
+      "description": "Mietvertrag, Krankenkasse, Handy-Abo — korrekt und fristgerecht gekündigt.",
+      "price": "ab 3 CHF"
+    },
+    "comingSoonTitle": "Bald verfügbar",
+    "comingSoon": [
+      "Arbeitszeugnis verbessern",
+      "Mängelrüge",
+      "Reklamationsbrief",
+      "Lebenslauf-Check",
+      "Betreibungsregisterauszug erklären",
+      "Krankenkassen-Erklärung",
+      "Spesenabrechnung",
+      "Lohnverhandlungs-Coach",
+      "Anmeldung Einwohnerkontrolle"
+    ]
+  },
+  "howItWorks": {
+    "title": "So funktioniert's",
+    "subtitle": "Vier einfache Schritte. Keine Anmeldung nötig.",
+    "step1": { "title": "Formular ausfüllen", "description": "Beantworte ein paar einfache Fragen — in deiner Sprache erklärt." },
+    "step2": { "title": "Sicher bezahlen", "description": "Bezahle 3–5 CHF per Karte über Stripe. Kein Abo, keine versteckten Kosten." },
+    "step3": { "title": "Dokument wird erstellt", "description": "Unsere KI erstellt dein Dokument auf Deutsch, bereit für Behörden, Vermieter oder Arbeitgeber." },
+    "step4": { "title": "Herunterladen & fertig", "description": "Lade dein PDF herunter. Deine Eingaben werden danach sofort gelöscht." }
+  },
+  "trust": {
+    "title": "Deine Daten gehören dir",
+    "subtitle": "Datenschutz ist kein Zusatz, sondern Grundprinzip.",
+    "point1Title": "Keine dauerhafte Speicherung",
+    "point1": "Deine Eingaben (Name, Adresse, Lohnangaben) werden nur für die Dokumenterstellung verwendet und danach sofort gelöscht.",
+    "point2Title": "Keine Konten, keine Abos",
+    "point2": "Du brauchst kein Konto. Du zahlst nur für das Dokument, das du wirklich brauchst.",
+    "point3Title": "Transparente Verarbeitung",
+    "point3": "Zur Erstellung wird dein Text an Anthropic (USA) zur Verarbeitung übermittelt — danach gelöscht. Mehr dazu in unserer Datenschutzerklärung."
+  },
+  "footer": {
+    "tagline": "Wichtige Dokumente für die Schweiz — einfach erstellt.",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutzerklärung",
+    "agb": "AGB",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "legal": {
+    "disclaimer": "GetDocu bietet keine Rechtsberatung. Die erstellten Dokumente sind Hilfsmittel — für die inhaltliche Richtigkeit bist du selbst verantwortlich."
+  }
+}

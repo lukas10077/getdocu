@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "GetDocu — Fontos dokumentumok, egyszerűen",
+    "description": "AI által generált dokumentumok Svájc számára: lakásbérlési pályázat, állásra jelentkezés, felmondás. Percek alatt kész."
+  },
+  "nav": {
+    "tools": "Eszközök",
+    "howItWorks": "Hogyan működik",
+    "pricing": "Árak",
+    "languages": "Nyelv"
+  },
+  "hero": {
+    "eyebrow": "Svájc számára készült",
+    "headline": "Fontos dokumentumok. Egyszerűen elkészítve.",
+    "subheadline": "A GetDocu segít professzionális leveleket és pályázatokat készíteni Svájc számára — a saját nyelveden elmagyarázva, németül megírva.",
+    "cta": "Eszköz kiválasztása",
+    "ctaSecondary": "Hogyan működik"
+  },
+  "tools": {
+    "title": "Eszközeink",
+    "subtitle": "Válaszd ki, mire van szükséged. Csak akkor fizetsz, ha használod.",
+    "rentalApplication": {
+      "title": "Lakásbérlési pályázati levél",
+      "description": "Meggyőző pályázati levél a svájci lakáspiacra — svájci szabvány szerint.",
+      "price": "5 CHF-tól"
+    },
+    "jobApplication": {
+      "title": "Állásra jelentkezés",
+      "description": "Motivációs levél, amely megfelel a svájci munkáltatók elvárásainak.",
+      "price": "5 CHF-tól"
+    },
+    "termination": {
+      "title": "Felmondás megfogalmazása",
+      "description": "Bérleti szerződés, betegbiztosítás, mobilszerződés — helyesen és időben felmondva.",
+      "price": "3 CHF-tól"
+    },
+    "comingSoonTitle": "Hamarosan",
+    "comingSoon": [
+      "Munkáltatói igazolás javítása",
+      "Hibabejelentés",
+      "Panaszlevél",
+      "Önéletrajz-ellenőrzés",
+      "Végrehajtási nyilvántartás kivonatának magyarázata",
+      "Levél a betegbiztosítóhoz",
+      "Költségelszámolás",
+      "Béralku-coach",
+      "Lakcímbejelentés"
+    ]
+  },
+  "howItWorks": {
+    "title": "Hogyan működik",
+    "subtitle": "Négy egyszerű lépés. Nincs szükség fiókra.",
+    "step1": { "title": "Töltsd ki az űrlapot", "description": "Válaszolj néhány egyszerű kérdésre — a saját nyelveden elmagyarázva." },
+    "step2": { "title": "Biztonságos fizetés", "description": "Fizess 3–5 CHF-ot kártyával a Stripe-on keresztül. Nincs előfizetés, nincs rejtett költség." },
+    "step3": { "title": "A dokumentum elkészül", "description": "AI-nk németül készíti el a dokumentumot, készen a hatóságok, bérbeadók vagy munkáltatók számára." },
+    "step4": { "title": "Letöltés és kész", "description": "Töltsd le a PDF-et. Az adataidat azonnal töröljük utána." }
+  },
+  "trust": {
+    "title": "Az adataid a tieid",
+    "subtitle": "Az adatvédelem nem extra, hanem alapelv.",
+    "point1Title": "Nincs tartós tárolás",
+    "point1": "Az adataidat (név, cím, fizetés) csak a dokumentum elkészítésére használjuk, majd azonnal töröljük.",
+    "point2Title": "Nincs fiók, nincs előfizetés",
+    "point2": "Nincs szükséged fiókra. Csak azért fizetsz, amire valóban szükséged van.",
+    "point3Title": "Átlátható feldolgozás",
+    "point3": "A dokumentum elkészítéséhez szövegedet az Anthropic (USA) felé továbbítjuk feldolgozásra — majd töröljük. Bővebben adatvédelmi nyilatkozatunkban."
+  },
+  "footer": {
+    "tagline": "Fontos dokumentumok Svájc számára — egyszerűen elkészítve.",
+    "impressum": "Impresszum",
+    "datenschutz": "Adatvédelmi nyilatkozat",
+    "agb": "Általános szerződési feltételek",
+    "rights": "Minden jog fenntartva."
+  },
+  "legal": {
+    "disclaimer": "A GetDocu nem ad jogi tanácsot. A generált dokumentumok segédeszközök — a tartalom helyességéért te vagy felelős."
+  }
+}

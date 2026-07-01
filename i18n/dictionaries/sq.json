@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "GetDocu — Dokumente të rëndësishme, thjesht",
+    "description": "Dokumente të krijuara nga AI për Zvicrën: kërkesë qiraje, kërkesë pune, ndërprerje kontrate. Gati në minuta."
+  },
+  "nav": {
+    "tools": "Mjetet",
+    "howItWorks": "Si funksionon",
+    "pricing": "Çmimet",
+    "languages": "Gjuha"
+  },
+  "hero": {
+    "eyebrow": "Krijuar për Zvicrën",
+    "headline": "Dokumente të rëndësishme. Krijuar thjesht.",
+    "subheadline": "GetDocu të ndihmon të krijosh letra dhe kërkesa profesionale për Zvicrën — shpjeguar në gjuhën tënde, shkruar në gjermanisht.",
+    "cta": "Zgjedh një mjet",
+    "ctaSecondary": "Si funksionon"
+  },
+  "tools": {
+    "title": "Mjetet tona",
+    "subtitle": "Zgjedh çfarë të duhet. Paguaj vetëm kur e përdor.",
+    "rentalApplication": {
+      "title": "Letër kërkese për qira",
+      "description": "Një letër kërkese bindëse për tregun e banesave në Zvicër — sipas standardit zviceran.",
+      "price": "nga 5 CHF"
+    },
+    "jobApplication": {
+      "title": "Kërkesë për punë",
+      "description": "Letër motivimi që i përgjigjet pritshmërive të punëdhënësve zviceranë.",
+      "price": "nga 5 CHF"
+    },
+    "termination": {
+      "title": "Formulo një ndërprerje kontrate",
+      "description": "Kontrata e qirasë, sigurimi shëndetësor, abonimi i celularit — ndërprerë saktë dhe në kohë.",
+      "price": "nga 3 CHF"
+    },
+    "comingSoonTitle": "Së shpejti",
+    "comingSoon": [
+      "Përmirëso një dëshmi pune",
+      "Njoftim defekti",
+      "Letër ankese",
+      "Kontroll i CV-së",
+      "Shpjegim i ekstraktit të regjistrit të përmbarimit",
+      "Letër për sigurimin shëndetësor",
+      "Raport shpenzimesh",
+      "Trajner negocimi page",
+      "Regjistrim në kontrollin e banorëve"
+    ]
+  },
+  "howItWorks": {
+    "title": "Si funksionon",
+    "subtitle": "Katër hapa të thjeshtë. Nuk nevojitet llogari.",
+    "step1": { "title": "Plotëso formularin", "description": "Përgjigju disa pyetjeve të thjeshta — shpjeguar në gjuhën tënde." },
+    "step2": { "title": "Paguaj në mënyrë të sigurt", "description": "Paguaj 3–5 CHF me kartë përmes Stripe. Pa abonim, pa kosto të fshehura." },
+    "step3": { "title": "Dokumenti krijohet", "description": "AI-ja jonë krijon dokumentin tënd në gjermanisht, gati për autoritetet, qiradhënësin ose punëdhënësin." },
+    "step4": { "title": "Shkarko dhe mbarove", "description": "Shkarko PDF-në tënde. Të dhënat e tua fshihen menjëherë pas kësaj." }
+  },
+  "trust": {
+    "title": "Të dhënat e tua janë tuajat",
+    "subtitle": "Mbrojtja e të dhënave nuk është shtesë, është parim themelor.",
+    "point1Title": "Pa ruajtje të përhershme",
+    "point1": "Të dhënat e tua (emri, adresa, paga) përdoren vetëm për krijimin e dokumentit dhe fshihen menjëherë pas kësaj.",
+    "point2Title": "Pa llogari, pa abonime",
+    "point2": "Nuk të duhet llogari. Paguan vetëm për dokumentin që të duhet vërtet.",
+    "point3Title": "Përpunim transparent",
+    "point3": "Për krijimin e dokumentit, teksti yt dërgohet tek Anthropic (SHBA) për përpunim — më pas fshihet. Më shumë në politikën tonë të privatësisë."
+  },
+  "footer": {
+    "tagline": "Dokumente të rëndësishme për Zvicrën — krijuar thjesht.",
+    "impressum": "Të dhëna ligjore",
+    "datenschutz": "Politika e privatësisë",
+    "agb": "Kushtet e përdorimit",
+    "rights": "Të gjitha të drejtat e rezervuara."
+  },
+  "legal": {
+    "disclaimer": "GetDocu nuk ofron këshillim ligjor. Dokumentet e krijuara janë mjete ndihmëse — ti vetë je përgjegjës për saktësinë e përmbajtjes."
+  }
+}

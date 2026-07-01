@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "GetDocu — Önemli belgeler, basitçe",
+    "description": "İsviçre için yapay zeka destekli belgeler: kira başvurusu, iş başvurusu, fesih. Dakikalar içinde hazır."
+  },
+  "nav": {
+    "tools": "Araçlar",
+    "howItWorks": "Nasıl çalışır",
+    "pricing": "Fiyatlar",
+    "languages": "Dil"
+  },
+  "hero": {
+    "eyebrow": "İsviçre için tasarlandı",
+    "headline": "Önemli belgeler. Basitçe oluşturuldu.",
+    "subheadline": "GetDocu, İsviçre için profesyonel mektuplar ve başvurular oluşturmanıza yardımcı olur — kendi dilinizde açıklanır, Almanca yazılır.",
+    "cta": "Bir araç seç",
+    "ctaSecondary": "Nasıl çalışır"
+  },
+  "tools": {
+    "title": "Araçlarımız",
+    "subtitle": "İhtiyacın olanı seç. Sadece kullandığında öde.",
+    "rentalApplication": {
+      "title": "Kira başvuru mektubu",
+      "description": "İsviçre konut piyasası için ikna edici bir başvuru mektubu — İsviçre standardına uygun.",
+      "price": "5 CHF'den başlayan"
+    },
+    "jobApplication": {
+      "title": "İş başvurusu",
+      "description": "İsviçreli işverenlerin beklentilerini karşılayan bir motivasyon mektubu.",
+      "price": "5 CHF'den başlayan"
+    },
+    "termination": {
+      "title": "Fesih mektubu hazırla",
+      "description": "Kira sözleşmesi, sağlık sigortası, mobil abonelik — doğru ve zamanında feshedilir.",
+      "price": "3 CHF'den başlayan"
+    },
+    "comingSoonTitle": "Yakında",
+    "comingSoon": [
+      "İş referans belgesini iyileştir",
+      "Kusur bildirimi",
+      "Şikayet mektubu",
+      "CV kontrolü",
+      "İcra kaydı özetinin açıklanması",
+      "Sağlık sigortasına mektup",
+      "Gider raporu",
+      "Maaş pazarlığı koçu",
+      "Nüfus kaydı bildirimi"
+    ]
+  },
+  "howItWorks": {
+    "title": "Nasıl çalışır",
+    "subtitle": "Dört basit adım. Hesap gerekmez.",
+    "step1": { "title": "Formu doldur", "description": "Birkaç basit soruyu yanıtla — kendi dilinde açıklanır." },
+    "step2": { "title": "Güvenle öde", "description": "Stripe üzerinden kartla 3–5 CHF öde. Abonelik yok, gizli ücret yok." },
+    "step3": { "title": "Belge oluşturulur", "description": "Yapay zekamız belgenizi Almanca olarak oluşturur, makamlar, ev sahipleri veya işverenler için hazır." },
+    "step4": { "title": "İndir ve bitti", "description": "PDF'ini indir. Verileriniz hemen sonra silinir." }
+  },
+  "trust": {
+    "title": "Verileriniz size aittir",
+    "subtitle": "Veri koruma bir ekstra değil, temel bir ilkedir.",
+    "point1Title": "Kalıcı depolama yok",
+    "point1": "Verileriniz (ad, adres, maaş bilgileri) yalnızca belgeyi oluşturmak için kullanılır ve sonrasında hemen silinir.",
+    "point2Title": "Hesap yok, abonelik yok",
+    "point2": "Hesaba ihtiyacınız yok. Sadece gerçekten ihtiyacınız olan belge için ödeme yaparsınız.",
+    "point3Title": "Şeffaf işleme",
+    "point3": "Belgeyi oluşturmak için metniniz işlenmek üzere Anthropic'e (ABD) gönderilir — ardından silinir. Daha fazla bilgi gizlilik politikamızda."
+  },
+  "footer": {
+    "tagline": "İsviçre için önemli belgeler — basitçe oluşturuldu.",
+    "impressum": "Yasal bilgiler",
+    "datenschutz": "Gizlilik politikası",
+    "agb": "Kullanım şartları",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "legal": {
+    "disclaimer": "GetDocu hukuki tavsiye sunmaz. Oluşturulan belgeler yardımcı araçlardır — içeriğin doğruluğundan siz sorumlusunuz."
+  }
+}
