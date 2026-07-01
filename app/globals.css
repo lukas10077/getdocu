@@ -13,7 +13,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* reveal animation - not used on most components but kept for Hero */
 .reveal {
   opacity: 0;
 }
@@ -23,14 +22,46 @@ body {
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Document illustration animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(2deg); }
+  50%       { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes floatShadow {
+  0%, 100% { transform: translateY(0px) scaleX(1); opacity: 0.15; }
+  50%       { transform: translateY(8px) scaleX(0.85); opacity: 0.08; }
+}
+
+@keyframes stampPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,144,46,0); }
+  50%       { box-shadow: 0 0 0 8px rgba(200,144,46,0.12); }
+}
+
+@keyframes lineReveal {
+  from { width: 0; opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.doc-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.doc-shadow {
+  animation: floatShadow 5s ease-in-out infinite;
+}
+
+.doc-stamp {
+  animation: stampPulse 3s ease-in-out infinite;
 }
 
 :focus-visible {
