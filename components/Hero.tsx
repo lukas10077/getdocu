@@ -12,9 +12,10 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
           src="/hero.jpg"
           alt="Professionelles Dokument mit Stift"
           fill
-          quality={95}
+          quality={100}
           className="object-cover object-left"
           priority
+          style={{ filter: "contrast(1.18) saturate(1.1) brightness(1.04)" }}
         />
         {/* Only a narrow left-edge fade so text stays readable */}
         <div className="absolute inset-y-0 left-0 w-[38%] bg-gradient-to-r from-ink-950 to-transparent" />
