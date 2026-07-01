@@ -12,10 +12,6 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
 
           {/* Left: text */}
           <div>
-            <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-swiss-gold">
-              {dict.hero.eyebrow ?? "Gemacht für die Schweiz"}
-            </p>
-
             <h1 className="font-serif text-5xl font-medium leading-[1.05] text-cream md:text-6xl lg:text-7xl">
               {dict.hero.headline
                 .split(/\.\s+/)
