@@ -10,7 +10,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
 
       <div className="relative mx-auto max-w-content text-center">
         {/* Headline */}
-        <h1 className="font-serif text-5xl font-light leading-[1.04] text-swiss-black md:text-7xl">
+        <h1 className="font-serif text-5xl font-normal leading-[1.04] text-swiss-black md:text-7xl">
           {dict.hero.headline
             .split(/\.\s+/)
             .map((line: string, i: number, arr: string[]) => (

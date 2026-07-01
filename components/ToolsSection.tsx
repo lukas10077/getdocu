@@ -26,7 +26,7 @@ function ToolCard({
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
             CHF {priceChf}
           </p>
-          <h3 className="font-serif text-xl font-light leading-snug text-swiss-black">{title}</h3>
+          <h3 className="font-serif text-xl font-normal leading-snug text-swiss-black">{title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-swiss-gray-500">{description}</p>
         </div>
         <div className="mt-6 flex items-center justify-between">
@@ -46,7 +46,7 @@ export default function ToolsSection({ locale, dict }: { locale: Locale; dict: a
     <section id="tools" className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-content">
         <RevealOnScroll>
-          <h2 className="font-serif text-4xl font-light text-swiss-black md:text-5xl">
+          <h2 className="font-serif text-4xl font-normal text-swiss-black md:text-5xl">
             {dict.tools.title}
           </h2>
         </RevealOnScroll>
