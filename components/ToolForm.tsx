@@ -24,7 +24,6 @@ export default function ToolForm({ tool, locale }: Props) {
   const sessionId = searchParams.get("session_id");
   const storageKey = `getdocu_form_${tool.slug}`;
 
-  // ── Nach Stripe-Redirect: auto-generieren ─────────────────────
   useEffect(() => {
     if (!sessionId || hasFetched.current) return;
     hasFetched.current = true;
@@ -62,7 +61,6 @@ export default function ToolForm({ tool, locale }: Props) {
       });
   }, [sessionId]);
 
-  // ── Validierung ───────────────────────────────────────────────
   function validate() {
     const newErrors: Record<string, string> = {};
     for (const field of tool.fields) {
@@ -74,13 +72,10 @@ export default function ToolForm({ tool, locale }: Props) {
     return Object.keys(newErrors).length === 0;
   }
 
-  // ── Submit → Vorschau ─────────────────────────────────────────
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validate()) return;
-
     setStage("previewing");
-
     try {
       const res = await fetch("/api/preview", {
         method: "POST",
@@ -95,11 +90,9 @@ export default function ToolForm({ tool, locale }: Props) {
     }
   }
 
-  // ── Zur Zahlung weiterleiten ──────────────────────────────────
   async function proceedToCheckout() {
     setStage("redirecting");
     sessionStorage.setItem(storageKey, JSON.stringify(values));
-
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -116,16 +109,40 @@ export default function ToolForm({ tool, locale }: Props) {
 
   const priceChf = (tool.priceChfRappen / 100).toFixed(2);
 
-  // ── Done ──────────────────────────────────────────────────────
+  // Spinner-Komponente
+  const Spinner = ({ label, sub }: { label: string; sub?: string }) => (
+    <div className="mt-16 flex flex-col items-center gap-4 text-center">
+      <div className="h-10 w-10 animate-spin rounded-full border-2 border-ink-700 border-t-swiss-gold" />
+      <p className="text-sm text-cream">{label}</p>
+      {sub && <p className="text-xs text-cream-muted">{sub}</p>}
+    </div>
+  );
+
+  if (stage === "previewing") return <Spinner label="Vorschau wird erstellt…" sub="Dauert ca. 5 Sekunden." />;
+  if (stage === "generating") return <Spinner label="Vollständiges Dokument wird erstellt…" sub="Das dauert ca. 10–20 Sekunden." />;
+  if (stage === "redirecting") return <Spinner label="Weiterleitung zur Zahlung…" />;
+
+  if (stage === "error") {
+    return (
+      <div className="mt-10 rounded-sm border border-red-800/50 bg-red-900/20 p-6">
+        <p className="text-sm font-medium text-red-400">Ein Fehler ist aufgetreten</p>
+        <p className="mt-1 text-sm text-red-300">{errorMsg}</p>
+        <button onClick={() => { setStage("form"); setErrorMsg(""); }} className="mt-4 text-sm text-red-400 underline hover:text-red-300">
+          Zurück zum Formular
+        </button>
+      </div>
+    );
+  }
+
   if (stage === "done") {
     return (
       <div className="mt-10">
         <div className="mb-6 flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-swiss-gold text-sm text-white">✓</span>
-          <h2 className="text-lg font-medium text-swiss-black">Dein Dokument ist fertig</h2>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-swiss-gold text-sm text-ink-950">✓</span>
+          <h2 className="text-lg font-medium text-cream">Dein Dokument ist fertig</h2>
         </div>
-        <div className="rounded-sm border border-swiss-gray-200 bg-swiss-gray-50 p-6 md:p-8">
-          <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-swiss-gray-700">{result}</pre>
+        <div className="rounded-sm border border-ink-700 bg-ink-900 p-6 md:p-8">
+          <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-cream-muted">{result}</pre>
         </div>
         <div className="mt-6 flex flex-wrap gap-4">
           <button
@@ -138,7 +155,7 @@ export default function ToolForm({ tool, locale }: Props) {
               a.click();
               URL.revokeObjectURL(url);
             }}
-            className="bg-swiss-black px-6 py-3 text-sm font-medium uppercase tracking-widest text-white transition hover:bg-swiss-gray-900"
+            className="bg-swiss-gold px-6 py-3 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
           >
             Als Text herunterladen
           </button>
@@ -155,126 +172,63 @@ export default function ToolForm({ tool, locale }: Props) {
                 </body></html>`);
               w.document.close();
             }}
-            className="border border-swiss-gray-200 px-6 py-3 text-sm font-medium uppercase tracking-widest text-swiss-gray-700 transition hover:border-swiss-gray-300"
+            className="border border-ink-700 px-6 py-3 text-sm font-medium uppercase tracking-widest text-cream-muted transition hover:border-swiss-gold/50 hover:text-cream"
           >
             Als PDF drucken / speichern
           </button>
         </div>
-        <p className="mt-6 text-xs text-swiss-gray-500">
+        <p className="mt-6 text-xs text-cream-subtle">
           Deine Formulardaten wurden nach der Generierung sofort gelöscht.
         </p>
       </div>
     );
   }
 
-  // ── Vorschau ──────────────────────────────────────────────────
   if (stage === "preview") {
     return (
       <div className="mt-10">
         <div className="mb-4 flex items-center gap-2">
           <span className="text-xs font-medium uppercase tracking-widest text-swiss-gold">Vorschau</span>
-          <span className="text-xs text-swiss-gray-400">— Bezahle um das vollständige Dokument zu erhalten</span>
+          <span className="text-xs text-cream-muted">— Bezahle um das vollständige Dokument zu erhalten</span>
         </div>
 
-        <div className="relative overflow-hidden rounded-sm border border-swiss-gray-200 bg-white">
-          {/* Wasserzeichen */}
+        <div className="relative overflow-hidden rounded-sm border border-ink-700 bg-[#F5F0E6]">
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center" style={{ zIndex: 2 }}>
-            <span
-              className="select-none text-4xl font-medium uppercase text-swiss-gray-200"
-              style={{ transform: "rotate(-30deg)", opacity: 0.7, letterSpacing: "0.3em" }}
-            >
+            <span className="select-none text-4xl font-medium uppercase text-[#0D0B08]/15" style={{ transform: "rotate(-30deg)", letterSpacing: "0.3em" }}>
               VORSCHAU
             </span>
           </div>
-
-          {/* Text */}
           <div className="relative p-6 md:p-8" style={{ zIndex: 1 }}>
-            <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-swiss-gray-700">
-              {previewText}
-            </pre>
+            <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-[#2A2520]">{previewText}</pre>
           </div>
-
-          {/* Fade-out */}
-          <div
-            className="pointer-events-none absolute bottom-0 left-0 right-0 h-32"
-            style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.97) 100%)", zIndex: 3 }}
-          />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32" style={{ background: "linear-gradient(to bottom, rgba(245,240,230,0) 0%, rgba(245,240,230,0.97) 100%)", zIndex: 3 }} />
         </div>
 
-        {/* CTA Box */}
-        <div className="mt-6 rounded-sm border border-swiss-gray-100 bg-swiss-gray-50 p-5">
-          <p className="mb-4 text-sm text-swiss-gray-700">
-            <strong className="font-medium text-swiss-black">Dein persönliches Dokument ist bereit.</strong>{" "}
+        <div className="mt-6 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
+          <p className="mb-4 text-sm text-cream-muted">
+            <strong className="font-medium text-cream">Dein persönliches Dokument ist bereit.</strong>{" "}
             Bezahle einmalig CHF {priceChf} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <button
-              onClick={proceedToCheckout}
-              className="bg-swiss-black px-8 py-4 text-sm font-medium uppercase tracking-widest text-white transition hover:bg-swiss-gray-900"
-            >
+            <button onClick={proceedToCheckout} className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark">
               Vollständiges Dokument — CHF {priceChf}
             </button>
-            <button
-              onClick={() => setStage("form")}
-              className="text-sm text-swiss-gray-400 underline hover:text-swiss-gray-700"
-            >
+            <button onClick={() => setStage("form")} className="text-sm text-cream-subtle underline hover:text-cream-muted">
               Angaben ändern
             </button>
           </div>
-          <p className="mt-3 text-xs text-swiss-gray-400">
-            💳 Kreditkarte · TWINT · Apple Pay · Google Pay
-          </p>
+          <p className="mt-3 text-xs text-cream-subtle">💳 Kreditkarte · TWINT · Apple Pay · Google Pay</p>
         </div>
-      </div>
-    );
-  }
-
-  // ── Spinners ──────────────────────────────────────────────────
-  if (stage === "previewing") {
-    return (
-      <div className="mt-16 flex flex-col items-center gap-4 text-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-swiss-gray-200 border-t-swiss-gold" />
-        <p className="text-sm text-swiss-gray-500">Vorschau wird erstellt…</p>
-        <p className="text-xs text-swiss-gray-300">Dauert ca. 5 Sekunden.</p>
-      </div>
-    );
-  }
-
-  if (stage === "generating") {
-    return (
-      <div className="mt-16 flex flex-col items-center gap-4 text-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-swiss-gray-200 border-t-swiss-gold" />
-        <p className="text-sm text-swiss-gray-500">Vollständiges Dokument wird erstellt…</p>
-        <p className="text-xs text-swiss-gray-300">Das dauert ca. 10–20 Sekunden.</p>
-      </div>
-    );
-  }
-
-  if (stage === "redirecting") {
-    return (
-      <div className="mt-16 flex flex-col items-center gap-4 text-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-swiss-gray-200 border-t-swiss-gold" />
-        <p className="text-sm text-swiss-gray-500">Weiterleitung zur Zahlung…</p>
-      </div>
-    );
-  }
-
-  if (stage === "error") {
-    return (
-      <div className="mt-10 rounded-sm border border-red-200 bg-red-50 p-6">
-        <p className="text-sm font-medium text-red-700">Ein Fehler ist aufgetreten</p>
-        <p className="mt-1 text-sm text-red-600">{errorMsg}</p>
-        <button onClick={() => { setStage("form"); setErrorMsg(""); }} className="mt-4 text-sm underline text-red-700">
-          Zurück zum Formular
-        </button>
       </div>
     );
   }
 
   // ── Formular ──────────────────────────────────────────────────
+  const inputClass = "w-full rounded-sm border bg-ink-900 px-4 py-3 text-sm text-cream placeholder:text-cream-subtle outline-none transition focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold";
+
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
-      <div className="space-y-10">
+      <div className="space-y-8">
         {tool.fields.map((field, idx) => {
           const prevField = tool.fields[idx - 1];
           const showSection = field.section && field.section !== prevField?.section;
@@ -282,14 +236,14 @@ export default function ToolForm({ tool, locale }: Props) {
           return (
             <div key={field.key}>
               {showSection && (
-                <div className="mb-6 border-b border-swiss-gray-100 pb-2">
-                  <h3 className="text-xs font-medium uppercase tracking-widest text-swiss-gray-500">
+                <div className="mb-6 border-b border-ink-700 pb-2">
+                  <h3 className="text-xs font-medium uppercase tracking-widest text-cream-muted">
                     {field.section}
                   </h3>
                 </div>
               )}
-              <div className={showSection ? "" : "-mt-4"}>
-                <label htmlFor={field.key} className="mb-1.5 block text-sm font-medium text-swiss-black">
+              <div className={showSection ? "" : ""}>
+                <label htmlFor={field.key} className="mb-2 block text-sm font-medium text-cream">
                   {field.label}
                   {field.required && <span className="ml-1 text-swiss-gold">*</span>}
                 </label>
@@ -298,7 +252,7 @@ export default function ToolForm({ tool, locale }: Props) {
                     id={field.key}
                     value={values[field.key] ?? ""}
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
-                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
+                    className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   >
                     <option value="">— bitte wählen —</option>
                     {field.options!.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
@@ -310,7 +264,7 @@ export default function ToolForm({ tool, locale }: Props) {
                     placeholder={field.placeholder}
                     value={values[field.key] ?? ""}
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
-                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition resize-y focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
+                    className={`${inputClass} resize-y ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   />
                 ) : (
                   <input
@@ -319,19 +273,19 @@ export default function ToolForm({ tool, locale }: Props) {
                     placeholder={field.placeholder}
                     value={values[field.key] ?? ""}
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
-                    className={`w-full rounded-sm border bg-white px-4 py-3 text-sm text-swiss-black outline-none transition focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold ${errors[field.key] ? "border-red-300" : "border-swiss-gray-200"}`}
+                    className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   />
                 )}
-                {errors[field.key] && <p className="mt-1 text-xs text-red-500">{errors[field.key]}</p>}
+                {errors[field.key] && <p className="mt-1 text-xs text-red-400">{errors[field.key]}</p>}
               </div>
             </div>
           );
         })}
       </div>
 
-      <p className="mt-10 text-xs leading-relaxed text-swiss-gray-500">
+      <p className="mt-10 text-xs leading-relaxed text-cream-subtle">
         Mit dem Klick auf «Vorschau erstellen» stimmst du unseren{" "}
-        <a href={`/${locale}/legal/agb`} className="underline hover:text-swiss-black">AGB</a> zu.
+        <a href={`/${locale}/legal/agb`} className="underline hover:text-cream-muted">AGB</a> zu.{" "}
         Das generierte Dokument ist kein Ersatz für eine Rechtsberatung.
         Deine Formulardaten werden nach der Generierung sofort gelöscht.
       </p>
@@ -339,11 +293,11 @@ export default function ToolForm({ tool, locale }: Props) {
       <div className="mt-6 flex flex-wrap items-center gap-6">
         <button
           type="submit"
-          className="bg-swiss-black px-8 py-4 text-sm font-medium uppercase tracking-widest text-white transition hover:bg-swiss-gray-900"
+          className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
         >
           Vorschau erstellen — kostenlos
         </button>
-        <span className="text-xs text-swiss-gray-500">
+        <span className="text-xs text-cream-muted">
           Danach CHF {priceChf} für das vollständige Dokument
         </span>
       </div>

@@ -25,35 +25,29 @@ export default async function ToolPage({
     <main>
       <Nav locale={params.locale} dict={dict} />
 
-      <section className="px-6 py-16 md:py-24">
+      <section className="bg-ink-950 px-6 py-16 md:py-24">
         <div className="mx-auto max-w-2xl">
           {/* Header */}
-          <div className="border-b border-swiss-gray-100 pb-8">
+          <div className="border-b border-ink-700 pb-8">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
               CHF {priceChf}
             </p>
-            <h1 className="font-serif text-4xl font-light leading-tight text-swiss-black md:text-5xl">
+            <h1 className="font-serif text-4xl font-medium leading-tight text-cream md:text-5xl">
               {tool.documentTitleDe}
             </h1>
-            <p className="mt-3 text-base text-swiss-gray-500">{tool.descriptionDe}</p>
+            <p className="mt-3 text-base text-cream-muted">{tool.descriptionDe}</p>
 
             {/* Trust pills */}
             <div className="mt-5 flex flex-wrap gap-2">
-              {["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek.", "💳 Stripe · TWINT"].map(
-                (t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-swiss-gray-200 px-3 py-1 text-xs text-swiss-gray-500"
-                  >
-                    {t}
-                  </span>
-                )
-              )}
+              {["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek.", "💳 Stripe · TWINT"].map((t) => (
+                <span key={t} className="rounded-full border border-ink-700 px-3 py-1 text-xs text-cream-muted">
+                  {t}
+                </span>
+              ))}
             </div>
           </div>
 
-          {/* Form — wrapped in Suspense because useSearchParams() needs it */}
-          <Suspense fallback={<div className="mt-10 text-sm text-swiss-gray-500">Lädt…</div>}>
+          <Suspense fallback={<div className="mt-10 text-sm text-cream-muted">Lädt…</div>}>
             <ToolForm tool={tool} locale={params.locale} />
           </Suspense>
         </div>
