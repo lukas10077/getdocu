@@ -6,21 +6,21 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
   return (
     <section className="relative min-h-[90vh] overflow-hidden bg-ink-950 flex items-center">
 
-      {/* Photo — covers right 60%, bleeds to edge */}
+      {/* Full-bleed photo — right 62%, bleeds to viewport edge */}
       <div className="absolute inset-y-0 right-0 w-[62%]">
         <Image
           src="/hero.jpg"
           alt="Professionelles Dokument mit Stift"
           fill
-          quality={100}
-          className="object-cover object-left"
+          unoptimized
+          className="object-cover object-center"
           priority
-          style={{ filter: "contrast(1.18) saturate(1.1) brightness(1.04)" }}
+          sizes="62vw"
         />
-        {/* Only a narrow left-edge fade so text stays readable */}
-        <div className="absolute inset-y-0 left-0 w-[38%] bg-gradient-to-r from-ink-950 to-transparent" />
-        {/* Very subtle bottom-only vignette */}
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink-950/70 to-transparent" />
+        {/* Narrow left-edge fade only */}
+        <div className="absolute inset-y-0 left-0 w-[32%] bg-gradient-to-r from-ink-950 to-transparent" />
+        {/* Subtle bottom vignette */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-950/60 to-transparent" />
       </div>
 
       {/* Text */}
