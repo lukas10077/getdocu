@@ -7,12 +7,12 @@ export default function Nav({ locale, dict }: { locale: Locale; dict: any }) {
     <header className="sticky top-0 z-40 border-b border-ink-700 bg-ink-950/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href={`/${locale}`} className="font-serif text-xl font-normal tracking-wide text-cream">
+        <Link href={`/${locale}`} className="font-serif text-2xl font-medium tracking-wide text-cream">
           Get<span className="text-swiss-gold">Docu</span>
         </Link>
 
         {/* Nav links */}
-        <nav className="hidden items-center gap-8 text-sm font-medium text-cream-muted md:flex">
+        <nav className="hidden items-center gap-8 text-base font-medium text-cream md:flex">
           <Link href={`/${locale}#tools`} className="transition hover:text-cream">
             {dict.nav.tools}
           </Link>
