@@ -14,15 +14,15 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
             Rechtliches
           </p>
-          <h1 className="font-serif text-4xl font-light text-swiss-black md:text-5xl">
+          <h1 className="font-serif text-4xl font-medium text-cream md:text-5xl">
             Allgemeine Geschäftsbedingungen
           </h1>
           <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
 
-          <div className="mt-10 space-y-8 text-sm leading-relaxed text-swiss-gray-500">
+          <div className="mt-10 space-y-8 text-sm leading-relaxed text-cream-muted">
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 1. Geltungsbereich
               </h2>
               <p>
@@ -33,7 +33,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 2. Leistungsbeschreibung
               </h2>
               <p>
@@ -46,11 +46,11 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 3. Keine Rechtsberatung
               </h2>
               <p>
-                <strong className="font-medium text-swiss-black">
+                <strong className="font-medium text-cream">
                   Die von GetDocu generierten Dokumente stellen keine Rechtsberatung dar.
                 </strong>{" "}
                 Sie sind als Formulierungshilfe gedacht. Du bist allein verantwortlich für die
@@ -61,7 +61,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 4. Haftungsausschluss
               </h2>
               <p>
@@ -73,7 +73,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 5. Zahlung
               </h2>
               <p>
@@ -85,7 +85,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 6. Rückerstattung
               </h2>
               <p>
@@ -99,7 +99,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 7. Datenschutz
               </h2>
               <p>
@@ -113,7 +113,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 8. Verfügbarkeit
               </h2>
               <p>
@@ -124,7 +124,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 9. Änderungen der AGB
               </h2>
               <p>
@@ -134,7 +134,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 10. Anwendbares Recht &amp; Gerichtsstand
               </h2>
               <p>
@@ -143,7 +143,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
               </p>
             </div>
 
-            <p className="pt-4 text-xs text-swiss-gray-300">Stand: Juli 2025</p>
+            <p className="pt-4 text-xs text-cream-subtle">Stand: Juli 2025</p>
           </div>
         </div>
       </section>

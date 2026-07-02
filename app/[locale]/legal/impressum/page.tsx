@@ -14,14 +14,14 @@ export default async function Impressum({ params }: { params: { locale: Locale }
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
             Rechtliches
           </p>
-          <h1 className="font-serif text-4xl font-light text-swiss-black md:text-5xl">
+          <h1 className="font-serif text-4xl font-medium text-cream md:text-5xl">
             Impressum
           </h1>
           <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
 
-          <div className="mt-10 space-y-8 text-sm leading-relaxed text-swiss-gray-500">
+          <div className="mt-10 space-y-8 text-sm leading-relaxed text-cream-muted">
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 Betreiber
               </h2>
               <p>GetDocu</p>
@@ -32,7 +32,7 @@ export default async function Impressum({ params }: { params: { locale: Locale }
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 Kontakt
               </h2>
               <p>
@@ -47,7 +47,7 @@ export default async function Impressum({ params }: { params: { locale: Locale }
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 Haftungsausschluss
               </h2>
               <p>
@@ -60,7 +60,7 @@ export default async function Impressum({ params }: { params: { locale: Locale }
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 Keine Rechtsberatung
               </h2>
               <p>
@@ -71,7 +71,7 @@ export default async function Impressum({ params }: { params: { locale: Locale }
             </div>
 
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-swiss-black">
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 Anwendbares Recht
               </h2>
               <p>
@@ -80,7 +80,7 @@ export default async function Impressum({ params }: { params: { locale: Locale }
               </p>
             </div>
 
-            <p className="pt-4 text-xs text-swiss-gray-300">Stand: Juli 2025</p>
+            <p className="pt-4 text-xs text-cream-subtle">Stand: Juli 2025</p>
           </div>
         </div>
       </section>
