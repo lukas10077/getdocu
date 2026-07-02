@@ -4,27 +4,25 @@ import { Locale } from "@/i18n/config";
 
 export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
   return (
-    <section className="relative min-h-[90vh] overflow-hidden bg-ink-950 flex items-center">
+    <section className="relative overflow-hidden bg-ink-950 flex items-center">
 
-      {/* Full-bleed photo — right 62%, bleeds to viewport edge */}
-      <div className="absolute inset-y-0 right-0 w-[62%]">
+      {/* Full-bleed photo — right 58%, object-contain so full image is visible */}
+      <div className="absolute inset-y-0 right-0 w-[58%]">
         <Image
           src="/hero.jpg"
           alt="Professionelles Dokument mit Stift"
           fill
           unoptimized
-          className="object-cover object-center"
+          className="object-contain object-right"
           priority
-          sizes="62vw"
+          sizes="58vw"
         />
-        {/* Narrow left-edge fade only */}
-        <div className="absolute inset-y-0 left-0 w-[32%] bg-gradient-to-r from-ink-950 to-transparent" />
-        {/* Subtle bottom vignette */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-950/60 to-transparent" />
+        {/* Left-edge fade */}
+        <div className="absolute inset-y-0 left-0 w-[28%] bg-gradient-to-r from-ink-950 to-transparent" />
       </div>
 
       {/* Text */}
-      <div className="relative z-10 mx-auto w-full max-w-content px-6 py-28 md:py-40">
+      <div className="relative z-10 mx-auto w-full max-w-content px-6 py-20 md:py-28">
         <div className="max-w-[480px]">
           <h1 className="font-serif text-5xl font-medium leading-[1.05] text-cream md:text-6xl lg:text-7xl">
             {dict.hero.headline
