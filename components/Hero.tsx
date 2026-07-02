@@ -16,16 +16,17 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
           className="object-contain object-right"
           priority
           sizes="58vw"
-          style={{ filter: "brightness(0.88) contrast(1.05)" }}
+          style={{ filter: "brightness(0.72) contrast(1.08)" }}
         />
-        {/* Ink-950 tint to match photo blacks to site background */}
-        <div className="absolute inset-0 pointer-events-none bg-ink-950/25 mix-blend-multiply" />
-        {/* Left-edge fade */}
-        <div className="absolute inset-y-0 left-0 w-[28%] bg-gradient-to-r from-ink-950 to-transparent" />
+        {/* Vignette all edges → blends photo blacks into ink-950 */}
+        <div className="absolute inset-y-0 left-0 w-[35%] bg-gradient-to-r from-ink-950 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-[20%] bg-gradient-to-b from-ink-950 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-[20%] bg-gradient-to-t from-ink-950 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-[8%] bg-gradient-to-l from-ink-950 to-transparent pointer-events-none" />
       </div>
 
       {/* Text */}
-      <div className="relative z-10 mx-auto w-full max-w-content px-6 py-20 md:py-28">
+      <div className="relative z-10 mx-auto w-full max-w-content px-8 py-20 md:px-16 md:py-28">
         <div className="max-w-[480px]">
           <h1 className="font-serif text-5xl font-medium leading-[1.05] text-cream md:text-6xl lg:text-7xl">
             {dict.hero.headline
