@@ -77,7 +77,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
             width={800}
             height={900}
             unoptimized
-            className="w-[88%] rounded-l-sm object-cover"
+            className="w-[100%] rounded-l-sm object-cover"
             style={{ filter: "brightness(0.92) contrast(1.04)" }}
           />
         </div>
