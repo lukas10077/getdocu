@@ -69,15 +69,15 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
           </div>
         </div>
 
-        {/* Mobile only: image below text */}
-        <div className="mt-12 md:hidden">
+        {/* Mobile only: image below text, right-aligned */}
+        <div className="mt-10 md:hidden flex justify-end -mr-6">
           <Image
             src="/hero.jpg"
             alt="Professionelles Dokument mit Stift"
             width={800}
             height={900}
             unoptimized
-            className="w-full rounded-sm object-cover"
+            className="w-[88%] rounded-l-sm object-cover"
             style={{ filter: "brightness(0.92) contrast(1.04)" }}
           />
         </div>
