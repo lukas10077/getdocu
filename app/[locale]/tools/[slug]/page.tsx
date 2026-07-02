@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getDictionary, Locale } from "@/i18n/config";
 import { getTool, allToolSlugs } from "@/lib/tools";
 import Nav from "@/components/Nav";
@@ -27,6 +28,11 @@ export default async function ToolPage({
 
       <section className="bg-ink-950 px-6 py-16 md:py-24">
         <div className="mx-auto max-w-2xl">
+          {/* Back button */}
+          <Link href={`/${params.locale}#tools`} className="mb-8 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-cream-muted transition hover:text-cream">
+            ← Alle Tools
+          </Link>
+
           {/* Header */}
           <div className="border-b border-ink-700 pb-8">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">

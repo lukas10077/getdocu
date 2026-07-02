@@ -1,4 +1,5 @@
 import { getDictionary, Locale } from "@/i18n/config";
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -11,6 +12,10 @@ export default async function Datenschutz({ params }: { params: { locale: Locale
 
       <section className="px-6 py-20 md:py-28">
         <div className="mx-auto max-w-2xl">
+          <Link href="/" className="mb-8 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-cream-muted transition hover:text-cream">
+            ← Startseite
+          </Link>
+
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
             Rechtliches
           </p>
