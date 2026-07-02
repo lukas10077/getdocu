@@ -5,11 +5,11 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-ink-700">
-      <button onClick={() => setOpen(!open)} className="flex w-full items-center justify-between py-5 text-left" aria-expanded={open}>
-        <span className="font-serif text-lg font-medium text-cream">{question}</span>
-        <span className="ml-6 flex-shrink-0 text-xl font-light text-swiss-gold">{open ? "−" : "+"}</span>
+      <button onClick={() => setOpen(!open)} className="flex w-full items-center justify-between py-7 text-left" aria-expanded={open}>
+        <span className="font-serif text-2xl font-medium text-cream md:text-3xl">{question}</span>
+        <span className="ml-8 flex-shrink-0 text-2xl font-light text-swiss-gold">{open ? "−" : "+"}</span>
       </button>
-      {open && <p className="pb-6 pr-10 text-sm leading-relaxed text-cream-muted">{answer}</p>}
+      {open && <p className="pb-8 pr-12 text-base leading-relaxed text-cream-muted">{answer}</p>}
     </div>
   );
 }
