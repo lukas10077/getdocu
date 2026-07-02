@@ -24,7 +24,7 @@ const config: Config = {
         },
         // Dark premium palette
         ink: {
-          950: "#050404",
+          950: "#000000",
           900: "#100E0B",
           800: "#181511",
           700: "#221E19",
