@@ -16,7 +16,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
           className="object-contain object-right"
           priority
           sizes="58vw"
-          style={{ filter: "brightness(0.72) contrast(1.08)" }}
+          style={{ filter: "brightness(0.92) contrast(1.04)" }}
         />
         {/* Vignette all edges → blends photo blacks into ink-950 */}
         <div className="absolute inset-y-0 left-0 w-[35%] bg-gradient-to-r from-ink-950 to-transparent pointer-events-none" />
@@ -26,7 +26,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
       </div>
 
       {/* Text */}
-      <div className="relative z-10 mx-auto w-full max-w-content px-8 py-20 md:px-16 md:py-28">
+      <div className="relative z-10 mx-auto w-full max-w-content px-6 py-20 md:py-28">
         <div className="max-w-[480px]">
           <h1 className="font-serif text-5xl font-medium leading-[1.05] text-cream md:text-6xl lg:text-7xl">
             {dict.hero.headline
