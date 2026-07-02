@@ -4,7 +4,7 @@ import { Locale } from "@/i18n/config";
 
 export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
   return (
-    <section className="relative overflow-hidden bg-black">
+    <section className="relative overflow-hidden bg-black px-6">
 
       {/* Desktop only: full-bleed photo on right */}
       <div className="hidden md:block absolute inset-y-0 right-0 w-[58%] bg-black">
@@ -25,7 +25,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
       </div>
 
       {/* Text content */}
-      <div className="relative z-10 mx-auto w-full max-w-content px-6 pt-16 pb-10 md:py-28">
+      <div className="relative z-10 mx-auto w-full max-w-content pt-16 pb-10 md:py-28">
         <div className="md:max-w-[480px]">
           <h1 className="font-serif text-5xl font-medium leading-[1.05] text-cream md:text-6xl lg:text-7xl">
             {dict.hero.headline
