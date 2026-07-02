@@ -7,7 +7,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
     <section className="relative overflow-hidden bg-ink-950 flex items-center">
 
       {/* Full-bleed photo — right 58%, object-contain so full image is visible */}
-      <div className="absolute inset-y-0 right-0 w-[58%]">
+      <div className="absolute inset-y-0 right-0 w-[58%] bg-ink-950">
         <Image
           src="/hero.jpg"
           alt="Professionelles Dokument mit Stift"
@@ -16,7 +16,10 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
           className="object-contain object-right"
           priority
           sizes="58vw"
+          style={{ filter: "brightness(0.88) contrast(1.05)" }}
         />
+        {/* Ink-950 tint to match photo blacks to site background */}
+        <div className="absolute inset-0 pointer-events-none bg-ink-950/25 mix-blend-multiply" />
         {/* Left-edge fade */}
         <div className="absolute inset-y-0 left-0 w-[28%] bg-gradient-to-r from-ink-950 to-transparent" />
       </div>
