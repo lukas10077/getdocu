@@ -235,6 +235,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   lebenslauf: {
     slug: "lebenslauf",
     priceChfRappen: 500,
+    supportsDocumentUpload: true,
+    uploadLabelDe: "Deinen bestehenden Lebenslauf hochladen (optional)",
+    uploadHintDe: "Hast du einen alten CV? Lade ein Foto oder Scan hoch — wir verbessern und erweitern ihn mit deinen neuen Angaben.",
     documentTitleDe: "Lebenslauf-Check",
     descriptionDe:
       "Dein CV wird analysiert und professionell überarbeitet — für den Schweizer Arbeitsmarkt.",
