@@ -26,12 +26,17 @@ export default async function ToolPage({
     <main>
       <Nav locale={params.locale} dict={dict} />
 
-      <section className="bg-ink-950 px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-2xl">
-          {/* Back button */}
-          <Link href={`/${params.locale}#tools`} className="mb-8 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-cream-muted transition hover:text-cream">
-            ← Alle Tools
+      {/* Back button — outside main container, flush left */}
+      <div className="bg-ink-950 px-6 pt-8">
+        <div className="mx-auto max-w-content">
+          <Link href={`/${params.locale}#tools`} className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-cream-muted transition hover:text-cream">
+            ← Zurück
           </Link>
+        </div>
+      </div>
+
+      <section className="bg-ink-950 px-6 py-10 md:py-16">
+        <div className="mx-auto max-w-2xl">
 
           {/* Header */}
           <div className="border-b border-ink-700 pb-8">

@@ -10,12 +10,14 @@ export default async function Impressum({ params }: { params: { locale: Locale }
     <main>
       <Nav locale={params.locale} dict={dict} />
 
-      <section className="px-6 py-20 md:py-28">
-        <div className="mx-auto max-w-2xl">
-          <Link href="/" className="mb-8 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-cream-muted transition hover:text-cream">
-            ← Startseite
-          </Link>
+      <div className="px-6 pt-8">
+        <div className="mx-auto max-w-content">
+          <a href="/" className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-cream-muted transition hover:text-cream">← Zurück</a>
+        </div>
+      </div>
 
+      <section className="px-6 py-10 md:py-20">
+        <div className="mx-auto max-w-2xl">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
             Rechtliches
           </p>
