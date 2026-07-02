@@ -32,6 +32,9 @@ export interface ToolDefinition {
   descriptionDe: string;
   systemPrompt: string;
   fields: FieldDef[];
+  supportsDocumentUpload?: boolean;
+  uploadLabelDe?: string;    // Titel des Upload-Bereichs
+  uploadHintDe?: string;     // Erklärtext unter dem Titel
 }
 
 export const tools: Record<ToolSlug, ToolDefinition> = {
@@ -110,6 +113,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   kuendigung: {
     slug: "kuendigung",
     priceChfRappen: 300,
+    supportsDocumentUpload: true,
+    uploadLabelDe: "Dokument hochladen (optional)",
+    uploadHintDe: "Hast du eine Kündigung erhalten? Lade ein Foto hoch — wir lesen den Text automatisch.",
     documentTitleDe: "Kündigungsschreiben",
     descriptionDe:
       "Mietvertrag, Arbeitsvertrag, Krankenkasse, Abonnement — korrekt und fristgerecht.",
@@ -141,6 +147,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   arbeitszeugnis: {
     slug: "arbeitszeugnis",
     priceChfRappen: 500,
+    supportsDocumentUpload: true,
+    uploadLabelDe: "Foto des Zeugnisses hochladen (optional)",
+    uploadHintDe: "Hast du dein Zeugnis auf Papier? Mach ein Foto — wir lesen den Text automatisch. Du kannst den Text unten auch manuell einfügen.",
     documentTitleDe: "Arbeitszeugnis (verbessert)",
     descriptionDe:
       "Dein Zeugnis klingt mittelmässig? Wir schreiben es professionell um — nach Schweizer Standard.",
@@ -168,6 +177,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   maengelruege: {
     slug: "maengelruege",
     priceChfRappen: 400,
+    supportsDocumentUpload: true,
+    uploadLabelDe: "Foto des Mangels hochladen (optional)",
+    uploadHintDe: "Lade ein Foto des Schadens oder des Mietvertrags hoch — wir berücksichtigen es im Schreiben.",
     documentTitleDe: "Mängelrüge",
     descriptionDe:
       "Schäden in der Wohnung melden — schriftlich, fristwahrend, korrekt adressiert.",
@@ -193,6 +205,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   reklamation: {
     slug: "reklamation",
     priceChfRappen: 300,
+    supportsDocumentUpload: true,
+    uploadLabelDe: "Foto der Rechnung oder des Produkts hochladen (optional)",
+    uploadHintDe: "Hast du eine fehlerhafte Rechnung oder ein defektes Produkt? Lade ein Foto hoch.",
     documentTitleDe: "Reklamationsbrief",
     descriptionDe:
       "Defekte Ware, schlechte Dienstleistung, falsche Rechnung — klar und bestimmt reklamieren.",

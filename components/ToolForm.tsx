@@ -21,7 +21,23 @@ export default function ToolForm({ tool, locale }: Props) {
   const [previewText, setPreviewText] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const [imageBase64, setImageBase64] = useState<string | null>(null);
+  const [imageMimeType, setImageMimeType] = useState<string>("image/jpeg");
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
   const hasFetched = useRef(false);
+
+  function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setImagePreviewUrl(URL.createObjectURL(file));
+    setImageMimeType(file.type || "image/jpeg");
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      setImageBase64(result.split(",")[1]);
+    };
+    reader.readAsDataURL(file);
+  }
 
   const sessionId = searchParams.get("session_id");
   const storageKey = `getdocu_form_${tool.slug}`;
@@ -87,7 +103,7 @@ export default function ToolForm({ tool, locale }: Props) {
       const res = await fetch("/api/preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ toolSlug: tool.slug, formData: values }),
+        body: JSON.stringify({ toolSlug: tool.slug, formData: values, imageBase64, imageMimeType }),
       });
       const { previewText } = await res.json();
       setPreviewText(previewText);
@@ -99,7 +115,7 @@ export default function ToolForm({ tool, locale }: Props) {
 
   async function proceedToCheckout() {
     setStage("redirecting");
-    sessionStorage.setItem(storageKey, JSON.stringify(values));
+    sessionStorage.setItem(storageKey, JSON.stringify({ ...values, __imageBase64: imageBase64 ?? "", __imageMimeType: imageMimeType }));
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -235,6 +251,43 @@ export default function ToolForm({ tool, locale }: Props) {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
+
+      {/* Document photo upload — only for supported tools */}
+      {tool.supportsDocumentUpload && (
+        <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
+          <p className="mb-1 text-sm font-medium text-cream">{tool.uploadLabelDe}</p>
+          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{tool.uploadHintDe}</p>
+
+          <label className="group cursor-pointer">
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              className="sr-only"
+              onChange={handleImageUpload}
+            />
+            {imagePreviewUrl ? (
+              <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={imagePreviewUrl}
+                  alt="Hochgeladenes Dokument"
+                  className="max-h-64 w-full rounded-sm object-contain"
+                />
+                <span className="mt-2 block text-xs text-swiss-gold">✓ Bild hochgeladen — tippe um zu ändern</span>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center gap-3 rounded-sm border border-ink-700 py-8 transition group-hover:border-swiss-gold/50">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-swiss-gold/60">
+                  <rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" />
+                </svg>
+                <span className="text-xs text-cream-muted">Foto aufnehmen oder aus Galerie wählen</span>
+              </div>
+            )}
+          </label>
+        </div>
+      )}
+
       <div className="space-y-8">
         {tool.fields.map((field, idx) => {
           const prevField = tool.fields[idx - 1];

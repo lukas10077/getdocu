@@ -3,13 +3,6 @@ import Stripe from "stripe";
 import Anthropic from "@anthropic-ai/sdk";
 import { getTool } from "@/lib/tools";
 
-// Ablauf (siehe Projekt-Vorgaben zum Datenschutz):
-// 1. Verifiziere, dass die Stripe Checkout Session bezahlt wurde.
-// 2. Generiere das Dokument via Claude API basierend auf den vom Client übergebenen Formulardaten.
-// 3. Sende das Ergebnis zurück.
-// 4. Die Formulardaten existieren NUR im Request-Body dieser Funktion (in-memory) und werden
-//    nirgends persistiert — kein DB-Write, kein Logging von Klartext-Inhalten. Nach Rückgabe
-//    der Response ist der Prozess-Speicher für diesen Request beendet ("gelöscht").
 export async function POST(req: NextRequest) {
   const { toolSlug, sessionId, formData } = await req.json();
 
@@ -31,27 +24,47 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Zahlung nicht bestätigt." }, { status: 402 });
   }
 
-  // 2. Dokument generieren
-  const anthropic = new Anthropic({ apiKey: anthropicKey });
+  // 2. Bild aus formData extrahieren (wird nach Nutzung nicht gespeichert)
+  const imageBase64: string = formData.__imageBase64 ?? "";
+  const imageMimeType: string = formData.__imageMimeType ?? "image/jpeg";
+  const cleanFormData = { ...formData };
+  delete cleanFormData.__imageBase64;
+  delete cleanFormData.__imageMimeType;
 
-  const userPrompt = buildUserPrompt(tool, formData);
+  // 3. Dokument generieren
+  const anthropic = new Anthropic({ apiKey: anthropicKey });
+  const textPrompt = buildUserPrompt(tool, cleanFormData);
+
+  const userContent: Anthropic.MessageParam["content"] = [];
+
+  if (imageBase64) {
+    userContent.push({
+      type: "image",
+      source: {
+        type: "base64",
+        media_type: imageMimeType as "image/jpeg" | "image/png" | "image/gif" | "image/webp",
+        data: imageBase64,
+      },
+    });
+    userContent.push({
+      type: "text",
+      text: `Im Bild oben siehst du das bestehende Dokument des Nutzers. Lies es sorgfältig und berücksichtige seinen Inhalt vollständig beim Erstellen des neuen Dokuments.\n\n${textPrompt}`,
+    });
+  } else {
+    userContent.push({ type: "text", text: textPrompt });
+  }
 
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
     max_tokens: 2000,
     system: tool.systemPrompt,
-    messages: [{ role: "user", content: userPrompt }],
+    messages: [{ role: "user", content: userContent }],
   });
 
   const generatedText = message.content
     .filter((b): b is Anthropic.TextBlock => b.type === "text")
     .map((b) => b.text)
     .join("\n");
-
-  // 3. + 4. formData und generatedText existieren ab hier nur noch lokal in dieser
-  // Funktionsausführung. Es wird nichts in eine Datenbank oder Datei geschrieben.
-  // Nur ein anonymer Zähler für Statistik wird erhöht (kein Personenbezug).
-  // await incrementAnonymousUsageCounter(toolSlug) // TODO: Implementierung mit z.B. Vercel KV
 
   return NextResponse.json({ documentText: generatedText, title: tool.documentTitleDe });
 }
