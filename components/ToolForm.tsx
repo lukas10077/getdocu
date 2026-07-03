@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ToolDefinition } from "@/lib/tools";
 import { useCountry } from "./CountryProvider";
-import { getStripeAmount, ZERO_DECIMAL_CURRENCIES } from "@/lib/countries";
+import { getStripeAmount, formatAmount } from "@/lib/countries";
 
 type Stage = "form" | "previewing" | "preview" | "redirecting" | "generating" | "done" | "error";
 
@@ -139,9 +139,7 @@ export default function ToolForm({ tool, locale }: Props) {
   const { currency: priceCurrency, amount: priceAmount } = country
     ? getStripeAmount(tool.priceChfRappen, country.currency)
     : { currency: "chf", amount: tool.priceChfRappen };
-  const priceDisplay = ZERO_DECIMAL_CURRENCIES.has(priceCurrency.toUpperCase())
-    ? `${priceAmount} ${priceCurrency.toUpperCase()}`
-    : `${(priceAmount / 100).toFixed(2)} ${priceCurrency.toUpperCase()}`;
+  const priceDisplay = formatAmount(priceAmount, priceCurrency);
 
   // Spinner-Komponente
   const Spinner = ({ label, sub }: { label: string; sub?: string }) => (

@@ -15,8 +15,11 @@ export default function CountrySelector() {
     ? COUNTRIES.filter((c) => c.name.toLowerCase().includes(q))
     : COUNTRIES;
 
-  const europe  = filtered.filter((c) => c.continent === "europe");
+  const europe   = filtered.filter((c) => c.continent === "europe");
   const americas = filtered.filter((c) => c.continent === "americas");
+  const asia     = filtered.filter((c) => c.continent === "asia");
+  const oceania  = filtered.filter((c) => c.continent === "oceania");
+  const total    = europe.length + americas.length + asia.length + oceania.length;
 
   function CountryButton({ c }: { c: Country }) {
     return (
@@ -28,6 +31,18 @@ export default function CountrySelector() {
         <span className="flex-shrink-0 text-lg leading-none">{c.flag}</span>
         <span className="truncate">{c.name}</span>
       </button>
+    );
+  }
+
+  function Group({ label, list }: { label: string; list: Country[] }) {
+    if (list.length === 0) return null;
+    return (
+      <div className="mb-6">
+        <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">{label}</p>
+        <div className="grid grid-cols-2 gap-0.5 sm:grid-cols-3">
+          {list.map((c) => <CountryButton key={c.code} c={c} />)}
+        </div>
+      </div>
     );
   }
 
@@ -56,29 +71,12 @@ export default function CountrySelector() {
 
         {/* Länderliste */}
         <div className="overflow-y-auto px-6 py-5">
-          {europe.length > 0 && (
-            <div className="mb-6">
-              <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">
-                Europa
-              </p>
-              <div className="grid grid-cols-2 gap-0.5 sm:grid-cols-3">
-                {europe.map((c) => <CountryButton key={c.code} c={c} />)}
-              </div>
-            </div>
-          )}
+          <Group label="Europa"           list={europe} />
+          <Group label="Amerika"          list={americas} />
+          <Group label="Asien & Naher Osten" list={asia} />
+          <Group label="Ozeanien"         list={oceania} />
 
-          {americas.length > 0 && (
-            <div>
-              <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">
-                Amerika
-              </p>
-              <div className="grid grid-cols-2 gap-0.5 sm:grid-cols-3">
-                {americas.map((c) => <CountryButton key={c.code} c={c} />)}
-              </div>
-            </div>
-          )}
-
-          {europe.length === 0 && americas.length === 0 && (
+          {total === 0 && (
             <p className="py-10 text-center text-sm text-cream-subtle">
               Kein Land gefunden
             </p>
