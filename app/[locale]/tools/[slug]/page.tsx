@@ -6,6 +6,7 @@ import { getTool, allToolSlugs } from "@/lib/tools";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ToolForm from "@/components/ToolForm";
+import ToolPageHeader from "@/components/ToolPageHeader";
 
 export async function generateStaticParams() {
   return allToolSlugs.map((slug) => ({ slug }));
@@ -20,7 +21,6 @@ export default async function ToolPage({
   if (!tool) notFound();
 
   const dict = await getDictionary(params.locale);
-  const priceChf = (tool.priceChfRappen / 100).toFixed(2);
 
   return (
     <main>
@@ -40,13 +40,7 @@ export default async function ToolPage({
 
           {/* Header */}
           <div className="border-b border-ink-700 pb-8">
-            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
-              CHF {priceChf}
-            </p>
-            <h1 className="font-serif text-4xl font-medium leading-tight text-cream md:text-5xl">
-              {tool.documentTitleDe}
-            </h1>
-            <p className="mt-3 text-base text-cream-muted">{tool.descriptionDe}</p>
+            <ToolPageHeader tool={tool} />
 
             {/* Trust pills */}
             <div className="mt-5 flex flex-wrap gap-2">

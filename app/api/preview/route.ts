@@ -67,10 +67,23 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string): string {
   const country = getCountry(countryCode);
   if (!country) return basePrompt;
   const langName = LANG_NAMES[country.documentLang] ?? country.documentLang;
+
+  // Schweizer Referenzen entfernen wenn Land nicht CH
+  let adapted = basePrompt;
+  if (countryCode !== "CH") {
+    adapted = adapted
+      .replace(/Schweizer\s+/g, "")           // "Schweizer Standard" → "Standard"
+      .replace(/\bSchweiz\b/g, country.name)  // "in der Schweiz" → "in Deutschland"
+      .replace(/schweizerisch\w*/gi, "lokal") // "schweizerische Konventionen" → "lokal"
+      .replace(/\s*\(KVG\/VVG\)/g, "")        // Schweizer Krankenversicherungsrecht
+      .replace(/\s*\(SchKG\)/g, "");           // Schweizer Schuldbetreibungsrecht
+  }
+
   const countryNote =
     `WICHTIG — LÄNDERSPEZIFISCHE ANPASSUNG:\n` +
     `Dieses Dokument wird für einen Nutzer in ${country.name} (${country.flag}) erstellt.\n` +
-    `Passe alle Formulierungen, Konventionen und formalen Anforderungen an die in ${country.name} üblichen Standards an.\n` +
+    `Passe alle Formulierungen, Konventionen und Anforderungen an die in ${country.name} üblichen Standards an.\n` +
+    `Verwende keine Schweizer Eigenheiten (Anführungszeichen «», CHF, ss/ß-Regel) ausser das Land ist CH.\n` +
     `Verfasse das gesamte Dokument auf ${langName}.\n`;
-  return `${countryNote}\n${basePrompt}`;
+  return `${countryNote}\n${adapted}`;
 }

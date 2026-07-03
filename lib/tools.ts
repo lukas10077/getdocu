@@ -53,7 +53,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     priceChfRappen: 500,
     documentTitleDe: "Mietbewerbungsschreiben",
     descriptionDe:
-      "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, auf Schweizer Standard.",
+      "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, nach lokalem Standard.",
     systemPrompt:
       "Du bist Experte für den Schweizer Wohnungsmarkt. Erstelle ein professionelles, " +
       "überzeugendes Mietbewerbungsschreiben auf Deutsch. Halte dich an Schweizer " +
@@ -89,7 +89,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     priceChfRappen: 500,
     documentTitleDe: "Motivationsschreiben",
     descriptionDe:
-      "Zeig, warum du die richtige Person bist. Klar, überzeugend, auf Schweizer Niveau.",
+      "Zeig, warum du die richtige Person bist. Klar, überzeugend, professionell.",
     systemPrompt:
       "Du bist Experte für Bewerbungen auf dem Schweizer Arbeitsmarkt. Erstelle ein professionelles " +
       "Motivationsschreiben auf Deutsch. Halte dich an Schweizer Standards: Absender-Block oben links, " +
@@ -247,7 +247,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     uploadHintDe: "Hast du einen alten CV? Lade ein Foto oder Scan hoch — wir verbessern und erweitern ihn mit deinen neuen Angaben.",
     documentTitleDe: "Lebenslauf-Check",
     descriptionDe:
-      "Dein CV wird analysiert und professionell überarbeitet — für den Schweizer Arbeitsmarkt.",
+      "Dein CV wird analysiert und professionell überarbeitet — angepasst an deinen Arbeitsmarkt.",
     systemPrompt:
       "Du bist Karriereberater mit Spezialisierung auf den Schweizer Arbeitsmarkt. " +
       "Analysiere den eingereichten Lebenslauf und erstelle eine überarbeitete, verbesserte Version " +
