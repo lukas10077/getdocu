@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { allToolSlugs, getTool } from "@/lib/tools";
+import PriceTag from "./PriceTag";
 
-function ToolCard({ href, title, description, priceChf }: { href: string; title: string; description: string; priceChf: string }) {
+function ToolCard({ href, title, description, priceChfRappen }: { href: string; title: string; description: string; priceChfRappen: number }) {
   return (
     <Link href={href} className="group flex h-full flex-col justify-between rounded-sm border border-ink-700 bg-ink-900 p-7 transition hover:border-swiss-gold/40 hover:bg-ink-800">
       <div>
-        <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">CHF {priceChf}</p>
+        <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold"><PriceTag priceChfRappen={priceChfRappen} /></p>
         <h3 className="font-serif text-xl font-medium leading-snug text-cream">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-cream-muted">{description}</p>
       </div>
@@ -27,7 +28,7 @@ export default function ToolsSection({ locale, dict }: { locale: Locale; dict: a
         <p className="mt-4 max-w-xl text-base text-cream-muted">{dict.tools.subtitle}</p>
         <div className="mt-14 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {toolList.map((tool) => (
-            <ToolCard key={tool.slug} href={`/${locale}/tools/${tool.slug}`} title={tool.documentTitleDe} description={tool.descriptionDe} priceChf={(tool.priceChfRappen / 100).toFixed(2)} />
+            <ToolCard key={tool.slug} href={`/${locale}/tools/${tool.slug}`} title={tool.documentTitleDe} description={tool.descriptionDe} priceChfRappen={tool.priceChfRappen} />
           ))}
         </div>
       </div>
