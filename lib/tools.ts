@@ -32,9 +32,15 @@ export interface ToolDefinition {
   descriptionDe: string;
   systemPrompt: string;
   fields: FieldDef[];
+  // Einzelnes Dokument-Foto → Vision API analysiert es
   supportsDocumentUpload?: boolean;
-  uploadLabelDe?: string;    // Titel des Upload-Bereichs
-  uploadHintDe?: string;     // Erklärtext unter dem Titel
+  uploadLabelDe?: string;
+  uploadHintDe?: string;
+  // Mehrere Fotos → KEIN Vision, nur als Beilage ans PDF
+  supportsPhotoGallery?: boolean;
+  maxPhotos?: number;
+  photoGalleryLabelDe?: string;
+  photoGalleryHintDe?: string;
 }
 
 export const tools: Record<ToolSlug, ToolDefinition> = {
@@ -177,9 +183,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   maengelruege: {
     slug: "maengelruege",
     priceChfRappen: 400,
-    supportsDocumentUpload: true,
-    uploadLabelDe: "Foto des Mangels hochladen (optional)",
-    uploadHintDe: "Lade ein Foto des Schadens oder des Mietvertrags hoch — wir berücksichtigen es im Schreiben.",
+    supportsPhotoGallery: true,
+    maxPhotos: 100,
+    photoGalleryLabelDe: "Fotos der Mängel hochladen (optional)",
+    photoGalleryHintDe: "Lade bis zu 100 Fotos hoch — sie werden als Beilage ans Dokument angehängt.",
     documentTitleDe: "Mängelrüge",
     descriptionDe:
       "Schäden in der Wohnung melden — schriftlich, fristwahrend, korrekt adressiert.",

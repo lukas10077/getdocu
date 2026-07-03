@@ -8,9 +8,69 @@ import { getStripeAmount, formatAmount } from "@/lib/countries";
 
 type Stage = "form" | "previewing" | "preview" | "redirecting" | "generating" | "done" | "error";
 
+interface Photo {
+  dataUrl: string;
+  mimeType: string;
+  name: string;
+}
+
 interface Props {
   tool: ToolDefinition;
   locale: string;
+}
+
+// ── IndexedDB helpers für Fotos (überleben Stripe-Redirect) ──────────
+const IDB_NAME = "getdocu";
+const IDB_STORE = "photos";
+const IDB_VER = 1;
+
+function openIDB(): Promise<IDBDatabase> {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(IDB_NAME, IDB_VER);
+    req.onupgradeneeded = () => req.result.createObjectStore(IDB_STORE);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function idbSave(key: string, data: unknown): Promise<void> {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(IDB_STORE, "readwrite");
+    tx.objectStore(IDB_STORE).put(data, key);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+async function idbLoad<T>(key: string): Promise<T | null> {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const req = db.transaction(IDB_STORE, "readonly").objectStore(IDB_STORE).get(key);
+    req.onsuccess = () => resolve((req.result as T) ?? null);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function idbDelete(key: string): Promise<void> {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(IDB_STORE, "readwrite");
+    tx.objectStore(IDB_STORE).delete(key);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+// ── Datei → Photo ────────────────────────────────────────────────────
+function readFileAsPhoto(file: File): Promise<Photo> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve({ dataUrl: reader.result as string, mimeType: file.type || "image/jpeg", name: file.name });
+    };
+    reader.readAsDataURL(file);
+  });
 }
 
 export default function ToolForm({ tool, locale }: Props) {
@@ -24,9 +84,13 @@ export default function ToolForm({ tool, locale }: Props) {
   const [previewText, setPreviewText] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
+  // Einzelbild (Vision-Tools)
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [imageMimeType, setImageMimeType] = useState<string>("image/jpeg");
   const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
+  // Foto-Galerie (kein Vision)
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const photoInputRef = useRef<HTMLInputElement>(null);
   const hasFetched = useRef(false);
 
   function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -36,14 +100,30 @@ export default function ToolForm({ tool, locale }: Props) {
     setImageMimeType(file.type || "image/jpeg");
     const reader = new FileReader();
     reader.onload = () => {
-      const result = reader.result as string;
-      setImageBase64(result.split(",")[1]);
+      const r = reader.result as string;
+      setImageBase64(r.split(",")[1]);
     };
     reader.readAsDataURL(file);
   }
 
+  async function handlePhotosUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files ?? []);
+    if (!files.length) return;
+    const maxPhotos = tool.maxPhotos ?? 100;
+    const remaining = maxPhotos - photos.length;
+    const toProcess = files.slice(0, remaining);
+    const newPhotos = await Promise.all(toProcess.map(readFileAsPhoto));
+    setPhotos((prev) => [...prev, ...newPhotos]);
+    e.target.value = ""; // Reset damit gleiche Datei nochmal wählbar
+  }
+
+  function removePhoto(idx: number) {
+    setPhotos((prev) => prev.filter((_, i) => i !== idx));
+  }
+
   const sessionId = searchParams.get("session_id");
   const storageKey = `getdocu_form_${tool.slug}`;
+  const photosIdbKey = `${storageKey}_photos`;
 
   useEffect(() => {
     if (!sessionId || hasFetched.current) return;
@@ -71,9 +151,17 @@ export default function ToolForm({ tool, locale }: Props) {
         }
         return res.json();
       })
-      .then(({ documentText }) => {
+      .then(async ({ documentText }) => {
         setResult(documentText);
         sessionStorage.removeItem(storageKey);
+        // Fotos aus IndexedDB laden (überleben Stripe-Redirect)
+        if (tool.supportsPhotoGallery) {
+          const saved = await idbLoad<Photo[]>(photosIdbKey);
+          if (saved?.length) {
+            setPhotos(saved);
+            await idbDelete(photosIdbKey);
+          }
+        }
         setStage("done");
       })
       .catch((err) => {
@@ -96,17 +184,21 @@ export default function ToolForm({ tool, locale }: Props) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validate()) return;
-    if (!withdrawalConsent) {
-      setWithdrawalError(true);
-      return;
-    }
+    if (!withdrawalConsent) { setWithdrawalError(true); return; }
     setWithdrawalError(false);
     setStage("previewing");
     try {
       const res = await fetch("/api/preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ toolSlug: tool.slug, formData: values, imageBase64, imageMimeType, countryCode: country?.code }),
+        body: JSON.stringify({
+          toolSlug: tool.slug,
+          formData: values,
+          // Für Galerie-Tools: keine Bilder an Claude senden
+          imageBase64: tool.supportsPhotoGallery ? null : imageBase64,
+          imageMimeType,
+          countryCode: country?.code,
+        }),
       });
       const { previewText } = await res.json();
       setPreviewText(previewText);
@@ -118,7 +210,15 @@ export default function ToolForm({ tool, locale }: Props) {
 
   async function proceedToCheckout() {
     setStage("redirecting");
-    sessionStorage.setItem(storageKey, JSON.stringify({ ...values, __imageBase64: imageBase64 ?? "", __imageMimeType: imageMimeType }));
+    sessionStorage.setItem(storageKey, JSON.stringify({
+      ...values,
+      __imageBase64: tool.supportsPhotoGallery ? "" : (imageBase64 ?? ""),
+      __imageMimeType: imageMimeType,
+    }));
+    // Fotos in IndexedDB speichern (sessionStorage zu klein für viele Bilder)
+    if (tool.supportsPhotoGallery && photos.length > 0) {
+      await idbSave(photosIdbKey, photos);
+    }
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -133,15 +233,12 @@ export default function ToolForm({ tool, locale }: Props) {
     }
   }
 
-  const priceChf = (tool.priceChfRappen / 100).toFixed(2);
-
-  // Preis in Landeswährung berechnen
+  // Preisberechnung
   const { currency: priceCurrency, amount: priceAmount } = country
     ? getStripeAmount(tool.priceChfRappen, country.currency)
     : { currency: "chf", amount: tool.priceChfRappen };
   const priceDisplay = formatAmount(priceAmount, priceCurrency);
 
-  // Spinner-Komponente
   const Spinner = ({ label, sub }: { label: string; sub?: string }) => (
     <div className="mt-16 flex flex-col items-center gap-4 text-center">
       <div className="h-10 w-10 animate-spin rounded-full border-2 border-ink-700 border-t-swiss-gold" />
@@ -167,15 +264,45 @@ export default function ToolForm({ tool, locale }: Props) {
   }
 
   if (stage === "done") {
+    const photosHtml = photos.length > 0
+      ? `<div style="margin-top:48px;border-top:1px solid #ddd;padding-top:24px">
+           <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#999;margin-bottom:16px">
+             Beilage — ${photos.length} Foto${photos.length !== 1 ? "s" : ""}
+           </h3>
+           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+             ${photos.map((p, i) => `<div><img src="${p.dataUrl}" alt="Foto ${i + 1}" style="width:100%;border-radius:3px;object-fit:cover" /><p style="font-size:10px;color:#aaa;margin:4px 0 0">${i + 1}</p></div>`).join("")}
+           </div>
+         </div>`
+      : "";
+
     return (
       <div className="mt-10">
         <div className="mb-6 flex items-center gap-3">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-swiss-gold text-sm text-ink-950">✓</span>
           <h2 className="text-lg font-medium text-cream">Dein Dokument ist fertig</h2>
         </div>
+
         <div className="rounded-sm border border-ink-700 bg-ink-900 p-6 md:p-8">
           <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-cream-muted">{result}</pre>
         </div>
+
+        {/* Foto-Beilage anzeigen */}
+        {photos.length > 0 && (
+          <div className="mt-6">
+            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">
+              Beilage — {photos.length} Foto{photos.length !== 1 ? "s" : ""}
+            </p>
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
+              {photos.map((photo, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={i} src={photo.dataUrl} alt={`Foto ${i + 1}`}
+                  className="aspect-square w-full rounded-sm object-cover"
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="mt-6 flex flex-wrap gap-4">
           <button
             onClick={() => {
@@ -198,8 +325,10 @@ export default function ToolForm({ tool, locale }: Props) {
                 <style>body{font-family:Georgia,serif;max-width:700px;margin:60px auto;font-size:14px;line-height:1.8;color:#111}
                 .disclaimer{font-size:11px;color:#888;margin-top:40px;border-top:1px solid #eee;padding-top:12px}
                 @media print{.no-print{display:none}}</style></head>
-                <body><button class="no-print" onclick="window.print()" style="margin-bottom:20px;padding:8px 16px;cursor:pointer">Drucken / Als PDF speichern</button>
+                <body>
+                <button class="no-print" onclick="window.print()" style="margin-bottom:20px;padding:8px 16px;cursor:pointer">Drucken / Als PDF speichern</button>
                 <pre style="white-space:pre-wrap;font-family:Georgia,serif">${result}</pre>
+                ${photosHtml}
                 <div class="disclaimer">Dieses Dokument wurde mit GetDocuNow.com generiert und stellt keine Rechtsberatung dar.</div>
                 </body></html>`);
               w.document.close();
@@ -257,32 +386,22 @@ export default function ToolForm({ tool, locale }: Props) {
 
   // ── Formular ──────────────────────────────────────────────────
   const inputClass = "w-full rounded-sm border bg-ink-900 px-4 py-3 text-sm text-cream placeholder:text-cream-subtle outline-none transition focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold";
+  const maxPhotos = tool.maxPhotos ?? 100;
 
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
 
-      {/* Document photo upload — only for supported tools */}
+      {/* Einzelbild-Upload (Vision-Tools) */}
       {tool.supportsDocumentUpload && (
         <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
           <p className="mb-1 text-sm font-medium text-cream">{tool.uploadLabelDe}</p>
           <p className="mb-4 text-xs leading-relaxed text-cream-muted">{tool.uploadHintDe}</p>
-
           <label className="group cursor-pointer">
-            <input
-              type="file"
-              accept="image/*"
-              capture="environment"
-              className="sr-only"
-              onChange={handleImageUpload}
-            />
+            <input type="file" accept="image/*" capture="environment" className="sr-only" onChange={handleImageUpload} />
             {imagePreviewUrl ? (
               <div className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={imagePreviewUrl}
-                  alt="Hochgeladenes Dokument"
-                  className="max-h-64 w-full rounded-sm object-contain"
-                />
+                <img src={imagePreviewUrl} alt="Hochgeladenes Dokument" className="max-h-64 w-full rounded-sm object-contain" />
                 <span className="mt-2 block text-xs text-swiss-gold">✓ Bild hochgeladen — tippe um zu ändern</span>
               </div>
             ) : (
@@ -297,6 +416,66 @@ export default function ToolForm({ tool, locale }: Props) {
         </div>
       )}
 
+      {/* Foto-Galerie (kein Vision — nur Beilage) */}
+      {tool.supportsPhotoGallery && (
+        <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
+          <p className="mb-1 text-sm font-medium text-cream">{tool.photoGalleryLabelDe}</p>
+          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{tool.photoGalleryHintDe}</p>
+
+          {/* Bereits hochgeladene Fotos */}
+          {photos.length > 0 && (
+            <div className="mb-4 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
+              {photos.map((photo, i) => (
+                <div key={i} className="group relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={photo.dataUrl}
+                    alt={`Foto ${i + 1}`}
+                    className="aspect-square w-full rounded-sm object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removePhoto(i)}
+                    aria-label="Foto entfernen"
+                    className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-ink-950/80 text-xs text-cream opacity-0 transition hover:bg-red-900 group-hover:opacity-100"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Foto hinzufügen */}
+          {photos.length < maxPhotos && (
+            <label className="group cursor-pointer">
+              <input
+                ref={photoInputRef}
+                type="file"
+                accept="image/*"
+                multiple
+                className="sr-only"
+                onChange={handlePhotosUpload}
+              />
+              <div className="flex items-center gap-3 rounded-sm border border-ink-700 px-4 py-3 transition group-hover:border-swiss-gold/50">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="flex-shrink-0 text-swiss-gold/60">
+                  <rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" />
+                </svg>
+                <span className="text-xs text-cream-muted">
+                  {photos.length === 0
+                    ? "Fotos auswählen (mehrere möglich)"
+                    : `Weitere Fotos hinzufügen (${photos.length}/${maxPhotos})`}
+                </span>
+              </div>
+            </label>
+          )}
+
+          {photos.length >= maxPhotos && (
+            <p className="mt-2 text-xs text-cream-subtle">Maximum von {maxPhotos} Fotos erreicht.</p>
+          )}
+        </div>
+      )}
+
       <div className="space-y-8">
         {tool.fields.map((field, idx) => {
           const prevField = tool.fields[idx - 1];
@@ -306,12 +485,10 @@ export default function ToolForm({ tool, locale }: Props) {
             <div key={field.key}>
               {showSection && (
                 <div className="mb-6 border-b border-ink-700 pb-2">
-                  <h3 className="text-xs font-medium uppercase tracking-widest text-cream-muted">
-                    {field.section}
-                  </h3>
+                  <h3 className="text-xs font-medium uppercase tracking-widest text-cream-muted">{field.section}</h3>
                 </div>
               )}
-              <div className={showSection ? "" : ""}>
+              <div>
                 <label htmlFor={field.key} className="mb-2 block text-sm font-medium text-cream">
                   {field.label}
                   {field.required && <span className="ml-1 text-swiss-gold">*</span>}
@@ -352,7 +529,7 @@ export default function ToolForm({ tool, locale }: Props) {
         })}
       </div>
 
-      {/* Widerrufsrecht-Checkbox (EU-Konformität) */}
+      {/* Widerrufsrecht-Checkbox */}
       <div className="mt-10">
         <label className={`flex cursor-pointer items-start gap-3 ${withdrawalError ? "text-red-400" : "text-cream-muted"}`}>
           <input
