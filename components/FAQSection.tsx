@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import CountryText from "./CountryText";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,11 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         <span className="font-serif text-xl font-medium text-cream md:text-2xl">{question}</span>
         <span className="ml-6 flex-shrink-0 text-xl font-light text-swiss-gold">{open ? "−" : "+"}</span>
       </button>
-      {open && <p className="pb-7 pr-10 text-sm leading-relaxed text-cream-muted md:text-base">{answer}</p>}
+      {open && (
+        <p className="pb-7 pr-10 text-sm leading-relaxed text-cream-muted md:text-base">
+          <CountryText text={answer} />
+        </p>
+      )}
     </div>
   );
 }

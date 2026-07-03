@@ -1,5 +1,39 @@
+"use client";
+
+import { useCountry } from "./CountryProvider";
+import { getStripeAmount, formatAmount } from "@/lib/countries";
+
+// Günstigstes Tool: 300 CHF Rappen, teuerstes: 500
+const MIN_RAPPEN = 300;
+const MAX_RAPPEN = 500;
+
 export default function HowItWorks({ dict }: { dict: any }) {
-  const steps = [dict.howItWorks.step1, dict.howItWorks.step2, dict.howItWorks.step3, dict.howItWorks.step4];
+  const { country } = useCountry();
+
+  // Preisspanne in Landeswährung berechnen
+  const minResult = country ? getStripeAmount(MIN_RAPPEN, country.currency) : null;
+  const maxResult = country ? getStripeAmount(MAX_RAPPEN, country.currency) : null;
+  const minCur = minResult?.currency ?? "chf";
+  const minAmt = minResult?.amount ?? MIN_RAPPEN;
+  const maxAmt = maxResult?.amount ?? MAX_RAPPEN;
+
+  const minFmt = formatAmount(minAmt, minCur);
+  const maxFmt = formatAmount(maxAmt, minCur);
+
+  // Wenn Min und Max identisch formatiert sind → nur einen Wert zeigen
+  const priceRange = minFmt === maxFmt ? minFmt : `${minFmt}–${maxFmt}`;
+
+  function interpolate(text: string) {
+    return text.replace("{priceRange}", priceRange);
+  }
+
+  const steps = [
+    dict.howItWorks.step1,
+    dict.howItWorks.step2,
+    dict.howItWorks.step3,
+    dict.howItWorks.step4,
+  ];
+
   return (
     <section id="how-it-works" className="bg-ink-900 px-6 py-24 md:py-32">
       <div className="mx-auto max-w-content">
@@ -13,7 +47,9 @@ export default function HowItWorks({ dict }: { dict: any }) {
                 {String(i + 1).padStart(2, "0")}
               </div>
               <h3 className="mt-5 font-serif text-xl font-medium text-cream">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-cream-muted">{step.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-cream-muted">
+                {interpolate(step.description)}
+              </p>
             </div>
           ))}
         </div>

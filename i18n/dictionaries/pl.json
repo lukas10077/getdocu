@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Stworzone dla Szwajcarii",
     "headline": "Ważne dokumenty. W prosty sposób.",
-    "subheadline": "GetDocu pomaga tworzyć profesjonalne listy i podania dla Szwajcarii — wyjaśnione w Twoim języku, napisane po niemiecku.",
+    "subheadline": "GetDocu pomaga tworzyć profesjonalne listy i dokumenty — wyjaśnione w twoim języku, zoptymalizowane dla twojego kraju.",
     "cta": "Wybierz narzędzie",
     "ctaSecondary": "Jak to działa"
   },
@@ -56,11 +56,11 @@
     },
     "step2": {
       "title": "Bezpieczna płatność",
-      "description": "Zapłać 3–5 CHF kartą przez Stripe. Bez abonamentu, bez ukrytych kosztów."
+      "description": "Zapłać {priceRange} kartą przez Stripe. Bez abonamentu, bez ukrytych kosztów."
     },
     "step3": {
       "title": "Dokument zostaje utworzony",
-      "description": "Nasza AI tworzy dokument po niemiecku, gotowy dla urzędów, wynajmujących lub pracodawców."
+      "description": "Nasza AI tworzy dokument w języku twojego kraju, gotowy dla urzędów, wynajmujących lub pracodawców."
     },
     "step4": {
       "title": "Pobierz i gotowe",
@@ -81,7 +81,7 @@
     "paymentTitle": "Akceptowane metody płatności"
   },
   "footer": {
-    "tagline": "Ważne dokumenty dla Szwajcarii — w prosty sposób.",
+    "tagline": "Ważne dokumenty dla {countryName} — w prosty sposób.",
     "impressum": "Nota prawna",
     "datenschutz": "Polityka prywatności",
     "agb": "Warunki korzystania",
@@ -103,7 +103,7 @@
       },
       {
         "q": "Czy jest subskrypcja lub ukryte opłaty?",
-        "a": "Nie. Płacisz jednorazowo 3–5 CHF za dokument. Bez subskrypcji, bez niespodzianek."
+        "a": "Nie. Płacisz jednorazowo {priceRange} za dokument — zależnie od typu. Bez abonamentu, bez niespodzianek."
       },
       {
         "q": "W jakim języku tworzony jest dokument?",

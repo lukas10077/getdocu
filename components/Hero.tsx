@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Locale } from "@/i18n/config";
+import HeroMinPrice from "./HeroMinPrice";
 
 export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
   return (
@@ -65,7 +66,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
             <span>✓ Kein Konto</span>
             <span>✓ Kein Abo</span>
             <span>✓ Daten gelöscht</span>
-            <span>✓ ab 3 CHF</span>
+            <HeroMinPrice />
           </div>
         </div>
 

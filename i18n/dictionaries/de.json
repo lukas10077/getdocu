@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Gemacht für die Schweiz",
     "headline": "Wichtige Dokumente. Einfach erstellt.",
-    "subheadline": "GetDocu hilft dir, professionelle Briefe und Bewerbungen für die Schweiz zu erstellen — in deiner Sprache erklärt, auf Deutsch geschrieben.",
+    "subheadline": "GetDocu hilft dir, professionelle Briefe und Dokumente zu erstellen — in deiner Sprache erklärt, für dein Land optimiert.",
     "cta": "Tool wählen",
     "ctaSecondary": "So funktioniert's"
   },
@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "So funktioniert's",
     "subtitle": "Vier einfache Schritte. Keine Anmeldung nötig.",
-    "step1": { "title": "Formular ausfüllen", "description": "Beantworte ein paar einfache Fragen — in deiner Sprache erklärt." },
-    "step2": { "title": "Sicher bezahlen", "description": "Bezahle 3–5 CHF per Karte über Stripe. Kein Abo, keine versteckten Kosten." },
-    "step3": { "title": "Dokument wird erstellt", "description": "Unsere KI erstellt dein Dokument auf Deutsch, bereit für Behörden, Vermieter oder Arbeitgeber." },
-    "step4": { "title": "Herunterladen & fertig", "description": "Lade dein PDF herunter. Deine Eingaben werden danach sofort gelöscht." }
+    "step1": {
+      "title": "Formular ausfüllen",
+      "description": "Beantworte ein paar einfache Fragen — in deiner Sprache erklärt."
+    },
+    "step2": {
+      "title": "Sicher bezahlen",
+      "description": "Bezahle {priceRange} per Karte über Stripe. Kein Abo, keine versteckten Kosten."
+    },
+    "step3": {
+      "title": "Dokument wird erstellt",
+      "description": "Unsere KI erstellt dein Dokument in der Sprache deines Landes, bereit für Behörden, Vermieter oder Arbeitgeber."
+    },
+    "step4": {
+      "title": "Herunterladen & fertig",
+      "description": "Lade dein PDF herunter. Deine Eingaben werden danach sofort gelöscht."
+    }
   },
   "trust": {
     "guaranteeTitle": "Geld-zurück-Garantie",
@@ -81,11 +93,11 @@
       },
       {
         "q": "Gibt es ein Abo oder versteckte Kosten?",
-        "a": "Nein. Du bezahlst einmalig 3–5 CHF pro Dokument. Kein Abo, keine Folgekosten, keine Überraschungen."
+        "a": "Nein. Du bezahlst einmalig {priceRange} pro Dokument — je nach Dokumenttyp. Kein Abo, keine Folgekosten, keine Überraschungen."
       },
       {
         "q": "In welcher Sprache wird das Dokument erstellt?",
-        "a": "Das Dokument wird auf Deutsch erstellt — korrekt formuliert für Behörden, Vermieter und Arbeitgeber in der Schweiz."
+        "a": "Das Dokument wird in der Sprache deines Landes erstellt — korrekt formuliert für Behörden, Vermieter und Arbeitgeber."
       },
       {
         "q": "Was mache ich, wenn ich nicht zufrieden bin?",
@@ -98,7 +110,7 @@
     ]
   },
   "footer": {
-    "tagline": "Wichtige Dokumente für die Schweiz — einfach erstellt.",
+    "tagline": "Wichtige Dokumente für {countryName} — einfach erstellt.",
     "impressum": "Impressum",
     "datenschutz": "Datenschutzerklärung",
     "agb": "AGB",

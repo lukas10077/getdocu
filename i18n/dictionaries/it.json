@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Pensato per la Svizzera",
     "headline": "Documenti importanti. Semplicemente creati.",
-    "subheadline": "GetDocu ti aiuta a creare lettere e candidature professionali per la Svizzera — spiegato nella tua lingua, scritto in tedesco.",
+    "subheadline": "GetDocu ti aiuta a creare lettere e documenti professionali — spiegati nella tua lingua, ottimizzati per il tuo paese.",
     "cta": "Scegli uno strumento",
     "ctaSecondary": "Come funziona"
   },
@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "Come funziona",
     "subtitle": "Quattro semplici passi. Nessun account necessario.",
-    "step1": { "title": "Compila il modulo", "description": "Rispondi a poche semplici domande — spiegate nella tua lingua." },
-    "step2": { "title": "Paga in sicurezza", "description": "Paga 3–5 CHF con carta via Stripe. Nessun abbonamento, nessun costo nascosto." },
-    "step3": { "title": "Il documento viene creato", "description": "La nostra IA crea il tuo documento in tedesco, pronto per autorità, locatori o datori di lavoro." },
-    "step4": { "title": "Scarica e hai finito", "description": "Scarica il tuo PDF. I tuoi dati vengono eliminati immediatamente dopo." }
+    "step1": {
+      "title": "Compila il modulo",
+      "description": "Rispondi a poche semplici domande — spiegate nella tua lingua."
+    },
+    "step2": {
+      "title": "Paga in sicurezza",
+      "description": "Paga {priceRange} con carta via Stripe. Nessun abbonamento, nessun costo nascosto."
+    },
+    "step3": {
+      "title": "Il documento viene creato",
+      "description": "La nostra IA crea il tuo documento nella lingua del tuo paese, pronto per autorità, locatori o datori di lavoro."
+    },
+    "step4": {
+      "title": "Scarica e hai finito",
+      "description": "Scarica il tuo PDF. I tuoi dati vengono eliminati immediatamente dopo."
+    }
   },
   "trust": {
     "guaranteeTitle": "Garanzia di rimborso",
@@ -69,7 +81,7 @@
     "point3": "Per generare il documento, il tuo testo viene inviato ad Anthropic (USA) per l'elaborazione — poi eliminato. Maggiori informazioni nella nostra informativa sulla privacy."
   },
   "footer": {
-    "tagline": "Documenti importanti per la Svizzera — semplicemente creati.",
+    "tagline": "Documenti importanti per {countryName} — creati facilmente.",
     "impressum": "Note legali",
     "datenschutz": "Informativa sulla privacy",
     "agb": "Termini e condizioni",
@@ -78,12 +90,30 @@
   "faq": {
     "title": "Domande frequenti",
     "items": [
-      { "q": "Devo creare un account?", "a": "No. Nessun account, nessuna registrazione. Compila il modulo, paga e scarica il documento immediatamente." },
-      { "q": "Cosa succede ai miei dati?", "a": "I tuoi dati vengono usati solo per generare il documento e poi eliminati immediatamente. Nessuna memorizzazione permanente." },
-      { "q": "C'è un abbonamento o costi nascosti?", "a": "No. Paghi una volta sola 3–5 CHF per documento. Nessun abbonamento, nessuna sorpresa." },
-      { "q": "In quale lingua viene creato il documento?", "a": "Il documento viene creato in tedesco — formulato correttamente per autorità, locatori e datori di lavoro in Svizzera." },
-      { "q": "Cosa faccio se non sono soddisfatto?", "a": "Ti rimborsiamo l'intero importo. Basta inviarci una e-mail — senza problemi." },
-      { "q": "Quali metodi di pagamento sono accettati?", "a": "TWINT, carta di credito (Visa, Mastercard), Apple Pay o Google Pay. Il pagamento è sicuro tramite Stripe." }
+      {
+        "q": "Devo creare un account?",
+        "a": "No. Nessun account, nessuna registrazione. Compila il modulo, paga e scarica il documento immediatamente."
+      },
+      {
+        "q": "Cosa succede ai miei dati?",
+        "a": "I tuoi dati vengono usati solo per generare il documento e poi eliminati immediatamente. Nessuna memorizzazione permanente."
+      },
+      {
+        "q": "C'è un abbonamento o costi nascosti?",
+        "a": "No. Paghi {priceRange} una volta sola per documento — a seconda del tipo. Nessun abbonamento, nessun costo aggiuntivo."
+      },
+      {
+        "q": "In quale lingua viene creato il documento?",
+        "a": "Il documento viene creato nella lingua del tuo paese — correttamente formulato per autorità, locatori e datori di lavoro."
+      },
+      {
+        "q": "Cosa faccio se non sono soddisfatto?",
+        "a": "Ti rimborsiamo l'intero importo. Basta inviarci una e-mail — senza problemi."
+      },
+      {
+        "q": "Quali metodi di pagamento sono accettati?",
+        "a": "TWINT, carta di credito (Visa, Mastercard), Apple Pay o Google Pay. Il pagamento è sicuro tramite Stripe."
+      }
     ]
   },
   "legal": {

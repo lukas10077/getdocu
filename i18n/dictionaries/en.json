@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Made for Switzerland",
     "headline": "Important documents. Made simple.",
-    "subheadline": "GetDocu helps you create professional letters and applications for Switzerland — explained in your language, written in German.",
+    "subheadline": "GetDocu helps you create professional letters and documents — explained in your language, optimised for your country.",
     "cta": "Choose a tool",
     "ctaSecondary": "How it works"
   },
@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "How it works",
     "subtitle": "Four simple steps. No account needed.",
-    "step1": { "title": "Fill out the form", "description": "Answer a few simple questions — explained in your language." },
-    "step2": { "title": "Pay securely", "description": "Pay CHF 3–5 by card via Stripe. No subscription, no hidden fees." },
-    "step3": { "title": "Document is generated", "description": "Our AI creates your document in German, ready for authorities, landlords, or employers." },
-    "step4": { "title": "Download & done", "description": "Download your PDF. Your input is deleted immediately afterwards." }
+    "step1": {
+      "title": "Fill out the form",
+      "description": "Answer a few simple questions — explained in your language."
+    },
+    "step2": {
+      "title": "Pay securely",
+      "description": "Pay {priceRange} by card via Stripe. No subscription, no hidden fees."
+    },
+    "step3": {
+      "title": "Document is generated",
+      "description": "Our AI creates your document in your country's language, ready for authorities, landlords, or employers."
+    },
+    "step4": {
+      "title": "Download & done",
+      "description": "Download your PDF. Your input is deleted immediately afterwards."
+    }
   },
   "trust": {
     "guaranteeTitle": "Money-back guarantee",
@@ -81,11 +93,11 @@
       },
       {
         "q": "Is there a subscription or hidden fees?",
-        "a": "No. You pay a one-time fee of CHF 3–5 per document. No subscription, no follow-up costs, no surprises."
+        "a": "No. You pay a one-time fee of {priceRange} per document — depending on the type. No subscription, no follow-up costs."
       },
       {
         "q": "In which language is the document created?",
-        "a": "The document is created in German — correctly worded for authorities, landlords, and employers in Switzerland."
+        "a": "The document is created in your country's language — correctly phrased for authorities, landlords, and employers."
       },
       {
         "q": "What if I'm not satisfied?",
@@ -98,7 +110,7 @@
     ]
   },
   "footer": {
-    "tagline": "Important documents for Switzerland — made simple.",
+    "tagline": "Important documents for {countryName} — made simple.",
     "impressum": "Legal notice",
     "datenschutz": "Privacy policy",
     "agb": "Terms & conditions",

@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Krijuar për Zvicrën",
     "headline": "Dokumente të rëndësishme. Krijuar thjesht.",
-    "subheadline": "GetDocu të ndihmon të krijosh letra dhe kërkesa profesionale për Zvicrën — shpjeguar në gjuhën tënde, shkruar në gjermanisht.",
+    "subheadline": "GetDocu ju ndihmon të krijoni letra dhe dokumente profesionale — të shpjeguara në gjuhën tuaj, të optimizuara për vendin tuaj.",
     "cta": "Zgjedh një mjet",
     "ctaSecondary": "Si funksionon"
   },
@@ -56,11 +56,11 @@
     },
     "step2": {
       "title": "Paguaj në mënyrë të sigurt",
-      "description": "Paguaj 3–5 CHF me kartë përmes Stripe. Pa abonim, pa kosto të fshehura."
+      "description": "Paguaj {priceRange} me kartë përmes Stripe. Pa abonim, pa kosto të fshehura."
     },
     "step3": {
       "title": "Dokumenti krijohet",
-      "description": "AI-ja jonë krijon dokumentin tënd në gjermanisht, gati për autoritetet, qiradhënësin ose punëdhënësin."
+      "description": "AI-ja jonë krijon dokumentin tënd në gjuhën e vendit tënd, gati për autoritetet, qiradhënësin ose punëdhënësin."
     },
     "step4": {
       "title": "Shkarko dhe mbarove",
@@ -81,7 +81,7 @@
     "paymentTitle": "Metodat e pranuara të pagesës"
   },
   "footer": {
-    "tagline": "Dokumente të rëndësishme për Zvicrën — krijuar thjesht.",
+    "tagline": "Dokumente të rëndësishme për {countryName} — të krijuara thjesht.",
     "impressum": "Të dhëna ligjore",
     "datenschutz": "Politika e privatësisë",
     "agb": "Kushtet e përdorimit",
@@ -103,11 +103,11 @@
       },
       {
         "q": "A ka abonime ose kosto të fshehura?",
-        "a": "Jo. Paguan një herë 3–5 CHF për dokument. Pa abonime, pa surpriza."
+        "a": "Jo. Paguaj {priceRange} një herë për dokument — sipas llojit. Pa abonim, pa surpriza."
       },
       {
         "q": "Në çfarë gjuhe krijohet dokumenti?",
-        "a": "Dokumenti krijohet në gjermanisht — i formuluar saktë për autoritetet, qiradhënësit dhe punëdhënësit në Zvicër."
+        "a": "Dokumenti krijohet në gjuhën e vendit tënd — i formuluar saktë për autoritetet, qiradhënësit dhe punëdhënësit."
       },
       {
         "q": "Çfarë bëj nëse nuk jam i kënaqur?",

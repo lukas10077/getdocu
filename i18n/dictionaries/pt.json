@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Feito para a Suíça",
     "headline": "Documentos importantes. Feitos de forma simples.",
-    "subheadline": "A GetDocu ajuda-te a criar cartas e candidaturas profissionais para a Suíça — explicado no teu idioma, escrito em alemão.",
+    "subheadline": "GetDocu ajuda-te a criar cartas e documentos profissionais — explicados na tua língua, otimizados para o teu país.",
     "cta": "Escolher ferramenta",
     "ctaSecondary": "Como funciona"
   },
@@ -56,11 +56,11 @@
     },
     "step2": {
       "title": "Paga com segurança",
-      "description": "Paga 3–5 CHF por cartão via Stripe. Sem subscrição, sem custos ocultos."
+      "description": "Paga {priceRange} por cartão via Stripe. Sem subscrição, sem custos ocultos."
     },
     "step3": {
       "title": "O documento é criado",
-      "description": "A nossa IA cria o teu documento em alemão, pronto para autoridades, senhorios ou empregadores."
+      "description": "A nossa IA cria o teu documento na língua do teu país, pronto para autoridades, senhorios ou empregadores."
     },
     "step4": {
       "title": "Descarrega e está feito",
@@ -81,7 +81,7 @@
     "paymentTitle": "Métodos de pagamento aceites"
   },
   "footer": {
-    "tagline": "Documentos importantes para a Suíça — feitos de forma simples.",
+    "tagline": "Documentos importantes para {countryName} — feitos de forma simples.",
     "impressum": "Informações legais",
     "datenschutz": "Política de privacidade",
     "agb": "Termos e condições",
@@ -103,11 +103,11 @@
       },
       {
         "q": "Existe subscrição ou custos ocultos?",
-        "a": "Não. Paga uma vez 3–5 CHF por documento. Sem subscrição, sem surpresas."
+        "a": "Não. Pagas {priceRange} uma única vez por documento — dependendo do tipo. Sem subscrição, sem custos adicionais."
       },
       {
         "q": "Em que língua é criado o documento?",
-        "a": "O documento é criado em alemão — formulado corretamente para autoridades, senhorios e empregadores na Suíça."
+        "a": "O documento é criado na língua do teu país — corretamente formulado para autoridades, senhorios e empregadores."
       },
       {
         "q": "O que faço se não estiver satisfeito?",

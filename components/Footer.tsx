@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Locale } from "@/i18n/config";
+import CountryText from "./CountryText";
 
 export default function Footer({ locale, dict }: { locale: Locale; dict: any }) {
   return (
@@ -9,7 +10,7 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: any }) 
           <p className="font-serif text-base font-medium text-cream">
             Get<span className="text-swiss-gold">Docu</span>
           </p>
-          <p className="mt-1 text-sm">{dict.footer.tagline}</p>
+          <p className="mt-1 text-sm"><CountryText text={dict.footer.tagline} /></p>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-6">
           <Link href={`/${locale}/legal/impressum`} className="transition hover:text-cream">{dict.footer.impressum}</Link>

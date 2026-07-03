@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "İsviçre için tasarlandı",
     "headline": "Önemli belgeler. Basitçe oluşturuldu.",
-    "subheadline": "GetDocu, İsviçre için profesyonel mektuplar ve başvurular oluşturmanıza yardımcı olur — kendi dilinizde açıklanır, Almanca yazılır.",
+    "subheadline": "GetDocu, profesyonel mektuplar ve belgeler oluşturmanıza yardımcı olur — kendi dilinizde açıklanmış, ülkeniz için optimize edilmiş.",
     "cta": "Bir araç seç",
     "ctaSecondary": "Nasıl çalışır"
   },
@@ -56,11 +56,11 @@
     },
     "step2": {
       "title": "Güvenle öde",
-      "description": "Stripe üzerinden kartla 3–5 CHF öde. Abonelik yok, gizli ücret yok."
+      "description": "Stripe üzerinden kartla {priceRange} öde. Abonelik yok, gizli ücret yok."
     },
     "step3": {
       "title": "Belge oluşturulur",
-      "description": "Yapay zekamız belgenizi Almanca olarak oluşturur, makamlar, ev sahipleri veya işverenler için hazır."
+      "description": "Yapay zekamız belgenizi ülkenizin dilinde oluşturur; makamlar, ev sahipleri veya işverenler için hazır."
     },
     "step4": {
       "title": "İndir ve bitti",
@@ -81,7 +81,7 @@
     "paymentTitle": "Kabul edilen ödeme yöntemleri"
   },
   "footer": {
-    "tagline": "İsviçre için önemli belgeler — basitçe oluşturuldu.",
+    "tagline": "{countryName} için önemli belgeler — basitçe oluşturuldu.",
     "impressum": "Yasal bilgiler",
     "datenschutz": "Gizlilik politikası",
     "agb": "Kullanım şartları",
@@ -103,11 +103,11 @@
       },
       {
         "q": "Abonelik veya gizli ücret var mı?",
-        "a": "Hayır. Belge başına bir kez 3–5 CHF ödersiniz. Abonelik yok, sürpriz yok."
+        "a": "Hayır. Belge başına bir kez {priceRange} ödersiniz — türüne göre. Abonelik yok, sürpriz yok."
       },
       {
         "q": "Belge hangi dilde oluşturulur?",
-        "a": "Belge Almanca oluşturulur — İsviçre'deki makamlar, ev sahipleri ve işverenler için doğru biçimde yazılmış."
+        "a": "Belge, ülkenizin dilinde oluşturulur — makamlar, ev sahipleri ve işverenler için doğru biçimde hazırlanmış."
       },
       {
         "q": "Memnun kalmazsam ne yapmalıyım?",

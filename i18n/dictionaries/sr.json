@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Napravljeno za Švajcarsku",
     "headline": "Važni dokumenti. Jednostavno napravljeni.",
-    "subheadline": "GetDocu vam pomaže da napravite profesionalna pisma i prijave za Švajcarsku — objašnjeno na vašem jeziku, napisano na njemačkom.",
+    "subheadline": "GetDocu vam pomaže da kreirate profesionalna pisma i dokumenta — objašnjeno na vašem jeziku, optimizovano za vašu zemlju.",
     "cta": "Izaberi alat",
     "ctaSecondary": "Kako funkcioniše"
   },
@@ -56,11 +56,11 @@
     },
     "step2": {
       "title": "Plaćanje na siguran način",
-      "description": "Platite 3–5 CHF karticom putem Stripe-a. Bez pretplate, bez skrivenih troškova."
+      "description": "Platite {priceRange} karticom putem Stripe-a. Bez pretplate, bez skrivenih troškova."
     },
     "step3": {
       "title": "Dokument se kreira",
-      "description": "Naš AI kreira vaš dokument na njemačkom, spreman za vlasti, izdavače stanova ili poslodavce."
+      "description": "Naš AI kreira vaš dokument na jeziku vaše zemlje, spreman za vlasti, izdavače stanova ili poslodavce."
     },
     "step4": {
       "title": "Preuzmite i gotovo",
@@ -81,7 +81,7 @@
     "paymentTitle": "Prihvaćeni načini plaćanja"
   },
   "footer": {
-    "tagline": "Važni dokumenti za Švajcarsku — jednostavno napravljeni.",
+    "tagline": "Važni dokumenti za {countryName} — jednostavno napravljeni.",
     "impressum": "Pravne informacije",
     "datenschutz": "Politika privatnosti",
     "agb": "Opći uvjeti",
@@ -103,11 +103,11 @@
       },
       {
         "q": "Postoji li pretplata ili skriveni troškovi?",
-        "a": "Ne. Plaćate jednom 3–5 CHF po dokumentu. Bez pretplate, bez iznenađenja."
+        "a": "Ne. Plaćate jednom {priceRange} po dokumentu — zavisno od tipa. Bez pretplate, bez iznenađenja."
       },
       {
         "q": "Na kom jeziku se kreira dokument?",
-        "a": "Dokument se kreira na njemačkom — ispravno formulisan za vlasti, stanodavce i poslodavce u Švicarskoj."
+        "a": "Dokument se kreira na jeziku vaše zemlje — ispravno formulisan za vlasti, izdavače stanova i poslodavce."
       },
       {
         "q": "Šta ako nisam zadovoljan?",

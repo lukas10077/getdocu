@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Svájc számára készült",
     "headline": "Fontos dokumentumok. Egyszerűen elkészítve.",
-    "subheadline": "A GetDocu segít professzionális leveleket és pályázatokat készíteni Svájc számára — a saját nyelveden elmagyarázva, németül megírva.",
+    "subheadline": "A GetDocu segít professzionális leveleket és dokumentumokat létrehozni — a te nyelvedén magyarázva, az országodra optimalizálva.",
     "cta": "Eszköz kiválasztása",
     "ctaSecondary": "Hogyan működik"
   },
@@ -56,11 +56,11 @@
     },
     "step2": {
       "title": "Biztonságos fizetés",
-      "description": "Fizess 3–5 CHF-ot kártyával a Stripe-on keresztül. Nincs előfizetés, nincs rejtett költség."
+      "description": "Fizess {priceRange} kártyával a Stripe-on keresztül. Nincs előfizetés, nincs rejtett költség."
     },
     "step3": {
       "title": "A dokumentum elkészül",
-      "description": "AI-nk németül készíti el a dokumentumot, készen a hatóságok, bérbeadók vagy munkáltatók számára."
+      "description": "AI-nk a te országod nyelvén készíti el a dokumentumot, készen a hatóságok, bérbeadók vagy munkáltatók számára."
     },
     "step4": {
       "title": "Letöltés és kész",
@@ -81,7 +81,7 @@
     "paymentTitle": "Elfogadott fizetési módok"
   },
   "footer": {
-    "tagline": "Fontos dokumentumok Svájc számára — egyszerűen elkészítve.",
+    "tagline": "Fontos dokumentumok {countryName} számára — egyszerűen elkészítve.",
     "impressum": "Impresszum",
     "datenschutz": "Adatvédelmi nyilatkozat",
     "agb": "Általános szerződési feltételek",
@@ -103,11 +103,11 @@
       },
       {
         "q": "Van előfizetés vagy rejtett díj?",
-        "a": "Nem. Egyszer fizet 3–5 CHF-t dokumentumonként. Nincs előfizetés, nincs meglepetés."
+        "a": "Nem. Dokumentumonként egyszer fizetsz {priceRange}-t — a típustól függően. Nincs előfizetés, nincs meglepetés."
       },
       {
         "q": "Milyen nyelven készül a dokumentum?",
-        "a": "A dokumentum németül készül — helyesen megfogalmazva a svájci hatóságok, bérbeadók és munkáltatók számára."
+        "a": "A dokumentum az ország nyelvén készül — helyesen megfogalmazva a hatóságok, bérbeadók és munkáltatók számára."
       },
       {
         "q": "Mit tegyek, ha nem vagyok elégedett?",

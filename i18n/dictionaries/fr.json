@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Conçu pour la Suisse",
     "headline": "Des documents importants. En toute simplicité.",
-    "subheadline": "GetDocu vous aide à créer des lettres et candidatures professionnelles pour la Suisse — expliqué dans votre langue, rédigé en allemand.",
+    "subheadline": "GetDocu vous aide à créer des lettres et documents professionnels — expliqués dans votre langue, optimisés pour votre pays.",
     "cta": "Choisir un outil",
     "ctaSecondary": "Comment ça marche"
   },
@@ -50,10 +50,22 @@
   "howItWorks": {
     "title": "Comment ça marche",
     "subtitle": "Quatre étapes simples. Aucun compte nécessaire.",
-    "step1": { "title": "Remplir le formulaire", "description": "Répondez à quelques questions simples — expliquées dans votre langue." },
-    "step2": { "title": "Payer en toute sécurité", "description": "Payez 3 à 5 CHF par carte via Stripe. Pas d'abonnement, pas de frais cachés." },
-    "step3": { "title": "Le document est créé", "description": "Notre IA crée votre document en allemand, prêt pour les autorités, propriétaires ou employeurs." },
-    "step4": { "title": "Téléchargez et c'est fait", "description": "Téléchargez votre PDF. Vos données sont immédiatement supprimées après." }
+    "step1": {
+      "title": "Remplir le formulaire",
+      "description": "Répondez à quelques questions simples — expliquées dans votre langue."
+    },
+    "step2": {
+      "title": "Payer en toute sécurité",
+      "description": "Payez {priceRange} par carte via Stripe. Pas d'abonnement, pas de frais cachés."
+    },
+    "step3": {
+      "title": "Le document est créé",
+      "description": "Notre IA crée votre document dans la langue de votre pays, prêt pour les autorités, propriétaires ou employeurs."
+    },
+    "step4": {
+      "title": "Téléchargez et c'est fait",
+      "description": "Téléchargez votre PDF. Vos données sont immédiatement supprimées après."
+    }
   },
   "trust": {
     "guaranteeTitle": "Garantie de remboursement",
@@ -71,16 +83,34 @@
   "faq": {
     "title": "Questions fréquentes",
     "items": [
-      { "q": "Dois-je créer un compte ?", "a": "Non. Pas de compte, pas d'inscription. Remplissez le formulaire, payez et téléchargez votre document immédiatement." },
-      { "q": "Que se passe-t-il avec mes données ?", "a": "Vos données ne sont utilisées que pour générer votre document et supprimées immédiatement après. Aucun stockage permanent." },
-      { "q": "Y a-t-il un abonnement ou des frais cachés ?", "a": "Non. Vous payez une fois 3 à 5 CHF par document. Pas d'abonnement, pas de frais supplémentaires." },
-      { "q": "Dans quelle langue le document est-il créé ?", "a": "Le document est créé en allemand — correctement formulé pour les autorités, propriétaires et employeurs en Suisse." },
-      { "q": "Que faire si je ne suis pas satisfait ?", "a": "Nous vous remboursons intégralement. Envoyez-nous un e-mail — sans tracas." },
-      { "q": "Quels modes de paiement sont acceptés ?", "a": "TWINT, carte de crédit (Visa, Mastercard), Apple Pay ou Google Pay. Le paiement est sécurisé via Stripe." }
+      {
+        "q": "Dois-je créer un compte ?",
+        "a": "Non. Pas de compte, pas d'inscription. Remplissez le formulaire, payez et téléchargez votre document immédiatement."
+      },
+      {
+        "q": "Que se passe-t-il avec mes données ?",
+        "a": "Vos données ne sont utilisées que pour générer votre document et supprimées immédiatement après. Aucun stockage permanent."
+      },
+      {
+        "q": "Y a-t-il un abonnement ou des frais cachés ?",
+        "a": "Non. Vous payez {priceRange} une seule fois par document — selon le type. Pas d'abonnement, pas de frais cachés."
+      },
+      {
+        "q": "Dans quelle langue le document est-il créé ?",
+        "a": "Le document est créé dans la langue de votre pays — correctement formulé pour les autorités, propriétaires et employeurs."
+      },
+      {
+        "q": "Que faire si je ne suis pas satisfait ?",
+        "a": "Nous vous remboursons intégralement. Envoyez-nous un e-mail — sans tracas."
+      },
+      {
+        "q": "Quels modes de paiement sont acceptés ?",
+        "a": "TWINT, carte de crédit (Visa, Mastercard), Apple Pay ou Google Pay. Le paiement est sécurisé via Stripe."
+      }
     ]
   },
   "footer": {
-    "tagline": "Des documents importants pour la Suisse — en toute simplicité.",
+    "tagline": "Des documents importants pour {countryName} — en toute simplicité.",
     "impressum": "Mentions légales",
     "datenschutz": "Politique de confidentialité",
     "agb": "Conditions générales",

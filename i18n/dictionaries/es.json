@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "Hecho para Suiza",
     "headline": "Documentos importantes. Hechos de forma sencilla.",
-    "subheadline": "GetDocu te ayuda a crear cartas y solicitudes profesionales para Suiza — explicado en tu idioma, redactado en alemán.",
+    "subheadline": "GetDocu te ayuda a crear cartas y documentos profesionales — explicados en tu idioma, optimizados para tu país.",
     "cta": "Elegir herramienta",
     "ctaSecondary": "Cómo funciona"
   },
@@ -56,11 +56,11 @@
     },
     "step2": {
       "title": "Paga con seguridad",
-      "description": "Paga 3–5 CHF con tarjeta a través de Stripe. Sin suscripción, sin costos ocultos."
+      "description": "Paga {priceRange} con tarjeta a través de Stripe. Sin suscripción, sin costos ocultos."
     },
     "step3": {
       "title": "Se crea el documento",
-      "description": "Nuestra IA crea tu documento en alemán, listo para autoridades, arrendadores o empleadores."
+      "description": "Nuestra IA crea tu documento en el idioma de tu país, listo para autoridades, arrendadores o empleadores."
     },
     "step4": {
       "title": "Descarga y listo",
@@ -81,7 +81,7 @@
     "paymentTitle": "Métodos de pago aceptados"
   },
   "footer": {
-    "tagline": "Documentos importantes para Suiza — hechos de forma sencilla.",
+    "tagline": "Documentos importantes para {countryName} — de forma sencilla.",
     "impressum": "Aviso legal",
     "datenschutz": "Política de privacidad",
     "agb": "Términos y condiciones",
@@ -103,11 +103,11 @@
       },
       {
         "q": "¿Hay suscripción o costes ocultos?",
-        "a": "No. Pagas una vez 3–5 CHF por documento. Sin suscripción, sin sorpresas."
+        "a": "No. Pagas {priceRange} una sola vez por documento — según el tipo. Sin suscripción, sin costos adicionales."
       },
       {
         "q": "¿En qué idioma se crea el documento?",
-        "a": "El documento se crea en alemán — formulado correctamente para autoridades, arrendadores y empleadores en Suiza."
+        "a": "El documento se crea en el idioma de tu país — correctamente formulado para autoridades, arrendadores y empleadores."
       },
       {
         "q": "¿Qué hago si no estoy satisfecho?",
