@@ -34,7 +34,6 @@ export default function LanguageSwitcher({ current }: { current: Locale }) {
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span className="text-base">{localeMeta[current].flag}</span>
         <span>{localeMeta[current].nativeName}</span>
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="ml-1">
           <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -56,7 +55,6 @@ export default function LanguageSwitcher({ current }: { current: Locale }) {
                 locale === current ? "font-semibold text-swiss-gold" : "text-cream"
               }`}
             >
-              <span className="text-base">{localeMeta[locale].flag}</span>
               <span>{localeMeta[locale].nativeName}</span>
             </button>
           ))}
