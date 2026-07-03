@@ -47,7 +47,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     priceChfRappen: 500,
     documentTitleDe: "Mietbewerbungsschreiben",
     descriptionDe:
-      "Überzeuge Vermieter:innen auf Anhieb. Professionell, persönlich, auf Schweizer Standard.",
+      "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, auf Schweizer Standard.",
     systemPrompt:
       "Du bist Experte für den Schweizer Wohnungsmarkt. Erstelle ein professionelles, " +
       "überzeugendes Mietbewerbungsschreiben auf Deutsch. Halte dich an Schweizer " +
@@ -61,7 +61,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "birthDate",       label: "Geburtsdatum (z.B. 15.03.1990)",   type: "text",     required: true  },
       { key: "nationality",     label: "Nationalität",                     type: "text",     required: true  },
       { key: "residencePermit", label: "Aufenthaltsstatus",                type: "select",   required: true,
-        options: ["Schweizer Bürger/in", "C-Ausweis", "B-Ausweis", "L-Ausweis", "EU/EFTA", "Anderes"] },
+        options: ["Schweizer Bürger", "C-Ausweis", "B-Ausweis", "L-Ausweis", "EU/EFTA", "Anderes"] },
       { key: "currentJob",      label: "Beruf / aktuelle Stelle",          type: "text",     required: true  },
       { key: "monthlyIncome",   label: "Monatliches Nettoeinkommen (CHF)", type: "text",     required: true,  placeholder: "z.B. 5 500" },
       { key: "currentAddress",  label: "Deine aktuelle Adresse",           type: "text",     required: true,  section: "Wohnsituation" },
@@ -71,7 +71,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "pets",            label: "Haustiere",                        type: "select",   required: true,
         options: ["Keine Haustiere", "Hund", "Katze", "Andere Haustiere"] },
       { key: "motivation",      label: "Warum möchtest du diese Wohnung?", type: "textarea", required: true,
-        placeholder: "Beschreibe kurz, warum du die Wohnung möchtest und was dich als Mieter/in auszeichnet.",
+        placeholder: "Beschreibe kurz, warum du die Wohnung möchtest und was dich als Mieter auszeichnet.",
         section: "Motivationstext" },
       { key: "additionalInfo",  label: "Weitere Informationen (optional)", type: "textarea", required: false,
         placeholder: "z.B. Referenzen, besondere Umstände, …" },
@@ -190,10 +190,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Fristsetzung zur Behebung, Ankündigung weiterer Schritte bei Nicht-Behebung (ohne konkrete " +
       "Rechtsdrohung), Bitte um Bestätigung, Abschluss. Kein Tonfall, der unnötig aggressiv ist.",
     fields: [
-      { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Mieter/in" },
+      { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                     type: "text",     required: true  },
       { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",   type: "text",     required: true  },
-      { key: "landlordName",     label: "Name des Vermieters / Verwaltung", type: "text", required: true,  section: "Vermieter/in" },
+      { key: "landlordName",     label: "Name des Vermieters / Verwaltung", type: "text", required: true,  section: "Vermieter" },
       { key: "landlordAddress",  label: "Adresse des Vermieters",       type: "text",     required: true  },
       { key: "defects",          label: "Beschreibe die Mängel",        type: "textarea", required: true,
         placeholder: "Was ist defekt/kaputt? Seit wann? Wo genau in der Wohnung?",
@@ -358,7 +358,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "birthDate",       label: "Geburtsdatum",                 type: "text",     required: true  },
       { key: "nationality",     label: "Nationalität",                 type: "text",     required: true  },
       { key: "residencePermit", label: "Aufenthaltsstatus / Ausweis",  type: "select",   required: true,
-        options: ["Schweizer Bürger/in", "EU/EFTA (Anmeldebescheinigung)", "B-Ausweis", "C-Ausweis", "L-Ausweis", "Asylbereich / N-Ausweis", "Anderes"] },
+        options: ["Schweizer Bürger", "EU/EFTA (Anmeldebescheinigung)", "B-Ausweis", "C-Ausweis", "L-Ausweis", "Asylbereich / N-Ausweis", "Anderes"] },
       { key: "newAddress",      label: "Neue Adresse",                 type: "text",     required: true,  section: "Umzug" },
       { key: "municipality",    label: "Gemeinde / Stadt",             type: "text",     required: true  },
       { key: "moveDate",        label: "Datum des Einzugs",            type: "text",     required: true,  placeholder: "z.B. 01.04.2025" },

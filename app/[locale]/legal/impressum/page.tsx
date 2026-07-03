@@ -73,7 +73,7 @@ export default async function Impressum({ params }: { params: { locale: Locale }
               <p>
                 Die von GetDocu generierten Dokumente sind Formulierungsvorschläge und stellen keine
                 Rechtsberatung dar. Bei rechtlichen Fragen wenden Sie sich an eine zugelassene
-                Rechtsberaterin oder einen zugelassenen Rechtsberater.
+                Rechtsberater.
               </p>
             </div>
 
