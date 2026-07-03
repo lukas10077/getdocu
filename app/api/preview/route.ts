@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { getTool } from "@/lib/tools";
+import { getCountry, LANG_NAMES } from "@/lib/countries";
 
 export async function POST(req: NextRequest) {
-  const { toolSlug, formData, imageBase64, imageMimeType } = await req.json();
+  const { toolSlug, formData, imageBase64, imageMimeType, countryCode } = await req.json();
 
   const tool = getTool(toolSlug);
   if (!tool) {
@@ -23,6 +24,9 @@ export async function POST(req: NextRequest) {
     .join("\n");
 
   const textPrompt = `Erstelle den ANFANG des Dokuments (nur die ersten 2–3 Absätze, ca. 120–150 Wörter) basierend auf folgenden Angaben. Höre mitten im Text auf — das vollständige Dokument wird nach Zahlung generiert.\n\n${lines}`;
+
+  // Länderkontext in System-Prompt injizieren
+  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode);
 
   const userContent: Anthropic.MessageParam["content"] = [];
 
@@ -46,7 +50,7 @@ export async function POST(req: NextRequest) {
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
     max_tokens: 350,
-    system: tool.systemPrompt,
+    system: systemPrompt,
     messages: [{ role: "user", content: userContent }],
   });
 
@@ -56,4 +60,17 @@ export async function POST(req: NextRequest) {
     .join("\n");
 
   return NextResponse.json({ previewText });
+}
+
+function buildSystemPrompt(basePrompt: string, countryCode?: string): string {
+  if (!countryCode) return basePrompt;
+  const country = getCountry(countryCode);
+  if (!country) return basePrompt;
+  const langName = LANG_NAMES[country.documentLang] ?? country.documentLang;
+  const countryNote =
+    `WICHTIG — LÄNDERSPEZIFISCHE ANPASSUNG:\n` +
+    `Dieses Dokument wird für einen Nutzer in ${country.name} (${country.flag}) erstellt.\n` +
+    `Passe alle Formulierungen, Konventionen und formalen Anforderungen an die in ${country.name} üblichen Standards an.\n` +
+    `Verfasse das gesamte Dokument auf ${langName}.\n`;
+  return `${countryNote}\n${basePrompt}`;
 }

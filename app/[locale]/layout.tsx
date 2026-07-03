@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import { locales, isRtl, getDictionary, Locale } from "@/i18n/config";
+import { CountryProvider } from "@/components/CountryProvider";
+import CountrySelector from "@/components/CountrySelector";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,7 +45,10 @@ export default function LocaleLayout({
   return (
     <html lang={params.locale} dir={dir}>
       <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased`}>
-        {children}
+        <CountryProvider>
+          <CountrySelector />
+          {children}
+        </CountryProvider>
       </body>
     </html>
   );

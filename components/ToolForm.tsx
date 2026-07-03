@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ToolDefinition } from "@/lib/tools";
+import { useCountry } from "./CountryProvider";
+import { getStripeAmount, ZERO_DECIMAL_CURRENCIES } from "@/lib/countries";
 
 type Stage = "form" | "previewing" | "preview" | "redirecting" | "generating" | "done" | "error";
 
@@ -13,6 +15,7 @@ interface Props {
 
 export default function ToolForm({ tool, locale }: Props) {
   const searchParams = useSearchParams();
+  const { country } = useCountry();
   const [stage, setStage] = useState<Stage>("form");
   const [values, setValues] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -103,7 +106,7 @@ export default function ToolForm({ tool, locale }: Props) {
       const res = await fetch("/api/preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ toolSlug: tool.slug, formData: values, imageBase64, imageMimeType }),
+        body: JSON.stringify({ toolSlug: tool.slug, formData: values, imageBase64, imageMimeType, countryCode: country?.code }),
       });
       const { previewText } = await res.json();
       setPreviewText(previewText);
@@ -120,7 +123,7 @@ export default function ToolForm({ tool, locale }: Props) {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ toolSlug: tool.slug, locale }),
+        body: JSON.stringify({ toolSlug: tool.slug, locale, countryCode: country?.code }),
       });
       const { url } = await res.json();
       window.location.href = url;
@@ -131,6 +134,14 @@ export default function ToolForm({ tool, locale }: Props) {
   }
 
   const priceChf = (tool.priceChfRappen / 100).toFixed(2);
+
+  // Preis in Landeswährung berechnen
+  const { currency: priceCurrency, amount: priceAmount } = country
+    ? getStripeAmount(tool.priceChfRappen, country.currency)
+    : { currency: "chf", amount: tool.priceChfRappen };
+  const priceDisplay = ZERO_DECIMAL_CURRENCIES.has(priceCurrency.toUpperCase())
+    ? `${priceAmount} ${priceCurrency.toUpperCase()}`
+    : `${(priceAmount / 100).toFixed(2)} ${priceCurrency.toUpperCase()}`;
 
   // Spinner-Komponente
   const Spinner = ({ label, sub }: { label: string; sub?: string }) => (
@@ -230,11 +241,11 @@ export default function ToolForm({ tool, locale }: Props) {
         <div className="mt-6 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
           <p className="mb-4 text-sm text-cream-muted">
             <strong className="font-medium text-cream">Dein persönliches Dokument ist bereit.</strong>{" "}
-            Bezahle einmalig CHF {priceChf} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.
+            Bezahle einmalig {priceDisplay} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <button onClick={proceedToCheckout} className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark">
-              Vollständiges Dokument — CHF {priceChf}
+              Vollständiges Dokument — {priceDisplay}
             </button>
             <button onClick={() => setStage("form")} className="text-sm text-cream-subtle underline hover:text-cream-muted">
               Angaben ändern
@@ -375,7 +386,7 @@ export default function ToolForm({ tool, locale }: Props) {
           Vorschau erstellen — kostenlos
         </button>
         <span className="text-xs text-cream-muted">
-          Danach CHF {priceChf} für das vollständige Dokument
+          Danach {priceDisplay} für das vollständige Dokument
         </span>
       </div>
     </form>

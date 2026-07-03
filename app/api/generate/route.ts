@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import Anthropic from "@anthropic-ai/sdk";
 import { getTool } from "@/lib/tools";
+import { getCountry, LANG_NAMES } from "@/lib/countries";
 
 export async function POST(req: NextRequest) {
   const { toolSlug, sessionId, formData } = await req.json();
@@ -24,16 +25,20 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Zahlung nicht bestätigt." }, { status: 402 });
   }
 
-  // 2. Bild aus formData extrahieren (wird nach Nutzung nicht gespeichert)
+  // 2. Ländercode aus Stripe-Metadata lesen
+  const countryCode = session.metadata?.countryCode;
+
+  // 3. Bild aus formData extrahieren (wird nach Nutzung nicht gespeichert)
   const imageBase64: string = formData.__imageBase64 ?? "";
   const imageMimeType: string = formData.__imageMimeType ?? "image/jpeg";
   const cleanFormData = { ...formData };
   delete cleanFormData.__imageBase64;
   delete cleanFormData.__imageMimeType;
 
-  // 3. Dokument generieren
+  // 4. Dokument generieren
   const anthropic = new Anthropic({ apiKey: anthropicKey });
   const textPrompt = buildUserPrompt(tool, cleanFormData);
+  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode);
 
   const userContent: Anthropic.MessageParam["content"] = [];
 
@@ -57,7 +62,7 @@ export async function POST(req: NextRequest) {
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
     max_tokens: 2000,
-    system: tool.systemPrompt,
+    system: systemPrompt,
     messages: [{ role: "user", content: userContent }],
   });
 
@@ -75,4 +80,17 @@ function buildUserPrompt(tool: NonNullable<ReturnType<typeof getTool>>, formData
     .map((f) => `${f.label}: ${formData[f.key]}`)
     .join("\n");
   return `Erstelle das Dokument basierend auf folgenden Angaben:\n\n${lines}`;
+}
+
+function buildSystemPrompt(basePrompt: string, countryCode?: string): string {
+  if (!countryCode) return basePrompt;
+  const country = getCountry(countryCode);
+  if (!country) return basePrompt;
+  const langName = LANG_NAMES[country.documentLang] ?? country.documentLang;
+  const countryNote =
+    `WICHTIG — LÄNDERSPEZIFISCHE ANPASSUNG:\n` +
+    `Dieses Dokument wird für einen Nutzer in ${country.name} (${country.flag}) erstellt.\n` +
+    `Passe alle Formulierungen, Konventionen und formalen Anforderungen an die in ${country.name} üblichen Standards an.\n` +
+    `Verfasse das gesamte Dokument auf ${langName}.\n`;
+  return `${countryNote}\n${basePrompt}`;
 }

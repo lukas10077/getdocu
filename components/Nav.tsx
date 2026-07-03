@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
+import CountryButton from "./CountryButton";
 import { Locale } from "@/i18n/config";
 
 export default function Nav({ locale, dict }: { locale: Locale; dict: any }) {
@@ -22,6 +23,7 @@ export default function Nav({ locale, dict }: { locale: Locale; dict: any }) {
         </nav>
 
         <div className="flex items-center gap-4">
+          <CountryButton />
           <LanguageSwitcher current={locale} />
           <Link
             href={`/${locale}#tools`}
