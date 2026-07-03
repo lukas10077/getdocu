@@ -44,7 +44,7 @@ export default async function ToolPage({
 
             {/* Trust pills */}
             <div className="mt-5 flex flex-wrap gap-2">
-              {["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek.", "💳 Stripe · TWINT"].map((t) => (
+              {["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek.", "💳 Sicher via Stripe"].map((t) => (
                 <span key={t} className="rounded-full border border-ink-700 px-3 py-1 text-xs text-cream-muted">
                   {t}
                 </span>

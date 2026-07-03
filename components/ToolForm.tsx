@@ -378,7 +378,11 @@ export default function ToolForm({ tool, locale }: Props) {
               Angaben ändern
             </button>
           </div>
-          <p className="mt-3 text-xs text-cream-subtle">💳 Kreditkarte · TWINT · Apple Pay · Google Pay</p>
+          <p className="mt-3 text-xs text-cream-subtle">
+            {country?.code === "CH"
+              ? "💳 Kreditkarte · TWINT · Apple Pay · Google Pay"
+              : "💳 Kreditkarte · Apple Pay · Google Pay"}
+          </p>
         </div>
       </div>
     );
