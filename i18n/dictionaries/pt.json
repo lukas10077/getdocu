@@ -69,9 +69,9 @@
       }
     },
     "categories": {
-      "wohnen": "🏠 Habitação",
-      "arbeit": "💼 Trabalho",
-      "alltag": "📋 Quotidiano"
+      "wohnen": "Habitação",
+      "arbeit": "Trabalho",
+      "alltag": "Quotidiano"
     }
   },
   "howItWorks": {

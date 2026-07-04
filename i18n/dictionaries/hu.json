@@ -69,9 +69,9 @@
       }
     },
     "categories": {
-      "wohnen": "🏠 Lakhatás",
-      "arbeit": "💼 Munka",
-      "alltag": "📋 Mindennapos"
+      "wohnen": "Lakhatás",
+      "arbeit": "Munka",
+      "alltag": "Mindennapos"
     }
   },
   "howItWorks": {

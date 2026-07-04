@@ -69,9 +69,9 @@
       }
     },
     "categories": {
-      "wohnen": "🏠 Logement",
-      "arbeit": "💼 Travail",
-      "alltag": "📋 Quotidien"
+      "wohnen": "Logement",
+      "arbeit": "Travail",
+      "alltag": "Quotidien"
     }
   },
   "howItWorks": {

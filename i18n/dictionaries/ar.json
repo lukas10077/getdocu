@@ -69,9 +69,9 @@
       }
     },
     "categories": {
-      "wohnen": "🏠 السكن",
-      "arbeit": "💼 العمل",
-      "alltag": "📋 يومي"
+      "wohnen": "السكن",
+      "arbeit": "العمل",
+      "alltag": "يومي"
     }
   },
   "howItWorks": {

@@ -69,9 +69,9 @@
       }
     },
     "categories": {
-      "wohnen": "🏠 Житло",
-      "arbeit": "💼 Робота",
-      "alltag": "📋 Повсякденне"
+      "wohnen": "Житло",
+      "arbeit": "Робота",
+      "alltag": "Повсякденне"
     }
   },
   "howItWorks": {
