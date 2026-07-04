@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "Annuncio al controllo abitanti",
         "description": "Lista di controllo e lettera di accompagnamento per la tua iscrizione."
-      },
-      "betreibung": {
-        "title": "Richiedere un estratto del registro esecuzioni",
-        "description": "Richiesta all'ufficio esecuzioni competente — per te o per un terzo. Corretta e completa."
       }
     }
   },

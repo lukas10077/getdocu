@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "Registo de residência",
         "description": "Lista de verificação e carta de apresentação para o teu registo municipal."
-      },
-      "betreibung": {
-        "title": "Solicitar extrato do registo de dívidas",
-        "description": "Pedido ao serviço de cobranças competente — para ti ou um terceiro. Correto e completo."
       }
     }
   },

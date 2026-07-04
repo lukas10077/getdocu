@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "İkametgah Kaydı",
         "description": "Belediyeye kayıt için kontrol listesi ve başvuru mektubu."
-      },
-      "betreibung": {
-        "title": "Borç Sicil Kaydı Talep Etme",
-        "description": "İlgili icra dairesine başvuru — kendiniz veya üçüncü bir kişi için. Doğru ve eksiksiz."
       }
     }
   },

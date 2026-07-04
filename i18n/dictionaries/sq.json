@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "Regjistrim vendbanimi",
         "description": "Listë kontrolli dhe letër shoqëruese për regjistrimin në komunë."
-      },
-      "betreibung": {
-        "title": "Porosit ekstrakt të regjistrit të borxheve",
-        "description": "Kërkesë drejtuar zyrës kompetente — për ju ose një palë të tretë. Saktë dhe e plotë."
       }
     }
   },

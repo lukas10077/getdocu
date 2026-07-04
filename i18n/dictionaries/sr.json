@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "Prijava boravišta",
         "description": "Kontrolna lista i propratno pismo za registraciju u opštini."
-      },
-      "betreibung": {
-        "title": "Naruči izvod iz registra dugova",
-        "description": "Zahtev nadležnom uredu za naplatu dugova — za sebe ili treće lice. Tačno i potpuno."
       }
     }
   },

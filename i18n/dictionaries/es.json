@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "Registro de residencia",
         "description": "Lista de verificación y carta de presentación para tu registro municipal."
-      },
-      "betreibung": {
-        "title": "Solicitar extracto del registro de deudas",
-        "description": "Solicitud a la oficina de cobros correspondiente — para ti o un tercero. Correcta y completa."
       }
     }
   },

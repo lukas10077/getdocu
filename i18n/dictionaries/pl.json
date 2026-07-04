@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "Rejestracja zameldowania",
         "description": "Lista kontrolna i pismo przewodnie do meldunku w urzędzie."
-      },
-      "betreibung": {
-        "title": "Zamów wyciąg z rejestru zadłużeń",
-        "description": "Wniosek do właściwego urzędu komorniczego — dla siebie lub osoby trzeciej. Poprawny i kompletny."
       }
     }
   },

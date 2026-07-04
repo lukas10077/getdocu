@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "Lakcím-bejelentés",
         "description": "Ellenőrzőlista és kísérőlevél az önkormányzatnál való regisztrációhoz."
-      },
-      "betreibung": {
-        "title": "Adósnyilvántartó kivonat rendelése",
-        "description": "Kérelem az illetékes végrehajtási hivatalhoz — önmaga vagy harmadik fél számára."
       }
     }
   },

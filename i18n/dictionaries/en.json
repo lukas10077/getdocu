@@ -66,10 +66,6 @@
       "einwohnerkontrolle": {
         "title": "Resident Registration",
         "description": "Checklist and cover letter for your registration at the municipality."
-      },
-      "betreibung": {
-        "title": "Order Debt Collection Register Extract",
-        "description": "Request to the relevant debt collection office — for yourself or a third party. Correct and complete."
       }
     }
   },

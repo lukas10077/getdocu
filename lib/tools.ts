@@ -11,8 +11,7 @@ export type ToolSlug =
   | "lebenslauf"
   | "krankenkasse"
   | "lohnverhandlung"
-  | "einwohnerkontrolle"
-  | "betreibung";
+  | "einwohnerkontrolle";
 
 export interface FieldDef {
   key: string;
@@ -352,38 +351,6 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     ],
   },
 
-  betreibung: {
-    slug: "betreibung",
-    priceChfRappen: 300,
-    documentTitleDe: "Betreibungsregisterauszug bestellen",
-    descriptionDe:
-      "Gesuch ans zuständige Betreibungsamt — für dich oder eine Drittperson. Korrekt und vollständig.",
-    systemPrompt:
-      "Du bist Experte für Schweizer Verwaltungsabläufe. Erstelle ein formelles Gesuch an das " +
-      "zuständige Betreibungsamt auf Deutsch. Struktur: Absender (Gesuchsteller), Empfänger " +
-      "(Betreibungsamt der angegebenen Gemeinde), Datum, Betreff ('Gesuch um Betreibungsregisterauszug'), " +
-      "Hauptteil mit klarer Angabe: für wen der Auszug bestellt wird (Eigenauskunft oder Drittperson " +
-      "mit Name/Adresse/Geburtsdatum), Verwendungszweck, Bitte um Zustellung per Post oder Abholung, " +
-      "Abschluss mit Kontaktangaben. Ton: sachlich, formell, korrekt. " +
-      "Hinweis am Ende: Der Auszug kann auch online unter betreibungsaemter.ch bestellt werden.",
-    fields: [
-      { key: "firstName",       label: "Vorname",                          type: "text",   required: true,  section: "Gesuchsteller" },
-      { key: "lastName",        label: "Nachname",                         type: "text",   required: true  },
-      { key: "currentAddress",  label: "Deine Adresse",                    type: "text",   required: true  },
-      { key: "birthDate",       label: "Geburtsdatum",                     type: "text",   required: true,  placeholder: "z.B. 15.03.1990" },
-      { key: "municipality",    label: "Gemeinde / Betreibungsamt",        type: "text",   required: true,  placeholder: "z.B. Betreibungsamt Zürich",  section: "Auszug" },
-      { key: "forWhom",         label: "Auszug für",                       type: "select", required: true,
-        options: ["Mich selbst (Eigenauskunft)", "Eine Drittperson"] },
-      { key: "subjectName",     label: "Name der Drittperson (falls zutreffend)", type: "text",   required: false },
-      { key: "subjectAddress",  label: "Adresse der Drittperson",          type: "text",   required: false },
-      { key: "subjectBirthDate",label: "Geburtsdatum der Drittperson",     type: "text",   required: false },
-      { key: "purpose",         label: "Verwendungszweck",                 type: "select", required: true,
-        options: ["Wohnungsbewerbung", "Bewerbung für eine Stelle", "Kreditantrag", "Behörde / Amt", "Anderes"],
-        section: "Details" },
-      { key: "delivery",        label: "Zustellung",                       type: "select", required: true,
-        options: ["Per Post", "Persönliche Abholung"] },
-    ],
-  },
 };
 
 export function getTool(slug: string): ToolDefinition | undefined {
