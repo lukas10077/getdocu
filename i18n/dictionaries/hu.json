@@ -40,11 +40,11 @@
         "description": "Bérleti szerződés, munkaszerződés, biztosítás, előfizetés — helyesen és határidőre."
       },
       "arbeitszeugnis": {
-        "title": "Munkaügyi referencia (javított)",
+        "title": "Munkaügyi referencia javítása",
         "description": "A referenciája közepes? Professzionálisan átírjuk."
       },
       "maengelruege": {
-        "title": "Lakáskár bejelentése a bérbeadónak",
+        "title": "Beköltözés utáni károk bejelentése",
         "description": "Károk bejelentése a lakásban — írásban, határidőre, helyes cím alatt."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Egészségbiztosítási levél",
         "description": "Díjcsökkentés, ellátási kérelmek, lemondás — helyesen megfogalmazva."
       },
-      "spesen": {
-        "title": "Költségjelentés",
-        "description": "Professzionális költségjelentés a munkáltatónak — jól strukturálva."
-      },
       "lohnverhandlung": {
         "title": "Bértárgyalás",
         "description": "Érvek és levél a béremeléshez — professzionálisan megfogalmazva."
@@ -72,8 +68,8 @@
         "description": "Ellenőrzőlista és kísérőlevél az önkormányzatnál való regisztrációhoz."
       },
       "betreibung": {
-        "title": "Adósnyilvántartó kivonata",
-        "description": "Adósnyilvántartó kivonatot kapott vagy be kell nyújtania? Elmagyarázzuk."
+        "title": "Adósnyilvántartó kivonat rendelése",
+        "description": "Kérelem az illetékes végrehajtási hivatalhoz — önmaga vagy harmadik fél számára."
       }
     }
   },

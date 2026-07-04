@@ -40,11 +40,11 @@
         "description": "Lease, employment contract, insurance, subscription — correctly and on time."
       },
       "arbeitszeugnis": {
-        "title": "Employment Reference (improved)",
+        "title": "Improve Employment Reference",
         "description": "Your reference sounds mediocre? We rewrite it professionally."
       },
       "maengelruege": {
-        "title": "Report Apartment Damage to Landlord",
+        "title": "Report Apartment Damage After Move-In",
         "description": "Report damage in your flat — in writing, on time, correctly addressed."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Health Insurance Letter",
         "description": "Premium reduction, benefit requests, cancellation — correctly worded."
       },
-      "spesen": {
-        "title": "Expense Report",
-        "description": "Professional expense report for your employer — clearly structured."
-      },
       "lohnverhandlung": {
         "title": "Salary Negotiation",
         "description": "Arguments and a letter for your raise — professionally formulated."
@@ -72,8 +68,8 @@
         "description": "Checklist and cover letter for your registration at the municipality."
       },
       "betreibung": {
-        "title": "Debt Collection Register",
-        "description": "Received or need to submit a debt collection extract? We explain it."
+        "title": "Order Debt Collection Register Extract",
+        "description": "Request to the relevant debt collection office — for yourself or a third party. Correct and complete."
       }
     }
   },

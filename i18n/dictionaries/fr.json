@@ -40,11 +40,11 @@
         "description": "Bail, contrat de travail, assurance, abonnement — correctement et dans les délais."
       },
       "arbeitszeugnis": {
-        "title": "Certificat de travail (amélioré)",
+        "title": "Améliorer le certificat de travail",
         "description": "Votre certificat semble médiocre ? Nous le réécrivons professionnellement."
       },
       "maengelruege": {
-        "title": "Signaler un dommage au propriétaire",
+        "title": "Signaler un dommage après l'emménagement",
         "description": "Signaler des dommages dans l'appartement — par écrit, dans les délais."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Lettre à l'assurance maladie",
         "description": "Réduction de prime, demandes de prestations, résiliation — correctement rédigé."
       },
-      "spesen": {
-        "title": "Note de frais",
-        "description": "Note de frais professionnelle pour votre employeur — clairement structurée."
-      },
       "lohnverhandlung": {
         "title": "Négociation salariale",
         "description": "Arguments et lettre pour votre augmentation — formulés professionnellement."
@@ -72,8 +68,8 @@
         "description": "Liste de contrôle et lettre d'accompagnement pour votre inscription."
       },
       "betreibung": {
-        "title": "Extrait du registre des poursuites",
-        "description": "Reçu ou devez remettre un extrait ? Nous vous l'expliquons."
+        "title": "Commander un extrait du registre des poursuites",
+        "description": "Demande à l'office des poursuites compétent — pour vous ou un tiers. Correcte et complète."
       }
     }
   },

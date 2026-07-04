@@ -40,11 +40,11 @@
         "description": "Contrato de alquiler, laboral, seguro, suscripción — correcta y a tiempo."
       },
       "arbeitszeugnis": {
-        "title": "Referencia laboral (mejorada)",
+        "title": "Mejorar la referencia laboral",
         "description": "¿Tu referencia suena mediocre? La reescribimos profesionalmente."
       },
       "maengelruege": {
-        "title": "Reportar daños en el piso al arrendador",
+        "title": "Reportar daños tras la mudanza",
         "description": "Informar daños en el piso — por escrito, a tiempo, correctamente dirigido."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Carta al seguro médico",
         "description": "Reducción de prima, solicitudes de prestaciones, cancelación — correctamente redactado."
       },
-      "spesen": {
-        "title": "Nota de gastos",
-        "description": "Nota de gastos profesional para tu empleador — claramente estructurada."
-      },
       "lohnverhandlung": {
         "title": "Negociación salarial",
         "description": "Argumentos y carta para tu aumento — formulados profesionalmente."
@@ -72,8 +68,8 @@
         "description": "Lista de verificación y carta de presentación para tu registro municipal."
       },
       "betreibung": {
-        "title": "Extracto de registro de deudas",
-        "description": "¿Recibiste o debes presentar un extracto? Te lo explicamos."
+        "title": "Solicitar extracto del registro de deudas",
+        "description": "Solicitud a la oficina de cobros correspondiente — para ti o un tercero. Correcta y completa."
       }
     }
   },

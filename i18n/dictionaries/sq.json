@@ -40,11 +40,11 @@
         "description": "Kontratë qiraje, punësimi, sigurim, abonament — saktë dhe në kohë."
       },
       "arbeitszeugnis": {
-        "title": "Referencë pune (e përmirësuar)",
+        "title": "Përmirëso referencën e punës",
         "description": "Referenca jote tingëllon mediokre? E rishkruajmë profesionalisht."
       },
       "maengelruege": {
-        "title": "Raportoni dëmin në banesë te pronari",
+        "title": "Raportoni dëmet pas shpërnguljes",
         "description": "Raportoni dëmet në apartament — me shkrim, në kohë, adresuar saktë."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Letër për sigurimet shëndetësore",
         "description": "Ulje premi, kërkesa për përfitime, anulim — e formuluar saktë."
       },
-      "spesen": {
-        "title": "Raport shpenzimesh",
-        "description": "Raport shpenzimesh profesional për punëdhënësin — i strukturuar qartë."
-      },
       "lohnverhandlung": {
         "title": "Negociatë pagash",
         "description": "Argumente dhe letër për rritje page — të formuluara profesionalisht."
@@ -72,8 +68,8 @@
         "description": "Listë kontrolli dhe letër shoqëruese për regjistrimin në komunë."
       },
       "betreibung": {
-        "title": "Regjistri i borxheve",
-        "description": "Morët ose duhet të paraqisni një ekstrakt? Ju shpjegojmë."
+        "title": "Porosit ekstrakt të regjistrit të borxheve",
+        "description": "Kërkesë drejtuar zyrës kompetente — për ju ose një palë të tretë. Saktë dhe e plotë."
       }
     }
   },

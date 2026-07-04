@@ -40,11 +40,11 @@
         "description": "Arrendamento, trabalho, seguro, subscrição — correto e dentro do prazo."
       },
       "arbeitszeugnis": {
-        "title": "Referência profissional (melhorada)",
+        "title": "Melhorar a referência profissional",
         "description": "A tua referência soa medíocre? Reescrevemo-la profissionalmente."
       },
       "maengelruege": {
-        "title": "Comunicar danos no apartamento ao senhorio",
+        "title": "Comunicar danos após a mudança",
         "description": "Comunicar danos no apartamento — por escrito, dentro do prazo, corretamente endereçado."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Carta ao seguro de saúde",
         "description": "Redução de prémio, pedidos de prestações, cancelamento — corretamente redigido."
       },
-      "spesen": {
-        "title": "Nota de despesas",
-        "description": "Nota de despesas profissional para o teu empregador — claramente estruturada."
-      },
       "lohnverhandlung": {
         "title": "Negociação salarial",
         "description": "Argumentos e carta para o teu aumento — formulados profissionalmente."
@@ -72,8 +68,8 @@
         "description": "Lista de verificação e carta de apresentação para o teu registo municipal."
       },
       "betreibung": {
-        "title": "Extrato do registo de dívidas",
-        "description": "Recebeste ou tens de apresentar um extrato? Explicamos-te."
+        "title": "Solicitar extrato do registo de dívidas",
+        "description": "Pedido ao serviço de cobranças competente — para ti ou um terceiro. Correto e completo."
       }
     }
   },

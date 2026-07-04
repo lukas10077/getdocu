@@ -40,11 +40,11 @@
         "description": "Kira sözleşmesi, iş sözleşmesi, sigorta, abonelik — doğru ve zamanında."
       },
       "arbeitszeugnis": {
-        "title": "İş Referansı (iyileştirilmiş)",
+        "title": "İş Referansını İyileştirme",
         "description": "Referansınız vasat mı geliyor? Onu profesyonelce yeniden yazıyoruz."
       },
       "maengelruege": {
-        "title": "Dairede Hasarı Ev Sahibine Bildirme",
+        "title": "Taşınma Sonrası Hasar Bildirimi",
         "description": "Dairenizde hasar bildirin — yazılı, zamanında, doğru adreslenmiş."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Sağlık Sigortası Mektubu",
         "description": "Prim indirimi, yardım talepleri, iptal — doğru ifade edilmiş."
       },
-      "spesen": {
-        "title": "Harcama Raporu",
-        "description": "İşvereniniz için profesyonel harcama raporu — net şekilde yapılandırılmış."
-      },
       "lohnverhandlung": {
         "title": "Maaş Müzakeresi",
         "description": "Zam için argümanlar ve mektup — profesyonelce formüle edilmiş."
@@ -72,8 +68,8 @@
         "description": "Belediyeye kayıt için kontrol listesi ve başvuru mektubu."
       },
       "betreibung": {
-        "title": "Borç Sicil Belgesi",
-        "description": "Borç sicil belgesi aldınız veya sunmanız mı gerekiyor? Açıklıyoruz."
+        "title": "Borç Sicil Kaydı Talep Etme",
+        "description": "İlgili icra dairesine başvuru — kendiniz veya üçüncü bir kişi için. Doğru ve eksiksiz."
       }
     }
   },

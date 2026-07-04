@@ -40,11 +40,11 @@
         "description": "Contratto d'affitto, lavoro, assicurazione, abbonamento — correttamente e nei tempi."
       },
       "arbeitszeugnis": {
-        "title": "Referenza lavorativa (migliorata)",
+        "title": "Migliorare la referenza lavorativa",
         "description": "Il tuo certificato suona mediocre? Lo riscriviamo professionalmente."
       },
       "maengelruege": {
-        "title": "Segnalare un danno all'appartamento al proprietario",
+        "title": "Segnalare danni dopo il trasloco",
         "description": "Segnalare danni nell'appartamento — per iscritto, nei tempi, correttamente indirizzato."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Lettera all'assicurazione malattia",
         "description": "Riduzione premio, richieste prestazioni, disdetta — correttamente formulato."
       },
-      "spesen": {
-        "title": "Nota spese",
-        "description": "Nota spese professionale per il tuo datore di lavoro — chiaramente strutturata."
-      },
       "lohnverhandlung": {
         "title": "Negoziazione salariale",
         "description": "Argomenti e lettera per il tuo aumento — formulati professionalmente."
@@ -72,8 +68,8 @@
         "description": "Lista di controllo e lettera di accompagnamento per la tua iscrizione."
       },
       "betreibung": {
-        "title": "Estratto del registro esecuzioni",
-        "description": "Ricevuto o devi presentare un estratto? Te lo spieghiamo."
+        "title": "Richiedere un estratto del registro esecuzioni",
+        "description": "Richiesta all'ufficio esecuzioni competente — per te o per un terzo. Corretta e completa."
       }
     }
   },

@@ -40,11 +40,11 @@
         "description": "Mietvertrag, Arbeitsvertrag, Versicherung, Abonnement — korrekt und fristgerecht."
       },
       "arbeitszeugnis": {
-        "title": "Arbeitszeugnis (verbessert)",
+        "title": "Arbeitszeugnis verbessern",
         "description": "Dein Zeugnis klingt mittelmässig? Wir schreiben es professionell um."
       },
       "maengelruege": {
-        "title": "Wohnungsschaden beim Vermieter melden",
+        "title": "Wohnungsschaden nach Einzug melden",
         "description": "Schäden in der Wohnung melden — schriftlich, fristwahrend, korrekt adressiert."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Krankenkassen-Brief",
         "description": "Prämienreduktion, Leistungsanfragen, Kündigung — korrekt formuliert."
       },
-      "spesen": {
-        "title": "Spesenabrechnung",
-        "description": "Professionelle Spesenabrechnung für deinen Arbeitgeber — klar strukturiert."
-      },
       "lohnverhandlung": {
         "title": "Lohnverhandlung",
         "description": "Argumente und einen Brief für deine Gehaltserhöhung — professionell formuliert."
@@ -72,8 +68,8 @@
         "description": "Checkliste und Begleitschreiben für deine Anmeldung in der Gemeinde."
       },
       "betreibung": {
-        "title": "Betreibungsregisterauszug",
-        "description": "Betreibungsauszug erhalten oder vorlegen? Wir erklären ihn dir."
+        "title": "Betreibungsregisterauszug bestellen",
+        "description": "Gesuch ans zuständige Betreibungsamt — für dich oder eine Drittperson. Korrekt und vollständig."
       }
     }
   },

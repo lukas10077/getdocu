@@ -40,11 +40,11 @@
         "description": "Ugovor o najmu, radni ugovor, osiguranje, pretplata — tačno i na vreme."
       },
       "arbeitszeugnis": {
-        "title": "Radna preporuka (poboljšana)",
+        "title": "Poboljšanje radne preporuke",
         "description": "Vaša preporuka zvuči osrednje? Prepišemo je profesionalno."
       },
       "maengelruege": {
-        "title": "Prijava štete u stanu stanodavcu",
+        "title": "Prijava štete nakon useljenja",
         "description": "Prijavite štete u stanu — pismeno, na vreme, na tačnu adresu."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Pismo zdravstvenom osiguravatelju",
         "description": "Smanjenje premije, zahtevi za naknadu, otkaz — pravilno formulisano."
       },
-      "spesen": {
-        "title": "Izveštaj o troškovima",
-        "description": "Profesionalni izveštaj o troškovima za poslodavca — jasno strukturisan."
-      },
       "lohnverhandlung": {
         "title": "Pregovori o plati",
         "description": "Argumenti i pismo za povećanje plate — profesionalno formulisano."
@@ -72,8 +68,8 @@
         "description": "Kontrolna lista i propratno pismo za registraciju u opštini."
       },
       "betreibung": {
-        "title": "Registar dugova",
-        "description": "Dobili ste ili treba da podnesete izvod? Objašnjavamo."
+        "title": "Naruči izvod iz registra dugova",
+        "description": "Zahtev nadležnom uredu za naplatu dugova — za sebe ili treće lice. Tačno i potpuno."
       }
     }
   },

@@ -10,7 +10,6 @@ export type ToolSlug =
   | "reklamation"
   | "lebenslauf"
   | "krankenkasse"
-  | "spesen"
   | "lohnverhandlung"
   | "einwohnerkontrolle"
   | "betreibung";
@@ -156,7 +155,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     supportsDocumentUpload: true,
     uploadLabelDe: "Foto des Zeugnisses hochladen (optional)",
     uploadHintDe: "Hast du dein Zeugnis auf Papier? Mach ein Foto — wir lesen den Text automatisch. Du kannst den Text unten auch manuell einfügen.",
-    documentTitleDe: "Arbeitszeugnis (verbessert)",
+    documentTitleDe: "Arbeitszeugnis verbessern",
     descriptionDe:
       "Dein Zeugnis klingt mittelmässig? Wir schreiben es professionell um — nach Schweizer Standard.",
     systemPrompt:
@@ -292,30 +291,6 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     ],
   },
 
-  spesen: {
-    slug: "spesen",
-    priceChfRappen: 300,
-    documentTitleDe: "Spesenabrechnung",
-    descriptionDe:
-      "Professionelle Spesenabrechnung für deinen Arbeitgeber — klar strukturiert.",
-    systemPrompt:
-      "Du bist Experte für Arbeitsrecht und Administration in der Schweiz. Erstelle eine formelle " +
-      "Spesenabrechnung als Brief/Memo auf Deutsch. Struktur: Absender, Empfänger, Datum, Betreff " +
-      "(Spesenabrechnung + Zeitraum), tabellarisch aufgelistete Ausgaben (Datum | Beschreibung | " +
-      "Betrag CHF), Gesamtsumme, Bitte um Rückerstattung auf angegebene Bankverbindung, Abschluss. " +
-      "Hinweis: Belege sind beigefügt (ohne konkrete Anhänge zu erfinden).",
-    fields: [
-      { key: "firstName",    label: "Vorname",                       type: "text",     required: true,  section: "Deine Angaben" },
-      { key: "lastName",     label: "Nachname",                      type: "text",     required: true  },
-      { key: "employer",     label: "Name des Arbeitgebers",         type: "text",     required: true  },
-      { key: "department",   label: "Abteilung (optional)",          type: "text",     required: false },
-      { key: "period",       label: "Abrechnungsperiode",            type: "text",     required: true,  placeholder: "z.B. März 2025",  section: "Spesen" },
-      { key: "expenses",     label: "Ausgaben (Datum, Beschreibung, Betrag)", type: "textarea", required: true,
-        placeholder: "01.03. Zugticket Zürich–Bern CHF 48.00\n03.03. Mittagessen Kundentermin CHF 35.50\n…" },
-      { key: "iban",         label: "IBAN für Rückerstattung",       type: "text",     required: false, placeholder: "CH56 0483 5012 3456 7800 9", section: "Bankverbindung" },
-    ],
-  },
-
   lohnverhandlung: {
     slug: "lohnverhandlung",
     priceChfRappen: 500,
@@ -379,29 +354,34 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   betreibung: {
     slug: "betreibung",
-    priceChfRappen: 400,
-    documentTitleDe: "Betreibungsregisterauszug — Erklärung",
+    priceChfRappen: 300,
+    documentTitleDe: "Betreibungsregisterauszug bestellen",
     descriptionDe:
-      "Du hast einen Betreibungsauszug erhalten oder musst einen vorlegen? Wir erklären ihn dir.",
+      "Gesuch ans zuständige Betreibungsamt — für dich oder eine Drittperson. Korrekt und vollständig.",
     systemPrompt:
-      "Du bist Experte für Schweizer Schuldbetreibungsrecht (SchKG). " +
-      "Erstelle zwei Teile auf Deutsch: " +
-      "1) Erkläre den geschilderten Betreibungsauszug oder die Situation klar und verständlich " +
-      "(Was bedeutet was? Was sind die nächsten Schritte?). " +
-      "2) Schreibe — falls gewünscht — einen Brief an den Betreibungsamt oder den Gläubiger " +
-      "(z.B. Einspruch gegen eine Betreibung, Zahlungsversprechen, Anfrage zur Tilgung). " +
-      "Wichtiger Hinweis am Ende: Für konkrete rechtliche Schritte empfehlen wir, eine " +
-      "Rechtsberatungsstelle aufzusuchen (z.B. Mieterverband, Pro Juventute, Caritas).",
+      "Du bist Experte für Schweizer Verwaltungsabläufe. Erstelle ein formelles Gesuch an das " +
+      "zuständige Betreibungsamt auf Deutsch. Struktur: Absender (Gesuchsteller), Empfänger " +
+      "(Betreibungsamt der angegebenen Gemeinde), Datum, Betreff ('Gesuch um Betreibungsregisterauszug'), " +
+      "Hauptteil mit klarer Angabe: für wen der Auszug bestellt wird (Eigenauskunft oder Drittperson " +
+      "mit Name/Adresse/Geburtsdatum), Verwendungszweck, Bitte um Zustellung per Post oder Abholung, " +
+      "Abschluss mit Kontaktangaben. Ton: sachlich, formell, korrekt. " +
+      "Hinweis am Ende: Der Auszug kann auch online unter betreibungsaemter.ch bestellt werden.",
     fields: [
-      { key: "firstName",      label: "Vorname",                            type: "text",     required: true,  section: "Deine Angaben" },
-      { key: "lastName",       label: "Nachname",                           type: "text",     required: true  },
-      { key: "situation",      label: "Beschreibe deine Situation",         type: "textarea", required: true,
-        placeholder: "z.B. Ich habe eine Betreibung erhalten über CHF 1 200 von der Firma X. Ich bin nicht einverstanden, weil …",
-        section: "Situation" },
-      { key: "desiredAction",  label: "Was möchtest du als Nächstes tun?",  type: "select",   required: true,
-        options: ["Situation verstehen / erklären lassen", "Einspruch (Rechtsvorschlag) einlegen", "Zahlungsplan vorschlagen", "Anfrage an Gläubiger schreiben", "Anderes"] },
-      { key: "additionalInfo", label: "Weitere Angaben (optional)",         type: "textarea", required: false,
-        placeholder: "z.B. Betrag, Gläubiger, Datum der Betreibung, …" },
+      { key: "firstName",       label: "Vorname",                          type: "text",   required: true,  section: "Gesuchsteller" },
+      { key: "lastName",        label: "Nachname",                         type: "text",   required: true  },
+      { key: "currentAddress",  label: "Deine Adresse",                    type: "text",   required: true  },
+      { key: "birthDate",       label: "Geburtsdatum",                     type: "text",   required: true,  placeholder: "z.B. 15.03.1990" },
+      { key: "municipality",    label: "Gemeinde / Betreibungsamt",        type: "text",   required: true,  placeholder: "z.B. Betreibungsamt Zürich",  section: "Auszug" },
+      { key: "forWhom",         label: "Auszug für",                       type: "select", required: true,
+        options: ["Mich selbst (Eigenauskunft)", "Eine Drittperson"] },
+      { key: "subjectName",     label: "Name der Drittperson (falls zutreffend)", type: "text",   required: false },
+      { key: "subjectAddress",  label: "Adresse der Drittperson",          type: "text",   required: false },
+      { key: "subjectBirthDate",label: "Geburtsdatum der Drittperson",     type: "text",   required: false },
+      { key: "purpose",         label: "Verwendungszweck",                 type: "select", required: true,
+        options: ["Wohnungsbewerbung", "Bewerbung für eine Stelle", "Kreditantrag", "Behörde / Amt", "Anderes"],
+        section: "Details" },
+      { key: "delivery",        label: "Zustellung",                       type: "select", required: true,
+        options: ["Per Post", "Persönliche Abholung"] },
     ],
   },
 };

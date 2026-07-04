@@ -40,11 +40,11 @@
         "description": "Najem, umowa o pracę, ubezpieczenie, abonament — poprawnie i terminowo."
       },
       "arbeitszeugnis": {
-        "title": "Referencje (ulepszone)",
+        "title": "Popraw referencje zawodowe",
         "description": "Twoje referencje brzmią przeciętnie? Przepiszemy je profesjonalnie."
       },
       "maengelruege": {
-        "title": "Zgłoszenie szkody w mieszkaniu do właściciela",
+        "title": "Zgłoś szkody po wprowadzeniu się",
         "description": "Zgłoś szkody w mieszkaniu — pisemnie, terminowo, pod właściwy adres."
       },
       "reklamation": {
@@ -59,10 +59,6 @@
         "title": "Pismo do ubezpieczyciela",
         "description": "Obniżenie składki, wnioski o świadczenia, rezygnacja — poprawnie sformułowane."
       },
-      "spesen": {
-        "title": "Rozliczenie wydatków",
-        "description": "Profesjonalne rozliczenie wydatków dla pracodawcy — wyraźnie ustrukturyzowane."
-      },
       "lohnverhandlung": {
         "title": "Negocjacja wynagrodzenia",
         "description": "Argumenty i pismo dotyczące podwyżki — sformułowane profesjonalnie."
@@ -72,8 +68,8 @@
         "description": "Lista kontrolna i pismo przewodnie do meldunku w urzędzie."
       },
       "betreibung": {
-        "title": "Rejestr zadłużeń",
-        "description": "Otrzymałeś lub musisz złożyć wyciąg z rejestru? Wyjaśniamy."
+        "title": "Zamów wyciąg z rejestru zadłużeń",
+        "description": "Wniosek do właściwego urzędu komorniczego — dla siebie lub osoby trzeciej. Poprawny i kompletny."
       }
     }
   },
