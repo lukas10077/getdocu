@@ -87,7 +87,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   jobbewerbung: {
     slug: "jobbewerbung",
     priceChfRappen: 500,
-    documentTitleDe: "Motivationsschreiben",
+    documentTitleDe: "Arbeitsbewerbung",
     descriptionDe:
       "Zeig, warum du die richtige Person bist. Klar, überzeugend, professionell.",
     systemPrompt:
