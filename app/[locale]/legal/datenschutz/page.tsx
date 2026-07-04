@@ -35,8 +35,8 @@ export default async function Datenschutz({ params }: { params: { locale: Locale
               <p>
                 GetDocu, c/o F2BII E-Commerce #942, Hintergoldingerstrasse 30, 8638 Goldingen,
                 Schweiz.{" "}
-                <a href="mailto:lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
-                  lukaslast@gmail.com
+                <a href="mailto:support.lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
+                  support.lukaslast@gmail.com
                 </a>
               </p>
             </div>
@@ -123,8 +123,8 @@ export default async function Datenschutz({ params }: { params: { locale: Locale
                 Auskunfts-, Berichtigungs- und Löschansprüche faktisch bereits erfüllt — es
                 existieren nach Abschluss deiner Bestellung keine gespeicherten persönlichen Daten
                 mehr. Für Fragen wende dich an{" "}
-                <a href="mailto:lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
-                  lukaslast@gmail.com
+                <a href="mailto:support.lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
+                  support.lukaslast@gmail.com
                 </a>.
               </p>
             </div>

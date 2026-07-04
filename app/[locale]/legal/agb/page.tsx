@@ -98,8 +98,8 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
               <p>
                 Bei technisch fehlgeschlagener Dokumentenerstellung trotz erfolgter Zahlung
                 erstatten wir den bezahlten Betrag vollständig. Bitte kontaktiere uns dafür unter{" "}
-                <a href="mailto:lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
-                  lukaslast@gmail.com
+                <a href="mailto:support.lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
+                  support.lukaslast@gmail.com
                 </a>{" "}
                 mit Angabe des Fehlers und der Transaktions-ID.
               </p>

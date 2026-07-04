@@ -45,10 +45,10 @@ export default async function Impressum({ params }: { params: { locale: Locale }
               <p>
                 E-Mail:{" "}
                 <a
-                  href="mailto:lukaslast@gmail.com"
+                  href="mailto:support.lukaslast@gmail.com"
                   className="text-swiss-gold underline hover:opacity-80"
                 >
-                  lukaslast@gmail.com
+                  support.lukaslast@gmail.com
                 </a>
               </p>
             </div>
