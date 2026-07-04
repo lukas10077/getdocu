@@ -28,16 +28,16 @@
     ],
     "items": {
       "mietbewerbung": {
-        "title": "Prijava za iznajmljivanje stana",
-        "description": "Ubedite stanodavca od prve. Profesionalno, lično, prema lokalnim standardima."
+        "title": "Prijava za iznajmljivanje",
+        "description": "Ubedite stanodavca od prve. Profesionalno, lično."
       },
       "jobbewerbung": {
         "title": "Prijava za posao",
         "description": "Pokažite zašto ste prava osoba. Jasno, uverljivo, profesionalno."
       },
       "kuendigung": {
-        "title": "Pismo o raskidu ugovora",
-        "description": "Ugovor o najmu, radni ugovor, osiguranje, pretplata — tačno i na vreme."
+        "title": "Otkaz ugovora",
+        "description": "Osiguranje, pretplata, članstvo — otkazati tačno i na vreme."
       },
       "arbeitszeugnis": {
         "title": "Poboljšanje radne preporuke",
@@ -59,13 +59,13 @@
         "title": "Pismo zdravstvenom osiguravatelju",
         "description": "Smanjenje premije, zahtevi za naknadu, otkaz — pravilno formulisano."
       },
-      "lohnverhandlung": {
-        "title": "Pregovori o plati",
-        "description": "Argumenti i pismo za povećanje plate — profesionalno formulisano."
+      "kuendigung-wohnung": {
+        "title": "Otkaz ugovora o najmu",
+        "description": "Pravilno otkazati ugovor o najmu — sa rokom i zahtevom za potvrdu."
       },
-      "einwohnerkontrolle": {
-        "title": "Prijava boravišta",
-        "description": "Kontrolna lista i propratno pismo za registraciju u opštini."
+      "kuendigung-arbeit": {
+        "title": "Otkaz na poslu",
+        "description": "Dati otkaz profesionalno — jasno, ljubazno i na vreme."
       }
     },
     "categories": {

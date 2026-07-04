@@ -32,12 +32,12 @@
         "description": "Convainquez le propriétaire du premier coup. Professionnel, personnalisé."
       },
       "jobbewerbung": {
-        "title": "Candidature à un emploi",
+        "title": "Candidature d'emploi",
         "description": "Montrez pourquoi vous êtes la bonne personne. Claire, convaincante, professionnelle."
       },
       "kuendigung": {
-        "title": "Lettre de résiliation",
-        "description": "Bail, contrat de travail, assurance, abonnement — correctement et dans les délais."
+        "title": "Résiliation",
+        "description": "Assurance, abonnement, adhésion — résilier correctement et dans les délais."
       },
       "arbeitszeugnis": {
         "title": "Améliorer le certificat de travail",
@@ -59,13 +59,13 @@
         "title": "Lettre à l'assurance maladie",
         "description": "Réduction de prime, demandes de prestations, résiliation — correctement rédigé."
       },
-      "lohnverhandlung": {
-        "title": "Négociation salariale",
-        "description": "Arguments et lettre pour votre augmentation — formulés professionnellement."
+      "kuendigung-wohnung": {
+        "title": "Résiliation de bail",
+        "description": "Résilier correctement votre bail — avec délai, adresse et demande de confirmation."
       },
-      "einwohnerkontrolle": {
-        "title": "Annonce au contrôle des habitants",
-        "description": "Liste de contrôle et lettre d'accompagnement pour votre inscription."
+      "kuendigung-arbeit": {
+        "title": "Démission",
+        "description": "Démissionner professionnellement — clairement, poliment et dans les délais."
       }
     },
     "categories": {

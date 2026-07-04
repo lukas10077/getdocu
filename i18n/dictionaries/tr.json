@@ -29,15 +29,15 @@
     "items": {
       "mietbewerbung": {
         "title": "Kiralık Daire Başvurusu",
-        "description": "Ev sahibini ilk seferinde ikna edin. Profesyonel, kişisel, yerel standartlara uygun."
+        "description": "Ev sahibini ilk seferinde ikna edin. Profesyonel, kişisel."
       },
       "jobbewerbung": {
         "title": "İş Başvurusu",
         "description": "Neden doğru kişi olduğunuzu gösterin. Net, ikna edici, profesyonel."
       },
       "kuendigung": {
-        "title": "Fesih Mektubu",
-        "description": "Kira sözleşmesi, iş sözleşmesi, sigorta, abonelik — doğru ve zamanında."
+        "title": "Fesih",
+        "description": "Sigorta, abonelik, üyelik — doğru ve zamanında feshetmek."
       },
       "arbeitszeugnis": {
         "title": "İş Referansını İyileştirme",
@@ -59,13 +59,13 @@
         "title": "Sağlık Sigortası Mektubu",
         "description": "Prim indirimi, yardım talepleri, iptal — doğru ifade edilmiş."
       },
-      "lohnverhandlung": {
-        "title": "Maaş Müzakeresi",
-        "description": "Zam için argümanlar ve mektup — profesyonelce formüle edilmiş."
+      "kuendigung-wohnung": {
+        "title": "Kira Feshi",
+        "description": "Kira sözleşmesini doğru şekilde feshetmek — süre ve onay talebiyle."
       },
-      "einwohnerkontrolle": {
-        "title": "İkametgah Kaydı",
-        "description": "Belediyeye kayıt için kontrol listesi ve başvuru mektubu."
+      "kuendigung-arbeit": {
+        "title": "İşten Ayrılma",
+        "description": "Pozisyonunuzdan profesyonelce ayrılmak — net, nazik ve zamanında."
       }
     },
     "categories": {

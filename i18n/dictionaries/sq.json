@@ -28,16 +28,16 @@
     ],
     "items": {
       "mietbewerbung": {
-        "title": "Aplikim për qira banesë",
-        "description": "Bindu pronarin herën e parë. Profesionale, personale, sipas standardeve lokale."
+        "title": "Aplikim për qira",
+        "description": "Bindu pronarin herën e parë. Profesionale, personale."
       },
       "jobbewerbung": {
         "title": "Aplikim për punë",
         "description": "Trego pse je personi i duhur. E qartë, bindëse, profesionale."
       },
       "kuendigung": {
-        "title": "Letër ndërprerje kontrate",
-        "description": "Kontratë qiraje, punësimi, sigurim, abonament — saktë dhe në kohë."
+        "title": "Ndërprerje kontrate",
+        "description": "Sigurim, abonament, anëtarësi — ndërprere saktë dhe në kohë."
       },
       "arbeitszeugnis": {
         "title": "Përmirëso referencën e punës",
@@ -59,13 +59,13 @@
         "title": "Letër për sigurimet shëndetësore",
         "description": "Ulje premi, kërkesa për përfitime, anulim — e formuluar saktë."
       },
-      "lohnverhandlung": {
-        "title": "Negociatë pagash",
-        "description": "Argumente dhe letër për rritje page — të formuluara profesionalisht."
+      "kuendigung-wohnung": {
+        "title": "Ndërprerje kontrate qiraje",
+        "description": "Ndërprisni saktë kontratën e qirasë — me afat dhe kërkesë konfirmimi."
       },
-      "einwohnerkontrolle": {
-        "title": "Regjistrim vendbanimi",
-        "description": "Listë kontrolli dhe letër shoqëruese për regjistrimin në komunë."
+      "kuendigung-arbeit": {
+        "title": "Dorëheqje nga puna",
+        "description": "Jepni dorëheqjen profesionalisht — qartë, me mirësjellje dhe në kohë."
       }
     },
     "categories": {

@@ -28,16 +28,16 @@
     ],
     "items": {
       "mietbewerbung": {
-        "title": "Candidatura per affitto",
-        "description": "Convincete il proprietario al primo colpo. Professionale, personale, secondo gli standard locali."
+        "title": "Candidatura affitto",
+        "description": "Convincete il proprietario al primo colpo. Professionale, personale."
       },
       "jobbewerbung": {
-        "title": "Candidatura di lavoro",
+        "title": "Candidatura lavoro",
         "description": "Mostra perché sei la persona giusta. Chiara, convincente, professionale."
       },
       "kuendigung": {
-        "title": "Lettera di disdetta",
-        "description": "Contratto d'affitto, lavoro, assicurazione, abbonamento — correttamente e nei tempi."
+        "title": "Disdetta",
+        "description": "Assicurazione, abbonamento, iscrizione — disdire correttamente e nei tempi."
       },
       "arbeitszeugnis": {
         "title": "Migliorare la referenza lavorativa",
@@ -59,13 +59,13 @@
         "title": "Lettera all'assicurazione malattia",
         "description": "Riduzione premio, richieste prestazioni, disdetta — correttamente formulato."
       },
-      "lohnverhandlung": {
-        "title": "Negoziazione salariale",
-        "description": "Argomenti e lettera per il tuo aumento — formulati professionalmente."
+      "kuendigung-wohnung": {
+        "title": "Disdetta affitto",
+        "description": "Disdire il contratto d'affitto correttamente — con scadenza e richiesta di conferma."
       },
-      "einwohnerkontrolle": {
-        "title": "Annuncio al controllo abitanti",
-        "description": "Lista di controllo e lettera di accompagnamento per la tua iscrizione."
+      "kuendigung-arbeit": {
+        "title": "Dimissioni",
+        "description": "Dimettersi professionalmente — chiaramente, educatamente e nei tempi."
       }
     },
     "categories": {

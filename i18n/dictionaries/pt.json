@@ -28,16 +28,16 @@
     ],
     "items": {
       "mietbewerbung": {
-        "title": "Candidatura de arrendamento",
-        "description": "Convence o senhorio à primeira. Profissional, pessoal, segundo os padrões locais."
+        "title": "Candidatura arrendamento",
+        "description": "Convence o senhorio à primeira. Profissional, pessoal."
       },
       "jobbewerbung": {
         "title": "Candidatura de emprego",
         "description": "Mostra por que és a pessoa certa. Clara, convincente, profissional."
       },
       "kuendigung": {
-        "title": "Carta de rescisão",
-        "description": "Arrendamento, trabalho, seguro, subscrição — correto e dentro do prazo."
+        "title": "Rescisão",
+        "description": "Seguro, subscrição, adesão — rescindir corretamente e dentro do prazo."
       },
       "arbeitszeugnis": {
         "title": "Melhorar a referência profissional",
@@ -59,13 +59,13 @@
         "title": "Carta ao seguro de saúde",
         "description": "Redução de prémio, pedidos de prestações, cancelamento — corretamente redigido."
       },
-      "lohnverhandlung": {
-        "title": "Negociação salarial",
-        "description": "Argumentos e carta para o teu aumento — formulados profissionalmente."
+      "kuendigung-wohnung": {
+        "title": "Rescisão do arrendamento",
+        "description": "Rescindir corretamente o contrato de arrendamento — com prazo e pedido de confirmação."
       },
-      "einwohnerkontrolle": {
-        "title": "Registo de residência",
-        "description": "Lista de verificação e carta de apresentação para o teu registo municipal."
+      "kuendigung-arbeit": {
+        "title": "Demissão",
+        "description": "Demitir-se profissionalmente — com clareza, educação e dentro do prazo."
       }
     },
     "categories": {

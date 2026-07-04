@@ -28,16 +28,16 @@
     ],
     "items": {
       "mietbewerbung": {
-        "title": "Podanie o wynajem mieszkania",
-        "description": "Przekonaj właściciela za pierwszym razem. Profesjonalne, osobiste, zgodne z lokalnymi standardami."
+        "title": "Podanie o wynajem",
+        "description": "Przekonaj właściciela za pierwszym razem. Profesjonalne, osobiste."
       },
       "jobbewerbung": {
         "title": "Podanie o pracę",
         "description": "Pokaż, dlaczego jesteś właściwą osobą. Jasny, przekonujący, profesjonalny."
       },
       "kuendigung": {
-        "title": "Wypowiedzenie umowy",
-        "description": "Najem, umowa o pracę, ubezpieczenie, abonament — poprawnie i terminowo."
+        "title": "Wypowiedzenie",
+        "description": "Ubezpieczenie, abonament, członkostwo — wypowiedzieć poprawnie i terminowo."
       },
       "arbeitszeugnis": {
         "title": "Popraw referencje zawodowe",
@@ -59,13 +59,13 @@
         "title": "Pismo do ubezpieczyciela",
         "description": "Obniżenie składki, wnioski o świadczenia, rezygnacja — poprawnie sformułowane."
       },
-      "lohnverhandlung": {
-        "title": "Negocjacja wynagrodzenia",
-        "description": "Argumenty i pismo dotyczące podwyżki — sformułowane profesjonalnie."
+      "kuendigung-wohnung": {
+        "title": "Wypowiedzenie najmu",
+        "description": "Wypowiedzieć umowę najmu poprawnie — z terminem i prośbą o potwierdzenie."
       },
-      "einwohnerkontrolle": {
-        "title": "Rejestracja zameldowania",
-        "description": "Lista kontrolna i pismo przewodnie do meldunku w urzędzie."
+      "kuendigung-arbeit": {
+        "title": "Rezygnacja z pracy",
+        "description": "Zrezygnować profesjonalnie — jasno, uprzejmie i terminowo."
       }
     },
     "categories": {

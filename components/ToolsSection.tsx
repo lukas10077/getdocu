@@ -37,9 +37,12 @@ export default function ToolsSection({ locale, dict }: { locale: Locale; dict: a
           {TOOL_CATEGORIES.map((cat) => (
             <div key={cat.key}>
               {/* Category label */}
-              <p className="mb-5 text-xs font-medium uppercase tracking-widest text-swiss-gold">
-                {cats[cat.key] ?? cat.key}
-              </p>
+              <div className="mb-6 flex items-center gap-4">
+                <h3 className="font-serif text-2xl font-medium text-cream md:text-3xl">
+                  {cats[cat.key] ?? cat.key}
+                </h3>
+                <div className="h-px flex-1 bg-ink-700" />
+              </div>
               {/* Tool cards */}
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {cat.slugs.map((slug) => {

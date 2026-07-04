@@ -36,8 +36,8 @@
         "description": "Show why you're the right person. Clear, convincing, professional."
       },
       "kuendigung": {
-        "title": "Termination Letter",
-        "description": "Lease, employment contract, insurance, subscription — correctly and on time."
+        "title": "Termination",
+        "description": "Insurance, subscription, membership — cancel correctly and on time."
       },
       "arbeitszeugnis": {
         "title": "Improve Employment Reference",
@@ -59,13 +59,13 @@
         "title": "Health Insurance Letter",
         "description": "Premium reduction, benefit requests, cancellation — correctly worded."
       },
-      "lohnverhandlung": {
-        "title": "Salary Negotiation",
-        "description": "Arguments and a letter for your raise — professionally formulated."
+      "kuendigung-wohnung": {
+        "title": "Terminate Rental",
+        "description": "Cancel your lease correctly — with notice period, address and confirmation request."
       },
-      "einwohnerkontrolle": {
-        "title": "Resident Registration",
-        "description": "Checklist and cover letter for your registration at the municipality."
+      "kuendigung-arbeit": {
+        "title": "Resign from Job",
+        "description": "Resign from your position professionally — clear, polite and on time."
       }
     },
     "categories": {

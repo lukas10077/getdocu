@@ -29,15 +29,15 @@
     "items": {
       "mietbewerbung": {
         "title": "Solicitud de alquiler",
-        "description": "Convence al arrendador a la primera. Profesional, personal, según estándares locales."
+        "description": "Convence al arrendador a la primera. Profesional, personal."
       },
       "jobbewerbung": {
         "title": "Solicitud de empleo",
         "description": "Demuestra por qué eres la persona adecuada. Clara, convincente, profesional."
       },
       "kuendigung": {
-        "title": "Carta de rescisión",
-        "description": "Contrato de alquiler, laboral, seguro, suscripción — correcta y a tiempo."
+        "title": "Rescisión",
+        "description": "Seguro, suscripción, membresía — cancelar correctamente y a tiempo."
       },
       "arbeitszeugnis": {
         "title": "Mejorar la referencia laboral",
@@ -59,13 +59,13 @@
         "title": "Carta al seguro médico",
         "description": "Reducción de prima, solicitudes de prestaciones, cancelación — correctamente redactado."
       },
-      "lohnverhandlung": {
-        "title": "Negociación salarial",
-        "description": "Argumentos y carta para tu aumento — formulados profesionalmente."
+      "kuendigung-wohnung": {
+        "title": "Cancelar alquiler",
+        "description": "Rescindir correctamente el contrato de alquiler — con plazo y solicitud de confirmación."
       },
-      "einwohnerkontrolle": {
-        "title": "Registro de residencia",
-        "description": "Lista de verificación y carta de presentación para tu registro municipal."
+      "kuendigung-arbeit": {
+        "title": "Renuncia laboral",
+        "description": "Renunciar profesionalmente — con claridad, cortesía y en el plazo correcto."
       }
     },
     "categories": {

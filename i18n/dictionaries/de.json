@@ -28,16 +28,16 @@
     ],
     "items": {
       "mietbewerbung": {
-        "title": "Wohnungsbewerbung",
+        "title": "Bewerbung Wohnung",
         "description": "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, nach lokalem Standard."
       },
       "jobbewerbung": {
-        "title": "Arbeitsbewerbung",
+        "title": "Bewerbung Arbeitsstelle",
         "description": "Zeig, warum du die richtige Person bist. Klar, überzeugend, professionell."
       },
       "kuendigung": {
-        "title": "Kündigungsschreiben",
-        "description": "Mietvertrag, Arbeitsvertrag, Versicherung, Abonnement — korrekt und fristgerecht."
+        "title": "Kündigung",
+        "description": "Versicherung, Abonnement, Mitgliedschaft — korrekt und fristgerecht kündigen."
       },
       "arbeitszeugnis": {
         "title": "Arbeitszeugnis verbessern",
@@ -59,13 +59,13 @@
         "title": "Krankenkassen-Brief",
         "description": "Prämienreduktion, Leistungsanfragen, Kündigung — korrekt formuliert."
       },
-      "lohnverhandlung": {
-        "title": "Lohnverhandlung",
-        "description": "Argumente und einen Brief für deine Gehaltserhöhung — professionell formuliert."
+      "kuendigung-wohnung": {
+        "title": "Kündigung Wohnung",
+        "description": "Mietvertrag korrekt kündigen — mit Frist, Adresse und Bitte um Bestätigung."
       },
-      "einwohnerkontrolle": {
-        "title": "Anmeldung Einwohnerkontrolle",
-        "description": "Checkliste und Begleitschreiben für deine Anmeldung in der Gemeinde."
+      "kuendigung-arbeit": {
+        "title": "Kündigung Arbeitsstelle",
+        "description": "Arbeitsvertrag professionell kündigen — klar, höflich und fristgerecht."
       }
     },
     "categories": {

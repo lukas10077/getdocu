@@ -28,16 +28,16 @@
     ],
     "items": {
       "mietbewerbung": {
-        "title": "Lakásbérleti kérelem",
-        "description": "Győzze meg a bérbeadót első alkalommal. Professzionális, személyes, helyi szabványok szerint."
+        "title": "Bérleti kérelem",
+        "description": "Győzze meg a bérbeadót első alkalommal. Professzionális, személyes."
       },
       "jobbewerbung": {
         "title": "Állásjelentkezés",
         "description": "Mutasd meg, miért te vagy a megfelelő személy. Egyértelmű, meggyőző, professzionális."
       },
       "kuendigung": {
-        "title": "Felmondólevél",
-        "description": "Bérleti szerződés, munkaszerződés, biztosítás, előfizetés — helyesen és határidőre."
+        "title": "Felmondás",
+        "description": "Biztosítás, előfizetés, tagság — helyesen és határidőre felmondani."
       },
       "arbeitszeugnis": {
         "title": "Munkaügyi referencia javítása",
@@ -59,13 +59,13 @@
         "title": "Egészségbiztosítási levél",
         "description": "Díjcsökkentés, ellátási kérelmek, lemondás — helyesen megfogalmazva."
       },
-      "lohnverhandlung": {
-        "title": "Bértárgyalás",
-        "description": "Érvek és levél a béremeléshez — professzionálisan megfogalmazva."
+      "kuendigung-wohnung": {
+        "title": "Bérleti felmondás",
+        "description": "A bérleti szerződés helyes felmondása — határidővel és visszaigazolási kéréssel."
       },
-      "einwohnerkontrolle": {
-        "title": "Lakcím-bejelentés",
-        "description": "Ellenőrzőlista és kísérőlevél az önkormányzatnál való regisztrációhoz."
+      "kuendigung-arbeit": {
+        "title": "Munkaviszony felmondása",
+        "description": "Professzionálisan lemondani — egyértelműen, udvariasan és határidőre."
       }
     },
     "categories": {

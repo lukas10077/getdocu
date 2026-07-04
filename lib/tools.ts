@@ -3,15 +3,15 @@
 
 export type ToolSlug =
   | "mietbewerbung"
-  | "jobbewerbung"
-  | "kuendigung"
-  | "arbeitszeugnis"
+  | "kuendigung-wohnung"
   | "maengelruege"
-  | "reklamation"
+  | "jobbewerbung"
+  | "kuendigung-arbeit"
+  | "arbeitszeugnis"
   | "lebenslauf"
-  | "krankenkasse"
-  | "lohnverhandlung"
-  | "einwohnerkontrolle";
+  | "kuendigung"
+  | "reklamation"
+  | "krankenkasse";
 
 export interface FieldDef {
   key: string;
@@ -49,7 +49,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   mietbewerbung: {
     slug: "mietbewerbung",
     priceChfRappen: 500,
-    documentTitleDe: "Wohnungsbewerbung",
+    documentTitleDe: "Bewerbung Wohnung",
     descriptionDe:
       "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, nach lokalem Standard.",
     systemPrompt:
@@ -85,7 +85,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   jobbewerbung: {
     slug: "jobbewerbung",
     priceChfRappen: 500,
-    documentTitleDe: "Arbeitsbewerbung",
+    documentTitleDe: "Bewerbung Arbeitsstelle",
     descriptionDe:
       "Zeig, warum du die richtige Person bist. Klar, überzeugend, professionell.",
     systemPrompt:
@@ -120,11 +120,11 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     supportsDocumentUpload: true,
     uploadLabelDe: "Dokument hochladen (optional)",
     uploadHintDe: "Hast du eine Kündigung erhalten? Lade ein Foto hoch — wir lesen den Text automatisch.",
-    documentTitleDe: "Kündigungsschreiben",
+    documentTitleDe: "Kündigung",
     descriptionDe:
-      "Mietvertrag, Arbeitsvertrag, Krankenkasse, Abonnement — korrekt und fristgerecht.",
+      "Versicherung, Abonnement, Mitgliedschaft — korrekt und fristgerecht kündigen.",
     systemPrompt:
-      "Du bist Experte für Kündigungsschreiben in der Schweiz. Erstelle ein formell korrektes " +
+      "Du bist Experte für Kündigungsschreiben. Erstelle ein formell korrektes " +
       "Kündigungsschreiben auf Deutsch. Beachte: korrekter Absender, Empfänger, Ort/Datum, Betreff mit " +
       "klarer Nennung des Vertrags/Gegenstands der Kündigung, das gewünschte Kündigungsdatum, Bitte um " +
       "schriftliche Bestätigung, höflicher Abschluss. Weise NICHT auf gesetzliche Fristen hin — das ist " +
@@ -134,7 +134,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "lastName",         label: "Nachname",                               type: "text",     required: true  },
       { key: "currentAddress",   label: "Deine Adresse",                          type: "text",     required: true  },
       { key: "type",             label: "Was möchtest du kündigen?",              type: "select",   required: true,  section: "Kündigung",
-        options: ["Mietvertrag", "Arbeitsvertrag", "Krankenkasse", "Abonnement/Mitgliedschaft", "Anderes Vertragsverhältnis"] },
+        options: ["Versicherung", "Abonnement / Mitgliedschaft", "Anderes"] },
       { key: "recipientName",    label: "Name des Empfängers (Vermieter, Firma …)", type: "text",   required: true  },
       { key: "recipientAddress", label: "Adresse des Empfängers",                type: "text",     required: true  },
       { key: "contractRef",      label: "Vertrags-/Kunden-/Policennummer",        type: "text",     required: false, placeholder: "falls vorhanden" },
@@ -290,64 +290,48 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     ],
   },
 
-  lohnverhandlung: {
-    slug: "lohnverhandlung",
-    priceChfRappen: 500,
-    documentTitleDe: "Lohnverhandlung",
+  "kuendigung-wohnung": {
+    slug: "kuendigung-wohnung",
+    priceChfRappen: 300,
+    documentTitleDe: "Kündigung Wohnung",
     descriptionDe:
-      "Argumente, Formulierungen und einen Brief für deine Gehaltserhöhung — auf Schweizer Niveau.",
+      "Mietvertrag korrekt kündigen — mit Frist, Adresse und Bitte um Bestätigung.",
     systemPrompt:
-      "Du bist Executive-Coach mit Schwerpunkt Schweizer Arbeitsmarkt. Erstelle zwei Teile: " +
-      "1) Einen formellen Brief an den Arbeitgeber mit dem Wunsch nach einer Gehaltserhöhung " +
-      "(Absender, Empfänger, Datum, Betreff, sachliche Begründung mit konkreten Leistungen, " +
-      "Wunsch-Gehalt, Bitte um Gespräch, Abschluss). " +
-      "2) Drei bis fünf starke Gesprächsargumente als Stichpunkte für das persönliche Gespräch. " +
-      "Ton: selbstbewusst, sachlich, wertschätzend.",
+      "Du bist Experte für Mietrecht. Erstelle ein formell korrektes Kündigungsschreiben für einen " +
+      "Mietvertrag auf Deutsch. Struktur: vollständiger Absender, Vermieter als Empfänger, Ort/Datum, " +
+      "Betreff mit Adresse des Mietobjekts, klare Kündigungserklärung mit Datum, Bitte um schriftliche " +
+      "Bestätigung, höflicher Abschluss. Weise NICHT auf gesetzliche Fristen hin.",
     fields: [
-      { key: "firstName",       label: "Vorname",                            type: "text",     required: true,  section: "Deine Angaben" },
-      { key: "lastName",        label: "Nachname",                           type: "text",     required: true  },
-      { key: "position",        label: "Deine Stelle / Funktion",            type: "text",     required: true  },
-      { key: "employer",        label: "Name des Arbeitgebers",              type: "text",     required: true  },
-      { key: "yearsAtCompany",  label: "Betriebszugehörigkeit (Jahre)",      type: "text",     required: true,  placeholder: "z.B. 3" },
-      { key: "currentSalary",   label: "Aktuelles Jahresgehalt (CHF)",       type: "text",     required: true,  placeholder: "z.B. 72 000",  section: "Gehalt" },
-      { key: "desiredSalary",   label: "Gewünschtes Jahresgehalt (CHF)",     type: "text",     required: true,  placeholder: "z.B. 80 000" },
-      { key: "achievements",    label: "Deine wichtigsten Leistungen",       type: "textarea", required: true,
-        placeholder: "Was hast du im letzten Jahr erreicht? Konkrete Ergebnisse, Projekte, Einsparungen, …",
-        section: "Argumente" },
-      { key: "marketRef",       label: "Marktvergleich (optional)",          type: "text",     required: false,
-        placeholder: "z.B. Vergleichbare Stellen im Kanton zahlen CHF 78–85k laut salary.ch" },
+      { key: "firstName",        label: "Vorname",                           type: "text", required: true,  section: "Mieter" },
+      { key: "lastName",         label: "Nachname",                          type: "text", required: true  },
+      { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",        type: "text", required: true  },
+      { key: "landlordName",     label: "Name des Vermieters / Verwaltung",  type: "text", required: true,  section: "Vermieter" },
+      { key: "landlordAddress",  label: "Adresse des Vermieters",            type: "text", required: true  },
+      { key: "terminationDate",  label: "Gewünschtes Kündigungsdatum",       type: "text", required: true,  placeholder: "z.B. 31.03.2026 oder nächstmöglicher Termin", section: "Kündigung" },
+      { key: "reason",           label: "Kündigungsgrund (optional)",        type: "textarea", required: false, placeholder: "Nur wenn du einen Grund angeben möchtest." },
     ],
   },
 
-  einwohnerkontrolle: {
-    slug: "einwohnerkontrolle",
+  "kuendigung-arbeit": {
+    slug: "kuendigung-arbeit",
     priceChfRappen: 300,
-    documentTitleDe: "Anmeldung Einwohnerkontrolle",
+    documentTitleDe: "Kündigung Arbeitsstelle",
     descriptionDe:
-      "Checkliste, Anmeldeformular und Begleitschreiben für deine Anmeldung in der Gemeinde.",
+      "Arbeitsvertrag professionell kündigen — klar, höflich und fristgerecht.",
     systemPrompt:
-      "Du bist Experte für Schweizer Verwaltungsabläufe. Erstelle drei Teile auf Deutsch: " +
-      "1) Ein kurzes Begleitschreiben an die Einwohnerkontrolle der angegebenen Gemeinde. " +
-      "2) Eine Checkliste der typischerweise benötigten Dokumente für die Anmeldung (allgemein für " +
-      "die angegebene Aufenthaltskategorie). " +
-      "3) Drei häufige Fragen & Antworten zur Anmeldung. " +
-      "Hinweis: Die Dokumente und Abläufe können je nach Gemeinde variieren — empfehle, die " +
-      "Gemeinde-Website zu prüfen.",
+      "Du bist Experte für Arbeitsrecht. Erstelle ein formell korrektes Kündigungsschreiben für eine " +
+      "Arbeitsstelle auf Deutsch. Struktur: vollständiger Absender, Arbeitgeber als Empfänger, Ort/Datum, " +
+      "Betreff mit Stellenbezeichnung, klare Kündigungserklärung mit Datum, Bitte um schriftliches " +
+      "Arbeitszeugnis, Dank für die Zusammenarbeit, höflicher Abschluss. Weise NICHT auf gesetzliche Fristen hin.",
     fields: [
-      { key: "firstName",       label: "Vorname",                      type: "text",     required: true,  section: "Deine Angaben" },
-      { key: "lastName",        label: "Nachname",                     type: "text",     required: true  },
-      { key: "birthDate",       label: "Geburtsdatum",                 type: "text",     required: true  },
-      { key: "nationality",     label: "Nationalität",                 type: "text",     required: true  },
-      { key: "residencePermit", label: "Aufenthaltsstatus / Ausweis",  type: "select",   required: true,
-        options: ["Schweizer Bürger", "EU/EFTA (Anmeldebescheinigung)", "B-Ausweis", "C-Ausweis", "L-Ausweis", "Asylbereich / N-Ausweis", "Anderes"] },
-      { key: "newAddress",      label: "Neue Adresse",                 type: "text",     required: true,  section: "Umzug" },
-      { key: "municipality",    label: "Gemeinde / Stadt",             type: "text",     required: true  },
-      { key: "moveDate",        label: "Datum des Einzugs",            type: "text",     required: true,  placeholder: "z.B. 01.04.2025" },
-      { key: "previousAddress", label: "Bisherige Adresse",            type: "text",     required: true  },
-      { key: "maritalStatus",   label: "Zivilstand",                   type: "select",   required: true,
-        options: ["Ledig", "Verheiratet / eingetragene Partnerschaft", "Getrennt", "Geschieden", "Verwitwet"] },
-      { key: "additionalInfo",  label: "Besondere Situation (optional)", type: "textarea", required: false,
-        placeholder: "z.B. Kinder, Wochenaufenthalter, erster Einzug in die Schweiz, …" },
+      { key: "firstName",        label: "Vorname",                     type: "text", required: true,  section: "Deine Angaben" },
+      { key: "lastName",         label: "Nachname",                    type: "text", required: true  },
+      { key: "currentAddress",   label: "Deine Adresse",               type: "text", required: true  },
+      { key: "position",         label: "Deine Stelle / Funktion",     type: "text", required: true  },
+      { key: "employer",         label: "Name des Arbeitgebers",       type: "text", required: true,  section: "Arbeitgeber" },
+      { key: "employerAddress",  label: "Adresse des Arbeitgebers",    type: "text", required: true  },
+      { key: "terminationDate",  label: "Gewünschtes Austrittsdatum",  type: "text", required: true,  placeholder: "z.B. 31.03.2026 oder nächstmöglicher Termin", section: "Kündigung" },
+      { key: "reason",           label: "Kündigungsgrund (optional)",  type: "textarea", required: false, placeholder: "Nur wenn du einen Grund angeben möchtest." },
     ],
   },
 
@@ -362,7 +346,7 @@ export const allToolSlugs: ToolSlug[] = Object.keys(tools) as ToolSlug[];
 export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
-  { key: "wohnen", slugs: ["mietbewerbung", "maengelruege", "einwohnerkontrolle"] },
-  { key: "arbeit", slugs: ["jobbewerbung", "arbeitszeugnis", "lebenslauf", "lohnverhandlung"] },
+  { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "maengelruege"] },
+  { key: "arbeit", slugs: ["jobbewerbung", "kuendigung-arbeit", "arbeitszeugnis", "lebenslauf"] },
   { key: "alltag", slugs: ["kuendigung", "reklamation", "krankenkasse"] },
 ];
