@@ -17,7 +17,7 @@
     "ctaSecondary": "Come funziona"
   },
   "tools": {
-    "title": "I nostri strumenti",
+    "title": "Di cosa hai bisogno?",
     "subtitle": "Scegli ciò di cui hai bisogno. Paghi solo quando lo usi.",
     "startButton": "Inizia →",
     "back": "← Indietro",
@@ -67,6 +67,11 @@
         "title": "Annuncio al controllo abitanti",
         "description": "Lista di controllo e lettera di accompagnamento per la tua iscrizione."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Abitazione",
+      "arbeit": "💼 Lavoro",
+      "alltag": "📋 Quotidiano"
     }
   },
   "howItWorks": {

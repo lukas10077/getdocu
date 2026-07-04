@@ -17,7 +17,7 @@
     "ctaSecondary": "Hogyan működik"
   },
   "tools": {
-    "title": "Eszközeink",
+    "title": "Miről van szó?",
     "subtitle": "Válaszd ki, mire van szükséged. Csak akkor fizetsz, ha használod.",
     "startButton": "Kezdés →",
     "back": "← Vissza",
@@ -67,6 +67,11 @@
         "title": "Lakcím-bejelentés",
         "description": "Ellenőrzőlista és kísérőlevél az önkormányzatnál való regisztrációhoz."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Lakhatás",
+      "arbeit": "💼 Munka",
+      "alltag": "📋 Mindennapos"
     }
   },
   "howItWorks": {

@@ -17,7 +17,7 @@
     "ctaSecondary": "So funktioniert's"
   },
   "tools": {
-    "title": "Unsere Tools",
+    "title": "Worum geht es?",
     "subtitle": "Wähle, was du brauchst. Bezahle nur, wenn du es nutzt.",
     "startButton": "Starten →",
     "back": "← Zurück",
@@ -67,6 +67,11 @@
         "title": "Anmeldung Einwohnerkontrolle",
         "description": "Checkliste und Begleitschreiben für deine Anmeldung in der Gemeinde."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Wohnen",
+      "arbeit": "💼 Arbeit",
+      "alltag": "📋 Alltag"
     }
   },
   "howItWorks": {

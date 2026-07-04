@@ -17,7 +17,7 @@
     "ctaSecondary": "Jak to działa"
   },
   "tools": {
-    "title": "Nasze narzędzia",
+    "title": "Czego potrzebujesz?",
     "subtitle": "Wybierz, czego potrzebujesz. Płacisz tylko za użycie.",
     "startButton": "Zacznij →",
     "back": "← Wróć",
@@ -67,6 +67,11 @@
         "title": "Rejestracja zameldowania",
         "description": "Lista kontrolna i pismo przewodnie do meldunku w urzędzie."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Mieszkanie",
+      "arbeit": "💼 Praca",
+      "alltag": "📋 Codzienność"
     }
   },
   "howItWorks": {

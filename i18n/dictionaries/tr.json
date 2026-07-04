@@ -17,7 +17,7 @@
     "ctaSecondary": "Nasıl çalışır"
   },
   "tools": {
-    "title": "Araçlarımız",
+    "title": "Ne hakkında?",
     "subtitle": "İhtiyacın olanı seç. Sadece kullandığında öde.",
     "startButton": "Başla →",
     "back": "← Geri",
@@ -67,6 +67,11 @@
         "title": "İkametgah Kaydı",
         "description": "Belediyeye kayıt için kontrol listesi ve başvuru mektubu."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Konut",
+      "arbeit": "💼 İş",
+      "alltag": "📋 Günlük"
     }
   },
   "howItWorks": {

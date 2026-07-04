@@ -17,7 +17,7 @@
     "ctaSecondary": "Kako funkcioniše"
   },
   "tools": {
-    "title": "Naši alati",
+    "title": "O čemu se radi?",
     "subtitle": "Izaberite šta vam treba. Platite samo kada koristite.",
     "startButton": "Započni →",
     "back": "← Nazad",
@@ -67,6 +67,11 @@
         "title": "Prijava boravišta",
         "description": "Kontrolna lista i propratno pismo za registraciju u opštini."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Stanovanje",
+      "arbeit": "💼 Posao",
+      "alltag": "📋 Svakodnevno"
     }
   },
   "howItWorks": {

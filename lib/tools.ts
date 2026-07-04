@@ -358,3 +358,11 @@ export function getTool(slug: string): ToolDefinition | undefined {
 }
 
 export const allToolSlugs: ToolSlug[] = Object.keys(tools) as ToolSlug[];
+
+export type CategoryKey = "wohnen" | "arbeit" | "alltag";
+
+export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
+  { key: "wohnen", slugs: ["mietbewerbung", "maengelruege", "einwohnerkontrolle"] },
+  { key: "arbeit", slugs: ["jobbewerbung", "arbeitszeugnis", "lebenslauf", "lohnverhandlung"] },
+  { key: "alltag", slugs: ["kuendigung", "reklamation", "krankenkasse"] },
+];

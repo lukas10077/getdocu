@@ -17,7 +17,7 @@
     "ctaSecondary": "Como funciona"
   },
   "tools": {
-    "title": "As nossas ferramentas",
+    "title": "Do que se trata?",
     "subtitle": "Escolhe o que precisas. Paga apenas quando usares.",
     "startButton": "Começar →",
     "back": "← Voltar",
@@ -67,6 +67,11 @@
         "title": "Registo de residência",
         "description": "Lista de verificação e carta de apresentação para o teu registo municipal."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Habitação",
+      "arbeit": "💼 Trabalho",
+      "alltag": "📋 Quotidiano"
     }
   },
   "howItWorks": {

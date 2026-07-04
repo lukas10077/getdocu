@@ -17,7 +17,7 @@
     "ctaSecondary": "How it works"
   },
   "tools": {
-    "title": "Our tools",
+    "title": "What do you need?",
     "subtitle": "Choose what you need. Pay only when you use it.",
     "startButton": "Start →",
     "back": "← Back",
@@ -67,6 +67,11 @@
         "title": "Resident Registration",
         "description": "Checklist and cover letter for your registration at the municipality."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Housing",
+      "arbeit": "💼 Work",
+      "alltag": "📋 Everyday"
     }
   },
   "howItWorks": {

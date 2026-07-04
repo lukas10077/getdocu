@@ -17,7 +17,7 @@
     "ctaSecondary": "Si funksionon"
   },
   "tools": {
-    "title": "Mjetet tona",
+    "title": "Për çfarë bëhet fjalë?",
     "subtitle": "Zgjedh çfarë të duhet. Paguaj vetëm kur e përdor.",
     "startButton": "Fillo →",
     "back": "← Mbrapa",
@@ -67,6 +67,11 @@
         "title": "Regjistrim vendbanimi",
         "description": "Listë kontrolli dhe letër shoqëruese për regjistrimin në komunë."
       }
+    },
+    "categories": {
+      "wohnen": "🏠 Banim",
+      "arbeit": "💼 Punë",
+      "alltag": "📋 Përditshme"
     }
   },
   "howItWorks": {
