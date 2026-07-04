@@ -21,7 +21,8 @@ export default function LanguageSwitcher({ current }: { current: Locale }) {
   }, []);
 
   function switchTo(locale: Locale) {
-    const rest = pathname?.replace(`/${current}`, "") || "";
+    // Strip the leading locale segment, keeping everything after it
+    const rest = pathname?.replace(new RegExp(`^/${current}(?=/|$)`), "") ?? "";
     router.push(`/${locale}${rest}`);
     setOpen(false);
   }

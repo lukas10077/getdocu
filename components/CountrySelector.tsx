@@ -1,12 +1,68 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCountry } from "./CountryProvider";
 import { COUNTRIES, Country } from "@/lib/countries";
 
+// ── Moved to module level — avoids React remounting these on every parent render ──
+
+function CountryButton({
+  c,
+  onSelect,
+}: {
+  c: Country;
+  onSelect: (c: Country) => void;
+}) {
+  return (
+    <button
+      onClick={() => onSelect(c)}
+      className="flex items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm text-cream-muted transition hover:bg-ink-800 hover:text-cream active:scale-[0.98]"
+    >
+      <span className="flex-shrink-0 text-lg leading-none">{c.flag}</span>
+      <span className="truncate">{c.name}</span>
+    </button>
+  );
+}
+
+function Group({
+  label,
+  list,
+  onSelect,
+}: {
+  label: string;
+  list: Country[];
+  onSelect: (c: Country) => void;
+}) {
+  if (list.length === 0) return null;
+  return (
+    <div className="mb-6">
+      <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">
+        {label}
+      </p>
+      <div className="grid grid-cols-2 gap-0.5 sm:grid-cols-3">
+        {list.map((c) => (
+          <CountryButton key={c.code} c={c} onSelect={onSelect} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── Main modal ────────────────────────────────────────────────────────────────────
+
 export default function CountrySelector() {
-  const { showSelector, setCountry } = useCountry();
+  const { showSelector, setCountry, setShowSelector } = useCountry();
   const [search, setSearch] = useState("");
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!showSelector) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setShowSelector(false);
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [showSelector, setShowSelector]);
 
   if (!showSelector) return null;
 
@@ -21,36 +77,18 @@ export default function CountrySelector() {
   const oceania  = filtered.filter((c) => c.continent === "oceania");
   const total    = europe.length + americas.length + asia.length + oceania.length;
 
-  function CountryButton({ c }: { c: Country }) {
-    return (
-      <button
-        key={c.code}
-        onClick={() => setCountry(c)}
-        className="flex items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm text-cream-muted transition hover:bg-ink-800 hover:text-cream active:scale-[0.98]"
-      >
-        <span className="flex-shrink-0 text-lg leading-none">{c.flag}</span>
-        <span className="truncate">{c.name}</span>
-      </button>
-    );
-  }
-
-  function Group({ label, list }: { label: string; list: Country[] }) {
-    if (list.length === 0) return null;
-    return (
-      <div className="mb-6">
-        <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">{label}</p>
-        <div className="grid grid-cols-2 gap-0.5 sm:grid-cols-3">
-          {list.map((c) => <CountryButton key={c.code} c={c} />)}
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm">
-      <div className="flex w-full max-w-2xl flex-col rounded-sm border border-ink-700 bg-ink-900 shadow-2xl"
-           style={{ maxHeight: "calc(100vh - 2rem)" }}>
-
+    // Backdrop — click outside the card to close
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
+      onClick={() => setShowSelector(false)}
+    >
+      {/* Card — stop propagation so clicks here don't close */}
+      <div
+        className="flex w-full max-w-2xl flex-col rounded-sm border border-ink-700 bg-ink-900 shadow-2xl"
+        style={{ maxHeight: "calc(100vh - 2rem)" }}
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="border-b border-ink-700 px-6 py-5">
           <h2 className="font-serif text-2xl font-medium text-cream">
@@ -69,12 +107,12 @@ export default function CountrySelector() {
           />
         </div>
 
-        {/* Länderliste */}
+        {/* Country list */}
         <div className="overflow-y-auto px-6 py-5">
-          <Group label="Europa"           list={europe} />
-          <Group label="Amerika"          list={americas} />
-          <Group label="Asien & Naher Osten" list={asia} />
-          <Group label="Ozeanien"         list={oceania} />
+          <Group label="Europa"              list={europe}   onSelect={setCountry} />
+          <Group label="Amerika"             list={americas} onSelect={setCountry} />
+          <Group label="Asien & Naher Osten" list={asia}     onSelect={setCountry} />
+          <Group label="Ozeanien"            list={oceania}  onSelect={setCountry} />
 
           {total === 0 && (
             <p className="py-10 text-center text-sm text-cream-subtle">
@@ -84,10 +122,16 @@ export default function CountrySelector() {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-ink-700 px-6 py-4">
+        <div className="flex items-center justify-between border-t border-ink-700 px-6 py-4">
           <p className="text-xs text-cream-subtle">
             Land kann jederzeit über das Flaggen-Symbol in der Navigation geändert werden.
           </p>
+          <button
+            onClick={() => setShowSelector(false)}
+            className="ml-4 flex-shrink-0 text-xs text-cream-subtle transition hover:text-cream"
+          >
+            Schliessen ✕
+          </button>
         </div>
       </div>
     </div>
