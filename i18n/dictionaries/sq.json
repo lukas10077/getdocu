@@ -19,33 +19,63 @@
   "tools": {
     "title": "Mjetet tona",
     "subtitle": "Zgjedh çfarë të duhet. Paguaj vetëm kur e përdor.",
-    "rentalApplication": {
-      "title": "Letër kërkese për qira",
-      "description": "Një letër kërkese bindëse për tregun e banesave në Zvicër — sipas standardit zviceran.",
-      "price": "nga 5 CHF"
-    },
-    "jobApplication": {
-      "title": "Kërkesë për punë",
-      "description": "Letër motivimi që i përgjigjet pritshmërive të punëdhënësve zviceranë.",
-      "price": "nga 5 CHF"
-    },
-    "termination": {
-      "title": "Formulo një ndërprerje kontrate",
-      "description": "Kontrata e qirasë, sigurimi shëndetësor, abonimi i celularit — ndërprerë saktë dhe në kohë.",
-      "price": "nga 3 CHF"
-    },
-    "comingSoonTitle": "Së shpejti",
-    "comingSoon": [
-      "Përmirëso një dëshmi pune",
-      "Njoftim defekti",
-      "Letër ankese",
-      "Kontroll i CV-së",
-      "Shpjegim i ekstraktit të regjistrit të përmbarimit",
-      "Letër për sigurimin shëndetësor",
-      "Raport shpenzimesh",
-      "Trajner negocimi page",
-      "Regjistrim në kontrollin e banorëve"
-    ]
+    "startButton": "Fillo →",
+    "back": "← Mbrapa",
+    "trustPills": [
+      "🔒 Të dhënat fshihen",
+      "⚡ Dokument në 20 sek.",
+      "💳 Sigurt via Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Kërkesë për qira",
+        "description": "Bindu pronarin herën e parë. Profesionale, personale, sipas standardeve lokale."
+      },
+      "jobbewerbung": {
+        "title": "Letër motivimi",
+        "description": "Trego pse je personi i duhur. E qartë, bindëse, profesionale."
+      },
+      "kuendigung": {
+        "title": "Letër ndërprerje kontrate",
+        "description": "Kontratë qiraje, punësimi, sigurim, abonament — saktë dhe në kohë."
+      },
+      "arbeitszeugnis": {
+        "title": "Referencë pune (e përmirësuar)",
+        "description": "Referenca jote tingëllon mediokre? E rishkruajmë profesionalisht."
+      },
+      "maengelruege": {
+        "title": "Njoftim për defekte",
+        "description": "Raportoni dëmet në apartament — me shkrim, në kohë, adresuar saktë."
+      },
+      "reklamation": {
+        "title": "Letër ankese",
+        "description": "Mall me defekte, shërbim i keq, faturë e gabuar — ankohuni qartë dhe vendosmërisht."
+      },
+      "lebenslauf": {
+        "title": "Kontrollim i CV-së",
+        "description": "CV-ja juaj analizohet dhe rishikohet profesionalisht — e përshtatur me tregun tuaj të punës."
+      },
+      "krankenkasse": {
+        "title": "Letër për sigurimet shëndetësore",
+        "description": "Ulje premi, kërkesa për përfitime, anulim — e formuluar saktë."
+      },
+      "spesen": {
+        "title": "Raport shpenzimesh",
+        "description": "Raport shpenzimesh profesional për punëdhënësin — i strukturuar qartë."
+      },
+      "lohnverhandlung": {
+        "title": "Negociatë pagash",
+        "description": "Argumente dhe letër për rritje page — të formuluara profesionalisht."
+      },
+      "einwohnerkontrolle": {
+        "title": "Regjistrim vendbanimi",
+        "description": "Listë kontrolli dhe letër shoqëruese për regjistrimin në komunë."
+      },
+      "betreibung": {
+        "title": "Regjistri i borxheve",
+        "description": "Morët ose duhet të paraqisni një ekstrakt? Ju shpjegojmë."
+      }
+    }
   },
   "howItWorks": {
     "title": "Si funksionon",

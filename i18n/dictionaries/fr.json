@@ -19,33 +19,63 @@
   "tools": {
     "title": "Nos outils",
     "subtitle": "Choisissez ce dont vous avez besoin. Payez uniquement à l'utilisation.",
-    "rentalApplication": {
-      "title": "Lettre de candidature de location",
-      "description": "Une lettre de candidature convaincante pour le marché du logement suisse — selon les standards suisses.",
-      "price": "dès 5 CHF"
-    },
-    "jobApplication": {
-      "title": "Candidature à un emploi",
-      "description": "Une lettre de motivation qui répond aux attentes des employeurs suisses.",
-      "price": "dès 5 CHF"
-    },
-    "termination": {
-      "title": "Rédiger une résiliation",
-      "description": "Bail, assurance-maladie, abonnement mobile — résilié correctement et dans les délais.",
-      "price": "dès 3 CHF"
-    },
-    "comingSoonTitle": "Bientôt disponible",
-    "comingSoon": [
-      "Améliorer un certificat de travail",
-      "Avis de défaut",
-      "Lettre de réclamation",
-      "Vérification de CV",
-      "Explication d'un extrait du registre des poursuites",
-      "Lettre à l'assurance-maladie",
-      "Note de frais",
-      "Coach de négociation salariale",
-      "Inscription au contrôle des habitants"
-    ]
+    "startButton": "Commencer →",
+    "back": "← Retour",
+    "trustPills": [
+      "🔒 Données supprimées",
+      "⚡ Document en 20 sec.",
+      "💳 Sécurisé via Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Dossier de candidature locative",
+        "description": "Convainquez le propriétaire du premier coup. Professionnel, personnalisé."
+      },
+      "jobbewerbung": {
+        "title": "Lettre de motivation",
+        "description": "Montrez pourquoi vous êtes la bonne personne. Claire, convaincante, professionnelle."
+      },
+      "kuendigung": {
+        "title": "Lettre de résiliation",
+        "description": "Bail, contrat de travail, assurance, abonnement — correctement et dans les délais."
+      },
+      "arbeitszeugnis": {
+        "title": "Certificat de travail (amélioré)",
+        "description": "Votre certificat semble médiocre ? Nous le réécrivons professionnellement."
+      },
+      "maengelruege": {
+        "title": "Avis de défauts",
+        "description": "Signaler des dommages dans l'appartement — par écrit, dans les délais."
+      },
+      "reklamation": {
+        "title": "Lettre de réclamation",
+        "description": "Marchandise défectueuse, mauvais service, facture erronée — réclamez clairement."
+      },
+      "lebenslauf": {
+        "title": "Vérification de CV",
+        "description": "Votre CV est analysé et révisé professionnellement — adapté à votre marché."
+      },
+      "krankenkasse": {
+        "title": "Lettre à l'assurance maladie",
+        "description": "Réduction de prime, demandes de prestations, résiliation — correctement rédigé."
+      },
+      "spesen": {
+        "title": "Note de frais",
+        "description": "Note de frais professionnelle pour votre employeur — clairement structurée."
+      },
+      "lohnverhandlung": {
+        "title": "Négociation salariale",
+        "description": "Arguments et lettre pour votre augmentation — formulés professionnellement."
+      },
+      "einwohnerkontrolle": {
+        "title": "Annonce au contrôle des habitants",
+        "description": "Liste de contrôle et lettre d'accompagnement pour votre inscription."
+      },
+      "betreibung": {
+        "title": "Extrait du registre des poursuites",
+        "description": "Reçu ou devez remettre un extrait ? Nous vous l'expliquons."
+      }
+    }
   },
   "howItWorks": {
     "title": "Comment ça marche",

@@ -19,33 +19,63 @@
   "tools": {
     "title": "Araçlarımız",
     "subtitle": "İhtiyacın olanı seç. Sadece kullandığında öde.",
-    "rentalApplication": {
-      "title": "Kira başvuru mektubu",
-      "description": "İsviçre konut piyasası için ikna edici bir başvuru mektubu — İsviçre standardına uygun.",
-      "price": "5 CHF'den başlayan"
-    },
-    "jobApplication": {
-      "title": "İş başvurusu",
-      "description": "İsviçreli işverenlerin beklentilerini karşılayan bir motivasyon mektubu.",
-      "price": "5 CHF'den başlayan"
-    },
-    "termination": {
-      "title": "Fesih mektubu hazırla",
-      "description": "Kira sözleşmesi, sağlık sigortası, mobil abonelik — doğru ve zamanında feshedilir.",
-      "price": "3 CHF'den başlayan"
-    },
-    "comingSoonTitle": "Yakında",
-    "comingSoon": [
-      "İş referans belgesini iyileştir",
-      "Kusur bildirimi",
-      "Şikayet mektubu",
-      "CV kontrolü",
-      "İcra kaydı özetinin açıklanması",
-      "Sağlık sigortasına mektup",
-      "Gider raporu",
-      "Maaş pazarlığı koçu",
-      "Nüfus kaydı bildirimi"
-    ]
+    "startButton": "Başla →",
+    "back": "← Geri",
+    "trustPills": [
+      "🔒 Veriler hemen silindi",
+      "⚡ Belge 20 saniyede",
+      "💳 Stripe ile güvenli"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Kira Başvuru Mektubu",
+        "description": "Ev sahibini ilk seferinde ikna edin. Profesyonel, kişisel, yerel standartlara uygun."
+      },
+      "jobbewerbung": {
+        "title": "Ön Yazı",
+        "description": "Neden doğru kişi olduğunuzu gösterin. Net, ikna edici, profesyonel."
+      },
+      "kuendigung": {
+        "title": "Fesih Mektubu",
+        "description": "Kira sözleşmesi, iş sözleşmesi, sigorta, abonelik — doğru ve zamanında."
+      },
+      "arbeitszeugnis": {
+        "title": "İş Referansı (iyileştirilmiş)",
+        "description": "Referansınız vasat mı geliyor? Onu profesyonelce yeniden yazıyoruz."
+      },
+      "maengelruege": {
+        "title": "Kusur Bildirimi",
+        "description": "Dairenizde hasar bildirin — yazılı, zamanında, doğru adreslenmiş."
+      },
+      "reklamation": {
+        "title": "Şikayet Mektubu",
+        "description": "Kusurlu ürün, kötü hizmet, yanlış fatura — net ve kararlı bir şekilde şikayet edin."
+      },
+      "lebenslauf": {
+        "title": "CV İncelemesi",
+        "description": "CV'niz analiz edilir ve profesyonelce revize edilir — iş piyasanıza uyarlanmış."
+      },
+      "krankenkasse": {
+        "title": "Sağlık Sigortası Mektubu",
+        "description": "Prim indirimi, yardım talepleri, iptal — doğru ifade edilmiş."
+      },
+      "spesen": {
+        "title": "Harcama Raporu",
+        "description": "İşvereniniz için profesyonel harcama raporu — net şekilde yapılandırılmış."
+      },
+      "lohnverhandlung": {
+        "title": "Maaş Müzakeresi",
+        "description": "Zam için argümanlar ve mektup — profesyonelce formüle edilmiş."
+      },
+      "einwohnerkontrolle": {
+        "title": "İkametgah Kaydı",
+        "description": "Belediyeye kayıt için kontrol listesi ve başvuru mektubu."
+      },
+      "betreibung": {
+        "title": "Borç Sicil Belgesi",
+        "description": "Borç sicil belgesi aldınız veya sunmanız mı gerekiyor? Açıklıyoruz."
+      }
+    }
   },
   "howItWorks": {
     "title": "Nasıl çalışır",

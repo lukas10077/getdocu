@@ -19,33 +19,63 @@
   "tools": {
     "title": "Nasze narzędzia",
     "subtitle": "Wybierz, czego potrzebujesz. Płacisz tylko za użycie.",
-    "rentalApplication": {
-      "title": "List z podaniem o wynajem",
-      "description": "Przekonujący list aplikacyjny na szwajcarski rynek mieszkaniowy — zgodny ze szwajcarskim standardem.",
-      "price": "od 5 CHF"
-    },
-    "jobApplication": {
-      "title": "Podanie o pracę",
-      "description": "List motywacyjny spełniający oczekiwania szwajcarskich pracodawców.",
-      "price": "od 5 CHF"
-    },
-    "termination": {
-      "title": "Sformułuj wypowiedzenie",
-      "description": "Umowa najmu, ubezpieczenie zdrowotne, abonament telefoniczny — wypowiedziane prawidłowo i na czas.",
-      "price": "od 3 CHF"
-    },
-    "comingSoonTitle": "Wkrótce",
-    "comingSoon": [
-      "Poprawa świadectwa pracy",
-      "Zgłoszenie wady",
-      "List reklamacyjny",
-      "Sprawdzenie CV",
-      "Wyjaśnienie wyciągu z rejestru egzekucji",
-      "List do kasy chorych",
-      "Rozliczenie wydatków",
-      "Trener negocjacji płacowych",
-      "Zgłoszenie do urzędu meldunkowego"
-    ]
+    "startButton": "Zacznij →",
+    "back": "← Wróć",
+    "trustPills": [
+      "🔒 Dane usunięte",
+      "⚡ Dokument w 20 sek.",
+      "💳 Bezpieczne przez Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Podanie o wynajem",
+        "description": "Przekonaj właściciela za pierwszym razem. Profesjonalne, osobiste, zgodne z lokalnymi standardami."
+      },
+      "jobbewerbung": {
+        "title": "List motywacyjny",
+        "description": "Pokaż, dlaczego jesteś właściwą osobą. Jasny, przekonujący, profesjonalny."
+      },
+      "kuendigung": {
+        "title": "Wypowiedzenie umowy",
+        "description": "Najem, umowa o pracę, ubezpieczenie, abonament — poprawnie i terminowo."
+      },
+      "arbeitszeugnis": {
+        "title": "Referencje (ulepszone)",
+        "description": "Twoje referencje brzmią przeciętnie? Przepiszemy je profesjonalnie."
+      },
+      "maengelruege": {
+        "title": "Zgłoszenie usterek",
+        "description": "Zgłoś szkody w mieszkaniu — pisemnie, terminowo, pod właściwy adres."
+      },
+      "reklamation": {
+        "title": "Pismo reklamacyjne",
+        "description": "Wadliwy towar, zła usługa, błędna faktura — reklamuj jasno i stanowczo."
+      },
+      "lebenslauf": {
+        "title": "Sprawdzenie CV",
+        "description": "Twoje CV jest analizowane i profesjonalnie poprawiane — dostosowane do Twojego rynku pracy."
+      },
+      "krankenkasse": {
+        "title": "Pismo do ubezpieczyciela",
+        "description": "Obniżenie składki, wnioski o świadczenia, rezygnacja — poprawnie sformułowane."
+      },
+      "spesen": {
+        "title": "Rozliczenie wydatków",
+        "description": "Profesjonalne rozliczenie wydatków dla pracodawcy — wyraźnie ustrukturyzowane."
+      },
+      "lohnverhandlung": {
+        "title": "Negocjacja wynagrodzenia",
+        "description": "Argumenty i pismo dotyczące podwyżki — sformułowane profesjonalnie."
+      },
+      "einwohnerkontrolle": {
+        "title": "Rejestracja zameldowania",
+        "description": "Lista kontrolna i pismo przewodnie do meldunku w urzędzie."
+      },
+      "betreibung": {
+        "title": "Rejestr zadłużeń",
+        "description": "Otrzymałeś lub musisz złożyć wyciąg z rejestru? Wyjaśniamy."
+      }
+    }
   },
   "howItWorks": {
     "title": "Jak to działa",

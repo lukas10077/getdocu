@@ -19,33 +19,63 @@
   "tools": {
     "title": "Naši alati",
     "subtitle": "Izaberite šta vam treba. Platite samo kada koristite.",
-    "rentalApplication": {
-      "title": "Pismo prijave za stan",
-      "description": "Uvjerljivo pismo prijave za švajcarsko tržište stanova — prema švajcarskom standardu.",
-      "price": "od 5 CHF"
-    },
-    "jobApplication": {
-      "title": "Prijava za posao",
-      "description": "Motivaciono pismo koje odgovara očekivanjima švajcarskih poslodavaca.",
-      "price": "od 5 CHF"
-    },
-    "termination": {
-      "title": "Napišite otkaz",
-      "description": "Ugovor o stanu, zdravstveno osiguranje, mobilni pretplata — otkazano pravilno i na vrijeme.",
-      "price": "od 3 CHF"
-    },
-    "comingSoonTitle": "Uskoro",
-    "comingSoon": [
-      "Poboljšanje radne potvrde",
-      "Prijava nedostatka",
-      "Pismo žalbe",
-      "Provjera CV-a",
-      "Objašnjenje izvoda iz registra izvršenja",
-      "Pismo zdravstvenom osiguranju",
-      "Obračun troškova",
-      "Trener za pregovaranje o plati",
-      "Prijava boravišta"
-    ]
+    "startButton": "Započni →",
+    "back": "← Nazad",
+    "trustPills": [
+      "🔒 Podaci odmah obrisani",
+      "⚡ Dokument za 20 sek.",
+      "💳 Sigurno putem Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Prijava za iznajmljivanje",
+        "description": "Ubedite stanodavca od prve. Profesionalno, lično, prema lokalnim standardima."
+      },
+      "jobbewerbung": {
+        "title": "Motivaciono pismo",
+        "description": "Pokažite zašto ste prava osoba. Jasno, uverljivo, profesionalno."
+      },
+      "kuendigung": {
+        "title": "Pismo o raskidu ugovora",
+        "description": "Ugovor o najmu, radni ugovor, osiguranje, pretplata — tačno i na vreme."
+      },
+      "arbeitszeugnis": {
+        "title": "Radna preporuka (poboljšana)",
+        "description": "Vaša preporuka zvuči osrednje? Prepišemo je profesionalno."
+      },
+      "maengelruege": {
+        "title": "Prijava nedostataka",
+        "description": "Prijavite štete u stanu — pismeno, na vreme, na tačnu adresu."
+      },
+      "reklamation": {
+        "title": "Reklamacijsko pismo",
+        "description": "Neispravna roba, loša usluga, pogrešan račun — reklamirajte jasno i odlučno."
+      },
+      "lebenslauf": {
+        "title": "Provera CV-ja",
+        "description": "Vaš CV se analizira i profesionalno revidira — prilagođen vašem tržištu rada."
+      },
+      "krankenkasse": {
+        "title": "Pismo zdravstvenom osiguravatelju",
+        "description": "Smanjenje premije, zahtevi za naknadu, otkaz — pravilno formulisano."
+      },
+      "spesen": {
+        "title": "Izveštaj o troškovima",
+        "description": "Profesionalni izveštaj o troškovima za poslodavca — jasno strukturisan."
+      },
+      "lohnverhandlung": {
+        "title": "Pregovori o plati",
+        "description": "Argumenti i pismo za povećanje plate — profesionalno formulisano."
+      },
+      "einwohnerkontrolle": {
+        "title": "Prijava boravišta",
+        "description": "Kontrolna lista i propratno pismo za registraciju u opštini."
+      },
+      "betreibung": {
+        "title": "Registar dugova",
+        "description": "Dobili ste ili treba da podnesete izvod? Objašnjavamo."
+      }
+    }
   },
   "howItWorks": {
     "title": "Kako funkcioniše",

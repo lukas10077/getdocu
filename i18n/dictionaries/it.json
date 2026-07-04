@@ -19,33 +19,63 @@
   "tools": {
     "title": "I nostri strumenti",
     "subtitle": "Scegli ciò di cui hai bisogno. Paghi solo quando lo usi.",
-    "rentalApplication": {
-      "title": "Lettera di candidatura per affitto",
-      "description": "Una lettera di candidatura convincente per il mercato immobiliare svizzero — secondo gli standard svizzeri.",
-      "price": "da 5 CHF"
-    },
-    "jobApplication": {
-      "title": "Candidatura di lavoro",
-      "description": "Una lettera di motivazione che soddisfa le aspettative dei datori di lavoro svizzeri.",
-      "price": "da 5 CHF"
-    },
-    "termination": {
-      "title": "Redigere una disdetta",
-      "description": "Contratto d'affitto, assicurazione malattia, abbonamento telefonico — disdetto correttamente e nei termini.",
-      "price": "da 3 CHF"
-    },
-    "comingSoonTitle": "Prossimamente",
-    "comingSoon": [
-      "Migliorare un certificato di lavoro",
-      "Denuncia di difetti",
-      "Lettera di reclamo",
-      "Controllo del CV",
-      "Spiegazione di un estratto del registro esecuzioni",
-      "Lettera alla cassa malati",
-      "Nota spese",
-      "Coach per negoziare lo stipendio",
-      "Iscrizione al controllo abitanti"
-    ]
+    "startButton": "Inizia →",
+    "back": "← Indietro",
+    "trustPills": [
+      "🔒 Dati eliminati subito",
+      "⚡ Documento in 20 sec.",
+      "💳 Sicuro via Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Domanda di locazione",
+        "description": "Convincete il proprietario al primo colpo. Professionale, personale, secondo gli standard locali."
+      },
+      "jobbewerbung": {
+        "title": "Lettera di motivazione",
+        "description": "Mostra perché sei la persona giusta. Chiara, convincente, professionale."
+      },
+      "kuendigung": {
+        "title": "Lettera di disdetta",
+        "description": "Contratto d'affitto, lavoro, assicurazione, abbonamento — correttamente e nei tempi."
+      },
+      "arbeitszeugnis": {
+        "title": "Referenza lavorativa (migliorata)",
+        "description": "Il tuo certificato suona mediocre? Lo riscriviamo professionalmente."
+      },
+      "maengelruege": {
+        "title": "Segnalazione difetti",
+        "description": "Segnalare danni nell'appartamento — per iscritto, nei tempi, correttamente indirizzato."
+      },
+      "reklamation": {
+        "title": "Lettera di reclamo",
+        "description": "Merce difettosa, cattivo servizio, fattura errata — reclama chiaramente."
+      },
+      "lebenslauf": {
+        "title": "Revisione CV",
+        "description": "Il tuo CV viene analizzato e revisionato professionalmente — adattato al tuo mercato."
+      },
+      "krankenkasse": {
+        "title": "Lettera all'assicurazione malattia",
+        "description": "Riduzione premio, richieste prestazioni, disdetta — correttamente formulato."
+      },
+      "spesen": {
+        "title": "Nota spese",
+        "description": "Nota spese professionale per il tuo datore di lavoro — chiaramente strutturata."
+      },
+      "lohnverhandlung": {
+        "title": "Negoziazione salariale",
+        "description": "Argomenti e lettera per il tuo aumento — formulati professionalmente."
+      },
+      "einwohnerkontrolle": {
+        "title": "Annuncio al controllo abitanti",
+        "description": "Lista di controllo e lettera di accompagnamento per la tua iscrizione."
+      },
+      "betreibung": {
+        "title": "Estratto del registro esecuzioni",
+        "description": "Ricevuto o devi presentare un estratto? Te lo spieghiamo."
+      }
+    }
   },
   "howItWorks": {
     "title": "Come funziona",

@@ -19,33 +19,63 @@
   "tools": {
     "title": "Unsere Tools",
     "subtitle": "Wähle, was du brauchst. Bezahle nur, wenn du es nutzt.",
-    "rentalApplication": {
-      "title": "Mietbewerbungsschreiben",
-      "description": "Ein überzeugendes Bewerbungsschreiben für die Wohnungssuche in der Schweiz — nach Schweizer Standard.",
-      "price": "ab 5 CHF"
-    },
-    "jobApplication": {
-      "title": "Bewerbung für Arbeitsstelle",
-      "description": "Motivationsschreiben, das den Erwartungen Schweizer Arbeitgeber entspricht.",
-      "price": "ab 5 CHF"
-    },
-    "termination": {
-      "title": "Kündigung formulieren",
-      "description": "Mietvertrag, Krankenkasse, Handy-Abo — korrekt und fristgerecht gekündigt.",
-      "price": "ab 3 CHF"
-    },
-    "comingSoonTitle": "Bald verfügbar",
-    "comingSoon": [
-      "Arbeitszeugnis verbessern",
-      "Mängelrüge",
-      "Reklamationsbrief",
-      "Lebenslauf-Check",
-      "Betreibungsregisterauszug erklären",
-      "Krankenkassen-Erklärung",
-      "Spesenabrechnung",
-      "Lohnverhandlungs-Coach",
-      "Anmeldung Einwohnerkontrolle"
-    ]
+    "startButton": "Starten →",
+    "back": "← Zurück",
+    "trustPills": [
+      "🔒 Daten sofort gelöscht",
+      "⚡ Dokument in 20 Sek.",
+      "💳 Sicher via Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Mietbewerbungsschreiben",
+        "description": "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, nach lokalem Standard."
+      },
+      "jobbewerbung": {
+        "title": "Motivationsschreiben",
+        "description": "Zeig, warum du die richtige Person bist. Klar, überzeugend, professionell."
+      },
+      "kuendigung": {
+        "title": "Kündigungsschreiben",
+        "description": "Mietvertrag, Arbeitsvertrag, Versicherung, Abonnement — korrekt und fristgerecht."
+      },
+      "arbeitszeugnis": {
+        "title": "Arbeitszeugnis (verbessert)",
+        "description": "Dein Zeugnis klingt mittelmässig? Wir schreiben es professionell um."
+      },
+      "maengelruege": {
+        "title": "Mängelrüge",
+        "description": "Schäden in der Wohnung melden — schriftlich, fristwahrend, korrekt adressiert."
+      },
+      "reklamation": {
+        "title": "Reklamationsbrief",
+        "description": "Defekte Ware, schlechte Dienstleistung, falsche Rechnung — klar reklamieren."
+      },
+      "lebenslauf": {
+        "title": "Lebenslauf-Check",
+        "description": "Dein CV wird analysiert und professionell überarbeitet — für deinen Arbeitsmarkt."
+      },
+      "krankenkasse": {
+        "title": "Krankenkassen-Brief",
+        "description": "Prämienreduktion, Leistungsanfragen, Kündigung — korrekt formuliert."
+      },
+      "spesen": {
+        "title": "Spesenabrechnung",
+        "description": "Professionelle Spesenabrechnung für deinen Arbeitgeber — klar strukturiert."
+      },
+      "lohnverhandlung": {
+        "title": "Lohnverhandlung",
+        "description": "Argumente und einen Brief für deine Gehaltserhöhung — professionell formuliert."
+      },
+      "einwohnerkontrolle": {
+        "title": "Anmeldung Einwohnerkontrolle",
+        "description": "Checkliste und Begleitschreiben für deine Anmeldung in der Gemeinde."
+      },
+      "betreibung": {
+        "title": "Betreibungsregisterauszug",
+        "description": "Betreibungsauszug erhalten oder vorlegen? Wir erklären ihn dir."
+      }
+    }
   },
   "howItWorks": {
     "title": "So funktioniert's",

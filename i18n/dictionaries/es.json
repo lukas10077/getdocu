@@ -19,33 +19,63 @@
   "tools": {
     "title": "Nuestras herramientas",
     "subtitle": "Elige lo que necesitas. Paga solo cuando lo uses.",
-    "rentalApplication": {
-      "title": "Carta de solicitud de alquiler",
-      "description": "Una carta de solicitud convincente para el mercado de vivienda suizo — según el estándar suizo.",
-      "price": "desde 5 CHF"
-    },
-    "jobApplication": {
-      "title": "Solicitud de empleo",
-      "description": "Una carta de motivación que cumple las expectativas de los empleadores suizos.",
-      "price": "desde 5 CHF"
-    },
-    "termination": {
-      "title": "Redactar una cancelación",
-      "description": "Contrato de alquiler, seguro de salud, plan móvil — cancelado correctamente y a tiempo.",
-      "price": "desde 3 CHF"
-    },
-    "comingSoonTitle": "Próximamente",
-    "comingSoon": [
-      "Mejorar un certificado laboral",
-      "Aviso de defectos",
-      "Carta de reclamación",
-      "Revisión de CV",
-      "Explicación de un extracto del registro de ejecuciones",
-      "Carta al seguro de salud",
-      "Informe de gastos",
-      "Coach de negociación salarial",
-      "Inscripción en el control de habitantes"
-    ]
+    "startButton": "Empezar →",
+    "back": "← Volver",
+    "trustPills": [
+      "🔒 Datos eliminados",
+      "⚡ Documento en 20 seg.",
+      "💳 Seguro via Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Solicitud de alquiler",
+        "description": "Convence al arrendador a la primera. Profesional, personal, según estándares locales."
+      },
+      "jobbewerbung": {
+        "title": "Carta de presentación",
+        "description": "Demuestra por qué eres la persona adecuada. Clara, convincente, profesional."
+      },
+      "kuendigung": {
+        "title": "Carta de rescisión",
+        "description": "Contrato de alquiler, laboral, seguro, suscripción — correcta y a tiempo."
+      },
+      "arbeitszeugnis": {
+        "title": "Referencia laboral (mejorada)",
+        "description": "¿Tu referencia suena mediocre? La reescribimos profesionalmente."
+      },
+      "maengelruege": {
+        "title": "Aviso de defectos",
+        "description": "Informar daños en el piso — por escrito, a tiempo, correctamente dirigido."
+      },
+      "reklamation": {
+        "title": "Carta de reclamación",
+        "description": "Mercancía defectuosa, mal servicio, factura incorrecta — reclama con claridad."
+      },
+      "lebenslauf": {
+        "title": "Revisión de CV",
+        "description": "Tu CV se analiza y revisa profesionalmente — adaptado a tu mercado laboral."
+      },
+      "krankenkasse": {
+        "title": "Carta al seguro médico",
+        "description": "Reducción de prima, solicitudes de prestaciones, cancelación — correctamente redactado."
+      },
+      "spesen": {
+        "title": "Nota de gastos",
+        "description": "Nota de gastos profesional para tu empleador — claramente estructurada."
+      },
+      "lohnverhandlung": {
+        "title": "Negociación salarial",
+        "description": "Argumentos y carta para tu aumento — formulados profesionalmente."
+      },
+      "einwohnerkontrolle": {
+        "title": "Registro de residencia",
+        "description": "Lista de verificación y carta de presentación para tu registro municipal."
+      },
+      "betreibung": {
+        "title": "Extracto de registro de deudas",
+        "description": "¿Recibiste o debes presentar un extracto? Te lo explicamos."
+      }
+    }
   },
   "howItWorks": {
     "title": "Cómo funciona",

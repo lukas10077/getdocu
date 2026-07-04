@@ -30,7 +30,7 @@ export default async function ToolPage({
       <div className="bg-ink-950 px-6 pt-8">
         <div className="mx-auto max-w-content">
           <Link href={`/${params.locale}#tools`} className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-cream-muted transition hover:text-cream">
-            ← Zurück
+            {dict.tools.back ?? "← Zurück"}
           </Link>
         </div>
       </div>
@@ -40,11 +40,15 @@ export default async function ToolPage({
 
           {/* Header */}
           <div className="border-b border-ink-700 pb-8">
-            <ToolPageHeader tool={tool} />
+            <ToolPageHeader
+              tool={tool}
+              title={dict.tools.items?.[tool.slug]?.title}
+              description={dict.tools.items?.[tool.slug]?.description}
+            />
 
             {/* Trust pills */}
             <div className="mt-5 flex flex-wrap gap-2">
-              {["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek.", "💳 Sicher via Stripe"].map((t) => (
+              {(dict.tools.trustPills ?? ["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek.", "💳 Sicher via Stripe"]).map((t: string) => (
                 <span key={t} className="rounded-full border border-ink-700 px-3 py-1 text-xs text-cream-muted">
                   {t}
                 </span>

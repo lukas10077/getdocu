@@ -19,33 +19,63 @@
   "tools": {
     "title": "Eszközeink",
     "subtitle": "Válaszd ki, mire van szükséged. Csak akkor fizetsz, ha használod.",
-    "rentalApplication": {
-      "title": "Lakásbérlési pályázati levél",
-      "description": "Meggyőző pályázati levél a svájci lakáspiacra — svájci szabvány szerint.",
-      "price": "5 CHF-tól"
-    },
-    "jobApplication": {
-      "title": "Állásra jelentkezés",
-      "description": "Motivációs levél, amely megfelel a svájci munkáltatók elvárásainak.",
-      "price": "5 CHF-tól"
-    },
-    "termination": {
-      "title": "Felmondás megfogalmazása",
-      "description": "Bérleti szerződés, betegbiztosítás, mobilszerződés — helyesen és időben felmondva.",
-      "price": "3 CHF-tól"
-    },
-    "comingSoonTitle": "Hamarosan",
-    "comingSoon": [
-      "Munkáltatói igazolás javítása",
-      "Hibabejelentés",
-      "Panaszlevél",
-      "Önéletrajz-ellenőrzés",
-      "Végrehajtási nyilvántartás kivonatának magyarázata",
-      "Levél a betegbiztosítóhoz",
-      "Költségelszámolás",
-      "Béralku-coach",
-      "Lakcímbejelentés"
-    ]
+    "startButton": "Kezdés →",
+    "back": "← Vissza",
+    "trustPills": [
+      "🔒 Adatok azonnal törölve",
+      "⚡ Dokumentum 20 mp alatt",
+      "💳 Biztonságos Stripe-on"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Bérleti kérelem",
+        "description": "Győzze meg a bérbeadót első alkalommal. Professzionális, személyes, helyi szabványok szerint."
+      },
+      "jobbewerbung": {
+        "title": "Motivációs levél",
+        "description": "Mutasd meg, miért te vagy a megfelelő személy. Egyértelmű, meggyőző, professzionális."
+      },
+      "kuendigung": {
+        "title": "Felmondólevél",
+        "description": "Bérleti szerződés, munkaszerződés, biztosítás, előfizetés — helyesen és határidőre."
+      },
+      "arbeitszeugnis": {
+        "title": "Munkaügyi referencia (javított)",
+        "description": "A referenciája közepes? Professzionálisan átírjuk."
+      },
+      "maengelruege": {
+        "title": "Hibák bejelentése",
+        "description": "Károk bejelentése a lakásban — írásban, határidőre, helyes cím alatt."
+      },
+      "reklamation": {
+        "title": "Panaszlevél",
+        "description": "Hibás áru, rossz szolgáltatás, téves számla — panaszkodjon egyértelműen."
+      },
+      "lebenslauf": {
+        "title": "Önéletrajz-ellenőrzés",
+        "description": "Az önéletrajzát elemezzük és professzionálisan felülvizsgáljuk — a munkaerőpiachoz igazítva."
+      },
+      "krankenkasse": {
+        "title": "Egészségbiztosítási levél",
+        "description": "Díjcsökkentés, ellátási kérelmek, lemondás — helyesen megfogalmazva."
+      },
+      "spesen": {
+        "title": "Költségjelentés",
+        "description": "Professzionális költségjelentés a munkáltatónak — jól strukturálva."
+      },
+      "lohnverhandlung": {
+        "title": "Bértárgyalás",
+        "description": "Érvek és levél a béremeléshez — professzionálisan megfogalmazva."
+      },
+      "einwohnerkontrolle": {
+        "title": "Lakcím-bejelentés",
+        "description": "Ellenőrzőlista és kísérőlevél az önkormányzatnál való regisztrációhoz."
+      },
+      "betreibung": {
+        "title": "Adósnyilvántartó kivonata",
+        "description": "Adósnyilvántartó kivonatot kapott vagy be kell nyújtania? Elmagyarázzuk."
+      }
+    }
   },
   "howItWorks": {
     "title": "Hogyan működik",

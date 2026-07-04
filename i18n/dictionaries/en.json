@@ -19,33 +19,63 @@
   "tools": {
     "title": "Our tools",
     "subtitle": "Choose what you need. Pay only when you use it.",
-    "rentalApplication": {
-      "title": "Rental application letter",
-      "description": "A compelling application letter for the Swiss housing market — written to Swiss standards.",
-      "price": "from CHF 5"
-    },
-    "jobApplication": {
-      "title": "Job application",
-      "description": "A cover letter that meets the expectations of Swiss employers.",
-      "price": "from CHF 5"
-    },
-    "termination": {
-      "title": "Write a termination letter",
-      "description": "Rental contract, health insurance, mobile plan — terminated correctly and on time.",
-      "price": "from CHF 3"
-    },
-    "comingSoonTitle": "Coming soon",
-    "comingSoon": [
-      "Improve a reference letter",
-      "Defect notice (Mängelrüge)",
-      "Complaint letter",
-      "CV check",
-      "Explain a debt collection record",
-      "Health insurance letter",
-      "Expense report",
-      "Salary negotiation coach",
-      "Resident registration"
-    ]
+    "startButton": "Start →",
+    "back": "← Back",
+    "trustPills": [
+      "🔒 Data deleted immediately",
+      "⚡ Document in 20 sec.",
+      "💳 Secure via Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Rental Application Letter",
+        "description": "Convince landlords right away. Professional, personal, tailored to local standards."
+      },
+      "jobbewerbung": {
+        "title": "Cover Letter",
+        "description": "Show why you're the right person. Clear, convincing, professional."
+      },
+      "kuendigung": {
+        "title": "Termination Letter",
+        "description": "Lease, employment contract, insurance, subscription — correctly and on time."
+      },
+      "arbeitszeugnis": {
+        "title": "Employment Reference (improved)",
+        "description": "Your reference sounds mediocre? We rewrite it professionally."
+      },
+      "maengelruege": {
+        "title": "Defect Notice",
+        "description": "Report damage in your flat — in writing, on time, correctly addressed."
+      },
+      "reklamation": {
+        "title": "Complaint Letter",
+        "description": "Defective goods, poor service, wrong invoice — complain clearly and firmly."
+      },
+      "lebenslauf": {
+        "title": "CV Check",
+        "description": "Your CV is analyzed and professionally revised — tailored to your job market."
+      },
+      "krankenkasse": {
+        "title": "Health Insurance Letter",
+        "description": "Premium reduction, benefit requests, cancellation — correctly worded."
+      },
+      "spesen": {
+        "title": "Expense Report",
+        "description": "Professional expense report for your employer — clearly structured."
+      },
+      "lohnverhandlung": {
+        "title": "Salary Negotiation",
+        "description": "Arguments and a letter for your raise — professionally formulated."
+      },
+      "einwohnerkontrolle": {
+        "title": "Resident Registration",
+        "description": "Checklist and cover letter for your registration at the municipality."
+      },
+      "betreibung": {
+        "title": "Debt Collection Register",
+        "description": "Received or need to submit a debt collection extract? We explain it."
+      }
+    }
   },
   "howItWorks": {
     "title": "How it works",
