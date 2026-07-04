@@ -51,7 +51,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   mietbewerbung: {
     slug: "mietbewerbung",
     priceChfRappen: 500,
-    documentTitleDe: "Mietbewerbungsschreiben",
+    documentTitleDe: "Wohnungsbewerbung",
     descriptionDe:
       "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, nach lokalem Standard.",
     systemPrompt:
