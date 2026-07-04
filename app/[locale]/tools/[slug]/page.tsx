@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getDictionary, Locale } from "@/i18n/config";
@@ -14,13 +13,16 @@ export async function generateStaticParams() {
 
 export default async function ToolPage({
   params,
+  searchParams,
 }: {
   params: { locale: Locale; slug: string };
+  searchParams?: { session_id?: string };
 }) {
   const tool = getTool(params.slug);
   if (!tool) notFound();
 
   const dict = await getDictionary(params.locale);
+  const sessionId = searchParams?.session_id ?? null;
 
   return (
     <main>
@@ -56,9 +58,7 @@ export default async function ToolPage({
             </div>
           </div>
 
-          <Suspense fallback={<div className="mt-10 text-sm text-cream-muted">Lädt…</div>}>
-            <ToolForm tool={tool} locale={params.locale} />
-          </Suspense>
+          <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} />
         </div>
       </section>
 

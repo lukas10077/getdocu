@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { ToolDefinition } from "@/lib/tools";
 import { useCountry } from "./CountryProvider";
 import { getStripeAmount, formatAmount } from "@/lib/countries";
@@ -17,6 +16,7 @@ interface Photo {
 interface Props {
   tool: ToolDefinition;
   locale: string;
+  sessionId: string | null;
 }
 
 // ── IndexedDB helpers für Fotos (überleben Stripe-Redirect) ──────────
@@ -73,8 +73,7 @@ function readFileAsPhoto(file: File): Promise<Photo> {
   });
 }
 
-export default function ToolForm({ tool, locale }: Props) {
-  const searchParams = useSearchParams();
+export default function ToolForm({ tool, locale, sessionId }: Props) {
   const { country } = useCountry();
   const [stage, setStage] = useState<Stage>("form");
   const [values, setValues] = useState<Record<string, string>>({});
@@ -121,7 +120,6 @@ export default function ToolForm({ tool, locale }: Props) {
     setPhotos((prev) => prev.filter((_, i) => i !== idx));
   }
 
-  const sessionId = searchParams.get("session_id");
   const storageKey = `getdocu_form_${tool.slug}`;
   const photosIdbKey = `${storageKey}_photos`;
 
