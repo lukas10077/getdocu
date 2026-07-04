@@ -187,7 +187,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     maxPhotos: 100,
     photoGalleryLabelDe: "Fotos der Mängel hochladen (optional)",
     photoGalleryHintDe: "Lade bis zu 100 Fotos hoch — sie werden als Beilage ans Dokument angehängt.",
-    documentTitleDe: "Mängelrüge",
+    documentTitleDe: "Wohnungsschaden beim Vermieter melden",
     descriptionDe:
       "Schäden in der Wohnung melden — schriftlich, fristwahrend, korrekt adressiert.",
     systemPrompt:
