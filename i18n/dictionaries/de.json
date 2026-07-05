@@ -4,7 +4,7 @@
     "description": "KI-gestützte Dokumente für die Schweiz: Mietbewerbung, Bewerbung, Kündigung. In Minuten erledigt."
   },
   "nav": {
-    "tools": "Tools",
+    "tools": "Dokumente",
     "howItWorks": "So funktioniert's",
     "pricing": "Preise",
     "languages": "Sprache"
@@ -13,7 +13,7 @@
     "eyebrow": "Gemacht für die Schweiz",
     "headline": "Wichtige Dokumente. Einfach erstellt.",
     "subheadline": "GetDocu hilft dir, professionelle Briefe und Dokumente zu erstellen — in deiner Sprache erklärt, für dein Land optimiert.",
-    "cta": "Tool wählen",
+    "cta": "Dokument wählen",
     "ctaSecondary": "So funktioniert's"
   },
   "tools": {

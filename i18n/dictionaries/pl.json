@@ -4,7 +4,7 @@
     "description": "Dokumenty generowane przez AI dla Szwajcarii: podanie o wynajem, podanie o pracę, wypowiedzenie. Gotowe w kilka minut."
   },
   "nav": {
-    "tools": "Narzędzia",
+    "tools": "Dokumenty",
     "howItWorks": "Jak to działa",
     "pricing": "Cennik",
     "languages": "Język"
@@ -13,7 +13,7 @@
     "eyebrow": "Stworzone dla Szwajcarii",
     "headline": "Ważne dokumenty. W prosty sposób.",
     "subheadline": "GetDocu pomaga tworzyć profesjonalne listy i dokumenty — wyjaśnione w twoim języku, zoptymalizowane dla twojego kraju.",
-    "cta": "Wybierz narzędzie",
+    "cta": "Wybierz dokument",
     "ctaSecondary": "Jak to działa"
   },
   "tools": {

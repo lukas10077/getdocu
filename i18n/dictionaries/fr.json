@@ -4,7 +4,7 @@
     "description": "Documents générés par IA pour la Suisse : candidature de location, lettre de motivation, résiliation. En quelques minutes."
   },
   "nav": {
-    "tools": "Outils",
+    "tools": "Documents",
     "howItWorks": "Comment ça marche",
     "pricing": "Tarifs",
     "languages": "Langue"
@@ -13,7 +13,7 @@
     "eyebrow": "Conçu pour la Suisse",
     "headline": "Des documents importants. En toute simplicité.",
     "subheadline": "GetDocu vous aide à créer des lettres et documents professionnels — expliqués dans votre langue, optimisés pour votre pays.",
-    "cta": "Choisir un outil",
+    "cta": "Choisir un document",
     "ctaSecondary": "Comment ça marche"
   },
   "tools": {

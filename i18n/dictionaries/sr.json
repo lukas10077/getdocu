@@ -4,7 +4,7 @@
     "description": "Dokumenti generisani AI-jem za Švajcarsku: prijava za stan, prijava za posao, otkazivanje. Spremno za nekoliko minuta."
   },
   "nav": {
-    "tools": "Alati",
+    "tools": "Dokumenti",
     "howItWorks": "Kako funkcioniše",
     "pricing": "Cijene",
     "languages": "Jezik"
@@ -13,7 +13,7 @@
     "eyebrow": "Napravljeno za Švajcarsku",
     "headline": "Važni dokumenti. Jednostavno napravljeni.",
     "subheadline": "GetDocu vam pomaže da kreirate profesionalna pisma i dokumenta — objašnjeno na vašem jeziku, optimizovano za vašu zemlju.",
-    "cta": "Izaberi alat",
+    "cta": "Izaberi dokument",
     "ctaSecondary": "Kako funkcioniše"
   },
   "tools": {

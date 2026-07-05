@@ -4,7 +4,7 @@
     "description": "Documentos generados por IA para Suiza: solicitud de alquiler, solicitud de empleo, cancelación. Listo en minutos."
   },
   "nav": {
-    "tools": "Herramientas",
+    "tools": "Documentos",
     "howItWorks": "Cómo funciona",
     "pricing": "Precios",
     "languages": "Idioma"
@@ -13,7 +13,7 @@
     "eyebrow": "Hecho para Suiza",
     "headline": "Documentos importantes. Hechos de forma sencilla.",
     "subheadline": "GetDocu te ayuda a crear cartas y documentos profesionales — explicados en tu idioma, optimizados para tu país.",
-    "cta": "Elegir herramienta",
+    "cta": "Elegir documento",
     "ctaSecondary": "Cómo funciona"
   },
   "tools": {

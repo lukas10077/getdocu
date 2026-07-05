@@ -4,7 +4,7 @@
     "description": "AI-powered documents for Switzerland: rental applications, job applications, terminations. Done in minutes."
   },
   "nav": {
-    "tools": "Tools",
+    "tools": "Documents",
     "howItWorks": "How it works",
     "pricing": "Pricing",
     "languages": "Language"
@@ -13,7 +13,7 @@
     "eyebrow": "Made for Switzerland",
     "headline": "Important documents. Made simple.",
     "subheadline": "GetDocu helps you create professional letters and documents — explained in your language, optimised for your country.",
-    "cta": "Choose a tool",
+    "cta": "Choose a document",
     "ctaSecondary": "How it works"
   },
   "tools": {

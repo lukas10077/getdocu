@@ -4,7 +4,7 @@
     "description": "İsviçre için yapay zeka destekli belgeler: kira başvurusu, iş başvurusu, fesih. Dakikalar içinde hazır."
   },
   "nav": {
-    "tools": "Araçlar",
+    "tools": "Belgeler",
     "howItWorks": "Nasıl çalışır",
     "pricing": "Fiyatlar",
     "languages": "Dil"
@@ -13,7 +13,7 @@
     "eyebrow": "İsviçre için tasarlandı",
     "headline": "Önemli belgeler. Basitçe oluşturuldu.",
     "subheadline": "GetDocu, profesyonel mektuplar ve belgeler oluşturmanıza yardımcı olur — kendi dilinizde açıklanmış, ülkeniz için optimize edilmiş.",
-    "cta": "Bir araç seç",
+    "cta": "Bir belge seç",
     "ctaSecondary": "Nasıl çalışır"
   },
   "tools": {

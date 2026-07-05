@@ -4,7 +4,7 @@
     "description": "AI által generált dokumentumok Svájc számára: lakásbérlési pályázat, állásra jelentkezés, felmondás. Percek alatt kész."
   },
   "nav": {
-    "tools": "Eszközök",
+    "tools": "Dokumentumok",
     "howItWorks": "Hogyan működik",
     "pricing": "Árak",
     "languages": "Nyelv"
@@ -13,7 +13,7 @@
     "eyebrow": "Svájc számára készült",
     "headline": "Fontos dokumentumok. Egyszerűen elkészítve.",
     "subheadline": "A GetDocu segít professzionális leveleket és dokumentumokat létrehozni — a te nyelvedén magyarázva, az országodra optimalizálva.",
-    "cta": "Eszköz kiválasztása",
+    "cta": "Dokumentum kiválasztása",
     "ctaSecondary": "Hogyan működik"
   },
   "tools": {

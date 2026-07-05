@@ -4,7 +4,7 @@
     "description": "Documentos gerados por IA para a Suíça: candidatura de arrendamento, candidatura de emprego, rescisão. Pronto em minutos."
   },
   "nav": {
-    "tools": "Ferramentas",
+    "tools": "Documentos",
     "howItWorks": "Como funciona",
     "pricing": "Preços",
     "languages": "Idioma"
@@ -13,7 +13,7 @@
     "eyebrow": "Feito para a Suíça",
     "headline": "Documentos importantes. Feitos de forma simples.",
     "subheadline": "GetDocu ajuda-te a criar cartas e documentos profissionais — explicados na tua língua, otimizados para o teu país.",
-    "cta": "Escolher ferramenta",
+    "cta": "Escolher documento",
     "ctaSecondary": "Como funciona"
   },
   "tools": {
