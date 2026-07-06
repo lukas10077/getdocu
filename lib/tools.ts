@@ -178,7 +178,6 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   arbeitszeugnis: {
     slug: "arbeitszeugnis",
     priceChfRappen: 500,
-    supportsDocumentUpload: true,
     supportsAllDocumentTypes: true,
     uploadLabelDe: "Zeugnis hochladen (optional)",
     uploadHintDe: "Lade dein Zeugnis hoch — als Foto, PDF oder Word-Datei. Wir lesen es automatisch.",
