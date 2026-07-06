@@ -75,10 +75,18 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ documentText: generatedText, title: tool.documentTitleDe });
 }
 
+function formatFieldValue(type: string, value: string): string {
+  if (type === "date" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    const [y, m, d] = value.split("-");
+    return `${d}.${m}.${y}`;
+  }
+  return value;
+}
+
 function buildUserPrompt(tool: NonNullable<ReturnType<typeof getTool>>, formData: Record<string, string>): string {
   const lines = tool.fields
     .filter((f) => formData[f.key]?.trim())
-    .map((f) => `${f.label}: ${formData[f.key]}`)
+    .map((f) => `${f.label}: ${formatFieldValue(f.type, formData[f.key])}`)
     .join("\n");
   return `Erstelle das Dokument basierend auf folgenden Angaben:\n\n${lines}`;
 }

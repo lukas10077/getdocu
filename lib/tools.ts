@@ -16,7 +16,7 @@ export type ToolSlug =
 export interface FieldDef {
   key: string;
   label: string;
-  type: "text" | "textarea" | "select" | "email" | "tel" | "number";
+  type: "text" | "textarea" | "select" | "email" | "tel" | "number" | "date";
   placeholder?: string;
   required?: boolean;
   options?: string[]; // nur für type="select"
@@ -62,12 +62,12 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",       label: "Vorname",                          type: "text",     required: true,  section: "Persönliche Angaben" },
       { key: "lastName",        label: "Nachname",                         type: "text",     required: true  },
-      { key: "birthDate",       label: "Geburtsdatum (z.B. 15.03.1990)",   type: "text",     required: true  },
+      { key: "birthDate",       label: "Geburtsdatum",                     type: "date",     required: true  },
       { key: "nationality",     label: "Nationalität",                     type: "text",     required: true  },
       { key: "residencePermit", label: "Aufenthaltsstatus",                type: "select",   required: true,
         options: ["Schweizer Bürger", "C-Ausweis", "B-Ausweis", "L-Ausweis", "EU/EFTA", "Anderes"] },
       { key: "currentJob",      label: "Beruf / aktuelle Stelle",          type: "text",     required: true  },
-      { key: "monthlyIncome",   label: "Monatliches Nettoeinkommen (CHF)", type: "text",     required: true,  placeholder: "z.B. 5 500" },
+      { key: "monthlyIncome",   label: "Monatliches Nettoeinkommen (CHF)", type: "number",   required: true,  placeholder: "5500" },
       { key: "currentAddress",  label: "Deine aktuelle Adresse",           type: "text",     required: true,  section: "Wohnsituation" },
       { key: "targetAddress",   label: "Adresse der Wunsch-Wohnung",       type: "text",     required: false, placeholder: "falls bekannt" },
       { key: "numberOfPersons", label: "Personen im Haushalt",             type: "select",   required: true,
@@ -101,7 +101,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "email",           label: "E-Mail",                               type: "email",    required: true  },
       { key: "phone",           label: "Telefon",                              type: "tel",      required: false },
       { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",         type: "text",     required: true  },
-      { key: "yearsExperience", label: "Jahre Berufserfahrung",                type: "text",     required: true,  placeholder: "z.B. 4" },
+      { key: "yearsExperience", label: "Jahre Berufserfahrung",                type: "number",   required: true,  placeholder: "4" },
       { key: "topSkills",       label: "Wichtigste Fähigkeiten und Stärken",   type: "textarea", required: true,
         placeholder: "z.B. Projektmanagement, Deutsch/Englisch, SAP, Teamarbeit, …" },
       { key: "targetPosition",  label: "Stelle, auf die du dich bewirbst",     type: "text",     required: true,  section: "Die Stelle" },
@@ -138,7 +138,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "recipientName",    label: "Name des Empfängers (Vermieter, Firma …)", type: "text",   required: true  },
       { key: "recipientAddress", label: "Adresse des Empfängers",                type: "text",     required: true  },
       { key: "contractRef",      label: "Vertrags-/Kunden-/Policennummer",        type: "text",     required: false, placeholder: "falls vorhanden" },
-      { key: "terminationDate",  label: "Gewünschtes Kündigungsdatum",            type: "text",     required: true,  placeholder: "z.B. 31.03.2026 oder nächstmöglicher Termin" },
+      { key: "terminationDate",  label: "Gewünschtes Kündigungsdatum",            type: "date",     required: true  },
       { key: "reason",           label: "Kündigungsgrund (optional)",             type: "textarea", required: false,
         placeholder: "Nur wenn du einen Grund angeben möchtest." },
     ],
@@ -233,7 +233,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
         section: "Reklamation" },
       { key: "demand",           label: "Was verlangst du?",            type: "textarea", required: true,
         placeholder: "z.B. vollständige Rückerstattung, kostenlose Reparatur, Ersatzlieferung, …" },
-      { key: "deadline",         label: "Frist",                        type: "text",     required: false, placeholder: "z.B. 10 Werktage" },
+      { key: "deadline",         label: "Frist (Werktage)",             type: "number",   required: false, placeholder: "10" },
     ],
   },
 
@@ -279,7 +279,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "firstName",      label: "Vorname",                   type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",       label: "Nachname",                  type: "text",     required: true  },
       { key: "currentAddress", label: "Deine Adresse",             type: "text",     required: true  },
-      { key: "birthDate",      label: "Geburtsdatum",              type: "text",     required: true  },
+      { key: "birthDate",      label: "Geburtsdatum",              type: "date",     required: true  },
       { key: "insuranceName",  label: "Name der Krankenkasse",     type: "text",     required: true,  section: "Krankenkasse" },
       { key: "policyNumber",   label: "Versicherungs-/Policennummer", type: "text",  required: true  },
       { key: "topic",          label: "Thema des Briefes",         type: "select",   required: true,
@@ -307,7 +307,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",        type: "text", required: true  },
       { key: "landlordName",     label: "Name des Vermieters / Verwaltung",  type: "text", required: true,  section: "Vermieter" },
       { key: "landlordAddress",  label: "Adresse des Vermieters",            type: "text", required: true  },
-      { key: "terminationDate",  label: "Gewünschtes Kündigungsdatum",       type: "text", required: true,  placeholder: "z.B. 31.03.2026 oder nächstmöglicher Termin", section: "Kündigung" },
+      { key: "terminationDate",  label: "Gewünschtes Kündigungsdatum",       type: "date", required: true,  section: "Kündigung" },
       { key: "reason",           label: "Kündigungsgrund (optional)",        type: "textarea", required: false, placeholder: "Nur wenn du einen Grund angeben möchtest." },
     ],
   },
@@ -330,7 +330,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "position",         label: "Deine Stelle / Funktion",     type: "text", required: true  },
       { key: "employer",         label: "Name des Arbeitgebers",       type: "text", required: true,  section: "Arbeitgeber" },
       { key: "employerAddress",  label: "Adresse des Arbeitgebers",    type: "text", required: true  },
-      { key: "terminationDate",  label: "Gewünschtes Austrittsdatum",  type: "text", required: true,  placeholder: "z.B. 31.03.2026 oder nächstmöglicher Termin", section: "Kündigung" },
+      { key: "terminationDate",  label: "Gewünschtes Austrittsdatum",  type: "date", required: true,  section: "Kündigung" },
       { key: "reason",           label: "Kündigungsgrund (optional)",  type: "textarea", required: false, placeholder: "Nur wenn du einen Grund angeben möchtest." },
     ],
   },
