@@ -16,7 +16,7 @@ export type ToolSlug =
 export interface FieldDef {
   key: string;
   label: string;
-  type: "text" | "textarea" | "select" | "email" | "tel";
+  type: "text" | "textarea" | "select" | "email" | "tel" | "number";
   placeholder?: string;
   required?: boolean;
   options?: string[]; // nur für type="select"
