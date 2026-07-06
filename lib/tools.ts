@@ -266,9 +266,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   lebenslauf: {
     slug: "lebenslauf",
     priceChfRappen: 500,
-    supportsDocumentUpload: true,
+    supportsAllDocumentTypes: true,
     uploadLabelDe: "Deinen bestehenden Lebenslauf hochladen (optional)",
-    uploadHintDe: "Hast du einen alten CV? Lade ein Foto oder Scan hoch — wir verbessern und erweitern ihn mit deinen neuen Angaben.",
+    uploadHintDe: "Hast du einen alten CV? Lade ihn hoch — als Foto, PDF oder Word-Datei. Wir lesen ihn automatisch.",
     documentTitleDe: "Lebenslauf-Check",
     descriptionDe:
       "Dein CV wird analysiert und professionell überarbeitet — angepasst an deinen Arbeitsmarkt.",
@@ -280,13 +280,11 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Weiterbildungen & Zertifikate / Hobbys optional). Kein Foto-Pflicht erwähnen. " +
       "Gib den vollständigen, überarbeiteten Lebenslauf als Text aus. Keine Erklärungen, nur das Dokument.",
     fields: [
-      { key: "existingCV",    label: "Dein aktueller Lebenslauf (als Text)", type: "textarea", required: true,
-        placeholderKey: "existingCV",
-        section: "Lebenslauf" },
       { key: "targetJob",    label: "Für welche Art Stelle bewirbst du dich?", type: "text",  required: true,
         placeholderKey: "targetJobExample" },
       { key: "improvements", label: "Worauf soll der Fokus gelegt werden?",   type: "textarea", required: false,
-        placeholderKey: "cvImprovements" },
+        placeholderKey: "cvImprovements",
+        hint: "Kein Problem, wenn du nichts weisst — wir analysieren den Lebenslauf und verbessern ihn automatisch." },
     ],
   },
 
