@@ -97,6 +97,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
   const [docxText, setDocxText] = useState<string>("");
   const [uploadedFileName, setUploadedFileName] = useState<string>("");
+  // Bewerbungsfoto (client-only, kein Claude)
+  const [profilePhotoUrl, setProfilePhotoUrl] = useState<string | null>(null);
   // Foto-Galerie (kein Vision)
   const [photos, setPhotos] = useState<Photo[]>([]);
   const photoInputRef = useRef<HTMLInputElement>(null);
@@ -390,6 +392,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 @media print{.no-print{display:none}}</style></head>
                 <body>
                 <button class="no-print" onclick="window.print()" style="margin-bottom:20px;padding:8px 16px;cursor:pointer">Drucken / Als PDF speichern</button>
+                ${profilePhotoUrl ? `<img src="${profilePhotoUrl}" alt="Bewerbungsfoto" style="float:right;margin:0 0 16px 24px;width:100px;height:100px;object-fit:cover;border-radius:50%;border:1px solid #ccc" />` : ""}
                 ${result.split(/\n\n+/).map(p => `<p style="margin:0 0 1.2em 0;white-space:pre-line">${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>`).join('')}
                 ${photosHtml}
                 <div class="disclaimer">Dieses Dokument wurde mit GetDocuNow.com generiert und stellt keine Rechtsberatung dar.</div>
@@ -423,6 +426,10 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             </span>
           </div>
           <div className="relative p-6 md:p-8" style={{ zIndex: 1 }}>
+            {profilePhotoUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={profilePhotoUrl} alt="Bewerbungsfoto" className="float-right ml-4 mb-2 h-20 w-20 rounded-full object-cover border border-[#ccc]" />
+            )}
             <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-[#2A2520]">{previewText}</pre>
           </div>
           <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32" style={{ background: "linear-gradient(to bottom, rgba(245,240,230,0) 0%, rgba(245,240,230,0.97) 100%)", zIndex: 3 }} />
@@ -498,6 +505,42 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
+
+      {/* Bewerbungsfoto (client-only) */}
+      {tool.supportsProfilePhoto && (
+        <div className="mb-10 flex items-start gap-6 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
+          <label className="group cursor-pointer flex-shrink-0">
+            <input
+              type="file"
+              accept="image/*"
+              capture="user"
+              className="sr-only"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                setProfilePhotoUrl(URL.createObjectURL(file));
+              }}
+            />
+            {profilePhotoUrl ? (
+              <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={profilePhotoUrl} alt="Bewerbungsfoto" className="h-24 w-24 rounded-full object-cover border-2 border-swiss-gold/40" />
+                <span className="absolute -bottom-5 left-0 right-0 text-center text-xs text-swiss-gold">ändern</span>
+              </div>
+            ) : (
+              <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full border-2 border-dashed border-ink-700 bg-ink-950 transition group-hover:border-swiss-gold/50">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-swiss-gold/60">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+            )}
+          </label>
+          <div className="pt-1">
+            <p className="text-sm font-medium text-cream">Bewerbungsfoto (optional)</p>
+            <p className="mt-1 text-xs leading-relaxed text-cream-muted">Lade ein Foto hoch — es wird oben rechts ins Dokument eingebettet. In der Schweiz ist ein Foto üblich, aber nicht Pflicht.</p>
+          </div>
+        </div>
+      )}
 
       {/* Einzelbild-Upload (Vision-Tools) */}
       {tool.supportsDocumentUpload && (

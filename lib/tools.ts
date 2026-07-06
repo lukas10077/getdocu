@@ -42,6 +42,8 @@ export interface ToolDefinition {
   uploadHintDe?: string;
   // Digitales Dokument: Bild + PDF + DOCX (PDF/DOCX werden direkt gelesen, kein Vision)
   supportsAllDocumentTypes?: boolean;
+  // Bewerbungsfoto → wird in Vorschau + PDF eingebettet, geht NICHT durch Claude
+  supportsProfilePhoto?: boolean;
   // Mehrere Fotos → KEIN Vision, nur als Beilage ans PDF
   supportsPhotoGallery?: boolean;
   maxPhotos?: number;
@@ -109,6 +111,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   jobbewerbung: {
     slug: "jobbewerbung",
     priceChfRappen: 500,
+    supportsProfilePhoto: true,
     documentTitleDe: "Bewerbung Arbeitsstelle",
     descriptionDe:
       "Zeig, warum du die richtige Person bist. Klar, überzeugend, professionell.",
