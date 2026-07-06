@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "title": "GetDocu — Documentos importantes, de forma simples",
+    "description": "Documentos gerados por IA para a Suíça: candidatura de arrendamento, candidatura de emprego, rescisão. Pronto em minutos."
+  },
+  "nav": {
+    "tools": "Documentos",
+    "howItWorks": "Como funciona",
+    "pricing": "Preços",
+    "languages": "Idioma"
+  },
+  "hero": {
+    "eyebrow": "Feito para a Suíça",
+    "headline": "Documentos importantes. Feitos de forma simples.",
+    "subheadline": "GetDocu ajuda-te a criar cartas e documentos profissionais — explicados na tua língua, otimizados para o teu país.",
+    "cta": "Escolher documento",
+    "ctaSecondary": "Como funciona",
+    "badges": [
+      "✓ Sem conta",
+      "✓ Sem subscrição",
+      "✓ Dados eliminados"
+    ]
+  },
+  "tools": {
+    "title": "Do que se trata?",
+    "subtitle": "Escolhe o que precisas. Paga apenas quando usares.",
+    "startButton": "Começar →",
+    "back": "← Voltar",
+    "trustPills": [
+      "🔒 Dados eliminados",
+      "⚡ Documento em 20 seg.",
+      "💳 Seguro via Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Candidatura arrendamento",
+        "description": "Convence o senhorio à primeira. Profissional, pessoal."
+      },
+      "jobbewerbung": {
+        "title": "Candidatura de emprego",
+        "description": "Mostra por que és a pessoa certa. Clara, convincente, profissional."
+      },
+      "kuendigung": {
+        "title": "Rescisão",
+        "description": "Seguro, subscrição, adesão — rescindir corretamente e dentro do prazo."
+      },
+      "arbeitszeugnis": {
+        "title": "Melhorar a referência profissional",
+        "description": "A tua referência soa medíocre? Reescrevemo-la profissionalmente."
+      },
+      "maengelruege": {
+        "title": "Comunicar danos após a mudança",
+        "description": "Comunicar danos no apartamento — por escrito, dentro do prazo, corretamente endereçado."
+      },
+      "reklamation": {
+        "title": "Carta de reclamação",
+        "description": "Produto defeituoso, mau serviço, fatura errada — reclama com clareza."
+      },
+      "lebenslauf": {
+        "title": "Revisão de CV",
+        "description": "O teu CV é analisado e revisto profissionalmente — adaptado ao teu mercado de trabalho."
+      },
+      "krankenkasse": {
+        "title": "Carta ao seguro de saúde",
+        "description": "Redução de prémio, pedidos de prestações, cancelamento — corretamente redigido."
+      },
+      "kuendigung-wohnung": {
+        "title": "Rescisão do arrendamento",
+        "description": "Rescindir corretamente o contrato de arrendamento — com prazo e pedido de confirmação."
+      },
+      "kuendigung-arbeit": {
+        "title": "Demissão",
+        "description": "Demitir-se profissionalmente — com clareza, educação e dentro do prazo."
+      }
+    },
+    "categories": {
+      "wohnen": "Habitação",
+      "arbeit": "Trabalho",
+      "alltag": "Quotidiano"
+    },
+    "selectPlaceholder": "— selecionar —",
+    "withdrawalConsent": "Aceito que a entrega do documento digital comece imediatamente após o pagamento e confirmo que abro mão do meu direito legal de arrependimento. Li e aceito os Termos e Condições.",
+    "withdrawalError": "Por favor confirma o teu consentimento para continuar.",
+    "legalDisclaimer": "O documento gerado não substitui aconselhamento jurídico. Os teus dados são eliminados imediatamente após a geração."
+  },
+  "howItWorks": {
+    "title": "Como funciona",
+    "subtitle": "Quatro passos simples. Sem necessidade de conta.",
+    "step1": {
+      "title": "Preenche o formulário",
+      "description": "Responde a algumas perguntas simples — explicadas no teu idioma."
+    },
+    "step2": {
+      "title": "Pré-visualização gratuita",
+      "description": "Vê o teu documento gratuitamente em pré-visualização — com marca de água. Paga só se estiveres satisfeito."
+    },
+    "step3": {
+      "title": "Paga com segurança",
+      "description": "Paga {priceRange} por cartão via Stripe. Sem subscrição, sem custos ocultos."
+    },
+    "step4": {
+      "title": "Descarrega e está feito",
+      "description": "Descarrega o teu PDF. Os teus dados são eliminados imediatamente depois."
+    }
+  },
+  "trust": {
+    "title": "Os teus dados são teus",
+    "subtitle": "A privacidade não é um extra, é um princípio fundamental.",
+    "point1Title": "Sem armazenamento permanente",
+    "point1": "Os teus dados (nome, endereço, salário) são usados apenas para gerar o documento e eliminados imediatamente depois.",
+    "point2Title": "Sem contas, sem subscrições",
+    "point2": "Não precisas de conta. Pagas apenas pelo documento de que realmente precisas.",
+    "point3Title": "Processamento transparente",
+    "point3": "Para gerar o documento, o teu texto é enviado para a Anthropic (EUA) para processamento — depois eliminado. Mais informações na nossa política de privacidade.",
+    "guaranteeTitle": "Garantia de reembolso",
+    "guaranteeBody": "Se o documento não for adequado ou não estiver satisfeito, reembolsamos o valor total. Basta enviar um e-mail.",
+    "paymentTitle": "Métodos de pagamento aceites"
+  },
+  "footer": {
+    "tagline": "Documentos importantes para {countryName} — feitos de forma simples.",
+    "impressum": "Informações legais",
+    "datenschutz": "Política de privacidade",
+    "agb": "Termos e condições",
+    "rights": "Todos os direitos reservados."
+  },
+  "legal": {
+    "disclaimer": "A GetDocu não presta aconselhamento jurídico. Os documentos gerados são ferramentas de apoio — és responsável pela exatidão do conteúdo."
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "items": [
+      {
+        "q": "Preciso criar uma conta?",
+        "a": "Não. Sem conta, sem registo. Preencha o formulário, pague e faça o download imediatamente."
+      },
+      {
+        "q": "O que acontece com os meus dados?",
+        "a": "Os seus dados são usados apenas para gerar o documento e eliminados de imediato. Sem armazenamento permanente."
+      },
+      {
+        "q": "Existe subscrição ou custos ocultos?",
+        "a": "Não. Pagas {priceRange} uma única vez por documento — dependendo do tipo. Sem subscrição, sem custos adicionais."
+      },
+      {
+        "q": "Em que língua é criado o documento?",
+        "a": "O documento é criado na língua do teu país — corretamente formulado para autoridades, senhorios e empregadores."
+      },
+      {
+        "q": "O que faço se não estiver satisfeito?",
+        "a": "Reembolsamos o valor total. Basta enviar-nos um e-mail — sem complicações."
+      },
+      {
+        "q": "Que métodos de pagamento são aceites?",
+        "a": "TWINT, cartão de crédito (Visa, Mastercard), Apple Pay ou Google Pay. O pagamento é seguro via Stripe."
+      }
+    ]
+  },
+  "placeholders": {
+    "fallsKnown": "se conhecida",
+    "fallsAvailable": "se disponível",
+    "optionalReason": "Apenas se desejar indicar um motivo.",
+    "motivationRental": "Descreve brevemente por que queres este apartamento e o que te torna um bom inquilino.",
+    "additionalInfoField": "p.ex. referências, circunstâncias especiais, …",
+    "skillsExample": "p.ex. trabalho em equipa, fiável, disposto/a a aprender, …",
+    "companyResearch": "p.ex. Esta vaga encaixa bem comigo. Quero trabalhar neste setor.",
+    "whyYou": "p.ex. Sou pontual, fiável e gosto de trabalhar em equipa.",
+    "dateRange": "p.ex. 01/01/2022 – 31/12/2024",
+    "existingCertificate": "Cola o texto completo do teu certificado atual aqui.",
+    "certificateImprove": "p.ex. fórmula final negativa, competências de liderança em falta, muito curto, …",
+    "damageDescription": "O que está danificado/partido? Desde quando? Onde exatamente no apartamento?",
+    "complaintDescription": "Descreve o problema objetivamente: o quê, quando, qual encomenda/serviço.",
+    "desiredOutcome": "p.ex. reembolso completo, reparação gratuita, entrega de substituição, …",
+    "existingCV": "Cola o texto completo do teu CV aqui.",
+    "targetJobExample": "p.ex. contabilista, enfermeiro/a, armazenista, …",
+    "cvImprovements": "p.ex. Estou à procura do meu primeiro emprego. / Tive uma pausa. / O meu alemão é B2.",
+    "concernDetails": "Descreva a sua solicitação o mais precisamente possível."
+  },
+  "fieldLabels": {
+    "firstName": "Nome próprio",
+    "lastName": "Apelido",
+    "birthDate": "Data de nascimento",
+    "nationality": "Nacionalidade",
+    "residencePermit": "Estatuto de residência",
+    "currentJob": "Profissão / cargo atual",
+    "monthlyIncome": "Rendimento líquido mensal",
+    "currentAddress": "A tua morada",
+    "targetAddress": "Endereço do apartamento desejado",
+    "numberOfPersons": "Pessoas no agregado familiar",
+    "pets": "Animais de estimação",
+    "motivation": "Por que queres este apartamento?",
+    "additionalInfo": "Informações adicionais (opcional)",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "yearsExperience": "Anos de experiência profissional",
+    "topSkills": "Competências e pontos fortes",
+    "targetPosition": "Cargo ao qual te candidatas",
+    "targetCompany": "Nome da empresa",
+    "companyAddress": "Endereço da empresa",
+    "whyCompany": "Por que esta empresa?",
+    "whyYou": "Por que és a pessoa certa?",
+    "type": "O que queres cancelar?",
+    "recipientName": "Nome do destinatário",
+    "recipientAddress": "Endereço do destinatário",
+    "contractRef": "Número de contrato/cliente/apólice",
+    "noticePeriod": "Prazo de pré-aviso",
+    "terminationDate": "Data de rescisão",
+    "reason": "Motivo de cancelamento (opcional)",
+    "position": "O teu cargo / função",
+    "employer": "Nome do empregador",
+    "duration": "Período de emprego",
+    "existingZeugnis": "Texto do certificado existente",
+    "whatToImprove": "O que deve ser melhorado?",
+    "landlordName": "Nome do senhorio / gestão",
+    "landlordAddress": "Morada do senhorio",
+    "defects": "Descreve os danos",
+    "deadline": "Prazo (dias)",
+    "orderRef": "Número de encomenda / referência",
+    "complaint": "O que aconteceu?",
+    "demand": "O que exiges?",
+    "existingCV": "O teu CV atual (como texto)",
+    "targetJob": "Para que tipo de cargo te candidatas?",
+    "improvements": "Em que se deve focar?",
+    "insuranceName": "Nome do seguro de saúde",
+    "policyNumber": "Número de seguro/apólice",
+    "topic": "Assunto da carta",
+    "details": "O teu pedido",
+    "employerAddress": "Endereço do empregador"
+  },
+  "sections": {
+    "Persönliche Angaben": "Dados pessoais",
+    "Wohnsituation": "Situação habitacional",
+    "Motivationstext": "Motivação",
+    "Über dich": "Sobre ti",
+    "Die Stelle": "O cargo",
+    "Deine Angaben": "Os teus dados",
+    "Kündigung": "Rescisão",
+    "Zeugnis": "Certificado",
+    "Mieter": "Arrendatário",
+    "Vermieter": "Senhorio",
+    "Schäden": "Danos",
+    "Empfänger": "Destinatário",
+    "Reklamation": "Reclamação",
+    "Lebenslauf": "CV",
+    "Krankenkasse": "Seguro de saúde",
+    "Anliegen": "Pedido",
+    "Arbeitgeber": "Empregador"
+  }
+}

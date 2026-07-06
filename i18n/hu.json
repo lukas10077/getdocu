@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "title": "GetDocu — Fontos dokumentumok, egyszerűen",
+    "description": "AI által generált dokumentumok Svájc számára: lakásbérlési pályázat, állásra jelentkezés, felmondás. Percek alatt kész."
+  },
+  "nav": {
+    "tools": "Dokumentumok",
+    "howItWorks": "Hogyan működik",
+    "pricing": "Árak",
+    "languages": "Nyelv"
+  },
+  "hero": {
+    "eyebrow": "Svájc számára készült",
+    "headline": "Fontos dokumentumok. Egyszerűen elkészítve.",
+    "subheadline": "A GetDocu segít professzionális leveleket és dokumentumokat létrehozni — a te nyelvedén magyarázva, az országodra optimalizálva.",
+    "cta": "Dokumentum kiválasztása",
+    "ctaSecondary": "Hogyan működik",
+    "badges": [
+      "✓ Fiók nélkül",
+      "✓ Előfizetés nélkül",
+      "✓ Adatok törölve"
+    ]
+  },
+  "tools": {
+    "title": "Miről van szó?",
+    "subtitle": "Válaszd ki, mire van szükséged. Csak akkor fizetsz, ha használod.",
+    "startButton": "Kezdés →",
+    "back": "← Vissza",
+    "trustPills": [
+      "🔒 Adatok azonnal törölve",
+      "⚡ Dokumentum 20 mp alatt",
+      "💳 Biztonságos Stripe-on"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Bérleti kérelem",
+        "description": "Győzze meg a bérbeadót első alkalommal. Professzionális, személyes."
+      },
+      "jobbewerbung": {
+        "title": "Állásjelentkezés",
+        "description": "Mutasd meg, miért te vagy a megfelelő személy. Egyértelmű, meggyőző, professzionális."
+      },
+      "kuendigung": {
+        "title": "Felmondás",
+        "description": "Biztosítás, előfizetés, tagság — helyesen és határidőre felmondani."
+      },
+      "arbeitszeugnis": {
+        "title": "Munkaügyi referencia javítása",
+        "description": "A referenciája közepes? Professzionálisan átírjuk."
+      },
+      "maengelruege": {
+        "title": "Beköltözés utáni károk bejelentése",
+        "description": "Károk bejelentése a lakásban — írásban, határidőre, helyes cím alatt."
+      },
+      "reklamation": {
+        "title": "Panaszlevél",
+        "description": "Hibás áru, rossz szolgáltatás, téves számla — panaszkodjon egyértelműen."
+      },
+      "lebenslauf": {
+        "title": "Önéletrajz-ellenőrzés",
+        "description": "Az önéletrajzát elemezzük és professzionálisan felülvizsgáljuk — a munkaerőpiachoz igazítva."
+      },
+      "krankenkasse": {
+        "title": "Egészségbiztosítási levél",
+        "description": "Díjcsökkentés, ellátási kérelmek, lemondás — helyesen megfogalmazva."
+      },
+      "kuendigung-wohnung": {
+        "title": "Bérleti felmondás",
+        "description": "A bérleti szerződés helyes felmondása — határidővel és visszaigazolási kéréssel."
+      },
+      "kuendigung-arbeit": {
+        "title": "Munkaviszony felmondása",
+        "description": "Professzionálisan lemondani — egyértelműen, udvariasan és határidőre."
+      }
+    },
+    "categories": {
+      "wohnen": "Lakhatás",
+      "arbeit": "Munka",
+      "alltag": "Mindennapos"
+    },
+    "selectPlaceholder": "— kérjük válasszon —",
+    "withdrawalConsent": "Elfogadom, hogy a digitális dokumentum szállítása a fizetés után azonnal megkezdődik, és megerősítem, hogy ezzel lemondok törvényes elállási jogomról. Elolvastam és elfogadom az Általános Szerződési Feltételeket.",
+    "withdrawalError": "Kérjük, erősítse meg beleegyezését a folytatáshoz.",
+    "legalDisclaimer": "A generált dokumentum nem helyettesíti a jogi tanácsadást. Adatai a generálás után azonnal törlésre kerülnek."
+  },
+  "howItWorks": {
+    "title": "Hogyan működik",
+    "subtitle": "Négy egyszerű lépés. Nincs szükség fiókra.",
+    "step1": {
+      "title": "Töltsd ki az űrlapot",
+      "description": "Válaszolj néhány egyszerű kérdésre — a saját nyelveden elmagyarázva."
+    },
+    "step2": {
+      "title": "Ingyenes előnézet",
+      "description": "Nézd meg a dokumentumodat ingyen előnézetként — vízjellel. Fizess csak akkor, ha elégedett vagy."
+    },
+    "step3": {
+      "title": "Biztonságos fizetés",
+      "description": "Fizess {priceRange} kártyával a Stripe-on keresztül. Nincs előfizetés, nincs rejtett költség."
+    },
+    "step4": {
+      "title": "Letöltés és kész",
+      "description": "Töltsd le a PDF-et. Az adataidat azonnal töröljük utána."
+    }
+  },
+  "trust": {
+    "title": "Az adataid a tieid",
+    "subtitle": "Az adatvédelem nem extra, hanem alapelv.",
+    "point1Title": "Nincs tartós tárolás",
+    "point1": "Az adataidat (név, cím, fizetés) csak a dokumentum elkészítésére használjuk, majd azonnal töröljük.",
+    "point2Title": "Nincs fiók, nincs előfizetés",
+    "point2": "Nincs szükséged fiókra. Csak azért fizetsz, amire valóban szükséged van.",
+    "point3Title": "Átlátható feldolgozás",
+    "point3": "A dokumentum elkészítéséhez szövegedet az Anthropic (USA) felé továbbítjuk feldolgozásra — majd töröljük. Bővebben adatvédelmi nyilatkozatunkban.",
+    "guaranteeTitle": "Pénzvisszafizetési garancia",
+    "guaranteeBody": "Ha a dokumentum nem megfelelő, vagy nem elégedett, teljes összeget visszafizetjük. Csak küldjön egy e-mailt.",
+    "paymentTitle": "Elfogadott fizetési módok"
+  },
+  "footer": {
+    "tagline": "Fontos dokumentumok {countryName} számára — egyszerűen elkészítve.",
+    "impressum": "Impresszum",
+    "datenschutz": "Adatvédelmi nyilatkozat",
+    "agb": "Általános szerződési feltételek",
+    "rights": "Minden jog fenntartva."
+  },
+  "legal": {
+    "disclaimer": "A GetDocu nem ad jogi tanácsot. A generált dokumentumok segédeszközök — a tartalom helyességéért te vagy felelős."
+  },
+  "faq": {
+    "title": "Gyakori kérdések",
+    "items": [
+      {
+        "q": "Létre kell hoznom egy fiókot?",
+        "a": "Nem. Nincs fiók, nincs regisztráció. Töltse ki az űrlapot, fizessen és töltse le a dokumentumot azonnal."
+      },
+      {
+        "q": "Mi történik az adataimmal?",
+        "a": "Az adatait kizárólag a dokumentum létrehozásához használjuk, majd azonnal töröljük. Nincs állandó tárolás."
+      },
+      {
+        "q": "Van előfizetés vagy rejtett díj?",
+        "a": "Nem. Dokumentumonként egyszer fizetsz {priceRange}-t — a típustól függően. Nincs előfizetés, nincs meglepetés."
+      },
+      {
+        "q": "Milyen nyelven készül a dokumentum?",
+        "a": "A dokumentum az ország nyelvén készül — helyesen megfogalmazva a hatóságok, bérbeadók és munkáltatók számára."
+      },
+      {
+        "q": "Mit tegyek, ha nem vagyok elégedett?",
+        "a": "Teljes összeget visszafizetjük. Csak küldjön e-mailt — bonyodalmak nélkül."
+      },
+      {
+        "q": "Milyen fizetési módok elfogadottak?",
+        "a": "TWINT, hitelkártya (Visa, Mastercard), Apple Pay vagy Google Pay. A fizetés biztonságos a Stripe-on keresztül."
+      }
+    ]
+  },
+  "placeholders": {
+    "fallsKnown": "ha ismert",
+    "fallsAvailable": "ha van",
+    "optionalReason": "Csak ha meg szeretnéd adni az okot.",
+    "motivationRental": "Írd le röviden, miért szeretnéd ezt a lakást, és mi tesz téged jó bérlővé.",
+    "additionalInfoField": "pl. referenciák, különleges körülmények, …",
+    "skillsExample": "pl. csapatmunka, megbízható, tanulásra kész, …",
+    "companyResearch": "pl. Ez az állás jól illik hozzám. Ebben az iparágban szeretnék dolgozni.",
+    "whyYou": "pl. Pontos, megbízható vagyok és szívesen dolgozom csapatban.",
+    "dateRange": "pl. 2022.01.01. – 2024.12.31.",
+    "existingCertificate": "Illessze be jelenlegi igazolása teljes szövegét ide.",
+    "certificateImprove": "pl. a záróformula negatívan hangzik, hiányzik a vezetői kompetencia, túl rövid, …",
+    "damageDescription": "Mi van meghibásodva/eltörve? Mióta? Hol pontosan a lakásban?",
+    "complaintDescription": "Írja le a problémát tárgyilagosan: mi, mikor, melyik rendelés/szolgáltatás.",
+    "desiredOutcome": "pl. teljes visszatérítés, ingyenes javítás, csere szállítás, …",
+    "existingCV": "Illessze be önéletrajza teljes szövegét ide.",
+    "targetJobExample": "pl. könyvelő, ápoló, raktáros, …",
+    "cvImprovements": "pl. Az első munkámat keresem. / Volt egy szünetem. / A német tudásom B2.",
+    "concernDetails": "Írja le kérelmét a lehető legpontosabban."
+  },
+  "fieldLabels": {
+    "firstName": "Keresztnév",
+    "lastName": "Vezetéknév",
+    "birthDate": "Születési dátum",
+    "nationality": "Állampolgárság",
+    "residencePermit": "Tartózkodási engedély",
+    "currentJob": "Foglalkozás / jelenlegi pozíció",
+    "monthlyIncome": "Havi nettó jövedelem",
+    "currentAddress": "A te címed",
+    "targetAddress": "A kívánt lakás címe",
+    "numberOfPersons": "Személyek a háztartásban",
+    "pets": "Háziállatok",
+    "motivation": "Miért szeretnéd ezt a lakást?",
+    "additionalInfo": "További információk (opcionális)",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "yearsExperience": "Szakmai tapasztalat (évek)",
+    "topSkills": "Legfontosabb készségek és erősségek",
+    "targetPosition": "Az állás, amelyre pályázol",
+    "targetCompany": "A cég neve",
+    "companyAddress": "A cég címe",
+    "whyCompany": "Miért ez a cég?",
+    "whyYou": "Miért te vagy a megfelelő személy?",
+    "type": "Mit szeretnél felmondani?",
+    "recipientName": "Címzett neve",
+    "recipientAddress": "Címzett címe",
+    "contractRef": "Szerződés-/ügyfél-/kötvényszám",
+    "noticePeriod": "Felmondási idő",
+    "terminationDate": "Felmondás dátuma",
+    "reason": "Felmondás oka (opcionális)",
+    "position": "Pozíciód / beosztásod",
+    "employer": "Munkáltató neve",
+    "duration": "Foglalkoztatás időtartama",
+    "existingZeugnis": "Meglévő bizonyítvány szövege",
+    "whatToImprove": "Mit kell javítani?",
+    "landlordName": "Bérbeadó / kezelő neve",
+    "landlordAddress": "Bérbeadó címe",
+    "defects": "Írd le a károkat",
+    "deadline": "Határidő (napok)",
+    "orderRef": "Rendelésszám / hivatkozás",
+    "complaint": "Mi történt?",
+    "demand": "Mit követelsz?",
+    "existingCV": "Jelenlegi önéletrajzod (szövegként)",
+    "targetJob": "Milyen típusú állásra pályázol?",
+    "improvements": "Mire kell összpontosítani?",
+    "insuranceName": "Egészségbiztosítás neve",
+    "policyNumber": "Biztosítási/kötvényszám",
+    "topic": "Levél tárgya",
+    "details": "A kérelmed",
+    "employerAddress": "Munkáltató címe"
+  },
+  "sections": {
+    "Persönliche Angaben": "Személyes adatok",
+    "Wohnsituation": "Lakáshelyzet",
+    "Motivationstext": "Motiváció",
+    "Über dich": "Rólad",
+    "Die Stelle": "Az állás",
+    "Deine Angaben": "Adataid",
+    "Kündigung": "Felmondás",
+    "Zeugnis": "Bizonyítvány",
+    "Mieter": "Bérlő",
+    "Vermieter": "Bérbeadó",
+    "Schäden": "Károk",
+    "Empfänger": "Címzett",
+    "Reklamation": "Reklamáció",
+    "Lebenslauf": "Önéletrajz",
+    "Krankenkasse": "Egészségbiztosítás",
+    "Anliegen": "Kérelem",
+    "Arbeitgeber": "Munkáltató"
+  }
+}

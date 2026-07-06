@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "title": "GetDocu — Dokumente të rëndësishme, thjesht",
+    "description": "Dokumente të krijuara nga AI për Zvicrën: kërkesë qiraje, kërkesë pune, ndërprerje kontrate. Gati në minuta."
+  },
+  "nav": {
+    "tools": "Dokumentet",
+    "howItWorks": "Si funksionon",
+    "pricing": "Çmimet",
+    "languages": "Gjuha"
+  },
+  "hero": {
+    "eyebrow": "Krijuar për Zvicrën",
+    "headline": "Dokumente të rëndësishme. Krijuar thjesht.",
+    "subheadline": "GetDocu ju ndihmon të krijoni letra dhe dokumente profesionale — të shpjeguara në gjuhën tuaj, të optimizuara për vendin tuaj.",
+    "cta": "Zgjedh një dokument",
+    "ctaSecondary": "Si funksionon",
+    "badges": [
+      "✓ Pa llogari",
+      "✓ Pa abonament",
+      "✓ Të dhënat fshihen"
+    ]
+  },
+  "tools": {
+    "title": "Për çfarë bëhet fjalë?",
+    "subtitle": "Zgjedh çfarë të duhet. Paguaj vetëm kur e përdor.",
+    "startButton": "Fillo →",
+    "back": "← Mbrapa",
+    "trustPills": [
+      "🔒 Të dhënat fshihen",
+      "⚡ Dokument në 20 sek.",
+      "💳 Sigurt via Stripe"
+    ],
+    "items": {
+      "mietbewerbung": {
+        "title": "Aplikim për qira",
+        "description": "Bindu pronarin herën e parë. Profesionale, personale."
+      },
+      "jobbewerbung": {
+        "title": "Aplikim për punë",
+        "description": "Trego pse je personi i duhur. E qartë, bindëse, profesionale."
+      },
+      "kuendigung": {
+        "title": "Ndërprerje kontrate",
+        "description": "Sigurim, abonament, anëtarësi — ndërprere saktë dhe në kohë."
+      },
+      "arbeitszeugnis": {
+        "title": "Përmirëso referencën e punës",
+        "description": "Referenca jote tingëllon mediokre? E rishkruajmë profesionalisht."
+      },
+      "maengelruege": {
+        "title": "Raportoni dëmet pas shpërnguljes",
+        "description": "Raportoni dëmet në apartament — me shkrim, në kohë, adresuar saktë."
+      },
+      "reklamation": {
+        "title": "Letër ankese",
+        "description": "Mall me defekte, shërbim i keq, faturë e gabuar — ankohuni qartë dhe vendosmërisht."
+      },
+      "lebenslauf": {
+        "title": "Kontrollim i CV-së",
+        "description": "CV-ja juaj analizohet dhe rishikohet profesionalisht — e përshtatur me tregun tuaj të punës."
+      },
+      "krankenkasse": {
+        "title": "Letër për sigurimet shëndetësore",
+        "description": "Ulje premi, kërkesa për përfitime, anulim — e formuluar saktë."
+      },
+      "kuendigung-wohnung": {
+        "title": "Ndërprerje kontrate qiraje",
+        "description": "Ndërprisni saktë kontratën e qirasë — me afat dhe kërkesë konfirmimi."
+      },
+      "kuendigung-arbeit": {
+        "title": "Dorëheqje nga puna",
+        "description": "Jepni dorëheqjen profesionalisht — qartë, me mirësjellje dhe në kohë."
+      }
+    },
+    "categories": {
+      "wohnen": "Banim",
+      "arbeit": "Punë",
+      "alltag": "Përditshme"
+    },
+    "selectPlaceholder": "— ju lutem zgjidhni —",
+    "withdrawalConsent": "Pajtohem që dërgesa e dokumentit dixhital fillon menjëherë pas pagesës dhe konfirmoj se heq dorë nga e drejta ime ligjore e tërheqjes. Kam lexuar dhe pranoj Kushtet dhe Termat.",
+    "withdrawalError": "Ju lutem konfirmoni pëlqimin tuaj për të vazhduar.",
+    "legalDisclaimer": "Dokumenti i gjeneruar nuk zëvendëson këshillimin ligjor. Të dhënat tuaja fshihen menjëherë pas gjenerimit."
+  },
+  "howItWorks": {
+    "title": "Si funksionon",
+    "subtitle": "Katër hapa të thjeshtë. Nuk nevojitet llogari.",
+    "step1": {
+      "title": "Plotëso formularin",
+      "description": "Përgjigju disa pyetjeve të thjeshta — shpjeguar në gjuhën tënde."
+    },
+    "step2": {
+      "title": "Pamje paraprake falas",
+      "description": "Shiko dokumentin tënd falas si pamje paraprake — me filigranë. Paguaj vetëm nëse je i kënaqur."
+    },
+    "step3": {
+      "title": "Paguaj në mënyrë të sigurt",
+      "description": "Paguaj {priceRange} me kartë përmes Stripe. Pa abonim, pa kosto të fshehura."
+    },
+    "step4": {
+      "title": "Shkarko dhe mbarove",
+      "description": "Shkarko PDF-në tënde. Të dhënat e tua fshihen menjëherë pas kësaj."
+    }
+  },
+  "trust": {
+    "title": "Të dhënat e tua janë tuajat",
+    "subtitle": "Mbrojtja e të dhënave nuk është shtesë, është parim themelor.",
+    "point1Title": "Pa ruajtje të përhershme",
+    "point1": "Të dhënat e tua (emri, adresa, paga) përdoren vetëm për krijimin e dokumentit dhe fshihen menjëherë pas kësaj.",
+    "point2Title": "Pa llogari, pa abonime",
+    "point2": "Nuk të duhet llogari. Paguan vetëm për dokumentin që të duhet vërtet.",
+    "point3Title": "Përpunim transparent",
+    "point3": "Për krijimin e dokumentit, teksti yt dërgohet tek Anthropic (SHBA) për përpunim — më pas fshihet. Më shumë në politikën tonë të privatësisë.",
+    "guaranteeTitle": "Garanci rimbursimi",
+    "guaranteeBody": "Nëse dokumenti nuk është i përshtatshëm ose nuk jeni të kënaqur, ju rimbursojmë shumën e plotë. Dërgojini thjesht një email.",
+    "paymentTitle": "Metodat e pranuara të pagesës"
+  },
+  "footer": {
+    "tagline": "Dokumente të rëndësishme për {countryName} — të krijuara thjesht.",
+    "impressum": "Të dhëna ligjore",
+    "datenschutz": "Politika e privatësisë",
+    "agb": "Kushtet e përdorimit",
+    "rights": "Të gjitha të drejtat e rezervuara."
+  },
+  "legal": {
+    "disclaimer": "GetDocu nuk ofron këshillim ligjor. Dokumentet e krijuara janë mjete ndihmëse — ti vetë je përgjegjës për saktësinë e përmbajtjes."
+  },
+  "faq": {
+    "title": "Pyetje të shpeshta",
+    "items": [
+      {
+        "q": "A duhet të krijoj një llogari?",
+        "a": "Jo. Pa llogari, pa regjistrim. Plotëso formularin, paguaj dhe shkarko dokumentin menjëherë."
+      },
+      {
+        "q": "Çfarë ndodh me të dhënat e mia?",
+        "a": "Të dhënat tuaja përdoren vetëm për të gjeneruar dokumentin dhe fshihen menjëherë pas. Pa ruajtje të përhershme."
+      },
+      {
+        "q": "A ka abonime ose kosto të fshehura?",
+        "a": "Jo. Paguaj {priceRange} një herë për dokument — sipas llojit. Pa abonim, pa surpriza."
+      },
+      {
+        "q": "Në çfarë gjuhe krijohet dokumenti?",
+        "a": "Dokumenti krijohet në gjuhën e vendit tënd — i formuluar saktë për autoritetet, qiradhënësit dhe punëdhënësit."
+      },
+      {
+        "q": "Çfarë bëj nëse nuk jam i kënaqur?",
+        "a": "Ne ju rimbursojmë shumën e plotë. Thjesht dërgojini një email — pa probleme."
+      },
+      {
+        "q": "Cilat metoda pagese pranohen?",
+        "a": "TWINT, kartë krediti (Visa, Mastercard), Apple Pay ose Google Pay. Pagesa është e sigurt nëpërmjet Stripe."
+      }
+    ]
+  },
+  "placeholders": {
+    "fallsKnown": "nëse dihet",
+    "fallsAvailable": "nëse ka",
+    "optionalReason": "Vetëm nëse dëshiron të japësh një arsye.",
+    "motivationRental": "Përshkruaj shkurtimisht pse dëshiron këtë apartament dhe çfarë të bën qiramarrës të mirë.",
+    "additionalInfoField": "p.sh. referenca, rrethana të veçanta, …",
+    "skillsExample": "p.sh. punë ekipore, i/e besueshëm/e, i/e gatshëm/e për të mësuar, …",
+    "companyResearch": "p.sh. Ky pozicion më përshtatet mirë. Dëshiroj të punoj në këtë industri.",
+    "whyYou": "p.sh. Jam i/e saktë, i/e besueshëm/e dhe më pëlqen të punoj në ekip.",
+    "dateRange": "p.sh. 01.01.2022 – 31.12.2024",
+    "existingCertificate": "Ngjit tekstin e plotë të dëshmisë tënde aktuale këtu.",
+    "certificateImprove": "p.sh. formula e mbylljes tingëllon negative, mungojnë aftësitë drejtuese, shumë e shkurtër, …",
+    "damageDescription": "Çfarë është i dëmtuar/i prishur? Që kur? Ku saktësisht në apartament?",
+    "complaintDescription": "Përshkruaj problemin objektivish: çfarë, kur, cila porosi/shërbim.",
+    "desiredOutcome": "p.sh. rimbursim i plotë, riparim falas, dërgim zëvendësues, …",
+    "existingCV": "Ngjit tekstin e plotë të CV-së tënde këtu.",
+    "targetJobExample": "p.sh. kontabilist, infermier, punëtor magazinë, …",
+    "cvImprovements": "p.sh. Po kërkoj punën time të parë. / Pata një pauzë. / Gjermanishtja ime është B2.",
+    "concernDetails": "Përshkruani kërkesën tuaj sa më saktë të jetë e mundur."
+  },
+  "fieldLabels": {
+    "firstName": "Emri",
+    "lastName": "Mbiemri",
+    "birthDate": "Data e lindjes",
+    "nationality": "Kombësia",
+    "residencePermit": "Statusi i qëndrimit",
+    "currentJob": "Profesioni / pozicioni aktual",
+    "monthlyIncome": "Të ardhurat neto mujore",
+    "currentAddress": "Adresa jote",
+    "targetAddress": "Adresa e apartamentit të dëshiruar",
+    "numberOfPersons": "Persona në familje",
+    "pets": "Kafshë shtëpiake",
+    "motivation": "Pse dëshiron këtë apartament?",
+    "additionalInfo": "Informacione shtesë (opsionale)",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "yearsExperience": "Vite përvojë pune",
+    "topSkills": "Aftësitë dhe pikat e forta kryesore",
+    "targetPosition": "Pozicioni për të cilin aplikoni",
+    "targetCompany": "Emri i kompanisë",
+    "companyAddress": "Adresa e kompanisë",
+    "whyCompany": "Pse kjo kompani?",
+    "whyYou": "Pse je personi i duhur?",
+    "type": "Çfarë dëshiron të anulosh?",
+    "recipientName": "Emri i marrësit",
+    "recipientAddress": "Adresa e marrësit",
+    "contractRef": "Numri i kontratës/klientit/policës",
+    "noticePeriod": "Periudha e njoftimit",
+    "terminationDate": "Data e ndërprerjes",
+    "reason": "Arsyeja e anulimit (opsionale)",
+    "position": "Pozicioni / funksioni yt",
+    "employer": "Emri i punëdhënësit",
+    "duration": "Kohëzgjatja e punësimit",
+    "existingZeugnis": "Teksti ekzistues i referencës",
+    "whatToImprove": "Çfarë duhet përmirësuar?",
+    "landlordName": "Emri i qiradhënësit / administrimit",
+    "landlordAddress": "Adresa e qiradhënësit",
+    "defects": "Përshkruaj dëmtimet",
+    "deadline": "Afati (ditë)",
+    "orderRef": "Numri i porosisë / referenca",
+    "complaint": "Çfarë ka ndodhur?",
+    "demand": "Çfarë kërkon?",
+    "existingCV": "CV-ja jote aktuale (si tekst)",
+    "targetJob": "Për çfarë lloj pozicioni po aplikon?",
+    "improvements": "Ku duhet të fokusohet?",
+    "insuranceName": "Emri i sigurimit shëndetësor",
+    "policyNumber": "Numri i sigurimit/policës",
+    "topic": "Tema e letrës",
+    "details": "Kërkesa jote",
+    "employerAddress": "Adresa e punëdhënësit"
+  },
+  "sections": {
+    "Persönliche Angaben": "Të dhëna personale",
+    "Wohnsituation": "Situata e banesës",
+    "Motivationstext": "Motivimi",
+    "Über dich": "Rreth teje",
+    "Die Stelle": "Pozicioni",
+    "Deine Angaben": "Të dhënat e tua",
+    "Kündigung": "Anulimi",
+    "Zeugnis": "Dëshmi",
+    "Mieter": "Qiramarrësi",
+    "Vermieter": "Qiradhënësi",
+    "Schäden": "Dëmtimet",
+    "Empfänger": "Marrësi",
+    "Reklamation": "Ankesë",
+    "Lebenslauf": "CV",
+    "Krankenkasse": "Sigurim shëndetësor",
+    "Anliegen": "Kërkesa",
+    "Arbeitgeber": "Punëdhënësi"
+  }
+}
