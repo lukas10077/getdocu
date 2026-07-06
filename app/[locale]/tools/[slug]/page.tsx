@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import ToolForm from "@/components/ToolForm";
 import ToolPageHeader from "@/components/ToolPageHeader";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocu.ch";
+
 export async function generateStaticParams() {
   return allToolSlugs.map((slug) => ({ slug }));
 }
@@ -24,11 +26,34 @@ export default async function ToolPage({
   const dict = await getDictionary(params.locale);
   const sessionId = searchParams?.session_id ?? null;
 
+  const priceChf = (tool.priceChfRappen / 100).toFixed(2);
+
+  // Schema.org: Product — zeigt Preis direkt in Google-Suchergebnissen
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: tool.documentTitleDe,
+    description: tool.descriptionDe,
+    url: `${BASE_URL}/${params.locale}/tools/${tool.slug}`,
+    offers: {
+      "@type": "Offer",
+      price: priceChf,
+      priceCurrency: "CHF",
+      availability: "https://schema.org/InStock",
+      seller: { "@type": "Organization", name: "GetDocu" },
+    },
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+
       <Nav locale={params.locale} dict={dict} />
 
-      {/* Back button — outside main container, flush left */}
+      {/* Back button */}
       <div className="bg-ink-950 px-6 pt-8">
         <div className="mx-auto max-w-content">
           <Link href={`/${params.locale}#tools`} className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-cream-muted transition hover:text-cream">
@@ -39,16 +64,12 @@ export default async function ToolPage({
 
       <section className="bg-ink-950 px-6 py-10 md:py-16">
         <div className="mx-auto max-w-2xl">
-
-          {/* Header */}
           <div className="border-b border-ink-700 pb-8">
             <ToolPageHeader
               tool={tool}
               title={dict.tools.items?.[tool.slug]?.title}
               description={dict.tools.items?.[tool.slug]?.description}
             />
-
-            {/* Trust pills */}
             <div className="mt-5 flex flex-wrap gap-2">
               {(dict.tools.trustPills ?? ["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek.", "💳 Sicher via Stripe"]).map((t: string) => (
                 <span key={t} className="rounded-full border border-ink-700 px-3 py-1 text-xs text-cream-muted">

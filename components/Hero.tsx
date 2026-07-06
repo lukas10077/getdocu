@@ -13,7 +13,6 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
           src="/hero.jpg"
           alt="Professionelles Dokument mit Stift"
           fill
-          unoptimized
           className="object-contain object-right"
           priority
           sizes="58vw"
@@ -77,7 +76,6 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
             alt="Professionelles Dokument mit Stift"
             width={800}
             height={900}
-            unoptimized
             className="w-[100%] rounded-l-sm object-cover"
             style={{ filter: "brightness(0.92) contrast(1.04)" }}
           />
