@@ -535,12 +535,12 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                       placeholder={field.placeholder}
                       value={values[field.key] ?? ""}
                       onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
-                      className={`${inputClass} flex-1 ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
+                      className={`${inputClass} flex-1 min-w-0 ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                     />
                     <select
                       value={incomeCurrency}
                       onChange={(e) => setIncomeCurrency(e.target.value)}
-                      className={`${inputClass} w-28 border-ink-700`}
+                      className={`${inputClass} w-24 shrink-0 border-ink-700`}
                     >
                       {["CHF","EUR","USD","GBP","SEK","NOK","DKK","PLN","CZK","HUF","RON","TRY","UAH","AED","JPY","INR","AUD","NZD","CAD","BRL","MXN","ARS","COP","CLP","ZAR"].map(c => (
                         <option key={c} value={c}>{c}</option>
