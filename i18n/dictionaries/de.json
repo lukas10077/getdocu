@@ -72,7 +72,11 @@
       "wohnen": "Wohnen",
       "arbeit": "Arbeit",
       "alltag": "Alltag"
-    }
+    },
+    "selectPlaceholder": "— bitte wählen —",
+    "withdrawalConsent": "Ich stimme zu, dass die Lieferung des digitalen Dokuments sofort nach der Zahlung beginnt, und ich bestätige, dass ich damit mein gesetzliches Widerrufsrecht verliere. Ich habe die AGB gelesen und akzeptiere sie.",
+    "withdrawalError": "Bitte bestätige die Zustimmung, um fortzufahren.",
+    "legalDisclaimer": "Das generierte Dokument ist kein Ersatz für eine Rechtsberatung. Deine Formulardaten werden nach der Generierung sofort gelöscht."
   },
   "howItWorks": {
     "title": "So funktioniert's",

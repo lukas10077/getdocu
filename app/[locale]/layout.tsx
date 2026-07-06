@@ -22,6 +22,8 @@ export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocu.ch";
+
 export async function generateMetadata({
   params,
 }: {
@@ -31,6 +33,25 @@ export async function generateMetadata({
   return {
     title: dict.meta.title,
     description: dict.meta.description,
+    metadataBase: new URL(BASE_URL),
+    openGraph: {
+      title: dict.meta.title,
+      description: dict.meta.description,
+      url: `${BASE_URL}/${params.locale}`,
+      siteName: "GetDocu",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "GetDocu" }],
+      type: "website",
+      locale: params.locale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.meta.title,
+      description: dict.meta.description,
+      images: ["/og-image.jpg"],
+    },
+    alternates: {
+      canonical: `${BASE_URL}/${params.locale}`,
+    },
   };
 }
 

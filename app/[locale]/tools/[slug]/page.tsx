@@ -58,7 +58,7 @@ export default async function ToolPage({
             </div>
           </div>
 
-          <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} />
+          <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} />
         </div>
       </section>
 

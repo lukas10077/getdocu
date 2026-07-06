@@ -72,7 +72,11 @@
       "wohnen": "Mieszkanie",
       "arbeit": "Praca",
       "alltag": "Codzienność"
-    }
+    },
+    "selectPlaceholder": "— wybierz —",
+    "withdrawalConsent": "Zgadzam się, że dostarczenie dokumentu cyfrowego rozpoczyna się natychmiast po dokonaniu płatności i potwierdzam, że rezygnuję z przysługującego mi prawa do odstąpienia. Przeczytałem/am i akceptuję Regulamin.",
+    "withdrawalError": "Prosimy o potwierdzenie zgody, aby kontynuować.",
+    "legalDisclaimer": "Wygenerowany dokument nie zastępuje porady prawnej. Twoje dane są usuwane natychmiast po wygenerowaniu."
   },
   "howItWorks": {
     "title": "Jak to działa",

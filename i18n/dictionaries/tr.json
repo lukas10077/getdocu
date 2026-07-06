@@ -72,7 +72,11 @@
       "wohnen": "Konut",
       "arbeit": "İş",
       "alltag": "Günlük"
-    }
+    },
+    "selectPlaceholder": "— lütfen seçin —",
+    "withdrawalConsent": "Dijital belgenin tesliminin ödemenin hemen ardından başladığını kabul ediyorum ve yasal cayma hakkımdan vazgeçtiğimi onaylıyorum. Şartlar ve Koşulları okudum ve kabul ediyorum.",
+    "withdrawalError": "Devam etmek için lütfen onayınızı doğrulayın.",
+    "legalDisclaimer": "Oluşturulan belge hukuki danışmanlığın yerini tutmaz. Form verileriniz oluşturulduktan hemen sonra silinir."
   },
   "howItWorks": {
     "title": "Nasıl çalışır",

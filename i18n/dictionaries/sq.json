@@ -72,7 +72,11 @@
       "wohnen": "Banim",
       "arbeit": "Punë",
       "alltag": "Përditshme"
-    }
+    },
+    "selectPlaceholder": "— ju lutem zgjidhni —",
+    "withdrawalConsent": "Pajtohem që dërgesa e dokumentit dixhital fillon menjëherë pas pagesës dhe konfirmoj se heq dorë nga e drejta ime ligjore e tërheqjes. Kam lexuar dhe pranoj Kushtet dhe Termat.",
+    "withdrawalError": "Ju lutem konfirmoni pëlqimin tuaj për të vazhduar.",
+    "legalDisclaimer": "Dokumenti i gjeneruar nuk zëvendëson këshillimin ligjor. Të dhënat tuaja fshihen menjëherë pas gjenerimit."
   },
   "howItWorks": {
     "title": "Si funksionon",

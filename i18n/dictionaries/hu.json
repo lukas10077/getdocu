@@ -72,7 +72,11 @@
       "wohnen": "Lakhatás",
       "arbeit": "Munka",
       "alltag": "Mindennapos"
-    }
+    },
+    "selectPlaceholder": "— kérjük válasszon —",
+    "withdrawalConsent": "Elfogadom, hogy a digitális dokumentum szállítása a fizetés után azonnal megkezdődik, és megerősítem, hogy ezzel lemondok törvényes elállási jogomról. Elolvastam és elfogadom az Általános Szerződési Feltételeket.",
+    "withdrawalError": "Kérjük, erősítse meg beleegyezését a folytatáshoz.",
+    "legalDisclaimer": "A generált dokumentum nem helyettesíti a jogi tanácsadást. Adatai a generálás után azonnal törlésre kerülnek."
   },
   "howItWorks": {
     "title": "Hogyan működik",

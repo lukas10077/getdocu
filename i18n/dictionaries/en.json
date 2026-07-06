@@ -72,7 +72,11 @@
       "wohnen": "Housing",
       "arbeit": "Work",
       "alltag": "Everyday"
-    }
+    },
+    "selectPlaceholder": "— please select —",
+    "withdrawalConsent": "I agree that delivery of the digital document begins immediately after payment, and I confirm that I thereby waive my statutory right of withdrawal. I have read and accept the Terms & Conditions.",
+    "withdrawalError": "Please confirm your consent to proceed.",
+    "legalDisclaimer": "The generated document is not a substitute for legal advice. Your form data is deleted immediately after generation."
   },
   "howItWorks": {
     "title": "How it works",

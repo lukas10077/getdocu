@@ -17,6 +17,7 @@ interface Props {
   tool: ToolDefinition;
   locale: string;
   sessionId: string | null;
+  dict?: any;
 }
 
 // ── IndexedDB helpers für Fotos (überleben Stripe-Redirect) ──────────
@@ -73,7 +74,12 @@ function readFileAsPhoto(file: File): Promise<Photo> {
   });
 }
 
-export default function ToolForm({ tool, locale, sessionId }: Props) {
+export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
+  const t = dict?.tools ?? {};
+  const selectPlaceholder  = t.selectPlaceholder  ?? "— bitte wählen —";
+  const withdrawalText     = t.withdrawalConsent  ?? "Ich stimme zu, dass die Lieferung des digitalen Dokuments sofort nach der Zahlung beginnt, und ich bestätige, dass ich damit mein gesetzliches Widerrufsrecht verliere. Ich habe die AGB gelesen und akzeptiere sie.";
+  const withdrawalErrText  = t.withdrawalError    ?? "Bitte bestätige die Zustimmung, um fortzufahren.";
+  const legalDisclaimer    = t.legalDisclaimer    ?? "Das generierte Dokument ist kein Ersatz für eine Rechtsberatung. Deine Formulardaten werden nach der Generierung sofort gelöscht.";
   const { country } = useCountry();
   const [stage, setStage] = useState<Stage>("form");
   const [values, setValues] = useState<Record<string, string>>({});
@@ -506,7 +512,7 @@ export default function ToolForm({ tool, locale, sessionId }: Props) {
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
                     className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   >
-                    <option value="">— bitte wählen —</option>
+                    <option value="">{selectPlaceholder}</option>
                     {field.options!.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
                 ) : field.type === "textarea" ? (
@@ -545,18 +551,17 @@ export default function ToolForm({ tool, locale, sessionId }: Props) {
             className="mt-0.5 h-4 w-4 flex-shrink-0 accent-swiss-gold"
           />
           <span className="text-xs leading-relaxed">
-            Ich stimme zu, dass die Lieferung des digitalen Dokuments sofort nach der Zahlung beginnt, und ich bestätige, dass ich damit mein gesetzliches Widerrufsrecht verliere. Ich habe die{" "}
-            <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a> gelesen und akzeptiere sie.
+            {withdrawalText.replace("AGB", "")}{" "}
+            <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a>
           </span>
         </label>
         {withdrawalError && (
-          <p className="mt-2 text-xs text-red-400">Bitte bestätige die Zustimmung, um fortzufahren.</p>
+          <p className="mt-2 text-xs text-red-400">{withdrawalErrText}</p>
         )}
       </div>
 
       <p className="mt-4 text-xs leading-relaxed text-cream-subtle">
-        Das generierte Dokument ist kein Ersatz für eine Rechtsberatung.
-        Deine Formulardaten werden nach der Generierung sofort gelöscht.
+        {legalDisclaimer}
       </p>
 
       <div className="mt-6 flex flex-wrap items-center gap-6">
