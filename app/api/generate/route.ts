@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import Anthropic from "@anthropic-ai/sdk";
 import { getTool } from "@/lib/tools";
 import { getCountry, LANG_NAMES } from "@/lib/countries";
+import { getLegalReferences } from "@/lib/legalRefs";
 
 export async function POST(req: NextRequest) {
   const { toolSlug, sessionId, formData } = await req.json();
@@ -38,7 +39,7 @@ export async function POST(req: NextRequest) {
   // 4. Dokument generieren
   const anthropic = new Anthropic({ apiKey: anthropicKey });
   const textPrompt = buildUserPrompt(tool, cleanFormData);
-  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode);
+  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug);
 
   const userContent: Anthropic.MessageParam["content"] = [];
 
@@ -82,28 +83,43 @@ function buildUserPrompt(tool: NonNullable<ReturnType<typeof getTool>>, formData
   return `Erstelle das Dokument basierend auf folgenden Angaben:\n\n${lines}`;
 }
 
-function buildSystemPrompt(basePrompt: string, countryCode?: string): string {
-  if (!countryCode) return basePrompt;
+function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: string): string {
+  // Formatierungsregel: immer gültiger sauberer Brieftext, kein Markdown
+  const formatRule =
+    `AUSGABEFORMAT — ZWINGEND:\n` +
+    `Erstelle das Dokument als sauberen, druckfertigen Brief ohne jegliches Markdown.\n` +
+    `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen.\n` +
+    `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Betreff oder Abschnittstitel, normale Satzzeichen.\n` +
+    `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n`;
+
+  if (!countryCode) return `${formatRule}\n${basePrompt}`;
   const country = getCountry(countryCode);
-  if (!country) return basePrompt;
+  if (!country) return `${formatRule}\n${basePrompt}`;
   const langName = LANG_NAMES[country.documentLang] ?? country.documentLang;
 
   // Schweizer Referenzen entfernen wenn Land nicht CH
   let adapted = basePrompt;
   if (countryCode !== "CH") {
     adapted = adapted
-      .replace(/Schweizer\s+/g, "")           // "Schweizer Standard" → "Standard"
-      .replace(/\bSchweiz\b/g, country.name)  // "in der Schweiz" → "in Deutschland"
-      .replace(/schweizerisch\w*/gi, "lokal") // "schweizerische Konventionen" → "lokal"
-      .replace(/\s*\(KVG\/VVG\)/g, "")        // Schweizer Krankenversicherungsrecht
-      .replace(/\s*\(SchKG\)/g, "");           // Schweizer Schuldbetreibungsrecht
+      .replace(/Schweizer\s+/g, "")
+      .replace(/\bSchweiz\b/g, country.name)
+      .replace(/schweizerisch\w*/gi, "lokal")
+      .replace(/\s*\(KVG\/VVG\)/g, "")
+      .replace(/\s*\(SchKG\)/g, "");
   }
 
   const countryNote =
-    `WICHTIG — LÄNDERSPEZIFISCHE ANPASSUNG:\n` +
+    `LÄNDERSPEZIFISCHE ANPASSUNG:\n` +
     `Dieses Dokument wird für einen Nutzer in ${country.name} (${country.flag}) erstellt.\n` +
     `Passe alle Formulierungen, Konventionen und Anforderungen an die in ${country.name} üblichen Standards an.\n` +
     `Verwende keine Schweizer Eigenheiten (Anführungszeichen «», CHF, ss/ß-Regel) ausser das Land ist CH.\n` +
     `Verfasse das gesamte Dokument auf ${langName}.\n`;
-  return `${countryNote}\n${adapted}`;
+
+  // Gesetzesreferenzen für dieses Land und Dokument-Typ
+  const legalRefs = toolSlug
+    ? getLegalReferences(toolSlug as import("@/lib/tools").ToolSlug, countryCode)
+    : "";
+
+  const parts = [formatRule, countryNote, legalRefs, adapted].filter(Boolean);
+  return parts.join("\n");
 }

@@ -43,8 +43,8 @@ export default function LocaleLayout({
 }) {
   const dir = isRtl(params.locale) ? "rtl" : "ltr";
   return (
-    <html lang={params.locale} dir={dir}>
-      <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased`}>
+    <html lang={params.locale} dir={dir} suppressHydrationWarning>
+      <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased`} suppressHydrationWarning>
         <CountryProvider>
           <CountrySelector />
           {children}

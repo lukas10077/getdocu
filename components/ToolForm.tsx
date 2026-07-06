@@ -281,7 +281,11 @@ export default function ToolForm({ tool, locale, sessionId }: Props) {
         </div>
 
         <div className="rounded-sm border border-ink-700 bg-ink-900 p-6 md:p-8">
-          <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-cream-muted">{result}</pre>
+          <div className="space-y-3 font-sans text-sm leading-relaxed text-cream-muted">
+            {result.split(/\n\n+/).map((para, i) => (
+              <p key={i} className="whitespace-pre-line">{para}</p>
+            ))}
+          </div>
         </div>
 
         {/* Foto-Beilage anzeigen */}
@@ -325,7 +329,7 @@ export default function ToolForm({ tool, locale, sessionId }: Props) {
                 @media print{.no-print{display:none}}</style></head>
                 <body>
                 <button class="no-print" onclick="window.print()" style="margin-bottom:20px;padding:8px 16px;cursor:pointer">Drucken / Als PDF speichern</button>
-                <pre style="white-space:pre-wrap;font-family:Georgia,serif">${result}</pre>
+                ${result.split(/\n\n+/).map(p => `<p style="margin:0 0 1.2em 0;white-space:pre-line">${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>`).join('')}
                 ${photosHtml}
                 <div class="disclaimer">Dieses Dokument wurde mit GetDocuNow.com generiert und stellt keine Rechtsberatung dar.</div>
                 </body></html>`);
