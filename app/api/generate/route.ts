@@ -43,17 +43,19 @@ export async function POST(req: NextRequest) {
   // 2. Ländercode aus Stripe-Metadata lesen
   const countryCode = session.metadata?.countryCode;
 
-  // 3. Bild aus formData extrahieren (wird nach Nutzung nicht gespeichert)
+  // 3. Bild + Metadaten aus formData extrahieren (wird nach Nutzung nicht gespeichert)
   const imageBase64: string = formData.__imageBase64 ?? "";
   const imageMimeType: string = formData.__imageMimeType ?? "image/jpeg";
+  const incomeCurrency: string = formData.__incomeCurrency ?? "";
   const cleanFormData = { ...formData };
   delete cleanFormData.__imageBase64;
   delete cleanFormData.__imageMimeType;
+  delete cleanFormData.__incomeCurrency;
 
   // 4. Dokument generieren
   const anthropic = new Anthropic({ apiKey: anthropicKey });
   const textPrompt = buildUserPrompt(tool, cleanFormData);
-  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug);
+  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug, incomeCurrency);
 
   const userContent: Anthropic.MessageParam["content"] = [];
 
@@ -105,7 +107,7 @@ function buildUserPrompt(tool: NonNullable<ReturnType<typeof getTool>>, formData
   return `Erstelle das Dokument basierend auf folgenden Angaben:\n\n${lines}`;
 }
 
-function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: string): string {
+function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: string, incomeCurrency?: string): string {
   // Formatierungsregel: immer gültiger sauberer Brieftext, kein Markdown
   const formatRule =
     `AUSGABEFORMAT — ZWINGEND:\n` +
@@ -130,9 +132,10 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: 
       .replace(/\s*\(SchKG\)/g, "");
   }
 
-  const currencyNote = countryCode !== "CH"
-    ? `Falls Geldbeträge in CHF angegeben sind, rechne sie näherungsweise in ${country.currency} um und verwende nur ${country.currency} im Dokument.\n`
-    : "";
+  const srcCurrency = incomeCurrency || (countryCode === "CH" ? "CHF" : country.currency);
+  const currencyNote = srcCurrency !== country.currency
+    ? `Das Einkommen wurde in ${srcCurrency} angegeben. Rechne es näherungsweise in ${country.currency} um und verwende ausschliesslich ${country.currency} im Dokument.\n`
+    : (countryCode !== "CH" ? `Verwende ausschliesslich ${country.currency} als Währung im Dokument.\n` : "");
 
   const countryNote =
     `LÄNDERSPEZIFISCHE ANPASSUNG:\n` +

@@ -89,6 +89,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const [previewText, setPreviewText] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
+  // Währung für Einkommensfeld
+  const [incomeCurrency, setIncomeCurrency] = useState<string>(country?.currency ?? "CHF");
   // Einzelbild (Vision-Tools)
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [imageMimeType, setImageMimeType] = useState<string>("image/jpeg");
@@ -218,6 +220,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       ...values,
       __imageBase64: tool.supportsPhotoGallery ? "" : (imageBase64 ?? ""),
       __imageMimeType: imageMimeType,
+      __incomeCurrency: incomeCurrency,
     }));
     // Fotos in IndexedDB speichern (sessionStorage zu klein für viele Bilder)
     if (tool.supportsPhotoGallery && photos.length > 0) {
@@ -524,6 +527,26 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
                     className={`${inputClass} resize-y ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   />
+                ) : field.appendCurrency ? (
+                  <div className="flex gap-2">
+                    <input
+                      id={field.key}
+                      type="number"
+                      placeholder={field.placeholder}
+                      value={values[field.key] ?? ""}
+                      onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
+                      className={`${inputClass} flex-1 ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
+                    />
+                    <select
+                      value={incomeCurrency}
+                      onChange={(e) => setIncomeCurrency(e.target.value)}
+                      className={`${inputClass} w-28 border-ink-700`}
+                    >
+                      {["CHF","EUR","USD","GBP","SEK","NOK","DKK","PLN","CZK","HUF","RON","TRY","UAH","AED","JPY","INR","AUD","NZD","CAD","BRL","MXN","ARS","COP","CLP","ZAR"].map(c => (
+                        <option key={c} value={c}>{c}</option>
+                      ))}
+                    </select>
+                  </div>
                 ) : (
                   <input
                     id={field.key}
