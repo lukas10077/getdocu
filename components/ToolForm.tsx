@@ -356,15 +356,40 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <h2 className="text-lg font-medium text-cream">Dein Dokument ist fertig</h2>
         </div>
 
-        {/* Dokument-Vorschau — Paper-Design */}
+        {/* Dokument-Vorschau — Paper-Design, gleiche Formatierung wie PDF */}
         <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
-          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1 }}>
-            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a]" style={{ fontFamily: "Arial, sans-serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 165 : 0 }}>{cleanResult}</pre>
-            {profilePhotoUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ position: "absolute", top: 70, right: 90, width: 145, height: 180, objectFit: "cover", borderRadius: 2, boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }} />
-            )}
+          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+            {(() => {
+              const paras = cleanResult.split(/\n\n+/);
+              const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
+              const isDate    = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
+              const isClose   = (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
+              const pStyle = (p: string): React.CSSProperties => ({
+                marginBottom: "1.2em",
+                marginTop: (isDate(p) || isClose(p)) ? "1.8em" : 0,
+                fontWeight: isSubject(p) ? 700 : 400,
+                whiteSpace: "pre-line",
+              });
+              const header = paras.slice(0, 2);
+              const body   = paras.slice(2);
+              return (
+                <>
+                  {profilePhotoUrl ? (
+                    <div style={{ display: "flex", gap: 0, marginBottom: 0 }}>
+                      <div style={{ flex: 1, paddingRight: 16 }}>
+                        {header.map((p, i) => <p key={i} style={pStyle(p)}>{p}</p>)}
+                      </div>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 135, height: 168, objectFit: "cover", borderRadius: 2, flexShrink: 0, boxShadow: "0 2px 8px rgba(0,0,0,0.15)", alignSelf: "flex-start" }} />
+                    </div>
+                  ) : (
+                    header.map((p, i) => <p key={i} style={pStyle(p)}>{p}</p>)
+                  )}
+                  {body.map((p, i) => <p key={i + 2} style={pStyle(p)}>{p}</p>)}
+                </>
+              );
+            })()}
           </div>
         </div>
 
@@ -450,10 +475,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               function renderWP(p: string): string {
                 const esc = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
                 const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
-                const isDate = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
-                const isClose = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
-                let s = `margin:0 0 1.1em 0;font-size:11pt;`;
-                if (isDate || isClose) s += 'margin-top:1.8em;';
+                let s = `margin:0 0 10pt 0;font-size:11pt;`;
                 if (isSubject) s += 'font-weight:bold;';
                 return `<p style="${s}">${esc}</p>`;
               }
