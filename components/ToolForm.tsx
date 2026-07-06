@@ -411,6 +411,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     return field.placeholder;
   }
 
+  // i18n Label- und Section-Lookup
+  function getLabel(field: { key: string; label: string }): string {
+    return (dict?.fieldLabels as Record<string, string> | undefined)?.[field.key] ?? field.label;
+  }
+  function getSectionLabel(section: string): string {
+    return (dict?.sections as Record<string, string> | undefined)?.[section] ?? section;
+  }
+
   // ── Kündigungsfrist → Datum automatisch berechnen ─────────────
   function calcTerminationDate(noticePeriodValue: string): string {
     const monthMap: Record<string, number> = {
@@ -533,12 +541,12 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             <div key={field.key}>
               {showSection && (
                 <div className="mb-6 border-b border-ink-700 pb-2">
-                  <h3 className="text-xs font-medium uppercase tracking-widest text-cream-muted">{field.section}</h3>
+                  <h3 className="text-xs font-medium uppercase tracking-widest text-cream-muted">{getSectionLabel(field.section!)}</h3>
                 </div>
               )}
               <div>
                 <label htmlFor={field.key} className="mb-2 block text-sm font-medium text-cream">
-                  {field.label}{field.appendCurrency && <span className="ml-1 text-cream-muted">({country?.currency ?? "CHF"})</span>}
+                  {getLabel(field)}{field.appendCurrency && <span className="ml-1 text-cream-muted">({country?.currency ?? "CHF"})</span>}
                   {field.required && <span className="ml-1 text-swiss-gold">*</span>}
                 </label>
                 {field.type === "select" ? (
