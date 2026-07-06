@@ -19,8 +19,9 @@ export interface FieldDef {
   type: "text" | "textarea" | "select" | "email" | "tel" | "number" | "date";
   placeholder?: string;
   required?: boolean;
-  options?: string[]; // nur für type="select"
-  section?: string;   // optionale Abschnitts-Überschrift vor diesem Feld
+  options?: string[];                        // nur für type="select"
+  countryOptions?: Record<string, string[]>; // länderspezifische Optionen, überschreiben options
+  section?: string;                          // optionale Abschnitts-Überschrift vor diesem Feld
 }
 
 export interface ToolDefinition {
@@ -65,7 +66,23 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "birthDate",       label: "Geburtsdatum",                     type: "date",     required: true  },
       { key: "nationality",     label: "Nationalität",                     type: "text",     required: true  },
       { key: "residencePermit", label: "Aufenthaltsstatus",                type: "select",   required: true,
-        options: ["Schweizer Bürger", "C-Ausweis", "B-Ausweis", "L-Ausweis", "EU/EFTA", "Anderes"] },
+        options: ["Staatsbürger/in", "Dauerhaftes Aufenthaltsrecht", "Befristetes Aufenthaltsrecht", "Anderes"],
+        countryOptions: {
+          "CH": ["Schweizer Bürger/in", "C-Ausweis (Niederlassung)", "B-Ausweis (Aufenthalt)", "L-Ausweis (Kurzaufenthalt)", "EU/EFTA", "Anderes"],
+          "DE": ["Deutsche/r Staatsbürger/in", "Niederlassungserlaubnis", "Aufenthaltserlaubnis", "EU/EWR-Bürger/in", "Anderes"],
+          "AT": ["Österreichische/r Staatsbürger/in", "Rot-Weiß-Rot-Karte", "Aufenthaltsbewilligung", "EU/EWR-Bürger/in", "Anderes"],
+          "FR": ["Citoyen/ne français/e", "Carte de résident", "Titre de séjour", "UE/EEE", "Autre"],
+          "IT": ["Cittadino/a italiano/a", "Permesso di soggiorno CE", "Permesso di soggiorno", "UE/SEE", "Altro"],
+          "ES": ["Ciudadano/a español/a", "Residencia permanente", "Tarjeta de residencia", "UE/EEE", "Otro"],
+          "NL": ["Nederlandse staatsburger", "Verblijfsvergunning onbepaald", "Verblijfsvergunning bepaald", "EU/EER", "Anders"],
+          "BE": ["Belge", "Carte A (résidence permanente)", "Carte B/E", "UE/EEE", "Autre"],
+          "GB": ["British Citizen", "Settled Status (ILR)", "Pre-Settled Status", "Other"],
+          "US": ["US Citizen", "Green Card (Permanent Resident)", "Work Visa", "Other"],
+          "CA": ["Canadian Citizen", "Permanent Resident", "Work Permit", "Other"],
+          "AU": ["Australian Citizen", "Permanent Resident", "Temporary Visa", "Other"],
+          "NZ": ["New Zealand Citizen", "Permanent Resident", "Temporary Visa", "Other"],
+        }
+      },
       { key: "currentJob",      label: "Beruf / aktuelle Stelle",          type: "text",     required: true  },
       { key: "monthlyIncome",   label: "Monatliches Nettoeinkommen (CHF)", type: "number",   required: true,  placeholder: "5500" },
       { key: "currentAddress",  label: "Deine aktuelle Adresse",           type: "text",     required: true,  section: "Wohnsituation" },
