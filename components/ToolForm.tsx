@@ -396,33 +396,45 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <button
             onClick={() => {
               const w = window.open("", "_blank")!;
-              const bodyHtml = cleanResult.split(/\n\n+/).map(p => {
-                const escaped = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+              // Hilfsfunktion: Absatz → HTML
+              function renderP(p: string): string {
+                const esc = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
                 const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
-                const isDateLine = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
-                const isClosing = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
-                let style = `margin:0 0 1.3em 0;white-space:pre-line;`;
-                if (isDateLine || isClosing) style += 'margin-top:2em;';
-                if (isSubject) style += 'font-weight:700;font-size:14px;letter-spacing:0.03em;';
-                return `<p style="${style}">${escaped}</p>`;
-              }).join('');
+                const isDate = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
+                const isClose = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
+                let s = 'margin:0 0 1.2em 0;white-space:pre-line;';
+                if (isDate || isClose) s += 'margin-top:1.8em;';
+                if (isSubject) s += 'font-weight:700;font-size:14px;letter-spacing:0.03em;';
+                return `<p style="${s}">${esc}</p>`;
+              }
+              const paras = cleanResult.split(/\n\n+/);
+              // Erste 2 Absätze (Absender + Empfänger) neben Foto; Rest volle Breite
+              const headerHtml = paras.slice(0, 2).map(renderP).join('');
+              const bodyHtml   = paras.slice(2).map(renderP).join('');
+              const photoCell  = profilePhotoUrl
+                ? `<td style="vertical-align:top;width:150px;padding-left:12px;text-align:right;border:none">
+                     <img src="${profilePhotoUrl}" width="135" height="168" style="width:135px;height:168px;object-fit:cover;border-radius:2px;box-shadow:0 2px 8px rgba(0,0,0,0.15)">
+                   </td>`
+                : '';
+              const headerTable = profilePhotoUrl
+                ? `<table style="width:100%;border-collapse:collapse;margin-bottom:0"><tr>
+                     <td style="vertical-align:top;border:none">${headerHtml}</td>${photoCell}
+                   </tr></table>`
+                : headerHtml;
               w.document.write(`<html><head><title>${tool.documentTitleDe}</title><meta charset="utf-8">
                 <style>
                   *{box-sizing:border-box;margin:0;padding:0}
                   body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
-                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;position:relative}
-                  .body{padding:48px 52px;font-size:13px;line-height:1.85;color:#1a1a1a;position:relative}
-                  .photo{position:absolute;top:48px;right:52px;width:140px;height:175px;object-fit:cover;border-radius:2px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
-                  .has-photo{padding-right:210px}
+                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c}
+                  .body{padding:48px 52px;font-size:13px;line-height:1.85;color:#1a1a1a}
                   @media print{
                     @page{margin:0;size:A4 portrait}
                     body{background:#fff;padding:12mm 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
                     .page{box-shadow:none;max-width:100%;width:100%;margin:0}
                   }
                 </style></head>
-                <body><div class="page"><div class="body ${profilePhotoUrl ? 'has-photo' : ''}">
-                ${profilePhotoUrl ? `<img src="${profilePhotoUrl}" class="photo" alt="Foto">` : ''}
-                ${bodyHtml}${photosHtml}
+                <body><div class="page"><div class="body">
+                ${headerTable}${bodyHtml}${photosHtml}
                 </div></div></body></html>`);
               w.document.close();
               setTimeout(() => w.print(), 800);
@@ -435,17 +447,35 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Word */}
           <button
             onClick={() => {
-              const wordBodyHtml = cleanResult.split(/\n\n+/).map(p => {
-                const escaped = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-                const isSubject = /^[A-ZÄÖÜ\s]{6,}$/.test(p.trim());
-                return `<p style="margin:0 0 1.2em 0;${isSubject ? 'font-weight:bold;font-size:12pt' : 'font-size:11pt'}">${escaped}</p>`;
-              }).join('');
-              const photoHtml = profilePhotoUrl ? `<img src="${profilePhotoUrl}" style="float:right;margin:0 0 20px 28px;width:130px;height:160px;object-fit:cover;border:1px solid #ddd" />` : '';
+              function renderWP(p: string): string {
+                const esc = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+                const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
+                const isDate = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
+                const isClose = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
+                let s = `margin:0 0 1.1em 0;font-size:11pt;`;
+                if (isDate || isClose) s += 'margin-top:1.8em;';
+                if (isSubject) s += 'font-weight:bold;';
+                return `<p style="${s}">${esc}</p>`;
+              }
+              const wParas = cleanResult.split(/\n\n+/);
+              const wHeader = wParas.slice(0, 2).map(renderWP).join('');
+              const wBody   = wParas.slice(2).map(renderWP).join('');
+              const headerBlock = profilePhotoUrl
+                ? `<table width="100%" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;margin-bottom:0">
+                     <tr>
+                       <td valign="top" style="border:none;padding-right:18pt">${wHeader}</td>
+                       <td valign="top" width="145" style="border:none;padding-left:6pt;text-align:right">
+                         <img src="${profilePhotoUrl}" width="130" height="162" style="width:130px;height:162px" />
+                       </td>
+                     </tr>
+                   </table>`
+                : wHeader;
               const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset="utf-8">
                 <style>
-                  body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.8;color:#111;margin:2.5cm 3cm}
-                  p{margin:0 0 1.2em 0}
-                </style></head><body>${photoHtml}${wordBodyHtml}</body></html>`;
+                  body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.8;color:#111;margin:2.5cm 2.5cm}
+                  p{margin:0 0 1.1em 0}
+                  td{vertical-align:top;border:none}
+                </style></head><body>${headerBlock}${wBody}</body></html>`;
               const blob = new Blob(['﻿', html], { type: 'application/msword' });
               const url = URL.createObjectURL(blob);
               const a = document.createElement('a');
@@ -501,7 +531,13 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, rgba(250,248,244,0) 0%, rgba(250,248,244,0.98) 100%)", zIndex: 3 }} />
         </div>
 
-        <div className="mt-6 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
+        <div className="mt-4 rounded-sm border border-amber-500/30 bg-amber-500/10 p-4">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">Vor dem Kauf überprüfen</p>
+          <p className="text-sm text-cream-muted">Bitte kontrolliere deine Angaben: vollständiger Name, Adresse, E-Mail-Adresse, Name des Unternehmens und genaue Berufsbezeichnung. Fehlerhafte Angaben können das Dokument beeinträchtigen.</p>
+          <button onClick={() => setStage("form")} className="mt-2 text-xs text-amber-400 underline hover:text-amber-300">Angaben ändern</button>
+        </div>
+
+        <div className="mt-4 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
           <p className="mb-4 text-sm text-cream-muted">
             <strong className="font-medium text-cream">Dein persönliches Dokument ist bereit.</strong>{" "}
             Bezahle einmalig {priceDisplay} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.
