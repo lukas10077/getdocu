@@ -333,6 +333,11 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   }
 
   if (stage === "done") {
+    // HINWEIS vom Dokument trennen — darf nicht in PDF/Word erscheinen
+    const hinweisIdx = result.search(/\n*HINWEIS[:\s]/i);
+    const cleanResult = hinweisIdx >= 0 ? result.slice(0, hinweisIdx).trim() : result;
+    const hinweisText = hinweisIdx >= 0 ? result.slice(hinweisIdx).replace(/^\n+/, "").trim() : null;
+
     const photosHtml = photos.length > 0
       ? `<div style="margin-top:48px;border-top:1px solid #ddd;padding-top:24px">
            <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#999;margin-bottom:16px">
@@ -355,13 +360,21 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
           <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1 }}>
-            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a]" style={{ fontFamily: "Arial, sans-serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 165 : 0 }}>{result}</pre>
+            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a]" style={{ fontFamily: "Arial, sans-serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 165 : 0 }}>{cleanResult}</pre>
             {profilePhotoUrl && (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ position: "absolute", top: 70, right: 90, width: 145, height: 180, objectFit: "cover", borderRadius: 2, boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }} />
             )}
           </div>
         </div>
+
+        {/* HINWEIS — separat anzeigen, nicht im Dokument */}
+        {hinweisText && (
+          <div className="mt-4 rounded-sm border border-amber-500/30 bg-amber-500/10 p-4">
+            <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">Hinweis zur Überprüfung</p>
+            <p className="text-sm text-cream-muted">{hinweisText.replace(/^HINWEIS[:\s]*/i, "")}</p>
+          </div>
+        )}
 
         {/* Foto-Beilage */}
         {photos.length > 0 && (
@@ -383,26 +396,24 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <button
             onClick={() => {
               const w = window.open("", "_blank")!;
-              const bodyHtml = result.split(/\n\n+/).map(p => {
+              const bodyHtml = cleanResult.split(/\n\n+/).map(p => {
                 const escaped = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
                 const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
-                // Mehr Abstand vor Datumszeile (z.B. "Zürich, 6. Juli 2026")
                 const isDateLine = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
-                // Mehr Abstand vor Grusszeile
                 const isClosing = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
-                let style = `margin:0 0 0.65em 0;white-space:pre-line;`;
-                if (isDateLine || isClosing) style += 'margin-top:1.8em;';
-                if (isSubject) style += 'font-weight:700;letter-spacing:0.03em;';
+                let style = `margin:0 0 1.3em 0;white-space:pre-line;`;
+                if (isDateLine || isClosing) style += 'margin-top:2em;';
+                if (isSubject) style += 'font-weight:700;font-size:14px;letter-spacing:0.03em;';
                 return `<p style="${style}">${escaped}</p>`;
               }).join('');
               w.document.write(`<html><head><title>${tool.documentTitleDe}</title><meta charset="utf-8">
                 <style>
                   *{box-sizing:border-box;margin:0;padding:0}
-                  body{font-family:Arial,sans-serif;background:#f0ede8;padding:24px 20px}
+                  body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
                   .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;position:relative}
-                  .body{padding:36px 46px 36px 46px;font-size:11.5px;line-height:1.6;color:#1a1a1a;position:relative}
-                  .photo{position:absolute;top:36px;right:46px;width:128px;height:160px;object-fit:cover;border-radius:2px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
-                  .has-photo{padding-right:190px}
+                  .body{padding:48px 52px;font-size:13px;line-height:1.85;color:#1a1a1a;position:relative}
+                  .photo{position:absolute;top:48px;right:52px;width:140px;height:175px;object-fit:cover;border-radius:2px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+                  .has-photo{padding-right:210px}
                   @media print{
                     @page{margin:0;size:A4 portrait}
                     body{background:#fff;padding:12mm 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -424,7 +435,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Word */}
           <button
             onClick={() => {
-              const wordBodyHtml = result.split(/\n\n+/).map(p => {
+              const wordBodyHtml = cleanResult.split(/\n\n+/).map(p => {
                 const escaped = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
                 const isSubject = /^[A-ZÄÖÜ\s]{6,}$/.test(p.trim());
                 return `<p style="margin:0 0 1.2em 0;${isSubject ? 'font-weight:bold;font-size:12pt' : 'font-size:11pt'}">${escaped}</p>`;
