@@ -144,9 +144,6 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   kuendigung: {
     slug: "kuendigung",
     priceChfRappen: 300,
-    supportsDocumentUpload: true,
-    uploadLabelDe: "Dokument hochladen (optional)",
-    uploadHintDe: "Hast du eine Kündigung erhalten? Lade ein Foto hoch — wir lesen den Text automatisch.",
     documentTitleDe: "Kündigung",
     descriptionDe:
       "Versicherung, Abonnement, Mitgliedschaft — korrekt und fristgerecht kündigen.",
