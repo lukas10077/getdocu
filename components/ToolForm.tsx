@@ -697,6 +697,9 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     ✓ Automatisch berechnet — du kannst das Datum anpassen.
                   </p>
                 )}
+                {field.hint && (
+                  <p className="mt-1.5 text-xs text-cream-muted/70">{field.hint}</p>
+                )}
                 {errors[field.key] && <p className="mt-1 text-xs text-red-400">{errors[field.key]}</p>}
               </div>
             </div>

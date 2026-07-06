@@ -26,6 +26,7 @@ export interface FieldDef {
   section?: string;                          // optionale Abschnitts-Überschrift vor diesem Feld
   fillsDateField?: string;                   // wenn gesetzt: Auswahl berechnet Datum für dieses Feld automatisch
   autoFilledHint?: boolean;                  // zeigt Hinweis "automatisch berechnet" unter dem Datumsfeld
+  hint?: string;                             // grauer Hilfstext unter dem Feld
 }
 
 export interface ToolDefinition {
@@ -198,7 +199,8 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "employer",      label: "Name des Arbeitgebers",        type: "text",     required: true },
       { key: "duration",      label: "Beschäftigungsdauer",          type: "text",     required: true, placeholderKey: "dateRange" },
       { key: "whatToImprove", label: "Was soll verbessert werden?",  type: "textarea", required: false,
-        placeholderKey: "certificateImprove", section: "Verbesserungen" },
+        section: "Verbesserungen",
+        hint: "Kein Problem, wenn du nichts weisst — wir analysieren das Zeugnis und verbessern es automatisch." },
     ],
   },
 
