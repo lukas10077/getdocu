@@ -717,8 +717,13 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             className="mt-0.5 h-4 w-4 flex-shrink-0 accent-swiss-gold"
           />
           <span className="text-xs leading-relaxed">
-            {withdrawalText.replace("AGB", "")}{" "}
-            <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a>
+            {(() => {
+              const parts = withdrawalText.split("AGB");
+              if (parts.length === 2) {
+                return <>{parts[0]}<a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a>{parts[1]}</>;
+              }
+              return <>{withdrawalText} <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a></>;
+            })()}
           </span>
         </label>
         {withdrawalError && (
