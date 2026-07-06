@@ -222,7 +222,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "defects",          label: "Beschreibe die Schäden",       type: "textarea", required: true,
         placeholderKey: "damageDescription",
         section: "Schäden" },
-      { key: "deadline",         label: "Frist zur Behebung (Tage)",    type: "number",   required: true,  placeholder: "14" },
+      { key: "deadline",         label: "Frist zur Behebung (Tage)",    type: "number",   required: true },
     ],
   },
 
