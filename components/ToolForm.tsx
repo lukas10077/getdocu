@@ -386,17 +386,71 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <button
             onClick={() => {
               const w = window.open("", "_blank")!;
-              w.document.write(`<html><head><title>${tool.documentTitleDe}</title>
+              const isJobApplication = tool.supportsProfilePhoto;
+              const fullName = [values.firstName, values.lastName].filter(Boolean).join(" ");
+              const bodyHtml = result.split(/\n\n+/).map(p => `<p>${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</p>`).join('');
+
+              const jobTemplate = `
+                <html><head><title>${tool.documentTitleDe}</title>
+                <meta charset="utf-8">
+                <style>
+                  *{box-sizing:border-box;margin:0;padding:0}
+                  body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f0ede8;min-height:100vh;padding:30px 20px}
+                  .no-print{display:flex;justify-content:center;margin-bottom:24px}
+                  .no-print button{background:#1a1a1a;color:#fff;border:none;padding:10px 28px;font-size:13px;letter-spacing:0.08em;cursor:pointer;text-transform:uppercase}
+                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12)}
+                  .header{background:#1a1a1a;color:#fff;padding:36px 44px;display:flex;align-items:center;gap:28px}
+                  .header-text h1{font-size:22px;font-weight:600;letter-spacing:0.02em;margin-bottom:4px}
+                  .header-text .subtitle{font-size:12px;color:#aaa;letter-spacing:0.08em;text-transform:uppercase}
+                  .header-contact{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:11px;color:#bbb}
+                  .photo{width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.2);flex-shrink:0}
+                  .photo-placeholder{width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,0.1);flex-shrink:0}
+                  .accent{height:3px;background:linear-gradient(90deg,#c9a84c,#e8c96a)}
+                  .body{padding:40px 44px;font-size:13.5px;line-height:1.85;color:#222}
+                  .body p{margin-bottom:1.3em}
+                  .disclaimer{margin-top:40px;padding-top:12px;border-top:1px solid #eee;font-size:10px;color:#aaa}
+                  ${photosHtml ? '.photos{margin-top:32px}' : ''}
+                  @media print{.no-print{display:none}body{background:#fff;padding:0}.page{box-shadow:none}}
+                </style></head>
+                <body>
+                <div class="no-print"><button onclick="window.print()">Drucken / Als PDF speichern</button></div>
+                <div class="page">
+                  <div class="header">
+                    ${profilePhotoUrl
+                      ? `<img src="${profilePhotoUrl}" class="photo" alt="Foto">`
+                      : `<div class="photo-placeholder"></div>`}
+                    <div class="header-text">
+                      <h1>${fullName || tool.documentTitleDe}</h1>
+                      ${values.currentJob ? `<div class="subtitle">${values.currentJob.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>` : ''}
+                      <div class="header-contact">
+                        ${values.email ? `<span>✉ ${values.email}</span>` : ''}
+                        ${values.phone ? `<span>✆ ${values.phone}</span>` : ''}
+                        ${values.currentAddress ? `<span>⌂ ${values.currentAddress.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</span>` : ''}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accent"></div>
+                  <div class="body">
+                    ${bodyHtml}
+                    ${photosHtml}
+                    <div class="disclaimer">Generiert mit GetDocuNow.com — kein Ersatz für Rechtsberatung.</div>
+                  </div>
+                </div>
+                </body></html>`;
+
+              const defaultTemplate = `
+                <html><head><title>${tool.documentTitleDe}</title>
                 <style>body{font-family:Georgia,serif;max-width:700px;margin:60px auto;font-size:14px;line-height:1.8;color:#111}
                 .disclaimer{font-size:11px;color:#888;margin-top:40px;border-top:1px solid #eee;padding-top:12px}
                 @media print{.no-print{display:none}}</style></head>
                 <body>
                 <button class="no-print" onclick="window.print()" style="margin-bottom:20px;padding:8px 16px;cursor:pointer">Drucken / Als PDF speichern</button>
-                ${profilePhotoUrl ? `<img src="${profilePhotoUrl}" alt="Bewerbungsfoto" style="float:right;margin:0 0 16px 24px;width:100px;height:100px;object-fit:cover;border-radius:50%;border:1px solid #ccc" />` : ""}
                 ${result.split(/\n\n+/).map(p => `<p style="margin:0 0 1.2em 0;white-space:pre-line">${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>`).join('')}
                 ${photosHtml}
                 <div class="disclaimer">Dieses Dokument wurde mit GetDocuNow.com generiert und stellt keine Rechtsberatung dar.</div>
-                </body></html>`);
+                </body></html>`;
+
+              w.document.write(isJobApplication ? jobTemplate : defaultTemplate);
               w.document.close();
             }}
             className="border border-ink-700 px-6 py-3 text-sm font-medium uppercase tracking-widest text-cream-muted transition hover:border-swiss-gold/50 hover:text-cream"
