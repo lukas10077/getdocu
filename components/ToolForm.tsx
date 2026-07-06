@@ -487,14 +487,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Dokument-Body */}
           <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1, display: "flex", gap: 0 }}>
             {/* Text — mit Abstand rechts wenn Foto vorhanden */}
-            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a] flex-1" style={{ fontFamily: "Georgia, serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 160 : 0 }}>{previewText}</pre>
+            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a] flex-1" style={{ fontFamily: "Georgia, serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 190 : 0 }}>{previewText}</pre>
             {/* Foto fix oben rechts im Text-Container */}
             {profilePhotoUrl && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={profilePhotoUrl}
                 alt="Bewerbungsfoto"
-                style={{ position: "absolute", top: 40, right: 48, width: 120, height: 150, objectFit: "cover", borderRadius: 2, flexShrink: 0, boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}
+                style={{ position: "absolute", top: 70, right: 90, width: 145, height: 180, objectFit: "cover", borderRadius: 2, flexShrink: 0, boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}
               />
             )}
           </div>
