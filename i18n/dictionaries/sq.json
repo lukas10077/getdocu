@@ -82,12 +82,12 @@
       "description": "Përgjigju disa pyetjeve të thjeshta — shpjeguar në gjuhën tënde."
     },
     "step2": {
-      "title": "Paguaj në mënyrë të sigurt",
-      "description": "Paguaj {priceRange} me kartë përmes Stripe. Pa abonim, pa kosto të fshehura."
+      "title": "Pamje paraprake falas",
+      "description": "Shiko dokumentin tënd falas si pamje paraprake — me filigranë. Paguaj vetëm nëse je i kënaqur."
     },
     "step3": {
-      "title": "Dokumenti krijohet",
-      "description": "AI-ja jonë krijon dokumentin tënd në shqip, gati për autoritetet, qiradhënësin ose punëdhënësin."
+      "title": "Paguaj në mënyrë të sigurt",
+      "description": "Paguaj {priceRange} me kartë përmes Stripe. Pa abonim, pa kosto të fshehura."
     },
     "step4": {
       "title": "Shkarko dhe mbarove",

@@ -82,12 +82,12 @@
       "description": "Responde algunas preguntas sencillas — explicadas en tu idioma."
     },
     "step2": {
-      "title": "Paga con seguridad",
-      "description": "Paga {priceRange} con tarjeta a través de Stripe. Sin suscripción, sin costos ocultos."
+      "title": "Vista previa gratuita",
+      "description": "Mira tu documento gratis con vista previa — con marca de agua. Paga solo si estás satisfecho."
     },
     "step3": {
-      "title": "Se crea el documento",
-      "description": "Nuestra IA crea tu documento en español, listo para autoridades, arrendadores o empleadores."
+      "title": "Paga con seguridad",
+      "description": "Paga {priceRange} con tarjeta a través de Stripe. Sin suscripción, sin costos ocultos."
     },
     "step4": {
       "title": "Descarga y listo",

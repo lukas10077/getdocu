@@ -82,12 +82,12 @@
       "description": "Válaszolj néhány egyszerű kérdésre — a saját nyelveden elmagyarázva."
     },
     "step2": {
-      "title": "Biztonságos fizetés",
-      "description": "Fizess {priceRange} kártyával a Stripe-on keresztül. Nincs előfizetés, nincs rejtett költség."
+      "title": "Ingyenes előnézet",
+      "description": "Nézd meg a dokumentumodat ingyen előnézetként — vízjellel. Fizess csak akkor, ha elégedett vagy."
     },
     "step3": {
-      "title": "A dokumentum elkészül",
-      "description": "AI-nk magyarul készíti el a dokumentumot, készen a hatóságok, bérbeadók vagy munkáltatók számára."
+      "title": "Biztonságos fizetés",
+      "description": "Fizess {priceRange} kártyával a Stripe-on keresztül. Nincs előfizetés, nincs rejtett költség."
     },
     "step4": {
       "title": "Letöltés és kész",

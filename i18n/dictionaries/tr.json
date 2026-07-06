@@ -82,12 +82,12 @@
       "description": "Birkaç basit soruyu yanıtla — kendi dilinde açıklanır."
     },
     "step2": {
-      "title": "Güvenle öde",
-      "description": "Stripe üzerinden kartla {priceRange} öde. Abonelik yok, gizli ücret yok."
+      "title": "Ücretsiz önizleme",
+      "description": "Belgenizi ücretsiz filigranla önizleyin — yalnızca memnunsanız ödeyin."
     },
     "step3": {
-      "title": "Belge oluşturulur",
-      "description": "Yapay zekamız belgenizi Türkçe olarak oluşturur; makamlar, ev sahipleri veya işverenler için hazır."
+      "title": "Güvenle öde",
+      "description": "Stripe üzerinden kartla {priceRange} öde. Abonelik yok, gizli ücret yok."
     },
     "step4": {
       "title": "İndir ve bitti",

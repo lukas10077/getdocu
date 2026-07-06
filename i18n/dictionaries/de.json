@@ -82,12 +82,12 @@
       "description": "Beantworte ein paar einfache Fragen — in deiner Sprache erklärt."
     },
     "step2": {
-      "title": "Sicher bezahlen",
-      "description": "Bezahle {priceRange} per Karte über Stripe. Kein Abo, keine versteckten Kosten."
+      "title": "Vorschau ansehen",
+      "description": "Sieh dein Dokument kostenlos als Vorschau an — mit Wasserzeichen. Erst bezahlen, wenn du zufrieden bist."
     },
     "step3": {
-      "title": "Dokument wird erstellt",
-      "description": "Unsere KI erstellt dein Dokument auf Deutsch, bereit für Behörden, Vermieter oder Arbeitgeber."
+      "title": "Sicher bezahlen",
+      "description": "Bezahle {priceRange} per Karte über Stripe. Kein Abo, keine versteckten Kosten."
     },
     "step4": {
       "title": "Herunterladen & fertig",

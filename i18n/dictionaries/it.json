@@ -82,12 +82,12 @@
       "description": "Rispondi a poche semplici domande — spiegate nella tua lingua."
     },
     "step2": {
-      "title": "Paga in sicurezza",
-      "description": "Paga {priceRange} con carta via Stripe. Nessun abbonamento, nessun costo nascosto."
+      "title": "Anteprima gratuita",
+      "description": "Visualizza il tuo documento gratuitamente in anteprima — con filigrana. Paga solo se sei soddisfatto."
     },
     "step3": {
-      "title": "Il documento viene creato",
-      "description": "La nostra IA crea il tuo documento in italiano, pronto per autorità, locatori o datori di lavoro."
+      "title": "Paga in sicurezza",
+      "description": "Paga {priceRange} con carta via Stripe. Nessun abbonamento, nessun costo nascosto."
     },
     "step4": {
       "title": "Scarica e hai finito",

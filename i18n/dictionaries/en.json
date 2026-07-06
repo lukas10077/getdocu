@@ -82,12 +82,12 @@
       "description": "Answer a few simple questions — explained in your language."
     },
     "step2": {
-      "title": "Pay securely",
-      "description": "Pay {priceRange} by card via Stripe. No subscription, no hidden fees."
+      "title": "Preview for free",
+      "description": "See your document as a free preview with watermark — pay only when you're happy with it."
     },
     "step3": {
-      "title": "Document is generated",
-      "description": "Our AI creates your document in English, ready for authorities, landlords, or employers."
+      "title": "Pay securely",
+      "description": "Pay {priceRange} by card via Stripe. No subscription, no hidden fees."
     },
     "step4": {
       "title": "Download & done",

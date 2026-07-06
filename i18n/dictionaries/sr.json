@@ -82,12 +82,12 @@
       "description": "Odgovorite na nekoliko jednostavnih pitanja — objašnjeno na vašem jeziku."
     },
     "step2": {
-      "title": "Plaćanje na siguran način",
-      "description": "Platite {priceRange} karticom putem Stripe-a. Bez pretplate, bez skrivenih troškova."
+      "title": "Besplatni pregled",
+      "description": "Pogledajte dokument besplatno sa vodenim žigom — platite samo ako ste zadovoljni."
     },
     "step3": {
-      "title": "Dokument se kreira",
-      "description": "Naš AI kreira vaš dokument na srpskom, spreman za vlasti, izdavače stanova ili poslodavce."
+      "title": "Plaćanje na siguran način",
+      "description": "Platite {priceRange} karticom putem Stripe-a. Bez pretplate, bez skrivenih troškova."
     },
     "step4": {
       "title": "Preuzmite i gotovo",

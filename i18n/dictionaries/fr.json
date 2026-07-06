@@ -82,12 +82,12 @@
       "description": "Répondez à quelques questions simples — expliquées dans votre langue."
     },
     "step2": {
-      "title": "Payer en toute sécurité",
-      "description": "Payez {priceRange} par carte via Stripe. Pas d'abonnement, pas de frais cachés."
+      "title": "Aperçu gratuit",
+      "description": "Consultez votre document gratuitement en aperçu — avec filigrane. Payez seulement si vous êtes satisfait."
     },
     "step3": {
-      "title": "Le document est créé",
-      "description": "Notre IA crée votre document en français, prêt pour les autorités, propriétaires ou employeurs."
+      "title": "Payer en toute sécurité",
+      "description": "Payez {priceRange} par carte via Stripe. Pas d'abonnement, pas de frais cachés."
     },
     "step4": {
       "title": "Téléchargez et c'est fait",

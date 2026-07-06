@@ -82,12 +82,12 @@
       "description": "Odpowiedz na kilka prostych pytań — wyjaśnionych w Twoim języku."
     },
     "step2": {
-      "title": "Bezpieczna płatność",
-      "description": "Zapłać {priceRange} kartą przez Stripe. Bez abonamentu, bez ukrytych kosztów."
+      "title": "Bezpłatny podgląd",
+      "description": "Obejrzyj swój dokument bezpłatnie z podglądem — ze znakiem wodnym. Płać tylko jeśli jesteś zadowolony."
     },
     "step3": {
-      "title": "Dokument zostaje utworzony",
-      "description": "Nasza AI tworzy dokument po polsku, gotowy dla urzędów, wynajmujących lub pracodawców."
+      "title": "Bezpieczna płatność",
+      "description": "Zapłać {priceRange} kartą przez Stripe. Bez abonamentu, bez ukrytych kosztów."
     },
     "step4": {
       "title": "Pobierz i gotowe",
