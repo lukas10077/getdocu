@@ -39,6 +39,8 @@ export interface ToolDefinition {
   supportsDocumentUpload?: boolean;
   uploadLabelDe?: string;
   uploadHintDe?: string;
+  // Digitales Dokument: Bild + PDF + DOCX (PDF/DOCX werden direkt gelesen, kein Vision)
+  supportsAllDocumentTypes?: boolean;
   // Mehrere Fotos → KEIN Vision, nur als Beilage ans PDF
   supportsPhotoGallery?: boolean;
   maxPhotos?: number;
@@ -177,8 +179,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     slug: "arbeitszeugnis",
     priceChfRappen: 500,
     supportsDocumentUpload: true,
-    uploadLabelDe: "Foto des Zeugnisses hochladen (optional)",
-    uploadHintDe: "Hast du dein Zeugnis auf Papier? Mach ein Foto — wir lesen den Text automatisch. Du kannst den Text unten auch manuell einfügen.",
+    supportsAllDocumentTypes: true,
+    uploadLabelDe: "Zeugnis hochladen (optional)",
+    uploadHintDe: "Lade dein Zeugnis hoch — als Foto, PDF oder Word-Datei. Wir lesen es automatisch.",
     documentTitleDe: "Arbeitszeugnis verbessern",
     descriptionDe:
       "Dein Zeugnis klingt mittelmässig? Wir schreiben es professionell um — nach Schweizer Standard.",
@@ -190,16 +193,13 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Keine negativen Kodierungen. Schweizer Du/Sie-Form konsistent. Gib das vollständige, " +
       "umgeschriebene Zeugnis aus — keine Erklärungen oder Kommentare.",
     fields: [
-      { key: "firstName",        label: "Vorname",                          type: "text",     required: true, section: "Deine Angaben" },
-      { key: "lastName",         label: "Nachname",                         type: "text",     required: true },
-      { key: "position",         label: "Deine Stelle / Funktion",          type: "text",     required: true },
-      { key: "employer",         label: "Name des Arbeitgebers",            type: "text",     required: true },
-      { key: "duration",         label: "Beschäftigungsdauer",              type: "text",     required: true, placeholderKey: "dateRange" },
-      { key: "existingZeugnis",  label: "Bestehender Zeugnis-Text",        type: "textarea", required: true,
-        placeholderKey: "existingCertificate",
-        section: "Zeugnis" },
-      { key: "whatToImprove",    label: "Was soll verbessert werden?",      type: "textarea", required: false,
-        placeholderKey: "certificateImprove" },
+      { key: "firstName",     label: "Vorname",                      type: "text",     required: true, section: "Deine Angaben" },
+      { key: "lastName",      label: "Nachname",                     type: "text",     required: true },
+      { key: "position",      label: "Deine Stelle / Funktion",      type: "text",     required: true },
+      { key: "employer",      label: "Name des Arbeitgebers",        type: "text",     required: true },
+      { key: "duration",      label: "Beschäftigungsdauer",          type: "text",     required: true, placeholderKey: "dateRange" },
+      { key: "whatToImprove", label: "Was soll verbessert werden?",  type: "textarea", required: false,
+        placeholderKey: "certificateImprove", section: "Verbesserungen" },
     ],
   },
 
