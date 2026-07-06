@@ -134,6 +134,7 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: 
     `LÄNDERSPEZIFISCHE ANPASSUNG:\n` +
     `Dieses Dokument wird für einen Nutzer in ${country.name} (${country.flag}) erstellt.\n` +
     `Passe alle Formulierungen, Konventionen und Anforderungen an die in ${country.name} üblichen Standards an.\n` +
+    `Erwähne niemals die Schweiz im Dokumenttext, ausser das Land ist CH.\n` +
     `Verwende keine Schweizer Eigenheiten (Anführungszeichen «», CHF, ss/ß-Regel) ausser das Land ist CH.\n` +
     `Verfasse das gesamte Dokument auf ${langName}.\n`;
 
