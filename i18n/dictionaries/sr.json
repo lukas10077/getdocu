@@ -14,7 +14,12 @@
     "headline": "Važni dokumenti. Jednostavno napravljeni.",
     "subheadline": "GetDocu vam pomaže da kreirate profesionalna pisma i dokumenta — objašnjeno na vašem jeziku, optimizovano za vašu zemlju.",
     "cta": "Izaberi dokument",
-    "ctaSecondary": "Kako funkcioniše"
+    "ctaSecondary": "Kako funkcioniše",
+    "badges": [
+      "✓ Bez naloga",
+      "✓ Bez pretplate",
+      "✓ Podaci se brišu"
+    ]
   },
   "tools": {
     "title": "O čemu se radi?",

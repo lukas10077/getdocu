@@ -14,7 +14,12 @@
     "headline": "Important documents. Made simple.",
     "subheadline": "GetDocu helps you create professional letters and documents — explained in your language, optimised for your country.",
     "cta": "Choose a document",
-    "ctaSecondary": "How it works"
+    "ctaSecondary": "How it works",
+    "badges": [
+      "✓ No account",
+      "✓ No subscription",
+      "✓ Data deleted"
+    ]
   },
   "tools": {
     "title": "What do you need?",

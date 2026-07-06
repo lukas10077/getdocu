@@ -14,7 +14,12 @@
     "headline": "Wichtige Dokumente. Einfach erstellt.",
     "subheadline": "GetDocu hilft dir, professionelle Briefe und Dokumente zu erstellen — in deiner Sprache erklärt, für dein Land optimiert.",
     "cta": "Dokument wählen",
-    "ctaSecondary": "So funktioniert's"
+    "ctaSecondary": "So funktioniert's",
+    "badges": [
+      "✓ Kein Konto",
+      "✓ Kein Abo",
+      "✓ Daten gelöscht"
+    ]
   },
   "tools": {
     "title": "Worum geht es?",

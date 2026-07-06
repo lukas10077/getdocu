@@ -62,9 +62,9 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-widest text-cream-muted">
-            <span>✓ Kein Konto</span>
-            <span>✓ Kein Abo</span>
-            <span>✓ Daten gelöscht</span>
+            {(dict.hero.badges ?? ["✓ Kein Konto", "✓ Kein Abo", "✓ Daten gelöscht"]).map((b: string) => (
+              <span key={b}>{b}</span>
+            ))}
             <HeroMinPrice />
           </div>
         </div>

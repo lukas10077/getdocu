@@ -32,8 +32,8 @@ const config: Config = {
         },
         cream: {
           DEFAULT: "#FFFFFF",
-          muted: "#9A9080",
-          subtle: "#635B50",
+          muted: "#C8BDB0",
+          subtle: "#9A9080",
         },
       },
       fontFamily: {

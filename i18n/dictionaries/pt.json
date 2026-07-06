@@ -14,7 +14,12 @@
     "headline": "Documentos importantes. Feitos de forma simples.",
     "subheadline": "GetDocu ajuda-te a criar cartas e documentos profissionais — explicados na tua língua, otimizados para o teu país.",
     "cta": "Escolher documento",
-    "ctaSecondary": "Como funciona"
+    "ctaSecondary": "Como funciona",
+    "badges": [
+      "✓ Sem conta",
+      "✓ Sem subscrição",
+      "✓ Dados eliminados"
+    ]
   },
   "tools": {
     "title": "Do que se trata?",

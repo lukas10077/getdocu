@@ -14,7 +14,12 @@
     "headline": "Önemli belgeler. Basitçe oluşturuldu.",
     "subheadline": "GetDocu, profesyonel mektuplar ve belgeler oluşturmanıza yardımcı olur — kendi dilinizde açıklanmış, ülkeniz için optimize edilmiş.",
     "cta": "Bir belge seç",
-    "ctaSecondary": "Nasıl çalışır"
+    "ctaSecondary": "Nasıl çalışır",
+    "badges": [
+      "✓ Hesap yok",
+      "✓ Abonelik yok",
+      "✓ Veriler silindi"
+    ]
   },
   "tools": {
     "title": "Ne hakkında?",

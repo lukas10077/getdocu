@@ -14,7 +14,12 @@
     "headline": "Ważne dokumenty. W prosty sposób.",
     "subheadline": "GetDocu pomaga tworzyć profesjonalne listy i dokumenty — wyjaśnione w twoim języku, zoptymalizowane dla twojego kraju.",
     "cta": "Wybierz dokument",
-    "ctaSecondary": "Jak to działa"
+    "ctaSecondary": "Jak to działa",
+    "badges": [
+      "✓ Bez konta",
+      "✓ Bez subskrypcji",
+      "✓ Dane usunięte"
+    ]
   },
   "tools": {
     "title": "Czego potrzebujesz?",

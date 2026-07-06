@@ -14,7 +14,12 @@
     "headline": "Fontos dokumentumok. Egyszerűen elkészítve.",
     "subheadline": "A GetDocu segít professzionális leveleket és dokumentumokat létrehozni — a te nyelvedén magyarázva, az országodra optimalizálva.",
     "cta": "Dokumentum kiválasztása",
-    "ctaSecondary": "Hogyan működik"
+    "ctaSecondary": "Hogyan működik",
+    "badges": [
+      "✓ Fiók nélkül",
+      "✓ Előfizetés nélkül",
+      "✓ Adatok törölve"
+    ]
   },
   "tools": {
     "title": "Miről van szó?",
