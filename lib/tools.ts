@@ -183,15 +183,15 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     priceChfRappen: 400,
     supportsPhotoGallery: true,
     maxPhotos: 100,
-    photoGalleryLabelDe: "Fotos der Mängel hochladen (optional)",
+    photoGalleryLabelDe: "Fotos der Schäden hochladen (optional)",
     photoGalleryHintDe: "Lade bis zu 100 Fotos hoch — sie werden als Beilage ans Dokument angehängt.",
     documentTitleDe: "Wohnungsschaden beim Vermieter melden",
     descriptionDe:
       "Schäden in der Wohnung melden — schriftlich, fristwahrend, korrekt adressiert.",
     systemPrompt:
-      "Du bist Experte für Mietrecht in der Schweiz. Erstelle eine formell korrekte Mängelrüge " +
-      "auf Deutsch. Struktur: Absender, Empfänger, Datum, Betreff (Mängelrüge + Adresse Mietobjekt), " +
-      "Einleitung (Bezug zum Mietvertrag), Auflistung der Mängel (nummeriert, präzise beschrieben), " +
+      "Du bist Experte für Mietrecht in der Schweiz. Erstelle eine formell korrekte Schadensmeldung " +
+      "auf Deutsch. Struktur: Absender, Empfänger, Datum, Betreff (Schadensmeldung + Adresse Mietobjekt), " +
+      "Einleitung (Bezug zum Mietvertrag), Auflistung der Schäden (nummeriert, präzise beschrieben), " +
       "Fristsetzung zur Behebung, Ankündigung weiterer Schritte bei Nicht-Behebung (ohne konkrete " +
       "Rechtsdrohung), Bitte um Bestätigung, Abschluss. Kein Tonfall, der unnötig aggressiv ist.",
     fields: [
@@ -200,10 +200,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",   type: "text",     required: true  },
       { key: "landlordName",     label: "Name des Vermieters / Verwaltung", type: "text", required: true,  section: "Vermieter" },
       { key: "landlordAddress",  label: "Adresse des Vermieters",       type: "text",     required: true  },
-      { key: "defects",          label: "Beschreibe die Mängel",        type: "textarea", required: true,
+      { key: "defects",          label: "Beschreibe die Schäden",       type: "textarea", required: true,
         placeholder: "Was ist defekt/kaputt? Seit wann? Wo genau in der Wohnung?",
-        section: "Mängel" },
-      { key: "deadline",         label: "Frist zur Behebung",           type: "text",     required: true,  placeholder: "z.B. 14 Tage ab Erhalt dieses Schreibens" },
+        section: "Schäden" },
+      { key: "deadline",         label: "Frist zur Behebung (Tage)",    type: "number",   required: true,  placeholder: "14" },
     ],
   },
 
