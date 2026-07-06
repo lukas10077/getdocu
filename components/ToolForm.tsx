@@ -385,17 +385,30 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               const w = window.open("", "_blank")!;
               const bodyHtml = result.split(/\n\n+/).map(p => {
                 const escaped = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                // Betreff-Zeilen (GROSSBUCHSTABEN) fett darstellen
-                const isSubject = /^[A-ZÄÖÜ\s]{6,}$/.test(p.trim());
-                return `<p style="margin:0 0 1.3em 0;white-space:pre-line;${isSubject ? 'font-weight:700;font-size:14px;letter-spacing:0.03em' : ''}">${escaped}</p>`;
+                const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
+                // Mehr Abstand vor Datumszeile (z.B. "Zürich, 6. Juli 2026")
+                const isDateLine = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
+                // Mehr Abstand vor Grusszeile
+                const isClosing = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
+                let style = `margin:0 0 0.65em 0;white-space:pre-line;`;
+                if (isDateLine || isClosing) style += 'margin-top:1.8em;';
+                if (isSubject) style += 'font-weight:700;letter-spacing:0.03em;';
+                return `<p style="${style}">${escaped}</p>`;
               }).join('');
               w.document.write(`<html><head><title>${tool.documentTitleDe}</title><meta charset="utf-8">
-                <style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
-                .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;position:relative}
-                .body{padding:48px 52px;font-size:13px;line-height:1.85;color:#1a1a1a;position:relative}
-                .photo{position:absolute;top:48px;right:52px;width:140px;height:175px;object-fit:cover;border-radius:2px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
-                .has-photo{padding-right:210px}
-                @media print{body{background:#fff;padding:0}.page{box-shadow:none}}</style></head>
+                <style>
+                  *{box-sizing:border-box;margin:0;padding:0}
+                  body{font-family:Arial,sans-serif;background:#f0ede8;padding:24px 20px}
+                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;position:relative}
+                  .body{padding:36px 46px 36px 46px;font-size:11.5px;line-height:1.6;color:#1a1a1a;position:relative}
+                  .photo{position:absolute;top:36px;right:46px;width:128px;height:160px;object-fit:cover;border-radius:2px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+                  .has-photo{padding-right:190px}
+                  @media print{
+                    @page{margin:0;size:A4 portrait}
+                    body{background:#fff;padding:12mm 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+                    .page{box-shadow:none;max-width:100%;width:100%;margin:0}
+                  }
+                </style></head>
                 <body><div class="page"><div class="body ${profilePhotoUrl ? 'has-photo' : ''}">
                 ${profilePhotoUrl ? `<img src="${profilePhotoUrl}" class="photo" alt="Foto">` : ''}
                 ${bodyHtml}${photosHtml}
