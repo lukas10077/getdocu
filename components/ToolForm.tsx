@@ -99,6 +99,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const [uploadedFileName, setUploadedFileName] = useState<string>("");
   // Bewerbungsfoto (client-only, kein Claude)
   const [profilePhotoUrl, setProfilePhotoUrl] = useState<string | null>(null);
+  const [profilePhotoBase64, setProfilePhotoBase64] = useState<string | null>(null);
   // Foto-Galerie (kein Vision)
   const [photos, setPhotos] = useState<Photo[]>([]);
   const photoInputRef = useRef<HTMLInputElement>(null);
@@ -197,6 +198,12 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     setStage("generating");
     const formData = JSON.parse(saved);
 
+    // Bewerbungsfoto wiederherstellen (überlebt Stripe-Redirect via sessionStorage)
+    if (formData.__profilePhotoBase64) {
+      setProfilePhotoUrl(formData.__profilePhotoBase64);
+      setProfilePhotoBase64(formData.__profilePhotoBase64);
+    }
+
     fetch("/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -275,6 +282,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       __imageMimeType: imageMimeType,
       __incomeCurrency: incomeCurrency,
       __docxText: docxText ?? "",
+      __profilePhotoBase64: profilePhotoBase64 ?? "",
     }));
     // Fotos in IndexedDB speichern (sessionStorage zu klein für viele Bilder)
     if (tool.supportsPhotoGallery && photos.length > 0) {
@@ -343,15 +351,19 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <h2 className="text-lg font-medium text-cream">Dein Dokument ist fertig</h2>
         </div>
 
-        <div className="rounded-sm border border-ink-700 bg-ink-900 p-6 md:p-8">
-          <div className="space-y-3 font-sans text-sm leading-relaxed text-cream-muted">
-            {result.split(/\n\n+/).map((para, i) => (
-              <p key={i} className="whitespace-pre-line">{para}</p>
-            ))}
+        {/* Dokument-Vorschau — Paper-Design */}
+        <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
+          <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
+          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1 }}>
+            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a]" style={{ fontFamily: "Georgia, serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 165 : 0 }}>{result}</pre>
+            {profilePhotoUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ position: "absolute", top: 70, right: 90, width: 145, height: 180, objectFit: "cover", borderRadius: 2, boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }} />
+            )}
           </div>
         </div>
 
-        {/* Foto-Beilage anzeigen */}
+        {/* Foto-Beilage */}
         {photos.length > 0 && (
           <div className="mt-6">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">
@@ -360,102 +372,56 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
               {photos.map((photo, i) => (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img key={i} src={photo.dataUrl} alt={`Foto ${i + 1}`}
-                  className="aspect-square w-full rounded-sm object-cover"
-                />
+                <img key={i} src={photo.dataUrl} alt={`Foto ${i + 1}`} className="aspect-square w-full rounded-sm object-cover" />
               ))}
             </div>
           </div>
         )}
 
         <div className="mt-6 flex flex-wrap gap-4">
-          <button
-            onClick={() => {
-              const blob = new Blob([result], { type: "text/plain;charset=utf-8" });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.href = url;
-              a.download = `${tool.documentTitleDe.replace(/\s+/g, "_")}.txt`;
-              a.click();
-              URL.revokeObjectURL(url);
-            }}
-            className="bg-swiss-gold px-6 py-3 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
-          >
-            Als Text herunterladen
-          </button>
+          {/* PDF */}
           <button
             onClick={() => {
               const w = window.open("", "_blank")!;
-              const isJobApplication = tool.supportsProfilePhoto;
-              const fullName = [values.firstName, values.lastName].filter(Boolean).join(" ");
-              const bodyHtml = result.split(/\n\n+/).map(p => `<p>${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</p>`).join('');
-
-              const jobTemplate = `
-                <html><head><title>${tool.documentTitleDe}</title>
-                <meta charset="utf-8">
-                <style>
-                  *{box-sizing:border-box;margin:0;padding:0}
-                  body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f0ede8;min-height:100vh;padding:30px 20px}
-                  .no-print{display:flex;justify-content:center;margin-bottom:24px}
-                  .no-print button{background:#1a1a1a;color:#fff;border:none;padding:10px 28px;font-size:13px;letter-spacing:0.08em;cursor:pointer;text-transform:uppercase}
-                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12)}
-                  .header{background:#1a1a1a;color:#fff;padding:36px 44px;display:flex;align-items:center;gap:28px}
-                  .header-text h1{font-size:22px;font-weight:600;letter-spacing:0.02em;margin-bottom:4px}
-                  .header-text .subtitle{font-size:12px;color:#aaa;letter-spacing:0.08em;text-transform:uppercase}
-                  .header-contact{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:11px;color:#bbb}
-                  .photo{width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.2);flex-shrink:0}
-                  .photo-placeholder{width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,0.1);flex-shrink:0}
-                  .accent{height:3px;background:linear-gradient(90deg,#c9a84c,#e8c96a)}
-                  .body{padding:40px 44px;font-size:13.5px;line-height:1.85;color:#222}
-                  .body p{margin-bottom:1.3em}
-                  .disclaimer{margin-top:40px;padding-top:12px;border-top:1px solid #eee;font-size:10px;color:#aaa}
-                  ${photosHtml ? '.photos{margin-top:32px}' : ''}
-                  @media print{.no-print{display:none}body{background:#fff;padding:0}.page{box-shadow:none}}
-                </style></head>
-                <body>
-                <div class="no-print"><button onclick="window.print()">Drucken / Als PDF speichern</button></div>
-                <div class="page">
-                  <div class="header">
-                    ${profilePhotoUrl
-                      ? `<img src="${profilePhotoUrl}" class="photo" alt="Foto">`
-                      : `<div class="photo-placeholder"></div>`}
-                    <div class="header-text">
-                      <h1>${fullName || tool.documentTitleDe}</h1>
-                      ${values.currentJob ? `<div class="subtitle">${values.currentJob.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>` : ''}
-                      <div class="header-contact">
-                        ${values.email ? `<span>✉ ${values.email}</span>` : ''}
-                        ${values.phone ? `<span>✆ ${values.phone}</span>` : ''}
-                        ${values.currentAddress ? `<span>⌂ ${values.currentAddress.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</span>` : ''}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accent"></div>
-                  <div class="body">
-                    ${bodyHtml}
-                    ${photosHtml}
-                    <div class="disclaimer">Generiert mit GetDocuNow.com — kein Ersatz für Rechtsberatung.</div>
-                  </div>
-                </div>
-                </body></html>`;
-
-              const defaultTemplate = `
-                <html><head><title>${tool.documentTitleDe}</title>
-                <style>body{font-family:Georgia,serif;max-width:700px;margin:60px auto;font-size:14px;line-height:1.8;color:#111}
-                .disclaimer{font-size:11px;color:#888;margin-top:40px;border-top:1px solid #eee;padding-top:12px}
-                @media print{.no-print{display:none}}</style></head>
-                <body>
-                <button class="no-print" onclick="window.print()" style="margin-bottom:20px;padding:8px 16px;cursor:pointer">Drucken / Als PDF speichern</button>
-                ${result.split(/\n\n+/).map(p => `<p style="margin:0 0 1.2em 0;white-space:pre-line">${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>`).join('')}
-                ${photosHtml}
-                <div class="disclaimer">Dieses Dokument wurde mit GetDocuNow.com generiert und stellt keine Rechtsberatung dar.</div>
-                </body></html>`;
-
-              w.document.write(isJobApplication ? jobTemplate : defaultTemplate);
+              const bodyHtml = result.split(/\n\n+/).map(p => `<p style="margin:0 0 1.3em 0;white-space:pre-line">${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>`).join('');
+              w.document.write(`<html><head><title>${tool.documentTitleDe}</title><meta charset="utf-8">
+                <style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Georgia,serif;background:#f0ede8;padding:30px 20px}
+                .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;position:relative}
+                .body{padding:48px 52px;font-size:13.5px;line-height:1.9;color:#1a1a1a;position:relative}
+                .photo{position:absolute;top:48px;right:52px;width:140px;height:175px;object-fit:cover;border-radius:2px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+                .has-photo{padding-right:210px}
+                .disclaimer{margin-top:40px;padding-top:12px;border-top:1px solid #eee;font-size:10px;color:#aaa}
+                @media print{body{background:#fff;padding:0}.page{box-shadow:none}}</style></head>
+                <body><div class="page"><div class="body ${profilePhotoUrl ? 'has-photo' : ''}">
+                ${profilePhotoUrl ? `<img src="${profilePhotoUrl}" class="photo" alt="Foto">` : ''}
+                ${bodyHtml}${photosHtml}
+                <div class="disclaimer">Generiert mit GetDocuNow.com</div>
+                </div></div></body></html>`);
               w.document.close();
+              setTimeout(() => w.print(), 800);
+            }}
+            className="bg-swiss-gold px-6 py-3 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
+          >
+            Als PDF herunterladen
+          </button>
+
+          {/* Word */}
+          <button
+            onClick={() => {
+              const bodyHtml = result.split(/\n\n+/).map(p => `<p style="margin:0 0 1.3em 0;font-family:Times New Roman,serif;font-size:12pt;line-height:1.8">${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</p>`).join('');
+              const photoHtml = profilePhotoUrl ? `<img src="${profilePhotoUrl}" style="float:right;margin:0 0 16px 24px;width:120px;height:150px;object-fit:cover" />` : '';
+              const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset="utf-8"><style>body{font-family:Times New Roman,serif;font-size:12pt;margin:2.5cm}</style></head><body>${photoHtml}${bodyHtml}</body></html>`;
+              const blob = new Blob(['﻿', html], { type: 'application/msword' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `${tool.documentTitleDe.replace(/\s+/g,'_')}.doc`;
+              a.click();
+              URL.revokeObjectURL(url);
             }}
             className="border border-ink-700 px-6 py-3 text-sm font-medium uppercase tracking-widest text-cream-muted transition hover:border-swiss-gold/50 hover:text-cream"
           >
-            Als PDF drucken / speichern
+            Als Word herunterladen
           </button>
         </div>
         <p className="mt-6 text-xs text-cream-subtle">
@@ -587,6 +553,12 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 const file = e.target.files?.[0];
                 if (!file) return;
                 setProfilePhotoUrl(URL.createObjectURL(file));
+                const reader = new FileReader();
+                reader.onload = () => {
+                  const dataUrl = reader.result as string;
+                  setProfilePhotoBase64(dataUrl); // data URL (inkl. prefix) für sessionStorage
+                };
+                reader.readAsDataURL(file);
               }}
             />
             {profilePhotoUrl ? (
