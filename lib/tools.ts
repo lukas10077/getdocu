@@ -24,6 +24,8 @@ export interface FieldDef {
   countryOptions?: Record<string, string[]>; // länderspezifische Optionen, überschreiben options
   appendCurrency?: boolean;                  // Label um aktuelle Währung ergänzen
   section?: string;                          // optionale Abschnitts-Überschrift vor diesem Feld
+  fillsDateField?: string;                   // wenn gesetzt: Auswahl berechnet Datum für dieses Feld automatisch
+  autoFilledHint?: boolean;                  // zeigt Hinweis "automatisch berechnet" unter dem Datumsfeld
 }
 
 export interface ToolDefinition {
@@ -146,8 +148,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Du bist Experte für Kündigungsschreiben. Erstelle ein formell korrektes " +
       "Kündigungsschreiben auf Deutsch. Beachte: korrekter Absender, Empfänger, Ort/Datum, Betreff mit " +
       "klarer Nennung des Vertrags/Gegenstands der Kündigung, das gewünschte Kündigungsdatum, Bitte um " +
-      "schriftliche Bestätigung, höflicher Abschluss. Weise NICHT auf gesetzliche Fristen hin — das ist " +
-      "keine Rechtsberatung.",
+      "schriftliche Bestätigung, höflicher Abschluss. Falls eine Kündigungsfrist angegeben ist, erwähne " +
+      "sie im Brief (z.B. 'unter Einhaltung der vertraglich vereinbarten Frist von X Monaten'). " +
+      "Weise NICHT auf gesetzliche Fristen hin — das ist keine Rechtsberatung.",
     fields: [
       { key: "firstName",        label: "Vorname",                                type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                               type: "text",     required: true  },
@@ -157,7 +160,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "recipientName",    label: "Name des Empfängers (Vermieter, Firma …)", type: "text",   required: true  },
       { key: "recipientAddress", label: "Adresse des Empfängers",                type: "text",     required: true  },
       { key: "contractRef",      label: "Vertrags-/Kunden-/Policennummer",        type: "text",     required: false, placeholderKey: "fallsAvailable" },
-      { key: "terminationDate",  label: "Gewünschtes Kündigungsdatum",            type: "date",     required: true  },
+      { key: "noticePeriod",     label: "Kündigungsfrist",                        type: "select",   required: false,
+        options: ["1 Monat", "2 Monate", "3 Monate", "6 Monate", "1 Jahr", "Weiss nicht / laut Vertrag"],
+        fillsDateField: "terminationDate" },
+      { key: "terminationDate",  label: "Kündigungsdatum",                        type: "date",     required: true,  autoFilledHint: true },
       { key: "reason",           label: "Kündigungsgrund (optional)",             type: "textarea", required: false,
         placeholderKey: "optionalReason" },
     ],
@@ -319,14 +325,19 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Du bist Experte für Mietrecht. Erstelle ein formell korrektes Kündigungsschreiben für einen " +
       "Mietvertrag auf Deutsch. Struktur: vollständiger Absender, Vermieter als Empfänger, Ort/Datum, " +
       "Betreff mit Adresse des Mietobjekts, klare Kündigungserklärung mit Datum, Bitte um schriftliche " +
-      "Bestätigung, höflicher Abschluss. Weise NICHT auf gesetzliche Fristen hin.",
+      "Bestätigung, höflicher Abschluss. Falls eine Kündigungsfrist angegeben ist, erwähne sie im Brief " +
+      "(z.B. 'unter Einhaltung der vertraglich vereinbarten Frist von X Monaten'). " +
+      "Weise NICHT auf gesetzliche Fristen hin.",
     fields: [
       { key: "firstName",        label: "Vorname",                           type: "text", required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                          type: "text", required: true  },
       { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",        type: "text", required: true  },
       { key: "landlordName",     label: "Name des Vermieters / Verwaltung",  type: "text", required: true,  section: "Vermieter" },
       { key: "landlordAddress",  label: "Adresse des Vermieters",            type: "text", required: true  },
-      { key: "terminationDate",  label: "Gewünschtes Kündigungsdatum",       type: "date", required: true,  section: "Kündigung" },
+      { key: "noticePeriod",     label: "Kündigungsfrist",                   type: "select", required: false, section: "Kündigung",
+        options: ["1 Monat", "2 Monate", "3 Monate", "6 Monate", "Weiss nicht / laut Vertrag"],
+        fillsDateField: "terminationDate" },
+      { key: "terminationDate",  label: "Kündigungsdatum",                   type: "date", required: true,  autoFilledHint: true },
       { key: "reason",           label: "Kündigungsgrund (optional)",        type: "textarea", required: false, placeholderKey: "optionalReason" },
     ],
   },
@@ -341,7 +352,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Du bist Experte für Arbeitsrecht. Erstelle ein formell korrektes Kündigungsschreiben für eine " +
       "Arbeitsstelle auf Deutsch. Struktur: vollständiger Absender, Arbeitgeber als Empfänger, Ort/Datum, " +
       "Betreff mit Stellenbezeichnung, klare Kündigungserklärung mit Datum, Bitte um schriftliches " +
-      "Arbeitszeugnis, Dank für die Zusammenarbeit, höflicher Abschluss. Weise NICHT auf gesetzliche Fristen hin.",
+      "Arbeitszeugnis, Dank für die Zusammenarbeit, höflicher Abschluss. Falls eine Kündigungsfrist " +
+      "angegeben ist, erwähne sie im Brief (z.B. 'unter Einhaltung der Kündigungsfrist von X Monaten'). " +
+      "Weise NICHT auf gesetzliche Fristen hin.",
     fields: [
       { key: "firstName",        label: "Vorname",                     type: "text", required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                    type: "text", required: true  },
@@ -349,7 +362,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "position",         label: "Deine Stelle / Funktion",     type: "text", required: true  },
       { key: "employer",         label: "Name des Arbeitgebers",       type: "text", required: true,  section: "Arbeitgeber" },
       { key: "employerAddress",  label: "Adresse des Arbeitgebers",    type: "text", required: true  },
-      { key: "terminationDate",  label: "Gewünschtes Austrittsdatum",  type: "date", required: true,  section: "Kündigung" },
+      { key: "noticePeriod",     label: "Kündigungsfrist",             type: "select", required: false, section: "Kündigung",
+        options: ["1 Monat", "2 Monate", "3 Monate", "Weiss nicht / laut Vertrag"],
+        fillsDateField: "terminationDate" },
+      { key: "terminationDate",  label: "Austrittsdatum",              type: "date", required: true,  autoFilledHint: true },
       { key: "reason",           label: "Kündigungsgrund (optional)",  type: "textarea", required: false, placeholderKey: "optionalReason" },
     ],
   },

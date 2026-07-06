@@ -411,6 +411,31 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     return field.placeholder;
   }
 
+  // ── Kündigungsfrist → Datum automatisch berechnen ─────────────
+  function calcTerminationDate(noticePeriodValue: string): string {
+    const monthMap: Record<string, number> = {
+      "1 Monat": 1, "2 Monate": 2, "3 Monate": 3, "6 Monate": 6, "1 Jahr": 12,
+    };
+    const months = monthMap[noticePeriodValue];
+    if (!months) return "";
+    const d = new Date();
+    d.setMonth(d.getMonth() + months);
+    // Letzter Tag des Zielmonats (typisch für Kündigungen)
+    d.setDate(new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate());
+    return d.toISOString().split("T")[0]; // YYYY-MM-DD
+  }
+
+  function handleFieldChange(key: string, value: string) {
+    const updated: Record<string, string> = { ...values, [key]: value };
+    // Falls dieses Feld ein Datumsfeld befüllt, berechne das Datum
+    const field = tool.fields.find((f) => f.key === key);
+    if (field?.fillsDateField) {
+      const computed = calcTerminationDate(value);
+      if (computed) updated[field.fillsDateField] = computed;
+    }
+    setValues(updated);
+  }
+
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
 
@@ -520,7 +545,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   <select
                     id={field.key}
                     value={values[field.key] ?? ""}
-                    onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
+                    onChange={(e) => handleFieldChange(field.key, e.target.value)}
                     className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   >
                     <option value="">{selectPlaceholder}</option>
@@ -532,7 +557,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     rows={5}
                     placeholder={getPlaceholder(field)}
                     value={values[field.key] ?? ""}
-                    onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
+                    onChange={(e) => handleFieldChange(field.key, e.target.value)}
                     className={`${inputClass} resize-y ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   />
                 ) : field.appendCurrency ? (
@@ -542,7 +567,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                       type="number"
                       placeholder={getPlaceholder(field)}
                       value={values[field.key] ?? ""}
-                      onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
+                      onChange={(e) => handleFieldChange(field.key, e.target.value)}
                       className={`${inputClass.replace("w-full", "flex-1 min-w-0")} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                     />
                     <select
@@ -562,9 +587,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     type={field.type}
                     placeholder={getPlaceholder(field)}
                     value={values[field.key] ?? ""}
-                    onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
+                    onChange={(e) => handleFieldChange(field.key, e.target.value)}
                     className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   />
+                )}
+                {field.autoFilledHint && values[field.key] && (
+                  <p className="mt-1 text-xs text-swiss-gold/70">
+                    ✓ Automatisch berechnet — du kannst das Datum anpassen.
+                  </p>
                 )}
                 {errors[field.key] && <p className="mt-1 text-xs text-red-400">{errors[field.key]}</p>}
               </div>
