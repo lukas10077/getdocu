@@ -484,13 +484,13 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Goldener Seitenstreifen links */}
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
 
-          {/* Foto oben rechts falls vorhanden */}
+          {/* Foto — zentriert, tiefer */}
           {profilePhotoUrl && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={profilePhotoUrl}
               alt="Bewerbungsfoto"
-              style={{ position: "absolute", top: 28, right: 32, width: 90, height: 110, objectFit: "cover", borderRadius: 2, zIndex: 2, boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}
+              style={{ position: "absolute", top: 80, left: "50%", transform: "translateX(-50%)", width: 130, height: 160, objectFit: "cover", borderRadius: 2, zIndex: 2, boxShadow: "0 4px 16px rgba(0,0,0,0.18)" }}
             />
           )}
 
