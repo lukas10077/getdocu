@@ -120,7 +120,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "email",           label: "E-Mail",                               type: "email",    required: true  },
       { key: "phone",           label: "Telefon",                              type: "tel",      required: false },
       { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",         type: "text",     required: true  },
-      { key: "yearsExperience", label: "Jahre Berufserfahrung",                type: "number",   required: true,  placeholder: "4" },
+      { key: "yearsExperience", label: "Jahre Berufserfahrung",                type: "number",   required: true },
       { key: "topSkills",       label: "Wichtigste Fähigkeiten und Stärken",   type: "textarea", required: true,
         placeholderKey: "skillsExample" },
       { key: "targetPosition",  label: "Stelle, auf die du dich bewirbst",     type: "text",     required: true,  section: "Die Stelle" },
