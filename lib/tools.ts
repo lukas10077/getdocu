@@ -268,14 +268,14 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     priceChfRappen: 500,
     supportsAllDocumentTypes: true,
     uploadLabelDe: "Deinen bestehenden Lebenslauf hochladen (optional)",
-    uploadHintDe: "Hast du einen alten CV? Lade ihn hoch — als Foto, PDF oder Word-Datei. Wir lesen ihn automatisch.",
+    uploadHintDe: "Hast du einen alten Lebenslauf? Lade ihn hoch — als Foto, PDF oder Word-Datei. Wir lesen ihn automatisch.",
     documentTitleDe: "Lebenslauf-Check",
     descriptionDe:
-      "Dein CV wird analysiert und professionell überarbeitet — angepasst an deinen Arbeitsmarkt.",
+      "Dein Lebenslauf wird analysiert und professionell überarbeitet — angepasst an deinen Arbeitsmarkt.",
     systemPrompt:
       "Du bist Karriereberater mit Spezialisierung auf den Schweizer Arbeitsmarkt. " +
       "Analysiere den eingereichten Lebenslauf und erstelle eine überarbeitete, verbesserte Version " +
-      "auf Deutsch. Schweizer CV-Standard: prägnant (max. 2 Seiten), klare Struktur " +
+      "auf Deutsch. Schweizer Lebenslauf-Standard: prägnant (max. 2 Seiten), klare Struktur " +
       "(Persönliche Daten / Berufserfahrung rückwärts chronologisch / Ausbildung / Sprachen / " +
       "Weiterbildungen & Zertifikate / Hobbys optional). Kein Foto-Pflicht erwähnen. " +
       "Gib den vollständigen, überarbeiteten Lebenslauf als Text aus. Keine Erklärungen, nur das Dokument.",
