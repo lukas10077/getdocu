@@ -21,6 +21,7 @@ export interface FieldDef {
   required?: boolean;
   options?: string[];                        // nur für type="select"
   countryOptions?: Record<string, string[]>; // länderspezifische Optionen, überschreiben options
+  appendCurrency?: boolean;                  // Label um aktuelle Währung ergänzen
   section?: string;                          // optionale Abschnitts-Überschrift vor diesem Feld
 }
 
@@ -84,7 +85,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
         }
       },
       { key: "currentJob",      label: "Beruf / aktuelle Stelle",          type: "text",     required: true  },
-      { key: "monthlyIncome",   label: "Monatliches Nettoeinkommen (CHF)", type: "number",   required: true,  placeholder: "5500" },
+      { key: "monthlyIncome",   label: "Monatliches Nettoeinkommen",       type: "number",   required: true,  placeholder: "5500", appendCurrency: true },
       { key: "currentAddress",  label: "Deine aktuelle Adresse",           type: "text",     required: true,  section: "Wohnsituation" },
       { key: "targetAddress",   label: "Adresse der Wunsch-Wohnung",       type: "text",     required: false, placeholder: "falls bekannt" },
       { key: "numberOfPersons", label: "Personen im Haushalt",             type: "select",   required: true,

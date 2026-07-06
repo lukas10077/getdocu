@@ -502,7 +502,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               )}
               <div>
                 <label htmlFor={field.key} className="mb-2 block text-sm font-medium text-cream">
-                  {field.label}
+                  {field.label}{field.appendCurrency && <span className="ml-1 text-cream-muted">({country?.currency ?? "CHF"})</span>}
                   {field.required && <span className="ml-1 text-swiss-gold">*</span>}
                 </label>
                 {field.type === "select" ? (
