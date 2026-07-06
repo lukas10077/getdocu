@@ -473,53 +473,34 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <span className="text-xs text-cream-muted">— Bezahle um das vollständige Dokument zu erhalten</span>
         </div>
 
-        <div className="relative overflow-hidden rounded-sm border border-ink-700 shadow-lg">
+        <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
           {/* Wasserzeichen */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center" style={{ zIndex: 4 }}>
-            <span className="select-none text-4xl font-medium uppercase text-black/10" style={{ transform: "rotate(-30deg)", letterSpacing: "0.3em" }}>
+            <span className="select-none text-5xl font-medium uppercase" style={{ transform: "rotate(-30deg)", letterSpacing: "0.3em", color: "rgba(0,0,0,0.07)" }}>
               VORSCHAU
             </span>
           </div>
 
-          {tool.supportsProfilePhoto ? (
-            /* Jobbewerbung — professionelles Template */
-            <div style={{ zIndex: 1, position: "relative" }}>
-              {/* Header */}
-              <div style={{ background: "#1a1a1a", padding: "28px 36px", display: "flex", alignItems: "center", gap: "24px" }}>
-                {profilePhotoUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 80, height: 100, objectFit: "cover", borderRadius: 2, flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }} />
-                ) : (
-                  <div style={{ width: 80, height: 100, borderRadius: 2, background: "rgba(255,255,255,0.08)", flexShrink: 0 }} />
-                )}
-                <div>
-                  <div style={{ fontSize: 18, fontWeight: 600, color: "#fff", letterSpacing: "0.02em" }}>
-                    {[values.firstName, values.lastName].filter(Boolean).join(" ") || "Dein Name"}
-                  </div>
-                  {values.currentJob && <div style={{ fontSize: 11, color: "#999", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: 4 }}>{values.currentJob}</div>}
-                  <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap" as const, gap: "6px 16px", fontSize: 11, color: "#bbb" }}>
-                    {values.email && <span>✉ {values.email}</span>}
-                    {values.phone && <span>✆ {values.phone}</span>}
-                    {values.currentAddress && <span>⌂ {values.currentAddress}</span>}
-                  </div>
-                </div>
-              </div>
-              {/* Goldener Streifen */}
-              <div style={{ height: 3, background: "linear-gradient(90deg, #c9a84c, #e8c96a)" }} />
-              {/* Body */}
-              <div style={{ background: "#fff", padding: "32px 36px" }}>
-                <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-[#222]">{previewText}</pre>
-              </div>
-            </div>
-          ) : (
-            /* Standard — cremefarbener Hintergrund */
-            <div className="relative bg-[#F5F0E6] p-6 md:p-8" style={{ zIndex: 1 }}>
-              <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-[#2A2520]">{previewText}</pre>
-            </div>
+          {/* Goldener Seitenstreifen links */}
+          <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
+
+          {/* Foto oben rechts falls vorhanden */}
+          {profilePhotoUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={profilePhotoUrl}
+              alt="Bewerbungsfoto"
+              style={{ position: "absolute", top: 28, right: 32, width: 90, height: 110, objectFit: "cover", borderRadius: 2, zIndex: 2, boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}
+            />
           )}
 
+          {/* Dokument-Body */}
+          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1 }}>
+            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a]" style={{ fontFamily: "Georgia, serif", fontSize: 13.5, lineHeight: 1.9 }}>{previewText}</pre>
+          </div>
+
           {/* Fade-out unten */}
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-36" style={{ background: tool.supportsProfilePhoto ? "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.97) 100%)" : "linear-gradient(to bottom, rgba(245,240,230,0) 0%, rgba(245,240,230,0.97) 100%)", zIndex: 3 }} />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, rgba(250,248,244,0) 0%, rgba(250,248,244,0.98) 100%)", zIndex: 3 }} />
         </div>
 
         <div className="mt-6 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
