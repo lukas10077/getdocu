@@ -484,19 +484,19 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Goldener Seitenstreifen links */}
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
 
-          {/* Foto — zentriert, tiefer */}
-          {profilePhotoUrl && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={profilePhotoUrl}
-              alt="Bewerbungsfoto"
-              style={{ position: "absolute", top: 80, left: "50%", transform: "translateX(-50%)", width: 130, height: 160, objectFit: "cover", borderRadius: 2, zIndex: 2, boxShadow: "0 4px 16px rgba(0,0,0,0.18)" }}
-            />
-          )}
-
           {/* Dokument-Body */}
-          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1 }}>
-            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a]" style={{ fontFamily: "Georgia, serif", fontSize: 13.5, lineHeight: 1.9 }}>{previewText}</pre>
+          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1, display: "flex", gap: 0 }}>
+            {/* Text — mit Abstand rechts wenn Foto vorhanden */}
+            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a] flex-1" style={{ fontFamily: "Georgia, serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 160 : 0 }}>{previewText}</pre>
+            {/* Foto fix oben rechts im Text-Container */}
+            {profilePhotoUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={profilePhotoUrl}
+                alt="Bewerbungsfoto"
+                style={{ position: "absolute", top: 40, right: 48, width: 120, height: 150, objectFit: "cover", borderRadius: 2, flexShrink: 0, boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}
+              />
+            )}
           </div>
 
           {/* Fade-out unten */}
