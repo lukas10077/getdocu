@@ -43,14 +43,16 @@ export async function POST(req: NextRequest) {
   // 2. Ländercode aus Stripe-Metadata lesen
   const countryCode = session.metadata?.countryCode;
 
-  // 3. Bild + Metadaten aus formData extrahieren (wird nach Nutzung nicht gespeichert)
+  // 3. Bild/Dokument-Metadaten aus formData extrahieren (wird nach Nutzung nicht gespeichert)
   const imageBase64: string = formData.__imageBase64 ?? "";
   const imageMimeType: string = formData.__imageMimeType ?? "image/jpeg";
   const incomeCurrency: string = formData.__incomeCurrency ?? "";
+  const docxText: string = formData.__docxText ?? "";
   const cleanFormData = { ...formData };
   delete cleanFormData.__imageBase64;
   delete cleanFormData.__imageMimeType;
   delete cleanFormData.__incomeCurrency;
+  delete cleanFormData.__docxText;
 
   // 4. Dokument generieren
   const anthropic = new Anthropic({ apiKey: anthropicKey });
@@ -59,7 +61,28 @@ export async function POST(req: NextRequest) {
 
   const userContent: Anthropic.MessageParam["content"] = [];
 
-  if (imageBase64) {
+  if (docxText) {
+    // DOCX: extrahierten Text als Kontext voranstellen
+    userContent.push({
+      type: "text",
+      text: `Hier ist der Inhalt des hochgeladenen Word-Dokuments des Nutzers:\n\n${docxText}\n\n---\n\n${textPrompt}`,
+    });
+  } else if (imageBase64 && imageMimeType === "application/pdf") {
+    // PDF: Anthropic native document support
+    userContent.push({
+      type: "document",
+      source: {
+        type: "base64",
+        media_type: "application/pdf",
+        data: imageBase64,
+      },
+    } as unknown as Anthropic.TextBlockParam);
+    userContent.push({
+      type: "text",
+      text: `Im PDF oben siehst du das bestehende Dokument des Nutzers. Lies es sorgfältig und berücksichtige seinen Inhalt vollständig beim Erstellen des neuen Dokuments.\n\n${textPrompt}`,
+    });
+  } else if (imageBase64) {
+    // Bild: Vision
     userContent.push({
       type: "image",
       source: {

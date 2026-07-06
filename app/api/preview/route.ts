@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { toolSlug, formData, imageBase64, imageMimeType, countryCode } = await req.json();
+  const { toolSlug, formData, imageBase64, imageMimeType, docxText, countryCode } = await req.json();
 
   const tool = getTool(toolSlug);
   if (!tool) {
@@ -66,7 +66,25 @@ export async function POST(req: NextRequest) {
 
   const userContent: Anthropic.MessageParam["content"] = [];
 
-  if (imageBase64 && imageMimeType) {
+  if (docxText) {
+    userContent.push({
+      type: "text",
+      text: `Hier ist der Inhalt des hochgeladenen Word-Dokuments:\n\n${docxText}\n\n---\n\n${textPrompt}`,
+    });
+  } else if (imageBase64 && imageMimeType === "application/pdf") {
+    userContent.push({
+      type: "document",
+      source: {
+        type: "base64",
+        media_type: "application/pdf",
+        data: imageBase64,
+      },
+    } as unknown as Anthropic.TextBlockParam);
+    userContent.push({
+      type: "text",
+      text: `Im PDF oben siehst du das Dokument des Nutzers. Lies es und berücksichtige seinen Inhalt.\n\n${textPrompt}`,
+    });
+  } else if (imageBase64 && imageMimeType) {
     userContent.push({
       type: "image",
       source: {

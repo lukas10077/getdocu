@@ -91,10 +91,12 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const [errorMsg, setErrorMsg] = useState<string>("");
   // Währung für Einkommensfeld
   const [incomeCurrency, setIncomeCurrency] = useState<string>(country?.currency ?? "CHF");
-  // Einzelbild (Vision-Tools)
+  // Einzelbild / PDF / DOCX
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [imageMimeType, setImageMimeType] = useState<string>("image/jpeg");
   const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
+  const [docxText, setDocxText] = useState<string>("");
+  const [uploadedFileName, setUploadedFileName] = useState<string>("");
   // Foto-Galerie (kein Vision)
   const [photos, setPhotos] = useState<Photo[]>([]);
   const photoInputRef = useRef<HTMLInputElement>(null);
@@ -111,6 +113,54 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       setImageBase64(r.split(",")[1]);
     };
     reader.readAsDataURL(file);
+  }
+
+  async function handleAllDocumentUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadedFileName(file.name);
+
+    const mime = file.type;
+
+    if (mime === "application/pdf") {
+      // PDF → base64 für Anthropic document API
+      setImagePreviewUrl(null);
+      setDocxText("");
+      const reader = new FileReader();
+      reader.onload = () => {
+        const r = reader.result as string;
+        setImageBase64(r.split(",")[1]);
+        setImageMimeType("application/pdf");
+      };
+      reader.readAsDataURL(file);
+    } else if (
+      mime === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      file.name.endsWith(".docx")
+    ) {
+      // DOCX → mammoth text extraction
+      setImageBase64(null);
+      setImagePreviewUrl(null);
+      setImageMimeType("");
+      try {
+        const mammoth = (await import("mammoth")).default;
+        const arrayBuffer = await file.arrayBuffer();
+        const result = await mammoth.extractRawText({ arrayBuffer });
+        setDocxText(result.value);
+      } catch {
+        setDocxText("[DOCX konnte nicht gelesen werden]");
+      }
+    } else {
+      // Bild (image/*)
+      setDocxText("");
+      setImagePreviewUrl(URL.createObjectURL(file));
+      setImageMimeType(mime || "image/jpeg");
+      const reader = new FileReader();
+      reader.onload = () => {
+        const r = reader.result as string;
+        setImageBase64(r.split(",")[1]);
+      };
+      reader.readAsDataURL(file);
+    }
   }
 
   async function handlePhotosUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -203,6 +253,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           // Für Galerie-Tools: keine Bilder an Claude senden
           imageBase64: tool.supportsPhotoGallery ? null : imageBase64,
           imageMimeType,
+          docxText: docxText || undefined,
           countryCode: country?.code,
         }),
       });
@@ -221,6 +272,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       __imageBase64: tool.supportsPhotoGallery ? "" : (imageBase64 ?? ""),
       __imageMimeType: imageMimeType,
       __incomeCurrency: incomeCurrency,
+      __docxText: docxText ?? "",
     }));
     // Fotos in IndexedDB speichern (sessionStorage zu klein für viele Bilder)
     if (tool.supportsPhotoGallery && photos.length > 0) {
@@ -466,6 +518,47 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   <rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" />
                 </svg>
                 <span className="text-xs text-cream-muted">Foto aufnehmen oder aus Galerie wählen</span>
+              </div>
+            )}
+          </label>
+        </div>
+      )}
+
+      {/* Multi-Format Upload: Bild + PDF + DOCX (z. B. Arbeitszeugnis) */}
+      {tool.supportsAllDocumentTypes && (
+        <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
+          <p className="mb-1 text-sm font-medium text-cream">{tool.uploadLabelDe}</p>
+          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{tool.uploadHintDe}</p>
+          <label className="group cursor-pointer">
+            <input
+              type="file"
+              accept="image/*,.pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              className="sr-only"
+              onChange={handleAllDocumentUpload}
+            />
+            {uploadedFileName ? (
+              <div className="rounded-sm border border-swiss-gold/30 bg-ink-950 p-4">
+                {imagePreviewUrl ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={imagePreviewUrl} alt="Hochgeladenes Dokument" className="mb-2 max-h-48 w-full rounded-sm object-contain" />
+                ) : null}
+                <p className="text-xs text-swiss-gold">
+                  ✓ {uploadedFileName}
+                  {docxText && <span className="ml-2 text-cream-muted">(Text extrahiert)</span>}
+                  {imageMimeType === "application/pdf" && <span className="ml-2 text-cream-muted">(PDF)</span>}
+                </p>
+                <p className="mt-1 text-xs text-cream-muted">Tippe um eine andere Datei zu wählen</p>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center gap-3 rounded-sm border border-ink-700 py-8 transition group-hover:border-swiss-gold/50">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-swiss-gold/60">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="12" y1="18" x2="12" y2="12" />
+                  <line x1="9" y1="15" x2="15" y2="15" />
+                </svg>
+                <span className="text-xs text-cream-muted">Foto, PDF oder Word-Datei hochladen</span>
+                <span className="text-xs text-cream-muted/60">(.jpg, .png, .pdf, .docx)</span>
               </div>
             )}
           </label>
