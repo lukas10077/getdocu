@@ -280,7 +280,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Weiterbildungen & Zertifikate / Hobbys optional). Kein Foto-Pflicht erwähnen. " +
       "Gib den vollständigen, überarbeiteten Lebenslauf als Text aus. Keine Erklärungen, nur das Dokument.",
     fields: [
-      { key: "targetJob",    label: "Für welche Art Stelle bewirbst du dich?", type: "text",  required: true,
+      { key: "targetJob",    label: "Für welche Art Stelle bewirbst du dich?", type: "text",  required: false,
         placeholderKey: "targetJobExample" },
       { key: "improvements", label: "Worauf soll der Fokus gelegt werden?",   type: "textarea", required: false,
         placeholderKey: "cvImprovements",
