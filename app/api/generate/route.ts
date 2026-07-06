@@ -130,12 +130,17 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: 
       .replace(/\s*\(SchKG\)/g, "");
   }
 
+  const currencyNote = countryCode !== "CH"
+    ? `Falls Geldbeträge in CHF angegeben sind, rechne sie näherungsweise in ${country.currency} um und verwende nur ${country.currency} im Dokument.\n`
+    : "";
+
   const countryNote =
     `LÄNDERSPEZIFISCHE ANPASSUNG:\n` +
     `Dieses Dokument wird für einen Nutzer in ${country.name} (${country.flag}) erstellt.\n` +
     `Passe alle Formulierungen, Konventionen und Anforderungen an die in ${country.name} üblichen Standards an.\n` +
     `Erwähne niemals die Schweiz im Dokumenttext, ausser das Land ist CH.\n` +
     `Verwende keine Schweizer Eigenheiten (Anführungszeichen «», CHF, ss/ß-Regel) ausser das Land ist CH.\n` +
+    currencyNote +
     `Verfasse das gesamte Dokument auf ${langName}.\n`;
 
   // Gesetzesreferenzen für dieses Land und Dokument-Typ
