@@ -154,5 +154,25 @@
         "a": "TWINT, hitelkártya (Visa, Mastercard), Apple Pay vagy Google Pay. A fizetés biztonságos a Stripe-on keresztül."
       }
     ]
+  },
+  "placeholders": {
+    "fallsKnown": "ha ismert",
+    "fallsAvailable": "ha van",
+    "optionalReason": "Csak ha meg szeretnéd adni az okot.",
+    "motivationRental": "Írd le röviden, miért szeretnéd ezt a lakást, és mi tesz téged jó bérlővé.",
+    "additionalInfoField": "pl. referenciák, különleges körülmények, …",
+    "skillsExample": "pl. projektmenedzsment, magyar/angol, SAP, csapatmunka, …",
+    "companyResearch": "Mi érdekli ebben a cégben? Mit tud róluk?",
+    "whyYou": "Konkrét teljesítmények, sikerek és releváns tapasztalatok erre a pozícióra.",
+    "dateRange": "pl. 2022.01.01. – 2024.12.31.",
+    "existingCertificate": "Illessze be jelenlegi igazolása teljes szövegét ide.",
+    "certificateImprove": "pl. a záróformula negatívan hangzik, hiányzik a vezetői kompetencia, túl rövid, …",
+    "damageDescription": "Mi van meghibásodva/eltörve? Mióta? Hol pontosan a lakásban?",
+    "complaintDescription": "Írja le a problémát tárgyilagosan: mi, mikor, melyik rendelés/szolgáltatás.",
+    "desiredOutcome": "pl. teljes visszatérítés, ingyenes javítás, csere szállítás, …",
+    "existingCV": "Illessze be önéletrajza teljes szövegét ide.",
+    "targetJobExample": "pl. könyvelő, ápoló, raktáros, …",
+    "cvImprovements": "pl. jobban kiemelni a nyelveket, magyarázni a hiányokat, tömörebbé tenni, …",
+    "concernDetails": "Írja le kérelmét a lehető legpontosabban."
   }
 }

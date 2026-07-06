@@ -154,5 +154,25 @@
         "a": "TWINT, kartë krediti (Visa, Mastercard), Apple Pay ose Google Pay. Pagesa është e sigurt nëpërmjet Stripe."
       }
     ]
+  },
+  "placeholders": {
+    "fallsKnown": "nëse dihet",
+    "fallsAvailable": "nëse ka",
+    "optionalReason": "Vetëm nëse dëshiron të japësh një arsye.",
+    "motivationRental": "Përshkruaj shkurtimisht pse dëshiron këtë apartament dhe çfarë të bën qiramarrës të mirë.",
+    "additionalInfoField": "p.sh. referenca, rrethana të veçanta, …",
+    "skillsExample": "p.sh. menaxhim projektesh, shqip/anglisht, SAP, punë ekipore, …",
+    "companyResearch": "Çfarë të intereson tek kjo kompani? Çfarë di për të?",
+    "whyYou": "Arritje konkrete, suksese dhe përvoja relevante për këtë pozicion.",
+    "dateRange": "p.sh. 01.01.2022 – 31.12.2024",
+    "existingCertificate": "Ngjit tekstin e plotë të dëshmisë tënde aktuale këtu.",
+    "certificateImprove": "p.sh. formula e mbylljes tingëllon negative, mungojnë aftësitë drejtuese, shumë e shkurtër, …",
+    "damageDescription": "Çfarë është i dëmtuar/i prishur? Që kur? Ku saktësisht në apartament?",
+    "complaintDescription": "Përshkruaj problemin objektivish: çfarë, kur, cila porosi/shërbim.",
+    "desiredOutcome": "p.sh. rimbursim i plotë, riparim falas, dërgim zëvendësues, …",
+    "existingCV": "Ngjit tekstin e plotë të CV-së tënde këtu.",
+    "targetJobExample": "p.sh. kontabilist, infermier, punëtor magazinë, …",
+    "cvImprovements": "p.sh. theksoni më mirë gjuhët, shpjegoni boshllëqet, bëjeni më konciz, …",
+    "concernDetails": "Përshkruani kërkesën tuaj sa më saktë të jetë e mundur."
   }
 }

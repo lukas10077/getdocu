@@ -403,6 +403,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const inputClass = "w-full rounded-sm border bg-ink-900 px-4 py-3 text-sm text-cream placeholder:text-cream-subtle outline-none transition focus:border-swiss-gold focus:ring-1 focus:ring-swiss-gold";
   const maxPhotos = tool.maxPhotos ?? 100;
 
+  // i18n Placeholder-Lookup: placeholderKey → dict.placeholders[key] → field.placeholder
+  function getPlaceholder(field: { placeholder?: string; placeholderKey?: string }): string | undefined {
+    if (field.placeholderKey) {
+      return (dict?.placeholders as Record<string, string> | undefined)?.[field.placeholderKey] ?? field.placeholder;
+    }
+    return field.placeholder;
+  }
+
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
 
@@ -522,7 +530,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   <textarea
                     id={field.key}
                     rows={5}
-                    placeholder={field.placeholder}
+                    placeholder={getPlaceholder(field)}
                     value={values[field.key] ?? ""}
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
                     className={`${inputClass} resize-y ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
@@ -532,7 +540,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     <input
                       id={field.key}
                       type="number"
-                      placeholder={field.placeholder}
+                      placeholder={getPlaceholder(field)}
                       value={values[field.key] ?? ""}
                       onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
                       className={`${inputClass.replace("w-full", "flex-1 min-w-0")} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
@@ -552,7 +560,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   <input
                     id={field.key}
                     type={field.type}
-                    placeholder={field.placeholder}
+                    placeholder={getPlaceholder(field)}
                     value={values[field.key] ?? ""}
                     onChange={(e) => setValues({ ...values, [field.key]: e.target.value })}
                     className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}

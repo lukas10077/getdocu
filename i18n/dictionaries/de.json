@@ -154,5 +154,25 @@
   },
   "legal": {
     "disclaimer": "GetDocu bietet keine Rechtsberatung. Die erstellten Dokumente sind Hilfsmittel — für die inhaltliche Richtigkeit bist du selbst verantwortlich."
+  },
+  "placeholders": {
+    "fallsKnown": "falls bekannt",
+    "fallsAvailable": "falls vorhanden",
+    "optionalReason": "Nur wenn du einen Grund angeben möchtest.",
+    "motivationRental": "Beschreibe kurz, warum du die Wohnung möchtest und was dich als Mieter auszeichnet.",
+    "additionalInfoField": "z.B. Referenzen, besondere Umstände, …",
+    "skillsExample": "z.B. Projektmanagement, Deutsch/Englisch, SAP, Teamarbeit, …",
+    "companyResearch": "Was interessiert dich an dieser Firma? Was weisst du über sie?",
+    "whyYou": "Konkrete Leistungen, Erfolge, passende Erfahrungen für diese Stelle.",
+    "dateRange": "z.B. 01.01.2022 – 31.12.2024",
+    "existingCertificate": "Füge den kompletten Text deines aktuellen Zeugnisses hier ein.",
+    "certificateImprove": "z.B. Schlussformel klingt negativ, Führungskompetenz fehlt, zu kurz, …",
+    "damageDescription": "Was ist defekt/kaputt? Seit wann? Wo genau in der Wohnung?",
+    "complaintDescription": "Beschreibe das Problem sachlich: Was, Wann, Welche Bestellung/Dienstleistung.",
+    "desiredOutcome": "z.B. vollständige Rückerstattung, kostenlose Reparatur, Ersatzlieferung, …",
+    "existingCV": "Füge den kompletten Text deines Lebenslaufs hier ein.",
+    "targetJobExample": "z.B. Sachbearbeiter Buchhaltung, Pflegefachperson, Lagerist, …",
+    "cvImprovements": "z.B. Sprachen besser hervorheben, Lücken erklären, kompakter machen, …",
+    "concernDetails": "Beschreibe dein Anliegen so präzise wie möglich."
   }
 }

@@ -154,5 +154,25 @@
         "a": "TWINT, cartão de crédito (Visa, Mastercard), Apple Pay ou Google Pay. O pagamento é seguro via Stripe."
       }
     ]
+  },
+  "placeholders": {
+    "fallsKnown": "se conhecida",
+    "fallsAvailable": "se disponível",
+    "optionalReason": "Apenas se desejar indicar um motivo.",
+    "motivationRental": "Descreve brevemente por que queres este apartamento e o que te torna um bom inquilino.",
+    "additionalInfoField": "p.ex. referências, circunstâncias especiais, …",
+    "skillsExample": "p.ex. gestão de projetos, inglês/português, SAP, trabalho em equipa, …",
+    "companyResearch": "O que te interessa nesta empresa? O que sabes sobre ela?",
+    "whyYou": "Realizações concretas, sucessos e experiências relevantes para este cargo.",
+    "dateRange": "p.ex. 01/01/2022 – 31/12/2024",
+    "existingCertificate": "Cola o texto completo do teu certificado atual aqui.",
+    "certificateImprove": "p.ex. fórmula final negativa, competências de liderança em falta, muito curto, …",
+    "damageDescription": "O que está danificado/partido? Desde quando? Onde exatamente no apartamento?",
+    "complaintDescription": "Descreve o problema objetivamente: o quê, quando, qual encomenda/serviço.",
+    "desiredOutcome": "p.ex. reembolso completo, reparação gratuita, entrega de substituição, …",
+    "existingCV": "Cola o texto completo do teu CV aqui.",
+    "targetJobExample": "p.ex. contabilista, enfermeiro/a, armazenista, …",
+    "cvImprovements": "p.ex. destacar melhor línguas, explicar lacunas, tornar mais conciso, …",
+    "concernDetails": "Descreva a sua solicitação o mais precisamente possível."
   }
 }

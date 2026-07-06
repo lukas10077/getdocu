@@ -154,5 +154,25 @@
   },
   "legal": {
     "disclaimer": "GetDocu non fornisce consulenza legale. I documenti generati sono strumenti — sei responsabile della loro correttezza."
+  },
+  "placeholders": {
+    "fallsKnown": "se nota",
+    "fallsAvailable": "se disponibile",
+    "optionalReason": "Solo se desideri indicare un motivo.",
+    "motivationRental": "Descrivi brevemente perché vuoi questo appartamento e cosa ti distingue come inquilino.",
+    "additionalInfoField": "es. referenze, circostanze particolari, …",
+    "skillsExample": "es. gestione progetti, inglese/italiano, SAP, lavoro di squadra, …",
+    "companyResearch": "Cosa ti interessa di questa azienda? Cosa sai di loro?",
+    "whyYou": "Risultati concreti, successi ed esperienze rilevanti per questa posizione.",
+    "dateRange": "es. 01.01.2022 – 31.12.2024",
+    "existingCertificate": "Incolla il testo completo del tuo attestato attuale qui.",
+    "certificateImprove": "es. formula finale negativa, competenze di leadership mancanti, troppo corto, …",
+    "damageDescription": "Cosa è difettoso/rotto? Da quando? Dove esattamente nell'appartamento?",
+    "complaintDescription": "Descrivi il problema in modo oggettivo: cosa, quando, quale ordine/servizio.",
+    "desiredOutcome": "es. rimborso completo, riparazione gratuita, sostituzione, …",
+    "existingCV": "Incolla il testo completo del tuo CV qui.",
+    "targetJobExample": "es. contabile, infermiere, magazziniere, …",
+    "cvImprovements": "es. evidenziare meglio le lingue, spiegare le lacune, renderlo più conciso, …",
+    "concernDetails": "Descrivi la tua richiesta nel modo più preciso possibile."
   }
 }

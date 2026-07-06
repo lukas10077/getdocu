@@ -154,5 +154,25 @@
         "a": "TWINT, kredi kartı (Visa, Mastercard), Apple Pay veya Google Pay. Ödeme Stripe üzerinden güvenle yapılır."
       }
     ]
+  },
+  "placeholders": {
+    "fallsKnown": "biliniyorsa",
+    "fallsAvailable": "varsa",
+    "optionalReason": "Yalnızca bir neden belirtmek istiyorsanız.",
+    "motivationRental": "Bu daireyi neden istediğinizi ve sizi iyi bir kiracı yapan özellikleri kısaca açıklayın.",
+    "additionalInfoField": "örn. referanslar, özel koşullar, …",
+    "skillsExample": "örn. proje yönetimi, Türkçe/İngilizce, SAP, takım çalışması, …",
+    "companyResearch": "Bu şirkette sizi ne ilgilendiriyor? Onlar hakkında ne biliyorsunuz?",
+    "whyYou": "Bu pozisyon için somut başarılar ve ilgili deneyimler.",
+    "dateRange": "örn. 01.01.2022 – 31.12.2024",
+    "existingCertificate": "Mevcut referans mektubunuzun tam metnini buraya yapıştırın.",
+    "certificateImprove": "örn. kapanış formülü olumsuz, liderlik becerileri eksik, çok kısa, …",
+    "damageDescription": "Ne hasarlı/bozuk? Ne zamandan beri? Dairenin tam olarak neresinde?",
+    "complaintDescription": "Sorunu nesnel olarak açıklayın: ne, ne zaman, hangi sipariş/hizmet.",
+    "desiredOutcome": "örn. tam iade, ücretsiz onarım, yedek teslimat, …",
+    "existingCV": "CV'nizin tam metnini buraya yapıştırın.",
+    "targetJobExample": "örn. muhasebeci, hemşire, depo çalışanı, …",
+    "cvImprovements": "örn. dilleri daha iyi vurgula, boşlukları açıkla, daha özlü hale getir, …",
+    "concernDetails": "Talebinizi mümkün olduğunca kesin bir şekilde açıklayın."
   }
 }

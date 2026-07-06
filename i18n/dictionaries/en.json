@@ -154,5 +154,25 @@
   },
   "legal": {
     "disclaimer": "GetDocu does not provide legal advice. The generated documents are tools — you are responsible for their accuracy."
+  },
+  "placeholders": {
+    "fallsKnown": "if known",
+    "fallsAvailable": "if available",
+    "optionalReason": "Only if you'd like to provide a reason.",
+    "motivationRental": "Briefly describe why you want this apartment and what makes you a great tenant.",
+    "additionalInfoField": "e.g. references, special circumstances, …",
+    "skillsExample": "e.g. project management, English/German, SAP, teamwork, …",
+    "companyResearch": "What interests you about this company? What do you know about them?",
+    "whyYou": "Specific achievements, successes, and relevant experience for this role.",
+    "dateRange": "e.g. 01/01/2022 – 31/12/2024",
+    "existingCertificate": "Paste the full text of your current reference letter here.",
+    "certificateImprove": "e.g. closing formula sounds negative, leadership skills missing, too short, …",
+    "damageDescription": "What is damaged/broken? Since when? Where exactly in the apartment?",
+    "complaintDescription": "Describe the issue factually: what, when, which order/service.",
+    "desiredOutcome": "e.g. full refund, free repair, replacement delivery, …",
+    "existingCV": "Paste the full text of your CV here.",
+    "targetJobExample": "e.g. accountant, nurse, warehouse worker, …",
+    "cvImprovements": "e.g. highlight languages better, explain gaps, make it more concise, …",
+    "concernDetails": "Describe your concern as precisely as possible."
   }
 }

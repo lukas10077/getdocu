@@ -154,5 +154,25 @@
   },
   "legal": {
     "disclaimer": "GetDocu ne fournit pas de conseil juridique. Les documents générés sont des outils — vous êtes responsable de leur exactitude."
+  },
+  "placeholders": {
+    "fallsKnown": "si connue",
+    "fallsAvailable": "si disponible",
+    "optionalReason": "Seulement si vous souhaitez indiquer une raison.",
+    "motivationRental": "Décrivez brièvement pourquoi vous souhaitez cet appartement et ce qui fait de vous un bon locataire.",
+    "additionalInfoField": "p.ex. références, circonstances particulières, …",
+    "skillsExample": "p.ex. gestion de projet, anglais/français, SAP, travail d'équipe, …",
+    "companyResearch": "Qu'est-ce qui vous intéresse dans cette entreprise ? Que savez-vous d'elle ?",
+    "whyYou": "Réalisations concrètes, succès et expériences pertinentes pour ce poste.",
+    "dateRange": "p.ex. 01.01.2022 – 31.12.2024",
+    "existingCertificate": "Collez le texte complet de votre certificat actuel ici.",
+    "certificateImprove": "p.ex. formule de clôture négative, compétences en leadership manquantes, trop court, …",
+    "damageDescription": "Qu'est-ce qui est endommagé/cassé ? Depuis quand ? Où exactement dans l'appartement ?",
+    "complaintDescription": "Décrivez le problème de manière objective : quoi, quand, quelle commande/prestation.",
+    "desiredOutcome": "p.ex. remboursement complet, réparation gratuite, remplacement, …",
+    "existingCV": "Collez le texte complet de votre CV ici.",
+    "targetJobExample": "p.ex. comptable, infirmier/infirmière, magasinier, …",
+    "cvImprovements": "p.ex. mieux mettre en avant les langues, expliquer les lacunes, rendre plus concis, …",
+    "concernDetails": "Décrivez votre demande aussi précisément que possible."
   }
 }

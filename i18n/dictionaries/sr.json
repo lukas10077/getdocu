@@ -154,5 +154,25 @@
         "a": "TWINT, kreditna kartica (Visa, Mastercard), Apple Pay ili Google Pay. Plaćanje je sigurno putem Stripe-a."
       }
     ]
+  },
+  "placeholders": {
+    "fallsKnown": "ako je poznata",
+    "fallsAvailable": "ako postoji",
+    "optionalReason": "Samo ako želiš navesti razlog.",
+    "motivationRental": "Ukratko opiši zašto želiš ovaj stan i šta te čini dobrim stanar.",
+    "additionalInfoField": "npr. reference, posebne okolnosti, …",
+    "skillsExample": "npr. upravljanje projektima, srpski/engleski, SAP, timski rad, …",
+    "companyResearch": "Šta te zanima u ovoj firmi? Šta znaš o njoj?",
+    "whyYou": "Konkretna postignuća, uspesi i relevantno iskustvo za ovu poziciju.",
+    "dateRange": "npr. 01.01.2022 – 31.12.2024",
+    "existingCertificate": "Nalepi kompletan tekst tvoje trenutne preporuke ovde.",
+    "certificateImprove": "npr. zaključna formula zvuči negativno, nedostaju liderske veštine, prekratko, …",
+    "damageDescription": "Šta je oštećeno/pokvareno? Od kada? Gde tačno u stanu?",
+    "complaintDescription": "Opiši problem objektivno: šta, kada, koja narudžbina/usluga.",
+    "desiredOutcome": "npr. puni povrat novca, besplatna popravka, zamenska isporuka, …",
+    "existingCV": "Nalepi kompletan tekst svog CV-a ovde.",
+    "targetJobExample": "npr. računovođa, medicinska sestra, magacioner, …",
+    "cvImprovements": "npr. bolje istaknuti jezike, objasniti praznine, učiniti kompaktnijim, …",
+    "concernDetails": "Opišite vaš zahtev što preciznije moguće."
   }
 }
