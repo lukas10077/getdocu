@@ -19,8 +19,8 @@ const config: Config = {
           },
           red: "#D52B1E",
           redDark: "#B7221A",
-          gold: "#C8902E",
-          goldDark: "#A87020",
+          gold: "#F0B429",
+          goldDark: "#C8902E",
         },
         // Dark premium palette
         ink: {
@@ -31,7 +31,7 @@ const config: Config = {
           600: "#302A22",
         },
         cream: {
-          DEFAULT: "#F0E8D8",
+          DEFAULT: "#FFFFFF",
           muted: "#9A9080",
           subtle: "#635B50",
         },
