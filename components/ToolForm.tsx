@@ -483,11 +483,11 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               const wHeader = wParas.slice(0, 2).map(renderWP).join('');
               const wBody   = wParas.slice(2).map(renderWP).join('');
               const headerBlock = profilePhotoUrl
-                ? `<table width="100%" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;margin-bottom:0">
+                ? `<table cellpadding="0" cellspacing="0" style="width:100%;border:none;border-collapse:collapse;margin-bottom:0;table-layout:fixed">
                      <tr>
-                       <td valign="top" style="border:none;padding-right:18pt">${wHeader}</td>
-                       <td valign="top" width="145" style="border:none;padding-left:6pt;text-align:right">
-                         <img src="${profilePhotoUrl}" width="130" height="162" style="width:130px;height:162px" />
+                       <td valign="top" style="border:none;padding-right:16pt">${wHeader}</td>
+                       <td valign="top" style="border:none;width:120pt;text-align:right">
+                         <img src="${profilePhotoUrl}" width="105" height="132" style="width:105pt;height:132pt;display:block;margin-left:auto" />
                        </td>
                      </tr>
                    </table>`
@@ -535,18 +535,29 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
 
           {/* Dokument-Body */}
-          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1, display: "flex", gap: 0 }}>
-            {/* Text — mit Abstand rechts wenn Foto vorhanden */}
-            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a] flex-1" style={{ fontFamily: "Arial, sans-serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 190 : 0 }}>{previewText}</pre>
-            {/* Foto fix oben rechts im Text-Container */}
-            {profilePhotoUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={profilePhotoUrl}
-                alt="Bewerbungsfoto"
-                style={{ position: "absolute", top: 70, right: 90, width: 145, height: 180, objectFit: "cover", borderRadius: 2, flexShrink: 0, boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}
-              />
-            )}
+          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+            {(() => {
+              const paras = previewText.split(/\n\n+/);
+              const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
+              const header = paras.slice(0, 2);
+              const body   = paras.slice(2);
+              return (
+                <>
+                  {profilePhotoUrl ? (
+                    <div style={{ display: "flex", gap: 0 }}>
+                      <div style={{ flex: 1, paddingRight: 16 }}>
+                        {header.map((p, i) => <p key={i} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isSubject(p) ? 700 : 400 }}>{p}</p>)}
+                      </div>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={profilePhotoUrl} alt="Foto" style={{ width: 135, height: 168, objectFit: "cover", borderRadius: 2, flexShrink: 0, alignSelf: "flex-start", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }} />
+                    </div>
+                  ) : (
+                    header.map((p, i) => <p key={i} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isSubject(p) ? 700 : 400 }}>{p}</p>)
+                  )}
+                  {body.map((p, i) => <p key={i + 2} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isSubject(p) ? 700 : 400 }}>{p}</p>)}
+                </>
+              );
+            })()}
           </div>
 
           {/* Fade-out unten */}
