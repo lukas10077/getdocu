@@ -3,7 +3,43 @@ import Anthropic from "@anthropic-ai/sdk";
 import { getTool } from "@/lib/tools";
 import { getCountry, LANG_NAMES } from "@/lib/countries";
 
+// ── Rate-Limiting ────────────────────────────────────────────────────────────
+// Pro IP: max. 5 Vorschauen pro Minute.
+// In-Memory — reicht für einen serverless-Instance; schützt gegen einfache Angriffe.
+const RATE_LIMIT = 5;           // max. Anfragen
+const WINDOW_MS  = 60_000;      // pro 60 Sekunden
+
+const ipLog = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(ip: string): { allowed: boolean; retryAfterSec: number } {
+  const now = Date.now();
+  const entry = ipLog.get(ip);
+
+  if (!entry || now >= entry.resetAt) {
+    ipLog.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return { allowed: true, retryAfterSec: 0 };
+  }
+
+  if (entry.count >= RATE_LIMIT) {
+    return { allowed: false, retryAfterSec: Math.ceil((entry.resetAt - now) / 1000) };
+  }
+
+  entry.count++;
+  return { allowed: true, retryAfterSec: 0 };
+}
+// ────────────────────────────────────────────────────────────────────────────
+
 export async function POST(req: NextRequest) {
+  // Rate-Limit prüfen
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const { allowed, retryAfterSec } = checkRateLimit(ip);
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Zu viele Anfragen. Bitte kurz warten." },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } }
+    );
+  }
+
   const { toolSlug, formData, imageBase64, imageMimeType, countryCode } = await req.json();
 
   const tool = getTool(toolSlug);

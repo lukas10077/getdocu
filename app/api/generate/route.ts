@@ -19,12 +19,26 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Server nicht konfiguriert." }, { status: 500 });
   }
 
-  // 1. Zahlung verifizieren
+  // 1. Zahlung verifizieren + Session-Replay-Schutz
   const stripe = new Stripe(stripeKey, { apiVersion: "2024-06-20" });
   const session = await stripe.checkout.sessions.retrieve(sessionId);
+
   if (session.payment_status !== "paid") {
     return NextResponse.json({ error: "Zahlung nicht bestätigt." }, { status: 402 });
   }
+
+  // Session bereits benutzt? → ablehnen
+  if (session.metadata?.used === "true") {
+    return NextResponse.json(
+      { error: "Dieses Dokument wurde bereits generiert. Bitte starte einen neuen Kauf." },
+      { status: 409 }
+    );
+  }
+
+  // Session sofort als benutzt markieren (vor der Generierung, damit kein Race Condition)
+  await stripe.checkout.sessions.update(sessionId, {
+    metadata: { ...session.metadata, used: "true" },
+  });
 
   // 2. Ländercode aus Stripe-Metadata lesen
   const countryCode = session.metadata?.countryCode;
