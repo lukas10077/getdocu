@@ -355,7 +355,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
           <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1 }}>
-            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a]" style={{ fontFamily: "Georgia, serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 165 : 0 }}>{result}</pre>
+            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a]" style={{ fontFamily: "Arial, sans-serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 165 : 0 }}>{result}</pre>
             {profilePhotoUrl && (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ position: "absolute", top: 70, right: 90, width: 145, height: 180, objectFit: "cover", borderRadius: 2, boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }} />
@@ -383,19 +383,22 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <button
             onClick={() => {
               const w = window.open("", "_blank")!;
-              const bodyHtml = result.split(/\n\n+/).map(p => `<p style="margin:0 0 1.3em 0;white-space:pre-line">${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>`).join('');
+              const bodyHtml = result.split(/\n\n+/).map(p => {
+                const escaped = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                // Betreff-Zeilen (GROSSBUCHSTABEN) fett darstellen
+                const isSubject = /^[A-ZÄÖÜ\s]{6,}$/.test(p.trim());
+                return `<p style="margin:0 0 1.3em 0;white-space:pre-line;${isSubject ? 'font-weight:700;font-size:14px;letter-spacing:0.03em' : ''}">${escaped}</p>`;
+              }).join('');
               w.document.write(`<html><head><title>${tool.documentTitleDe}</title><meta charset="utf-8">
-                <style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Georgia,serif;background:#f0ede8;padding:30px 20px}
+                <style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
                 .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;position:relative}
-                .body{padding:48px 52px;font-size:13.5px;line-height:1.9;color:#1a1a1a;position:relative}
+                .body{padding:48px 52px;font-size:13px;line-height:1.85;color:#1a1a1a;position:relative}
                 .photo{position:absolute;top:48px;right:52px;width:140px;height:175px;object-fit:cover;border-radius:2px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
                 .has-photo{padding-right:210px}
-                .disclaimer{margin-top:40px;padding-top:12px;border-top:1px solid #eee;font-size:10px;color:#aaa}
                 @media print{body{background:#fff;padding:0}.page{box-shadow:none}}</style></head>
                 <body><div class="page"><div class="body ${profilePhotoUrl ? 'has-photo' : ''}">
                 ${profilePhotoUrl ? `<img src="${profilePhotoUrl}" class="photo" alt="Foto">` : ''}
                 ${bodyHtml}${photosHtml}
-                <div class="disclaimer">Generiert mit GetDocuNow.com</div>
                 </div></div></body></html>`);
               w.document.close();
               setTimeout(() => w.print(), 800);
@@ -408,9 +411,17 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Word */}
           <button
             onClick={() => {
-              const bodyHtml = result.split(/\n\n+/).map(p => `<p style="margin:0 0 1.3em 0;font-family:Times New Roman,serif;font-size:12pt;line-height:1.8">${p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</p>`).join('');
-              const photoHtml = profilePhotoUrl ? `<img src="${profilePhotoUrl}" style="float:right;margin:0 0 16px 24px;width:120px;height:150px;object-fit:cover" />` : '';
-              const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset="utf-8"><style>body{font-family:Times New Roman,serif;font-size:12pt;margin:2.5cm}</style></head><body>${photoHtml}${bodyHtml}</body></html>`;
+              const wordBodyHtml = result.split(/\n\n+/).map(p => {
+                const escaped = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+                const isSubject = /^[A-ZÄÖÜ\s]{6,}$/.test(p.trim());
+                return `<p style="margin:0 0 1.2em 0;${isSubject ? 'font-weight:bold;font-size:12pt' : 'font-size:11pt'}">${escaped}</p>`;
+              }).join('');
+              const photoHtml = profilePhotoUrl ? `<img src="${profilePhotoUrl}" style="float:right;margin:0 0 20px 28px;width:130px;height:160px;object-fit:cover;border:1px solid #ddd" />` : '';
+              const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset="utf-8">
+                <style>
+                  body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.8;color:#111;margin:2.5cm 3cm}
+                  p{margin:0 0 1.2em 0}
+                </style></head><body>${photoHtml}${wordBodyHtml}</body></html>`;
               const blob = new Blob(['﻿', html], { type: 'application/msword' });
               const url = URL.createObjectURL(blob);
               const a = document.createElement('a');
@@ -424,9 +435,6 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             Als Word herunterladen
           </button>
         </div>
-        <p className="mt-6 text-xs text-cream-subtle">
-          Deine Formulardaten wurden nach der Generierung sofort gelöscht.
-        </p>
       </div>
     );
   }
@@ -453,7 +461,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Dokument-Body */}
           <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1, display: "flex", gap: 0 }}>
             {/* Text — mit Abstand rechts wenn Foto vorhanden */}
-            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a] flex-1" style={{ fontFamily: "Georgia, serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 190 : 0 }}>{previewText}</pre>
+            <pre className="whitespace-pre-wrap leading-relaxed text-[#1a1a1a] flex-1" style={{ fontFamily: "Arial, sans-serif", fontSize: 13.5, lineHeight: 1.9, paddingRight: profilePhotoUrl ? 190 : 0 }}>{previewText}</pre>
             {/* Foto fix oben rechts im Text-Container */}
             {profilePhotoUrl && (
               // eslint-disable-next-line @next/next/no-img-element

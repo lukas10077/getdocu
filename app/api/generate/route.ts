@@ -127,7 +127,8 @@ function buildUserPrompt(tool: NonNullable<ReturnType<typeof getTool>>, formData
     .filter((f) => formData[f.key]?.trim())
     .map((f) => `${f.label}: ${formatFieldValue(f.type, formData[f.key])}`)
     .join("\n");
-  return `Erstelle das Dokument basierend auf folgenden Angaben:\n\n${lines}`;
+  const today = new Date().toLocaleDateString("de-CH", { day: "numeric", month: "long", year: "numeric" });
+  return `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle das Dokument basierend auf folgenden Angaben:\n\n${lines}`;
 }
 
 function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: string, incomeCurrency?: string): string {

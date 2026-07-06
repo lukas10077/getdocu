@@ -59,7 +59,8 @@ export async function POST(req: NextRequest) {
     .map((f) => `${f.label}: ${formData[f.key]}`)
     .join("\n");
 
-  const textPrompt = `Erstelle den ANFANG des Dokuments (nur die ersten 2–3 Absätze, ca. 120–150 Wörter) basierend auf folgenden Angaben. Höre mitten im Text auf — das vollständige Dokument wird nach Zahlung generiert.\n\n${lines}`;
+  const today = new Date().toLocaleDateString("de-CH", { day: "numeric", month: "long", year: "numeric" });
+  const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (nur die ersten 2–3 Absätze, ca. 120–150 Wörter) basierend auf folgenden Angaben. Höre mitten im Text auf — das vollständige Dokument wird nach Zahlung generiert.\n\n${lines}`;
 
   // Länderkontext in System-Prompt injizieren
   const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode);
