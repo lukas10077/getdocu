@@ -709,7 +709,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           </label>
           <div className="pt-1">
             <p className="text-sm font-medium text-cream">Dein Foto (optional)</p>
-            <p className="mt-1 text-xs leading-relaxed text-cream-muted">Für einen überzeugenden Lebenslauf empfehlen wir ein freundliches, professionelles Foto — es macht deine Bewerbung persönlicher und hinterlässt einen bleibenden ersten Eindruck. In der Schweiz und Deutschland gehört es zum guten Ton.</p>
+            <p className="mt-1 text-xs leading-relaxed text-cream-muted">Für einen überzeugenden Lebenslauf empfehlen wir ein freundliches, professionelles Foto — es macht deine Bewerbung persönlicher und hinterlässt einen bleibenden ersten Eindruck.</p>
           </div>
         </div>
       )}
