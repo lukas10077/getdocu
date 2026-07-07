@@ -38,39 +38,39 @@
       },
       "jobbewerbung": {
         "title": "Bewerbung Arbeitsstelle",
-        "description": "Zeig, warum du die richtige Person bist. Klar, überzeugend, professionell."
+        "description": "Wir helfen dir deine Chance auf den Job zu erhöhen."
       },
       "kuendigung": {
         "title": "Kündigung",
-        "description": "Versicherung, Abonnement, Mitgliedschaft — korrekt und fristgerecht kündigen."
+        "description": "Wir helfen dir korrekt und fristgerecht zu kündigen."
       },
       "arbeitszeugnis": {
         "title": "Arbeitszeugnis verbessern",
-        "description": "Dein Zeugnis klingt mittelmässig? Wir schreiben es professionell um."
+        "description": "Wir helfen dir, aus einem schwachen Zeugnis ein starkes zu machen."
       },
       "maengelruege": {
         "title": "Wohnungsschaden nach Einzug melden",
-        "description": "Schäden in der Wohnung melden — schriftlich, fristwahrend, korrekt adressiert."
+        "description": "Wir helfen dir, Schäden fristwahrend und korrekt zu melden."
       },
       "reklamation": {
         "title": "Reklamationsbrief",
-        "description": "Defekte Ware, schlechte Dienstleistung, falsche Rechnung — klar reklamieren."
+        "description": "Wir helfen dir, dein Recht klar und professionell einzufordern."
       },
       "lebenslauf": {
         "title": "Lebenslauf-Check",
-        "description": "Dein Lebenslauf wird analysiert und professionell überarbeitet — für deinen Arbeitsmarkt."
+        "description": "Wir helfen dir, deinen Lebenslauf auf das nächste Level zu bringen."
       },
       "krankenkasse": {
         "title": "Krankenkassen-Brief",
-        "description": "Prämienreduktion, Leistungsanfragen, Kündigung — korrekt formuliert."
+        "description": "Wir helfen dir, korrekt mit deiner Krankenkasse zu kommunizieren."
       },
       "kuendigung-wohnung": {
         "title": "Kündigung Wohnung",
-        "description": "Mietvertrag korrekt kündigen — mit Frist, Adresse und Bitte um Bestätigung."
+        "description": "Wir helfen dir, deinen Mietvertrag korrekt und fristgerecht zu kündigen."
       },
       "kuendigung-arbeit": {
         "title": "Kündigung Arbeitsstelle",
-        "description": "Arbeitsvertrag professionell kündigen — klar, höflich und fristgerecht."
+        "description": "Wir helfen dir, deine Stelle professionell und fristgerecht zu kündigen."
       }
     },
     "categories": {
