@@ -9,6 +9,7 @@ export type ToolSlug =
   | "kuendigung-arbeit"
   | "arbeitszeugnis"
   | "lebenslauf"
+  | "komplettbewerbung"
   | "kuendigung"
   | "reklamation"
   | "krankenkasse";
@@ -49,6 +50,8 @@ export interface ToolDefinition {
   maxPhotos?: number;
   photoGalleryLabelDe?: string;
   photoGalleryHintDe?: string;
+  // Bundle: generiert zwei Dokumente mit ===LEBENSLAUF=== als Trenner
+  isBundle?: boolean;
 }
 
 export const tools: Record<ToolSlug, ToolDefinition> = {
@@ -342,6 +345,53 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     ],
   },
 
+  komplettbewerbung: {
+    slug: "komplettbewerbung",
+    priceChfRappen: 800,
+    isBundle: true,
+    supportsProfilePhoto: true,
+    supportsAllDocumentTypes: true,
+    uploadLabelDe: "Bestehenden Lebenslauf hochladen (optional)",
+    uploadHintDe: "Hast du einen alten Lebenslauf? Lade ihn hoch — als Foto, PDF oder Word-Datei. Wir lesen ihn automatisch und integrieren ihn in den neuen Lebenslauf.",
+    documentTitleDe: "Komplettbewerbung",
+    descriptionDe:
+      "Bewerbungsschreiben + Lebenslauf in einem — professionell, aufeinander abgestimmt, sofort einsatzbereit.",
+    systemPrompt:
+      "Du bist Experte für Bewerbungen auf dem Schweizer Arbeitsmarkt. Erstelle ZWEI aufeinander abgestimmte Dokumente:\n\n" +
+      "TEIL 1 — BEWERBUNGSSCHREIBEN:\n" +
+      "Professionelles Motivationsschreiben nach Schweizer Standard: Absender-Block oben links, Empfänger-Block, " +
+      "Ort und Datum, Betreff (in GROSSBUCHSTABEN), Anrede, klare Gliederung (Einleitung / Hauptteil mit " +
+      "konkretem Bezug zur Stelle und zum Unternehmen / Schluss mit Call-to-Action), höflicher Abschluss.\n\n" +
+      "Schreibe nach dem Bewerbungsschreiben auf einer eigenen Zeile exakt: ===LEBENSLAUF===\n\n" +
+      "TEIL 2 — LEBENSLAUF:\n" +
+      "Vollständiger, professioneller Lebenslauf nach Schweizer Standard: Persönliche Daten / " +
+      "Berufserfahrung rückwärts chronologisch / Ausbildung / Sprachen / Weiterbildungen & Zertifikate. " +
+      "Prägnant, übersichtlich, auf die angegebene Stelle ausgerichtet.\n\n" +
+      "WICHTIG: Kein Markdown, keine Erklärungen, keine Trennlinien mit --- oder ===. " +
+      "Nur die beiden Dokumente mit dem Trenner ===LEBENSLAUF=== dazwischen.",
+    fields: [
+      { key: "firstName",       label: "Vorname",                              type: "text",     required: true,  section: "Über dich" },
+      { key: "lastName",        label: "Nachname",                             type: "text",     required: true  },
+      { key: "currentAddress",  label: "Deine Adresse",                        type: "text",     required: true  },
+      { key: "email",           label: "E-Mail",                               type: "email",    required: true  },
+      { key: "phone",           label: "Telefon",                              type: "tel",      required: false },
+      { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",         type: "text",     required: true  },
+      { key: "yearsExperience", label: "Jahre Berufserfahrung",                type: "number",   required: true  },
+      { key: "topSkills",       label: "Wichtigste Fähigkeiten und Stärken",   type: "textarea", required: true,
+        placeholderKey: "skillsExample" },
+      { key: "languages",       label: "Sprachen (mit Niveau)",                type: "text",     required: false, placeholder: "Deutsch (Muttersprache), Englisch (C1), Französisch (B2)" },
+      { key: "targetPosition",  label: "Stelle, auf die du dich bewirbst",     type: "text",     required: true,  section: "Die Stelle" },
+      { key: "targetCompany",   label: "Name des Unternehmens",                type: "text",     required: true  },
+      { key: "companyAddress",  label: "Adresse des Unternehmens",             type: "text",     required: false },
+      { key: "whyCompany",      label: "Warum dieses Unternehmen?",            type: "textarea", required: true,
+        placeholderKey: "companyResearch" },
+      { key: "whyYou",          label: "Warum bist du die richtige Person?",   type: "textarea", required: true,
+        placeholderKey: "whyYou" },
+      { key: "improvements",    label: "Fokus für den Lebenslauf (optional)",  type: "textarea", required: false,
+        hint: "Was soll im Lebenslauf besonders hervorgehoben werden? Kein Problem, wenn du nichts weisst — wir optimieren ihn automatisch." },
+    ],
+  },
+
   "kuendigung-arbeit": {
     slug: "kuendigung-arbeit",
     priceChfRappen: 300,
@@ -382,6 +432,6 @@ export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
   { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "maengelruege"] },
-  { key: "arbeit", slugs: ["jobbewerbung", "kuendigung-arbeit", "arbeitszeugnis", "lebenslauf"] },
+  { key: "arbeit", slugs: ["komplettbewerbung", "jobbewerbung", "lebenslauf", "kuendigung-arbeit", "arbeitszeugnis"] },
   { key: "alltag", slugs: ["kuendigung", "reklamation", "krankenkasse"] },
 ];

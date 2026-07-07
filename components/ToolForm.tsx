@@ -333,10 +333,15 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   }
 
   if (stage === "done") {
-    // HINWEIS vom Dokument trennen — darf nicht in PDF/Word erscheinen
+    // HINWEIS vom Dokument trennen — darf nicht in PDF erscheinen
     const hinweisIdx = result.search(/\n*HINWEIS[:\s]/i);
-    const cleanResult = hinweisIdx >= 0 ? result.slice(0, hinweisIdx).trim() : result;
+    const fullResult = hinweisIdx >= 0 ? result.slice(0, hinweisIdx).trim() : result;
     const hinweisText = hinweisIdx >= 0 ? result.slice(hinweisIdx).replace(/^\n+/, "").trim() : null;
+
+    // Bundle: Bewerbungsschreiben + Lebenslauf trennen
+    const bundleSepIdx = fullResult.search(/===LEBENSLAUF===/);
+    const cleanResult = bundleSepIdx >= 0 ? fullResult.slice(0, bundleSepIdx).trim() : fullResult;
+    const lebenslaufResult = bundleSepIdx >= 0 ? fullResult.slice(bundleSepIdx).replace(/^===LEBENSLAUF===\n*/, "").trim() : null;
 
     const photosHtml = photos.length > 0
       ? `<div style="margin-top:48px;border-top:1px solid #ddd;padding-top:24px">
@@ -353,10 +358,13 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       <div className="mt-10">
         <div className="mb-6 flex items-center gap-3">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-swiss-gold text-sm text-ink-950">✓</span>
-          <h2 className="text-lg font-medium text-cream">Dein Dokument ist fertig</h2>
+          <h2 className="text-lg font-medium text-cream">{lebenslaufResult ? "Deine Bewerbungsunterlagen sind fertig" : "Dein Dokument ist fertig"}</h2>
         </div>
 
         {/* Dokument-Vorschau — Paper-Design, gleiche Formatierung wie PDF */}
+        {lebenslaufResult && (
+          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Bewerbungsschreiben</p>
+        )}
         <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
           <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
@@ -392,6 +400,48 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             })()}
           </div>
         </div>
+
+        {/* Lebenslauf-Karte (nur bei Komplettbewerbung) */}
+        {lebenslaufResult && (
+          <div className="mt-6">
+            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Lebenslauf</p>
+            <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
+              <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
+              <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+                {(() => {
+                  const paras = lebenslaufResult.split(/\n\n+/);
+                  const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
+                  const isDate    = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
+                  const isClose   = (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
+                  const pStyle = (p: string): React.CSSProperties => ({
+                    marginBottom: "1.2em",
+                    marginTop: (isDate(p) || isClose(p)) ? "1.8em" : 0,
+                    fontWeight: isSubject(p) ? 700 : 400,
+                    whiteSpace: "pre-line",
+                  });
+                  const header = paras.slice(0, 1);
+                  const body   = paras.slice(1);
+                  return (
+                    <>
+                      {profilePhotoUrl ? (
+                        <div style={{ display: "flex", gap: 0, marginBottom: 0 }}>
+                          <div style={{ flex: 1, paddingRight: 16 }}>
+                            {header.map((p, i) => <p key={i} style={pStyle(p)}>{p}</p>)}
+                          </div>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 135, height: 168, objectFit: "cover", borderRadius: 2, flexShrink: 0, boxShadow: "0 2px 8px rgba(0,0,0,0.15)", alignSelf: "flex-start" }} />
+                        </div>
+                      ) : (
+                        header.map((p, i) => <p key={i} style={pStyle(p)}>{p}</p>)
+                      )}
+                      {body.map((p, i) => <p key={i + 1} style={pStyle(p)}>{p}</p>)}
+                    </>
+                  );
+                })()}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* HINWEIS — separat anzeigen, nicht im Dokument */}
         {hinweisText && (
@@ -432,35 +482,43 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 if (isSubject) s += 'font-weight:700;letter-spacing:0.03em;';
                 return `<p style="${s}">${esc}</p>`;
               }
-              const paras = cleanResult.split(/\n\n+/);
-              // Erste 2 Absätze (Absender + Empfänger) neben Foto; Rest volle Breite
-              const headerHtml = paras.slice(0, 2).map(renderP).join('');
-              const bodyHtml   = paras.slice(2).map(renderP).join('');
-              const photoCell  = profilePhotoUrl
-                ? `<td style="vertical-align:top;width:150px;padding-left:12px;text-align:right;border:none">
-                     <img src="${profilePhotoUrl}" width="135" height="168" style="width:135px;height:168px;object-fit:cover;border-radius:2px;box-shadow:0 2px 8px rgba(0,0,0,0.15)">
-                   </td>`
+              function buildDocHtml(docText: string, withPhoto: boolean, isFirstDoc: boolean): string {
+                const paras = docText.split(/\n\n+/);
+                const headerHtml = paras.slice(0, 2).map(renderP).join('');
+                const bodyHtml   = paras.slice(2).map(renderP).join('');
+                const photoCell  = (withPhoto && profilePhotoUrl)
+                  ? `<td style="vertical-align:top;width:150px;padding-left:12px;text-align:right;border:none">
+                       <img src="${profilePhotoUrl}" width="135" height="168" style="width:135px;height:168px;object-fit:cover;border-radius:2px;box-shadow:0 2px 8px rgba(0,0,0,0.15)">
+                     </td>`
+                  : '';
+                const headerTable = (withPhoto && profilePhotoUrl)
+                  ? `<table style="width:100%;border-collapse:collapse;margin-bottom:0"><tr>
+                       <td style="vertical-align:top;border:none">${headerHtml}</td>${photoCell}
+                     </tr></table>`
+                  : headerHtml;
+                const pageBreak = isFirstDoc ? '' : '<div style="page-break-before:always"></div>';
+                return `${pageBreak}<div class="page"><div class="body">${headerTable}${bodyHtml}</div></div>`;
+              }
+
+              const doc1Html = buildDocHtml(cleanResult, true, true);
+              const doc2Html = lebenslaufResult ? buildDocHtml(lebenslaufResult, !!profilePhotoUrl, false) : '';
+              const photosSection = photosHtml
+                ? `<div class="page"><div class="body">${photosHtml}</div></div>`
                 : '';
-              const headerTable = profilePhotoUrl
-                ? `<table style="width:100%;border-collapse:collapse;margin-bottom:0"><tr>
-                     <td style="vertical-align:top;border:none">${headerHtml}</td>${photoCell}
-                   </tr></table>`
-                : headerHtml;
+
               w.document.write(`<html><head><title>${tool.documentTitleDe}</title><meta charset="utf-8">
                 <style>
                   *{box-sizing:border-box;margin:0;padding:0}
                   body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
-                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c}
+                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;margin-bottom:20px}
                   .body{padding:48px 52px;font-size:13px;line-height:1.85;color:#1a1a1a}
                   @media print{
                     @page{margin:0;size:A4 portrait}
                     body{background:#fff;padding:12mm 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-                    .page{box-shadow:none;max-width:100%;width:100%;margin:0}
+                    .page{box-shadow:none;max-width:100%;width:100%;margin:0;margin-bottom:0}
                   }
                 </style></head>
-                <body><div class="page"><div class="body">
-                ${headerTable}${bodyHtml}${photosHtml}
-                </div></div></body></html>`);
+                <body>${doc1Html}${doc2Html}${photosSection}</body></html>`);
               w.document.close();
               setTimeout(() => w.print(), 800);
             }}
