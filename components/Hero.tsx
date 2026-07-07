@@ -32,7 +32,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
               .split(/\.\s+/)
               .map((line: string, i: number, arr: string[]) => (
                 <span key={i}>
-                  <span className={i === arr.length - 1 ? "text-cream-muted" : ""}>
+                  <span className={i === arr.length - 1 ? "text-swiss-gold whitespace-nowrap" : ""}>
                     {line}{i < arr.length - 1 ? "." : ""}
                   </span>
                   {i < arr.length - 1 && <br />}
