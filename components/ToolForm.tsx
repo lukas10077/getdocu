@@ -346,6 +346,15 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       if (field.type === "address") {
         const p = getAddressParts(field.key);
         if (!p.street.trim() || !p.city.trim()) newErrors[field.key] = "Pflichtfeld";
+      } else if (field.key === "birthDate") {
+        // Geburtsdatum: nur ungültig wenn leer ODER Jahr = aktuelles Jahr (= nicht verändert)
+        const val = values[field.key]?.trim();
+        if (!val) {
+          newErrors[field.key] = "Pflichtfeld";
+        } else {
+          const year = new Date(val).getFullYear();
+          if (year >= new Date().getFullYear()) newErrors[field.key] = "Pflichtfeld";
+        }
       } else if (!values[field.key]?.trim()) {
         newErrors[field.key] = "Pflichtfeld";
       }
@@ -526,7 +535,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
             {isCV ? renderCVDisplay(cleanResult, true) : (() => {
               const paras = cleanResult.split(/\n\n+/);
-              const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
+              const isSubject = (p: string) => ((t: string) => { const l = t.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return !t.includes('\n') && t.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(p.trim());
               const isDate    = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
               const isClose   = (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
               const pStyle = (p: string): React.CSSProperties => ({
@@ -601,7 +610,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               function renderP(p: string): string {
                 const cleaned = p.trim().replace(/^BETREFF:\s*/i, '');
                 const esc = cleaned.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(cleaned);
+                const isSubject = ((t: string) => { const l = t.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return !t.includes('\n') && t.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(cleaned);
                 const isDate = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
                 const isClose = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
                 let s = 'margin:0 0 1.2em 0;white-space:pre-line;font-size:13px;line-height:1.85;';
@@ -708,7 +717,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div style={{ background: "#faf8f4", padding: "40px 48px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
             {(() => {
               const paras = previewText.split(/\n\n+/).map(p => p.replace(/^BETREFF:\s*/i, ''));
-              const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
+              const isSubject = (p: string) => ((t: string) => { const l = t.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return !t.includes('\n') && t.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(p.trim());
               const header = paras.slice(0, 2);
               const body   = paras.slice(2);
               return (
