@@ -412,7 +412,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         {lebenslaufResult && (
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Bewerbungsschreiben</p>
         )}
-        <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
+        <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
           <div style={{ background: "#faf8f4", padding: isCV ? "36px 44px 36px 48px" : "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
             {isCV ? renderCVDisplay(cleanResult, true) : (() => {
@@ -452,9 +452,9 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         {lebenslaufResult && (
           <div className="mt-6">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Lebenslauf</p>
-            <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
+            <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
               <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
-              <div style={{ background: "#faf8f4", padding: "36px 44px 36px 48px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+              <div style={{ background: "#faf8f4", padding: "36px 44px 36px 48px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
                 {renderCVDisplay(lebenslaufResult, false)}
               </div>
             </div>
@@ -559,15 +559,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
                   .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;margin-bottom:20px}
                   .body{font-size:13px;line-height:1.85;color:#1a1a1a}
-                  .stripe{display:none}
                   @media print{
                     @page{margin:0;size:A4 portrait}
                     body{background:#fff;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-                    .stripe{display:block;position:fixed;left:0;top:0;bottom:0;width:4px;background:#c9a84c}
+                    body::before{content:'';position:fixed;left:0;top:0;width:4px;height:100vh;background:#c9a84c;-webkit-print-color-adjust:exact;print-color-adjust:exact}
                     .page{box-shadow:none;max-width:100%;width:100%;margin:0;border-left:none}
                   }
                 </style></head>
-                <body><div class="stripe"></div>${doc1Html}${doc2Html}${photosSection}</body></html>`);
+                <body>${doc1Html}${doc2Html}${photosSection}</body></html>`);
               w.document.close();
               setTimeout(() => w.print(), 800);
             }}
