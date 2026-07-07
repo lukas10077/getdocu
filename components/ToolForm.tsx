@@ -105,6 +105,20 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const photoInputRef = useRef<HTMLInputElement>(null);
   const hasFetched = useRef(false);
 
+  // Telefon-Vorwahl
+  const PHONE_PREFIXES = [
+    { code: "CH", prefix: "+41" }, { code: "DE", prefix: "+49" }, { code: "AT", prefix: "+43" },
+    { code: "FR", prefix: "+33" }, { code: "IT", prefix: "+39" }, { code: "ES", prefix: "+34" },
+    { code: "NL", prefix: "+31" }, { code: "BE", prefix: "+32" }, { code: "PT", prefix: "+351" },
+    { code: "GB", prefix: "+44" }, { code: "US", prefix: "+1"  }, { code: "CA", prefix: "+1"  },
+    { code: "AU", prefix: "+61" }, { code: "NZ", prefix: "+64" }, { code: "PL", prefix: "+48" },
+    { code: "CZ", prefix: "+420"}, { code: "HU", prefix: "+36" }, { code: "RO", prefix: "+40" },
+    { code: "SE", prefix: "+46" }, { code: "NO", prefix: "+47" }, { code: "DK", prefix: "+45" },
+    { code: "TR", prefix: "+90" }, { code: "RU", prefix: "+7"  }, { code: "UA", prefix: "+380"},
+  ];
+  const defaultPrefix = PHONE_PREFIXES.find(p => p.code === (country?.code ?? "CH"))?.prefix ?? "+41";
+  const [phonePrefix, setPhonePrefix] = useState(defaultPrefix);
+
   // Entry-Builder: Arbeitsstellen + Ausbildung
   interface WorkEntry { role: string; company: string; city: string; from: string; to: string; }
   interface EduEntry  { title: string; institution: string; from: string; to: string; }
@@ -141,6 +155,11 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     const base = { ...values };
     if (hasWorkHistory) base.workHistory = serializeWork();
     if (hasEducation)   base.education   = serializeEdu();
+    // Telefon: Vorwahl + Nummer kombinieren
+    const hasPhone = tool.fields.some(f => f.type === "tel");
+    if (hasPhone && base.phone?.trim()) {
+      base.phone = `${phonePrefix} ${base.phone.trim()}`;
+    }
     return base;
   }
 
@@ -1055,6 +1074,27 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     <option value="">{selectPlaceholder}</option>
                     {(field.countryOptions?.[country?.code ?? ""] ?? field.options ?? []).map((opt) => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
+                ) : field.type === "tel" ? (
+                  <div className="flex gap-2">
+                    <select
+                      value={phonePrefix}
+                      onChange={e => setPhonePrefix(e.target.value)}
+                      className={`${inputClass} border-ink-700 shrink-0`}
+                      style={{ width: 90 }}
+                    >
+                      {PHONE_PREFIXES.map(p => (
+                        <option key={p.code} value={p.prefix}>{p.code} {p.prefix}</option>
+                      ))}
+                    </select>
+                    <input
+                      id={field.key}
+                      type="tel"
+                      placeholder="79 123 45 67"
+                      value={values[field.key] ?? ""}
+                      onChange={e => handleFieldChange(field.key, e.target.value)}
+                      className={`${inputClass} flex-1 ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
+                    />
+                  </div>
                 ) : field.type === "textarea" ? (
                   <textarea
                     id={field.key}
