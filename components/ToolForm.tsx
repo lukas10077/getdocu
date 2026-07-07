@@ -530,7 +530,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 return nameHtml + bodyHtml;
               }
 
-              function buildDocHtml(docText: string, withPhoto: boolean, isFirstDoc: boolean, isCVDoc: boolean): string {
+              function buildDocHtml(docText: string, withPhoto: boolean, isFirstDoc: boolean, isCVDoc: boolean, hasNextPage?: boolean): string {
                 const content = isCVDoc ? renderCVHtml(docText, withPhoto) : (() => {
                   const paras = docText.split(/\n\n+/);
                   const headerHtml = paras.slice(0, 2).map(renderP).join('');
@@ -542,13 +542,13 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     ? `<table style="width:100%;border-collapse:collapse;margin-bottom:0"><tr><td style="vertical-align:top;border:none">${headerHtml}</td>${photoCell}</tr></table>${bodyHtml}`
                     : headerHtml + bodyHtml;
                 })();
-                const pageBreakStyle = isFirstDoc ? '' : 'page-break-before:always;';
+                const pageBreakStyle = (isFirstDoc && hasNextPage) ? 'page-break-after:always;' : '';
                 const padding = isCVDoc ? '14mm 18mm 14mm 20mm' : '16mm 20mm 16mm 22mm';
-                return `<div class="page" style="${pageBreakStyle}"><div class="body" style="padding:${padding};font-size:13px;line-height:1.85;color:#1a1a1a;height:100%;box-sizing:border-box">${content}</div></div>`;
+                return `<div class="page" style="${pageBreakStyle}"><div class="body" style="padding:${padding};font-size:13px;line-height:1.85;color:#1a1a1a">${content}</div></div>`;
               }
 
-              const doc1Html = buildDocHtml(cleanResult, true, true, isCV);
-              const doc2Html = lebenslaufResult ? buildDocHtml(lebenslaufResult, false, false, true) : '';
+              const doc1Html = buildDocHtml(cleanResult, true, true, isCV, !!lebenslaufResult);
+              const doc2Html = lebenslaufResult ? buildDocHtml(lebenslaufResult, false, false, true, false) : '';
               const photosSection = photosHtml
                 ? `<div class="page"><div class="body">${photosHtml}</div></div>`
                 : '';
@@ -558,14 +558,16 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   *{box-sizing:border-box;margin:0;padding:0}
                   body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
                   .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;margin-bottom:20px}
-                  .body{padding:48px 52px;font-size:13px;line-height:1.85;color:#1a1a1a}
+                  .body{font-size:13px;line-height:1.85;color:#1a1a1a}
+                  .stripe{display:none}
                   @media print{
                     @page{margin:0;size:A4 portrait}
                     body{background:#fff;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-                    .page{box-shadow:none;max-width:100%;width:100%;margin:0;height:297mm;border-left:none!important;background:linear-gradient(to right,#c9a84c 4px,#fff 4px)!important;overflow:hidden}
+                    .stripe{display:block;position:fixed;left:0;top:0;bottom:0;width:4px;background:#c9a84c}
+                    .page{box-shadow:none;max-width:100%;width:100%;margin:0;border-left:none}
                   }
                 </style></head>
-                <body>${doc1Html}${doc2Html}${photosSection}</body></html>`);
+                <body><div class="stripe"></div>${doc1Html}${doc2Html}${photosSection}</body></html>`);
               w.document.close();
               setTimeout(() => w.print(), 800);
             }}
