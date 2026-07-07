@@ -10,11 +10,9 @@
     "languages": "Sprache"
   },
   "hero": {
-    "fromPrice": "✓ ab {price}",
-    "imageAlt": "Professionelles Dokument mit Stift",
     "eyebrow": "Gemacht für die Schweiz",
-    "headline": "Wichtige Dokumente. Einfach erstellt.",
-    "subheadline": "GetDocu hilft dir, professionelle Briefe und Dokumente zu erstellen — in deiner Sprache erklärt, für dein Land optimiert.",
+    "headline": "Bewerbung. Kündigung. Für dich — in 10 Sekunden.",
+    "subheadline": "Professionelle Briefe, die deine Chancen erhöhen — in deiner Sprache, für dein Land optimiert.",
     "cta": "Dokument wählen",
     "ctaSecondary": "So funktioniert's",
     "badges": [
@@ -30,16 +28,10 @@
     "back": "← Zurück",
     "trustPills": [
       "🔒 Daten sofort gelöscht",
-      "⚡ Dokument in 20 Sek.",
+      "⚡ Dokument in 10 Sek.",
       "💳 Sicher via Stripe"
     ],
     "items": {
-      "komplettbewerbung": {
-        "title": "Komplettbewerbung",
-        "description": "Bewerbungsschreiben + Lebenslauf in einem — professionell, aufeinander abgestimmt, sofort einsatzbereit.",
-        "uploadLabel": "Bestehenden Lebenslauf hochladen (optional)",
-        "uploadHint": "Hast du einen alten Lebenslauf? Lade ihn hoch — als Foto, PDF oder Word-Datei. Wir lesen ihn automatisch und integrieren ihn in den neuen Lebenslauf."
-      },
       "mietbewerbung": {
         "title": "Bewerbung Wohnung",
         "description": "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, nach lokalem Standard."
@@ -155,7 +147,6 @@
     ]
   },
   "footer": {
-    "yourCountry": "dein Land",
     "tagline": "Wichtige Dokumente für {countryName} — einfach erstellt.",
     "impressum": "Impressum",
     "datenschutz": "Datenschutzerklärung",
