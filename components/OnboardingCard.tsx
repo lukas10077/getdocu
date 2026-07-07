@@ -8,6 +8,27 @@ import { COUNTRIES, Country } from "@/lib/countries";
 
 const STORAGE_KEY = "getdocu_onboarded";
 
+function CountryRow({ c, highlight, onClick }: { c: Country; highlight: boolean; onClick: (c: Country) => void }) {
+  return (
+    <button
+      onClick={() => onClick(c)}
+      className={`flex w-full items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm transition hover:bg-ink-800 active:scale-[0.98] ${
+        highlight
+          ? "bg-ink-800 font-semibold text-swiss-gold ring-1 ring-swiss-gold/30"
+          : "text-cream-muted hover:text-cream"
+      }`}
+    >
+      <span className="flex-shrink-0 text-base leading-none">{c.flag}</span>
+      <span className="truncate">{c.name}</span>
+      {highlight && (
+        <svg className="ml-auto flex-shrink-0" width="10" height="8" viewBox="0 0 10 8" fill="none">
+          <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )}
+    </button>
+  );
+}
+
 function readCookie(name: string): string | null {
   if (typeof document === "undefined") return null;
   const m = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=([^;]+)`));
@@ -114,27 +135,36 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
       {/* ── Step 1: Language ─────────────────────────────────────────── */}
       {step === "language" && (
         <div className="grid grid-cols-2 gap-0.5 p-3">
-          {locales.map((l) => {
-            const isActive = l === locale;
-            return (
-              <button
-                key={l}
-                onClick={() => selectLanguage(l)}
-                className={`flex items-center gap-2.5 rounded-sm px-3 py-2.5 text-left text-sm transition hover:bg-ink-800 active:scale-[0.98] ${
-                  isActive
-                    ? "bg-ink-800 font-semibold text-swiss-gold ring-1 ring-swiss-gold/30"
-                    : "text-cream"
-                }`}
-              >
-                <span className="truncate">{localeMeta[l].nativeName}</span>
-                {isActive && (
-                  <svg className="ml-auto flex-shrink-0" width="10" height="8" viewBox="0 0 10 8" fill="none">
-                    <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )}
-              </button>
-            );
-          })}
+          {(() => {
+            const priority: Locale[] = ["en", "de", "es", "pt", "fr", "it"];
+            const rest = locales.filter((l) => l !== locale && !priority.includes(l));
+            const sorted = [
+              locale,
+              ...priority.filter((l) => l !== locale),
+              ...rest,
+            ];
+            return sorted.map((l) => {
+              const isActive = l === locale;
+              return (
+                <button
+                  key={l}
+                  onClick={() => selectLanguage(l)}
+                  className={`flex items-center gap-2.5 rounded-sm px-3 py-2.5 text-left text-sm transition hover:bg-ink-800 active:scale-[0.98] ${
+                    isActive
+                      ? "bg-ink-800 font-semibold text-swiss-gold ring-1 ring-swiss-gold/30"
+                      : "text-cream"
+                  }`}
+                >
+                  <span className="truncate">{localeMeta[l].nativeName}</span>
+                  {isActive && (
+                    <svg className="ml-auto flex-shrink-0" width="10" height="8" viewBox="0 0 10 8" fill="none">
+                      <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  )}
+                </button>
+              );
+            });
+          })()}
         </div>
       )}
 
@@ -152,43 +182,40 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
             />
           </div>
           <div className="max-h-72 overflow-y-auto px-3 pb-3">
+            {/* Erkanntes / gewähltes Land zuerst pinnen */}
+            {(() => {
+              const pinned = detectedCountry ?? country ?? null;
+              const pinnedInFiltered = pinned && filtered.find((c) => c.code === pinned.code);
+              return pinnedInFiltered ? (
+                <div className="mb-3">
+                  <p className="mb-1.5 px-2 text-[10px] font-medium uppercase tracking-widest text-cream-subtle">
+                    Erkannt
+                  </p>
+                  <CountryRow c={pinnedInFiltered} highlight onClick={selectCountry} />
+                </div>
+              ) : null;
+            })()}
+
+            {/* Normale Gruppen (ohne gepinntes Land) */}
             {[
               { label: "Europa", list: europe },
               { label: "Amerika", list: americas },
               { label: "Weitere", list: other },
-            ].map(({ label, list }) =>
-              list.length === 0 ? null : (
+            ].map(({ label, list }) => {
+              const pinned = detectedCountry ?? country ?? null;
+              const items = pinned ? list.filter((c) => c.code !== pinned.code) : list;
+              return items.length === 0 ? null : (
                 <div key={label} className="mb-3">
                   <p className="mb-1.5 px-2 text-[10px] font-medium uppercase tracking-widest text-cream-subtle">
                     {label}
                   </p>
-                  {list.map((c) => {
-                    const isDetected = detectedCountry?.code === c.code;
-                    const isSelected = country?.code === c.code;
-                    const highlight = isDetected || isSelected;
-                    return (
-                      <button
-                        key={c.code}
-                        onClick={() => selectCountry(c)}
-                        className={`flex w-full items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm transition hover:bg-ink-800 active:scale-[0.98] ${
-                          highlight
-                            ? "bg-ink-800 font-semibold text-swiss-gold ring-1 ring-swiss-gold/30"
-                            : "text-cream-muted hover:text-cream"
-                        }`}
-                      >
-                        <span className="flex-shrink-0 text-base leading-none">{c.flag}</span>
-                        <span className="truncate">{c.name}</span>
-                        {highlight && (
-                          <svg className="ml-auto flex-shrink-0" width="10" height="8" viewBox="0 0 10 8" fill="none">
-                            <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        )}
-                      </button>
-                    );
-                  })}
+                  {items.map((c) => (
+                    <CountryRow key={c.code} c={c} highlight={false} onClick={selectCountry} />
+                  ))}
                 </div>
-              )
-            )}
+              );
+            })}
+
             {filtered.length === 0 && (
               <p className="py-8 text-center text-sm text-cream-subtle">Kein Land gefunden</p>
             )}
