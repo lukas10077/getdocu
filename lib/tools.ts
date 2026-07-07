@@ -305,9 +305,8 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "targetJob",       label: "Für welche Art Stelle bewirbst du dich?", type: "text",     required: false,
         placeholderKey: "targetJobExample",
         section: "Fokus" },
-      { key: "improvements",    label: "Worauf soll der Fokus gelegt werden?",    type: "textarea", required: false,
-        placeholderKey: "cvImprovements",
-        hint: "Kein Problem, wenn du nichts weisst — wir optimieren automatisch." },
+      { key: "improvements",    label: "Hast du spezielle Wünsche für den Lebenslauf?", type: "textarea", required: false,
+        placeholderKey: "cvImprovements" },
     ],
   },
 
@@ -410,8 +409,8 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
         placeholderKey: "companyResearch" },
       { key: "whyYou",          label: "Warum bist du die richtige Person?",   type: "textarea", required: true,
         placeholderKey: "whyYou" },
-      { key: "improvements",    label: "Fokus für den Lebenslauf (optional)",  type: "textarea", required: false,
-        hint: "Was soll im Lebenslauf besonders hervorgehoben werden? Kein Problem, wenn du nichts weisst — wir optimieren ihn automatisch." },
+      { key: "improvements",    label: "Hast du spezielle Wünsche für den Lebenslauf?", type: "textarea", required: false,
+        placeholderKey: "cvImprovements" },
     ],
   },
 

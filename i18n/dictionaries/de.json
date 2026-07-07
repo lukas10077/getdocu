@@ -173,7 +173,7 @@
     "desiredOutcome": "z.B. vollständige Rückerstattung, kostenlose Reparatur, Ersatzlieferung, …",
     "existingCV": "Füge den kompletten Text deines Lebenslaufs hier ein.",
     "targetJobExample": "z.B. Sachbearbeiter Buchhaltung, Pflegefachperson, Lagerist, …",
-    "cvImprovements": "z. B. Ich suche meine erste Stelle. / Ich hatte eine Pause.",
+    "cvImprovements": "Was soll im Lebenslauf besonders hervorgehoben werden? Kein Problem, wenn du nichts weisst — wir optimieren ihn automatisch.",
     "concernDetails": "Beschreibe dein Anliegen so präzise wie möglich."
   },
   "fieldLabels": {
@@ -220,7 +220,7 @@
     "demand": "Was verlangst du?",
     "existingCV": "Dein aktueller Lebenslauf (als Text)",
     "targetJob": "Für welche Art Stelle bewirbst du dich?",
-    "improvements": "Worauf soll der Fokus gelegt werden?",
+    "improvements": "Hast du spezielle Wünsche für den Lebenslauf?",
     "insuranceName": "Name der Krankenkasse",
     "policyNumber": "Versicherungs-/Policennummer",
     "topic": "Thema des Briefes",
