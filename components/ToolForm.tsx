@@ -105,6 +105,45 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const photoInputRef = useRef<HTMLInputElement>(null);
   const hasFetched = useRef(false);
 
+  // Entry-Builder: Arbeitsstellen + Ausbildung
+  interface WorkEntry { role: string; company: string; city: string; from: string; to: string; }
+  interface EduEntry  { title: string; institution: string; from: string; to: string; }
+  const hasWorkHistory = tool.fields.some(f => f.key === "workHistory");
+  const hasEducation   = tool.fields.some(f => f.key === "education");
+  const [workEntries, setWorkEntries] = useState<WorkEntry[]>([{ role: "", company: "", city: "", from: "", to: "" }]);
+  const [eduEntries,  setEduEntries]  = useState<EduEntry[]>([{ title: "", institution: "", from: "", to: "" }]);
+  const YEAR_NOW = new Date().getFullYear();
+  const YEARS = Array.from({ length: YEAR_NOW - 1959 }, (_, i) => String(YEAR_NOW - i));
+
+  function serializeWork(): string {
+    return workEntries
+      .filter(e => e.role.trim() || e.company.trim())
+      .map(e => {
+        const range = e.from ? `${e.from} – ${e.to || "Bis heute"}` : (e.to || "");
+        const parts = [e.role, e.company, e.city].filter(Boolean).join(", ");
+        return range ? `${range}: ${parts}` : parts;
+      })
+      .join("\n");
+  }
+
+  function serializeEdu(): string {
+    return eduEntries
+      .filter(e => e.title.trim() || e.institution.trim())
+      .map(e => {
+        const range = e.from ? `${e.from} – ${e.to || "Bis heute"}` : (e.to || "");
+        const parts = [e.title, e.institution].filter(Boolean).join(", ");
+        return range ? `${range}: ${parts}` : parts;
+      })
+      .join("\n");
+  }
+
+  function getEffectiveValues(): Record<string, string> {
+    const base = { ...values };
+    if (hasWorkHistory) base.workHistory = serializeWork();
+    if (hasEducation)   base.education   = serializeEdu();
+    return base;
+  }
+
   function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -251,6 +290,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     if (!validate()) return;
     if (!withdrawalConsent) { setWithdrawalError(true); return; }
     setWithdrawalError(false);
+    const effectiveValues = getEffectiveValues();
     setStage("previewing");
     try {
       const res = await fetch("/api/preview", {
@@ -258,7 +298,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           toolSlug: tool.slug,
-          formData: values,
+          formData: effectiveValues,
           // Für Galerie-Tools: keine Bilder an Claude senden
           imageBase64: tool.supportsPhotoGallery ? null : imageBase64,
           imageMimeType,
@@ -275,9 +315,10 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   }
 
   async function proceedToCheckout() {
+    const effectiveValues = getEffectiveValues();
     setStage("redirecting");
     sessionStorage.setItem(storageKey, JSON.stringify({
-      ...values,
+      ...effectiveValues,
       __imageBase64: tool.supportsPhotoGallery ? "" : (imageBase64 ?? ""),
       __imageMimeType: imageMimeType,
       __incomeCurrency: incomeCurrency,
@@ -891,7 +932,120 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   {getLabel(field)}{field.appendCurrency && <span className="ml-1 text-cream-muted">({country?.currency ?? "CHF"})</span>}
                   {field.required && <span className="ml-1 text-swiss-gold">*</span>}
                 </label>
-                {field.type === "select" ? (
+                {field.key === "workHistory" ? (
+                  <div className="space-y-3">
+                    {workEntries.map((entry, i) => (
+                      <div key={i} className="rounded-sm border border-ink-700 bg-ink-950 p-3">
+                        <div className="mb-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                          <input
+                            type="text"
+                            placeholder="Stelle / Funktion"
+                            value={entry.role}
+                            onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, role: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700`}
+                          />
+                          <input
+                            type="text"
+                            placeholder="Firma"
+                            value={entry.company}
+                            onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, company: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700`}
+                          />
+                          <input
+                            type="text"
+                            placeholder="Ort (optional)"
+                            value={entry.city}
+                            onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, city: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700 sm:col-span-1 col-span-2`}
+                          />
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <select
+                            value={entry.from}
+                            onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, from: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700 flex-1`}
+                          >
+                            <option value="">Von (Jahr)</option>
+                            {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+                          </select>
+                          <span className="text-cream-subtle">–</span>
+                          <select
+                            value={entry.to}
+                            onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, to: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700 flex-1`}
+                          >
+                            <option value="">Bis heute</option>
+                            {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+                          </select>
+                          {workEntries.length > 1 && (
+                            <button type="button" onClick={() => setWorkEntries(prev => prev.filter((_, j) => j !== i))}
+                              className="shrink-0 rounded-sm border border-ink-700 px-2 py-1 text-xs text-cream-subtle hover:border-red-700 hover:text-red-400 transition">✕</button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => setWorkEntries(prev => [...prev, { role: "", company: "", city: "", from: "", to: "" }])}
+                      className="flex items-center gap-2 text-xs text-swiss-gold hover:text-swiss-goldDark transition"
+                    >
+                      <span className="text-base leading-none">+</span> Weitere Stelle hinzufügen
+                    </button>
+                  </div>
+                ) : field.key === "education" ? (
+                  <div className="space-y-3">
+                    {eduEntries.map((entry, i) => (
+                      <div key={i} className="rounded-sm border border-ink-700 bg-ink-950 p-3">
+                        <div className="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                          <input
+                            type="text"
+                            placeholder="Abschluss / Kurs"
+                            value={entry.title}
+                            onChange={e => setEduEntries(prev => prev.map((x, j) => j === i ? { ...x, title: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700`}
+                          />
+                          <input
+                            type="text"
+                            placeholder="Schule / Institution"
+                            value={entry.institution}
+                            onChange={e => setEduEntries(prev => prev.map((x, j) => j === i ? { ...x, institution: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700`}
+                          />
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <select
+                            value={entry.from}
+                            onChange={e => setEduEntries(prev => prev.map((x, j) => j === i ? { ...x, from: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700 flex-1`}
+                          >
+                            <option value="">Von (Jahr)</option>
+                            {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+                          </select>
+                          <span className="text-cream-subtle">–</span>
+                          <select
+                            value={entry.to}
+                            onChange={e => setEduEntries(prev => prev.map((x, j) => j === i ? { ...x, to: e.target.value } : x))}
+                            className={`${inputClass} border-ink-700 flex-1`}
+                          >
+                            <option value="">Bis heute</option>
+                            {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+                          </select>
+                          {eduEntries.length > 1 && (
+                            <button type="button" onClick={() => setEduEntries(prev => prev.filter((_, j) => j !== i))}
+                              className="shrink-0 rounded-sm border border-ink-700 px-2 py-1 text-xs text-cream-subtle hover:border-red-700 hover:text-red-400 transition">✕</button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => setEduEntries(prev => [...prev, { title: "", institution: "", from: "", to: "" }])}
+                      className="flex items-center gap-2 text-xs text-swiss-gold hover:text-swiss-goldDark transition"
+                    >
+                      <span className="text-base leading-none">+</span> Weitere Ausbildung hinzufügen
+                    </button>
+                  </div>
+                ) : field.type === "select" ? (
                   <select
                     id={field.key}
                     value={values[field.key] ?? ""}
