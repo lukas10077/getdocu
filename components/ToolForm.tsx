@@ -427,9 +427,9 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
                 const isDate = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
                 const isClose = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
-                let s = 'margin:0 0 1.2em 0;white-space:pre-line;';
+                let s = 'margin:0 0 1.2em 0;white-space:pre-line;font-size:13px;line-height:1.85;';
                 if (isDate || isClose) s += 'margin-top:1.8em;';
-                if (isSubject) s += 'font-weight:700;font-size:14px;letter-spacing:0.03em;';
+                if (isSubject) s += 'font-weight:700;letter-spacing:0.03em;';
                 return `<p style="${s}">${esc}</p>`;
               }
               const paras = cleanResult.split(/\n\n+/);
