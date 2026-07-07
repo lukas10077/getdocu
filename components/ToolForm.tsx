@@ -469,47 +469,6 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             Als PDF herunterladen
           </button>
 
-          {/* Word */}
-          <button
-            onClick={() => {
-              function renderWP(p: string): string {
-                const esc = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-                const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
-                let s = `margin:0 0 10pt 0;font-size:11pt;`;
-                if (isSubject) s += 'font-weight:bold;';
-                return `<p style="${s}">${esc}</p>`;
-              }
-              const wParas = cleanResult.split(/\n\n+/);
-              const wHeader = wParas.slice(0, 2).map(renderWP).join('');
-              const wBody   = wParas.slice(2).map(renderWP).join('');
-              const headerBlock = profilePhotoUrl
-                ? `<table cellpadding="0" cellspacing="0" style="width:100%;border:none;border-collapse:collapse;margin-bottom:0;table-layout:fixed">
-                     <tr>
-                       <td valign="top" style="border:none;padding-right:16pt">${wHeader}</td>
-                       <td valign="top" style="border:none;width:120pt;text-align:right">
-                         <img src="${profilePhotoUrl}" width="105" height="132" style="width:105pt;height:132pt;display:block;margin-left:auto" />
-                       </td>
-                     </tr>
-                   </table>`
-                : wHeader;
-              const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset="utf-8">
-                <style>
-                  body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.8;color:#111;margin:2.5cm 2.5cm}
-                  p{margin:0 0 1.1em 0}
-                  td{vertical-align:top;border:none}
-                </style></head><body>${headerBlock}${wBody}</body></html>`;
-              const blob = new Blob(['﻿', html], { type: 'application/msword' });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              a.href = url;
-              a.download = `${tool.documentTitleDe.replace(/\s+/g,'_')}.doc`;
-              a.click();
-              URL.revokeObjectURL(url);
-            }}
-            className="border border-ink-700 px-6 py-3 text-sm font-medium uppercase tracking-widest text-cream-muted transition hover:border-swiss-gold/50 hover:text-cream"
-          >
-            Als Word herunterladen
-          </button>
         </div>
       </div>
     );
