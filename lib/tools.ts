@@ -279,10 +279,15 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     systemPrompt:
       "Du bist Karriereberater mit Spezialisierung auf den Schweizer Arbeitsmarkt. " +
       "Analysiere den eingereichten Lebenslauf und erstelle eine überarbeitete, verbesserte Version " +
-      "auf Deutsch. Schweizer Lebenslauf-Standard: prägnant (max. 2 Seiten), klare Struktur " +
+      "auf Deutsch. Schweizer Lebenslauf-Standard: prägnant, maximal eine Seite, klare Struktur " +
       "(Persönliche Daten / Berufserfahrung rückwärts chronologisch / Ausbildung / Sprachen / " +
       "Weiterbildungen & Zertifikate / Hobbys optional). Kein Foto-Pflicht erwähnen. " +
-      "Gib den vollständigen, überarbeiteten Lebenslauf als Text aus. Keine Erklärungen, nur das Dokument.",
+      "Gib den vollständigen, überarbeiteten Lebenslauf als Text aus. Keine Erklärungen, nur das Dokument.\n\n" +
+      "AUSGABEFORMAT LEBENSLAUF — ZWINGEND:\n" +
+      "Erster Block: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4).\n" +
+      "Sektionen in GROSSBUCHSTABEN (z.B. BERUFSERFAHRUNG, AUSBILDUNG, SPRACHEN, KENNTNISSE).\n" +
+      "Pro Stelle: Berufsbezeichnung (Zeile 1), Firma und Ort (Zeile 2), Zeitraum wie '2020 – 2023' (Zeile 3), kurze Beschreibung (Zeile 4).\n" +
+      "Kein Markdown, keine Bindestriche als Listenpunkte, keine --- Trennlinien.",
     fields: [
       { key: "targetJob",    label: "Für welche Art Stelle bewirbst du dich?", type: "text",  required: false,
         placeholderKey: "targetJobExample" },
@@ -367,8 +372,11 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Vollständiger, professioneller Lebenslauf nach Schweizer Standard: Persönliche Daten / " +
       "Berufserfahrung rückwärts chronologisch / Ausbildung / Sprachen / Weiterbildungen & Zertifikate. " +
       "Prägnant, übersichtlich, auf die angegebene Stelle ausgerichtet.\n\n" +
-      "WICHTIG: Kein Markdown, keine Erklärungen, keine Trennlinien mit --- oder ===. " +
-      "Nur die beiden Dokumente mit dem Trenner ===LEBENSLAUF=== dazwischen.",
+      "LEBENSLAUF AUSGABEFORMAT — ZWINGEND:\n" +
+      "Erster Block: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4).\n" +
+      "Sektionen in GROSSBUCHSTABEN (z.B. BERUFSERFAHRUNG, AUSBILDUNG, SPRACHEN, KENNTNISSE).\n" +
+      "Pro Stelle: Berufsbezeichnung (Zeile 1), Firma und Ort (Zeile 2), Zeitraum wie '2020 – 2023' (Zeile 3), kurze Beschreibung (Zeile 4).\n" +
+      "Lebenslauf maximal eine Seite. Kein Markdown, keine Bindestriche als Listenpunkte, keine --- Trennlinien.",
     fields: [
       { key: "firstName",       label: "Vorname",                              type: "text",     required: true,  section: "Über dich" },
       { key: "lastName",        label: "Nachname",                             type: "text",     required: true  },

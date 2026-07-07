@@ -342,6 +342,53 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     const bundleSepIdx = fullResult.search(/===LEBENSLAUF===/);
     const cleanResult = bundleSepIdx >= 0 ? fullResult.slice(0, bundleSepIdx).trim() : fullResult;
     const lebenslaufResult = bundleSepIdx >= 0 ? fullResult.slice(bundleSepIdx).replace(/^===LEBENSLAUF===\n*/, "").trim() : null;
+    const isCV = tool.slug === "lebenslauf";
+
+    // CV-Rendering für Lebenslauf-Tool (mit Foto) und Komplettbewerbung-Lebenslauf (ohne Foto)
+    const renderCVDisplay = (cvText: string, withPhoto: boolean): React.ReactNode => {
+      const cvParas = cvText.split(/\n\n+/);
+      const isSec = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s&]{3,}$/.test(p.trim()) && !p.includes('\n');
+      const firstLines = (cvParas[0] ?? '').split('\n').filter(Boolean);
+      const bodyParas = cvParas.slice(1);
+      return (
+        <>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
+            <div>
+              {firstLines[0] && <p style={{ fontSize: 15, fontWeight: 700, margin: '0 0 5px', letterSpacing: '0.01em' }}>{firstLines[0]}</p>}
+              {firstLines[1] && <p style={{ fontSize: 12, color: '#666', margin: '0 0 5px' }}>{firstLines[1]}</p>}
+              {firstLines.length > 2 && <p style={{ fontSize: 11.5, color: '#555', lineHeight: 1.6, margin: 0, whiteSpace: 'pre-line' }}>{firstLines.slice(2).join('\n')}</p>}
+            </div>
+            {withPhoto && profilePhotoUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 88, height: 110, objectFit: 'cover', borderRadius: 2, flexShrink: 0, boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }} />
+            )}
+          </div>
+          {bodyParas.map((p, i) => {
+            if (isSec(p)) return (
+              <div key={i} style={{ marginTop: 18, paddingTop: 12, borderTop: '0.5px solid #d8d5ce' }}>
+                <p style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#888', margin: '0 0 10px' }}>{p.trim()}</p>
+              </div>
+            );
+            const lines = p.split('\n').filter(Boolean);
+            const dateIdx = lines.findIndex(l => /^\d{4}/.test(l.trim()));
+            if (lines.length >= 2 && dateIdx >= 0) {
+              const date = lines[dateIdx];
+              const others = lines.filter((_, j) => j !== dateIdx);
+              return (
+                <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0 16px', marginBottom: 10 }}>
+                  <div>
+                    <p style={{ fontSize: 12, fontWeight: 700, margin: '0 0 5px', color: '#1a1a1a' }}>{others[0]}</p>
+                    {others.slice(1).map((l, j) => <p key={j} style={{ fontSize: 11.5, color: '#555', margin: '0 0 4px' }}>{l}</p>)}
+                  </div>
+                  <span style={{ fontSize: 11, color: '#999', textAlign: 'right' as const, whiteSpace: 'nowrap', paddingTop: 1 }}>{date}</span>
+                </div>
+              );
+            }
+            return <p key={i} style={{ fontSize: 11.5, color: '#444', lineHeight: 1.6, margin: '0 0 8px', whiteSpace: 'pre-line' }}>{p}</p>;
+          })}
+        </>
+      );
+    };
 
     const photosHtml = photos.length > 0
       ? `<div style="margin-top:48px;border-top:1px solid #ddd;padding-top:24px">
@@ -367,8 +414,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         )}
         <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
-          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
-            {(() => {
+          <div style={{ background: "#faf8f4", padding: isCV ? "36px 44px 36px 48px" : "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+            {isCV ? renderCVDisplay(cleanResult, true) : (() => {
               const paras = cleanResult.split(/\n\n+/);
               const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
               const isDate    = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
@@ -407,37 +454,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Lebenslauf</p>
             <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
               <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
-              <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
-                {(() => {
-                  const paras = lebenslaufResult.split(/\n\n+/);
-                  const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
-                  const isDate    = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
-                  const isClose   = (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
-                  const pStyle = (p: string): React.CSSProperties => ({
-                    marginBottom: "1.2em",
-                    marginTop: (isDate(p) || isClose(p)) ? "1.8em" : 0,
-                    fontWeight: isSubject(p) ? 700 : 400,
-                    whiteSpace: "pre-line",
-                  });
-                  const header = paras.slice(0, 1);
-                  const body   = paras.slice(1);
-                  return (
-                    <>
-                      {profilePhotoUrl ? (
-                        <div style={{ display: "flex", gap: 0, marginBottom: 0 }}>
-                          <div style={{ flex: 1, paddingRight: 16 }}>
-                            {header.map((p, i) => <p key={i} style={pStyle(p)}>{p}</p>)}
-                          </div>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 135, height: 168, objectFit: "cover", borderRadius: 2, flexShrink: 0, boxShadow: "0 2px 8px rgba(0,0,0,0.15)", alignSelf: "flex-start" }} />
-                        </div>
-                      ) : (
-                        header.map((p, i) => <p key={i} style={pStyle(p)}>{p}</p>)
-                      )}
-                      {body.map((p, i) => <p key={i + 1} style={pStyle(p)}>{p}</p>)}
-                    </>
-                  );
-                })()}
+              <div style={{ background: "#faf8f4", padding: "36px 44px 36px 48px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+                {renderCVDisplay(lebenslaufResult, false)}
               </div>
             </div>
           </div>
@@ -482,26 +500,55 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 if (isSubject) s += 'font-weight:700;letter-spacing:0.03em;';
                 return `<p style="${s}">${esc}</p>`;
               }
-              function buildDocHtml(docText: string, withPhoto: boolean, isFirstDoc: boolean): string {
-                const paras = docText.split(/\n\n+/);
-                const headerHtml = paras.slice(0, 2).map(renderP).join('');
-                const bodyHtml   = paras.slice(2).map(renderP).join('');
-                const photoCell  = (withPhoto && profilePhotoUrl)
-                  ? `<td style="vertical-align:top;width:150px;padding-left:12px;text-align:right;border:none">
-                       <img src="${profilePhotoUrl}" width="135" height="168" style="width:135px;height:168px;object-fit:cover;border-radius:2px;box-shadow:0 2px 8px rgba(0,0,0,0.15)">
-                     </td>`
+              function renderCVHtml(cvText: string, withPhoto: boolean): string {
+                const cvParas = cvText.split(/\n\n+/);
+                const isSec = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s&]{3,}$/.test(p.trim()) && !p.includes('\n');
+                const esc = (s: string) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                const firstLines = (cvParas[0]||'').split('\n').filter((l: string) => l.trim());
+                const bodyParas = cvParas.slice(1);
+                const photoHtml = (withPhoto && profilePhotoUrl)
+                  ? `<img src="${profilePhotoUrl}" style="width:88px;height:110px;object-fit:cover;border-radius:2px;box-shadow:0 2px 8px rgba(0,0,0,0.15)" alt="">`
                   : '';
-                const headerTable = (withPhoto && profilePhotoUrl)
-                  ? `<table style="width:100%;border-collapse:collapse;margin-bottom:0"><tr>
-                       <td style="vertical-align:top;border:none">${headerHtml}</td>${photoCell}
-                     </tr></table>`
-                  : headerHtml;
-                const pageBreak = isFirstDoc ? '' : '<div style="page-break-before:always"></div>';
-                return `${pageBreak}<div class="page"><div class="body">${headerTable}${bodyHtml}</div></div>`;
+                const nameHtml = `<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+                  <div>
+                    ${firstLines[0]?`<p style="font-size:15px;font-weight:700;margin:0 0 5px;letter-spacing:0.01em">${esc(firstLines[0])}</p>`:''}
+                    ${firstLines[1]?`<p style="font-size:12px;color:#666;margin:0 0 5px">${esc(firstLines[1])}</p>`:''}
+                    ${firstLines.length>2?`<p style="font-size:11.5px;color:#555;line-height:1.6;margin:0">${firstLines.slice(2).map(esc).join('<br>')}</p>`:''}
+                  </div>${photoHtml}
+                </div>`;
+                const bodyHtml = bodyParas.map((p: string) => {
+                  if (isSec(p)) return `<div style="margin-top:18px;padding-top:12px;border-top:0.5px solid #d8d5ce"><p style="font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin:0 0 10px">${esc(p.trim())}</p></div>`;
+                  const lines = p.split('\n').filter((l: string) => l.trim());
+                  const dateIdx = lines.findIndex((l: string) => /^\d{4}/.test(l.trim()));
+                  if (lines.length >= 2 && dateIdx >= 0) {
+                    const date = lines[dateIdx];
+                    const others = lines.filter((_: string, j: number) => j !== dateIdx);
+                    return `<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:10px"><div><p style="font-size:12px;font-weight:700;margin:0 0 5px;color:#1a1a1a">${esc(others[0]||'')}</p>${others.slice(1).map((l: string)=>`<p style="font-size:11.5px;color:#555;margin:0 0 4px">${esc(l)}</p>`).join('')}</div><span style="font-size:11px;color:#999;white-space:nowrap;padding-top:1px">${esc(date)}</span></div>`;
+                  }
+                  return `<p style="font-size:11.5px;color:#444;line-height:1.6;margin:0 0 8px;white-space:pre-line">${esc(p)}</p>`;
+                }).join('');
+                return nameHtml + bodyHtml;
               }
 
-              const doc1Html = buildDocHtml(cleanResult, true, true);
-              const doc2Html = lebenslaufResult ? buildDocHtml(lebenslaufResult, !!profilePhotoUrl, false) : '';
+              function buildDocHtml(docText: string, withPhoto: boolean, isFirstDoc: boolean, isCVDoc: boolean): string {
+                const content = isCVDoc ? renderCVHtml(docText, withPhoto) : (() => {
+                  const paras = docText.split(/\n\n+/);
+                  const headerHtml = paras.slice(0, 2).map(renderP).join('');
+                  const bodyHtml   = paras.slice(2).map(renderP).join('');
+                  const photoCell  = (withPhoto && profilePhotoUrl)
+                    ? `<td style="vertical-align:top;width:150px;padding-left:12px;text-align:right;border:none"><img src="${profilePhotoUrl}" width="135" height="168" style="width:135px;height:168px;object-fit:cover;border-radius:2px;box-shadow:0 2px 8px rgba(0,0,0,0.15)"></td>`
+                    : '';
+                  return (withPhoto && profilePhotoUrl)
+                    ? `<table style="width:100%;border-collapse:collapse;margin-bottom:0"><tr><td style="vertical-align:top;border:none">${headerHtml}</td>${photoCell}</tr></table>${bodyHtml}`
+                    : headerHtml + bodyHtml;
+                })();
+                const pageBreak = isFirstDoc ? '' : '<div style="page-break-before:always"></div>';
+                const padding = isCVDoc ? '36px 44px 36px 48px' : '48px 52px';
+                return `${pageBreak}<div class="page"><div class="body" style="padding:${padding}">${content}</div></div>`;
+              }
+
+              const doc1Html = buildDocHtml(cleanResult, true, true, isCV);
+              const doc2Html = lebenslaufResult ? buildDocHtml(lebenslaufResult, false, false, true) : '';
               const photosSection = photosHtml
                 ? `<div class="page"><div class="body">${photosHtml}</div></div>`
                 : '';
