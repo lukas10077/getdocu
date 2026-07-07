@@ -138,7 +138,9 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: 
     `Erstelle das Dokument als sauberen, druckfertigen Brief ohne jegliches Markdown.\n` +
     `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen.\n` +
     `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Betreff oder Abschnittstitel, normale Satzzeichen.\n` +
-    `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n`;
+    `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n` +
+    `KEINE PLATZHALTER: Fehlt eine Information (z.B. Telefonnummer), lass sie vollständig weg — niemals X, ?, 000 oder ähnliche Füllwerte einfügen.\n` +
+    `KEINE ERFINDUNGEN: Nur die vom Nutzer explizit angegebenen Daten verwenden. Sprachen, Kenntnisse und Angaben nie eigenmächtig ergänzen oder erfinden.\n`;
 
   if (!countryCode) return `${formatRule}\n${basePrompt}`;
   const country = getCountry(countryCode);

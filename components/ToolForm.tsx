@@ -542,9 +542,9 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     ? `<table style="width:100%;border-collapse:collapse;margin-bottom:0"><tr><td style="vertical-align:top;border:none">${headerHtml}</td>${photoCell}</tr></table>${bodyHtml}`
                     : headerHtml + bodyHtml;
                 })();
-                const pageBreak = isFirstDoc ? '' : '<div style="page-break-before:always"></div>';
+                const pageBreakStyle = isFirstDoc ? '' : 'page-break-before:always;';
                 const padding = isCVDoc ? '36px 44px 36px 48px' : '48px 52px';
-                return `${pageBreak}<div class="page"><div class="body" style="padding:${padding}">${content}</div></div>`;
+                return `<div class="page" style="${pageBreakStyle}"><div class="body" style="padding:${padding}">${content}</div></div>`;
               }
 
               const doc1Html = buildDocHtml(cleanResult, true, true, isCV);
@@ -562,7 +562,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   @media print{
                     @page{margin:0;size:A4 portrait}
                     body{background:#fff;padding:12mm 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-                    .page{box-shadow:none;max-width:100%;width:100%;margin:0;margin-bottom:0}
+                    .page{box-shadow:none;max-width:100%;width:100%;margin:0;margin-bottom:0;min-height:273mm}
                   }
                 </style></head>
                 <body>${doc1Html}${doc2Html}${photosSection}</body></html>`);
