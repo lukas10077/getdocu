@@ -267,6 +267,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     slug: "lebenslauf",
     priceChfRappen: 500,
     supportsAllDocumentTypes: true,
+    supportsProfilePhoto: true,
     uploadLabelDe: "Deinen bestehenden Lebenslauf hochladen (optional)",
     uploadHintDe: "Hast du einen alten Lebenslauf? Lade ihn hoch — als Foto, PDF oder Word-Datei. Wir lesen ihn automatisch.",
     documentTitleDe: "Lebenslauf-Check",

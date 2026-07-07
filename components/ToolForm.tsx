@@ -600,27 +600,11 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
 
-      {/* Bewerbungsfoto (client-only) */}
-      {tool.supportsProfilePhoto && (
+      {/* Bewerbungsfoto (client-only) — nur für Jobbewerbung oben; Lebenslauf kommt nach dem CV-Upload */}
+      {tool.supportsProfilePhoto && tool.slug !== "lebenslauf" && (
         <div className="mb-10 flex items-start gap-6 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
           <label className="group cursor-pointer flex-shrink-0">
-            <input
-              type="file"
-              accept="image/*"
-              capture="user"
-              className="sr-only"
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                if (!file) return;
-                setProfilePhotoUrl(URL.createObjectURL(file));
-                const reader = new FileReader();
-                reader.onload = () => {
-                  const dataUrl = reader.result as string;
-                  setProfilePhotoBase64(dataUrl); // data URL (inkl. prefix) für sessionStorage
-                };
-                reader.readAsDataURL(file);
-              }}
-            />
+            <input type="file" accept="image/*" capture="user" className="sr-only" onChange={(e) => { const file = e.target.files?.[0]; if (!file) return; setProfilePhotoUrl(URL.createObjectURL(file)); const reader = new FileReader(); reader.onload = () => { setProfilePhotoBase64(reader.result as string); }; reader.readAsDataURL(file); }} />
             {profilePhotoUrl ? (
               <div className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -629,9 +613,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               </div>
             ) : (
               <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full border-2 border-dashed border-ink-700 bg-ink-950 transition group-hover:border-swiss-gold/50">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-swiss-gold/60">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-swiss-gold/60"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
             )}
           </label>
@@ -705,6 +687,30 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               </div>
             )}
           </label>
+        </div>
+      )}
+
+      {/* Profilfoto für Lebenslauf — erscheint direkt nach dem CV-Upload */}
+      {tool.supportsProfilePhoto && tool.slug === "lebenslauf" && (
+        <div className="mb-10 flex items-start gap-6 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
+          <label className="group cursor-pointer flex-shrink-0">
+            <input type="file" accept="image/*" capture="user" className="sr-only" onChange={(e) => { const file = e.target.files?.[0]; if (!file) return; setProfilePhotoUrl(URL.createObjectURL(file)); const reader = new FileReader(); reader.onload = () => { setProfilePhotoBase64(reader.result as string); }; reader.readAsDataURL(file); }} />
+            {profilePhotoUrl ? (
+              <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={profilePhotoUrl} alt="Profilfoto" className="h-24 w-24 rounded-full object-cover border-2 border-swiss-gold/40" />
+                <span className="absolute -bottom-5 left-0 right-0 text-center text-xs text-swiss-gold">ändern</span>
+              </div>
+            ) : (
+              <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full border-2 border-dashed border-ink-700 bg-ink-950 transition group-hover:border-swiss-gold/50">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-swiss-gold/60"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+            )}
+          </label>
+          <div className="pt-1">
+            <p className="text-sm font-medium text-cream">Dein Foto (optional)</p>
+            <p className="mt-1 text-xs leading-relaxed text-cream-muted">Für einen überzeugenden Lebenslauf empfehlen wir ein freundliches, professionelles Foto — es macht deine Bewerbung persönlicher und hinterlässt einen bleibenden ersten Eindruck. In der Schweiz und Deutschland gehört es zum guten Ton.</p>
+          </div>
         </div>
       )}
 
