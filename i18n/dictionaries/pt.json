@@ -10,6 +10,8 @@
     "languages": "Idioma"
   },
   "hero": {
+    "fromPrice": "✓ a partir de {price}",
+    "imageAlt": "Documento profissional com caneta",
     "eyebrow": "Feito para a Suíça",
     "headline": "Documentos importantes. Feitos de forma simples.",
     "subheadline": "GetDocu ajuda-te a criar cartas e documentos profissionais — explicados na tua língua, otimizados para o teu país.",
@@ -32,6 +34,12 @@
       "💳 Seguro via Stripe"
     ],
     "items": {
+      "komplettbewerbung": {
+        "title": "Candidatura completa",
+        "description": "Carta de motivação + CV num só — profissionais, perfeitamente coordenados, prontos a enviar.",
+        "uploadLabel": "Carregar CV existente (opcional)",
+        "uploadHint": "Tens um CV antigo? Carrega-o — como foto, PDF ou ficheiro Word. Lemo-lo automaticamente e integramo-lo no novo CV."
+      },
       "mietbewerbung": {
         "title": "Candidatura arrendamento",
         "description": "Convence o senhorio à primeira. Profissional, pessoal."
@@ -45,18 +53,26 @@
         "description": "Seguro, subscrição, adesão — rescindir corretamente e dentro do prazo."
       },
       "arbeitszeugnis": {
+        "uploadLabel": "Carregar a referência (opcional)",
+        "uploadHint": "Carrega a tua referência profissional — como foto, PDF ou ficheiro Word. Lemo-la automaticamente.",
         "title": "Melhorar a referência profissional",
         "description": "A tua referência soa medíocre? Reescrevemo-la profissionalmente."
       },
       "maengelruege": {
+        "photoGalleryLabel": "Carregar fotos dos danos (opcional)",
+        "photoGalleryHint": "Carrega até 100 fotos — serão anexadas ao documento.",
         "title": "Comunicar danos após a mudança",
         "description": "Comunicar danos no apartamento — por escrito, dentro do prazo, corretamente endereçado."
       },
       "reklamation": {
+        "uploadLabel": "Carregar uma foto da fatura ou do produto (opcional)",
+        "uploadHint": "Tens uma fatura errada ou um produto com defeito? Carrega uma foto.",
         "title": "Carta de reclamação",
         "description": "Produto defeituoso, mau serviço, fatura errada — reclama com clareza."
       },
       "lebenslauf": {
+        "uploadLabel": "Carregar CV existente (opcional)",
+        "uploadHint": "Tens um CV antigo? Carrega-o — como foto, PDF ou ficheiro Word. Lemo-lo automaticamente.",
         "title": "Revisão de CV",
         "description": "O teu CV é analisado e revisto profissionalmente — adaptado ao teu mercado de trabalho."
       },
@@ -117,6 +133,7 @@
     "paymentTitle": "Métodos de pagamento aceites"
   },
   "footer": {
+    "yourCountry": "o teu país",
     "tagline": "Documentos importantes para {countryName} — feitos de forma simples.",
     "impressum": "Informações legais",
     "datenschutz": "Política de privacidade",
@@ -228,6 +245,101 @@
     "workHistory": "Posições anteriores",
     "education": "Formação / Estudos (opcional)",
     "languages": "Idiomas (com nível)"
+  },
+  "options": {
+    "Staatsbürger/in": "Cidadão/ã",
+    "Dauerhaftes Aufenthaltsrecht": "Residência permanente",
+    "Befristetes Aufenthaltsrecht": "Residência temporária",
+    "Anderes": "Outro",
+    "Schweizer Bürger/in": "Cidadão/ã suíço/a",
+    "C-Ausweis (Niederlassung)": "Autorização C (estabelecimento)",
+    "B-Ausweis (Aufenthalt)": "Autorização B (residência)",
+    "L-Ausweis (Kurzaufenthalt)": "Autorização L (curta duração)",
+    "1 Person": "1 pessoa",
+    "2 Personen": "2 pessoas",
+    "3 Personen": "3 pessoas",
+    "4 Personen": "4 pessoas",
+    "5 oder mehr": "5 ou mais",
+    "Keine Haustiere": "Sem animais",
+    "Hund": "Cão",
+    "Katze": "Gato",
+    "Andere Haustiere": "Outros animais",
+    "Versicherung": "Seguro",
+    "Abonnement / Mitgliedschaft": "Subscrição / adesão",
+    "1 Monat": "1 mês",
+    "2 Monate": "2 meses",
+    "3 Monate": "3 meses",
+    "6 Monate": "6 meses",
+    "1 Jahr": "1 ano",
+    "Weiss nicht / laut Vertrag": "Não sei / conforme o contrato",
+    "Prämienreduktion beantragen": "Pedir redução do prémio",
+    "Kostengutsprache / Leistungsanfrage": "Garantia de cobertura / pedido de prestações",
+    "Kündigung der Zusatzversicherung": "Cancelamento do seguro complementar",
+    "Reklamation / Einsprache": "Reclamação / objeção",
+    "Andere Anfrage": "Outro pedido"
+  },
+  "form": {
+    "previewButton": "Criar pré-visualização — grátis",
+    "previewAfter": "Depois {price} pelo documento completo",
+    "previewLoading": "A criar a pré-visualização…",
+    "previewLoadingSub": "Demora cerca de 5 segundos.",
+    "generating": "A criar o documento completo…",
+    "generatingSub": "Demora cerca de 10–20 segundos.",
+    "redirecting": "A redirecionar para o pagamento…",
+    "errorTitle": "Ocorreu um erro",
+    "backToForm": "Voltar ao formulário",
+    "checkoutError": "Erro ao abrir a página de pagamento. Tenta novamente.",
+    "previewTag": "Pré-visualização",
+    "previewPayNote": "— Paga para receber o documento completo",
+    "watermark": "PRÉ-VISUALIZAÇÃO",
+    "checkTitle": "Verifica antes de comprar",
+    "checkBody": "Verifica os teus dados: nome completo, endereço, e-mail, nome da empresa e título exato do cargo. Dados incorretos podem afetar o documento.",
+    "editData": "Alterar dados",
+    "readyTitle": "O teu documento pessoal está pronto.",
+    "readyBody": "Paga {price} uma única vez pelo documento completo e pronto a imprimir — sem subscrição, sem conta.",
+    "payButton": "Documento completo — {price}",
+    "creditCard": "Cartão de crédito",
+    "doneTitle": "O teu documento está pronto",
+    "doneBundleTitle": "Os teus documentos de candidatura estão prontos",
+    "coverLetter": "Carta de motivação",
+    "cv": "CV",
+    "downloadPdf": "Descarregar como PDF",
+    "noteTitle": "Nota para rever",
+    "attachment": "Anexo",
+    "photoSingular": "foto",
+    "photoPlural": "fotos",
+    "photoLabel": "Foto de candidatura (opcional)",
+    "photoHint": "Carrega uma foto — será inserida no canto superior direito do documento. Na Suíça a foto é comum, mas não obrigatória.",
+    "cvPhotoLabel": "A tua foto (opcional)",
+    "cvPhotoHint": "Para um CV convincente recomendamos uma foto profissional e simpática — torna a candidatura mais pessoal e deixa uma primeira impressão duradoura.",
+    "changePhoto": "alterar",
+    "uploadPrompt": "Carregar uma foto, PDF ou ficheiro Word",
+    "takePhoto": "Tirar uma foto ou escolher da galeria",
+    "imageUploaded": "✓ Imagem carregada — toca para alterar",
+    "changeFile": "Toca para escolher outro ficheiro",
+    "textExtracted": "texto extraído",
+    "uploadedDoc": "Documento carregado",
+    "selectPhotos": "Selecionar fotos (várias possíveis)",
+    "addMorePhotos": "Adicionar mais fotos",
+    "maxPhotosReached": "Máximo de {max} fotos atingido.",
+    "removePhoto": "Remover foto",
+    "street": "Rua",
+    "nr": "N.º",
+    "zip": "Código postal",
+    "city": "Localidade",
+    "rolePlaceholder": "Cargo / função",
+    "companyPlaceholder": "Empresa",
+    "cityOptional": "Localidade (opcional)",
+    "degreePlaceholder": "Diploma / curso",
+    "institutionPlaceholder": "Escola / instituição",
+    "fromYear": "De (ano)",
+    "untilToday": "Até hoje",
+    "addPosition": "Adicionar outro cargo",
+    "addEducation": "Adicionar outra formação",
+    "autoCalculated": "✓ Calculado automaticamente — podes ajustar a data."
+  },
+  "fieldHints": {
+    "whatToImprove": "Não faz mal se não souberes — analisamos a referência e melhoramo-la automaticamente."
   },
   "sections": {
     "Persönliche Angaben": "Dados pessoais",

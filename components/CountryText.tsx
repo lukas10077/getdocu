@@ -12,10 +12,10 @@ import { getStripeAmount, formatAmount } from "@/lib/countries";
 const MIN_RAPPEN = 300; // günstigstes Tool
 const MAX_RAPPEN = 500; // teuerstes Tool
 
-export default function CountryText({ text, className }: { text: string; className?: string }) {
+export default function CountryText({ text, className, fallbackCountryName }: { text: string; className?: string; fallbackCountryName?: string }) {
   const { country } = useCountry();
 
-  const countryName = country?.name ?? "deinem Land";
+  const countryName = country?.name ?? fallbackCountryName ?? "deinem Land";
 
   const minResult = country ? getStripeAmount(MIN_RAPPEN, country.currency) : null;
   const maxResult = country ? getStripeAmount(MAX_RAPPEN, country.currency) : null;

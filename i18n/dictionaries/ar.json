@@ -10,6 +10,8 @@
     "languages": "اللغة"
   },
   "hero": {
+    "fromPrice": "✓ ابتداءً من {price}",
+    "imageAlt": "مستند احترافي مع قلم",
     "eyebrow": "صُنع لسويسرا",
     "headline": "مستندات مهمة. بطريقة بسيطة.",
     "subheadline": "يساعدك GetDocu على إنشاء رسائل ووثائق احترافية — موضحة بلغتك، ومحسّنة لبلدك.",
@@ -32,6 +34,12 @@
       "💳 آمن عبر Stripe"
     ],
     "items": {
+      "komplettbewerbung": {
+        "title": "طلب توظيف كامل",
+        "description": "رسالة تحفيزية + سيرة ذاتية في مستند واحد — احترافيان، متناسقان، جاهزان للإرسال فوراً.",
+        "uploadLabel": "رفع سيرة ذاتية موجودة (اختياري)",
+        "uploadHint": "لديك سيرة ذاتية قديمة؟ ارفعها — كصورة أو PDF أو ملف Word. نقرأها تلقائياً وندمجها في السيرة الذاتية الجديدة."
+      },
       "mietbewerbung": {
         "title": "طلب الإيجار",
         "description": "أقنع المالك من أول مرة. احترافي، شخصي."
@@ -45,18 +53,26 @@
         "description": "تأمين، اشتراك، عضوية — إنهاء صحيح وفي الوقت المناسب."
       },
       "arbeitszeugnis": {
+        "uploadLabel": "رفع شهادة العمل (اختياري)",
+        "uploadHint": "ارفع شهادة عملك — كصورة أو PDF أو ملف Word. نقرأها تلقائياً.",
         "title": "تحسين شهادة العمل",
         "description": "شهادتك تبدو متواضعة؟ نعيد كتابتها باحترافية."
       },
       "maengelruege": {
+        "photoGalleryLabel": "رفع صور الأضرار (اختياري)",
+        "photoGalleryHint": "ارفع حتى 100 صورة — ستُرفق بالمستند كملحق.",
         "title": "الإبلاغ عن أضرار بعد الانتقال",
         "description": "الإبلاغ عن الأضرار في الشقة — كتابياً، في الوقت المناسب، بعنوان صحيح."
       },
       "reklamation": {
+        "uploadLabel": "رفع صورة الفاتورة أو المنتج (اختياري)",
+        "uploadHint": "لديك فاتورة خاطئة أو منتج معيب؟ ارفع صورة.",
         "title": "خطاب الشكوى",
         "description": "بضاعة معيبة، خدمة سيئة، فاتورة خاطئة — اشكُ بوضوح وحزم."
       },
       "lebenslauf": {
+        "uploadLabel": "رفع سيرة ذاتية موجودة (اختياري)",
+        "uploadHint": "لديك سيرة ذاتية قديمة؟ ارفعها — كصورة أو PDF أو ملف Word. نقرأها تلقائياً.",
         "title": "مراجعة السيرة الذاتية",
         "description": "يتم تحليل سيرتك الذاتية ومراجعتها باحترافية — مكيّفة مع سوق العمل لديك."
       },
@@ -117,6 +133,7 @@
     "paymentTitle": "طرق الدفع المقبولة"
   },
   "footer": {
+    "yourCountry": "بلدك",
     "tagline": "مستندات مهمة لـ {countryName} — بطريقة بسيطة.",
     "impressum": "بيانات الناشر",
     "datenschutz": "سياسة الخصوصية",
@@ -228,6 +245,101 @@
     "workHistory": "الوظائف السابقة",
     "education": "التعليم / الدراسة (اختياري)",
     "languages": "اللغات (مع المستوى)"
+  },
+  "options": {
+    "Staatsbürger/in": "مواطن/ة",
+    "Dauerhaftes Aufenthaltsrecht": "إقامة دائمة",
+    "Befristetes Aufenthaltsrecht": "إقامة مؤقتة",
+    "Anderes": "آخر",
+    "Schweizer Bürger/in": "مواطن/ة سويسري/ة",
+    "C-Ausweis (Niederlassung)": "تصريح C (استقرار)",
+    "B-Ausweis (Aufenthalt)": "تصريح B (إقامة)",
+    "L-Ausweis (Kurzaufenthalt)": "تصريح L (إقامة قصيرة)",
+    "1 Person": "شخص واحد",
+    "2 Personen": "شخصان",
+    "3 Personen": "3 أشخاص",
+    "4 Personen": "4 أشخاص",
+    "5 oder mehr": "5 أو أكثر",
+    "Keine Haustiere": "لا حيوانات أليفة",
+    "Hund": "كلب",
+    "Katze": "قطة",
+    "Andere Haustiere": "حيوانات أليفة أخرى",
+    "Versicherung": "تأمين",
+    "Abonnement / Mitgliedschaft": "اشتراك / عضوية",
+    "1 Monat": "شهر واحد",
+    "2 Monate": "شهران",
+    "3 Monate": "3 أشهر",
+    "6 Monate": "6 أشهر",
+    "1 Jahr": "سنة واحدة",
+    "Weiss nicht / laut Vertrag": "لا أعرف / حسب العقد",
+    "Prämienreduktion beantragen": "طلب تخفيض القسط",
+    "Kostengutsprache / Leistungsanfrage": "ضمان تغطية التكاليف / طلب خدمات",
+    "Kündigung der Zusatzversicherung": "إلغاء التأمين التكميلي",
+    "Reklamation / Einsprache": "شكوى / اعتراض",
+    "Andere Anfrage": "طلب آخر"
+  },
+  "form": {
+    "previewButton": "إنشاء معاينة — مجاناً",
+    "previewAfter": "ثم {price} للمستند الكامل",
+    "previewLoading": "جارٍ إنشاء المعاينة…",
+    "previewLoadingSub": "يستغرق حوالي 5 ثوانٍ.",
+    "generating": "جارٍ إنشاء المستند الكامل…",
+    "generatingSub": "يستغرق حوالي 10–20 ثانية.",
+    "redirecting": "جارٍ التحويل إلى الدفع…",
+    "errorTitle": "حدث خطأ",
+    "backToForm": "العودة إلى النموذج",
+    "checkoutError": "خطأ أثناء فتح صفحة الدفع. يرجى المحاولة مرة أخرى.",
+    "previewTag": "معاينة",
+    "previewPayNote": "— ادفع للحصول على المستند الكامل",
+    "watermark": "معاينة",
+    "checkTitle": "تحقق قبل الشراء",
+    "checkBody": "يرجى التحقق من بياناتك: الاسم الكامل، العنوان، البريد الإلكتروني، اسم الشركة والمسمى الوظيفي الدقيق. البيانات الخاطئة قد تؤثر على المستند.",
+    "editData": "تعديل البيانات",
+    "readyTitle": "مستندك الشخصي جاهز.",
+    "readyBody": "ادفع {price} مرة واحدة للمستند الكامل الجاهز للطباعة — بلا اشتراك، بلا حساب.",
+    "payButton": "المستند الكامل — {price}",
+    "creditCard": "بطاقة ائتمان",
+    "doneTitle": "مستندك جاهز",
+    "doneBundleTitle": "مستندات طلب التوظيف جاهزة",
+    "coverLetter": "الرسالة التحفيزية",
+    "cv": "السيرة الذاتية",
+    "downloadPdf": "تنزيل كملف PDF",
+    "noteTitle": "ملاحظة للمراجعة",
+    "attachment": "ملحق",
+    "photoSingular": "صورة",
+    "photoPlural": "صور",
+    "photoLabel": "صورة الطلب (اختياري)",
+    "photoHint": "ارفع صورة — ستوضع في أعلى يمين المستند. في سويسرا الصورة شائعة لكنها غير إلزامية.",
+    "cvPhotoLabel": "صورتك (اختياري)",
+    "cvPhotoHint": "لسيرة ذاتية مقنعة ننصح بصورة ودودة واحترافية — تجعل طلبك أكثر شخصية وتترك انطباعاً أولياً دائماً.",
+    "changePhoto": "تغيير",
+    "uploadPrompt": "رفع صورة أو PDF أو ملف Word",
+    "takePhoto": "التقط صورة أو اختر من المعرض",
+    "imageUploaded": "✓ تم رفع الصورة — انقر للتغيير",
+    "changeFile": "انقر لاختيار ملف آخر",
+    "textExtracted": "تم استخراج النص",
+    "uploadedDoc": "المستند المرفوع",
+    "selectPhotos": "اختر الصور (يمكن اختيار عدة صور)",
+    "addMorePhotos": "إضافة المزيد من الصور",
+    "maxPhotosReached": "تم بلوغ الحد الأقصى وهو {max} صورة.",
+    "removePhoto": "إزالة الصورة",
+    "street": "الشارع",
+    "nr": "رقم",
+    "zip": "الرمز البريدي",
+    "city": "المدينة",
+    "rolePlaceholder": "الوظيفة / المنصب",
+    "companyPlaceholder": "الشركة",
+    "cityOptional": "المدينة (اختياري)",
+    "degreePlaceholder": "الشهادة / الدورة",
+    "institutionPlaceholder": "المدرسة / المؤسسة",
+    "fromYear": "من (سنة)",
+    "untilToday": "حتى اليوم",
+    "addPosition": "إضافة وظيفة أخرى",
+    "addEducation": "إضافة تعليم آخر",
+    "autoCalculated": "✓ محسوب تلقائياً — يمكنك تعديل التاريخ."
+  },
+  "fieldHints": {
+    "whatToImprove": "لا مشكلة إن لم تكن تعرف — نحلل الشهادة ونحسّنها تلقائياً."
   },
   "sections": {
     "Persönliche Angaben": "المعلومات الشخصية",

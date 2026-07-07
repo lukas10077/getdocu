@@ -10,6 +10,8 @@
     "languages": "Jezik"
   },
   "hero": {
+    "fromPrice": "✓ od {price}",
+    "imageAlt": "Profesionalni dokument sa olovkom",
     "eyebrow": "Napravljeno za Švajcarsku",
     "headline": "Važni dokumenti. Jednostavno napravljeni.",
     "subheadline": "GetDocu vam pomaže da kreirate profesionalna pisma i dokumenta — objašnjeno na vašem jeziku, optimizovano za vašu zemlju.",
@@ -32,6 +34,12 @@
       "💳 Sigurno putem Stripe"
     ],
     "items": {
+      "komplettbewerbung": {
+        "title": "Kompletna prijava za posao",
+        "description": "Motivaciono pismo + CV u jednom — profesionalno, međusobno usklađeno, odmah spremno za slanje.",
+        "uploadLabel": "Otpremi postojeći CV (opciono)",
+        "uploadHint": "Imaš stari CV? Otpremi ga — kao fotografiju, PDF ili Word fajl. Čitamo ga automatski i uključujemo u novi CV."
+      },
       "mietbewerbung": {
         "title": "Prijava za iznajmljivanje",
         "description": "Ubedite stanodavca od prve. Profesionalno, lično."
@@ -45,18 +53,26 @@
         "description": "Osiguranje, pretplata, članstvo — otkazati tačno i na vreme."
       },
       "arbeitszeugnis": {
+        "uploadLabel": "Otpremi preporuku (opciono)",
+        "uploadHint": "Otpremi svoju radnu preporuku — kao fotografiju, PDF ili Word fajl. Čitamo je automatski.",
         "title": "Poboljšanje radne preporuke",
         "description": "Vaša preporuka zvuči osrednje? Prepišemo je profesionalno."
       },
       "maengelruege": {
+        "photoGalleryLabel": "Otpremi fotografije štete (opciono)",
+        "photoGalleryHint": "Otpremi do 100 fotografija — biće priložene dokumentu.",
         "title": "Prijava štete nakon useljenja",
         "description": "Prijavite štete u stanu — pismeno, na vreme, na tačnu adresu."
       },
       "reklamation": {
+        "uploadLabel": "Otpremi fotografiju računa ili proizvoda (opciono)",
+        "uploadHint": "Imaš pogrešan račun ili neispravan proizvod? Otpremi fotografiju.",
         "title": "Reklamacijsko pismo",
         "description": "Neispravna roba, loša usluga, pogrešan račun — reklamirajte jasno i odlučno."
       },
       "lebenslauf": {
+        "uploadLabel": "Otpremi postojeći CV (opciono)",
+        "uploadHint": "Imaš stari CV? Otpremi ga — kao fotografiju, PDF ili Word fajl. Čitamo ga automatski.",
         "title": "Provera CV-ja",
         "description": "Vaš CV se analizira i profesionalno revidira — prilagođen vašem tržištu rada."
       },
@@ -117,6 +133,7 @@
     "paymentTitle": "Prihvaćeni načini plaćanja"
   },
   "footer": {
+    "yourCountry": "tvoju zemlju",
     "tagline": "Važni dokumenti za {countryName} — jednostavno napravljeni.",
     "impressum": "Pravne informacije",
     "datenschutz": "Politika privatnosti",
@@ -228,6 +245,101 @@
     "workHistory": "Prethodne pozicije",
     "education": "Obrazovanje / Studije (opcionalno)",
     "languages": "Jezici (sa nivoom)"
+  },
+  "options": {
+    "Staatsbürger/in": "Državljanin/ka",
+    "Dauerhaftes Aufenthaltsrecht": "Stalni boravak",
+    "Befristetes Aufenthaltsrecht": "Privremeni boravak",
+    "Anderes": "Drugo",
+    "Schweizer Bürger/in": "Švajcarski državljanin/ka",
+    "C-Ausweis (Niederlassung)": "Dozvola C (nastanjenje)",
+    "B-Ausweis (Aufenthalt)": "Dozvola B (boravak)",
+    "L-Ausweis (Kurzaufenthalt)": "Dozvola L (kratkoročni boravak)",
+    "1 Person": "1 osoba",
+    "2 Personen": "2 osobe",
+    "3 Personen": "3 osobe",
+    "4 Personen": "4 osobe",
+    "5 oder mehr": "5 ili više",
+    "Keine Haustiere": "Bez kućnih ljubimaca",
+    "Hund": "Pas",
+    "Katze": "Mačka",
+    "Andere Haustiere": "Drugi ljubimci",
+    "Versicherung": "Osiguranje",
+    "Abonnement / Mitgliedschaft": "Pretplata / članstvo",
+    "1 Monat": "1 mesec",
+    "2 Monate": "2 meseca",
+    "3 Monate": "3 meseca",
+    "6 Monate": "6 meseci",
+    "1 Jahr": "1 godina",
+    "Weiss nicht / laut Vertrag": "Ne znam / prema ugovoru",
+    "Prämienreduktion beantragen": "Zahtev za smanjenje premije",
+    "Kostengutsprache / Leistungsanfrage": "Garancija pokrića / zahtev za naknadu",
+    "Kündigung der Zusatzversicherung": "Otkaz dopunskog osiguranja",
+    "Reklamation / Einsprache": "Reklamacija / prigovor",
+    "Andere Anfrage": "Drugi zahtev"
+  },
+  "form": {
+    "previewButton": "Napravi pregled — besplatno",
+    "previewAfter": "Zatim {price} za kompletan dokument",
+    "previewLoading": "Pravi se pregled…",
+    "previewLoadingSub": "Traje oko 5 sekundi.",
+    "generating": "Pravi se kompletan dokument…",
+    "generatingSub": "Traje oko 10–20 sekundi.",
+    "redirecting": "Preusmeravanje na plaćanje…",
+    "errorTitle": "Došlo je do greške",
+    "backToForm": "Nazad na formular",
+    "checkoutError": "Greška pri otvaranju stranice za plaćanje. Pokušaj ponovo.",
+    "previewTag": "Pregled",
+    "previewPayNote": "— Plati da bi dobio/la kompletan dokument",
+    "watermark": "PREGLED",
+    "checkTitle": "Proveri pre kupovine",
+    "checkBody": "Proveri svoje podatke: puno ime, adresu, e-mail adresu, naziv firme i tačan naziv pozicije. Pogrešni podaci mogu uticati na dokument.",
+    "editData": "Izmeni podatke",
+    "readyTitle": "Tvoj lični dokument je spreman.",
+    "readyBody": "Plati {price} jednokratno za kompletan dokument spreman za štampu — bez pretplate, bez naloga.",
+    "payButton": "Kompletan dokument — {price}",
+    "creditCard": "Kreditna kartica",
+    "doneTitle": "Tvoj dokument je spreman",
+    "doneBundleTitle": "Tvoja dokumenta za prijavu su spremna",
+    "coverLetter": "Motivaciono pismo",
+    "cv": "CV",
+    "downloadPdf": "Preuzmi kao PDF",
+    "noteTitle": "Napomena za proveru",
+    "attachment": "Prilog",
+    "photoSingular": "fotografija",
+    "photoPlural": "fotografija",
+    "photoLabel": "Fotografija za prijavu (opciono)",
+    "photoHint": "Otpremi fotografiju — biće postavljena u gornjem desnom uglu dokumenta. U Švajcarskoj je fotografija uobičajena, ali nije obavezna.",
+    "cvPhotoLabel": "Tvoja fotografija (opciono)",
+    "cvPhotoHint": "Za ubedljiv CV preporučujemo ljubaznu, profesionalnu fotografiju — čini prijavu ličnijom i ostavlja trajan prvi utisak.",
+    "changePhoto": "promeni",
+    "uploadPrompt": "Otpremi fotografiju, PDF ili Word fajl",
+    "takePhoto": "Fotografiši ili izaberi iz galerije",
+    "imageUploaded": "✓ Slika otpremljena — dodirni za promenu",
+    "changeFile": "Dodirni da izabereš drugi fajl",
+    "textExtracted": "tekst pročitan",
+    "uploadedDoc": "Otpremljeni dokument",
+    "selectPhotos": "Izaberi fotografije (može više)",
+    "addMorePhotos": "Dodaj još fotografija",
+    "maxPhotosReached": "Dostignut maksimum od {max} fotografija.",
+    "removePhoto": "Ukloni fotografiju",
+    "street": "Ulica",
+    "nr": "Br.",
+    "zip": "Poštanski broj",
+    "city": "Mesto",
+    "rolePlaceholder": "Pozicija / funkcija",
+    "companyPlaceholder": "Firma",
+    "cityOptional": "Mesto (opciono)",
+    "degreePlaceholder": "Diploma / kurs",
+    "institutionPlaceholder": "Škola / institucija",
+    "fromYear": "Od (godina)",
+    "untilToday": "Do danas",
+    "addPosition": "Dodaj još jednu poziciju",
+    "addEducation": "Dodaj još jedno obrazovanje",
+    "autoCalculated": "✓ Automatski izračunato — možeš prilagoditi datum."
+  },
+  "fieldHints": {
+    "whatToImprove": "Nema problema ako ne znaš — analiziramo preporuku i automatski je poboljšavamo."
   },
   "sections": {
     "Persönliche Angaben": "Lični podaci",

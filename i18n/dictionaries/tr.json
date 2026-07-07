@@ -10,6 +10,8 @@
     "languages": "Dil"
   },
   "hero": {
+    "fromPrice": "✓ {price} başlangıç fiyatıyla",
+    "imageAlt": "Kalemli profesyonel belge",
     "eyebrow": "İsviçre için tasarlandı",
     "headline": "Önemli belgeler. Basitçe oluşturuldu.",
     "subheadline": "GetDocu, profesyonel mektuplar ve belgeler oluşturmanıza yardımcı olur — kendi dilinizde açıklanmış, ülkeniz için optimize edilmiş.",
@@ -32,6 +34,12 @@
       "💳 Stripe ile güvenli"
     ],
     "items": {
+      "komplettbewerbung": {
+        "title": "Eksiksiz Başvuru",
+        "description": "Ön yazı + CV bir arada — profesyonel, birbiriyle uyumlu, hemen gönderime hazır.",
+        "uploadLabel": "Mevcut CV'yi yükle (isteğe bağlı)",
+        "uploadHint": "Eski bir CV'n var mı? Yükle — fotoğraf, PDF veya Word dosyası olarak. Otomatik okuyup yeni CV'ye entegre ediyoruz."
+      },
       "mietbewerbung": {
         "title": "Kiralık Daire Başvurusu",
         "description": "Ev sahibini ilk seferinde ikna edin. Profesyonel, kişisel."
@@ -45,18 +53,26 @@
         "description": "Sigorta, abonelik, üyelik — doğru ve zamanında feshetmek."
       },
       "arbeitszeugnis": {
+        "uploadLabel": "Referansı yükle (isteğe bağlı)",
+        "uploadHint": "İş referansını yükle — fotoğraf, PDF veya Word dosyası olarak. Otomatik okuyoruz.",
         "title": "İş Referansını İyileştirme",
         "description": "Referansınız vasat mı geliyor? Onu profesyonelce yeniden yazıyoruz."
       },
       "maengelruege": {
+        "photoGalleryLabel": "Hasar fotoğraflarını yükle (isteğe bağlı)",
+        "photoGalleryHint": "100 adede kadar fotoğraf yükle — belgeye ek olarak eklenir.",
         "title": "Taşınma Sonrası Hasar Bildirimi",
         "description": "Dairenizde hasar bildirin — yazılı, zamanında, doğru adreslenmiş."
       },
       "reklamation": {
+        "uploadLabel": "Faturanın veya ürünün fotoğrafını yükle (isteğe bağlı)",
+        "uploadHint": "Hatalı bir fatura veya kusurlu bir ürün mü var? Bir fotoğraf yükle.",
         "title": "Şikayet Mektubu",
         "description": "Kusurlu ürün, kötü hizmet, yanlış fatura — net ve kararlı bir şekilde şikayet edin."
       },
       "lebenslauf": {
+        "uploadLabel": "Mevcut CV'yi yükle (isteğe bağlı)",
+        "uploadHint": "Eski bir CV'n var mı? Yükle — fotoğraf, PDF veya Word dosyası olarak. Otomatik okuyoruz.",
         "title": "CV İncelemesi",
         "description": "CV'niz analiz edilir ve profesyonelce revize edilir — iş piyasanıza uyarlanmış."
       },
@@ -117,6 +133,7 @@
     "paymentTitle": "Kabul edilen ödeme yöntemleri"
   },
   "footer": {
+    "yourCountry": "ülken",
     "tagline": "{countryName} için önemli belgeler — basitçe oluşturuldu.",
     "impressum": "Yasal bilgiler",
     "datenschutz": "Gizlilik politikası",
@@ -228,6 +245,101 @@
     "workHistory": "Önceki pozisyonlar",
     "education": "Eğitim / Öğrenim (isteğe bağlı)",
     "languages": "Diller (seviyeyle)"
+  },
+  "options": {
+    "Staatsbürger/in": "Vatandaş",
+    "Dauerhaftes Aufenthaltsrecht": "Süresiz oturma izni",
+    "Befristetes Aufenthaltsrecht": "Süreli oturma izni",
+    "Anderes": "Diğer",
+    "Schweizer Bürger/in": "İsviçre vatandaşı",
+    "C-Ausweis (Niederlassung)": "C izni (yerleşim)",
+    "B-Ausweis (Aufenthalt)": "B izni (oturum)",
+    "L-Ausweis (Kurzaufenthalt)": "L izni (kısa süreli)",
+    "1 Person": "1 kişi",
+    "2 Personen": "2 kişi",
+    "3 Personen": "3 kişi",
+    "4 Personen": "4 kişi",
+    "5 oder mehr": "5 veya daha fazla",
+    "Keine Haustiere": "Evcil hayvan yok",
+    "Hund": "Köpek",
+    "Katze": "Kedi",
+    "Andere Haustiere": "Diğer evcil hayvanlar",
+    "Versicherung": "Sigorta",
+    "Abonnement / Mitgliedschaft": "Abonelik / üyelik",
+    "1 Monat": "1 ay",
+    "2 Monate": "2 ay",
+    "3 Monate": "3 ay",
+    "6 Monate": "6 ay",
+    "1 Jahr": "1 yıl",
+    "Weiss nicht / laut Vertrag": "Bilmiyorum / sözleşmeye göre",
+    "Prämienreduktion beantragen": "Prim indirimi talep et",
+    "Kostengutsprache / Leistungsanfrage": "Masraf onayı / hizmet talebi",
+    "Kündigung der Zusatzversicherung": "Ek sigortanın feshi",
+    "Reklamation / Einsprache": "Şikayet / itiraz",
+    "Andere Anfrage": "Diğer talep"
+  },
+  "form": {
+    "previewButton": "Önizleme oluştur — ücretsiz",
+    "previewAfter": "Ardından tam belge için {price}",
+    "previewLoading": "Önizleme oluşturuluyor…",
+    "previewLoadingSub": "Yaklaşık 5 saniye sürer.",
+    "generating": "Tam belge oluşturuluyor…",
+    "generatingSub": "Yaklaşık 10–20 saniye sürer.",
+    "redirecting": "Ödemeye yönlendiriliyor…",
+    "errorTitle": "Bir hata oluştu",
+    "backToForm": "Forma geri dön",
+    "checkoutError": "Ödeme sayfası açılırken hata oluştu. Lütfen tekrar dene.",
+    "previewTag": "Önizleme",
+    "previewPayNote": "— Tam belgeyi almak için öde",
+    "watermark": "ÖNİZLEME",
+    "checkTitle": "Satın almadan önce kontrol et",
+    "checkBody": "Lütfen bilgilerini kontrol et: tam ad, adres, e-posta adresi, şirket adı ve tam pozisyon unvanı. Hatalı bilgiler belgeyi olumsuz etkileyebilir.",
+    "editData": "Bilgileri değiştir",
+    "readyTitle": "Kişisel belgen hazır.",
+    "readyBody": "Eksiksiz, baskıya hazır belge için tek seferlik {price} öde — abonelik yok, hesap yok.",
+    "payButton": "Tam belge — {price}",
+    "creditCard": "Kredi kartı",
+    "doneTitle": "Belgen hazır",
+    "doneBundleTitle": "Başvuru belgelerin hazır",
+    "coverLetter": "Ön yazı",
+    "cv": "CV",
+    "downloadPdf": "PDF olarak indir",
+    "noteTitle": "Kontrol notu",
+    "attachment": "Ek",
+    "photoSingular": "fotoğraf",
+    "photoPlural": "fotoğraf",
+    "photoLabel": "Başvuru fotoğrafı (isteğe bağlı)",
+    "photoHint": "Bir fotoğraf yükle — belgenin sağ üst köşesine yerleştirilir. İsviçre'de fotoğraf yaygındır ama zorunlu değildir.",
+    "cvPhotoLabel": "Fotoğrafın (isteğe bağlı)",
+    "cvPhotoHint": "İkna edici bir CV için güler yüzlü, profesyonel bir fotoğraf öneriyoruz — başvurunu daha kişisel yapar ve kalıcı bir ilk izlenim bırakır.",
+    "changePhoto": "değiştir",
+    "uploadPrompt": "Fotoğraf, PDF veya Word dosyası yükle",
+    "takePhoto": "Fotoğraf çek veya galeriden seç",
+    "imageUploaded": "✓ Görsel yüklendi — değiştirmek için dokun",
+    "changeFile": "Başka bir dosya seçmek için dokun",
+    "textExtracted": "metin okundu",
+    "uploadedDoc": "Yüklenen belge",
+    "selectPhotos": "Fotoğraf seç (birden fazla olabilir)",
+    "addMorePhotos": "Daha fazla fotoğraf ekle",
+    "maxPhotosReached": "Maksimum {max} fotoğrafa ulaşıldı.",
+    "removePhoto": "Fotoğrafı kaldır",
+    "street": "Sokak",
+    "nr": "No",
+    "zip": "Posta kodu",
+    "city": "Şehir",
+    "rolePlaceholder": "Pozisyon / görev",
+    "companyPlaceholder": "Şirket",
+    "cityOptional": "Şehir (isteğe bağlı)",
+    "degreePlaceholder": "Diploma / kurs",
+    "institutionPlaceholder": "Okul / kurum",
+    "fromYear": "Başlangıç (yıl)",
+    "untilToday": "Bugüne kadar",
+    "addPosition": "Başka pozisyon ekle",
+    "addEducation": "Başka eğitim ekle",
+    "autoCalculated": "✓ Otomatik hesaplandı — tarihi ayarlayabilirsin."
+  },
+  "fieldHints": {
+    "whatToImprove": "Bilmiyorsan sorun değil — referansı analiz edip otomatik olarak iyileştiriyoruz."
   },
   "sections": {
     "Persönliche Angaben": "Kişisel bilgiler",

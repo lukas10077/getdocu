@@ -2,7 +2,7 @@
 import { useState } from "react";
 import CountryText from "./CountryText";
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
+function FAQItem({ question, answer, fallbackCountryName }: { question: string; answer: string; fallbackCountryName?: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-ink-700">
@@ -12,7 +12,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
       </button>
       {open && (
         <p className="pb-7 pr-10 text-sm leading-relaxed text-cream-muted md:text-base">
-          <CountryText text={answer} />
+          <CountryText text={answer} fallbackCountryName={fallbackCountryName} />
         </p>
       )}
     </div>
@@ -28,7 +28,7 @@ export default function FAQSection({ dict }: { dict: any }) {
         <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
         <div className="mt-12 max-w-2xl">
           {faqs.map((faq) => (
-            <FAQItem key={faq.q} question={faq.q} answer={faq.a} />
+            <FAQItem key={faq.q} question={faq.q} answer={faq.a} fallbackCountryName={dict.footer?.yourCountry} />
           ))}
         </div>
       </div>

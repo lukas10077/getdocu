@@ -10,6 +10,8 @@
     "languages": "Language"
   },
   "hero": {
+    "fromPrice": "✓ from {price}",
+    "imageAlt": "Professional document with a pen",
     "eyebrow": "Made for Switzerland",
     "headline": "Important documents. Made simple.",
     "subheadline": "GetDocu helps you create professional letters and documents — explained in your language, optimised for your country.",
@@ -32,6 +34,12 @@
       "💳 Secure via Stripe"
     ],
     "items": {
+      "komplettbewerbung": {
+        "title": "Complete Application",
+        "description": "Cover letter + CV in one — professional, perfectly matched, ready to send.",
+        "uploadLabel": "Upload existing CV (optional)",
+        "uploadHint": "Do you have an old CV? Upload it — as a photo, PDF or Word file. We read it automatically and integrate it into your new CV."
+      },
       "mietbewerbung": {
         "title": "Rental Application",
         "description": "Convince landlords right away. Professional, personal, tailored to local standards."
@@ -45,18 +53,26 @@
         "description": "Insurance, subscription, membership — cancel correctly and on time."
       },
       "arbeitszeugnis": {
+        "uploadLabel": "Upload reference (optional)",
+        "uploadHint": "Upload your reference — as a photo, PDF or Word file. We read it automatically.",
         "title": "Improve Employment Reference",
         "description": "Your reference sounds mediocre? We rewrite it professionally."
       },
       "maengelruege": {
+        "photoGalleryLabel": "Upload photos of the damage (optional)",
+        "photoGalleryHint": "Upload up to 100 photos — they will be attached to the document.",
         "title": "Report Apartment Damage After Move-In",
         "description": "Report damage in your flat — in writing, on time, correctly addressed."
       },
       "reklamation": {
+        "uploadLabel": "Upload a photo of the invoice or product (optional)",
+        "uploadHint": "Do you have a faulty invoice or a defective product? Upload a photo.",
         "title": "Complaint Letter",
         "description": "Defective goods, poor service, wrong invoice — complain clearly and firmly."
       },
       "lebenslauf": {
+        "uploadLabel": "Upload existing CV (optional)",
+        "uploadHint": "Do you have an old CV? Upload it — as a photo, PDF or Word file. We read it automatically.",
         "title": "CV Check",
         "description": "Your CV is analyzed and professionally revised — tailored to your job market."
       },
@@ -146,6 +162,7 @@
     ]
   },
   "footer": {
+    "yourCountry": "your country",
     "tagline": "Important documents for {countryName} — made simple.",
     "impressum": "Legal notice",
     "datenschutz": "Privacy policy",
@@ -231,6 +248,101 @@
     "birthDate": "Date of birth",
     "nationality": "Nationality",
     "residencePermit": "Residence status"
+  },
+  "options": {
+    "Staatsbürger/in": "Citizen",
+    "Dauerhaftes Aufenthaltsrecht": "Permanent residence",
+    "Befristetes Aufenthaltsrecht": "Temporary residence",
+    "Anderes": "Other",
+    "Schweizer Bürger/in": "Swiss citizen",
+    "C-Ausweis (Niederlassung)": "C permit (settlement)",
+    "B-Ausweis (Aufenthalt)": "B permit (residence)",
+    "L-Ausweis (Kurzaufenthalt)": "L permit (short stay)",
+    "1 Person": "1 person",
+    "2 Personen": "2 people",
+    "3 Personen": "3 people",
+    "4 Personen": "4 people",
+    "5 oder mehr": "5 or more",
+    "Keine Haustiere": "No pets",
+    "Hund": "Dog",
+    "Katze": "Cat",
+    "Andere Haustiere": "Other pets",
+    "Versicherung": "Insurance",
+    "Abonnement / Mitgliedschaft": "Subscription / membership",
+    "1 Monat": "1 month",
+    "2 Monate": "2 months",
+    "3 Monate": "3 months",
+    "6 Monate": "6 months",
+    "1 Jahr": "1 year",
+    "Weiss nicht / laut Vertrag": "Don't know / as per contract",
+    "Prämienreduktion beantragen": "Request premium reduction",
+    "Kostengutsprache / Leistungsanfrage": "Coverage approval / benefit request",
+    "Kündigung der Zusatzversicherung": "Cancel supplementary insurance",
+    "Reklamation / Einsprache": "Complaint / objection",
+    "Andere Anfrage": "Other request"
+  },
+  "form": {
+    "previewButton": "Create preview — free",
+    "previewAfter": "Then {price} for the full document",
+    "previewLoading": "Creating preview…",
+    "previewLoadingSub": "Takes about 5 seconds.",
+    "generating": "Creating your full document…",
+    "generatingSub": "This takes about 10–20 seconds.",
+    "redirecting": "Redirecting to payment…",
+    "errorTitle": "Something went wrong",
+    "backToForm": "Back to the form",
+    "checkoutError": "Error opening the payment page. Please try again.",
+    "previewTag": "Preview",
+    "previewPayNote": "— Pay to receive the full document",
+    "watermark": "PREVIEW",
+    "checkTitle": "Check before you buy",
+    "checkBody": "Please check your details: full name, address, e-mail address, company name and exact job title. Incorrect details can affect the document.",
+    "editData": "Edit details",
+    "readyTitle": "Your personal document is ready.",
+    "readyBody": "Pay {price} once for the complete, print-ready document — no subscription, no account.",
+    "payButton": "Full document — {price}",
+    "creditCard": "Credit card",
+    "doneTitle": "Your document is ready",
+    "doneBundleTitle": "Your application documents are ready",
+    "coverLetter": "Cover letter",
+    "cv": "CV",
+    "downloadPdf": "Download as PDF",
+    "noteTitle": "Note for review",
+    "attachment": "Attachment",
+    "photoSingular": "photo",
+    "photoPlural": "photos",
+    "photoLabel": "Application photo (optional)",
+    "photoHint": "Upload a photo — it will be embedded in the top right of the document. In Switzerland a photo is common but not mandatory.",
+    "cvPhotoLabel": "Your photo (optional)",
+    "cvPhotoHint": "For a convincing CV we recommend a friendly, professional photo — it makes your application more personal and leaves a lasting first impression.",
+    "changePhoto": "change",
+    "uploadPrompt": "Upload a photo, PDF or Word file",
+    "takePhoto": "Take a photo or choose from gallery",
+    "imageUploaded": "✓ Image uploaded — tap to change",
+    "changeFile": "Tap to choose a different file",
+    "textExtracted": "text extracted",
+    "uploadedDoc": "Uploaded document",
+    "selectPhotos": "Select photos (multiple possible)",
+    "addMorePhotos": "Add more photos",
+    "maxPhotosReached": "Maximum of {max} photos reached.",
+    "removePhoto": "Remove photo",
+    "street": "Street",
+    "nr": "No.",
+    "zip": "Postcode",
+    "city": "City",
+    "rolePlaceholder": "Position / role",
+    "companyPlaceholder": "Company",
+    "cityOptional": "City (optional)",
+    "degreePlaceholder": "Degree / course",
+    "institutionPlaceholder": "School / institution",
+    "fromYear": "From (year)",
+    "untilToday": "Until today",
+    "addPosition": "Add another position",
+    "addEducation": "Add another education",
+    "autoCalculated": "✓ Calculated automatically — you can adjust the date."
+  },
+  "fieldHints": {
+    "whatToImprove": "No problem if you don't know — we analyse the reference and improve it automatically."
   },
   "sections": {
     "Persönliche Angaben": "Personal details",

@@ -10,6 +10,8 @@
     "languages": "Nyelv"
   },
   "hero": {
+    "fromPrice": "✓ már {price}-tól",
+    "imageAlt": "Professzionális dokumentum tollal",
     "eyebrow": "Svájc számára készült",
     "headline": "Fontos dokumentumok. Egyszerűen elkészítve.",
     "subheadline": "A GetDocu segít professzionális leveleket és dokumentumokat létrehozni — a te nyelvedén magyarázva, az országodra optimalizálva.",
@@ -32,6 +34,12 @@
       "💳 Biztonságos Stripe-on"
     ],
     "items": {
+      "komplettbewerbung": {
+        "title": "Teljes pályázat",
+        "description": "Motivációs levél + önéletrajz egyben — professzionális, összehangolt, azonnal küldhető.",
+        "uploadLabel": "Meglévő önéletrajz feltöltése (opcionális)",
+        "uploadHint": "Van régi önéletrajzod? Töltsd fel — fotóként, PDF vagy Word fájlként. Automatikusan beolvassuk és beépítjük az új önéletrajzba."
+      },
       "mietbewerbung": {
         "title": "Bérleti kérelem",
         "description": "Győzze meg a bérbeadót első alkalommal. Professzionális, személyes."
@@ -45,18 +53,26 @@
         "description": "Biztosítás, előfizetés, tagság — helyesen és határidőre felmondani."
       },
       "arbeitszeugnis": {
+        "uploadLabel": "Referencia feltöltése (opcionális)",
+        "uploadHint": "Töltsd fel a munkáltatói referenciádat — fotóként, PDF vagy Word fájlként. Automatikusan beolvassuk.",
         "title": "Munkaügyi referencia javítása",
         "description": "A referenciája közepes? Professzionálisan átírjuk."
       },
       "maengelruege": {
+        "photoGalleryLabel": "Fotók feltöltése a károkról (opcionális)",
+        "photoGalleryHint": "Tölts fel akár 100 fotót — mellékletként csatoljuk a dokumentumhoz.",
         "title": "Beköltözés utáni károk bejelentése",
         "description": "Károk bejelentése a lakásban — írásban, határidőre, helyes cím alatt."
       },
       "reklamation": {
+        "uploadLabel": "Fotó feltöltése a számláról vagy a termékről (opcionális)",
+        "uploadHint": "Hibás számlád vagy hibás terméked van? Tölts fel egy fotót.",
         "title": "Panaszlevél",
         "description": "Hibás áru, rossz szolgáltatás, téves számla — panaszkodjon egyértelműen."
       },
       "lebenslauf": {
+        "uploadLabel": "Meglévő önéletrajz feltöltése (opcionális)",
+        "uploadHint": "Van régi önéletrajzod? Töltsd fel — fotóként, PDF vagy Word fájlként. Automatikusan beolvassuk.",
         "title": "Önéletrajz-ellenőrzés",
         "description": "Az önéletrajzát elemezzük és professzionálisan felülvizsgáljuk — a munkaerőpiachoz igazítva."
       },
@@ -117,6 +133,7 @@
     "paymentTitle": "Elfogadott fizetési módok"
   },
   "footer": {
+    "yourCountry": "az országod",
     "tagline": "Fontos dokumentumok {countryName} számára — egyszerűen elkészítve.",
     "impressum": "Impresszum",
     "datenschutz": "Adatvédelmi nyilatkozat",
@@ -228,6 +245,101 @@
     "workHistory": "Korábbi munkakörök",
     "education": "Végzettség / Tanulmányok (opcionális)",
     "languages": "Nyelvek (szinttel)"
+  },
+  "options": {
+    "Staatsbürger/in": "Állampolgár",
+    "Dauerhaftes Aufenthaltsrecht": "Állandó tartózkodási jog",
+    "Befristetes Aufenthaltsrecht": "Ideiglenes tartózkodási jog",
+    "Anderes": "Egyéb",
+    "Schweizer Bürger/in": "Svájci állampolgár",
+    "C-Ausweis (Niederlassung)": "C engedély (letelepedés)",
+    "B-Ausweis (Aufenthalt)": "B engedély (tartózkodás)",
+    "L-Ausweis (Kurzaufenthalt)": "L engedély (rövid tartózkodás)",
+    "1 Person": "1 személy",
+    "2 Personen": "2 személy",
+    "3 Personen": "3 személy",
+    "4 Personen": "4 személy",
+    "5 oder mehr": "5 vagy több",
+    "Keine Haustiere": "Nincs háziállat",
+    "Hund": "Kutya",
+    "Katze": "Macska",
+    "Andere Haustiere": "Egyéb háziállat",
+    "Versicherung": "Biztosítás",
+    "Abonnement / Mitgliedschaft": "Előfizetés / tagság",
+    "1 Monat": "1 hónap",
+    "2 Monate": "2 hónap",
+    "3 Monate": "3 hónap",
+    "6 Monate": "6 hónap",
+    "1 Jahr": "1 év",
+    "Weiss nicht / laut Vertrag": "Nem tudom / a szerződés szerint",
+    "Prämienreduktion beantragen": "Díjcsökkentés kérelmezése",
+    "Kostengutsprache / Leistungsanfrage": "Költségátvállalás / ellátási kérelem",
+    "Kündigung der Zusatzversicherung": "Kiegészítő biztosítás felmondása",
+    "Reklamation / Einsprache": "Panasz / kifogás",
+    "Andere Anfrage": "Egyéb kérés"
+  },
+  "form": {
+    "previewButton": "Előnézet készítése — ingyenes",
+    "previewAfter": "Utána {price} a teljes dokumentumért",
+    "previewLoading": "Előnézet készítése…",
+    "previewLoadingSub": "Kb. 5 másodpercig tart.",
+    "generating": "A teljes dokumentum készül…",
+    "generatingSub": "Kb. 10–20 másodpercig tart.",
+    "redirecting": "Átirányítás a fizetéshez…",
+    "errorTitle": "Hiba történt",
+    "backToForm": "Vissza az űrlaphoz",
+    "checkoutError": "Hiba a fizetési oldal megnyitásakor. Próbáld újra.",
+    "previewTag": "Előnézet",
+    "previewPayNote": "— Fizess a teljes dokumentumért",
+    "watermark": "ELŐNÉZET",
+    "checkTitle": "Ellenőrizd vásárlás előtt",
+    "checkBody": "Ellenőrizd az adataidat: teljes név, cím, e-mail cím, cégnév és pontos munkakör. A hibás adatok ronthatják a dokumentumot.",
+    "editData": "Adatok módosítása",
+    "readyTitle": "A személyes dokumentumod elkészült.",
+    "readyBody": "Fizess egyszeri {price} összeget a teljes, nyomtatásra kész dokumentumért — nincs előfizetés, nincs fiók.",
+    "payButton": "Teljes dokumentum — {price}",
+    "creditCard": "Bankkártya",
+    "doneTitle": "A dokumentumod elkészült",
+    "doneBundleTitle": "A pályázati dokumentumaid elkészültek",
+    "coverLetter": "Motivációs levél",
+    "cv": "Önéletrajz",
+    "downloadPdf": "Letöltés PDF-ként",
+    "noteTitle": "Ellenőrizendő megjegyzés",
+    "attachment": "Melléklet",
+    "photoSingular": "fotó",
+    "photoPlural": "fotó",
+    "photoLabel": "Pályázati fotó (opcionális)",
+    "photoHint": "Tölts fel egy fotót — a dokumentum jobb felső sarkába kerül. Svájcban a fotó megszokott, de nem kötelező.",
+    "cvPhotoLabel": "A fotód (opcionális)",
+    "cvPhotoHint": "Egy meggyőző önéletrajzhoz barátságos, professzionális fotót ajánlunk — személyesebbé teszi a pályázatot és maradandó első benyomást kelt.",
+    "changePhoto": "módosítás",
+    "uploadPrompt": "Fotó, PDF vagy Word fájl feltöltése",
+    "takePhoto": "Fotó készítése vagy kiválasztás a galériából",
+    "imageUploaded": "✓ Kép feltöltve — koppints a módosításhoz",
+    "changeFile": "Koppints másik fájl kiválasztásához",
+    "textExtracted": "szöveg beolvasva",
+    "uploadedDoc": "Feltöltött dokumentum",
+    "selectPhotos": "Fotók kiválasztása (több is lehet)",
+    "addMorePhotos": "További fotók hozzáadása",
+    "maxPhotosReached": "Elérted a maximum {max} fotót.",
+    "removePhoto": "Fotó eltávolítása",
+    "street": "Utca",
+    "nr": "Házszám",
+    "zip": "Irányítószám",
+    "city": "Település",
+    "rolePlaceholder": "Munkakör / beosztás",
+    "companyPlaceholder": "Cég",
+    "cityOptional": "Település (opcionális)",
+    "degreePlaceholder": "Végzettség / tanfolyam",
+    "institutionPlaceholder": "Iskola / intézmény",
+    "fromYear": "Ettől (év)",
+    "untilToday": "Máig",
+    "addPosition": "További munkahely hozzáadása",
+    "addEducation": "További képzés hozzáadása",
+    "autoCalculated": "✓ Automatikusan kiszámítva — a dátumot módosíthatod."
+  },
+  "fieldHints": {
+    "whatToImprove": "Nem gond, ha nem tudod — elemezzük a referenciát és automatikusan javítjuk."
   },
   "sections": {
     "Persönliche Angaben": "Személyes adatok",

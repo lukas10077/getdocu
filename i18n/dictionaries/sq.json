@@ -10,6 +10,8 @@
     "languages": "Gjuha"
   },
   "hero": {
+    "fromPrice": "✓ nga {price}",
+    "imageAlt": "Dokument profesional me stilolaps",
     "eyebrow": "Krijuar për Zvicrën",
     "headline": "Dokumente të rëndësishme. Krijuar thjesht.",
     "subheadline": "GetDocu ju ndihmon të krijoni letra dhe dokumente profesionale — të shpjeguara në gjuhën tuaj, të optimizuara për vendin tuaj.",
@@ -32,6 +34,12 @@
       "💳 Sigurt via Stripe"
     ],
     "items": {
+      "komplettbewerbung": {
+        "title": "Aplikim i plotë",
+        "description": "Letër motivimi + CV në një — profesionale, të përshtatura me njëra-tjetrën, gati për dërgim.",
+        "uploadLabel": "Ngarko CV ekzistuese (opsionale)",
+        "uploadHint": "Ke një CV të vjetër? Ngarkoje — si foto, PDF ose skedar Word. E lexojmë automatikisht dhe e integrojmë në CV-në e re."
+      },
       "mietbewerbung": {
         "title": "Aplikim për qira",
         "description": "Bindu pronarin herën e parë. Profesionale, personale."
@@ -45,18 +53,26 @@
         "description": "Sigurim, abonament, anëtarësi — ndërprere saktë dhe në kohë."
       },
       "arbeitszeugnis": {
+        "uploadLabel": "Ngarko referencën (opsionale)",
+        "uploadHint": "Ngarko referencën tënde të punës — si foto, PDF ose skedar Word. E lexojmë automatikisht.",
         "title": "Përmirëso referencën e punës",
         "description": "Referenca jote tingëllon mediokre? E rishkruajmë profesionalisht."
       },
       "maengelruege": {
+        "photoGalleryLabel": "Ngarko foto të dëmeve (opsionale)",
+        "photoGalleryHint": "Ngarko deri në 100 foto — do t'i bashkëngjiten dokumentit si shtojcë.",
         "title": "Raportoni dëmet pas shpërnguljes",
         "description": "Raportoni dëmet në apartament — me shkrim, në kohë, adresuar saktë."
       },
       "reklamation": {
+        "uploadLabel": "Ngarko një foto të faturës ose produktit (opsionale)",
+        "uploadHint": "Ke një faturë të gabuar ose një produkt me defekt? Ngarko një foto.",
         "title": "Letër ankese",
         "description": "Mall me defekte, shërbim i keq, faturë e gabuar — ankohuni qartë dhe vendosmërisht."
       },
       "lebenslauf": {
+        "uploadLabel": "Ngarko CV ekzistuese (opsionale)",
+        "uploadHint": "Ke një CV të vjetër? Ngarkoje — si foto, PDF ose skedar Word. E lexojmë automatikisht.",
         "title": "Kontrollim i CV-së",
         "description": "CV-ja juaj analizohet dhe rishikohet profesionalisht — e përshtatur me tregun tuaj të punës."
       },
@@ -117,6 +133,7 @@
     "paymentTitle": "Metodat e pranuara të pagesës"
   },
   "footer": {
+    "yourCountry": "vendin tënd",
     "tagline": "Dokumente të rëndësishme për {countryName} — të krijuara thjesht.",
     "impressum": "Të dhëna ligjore",
     "datenschutz": "Politika e privatësisë",
@@ -228,6 +245,101 @@
     "workHistory": "Pozicionet e mëparshme",
     "education": "Arsimi / Studimet (opsionale)",
     "languages": "Gjuhët (me nivel)"
+  },
+  "options": {
+    "Staatsbürger/in": "Shtetas/e",
+    "Dauerhaftes Aufenthaltsrecht": "Leje qëndrimi e përhershme",
+    "Befristetes Aufenthaltsrecht": "Leje qëndrimi e përkohshme",
+    "Anderes": "Tjetër",
+    "Schweizer Bürger/in": "Shtetas/e zviceran/e",
+    "C-Ausweis (Niederlassung)": "Leja C (vendosje)",
+    "B-Ausweis (Aufenthalt)": "Leja B (qëndrim)",
+    "L-Ausweis (Kurzaufenthalt)": "Leja L (qëndrim i shkurtër)",
+    "1 Person": "1 person",
+    "2 Personen": "2 persona",
+    "3 Personen": "3 persona",
+    "4 Personen": "4 persona",
+    "5 oder mehr": "5 ose më shumë",
+    "Keine Haustiere": "Pa kafshë shtëpiake",
+    "Hund": "Qen",
+    "Katze": "Mace",
+    "Andere Haustiere": "Kafshë të tjera",
+    "Versicherung": "Sigurim",
+    "Abonnement / Mitgliedschaft": "Abonim / anëtarësi",
+    "1 Monat": "1 muaj",
+    "2 Monate": "2 muaj",
+    "3 Monate": "3 muaj",
+    "6 Monate": "6 muaj",
+    "1 Jahr": "1 vit",
+    "Weiss nicht / laut Vertrag": "Nuk e di / sipas kontratës",
+    "Prämienreduktion beantragen": "Kërko ulje të primit",
+    "Kostengutsprache / Leistungsanfrage": "Garanci mbulimi / kërkesë përfitimesh",
+    "Kündigung der Zusatzversicherung": "Ndërprerje e sigurimit shtesë",
+    "Reklamation / Einsprache": "Ankesë / kundërshtim",
+    "Andere Anfrage": "Kërkesë tjetër"
+  },
+  "form": {
+    "previewButton": "Krijo pamjen paraprake — falas",
+    "previewAfter": "Pastaj {price} për dokumentin e plotë",
+    "previewLoading": "Po krijohet pamja paraprake…",
+    "previewLoadingSub": "Zgjat rreth 5 sekonda.",
+    "generating": "Po krijohet dokumenti i plotë…",
+    "generatingSub": "Zgjat rreth 10–20 sekonda.",
+    "redirecting": "Ridrejtim te pagesa…",
+    "errorTitle": "Ndodhi një gabim",
+    "backToForm": "Kthehu te formulari",
+    "checkoutError": "Gabim gjatë hapjes së faqes së pagesës. Provo përsëri.",
+    "previewTag": "Pamje paraprake",
+    "previewPayNote": "— Paguaj për të marrë dokumentin e plotë",
+    "watermark": "PAMJE PARAPRAKE",
+    "checkTitle": "Kontrollo para blerjes",
+    "checkBody": "Të lutem kontrollo të dhënat: emri i plotë, adresa, adresa e emailit, emri i kompanisë dhe titulli i saktë i pozicionit. Të dhënat e gabuara mund ta dëmtojnë dokumentin.",
+    "editData": "Ndrysho të dhënat",
+    "readyTitle": "Dokumenti yt personal është gati.",
+    "readyBody": "Paguaj {price} vetëm një herë për dokumentin e plotë, gati për printim — pa abonim, pa llogari.",
+    "payButton": "Dokumenti i plotë — {price}",
+    "creditCard": "Kartë krediti",
+    "doneTitle": "Dokumenti yt është gati",
+    "doneBundleTitle": "Dokumentet e tua të aplikimit janë gati",
+    "coverLetter": "Letër motivimi",
+    "cv": "CV",
+    "downloadPdf": "Shkarko si PDF",
+    "noteTitle": "Shënim për t'u kontrolluar",
+    "attachment": "Shtojcë",
+    "photoSingular": "foto",
+    "photoPlural": "foto",
+    "photoLabel": "Foto aplikimi (opsionale)",
+    "photoHint": "Ngarko një foto — do të vendoset lart djathtas në dokument. Në Zvicër fotoja është e zakonshme, por jo e detyrueshme.",
+    "cvPhotoLabel": "Fotoja jote (opsionale)",
+    "cvPhotoHint": "Për një CV bindëse rekomandojmë një foto miqësore dhe profesionale — e bën aplikimin më personal dhe lë një përshtypje të parë të qëndrueshme.",
+    "changePhoto": "ndrysho",
+    "uploadPrompt": "Ngarko një foto, PDF ose skedar Word",
+    "takePhoto": "Bëj një foto ose zgjidh nga galeria",
+    "imageUploaded": "✓ Imazhi u ngarkua — prek për ta ndryshuar",
+    "changeFile": "Prek për të zgjedhur një skedar tjetër",
+    "textExtracted": "teksti u lexua",
+    "uploadedDoc": "Dokumenti i ngarkuar",
+    "selectPhotos": "Zgjidh foto (mund të zgjedhësh disa)",
+    "addMorePhotos": "Shto më shumë foto",
+    "maxPhotosReached": "U arrit maksimumi prej {max} fotosh.",
+    "removePhoto": "Hiq foton",
+    "street": "Rruga",
+    "nr": "Nr.",
+    "zip": "Kodi postar",
+    "city": "Vendi",
+    "rolePlaceholder": "Pozicioni / funksioni",
+    "companyPlaceholder": "Kompania",
+    "cityOptional": "Vendi (opsionale)",
+    "degreePlaceholder": "Diploma / kursi",
+    "institutionPlaceholder": "Shkolla / institucioni",
+    "fromYear": "Nga (viti)",
+    "untilToday": "Deri sot",
+    "addPosition": "Shto një pozicion tjetër",
+    "addEducation": "Shto një arsimim tjetër",
+    "autoCalculated": "✓ Llogaritur automatikisht — mund ta rregullosh datën."
+  },
+  "fieldHints": {
+    "whatToImprove": "S'ka problem nëse nuk e di — ne e analizojmë referencën dhe e përmirësojmë automatikisht."
   },
   "sections": {
     "Persönliche Angaben": "Të dhëna personale",
