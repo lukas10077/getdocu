@@ -178,7 +178,7 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
               placeholder="Land suchen…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-sm border border-ink-700 bg-ink-800 px-3 py-2 text-sm text-cream placeholder:text-cream-subtle outline-none transition focus:border-swiss-gold"
+              className="w-full rounded-sm border border-ink-700 bg-ink-800 px-3 py-2 text-base text-cream placeholder:text-cream-subtle outline-none transition focus:border-swiss-gold"
             />
           </div>
           <div className="max-h-72 overflow-y-auto px-3 pb-3">

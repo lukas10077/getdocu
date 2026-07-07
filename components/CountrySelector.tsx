@@ -103,7 +103,7 @@ export default function CountrySelector() {
             placeholder="Land suchen…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="mt-4 w-full rounded-sm border border-ink-700 bg-ink-800 px-4 py-2.5 text-base text-cream placeholder:text-cream-subtle outline-none transition focus:border-swiss-gold"
+            className="mt-4 w-full rounded-sm border border-ink-700 bg-ink-800 px-4 py-2.5 text-[16px] text-cream placeholder:text-cream-subtle outline-none transition focus:border-swiss-gold"
           />
         </div>
 
