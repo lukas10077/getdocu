@@ -46,7 +46,11 @@ export default function LanguageSwitcher({ current }: { current: Locale }) {
           role="listbox"
           className="absolute right-0 z-50 mt-2 max-h-96 w-64 overflow-y-auto rounded-sm border border-ink-700 bg-ink-900 p-2 shadow-xl"
         >
-          {locales.map((locale) => (
+          {(() => {
+            const priority: Locale[] = ["en", "de", "es", "pt", "fr", "it"];
+            const rest = locales.filter((l) => !priority.includes(l));
+            return [...priority, ...rest];
+          })().map((locale) => (
             <button
               key={locale}
               role="option"
