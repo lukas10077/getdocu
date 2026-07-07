@@ -412,9 +412,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         {lebenslaufResult && (
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Bewerbungsschreiben</p>
         )}
-        <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
-          <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
-          <div style={{ background: "#faf8f4", padding: isCV ? "36px 44px 36px 48px" : "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
+        <div className="overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
+          <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
             {isCV ? renderCVDisplay(cleanResult, true) : (() => {
               const paras = cleanResult.split(/\n\n+/);
               const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
@@ -452,9 +451,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         {lebenslaufResult && (
           <div className="mt-6">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Lebenslauf</p>
-            <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
-              <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
-              <div style={{ background: "#faf8f4", padding: "36px 44px 36px 48px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
+            <div className="overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
+              <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
                 {renderCVDisplay(lebenslaufResult, false)}
               </div>
             </div>
@@ -557,13 +555,12 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 <style>
                   *{box-sizing:border-box;margin:0;padding:0}
                   body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
-                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);border-left:4px solid #c9a84c;margin-bottom:20px}
+                  .page{background:#fff;max-width:740px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,0.12);margin-bottom:20px}
                   .body{font-size:13px;line-height:1.85;color:#1a1a1a}
                   @media print{
                     @page{margin:0;size:A4 portrait}
                     body{background:#fff;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-                    body::before{content:'';position:fixed;left:0;top:0;width:4px;height:100vh;background:#c9a84c;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-                    .page{box-shadow:none;max-width:100%;width:100%;margin:0;border-left:none}
+                    .page{box-shadow:none;max-width:100%;width:100%;margin:0}
                   }
                 </style></head>
                 <body>${doc1Html}${doc2Html}${photosSection}</body></html>`);
@@ -596,11 +593,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             </span>
           </div>
 
-          {/* Goldener Seitenstreifen links */}
-          <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
-
           {/* Dokument-Body */}
-          <div style={{ background: "#faf8f4", padding: "40px 48px 40px 52px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+          <div style={{ background: "#faf8f4", padding: "40px 48px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
             {(() => {
               const paras = previewText.split(/\n\n+/);
               const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());

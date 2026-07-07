@@ -271,29 +271,46 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     priceChfRappen: 500,
     supportsAllDocumentTypes: true,
     supportsProfilePhoto: true,
-    uploadLabelDe: "Deinen bestehenden Lebenslauf hochladen (optional)",
+    uploadLabelDe: "Bestehenden Lebenslauf hochladen (optional)",
     uploadHintDe: "Hast du einen alten Lebenslauf? Lade ihn hoch — als Foto, PDF oder Word-Datei. Wir lesen ihn automatisch.",
-    documentTitleDe: "Lebenslauf-Check",
+    documentTitleDe: "Lebenslauf",
     descriptionDe:
-      "Dein Lebenslauf wird analysiert und professionell überarbeitet — angepasst an deinen Arbeitsmarkt.",
+      "Dein Lebenslauf — professionell aufgebaut, angepasst an deinen Arbeitsmarkt.",
     systemPrompt:
       "Du bist Karriereberater mit Spezialisierung auf den Schweizer Arbeitsmarkt. " +
-      "Analysiere den eingereichten Lebenslauf und erstelle eine überarbeitete, verbesserte Version " +
-      "auf Deutsch. Schweizer Lebenslauf-Standard: prägnant, maximal eine Seite, klare Struktur " +
-      "(Persönliche Daten / Berufserfahrung rückwärts chronologisch / Ausbildung / Sprachen / " +
-      "Weiterbildungen & Zertifikate / Hobbys optional). Kein Foto-Pflicht erwähnen. " +
-      "Gib den vollständigen, überarbeiteten Lebenslauf als Text aus. Keine Erklärungen, nur das Dokument.\n\n" +
+      "Erstelle einen professionellen Lebenslauf auf Deutsch. Falls ein bestehender Lebenslauf hochgeladen wurde, " +
+      "berücksichtige ihn vollständig. Nutze alle vom Nutzer angegebenen Daten (Arbeitsstellen, Ausbildung, Sprachen etc.). " +
+      "Schweizer Standard: prägnant, maximal eine Seite, rückwärts chronologisch. " +
+      "Gib nur das Dokument aus — keine Erklärungen.\n\n" +
       "AUSGABEFORMAT LEBENSLAUF — ZWINGEND:\n" +
-      "Erster Block: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4).\n" +
+      "Erster Block: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4, nur wenn angegeben).\n" +
       "Sektionen in GROSSBUCHSTABEN (z.B. BERUFSERFAHRUNG, AUSBILDUNG, SPRACHEN, KENNTNISSE).\n" +
       "Pro Stelle: Berufsbezeichnung (Zeile 1), Firma und Ort (Zeile 2), Zeitraum wie '2020 – 2023' (Zeile 3), kurze Beschreibung (Zeile 4).\n" +
       "Kein Markdown, keine Bindestriche als Listenpunkte, keine --- Trennlinien.",
     fields: [
-      { key: "targetJob",    label: "Für welche Art Stelle bewirbst du dich?", type: "text",  required: false,
-        placeholderKey: "targetJobExample" },
-      { key: "improvements", label: "Worauf soll der Fokus gelegt werden?",   type: "textarea", required: false,
+      { key: "firstName",       label: "Vorname",                                 type: "text",     required: true,  section: "Persönliche Angaben" },
+      { key: "lastName",        label: "Nachname",                                type: "text",     required: true  },
+      { key: "currentAddress",  label: "Adresse",                                 type: "text",     required: true  },
+      { key: "email",           label: "E-Mail",                                  type: "email",    required: true  },
+      { key: "phone",           label: "Telefon",                                 type: "tel",      required: false },
+      { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",            type: "text",     required: true,  section: "Berufserfahrung" },
+      { key: "workHistory",     label: "Bisherige Arbeitsstellen (mit Jahren)",   type: "textarea", required: false,
+        placeholder: "2020 – 2023: Projektleiter, Firma ABC, Zürich\n2017 – 2020: Sachbearbeiter, Firma XYZ, Basel",
+        hint: "Eine Stelle pro Zeile. Format: Jahr – Jahr: Stelle, Firma, Ort" },
+      { key: "education",       label: "Ausbildung / Studium",                    type: "textarea", required: false,
+        placeholder: "2015 – 2018: Kaufmännische Lehre, Berufsschule Zürich\n2019: Weiterbildung Projektmanagement",
+        section: "Ausbildung" },
+      { key: "languages",       label: "Sprachen (mit Niveau)",                   type: "text",     required: false,
+        placeholder: "Deutsch (Muttersprache), Englisch (C1), Französisch (B2)",
+        section: "Sprachen & Kenntnisse" },
+      { key: "topSkills",       label: "Wichtigste Fähigkeiten / Kenntnisse",     type: "textarea", required: false,
+        placeholderKey: "skillsExample" },
+      { key: "targetJob",       label: "Für welche Art Stelle bewirbst du dich?", type: "text",     required: false,
+        placeholderKey: "targetJobExample",
+        section: "Fokus" },
+      { key: "improvements",    label: "Worauf soll der Fokus gelegt werden?",    type: "textarea", required: false,
         placeholderKey: "cvImprovements",
-        hint: "Kein Problem, wenn du nichts weisst — wir analysieren den Lebenslauf und verbessern ihn automatisch." },
+        hint: "Kein Problem, wenn du nichts weisst — wir optimieren automatisch." },
     ],
   },
 
@@ -373,22 +390,26 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Berufserfahrung rückwärts chronologisch / Ausbildung / Sprachen / Weiterbildungen & Zertifikate. " +
       "Prägnant, übersichtlich, auf die angegebene Stelle ausgerichtet.\n\n" +
       "LEBENSLAUF AUSGABEFORMAT — ZWINGEND:\n" +
-      "Erster Block: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4).\n" +
+      "Erster Block: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4, nur wenn angegeben).\n" +
       "Sektionen in GROSSBUCHSTABEN (z.B. BERUFSERFAHRUNG, AUSBILDUNG, SPRACHEN, KENNTNISSE).\n" +
       "Pro Stelle: Berufsbezeichnung (Zeile 1), Firma und Ort (Zeile 2), Zeitraum wie '2020 – 2023' (Zeile 3), kurze Beschreibung (Zeile 4).\n" +
-      "Lebenslauf maximal eine Seite. Kein Markdown, keine Bindestriche als Listenpunkte, keine --- Trennlinien.",
+      "Verwende alle angegebenen Arbeitsstellen und Jahreszahlen exakt wie angegeben. Lebenslauf maximal eine Seite. Kein Markdown, keine Bindestriche als Listenpunkte, keine --- Trennlinien.",
     fields: [
       { key: "firstName",       label: "Vorname",                              type: "text",     required: true,  section: "Über dich" },
       { key: "lastName",        label: "Nachname",                             type: "text",     required: true  },
       { key: "currentAddress",  label: "Deine Adresse",                        type: "text",     required: true  },
       { key: "email",           label: "E-Mail",                               type: "email",    required: true  },
       { key: "phone",           label: "Telefon",                              type: "tel",      required: false },
-      { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",         type: "text",     required: true  },
-      { key: "yearsExperience", label: "Jahre Berufserfahrung",                type: "number",   required: true  },
-      { key: "topSkills",       label: "Wichtigste Fähigkeiten und Stärken",   type: "textarea", required: true,
+      { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",            type: "text",     required: true  },
+      { key: "workHistory",     label: "Bisherige Arbeitsstellen (mit Jahren)",   type: "textarea", required: false,
+        placeholder: "2020 – 2023: Projektleiter, Firma ABC, Zürich\n2017 – 2020: Sachbearbeiter, Firma XYZ, Basel",
+        hint: "Eine Stelle pro Zeile. Format: Jahr – Jahr: Stelle, Firma, Ort" },
+      { key: "education",       label: "Ausbildung / Studium",                    type: "textarea", required: false,
+        placeholder: "2015 – 2018: Kaufmännische Lehre, Berufsschule Zürich" },
+      { key: "topSkills",       label: "Wichtigste Fähigkeiten und Stärken",      type: "textarea", required: true,
         placeholderKey: "skillsExample" },
-      { key: "languages",       label: "Sprachen (mit Niveau)",                type: "text",     required: false, placeholder: "Deutsch (Muttersprache), Englisch (C1), Französisch (B2)" },
-      { key: "targetPosition",  label: "Stelle, auf die du dich bewirbst",     type: "text",     required: true,  section: "Die Stelle" },
+      { key: "languages",       label: "Sprachen (mit Niveau)",                   type: "text",     required: false, placeholder: "Deutsch (Muttersprache), Englisch (C1), Französisch (B2)" },
+      { key: "targetPosition",  label: "Stelle, auf die du dich bewirbst",        type: "text",     required: true,  section: "Die Stelle" },
       { key: "targetCompany",   label: "Name des Unternehmens",                type: "text",     required: true  },
       { key: "companyAddress",  label: "Adresse des Unternehmens",             type: "text",     required: false },
       { key: "whyCompany",      label: "Warum dieses Unternehmen?",            type: "textarea", required: true,
