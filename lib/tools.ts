@@ -372,7 +372,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     uploadHintDe: "Hast du einen alten Lebenslauf? Lade ihn hoch — als Foto, PDF oder Word-Datei. Wir lesen ihn automatisch und integrieren ihn in den neuen Lebenslauf.",
     documentTitleDe: "Komplettbewerbung",
     descriptionDe:
-      "Bewerbungsschreiben + Lebenslauf in einem — professionell, aufeinander abgestimmt, sofort einsatzbereit.",
+      "Wir helfen dir, mit dem kompletten Bewerbungspaket deine Chancen zu erhöhen.",
     systemPrompt:
       "Du bist Experte für Bewerbungen auf dem Schweizer Arbeitsmarkt. Erstelle ZWEI aufeinander abgestimmte Dokumente:\n\n" +
       "TEIL 1 — BEWERBUNGSSCHREIBEN:\n" +
