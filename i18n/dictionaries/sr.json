@@ -224,7 +224,10 @@
     "policyNumber": "Broj osiguranja/police",
     "topic": "Tema pisma",
     "details": "Tvoj zahtev",
-    "employerAddress": "Adresa poslodavca"
+    "employerAddress": "Adresa poslodavca",
+    "workHistory": "Prethodne pozicije",
+    "education": "Obrazovanje / Studije (opcionalno)",
+    "languages": "Jezici (sa nivoom)"
   },
   "sections": {
     "Persönliche Angaben": "Lični podaci",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Zdravstveno osiguranje",
     "Anliegen": "Zahtev",
-    "Arbeitgeber": "Poslodavac"
+    "Arbeitgeber": "Poslodavac",
+    "Berufserfahrung": "Radno iskustvo",
+    "Ausbildung": "Obrazovanje",
+    "Sprachen & Kenntnisse": "Jezici & Veštine",
+    "Fokus": "Za koji tip pozicije aplicirate?",
+    "Verbesserungen": "Šta treba poboljšati?"
   }
 }

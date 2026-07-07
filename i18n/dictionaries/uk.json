@@ -224,7 +224,10 @@
     "policyNumber": "Номер страховки/поліса",
     "topic": "Тема листа",
     "details": "Ваш запит",
-    "employerAddress": "Адреса роботодавця"
+    "employerAddress": "Адреса роботодавця",
+    "workHistory": "Попередні посади",
+    "education": "Освіта (за бажанням)",
+    "languages": "Мови (з рівнем)"
   },
   "sections": {
     "Persönliche Angaben": "Особисті дані",
@@ -243,6 +246,11 @@
     "Lebenslauf": "Резюме",
     "Krankenkasse": "Медичне страхування",
     "Anliegen": "Запит",
-    "Arbeitgeber": "Роботодавець"
+    "Arbeitgeber": "Роботодавець",
+    "Berufserfahrung": "Досвід роботи",
+    "Ausbildung": "Освіта",
+    "Sprachen & Kenntnisse": "Мови & Навички",
+    "Fokus": "На яку посаду ви претендуєте?",
+    "Verbesserungen": "Що потрібно покращити?"
   }
 }

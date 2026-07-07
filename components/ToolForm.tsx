@@ -117,14 +117,42 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
 
   // Telefon-Vorwahl
   const PHONE_PREFIXES = [
-    { code: "CH", prefix: "+41" }, { code: "DE", prefix: "+49" }, { code: "AT", prefix: "+43" },
+    // DACH + Liechtenstein
+    { code: "CH", prefix: "+41" }, { code: "DE", prefix: "+49" }, { code: "AT", prefix: "+43" }, { code: "LI", prefix: "+423" },
+    // West-Europa
     { code: "FR", prefix: "+33" }, { code: "IT", prefix: "+39" }, { code: "ES", prefix: "+34" },
-    { code: "NL", prefix: "+31" }, { code: "BE", prefix: "+32" }, { code: "PT", prefix: "+351" },
-    { code: "GB", prefix: "+44" }, { code: "US", prefix: "+1"  }, { code: "CA", prefix: "+1"  },
-    { code: "AU", prefix: "+61" }, { code: "NZ", prefix: "+64" }, { code: "PL", prefix: "+48" },
-    { code: "CZ", prefix: "+420"}, { code: "HU", prefix: "+36" }, { code: "RO", prefix: "+40" },
+    { code: "PT", prefix: "+351" }, { code: "NL", prefix: "+31" }, { code: "BE", prefix: "+32" },
+    { code: "GB", prefix: "+44" }, { code: "IE", prefix: "+353" }, { code: "LU", prefix: "+352" },
+    { code: "MC", prefix: "+377" }, { code: "AD", prefix: "+376" }, { code: "SM", prefix: "+378" },
+    // Nord-Europa
     { code: "SE", prefix: "+46" }, { code: "NO", prefix: "+47" }, { code: "DK", prefix: "+45" },
-    { code: "TR", prefix: "+90" }, { code: "RU", prefix: "+7"  }, { code: "UA", prefix: "+380"},
+    { code: "FI", prefix: "+358" }, { code: "IS", prefix: "+354" },
+    // Ost-Europa
+    { code: "PL", prefix: "+48" }, { code: "CZ", prefix: "+420" }, { code: "SK", prefix: "+421" },
+    { code: "HU", prefix: "+36" }, { code: "RO", prefix: "+40" }, { code: "BG", prefix: "+359" },
+    { code: "HR", prefix: "+385" }, { code: "SI", prefix: "+386" }, { code: "RS", prefix: "+381" },
+    { code: "BA", prefix: "+387" }, { code: "ME", prefix: "+382" }, { code: "MK", prefix: "+389" },
+    { code: "AL", prefix: "+355" }, { code: "XK", prefix: "+383" },
+    { code: "GR", prefix: "+30" }, { code: "CY", prefix: "+357" }, { code: "MT", prefix: "+356" },
+    // Baltikum
+    { code: "LT", prefix: "+370" }, { code: "LV", prefix: "+371" }, { code: "EE", prefix: "+372" },
+    // Osteuropa / GUS
+    { code: "UA", prefix: "+380" }, { code: "RU", prefix: "+7"   }, { code: "BY", prefix: "+375" },
+    { code: "MD", prefix: "+373" }, { code: "TR", prefix: "+90"  },
+    // Nordamerika
+    { code: "US", prefix: "+1"   }, { code: "CA", prefix: "+1"   }, { code: "MX", prefix: "+52"  },
+    // Mittelamerika & Karibik
+    { code: "GT", prefix: "+502" }, { code: "HN", prefix: "+504" }, { code: "SV", prefix: "+503" },
+    { code: "NI", prefix: "+505" }, { code: "CR", prefix: "+506" }, { code: "PA", prefix: "+507" },
+    { code: "CU", prefix: "+53"  }, { code: "DO", prefix: "+1"   }, { code: "HT", prefix: "+509" },
+    { code: "JM", prefix: "+1"   },
+    // Südamerika
+    { code: "BR", prefix: "+55"  }, { code: "CO", prefix: "+57"  }, { code: "AR", prefix: "+54"  },
+    { code: "PE", prefix: "+51"  }, { code: "VE", prefix: "+58"  }, { code: "CL", prefix: "+56"  },
+    { code: "EC", prefix: "+593" }, { code: "BO", prefix: "+591" }, { code: "PY", prefix: "+595" },
+    { code: "UY", prefix: "+598" }, { code: "GY", prefix: "+592" }, { code: "SR", prefix: "+597" },
+    // Ozeanien
+    { code: "AU", prefix: "+61"  }, { code: "NZ", prefix: "+64"  },
   ];
   const defaultPrefix = PHONE_PREFIXES.find(p => p.code === (country?.code ?? "CH"))?.prefix ?? "+41";
   const [phonePrefix, setPhonePrefix] = useState(defaultPrefix);

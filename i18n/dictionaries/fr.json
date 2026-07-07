@@ -224,7 +224,10 @@
     "policyNumber": "Numéro d'assurance/police",
     "topic": "Sujet de la lettre",
     "details": "Votre demande",
-    "employerAddress": "Adresse de l'employeur"
+    "employerAddress": "Adresse de l'employeur",
+    "workHistory": "Postes précédents",
+    "education": "Formation / Études (optionnel)",
+    "languages": "Langues (avec niveau)"
   },
   "sections": {
     "Persönliche Angaben": "Renseignements personnels",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Assurance maladie",
     "Anliegen": "Votre demande",
-    "Arbeitgeber": "Employeur"
+    "Arbeitgeber": "Employeur",
+    "Berufserfahrung": "Expérience professionnelle",
+    "Ausbildung": "Formation",
+    "Sprachen & Kenntnisse": "Langues & Compétences",
+    "Fokus": "Pour quel type de poste postulez-vous ?",
+    "Verbesserungen": "Qu'est-ce qui doit être amélioré ?"
   }
 }

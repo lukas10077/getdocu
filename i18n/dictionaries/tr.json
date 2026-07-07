@@ -224,7 +224,10 @@
     "policyNumber": "Sigorta/poliçe numarası",
     "topic": "Mektubun konusu",
     "details": "Talebiniz",
-    "employerAddress": "İşveren adresi"
+    "employerAddress": "İşveren adresi",
+    "workHistory": "Önceki pozisyonlar",
+    "education": "Eğitim / Öğrenim (isteğe bağlı)",
+    "languages": "Diller (seviyeyle)"
   },
   "sections": {
     "Persönliche Angaben": "Kişisel bilgiler",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Sağlık sigortası",
     "Anliegen": "Talep",
-    "Arbeitgeber": "İşveren"
+    "Arbeitgeber": "İşveren",
+    "Berufserfahrung": "İş deneyimi",
+    "Ausbildung": "Eğitim",
+    "Sprachen & Kenntnisse": "Diller & Beceriler",
+    "Fokus": "Ne tür bir pozisyon için başvuruyorsunuz?",
+    "Verbesserungen": "Ne geliştirilmeli?"
   }
 }

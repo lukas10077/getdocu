@@ -224,7 +224,10 @@
     "policyNumber": "Número de seguro/póliza",
     "topic": "Asunto de la carta",
     "details": "Tu solicitud",
-    "employerAddress": "Dirección del empleador"
+    "employerAddress": "Dirección del empleador",
+    "workHistory": "Puestos anteriores",
+    "education": "Formación / Estudios (opcional)",
+    "languages": "Idiomas (con nivel)"
   },
   "sections": {
     "Persönliche Angaben": "Datos personales",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Seguro médico",
     "Anliegen": "Solicitud",
-    "Arbeitgeber": "Empleador"
+    "Arbeitgeber": "Empleador",
+    "Berufserfahrung": "Experiencia laboral",
+    "Ausbildung": "Formación",
+    "Sprachen & Kenntnisse": "Idiomas & Habilidades",
+    "Fokus": "¿Para qué tipo de puesto te postulas?",
+    "Verbesserungen": "¿Qué debe mejorarse?"
   }
 }

@@ -224,7 +224,13 @@
     "policyNumber": "Insurance/policy number",
     "topic": "Subject of letter",
     "details": "Your concern",
-    "employerAddress": "Employer address"
+    "employerAddress": "Employer address",
+    "workHistory": "Previous positions",
+    "education": "Education / Studies (optional)",
+    "languages": "Languages (with level)",
+    "birthDate": "Date of birth",
+    "nationality": "Nationality",
+    "residencePermit": "Residence status"
   },
   "sections": {
     "Persönliche Angaben": "Personal details",
@@ -243,6 +249,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Health insurance",
     "Anliegen": "Your concern",
-    "Arbeitgeber": "Employer"
+    "Arbeitgeber": "Employer",
+    "Berufserfahrung": "Work experience",
+    "Ausbildung": "Education",
+    "Sprachen & Kenntnisse": "Languages & Skills",
+    "Fokus": "Focus",
+    "Verbesserungen": "Improvements"
   }
 }

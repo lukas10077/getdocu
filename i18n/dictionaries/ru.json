@@ -224,7 +224,10 @@
     "policyNumber": "Номер страховки/полиса",
     "topic": "Тема письма",
     "details": "Ваш запрос",
-    "employerAddress": "Адрес работодателя"
+    "employerAddress": "Адрес работодателя",
+    "workHistory": "Предыдущие должности",
+    "education": "Образование (по желанию)",
+    "languages": "Языки (с уровнем)"
   },
   "sections": {
     "Persönliche Angaben": "Личные данные",
@@ -243,6 +246,11 @@
     "Lebenslauf": "Резюме",
     "Krankenkasse": "Медицинское страхование",
     "Anliegen": "Запрос",
-    "Arbeitgeber": "Работодатель"
+    "Arbeitgeber": "Работодатель",
+    "Berufserfahrung": "Опыт работы",
+    "Ausbildung": "Образование",
+    "Sprachen & Kenntnisse": "Языки & Навыки",
+    "Fokus": "На какой тип должности вы претендуете?",
+    "Verbesserungen": "Что нужно улучшить?"
   }
 }

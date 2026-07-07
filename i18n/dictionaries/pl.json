@@ -224,7 +224,10 @@
     "policyNumber": "Numer ubezpieczenia/polisy",
     "topic": "Temat pisma",
     "details": "Twoja prośba",
-    "employerAddress": "Adres pracodawcy"
+    "employerAddress": "Adres pracodawcy",
+    "workHistory": "Poprzednie stanowiska",
+    "education": "Wykształcenie / Studia (opcjonalnie)",
+    "languages": "Języki (z poziomem)"
   },
   "sections": {
     "Persönliche Angaben": "Dane osobowe",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Ubezpieczenie zdrowotne",
     "Anliegen": "Prośba",
-    "Arbeitgeber": "Pracodawca"
+    "Arbeitgeber": "Pracodawca",
+    "Berufserfahrung": "Doświadczenie zawodowe",
+    "Ausbildung": "Wykształcenie",
+    "Sprachen & Kenntnisse": "Języki & Umiejętności",
+    "Fokus": "Na jaki rodzaj stanowiska się ubiegasz?",
+    "Verbesserungen": "Co należy poprawić?"
   }
 }

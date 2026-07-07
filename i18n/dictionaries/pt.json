@@ -224,7 +224,10 @@
     "policyNumber": "Número de seguro/apólice",
     "topic": "Assunto da carta",
     "details": "O teu pedido",
-    "employerAddress": "Endereço do empregador"
+    "employerAddress": "Endereço do empregador",
+    "workHistory": "Posições anteriores",
+    "education": "Formação / Estudos (opcional)",
+    "languages": "Idiomas (com nível)"
   },
   "sections": {
     "Persönliche Angaben": "Dados pessoais",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Seguro de saúde",
     "Anliegen": "Pedido",
-    "Arbeitgeber": "Empregador"
+    "Arbeitgeber": "Empregador",
+    "Berufserfahrung": "Experiência profissional",
+    "Ausbildung": "Formação",
+    "Sprachen & Kenntnisse": "Idiomas & Competências",
+    "Fokus": "Para que tipo de cargo te candidatas?",
+    "Verbesserungen": "O que deve ser melhorado?"
   }
 }

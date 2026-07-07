@@ -224,7 +224,10 @@
     "policyNumber": "Numri i sigurimit/policës",
     "topic": "Tema e letrës",
     "details": "Kërkesa jote",
-    "employerAddress": "Adresa e punëdhënësit"
+    "employerAddress": "Adresa e punëdhënësit",
+    "workHistory": "Pozicionet e mëparshme",
+    "education": "Arsimi / Studimet (opsionale)",
+    "languages": "Gjuhët (me nivel)"
   },
   "sections": {
     "Persönliche Angaben": "Të dhëna personale",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Sigurim shëndetësor",
     "Anliegen": "Kërkesa",
-    "Arbeitgeber": "Punëdhënësi"
+    "Arbeitgeber": "Punëdhënësi",
+    "Berufserfahrung": "Përvoja e punës",
+    "Ausbildung": "Arsimi",
+    "Sprachen & Kenntnisse": "Gjuhët & Aftësitë",
+    "Fokus": "Për çfarë lloj pozicioni po aplikon?",
+    "Verbesserungen": "Çfarë duhet përmirësuar?"
   }
 }

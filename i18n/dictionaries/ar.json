@@ -224,7 +224,10 @@
     "policyNumber": "رقم التأمين/البوليصة",
     "topic": "موضوع الرسالة",
     "details": "طلبك",
-    "employerAddress": "عنوان صاحب العمل"
+    "employerAddress": "عنوان صاحب العمل",
+    "workHistory": "الوظائف السابقة",
+    "education": "التعليم / الدراسة (اختياري)",
+    "languages": "اللغات (مع المستوى)"
   },
   "sections": {
     "Persönliche Angaben": "المعلومات الشخصية",
@@ -243,6 +246,11 @@
     "Lebenslauf": "السيرة الذاتية",
     "Krankenkasse": "التأمين الصحي",
     "Anliegen": "الطلب",
-    "Arbeitgeber": "صاحب العمل"
+    "Arbeitgeber": "صاحب العمل",
+    "Berufserfahrung": "الخبرة العملية",
+    "Ausbildung": "التعليم",
+    "Sprachen & Kenntnisse": "اللغات والمهارات",
+    "Fokus": "لأي نوع من الوظائف تتقدم؟",
+    "Verbesserungen": "ماذا يجب تحسينه؟"
   }
 }

@@ -224,7 +224,10 @@
     "policyNumber": "காப்பீட்டு/பாலிசி எண்",
     "topic": "கடித தலைப்பு",
     "details": "உங்கள் கோரிக்கை",
-    "employerAddress": "முதலாளியின் முகவரி"
+    "employerAddress": "முதலாளியின் முகவரி",
+    "workHistory": "முந்தைய பதவிகள்",
+    "education": "கல்வி / படிப்பு (விரும்பினால்)",
+    "languages": "மொழிகள் (நிலையுடன்)"
   },
   "sections": {
     "Persönliche Angaben": "தனிப்பட்ட தகவல்கள்",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "சுகாதார காப்பீடு",
     "Anliegen": "கோரிக்கை",
-    "Arbeitgeber": "முதலாளி"
+    "Arbeitgeber": "முதலாளி",
+    "Berufserfahrung": "பணி அனுபவம்",
+    "Ausbildung": "கல்வி",
+    "Sprachen & Kenntnisse": "மொழிகள் & திறன்கள்",
+    "Fokus": "எந்த வகையான பதவிக்கு விண்ணப்பிக்கிறீர்கள்?",
+    "Verbesserungen": "என்ன மேம்படுத்த வேண்டும்?"
   }
 }

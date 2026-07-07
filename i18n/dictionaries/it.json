@@ -224,7 +224,10 @@
     "policyNumber": "Numero di assicurazione/polizza",
     "topic": "Oggetto della lettera",
     "details": "La tua richiesta",
-    "employerAddress": "Indirizzo del datore di lavoro"
+    "employerAddress": "Indirizzo del datore di lavoro",
+    "workHistory": "Posizioni precedenti",
+    "education": "Formazione / Studi (opzionale)",
+    "languages": "Lingue (con livello)"
   },
   "sections": {
     "Persönliche Angaben": "Dati personali",
@@ -243,6 +246,11 @@
     "Lebenslauf": "CV",
     "Krankenkasse": "Assicurazione sanitaria",
     "Anliegen": "La tua richiesta",
-    "Arbeitgeber": "Datore di lavoro"
+    "Arbeitgeber": "Datore di lavoro",
+    "Berufserfahrung": "Esperienza lavorativa",
+    "Ausbildung": "Formazione",
+    "Sprachen & Kenntnisse": "Lingue & Competenze",
+    "Fokus": "Per che tipo di posizione ti candidi?",
+    "Verbesserungen": "Cosa deve essere migliorato?"
   }
 }

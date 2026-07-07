@@ -225,7 +225,13 @@
     "policyNumber": "Versicherungs-/Policennummer",
     "topic": "Thema des Briefes",
     "details": "Dein Anliegen",
-    "employerAddress": "Adresse des Arbeitgebers"
+    "employerAddress": "Adresse des Arbeitgebers",
+    "workHistory": "Bisherige Arbeitsstellen",
+    "education": "Ausbildung / Studium (optional)",
+    "languages": "Sprachen (mit Niveau)",
+    "birthDate": "Geburtsdatum",
+    "nationality": "Nationalität",
+    "residencePermit": "Aufenthaltsstatus"
   },
   "sections": {
     "Persönliche Angaben": "Persönliche Angaben",
@@ -244,6 +250,12 @@
     "Lebenslauf": "Lebenslauf",
     "Krankenkasse": "Krankenkasse",
     "Anliegen": "Anliegen",
-    "Arbeitgeber": "Arbeitgeber"
+    "Arbeitgeber": "Arbeitgeber",
+    "Berufserfahrung": "Berufserfahrung",
+    "Ausbildung": "Ausbildung",
+    "Sprachen & Kenntnisse": "Sprachen & Kenntnisse",
+    "Fokus": "Fokus",
+    "Verbesserungen": "Verbesserungen",
+    "Zeugnis": "Zeugnis"
   }
 }

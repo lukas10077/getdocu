@@ -224,7 +224,10 @@
     "policyNumber": "Biztosítási/kötvényszám",
     "topic": "Levél tárgya",
     "details": "A kérelmed",
-    "employerAddress": "Munkáltató címe"
+    "employerAddress": "Munkáltató címe",
+    "workHistory": "Korábbi munkakörök",
+    "education": "Végzettség / Tanulmányok (opcionális)",
+    "languages": "Nyelvek (szinttel)"
   },
   "sections": {
     "Persönliche Angaben": "Személyes adatok",
@@ -243,6 +246,11 @@
     "Lebenslauf": "Önéletrajz",
     "Krankenkasse": "Egészségbiztosítás",
     "Anliegen": "Kérelem",
-    "Arbeitgeber": "Munkáltató"
+    "Arbeitgeber": "Munkáltató",
+    "Berufserfahrung": "Munkatapasztalat",
+    "Ausbildung": "Végzettség",
+    "Sprachen & Kenntnisse": "Nyelvek & Készségek",
+    "Fokus": "Milyen típusú állásra pályázol?",
+    "Verbesserungen": "Mit kell javítani?"
   }
 }
