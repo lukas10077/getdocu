@@ -103,7 +103,6 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
                   : "text-cream"
               }`}
             >
-              <span className="text-base leading-none">{localeMeta[l].flag}</span>
               <span className="truncate">{localeMeta[l].nativeName}</span>
             </button>
           ))}
