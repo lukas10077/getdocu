@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import { locales, isRtl, getDictionary, Locale } from "@/i18n/config";
 import { CountryProvider } from "@/components/CountryProvider";
 import CountrySelector from "@/components/CountrySelector";
+import OnboardingCard from "@/components/OnboardingCard";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const cormorant = Cormorant_Garamond({
@@ -52,6 +53,7 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
       <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased`} suppressHydrationWarning>
         <CountryProvider>
           <CountrySelector />
+          <OnboardingCard locale={params.locale} />
           {children}
         </CountryProvider>
       </body>

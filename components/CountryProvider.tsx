@@ -36,8 +36,11 @@ export function CountryProvider({ children }: { children: React.ReactNode }) {
         return;
       }
     }
-    // Kein gültiges Land → Auswahl zeigen
-    setShowSelector(true);
+    // Kein gültiges Land → CountrySelector nur zeigen wenn Onboarding bereits abgeschlossen
+    // (Erstbesucher bekommen stattdessen die OnboardingCard)
+    if (localStorage.getItem("getdocu_onboarded")) {
+      setShowSelector(true);
+    }
   }, []);
 
   function setCountry(c: Country) {
