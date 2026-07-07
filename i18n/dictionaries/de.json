@@ -11,7 +11,7 @@
   },
   "hero": {
     "eyebrow": "Gemacht für die Schweiz",
-    "headline": "Bewerbung. Kündigung. Für dich — in 10 Sekunden.",
+    "headline": "Bewerbung. Kündigung. Für dich — in 20 Sekunden.",
     "subheadline": "Professionelle Briefe, die deine Chancen erhöhen — in deiner Sprache, für dein Land optimiert.",
     "cta": "Dokument wählen",
     "ctaSecondary": "So funktioniert's",
@@ -28,7 +28,7 @@
     "back": "← Zurück",
     "trustPills": [
       "🔒 Daten sofort gelöscht",
-      "⚡ Dokument in 10 Sek.",
+      "⚡ Dokument in 20 Sek.",
       "💳 Sicher via Stripe"
     ],
     "items": {

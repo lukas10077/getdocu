@@ -11,7 +11,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
       <div className="hidden md:block absolute inset-y-0 right-0 w-[58%] bg-black">
         <Image
           src="/hero.jpg"
-          alt={dict.hero.imageAlt ?? "Professionelles Dokument mit Stift"}
+          alt="Professionelles Dokument mit Stift"
           fill
           className="object-contain object-right"
           priority
@@ -32,7 +32,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
               .split(/\.\s+/)
               .map((line: string, i: number, arr: string[]) => (
                 <span key={i}>
-                  <span className={i === 1 ? "text-cream-muted" : ""}>
+                  <span className={i === arr.length - 1 ? "text-cream-muted" : ""}>
                     {line}{i < arr.length - 1 ? "." : ""}
                   </span>
                   {i < arr.length - 1 && <br />}
@@ -65,7 +65,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
             {(dict.hero.badges ?? ["✓ Kein Konto", "✓ Kein Abo", "✓ Daten gelöscht"]).map((b: string) => (
               <span key={b}>{b}</span>
             ))}
-            <HeroMinPrice label={dict.hero.fromPrice} />
+            <HeroMinPrice />
           </div>
         </div>
 
@@ -73,7 +73,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
         <div className="mt-10 md:hidden flex justify-end -mr-6">
           <Image
             src="/hero.jpg"
-            alt={dict.hero.imageAlt ?? "Professionelles Dokument mit Stift"}
+            alt="Professionelles Dokument mit Stift"
             width={800}
             height={900}
             className="w-[100%] rounded-l-sm object-cover"
