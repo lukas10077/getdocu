@@ -1,12 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { locales, localeMeta, Locale } from "@/i18n/config";
 import { useCountry } from "./CountryProvider";
 import { COUNTRIES, Country } from "@/lib/countries";
 
 const STORAGE_KEY = "getdocu_onboarded";
+
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const m = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=([^;]+)`));
+  return m ? m[1] : null;
+}
 
 export default function OnboardingCard({ locale }: { locale: Locale }) {
   const [visible, setVisible] = useState(false);
@@ -17,15 +23,30 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
   const router = useRouter();
   const pathname = usePathname();
 
+  // Detected country from IP (set by middleware)
+  const [detectedCountry, setDetectedCountry] = useState<Country | null>(null);
+  const detectedRef = useRef<Country | null>(null);
+
   useEffect(() => {
-    // Don't show if already dismissed or country already set
+    const code = readCookie("getdocu_detected_country");
+    if (code) {
+      const found = COUNTRIES.find((c) => c.code === code) ?? null;
+      setDetectedCountry(found);
+      detectedRef.current = found;
+    }
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem(STORAGE_KEY)) return;
-    if (country) return;
     const t = setTimeout(() => setVisible(true), 700);
     return () => clearTimeout(t);
-  }, [country]);
+  }, []);
 
-  function dismiss() {
+  function dismiss(applyDetected = true) {
+    // Wenn kein Land manuell gewählt → erkanntes Land anwenden
+    if (applyDetected && !country && detectedRef.current) {
+      setCountry(detectedRef.current);
+    }
     setLeaving(true);
     setTimeout(() => {
       localStorage.setItem(STORAGE_KEY, "1");
@@ -44,7 +65,7 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
 
   function selectCountry(c: Country) {
     setCountry(c);
-    dismiss();
+    dismiss(false);
   }
 
   if (!visible) return null;
@@ -75,12 +96,12 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
           </p>
           <p className="mt-0.5 text-xs text-cream-subtle">
             {step === "language"
-              ? "Wähle die Sprache für die Dokumente."
-              : "Für welches Land brauchst du das Dokument?"}
+              ? "Bereits erkannt — ändern falls nötig."
+              : "Bereits erkannt — ändern falls nötig."}
           </p>
         </div>
         <button
-          onClick={dismiss}
+          onClick={() => dismiss()}
           aria-label="Schliessen"
           className="ml-3 mt-0.5 flex-shrink-0 text-cream-subtle transition hover:text-cream"
         >
@@ -93,19 +114,27 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
       {/* ── Step 1: Language ─────────────────────────────────────────── */}
       {step === "language" && (
         <div className="grid grid-cols-2 gap-0.5 p-3">
-          {locales.map((l) => (
-            <button
-              key={l}
-              onClick={() => selectLanguage(l)}
-              className={`flex items-center gap-2.5 rounded-sm px-3 py-2.5 text-left text-sm transition hover:bg-ink-800 active:scale-[0.98] ${
-                l === locale
-                  ? "bg-ink-800 font-semibold text-swiss-gold"
-                  : "text-cream"
-              }`}
-            >
-              <span className="truncate">{localeMeta[l].nativeName}</span>
-            </button>
-          ))}
+          {locales.map((l) => {
+            const isActive = l === locale;
+            return (
+              <button
+                key={l}
+                onClick={() => selectLanguage(l)}
+                className={`flex items-center gap-2.5 rounded-sm px-3 py-2.5 text-left text-sm transition hover:bg-ink-800 active:scale-[0.98] ${
+                  isActive
+                    ? "bg-ink-800 font-semibold text-swiss-gold ring-1 ring-swiss-gold/30"
+                    : "text-cream"
+                }`}
+              >
+                <span className="truncate">{localeMeta[l].nativeName}</span>
+                {isActive && (
+                  <svg className="ml-auto flex-shrink-0" width="10" height="8" viewBox="0 0 10 8" fill="none">
+                    <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+              </button>
+            );
+          })}
         </div>
       )}
 
@@ -123,50 +152,42 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
             />
           </div>
           <div className="max-h-72 overflow-y-auto px-3 pb-3">
-            {europe.length > 0 && (
-              <div className="mb-3">
-                <p className="mb-1.5 px-2 text-[10px] font-medium uppercase tracking-widest text-cream-subtle">Europa</p>
-                {europe.map((c) => (
-                  <button
-                    key={c.code}
-                    onClick={() => selectCountry(c)}
-                    className="flex w-full items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm text-cream-muted transition hover:bg-ink-800 hover:text-cream active:scale-[0.98]"
-                  >
-                    <span className="flex-shrink-0 text-base leading-none">{c.flag}</span>
-                    <span className="truncate">{c.name}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-            {americas.length > 0 && (
-              <div className="mb-3">
-                <p className="mb-1.5 px-2 text-[10px] font-medium uppercase tracking-widest text-cream-subtle">Amerika</p>
-                {americas.map((c) => (
-                  <button
-                    key={c.code}
-                    onClick={() => selectCountry(c)}
-                    className="flex w-full items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm text-cream-muted transition hover:bg-ink-800 hover:text-cream active:scale-[0.98]"
-                  >
-                    <span className="flex-shrink-0 text-base leading-none">{c.flag}</span>
-                    <span className="truncate">{c.name}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-            {other.length > 0 && (
-              <div className="mb-1">
-                <p className="mb-1.5 px-2 text-[10px] font-medium uppercase tracking-widest text-cream-subtle">Weitere</p>
-                {other.map((c) => (
-                  <button
-                    key={c.code}
-                    onClick={() => selectCountry(c)}
-                    className="flex w-full items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm text-cream-muted transition hover:bg-ink-800 hover:text-cream active:scale-[0.98]"
-                  >
-                    <span className="flex-shrink-0 text-base leading-none">{c.flag}</span>
-                    <span className="truncate">{c.name}</span>
-                  </button>
-                ))}
-              </div>
+            {[
+              { label: "Europa", list: europe },
+              { label: "Amerika", list: americas },
+              { label: "Weitere", list: other },
+            ].map(({ label, list }) =>
+              list.length === 0 ? null : (
+                <div key={label} className="mb-3">
+                  <p className="mb-1.5 px-2 text-[10px] font-medium uppercase tracking-widest text-cream-subtle">
+                    {label}
+                  </p>
+                  {list.map((c) => {
+                    const isDetected = detectedCountry?.code === c.code;
+                    const isSelected = country?.code === c.code;
+                    const highlight = isDetected || isSelected;
+                    return (
+                      <button
+                        key={c.code}
+                        onClick={() => selectCountry(c)}
+                        className={`flex w-full items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm transition hover:bg-ink-800 active:scale-[0.98] ${
+                          highlight
+                            ? "bg-ink-800 font-semibold text-swiss-gold ring-1 ring-swiss-gold/30"
+                            : "text-cream-muted hover:text-cream"
+                        }`}
+                      >
+                        <span className="flex-shrink-0 text-base leading-none">{c.flag}</span>
+                        <span className="truncate">{c.name}</span>
+                        {highlight && (
+                          <svg className="ml-auto flex-shrink-0" width="10" height="8" viewBox="0 0 10 8" fill="none">
+                            <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              )
             )}
             {filtered.length === 0 && (
               <p className="py-8 text-center text-sm text-cream-subtle">Kein Land gefunden</p>
@@ -176,7 +197,7 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
       )}
 
       {/* Footer */}
-      <div className="border-t border-ink-700 px-5 py-3 flex items-center justify-between">
+      <div className="flex items-center border-t border-ink-700 px-5 py-3">
         {step === "country" && (
           <button
             onClick={() => setStep("language")}
@@ -185,12 +206,11 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
             ← Zurück
           </button>
         )}
-        {step === "language" && <span />}
         <button
-          onClick={step === "language" ? () => setStep("country") : dismiss}
+          onClick={() => step === "language" ? setStep("country") : dismiss()}
           className="ml-auto text-xs text-cream-subtle transition hover:text-cream"
         >
-          {step === "language" ? "Überspringen →" : "Ohne Land fortfahren"}
+          {step === "language" ? "Weiter →" : "Bestätigen ✓"}
         </button>
       </div>
 
