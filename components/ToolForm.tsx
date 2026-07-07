@@ -105,6 +105,16 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const photoInputRef = useRef<HTMLInputElement>(null);
   const hasFetched = useRef(false);
 
+  // Adress-Builder (Strasse / Nr / PLZ / Ort)
+  interface AddressParts { street: string; nr: string; zip: string; city: string; }
+  const [addressValues, setAddressValues] = useState<Record<string, AddressParts>>({});
+  function getAddressParts(key: string): AddressParts {
+    return addressValues[key] ?? { street: "", nr: "", zip: "", city: "" };
+  }
+  function setAddressPart(key: string, part: keyof AddressParts, val: string) {
+    setAddressValues(prev => ({ ...prev, [key]: { ...getAddressParts(key), [part]: val } }));
+  }
+
   // Telefon-Vorwahl
   const PHONE_PREFIXES = [
     { code: "CH", prefix: "+41" }, { code: "DE", prefix: "+49" }, { code: "AT", prefix: "+43" },
@@ -155,6 +165,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     const base = { ...values };
     if (hasWorkHistory) base.workHistory = serializeWork();
     if (hasEducation)   base.education   = serializeEdu();
+    // Adressen kombinieren
+    for (const field of tool.fields) {
+      if (field.type === "address") {
+        const p = getAddressParts(field.key);
+        const line = [p.street && p.nr ? `${p.street} ${p.nr}` : p.street, p.zip && p.city ? `${p.zip} ${p.city}` : p.city].filter(Boolean).join(", ");
+        base[field.key] = line;
+      }
+    }
     // Telefon: Vorwahl + Nummer kombinieren
     const hasPhone = tool.fields.some(f => f.type === "tel");
     if (hasPhone && base.phone?.trim()) {
@@ -296,7 +314,11 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   function validate() {
     const newErrors: Record<string, string> = {};
     for (const field of tool.fields) {
-      if (field.required && !values[field.key]?.trim()) {
+      if (!field.required) continue;
+      if (field.type === "address") {
+        const p = getAddressParts(field.key);
+        if (!p.street.trim() || !p.city.trim()) newErrors[field.key] = "Pflichtfeld";
+      } else if (!values[field.key]?.trim()) {
         newErrors[field.key] = "Pflichtfeld";
       }
     }
@@ -951,7 +973,42 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   {getLabel(field)}{field.appendCurrency && <span className="ml-1 text-cream-muted">({country?.currency ?? "CHF"})</span>}
                   {field.required && <span className="ml-1 text-swiss-gold">*</span>}
                 </label>
-                {field.key === "workHistory" ? (
+                {field.type === "address" ? (
+                  <div className="space-y-2">
+                    <div className="grid grid-cols-3 gap-2">
+                      <input
+                        type="text"
+                        placeholder="Strasse"
+                        value={getAddressParts(field.key).street}
+                        onChange={e => setAddressPart(field.key, "street", e.target.value)}
+                        className={`${inputClass} col-span-2 ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Nr."
+                        value={getAddressParts(field.key).nr}
+                        onChange={e => setAddressPart(field.key, "nr", e.target.value)}
+                        className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
+                      />
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <input
+                        type="text"
+                        placeholder="PLZ"
+                        value={getAddressParts(field.key).zip}
+                        onChange={e => setAddressPart(field.key, "zip", e.target.value)}
+                        className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Ort"
+                        value={getAddressParts(field.key).city}
+                        onChange={e => setAddressPart(field.key, "city", e.target.value)}
+                        className={`${inputClass} col-span-2 ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
+                      />
+                    </div>
+                  </div>
+                ) : field.key === "workHistory" ? (
                   <div className="space-y-3">
                     {workEntries.map((entry, i) => (
                       <div key={i} className="rounded-sm border border-ink-700 bg-ink-950 p-3">

@@ -17,7 +17,7 @@ export type ToolSlug =
 export interface FieldDef {
   key: string;
   label: string;
-  type: "text" | "textarea" | "select" | "email" | "tel" | "number" | "date";
+  type: "text" | "textarea" | "select" | "email" | "tel" | "number" | "date" | "address";
   placeholder?: string;
   placeholderKey?: string;                   // i18n-Schlüssel → dict.placeholders[key]
   required?: boolean;
@@ -97,7 +97,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       },
       { key: "currentJob",      label: "Beruf / aktuelle Stelle",          type: "text",     required: true  },
       { key: "monthlyIncome",   label: "Monatliches Nettoeinkommen",       type: "number",   required: true,  appendCurrency: true },
-      { key: "currentAddress",  label: "Deine aktuelle Adresse",           type: "text",     required: true,  section: "Wohnsituation" },
+      { key: "currentAddress",  label: "Deine aktuelle Adresse",           type: "address",     required: true,  section: "Wohnsituation" },
       { key: "targetAddress",   label: "Adresse der Wunsch-Wohnung",       type: "text",     required: false, placeholderKey: "fallsKnown" },
       { key: "numberOfPersons", label: "Personen im Haushalt",             type: "select",   required: true,
         options: ["1 Person", "2 Personen", "3 Personen", "4 Personen", "5 oder mehr"] },
@@ -127,7 +127,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",       label: "Vorname",                              type: "text",     required: true,  section: "Über dich" },
       { key: "lastName",        label: "Nachname",                             type: "text",     required: true  },
-      { key: "currentAddress",  label: "Deine Adresse",                        type: "text",     required: true  },
+      { key: "currentAddress",  label: "Deine Adresse",                        type: "address",     required: true  },
       { key: "email",           label: "E-Mail",                               type: "email",    required: true  },
       { key: "phone",           label: "Telefon",                              type: "tel",      required: false },
       { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",         type: "text",     required: true  },
@@ -160,7 +160,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",        label: "Vorname",                                type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                               type: "text",     required: true  },
-      { key: "currentAddress",   label: "Deine Adresse",                          type: "text",     required: true  },
+      { key: "currentAddress",   label: "Deine Adresse",                          type: "address",     required: true  },
       { key: "type",             label: "Was möchtest du kündigen?",              type: "select",   required: true,  section: "Kündigung",
         options: ["Versicherung", "Abonnement / Mitgliedschaft", "Anderes"] },
       { key: "recipientName",    label: "Name des Empfängers (Vermieter, Firma …)", type: "text",   required: true  },
@@ -226,7 +226,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                     type: "text",     required: true  },
-      { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",   type: "text",     required: true  },
+      { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",   type: "address",     required: true  },
       { key: "landlordName",     label: "Name des Vermieters / Verwaltung", type: "text", required: true,  section: "Vermieter" },
       { key: "landlordAddress",  label: "Adresse des Vermieters",       type: "text",     required: true  },
       { key: "defects",          label: "Beschreibe die Schäden",       type: "textarea", required: true,
@@ -253,7 +253,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                     type: "text",     required: true  },
-      { key: "currentAddress",   label: "Deine Adresse",                type: "text",     required: true  },
+      { key: "currentAddress",   label: "Deine Adresse",                type: "address",     required: true  },
       { key: "recipientName",    label: "Name des Unternehmens",        type: "text",     required: true,  section: "Empfänger" },
       { key: "recipientAddress", label: "Adresse des Empfängers",       type: "text",     required: true  },
       { key: "orderRef",         label: "Bestellnummer / Referenz",     type: "text",     required: false, placeholderKey: "fallsAvailable" },
@@ -290,7 +290,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",       label: "Vorname",                                 type: "text",     required: true,  section: "Persönliche Angaben" },
       { key: "lastName",        label: "Nachname",                                type: "text",     required: true  },
-      { key: "currentAddress",  label: "Adresse",                                 type: "text",     required: true  },
+      { key: "currentAddress",  label: "Adresse",                                 type: "address",     required: true  },
       { key: "email",           label: "E-Mail",                                  type: "email",    required: true  },
       { key: "phone",           label: "Telefon",                                 type: "tel",      required: false },
       { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",            type: "text",     required: false, section: "Berufserfahrung" },
@@ -325,7 +325,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",      label: "Vorname",                   type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",       label: "Nachname",                  type: "text",     required: true  },
-      { key: "currentAddress", label: "Deine Adresse",             type: "text",     required: true  },
+      { key: "currentAddress", label: "Deine Adresse",             type: "address",     required: true  },
       { key: "birthDate",      label: "Geburtsdatum",              type: "date",     required: true  },
       { key: "insuranceName",  label: "Name der Krankenkasse",     type: "text",     required: true,  section: "Krankenkasse" },
       { key: "policyNumber",   label: "Versicherungs-/Policennummer", type: "text",  required: true  },
@@ -353,7 +353,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",        label: "Vorname",                           type: "text", required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                          type: "text", required: true  },
-      { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",        type: "text", required: true  },
+      { key: "currentAddress",   label: "Deine Adresse (Mietobjekt)",        type: "address", required: true  },
       { key: "landlordName",     label: "Name des Vermieters / Verwaltung",  type: "text", required: true,  section: "Vermieter" },
       { key: "landlordAddress",  label: "Adresse des Vermieters",            type: "text", required: true  },
       { key: "noticePeriod",     label: "Kündigungsfrist",                   type: "select", required: false, section: "Kündigung",
@@ -394,7 +394,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",       label: "Vorname",                              type: "text",     required: true,  section: "Über dich" },
       { key: "lastName",        label: "Nachname",                             type: "text",     required: true  },
-      { key: "currentAddress",  label: "Deine Adresse",                        type: "text",     required: true  },
+      { key: "currentAddress",  label: "Deine Adresse",                        type: "address",     required: true  },
       { key: "email",           label: "E-Mail",                               type: "email",    required: true  },
       { key: "phone",           label: "Telefon",                              type: "tel",      required: false },
       { key: "currentJob",      label: "Aktueller Beruf / Ausbildung",            type: "text",     required: false },
@@ -431,7 +431,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     fields: [
       { key: "firstName",        label: "Vorname",                     type: "text", required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                    type: "text", required: true  },
-      { key: "currentAddress",   label: "Deine Adresse",               type: "text", required: true  },
+      { key: "currentAddress",   label: "Deine Adresse",               type: "address", required: true  },
       { key: "position",         label: "Deine Stelle / Funktion",     type: "text", required: true  },
       { key: "employer",         label: "Name des Arbeitgebers",       type: "text", required: true,  section: "Arbeitgeber" },
       { key: "employerAddress",  label: "Adresse des Arbeitgebers",    type: "text", required: true  },
