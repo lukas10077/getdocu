@@ -139,6 +139,8 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: 
     `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen.\n` +
     `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Betreff oder Abschnittstitel, normale Satzzeichen.\n` +
     `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n` +
+    `BETREFF-REGEL: Schreibe den Betreff OHNE das Wort "BETREFF:" davor — also nur den Betreff-Text selbst in GROSSBUCHSTABEN, z.B. "BEWERBUNG FÜR DIE WOHNUNG AN DER MUSTERSTRASSE 1".\n` +
+    `SEITENREGEL: Das gesamte Dokument muss auf EINE A4-Seite passen. Formuliere präzise und kompakt. Kein unnötiger Fülltext.\n` +
     `KEINE PLATZHALTER: Fehlt eine Information (z.B. Telefonnummer), lass sie vollständig weg — niemals X, ?, 000 oder ähnliche Füllwerte einfügen.\n` +
     `KEINE ERFINDUNGEN: Nur die vom Nutzer explizit angegebenen Daten verwenden. Sprachen, Kenntnisse und Angaben nie eigenmächtig ergänzen oder erfinden.\n`;
 

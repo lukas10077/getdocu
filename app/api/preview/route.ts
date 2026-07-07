@@ -123,7 +123,8 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string): string {
     `Erstelle das Dokument als sauberen, druckfertigen Brief ohne jegliches Markdown.\n` +
     `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen, > für Blockquotes.\n` +
     `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Betreff oder Abschnittstitel, normale Satzzeichen.\n` +
-    `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n`;
+    `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n` +
+    `BETREFF-REGEL: Schreibe den Betreff OHNE das Wort "BETREFF:" davor — also nur den Betreff-Text selbst in GROSSBUCHSTABEN.\n`;
 
   if (!countryCode) return `${formatRule}\n${basePrompt}`;
   const country = getCountry(countryCode);

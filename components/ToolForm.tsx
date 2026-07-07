@@ -599,8 +599,9 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               const w = window.open("", "_blank")!;
               // Hilfsfunktion: Absatz → HTML
               function renderP(p: string): string {
-                const esc = p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
+                const cleaned = p.trim().replace(/^BETREFF:\s*/i, '');
+                const esc = cleaned.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                const isSubject = /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(cleaned);
                 const isDate = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
                 const isClose = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
                 let s = 'margin:0 0 1.2em 0;white-space:pre-line;font-size:13px;line-height:1.85;';
@@ -706,7 +707,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Dokument-Body */}
           <div style={{ background: "#faf8f4", padding: "40px 48px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
             {(() => {
-              const paras = previewText.split(/\n\n+/);
+              const paras = previewText.split(/\n\n+/).map(p => p.replace(/^BETREFF:\s*/i, ''));
               const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
               const header = paras.slice(0, 2);
               const body   = paras.slice(2);
