@@ -414,7 +414,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         )}
         <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
           <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, #c9a84c, #e8c96a)", zIndex: 2 }} />
-          <div style={{ background: "#faf8f4", padding: isCV ? "36px 44px 36px 48px" : "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+          <div style={{ background: "#faf8f4", padding: isCV ? "36px 44px 36px 48px" : "40px 48px 40px 52px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
             {isCV ? renderCVDisplay(cleanResult, true) : (() => {
               const paras = cleanResult.split(/\n\n+/);
               const isSubject = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s]{5,}$/.test(p.trim());
@@ -543,8 +543,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     : headerHtml + bodyHtml;
                 })();
                 const pageBreakStyle = isFirstDoc ? '' : 'page-break-before:always;';
-                const padding = isCVDoc ? '36px 44px 36px 48px' : '48px 52px';
-                return `<div class="page" style="${pageBreakStyle}"><div class="body" style="padding:${padding}">${content}</div></div>`;
+                const padding = isCVDoc ? '14mm 18mm 14mm 20mm' : '16mm 20mm 16mm 22mm';
+                return `<div class="page" style="${pageBreakStyle}"><div class="body" style="padding:${padding};font-size:13px;line-height:1.85;color:#1a1a1a;height:100%;box-sizing:border-box">${content}</div></div>`;
               }
 
               const doc1Html = buildDocHtml(cleanResult, true, true, isCV);
@@ -561,8 +561,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   .body{padding:48px 52px;font-size:13px;line-height:1.85;color:#1a1a1a}
                   @media print{
                     @page{margin:0;size:A4 portrait}
-                    body{background:#fff;padding:12mm 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-                    .page{box-shadow:none;max-width:100%;width:100%;margin:0;margin-bottom:0;min-height:273mm}
+                    body{background:#fff;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+                    .page{box-shadow:none;max-width:100%;width:100%;margin:0;height:297mm;border-left:none!important;background:linear-gradient(to right,#c9a84c 4px,#fff 4px)!important;overflow:hidden}
                   }
                 </style></head>
                 <body>${doc1Html}${doc2Html}${photosSection}</body></html>`);
