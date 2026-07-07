@@ -29,11 +29,11 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
         <div className="md:max-w-[480px]">
           <h1 className="font-serif text-5xl font-medium leading-[1.05] text-cream md:text-6xl lg:text-7xl">
             {dict.hero.headline
-              .split(/\.\s+/)
+              .split("|")
               .map((line: string, i: number, arr: string[]) => (
                 <span key={i}>
-                  <span className={i === arr.length - 1 ? "text-swiss-gold whitespace-nowrap" : ""}>
-                    {line}{i < arr.length - 1 ? "." : ""}
+                  <span className={i >= arr.length - 2 ? "text-swiss-gold" : ""}>
+                    {line}
                   </span>
                   {i < arr.length - 1 && <br />}
                 </span>
