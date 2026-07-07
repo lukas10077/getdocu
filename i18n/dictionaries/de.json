@@ -173,7 +173,7 @@
     "desiredOutcome": "z.B. vollständige Rückerstattung, kostenlose Reparatur, Ersatzlieferung, …",
     "existingCV": "Füge den kompletten Text deines Lebenslaufs hier ein.",
     "targetJobExample": "z.B. Sachbearbeiter Buchhaltung, Pflegefachperson, Lagerist, …",
-    "cvImprovements": "Was soll im Lebenslauf besonders hervorgehoben werden? Kein Problem, wenn du nichts weisst — wir optimieren ihn automatisch.",
+    "cvImprovements": "",
     "concernDetails": "Beschreibe dein Anliegen so präzise wie möglich."
   },
   "fieldLabels": {
