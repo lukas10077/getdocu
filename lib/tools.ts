@@ -69,8 +69,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Du bist Experte für den Schweizer Wohnungsmarkt. Erstelle ein professionelles, " +
       "überzeugendes Mietbewerbungsschreiben auf Deutsch. Halte dich an Schweizer " +
       "Geschäftsbriefkonventionen: vollständiger Absender-Block oben links, Empfänger-Block, " +
-      "Ort und Datum, Betreff (fett), formelle Anrede, klare Struktur (Einleitung / Zur Person / " +
-      "Haushalt / Schluss), höflicher Abschluss mit Kontaktangebot. Sei persönlich, seriös und prägnant. " +
+      "Ort und Datum, Betreff in GROSSBUCHSTABEN, formelle Anrede, klare Struktur (Einleitung / Zur Person / " +
+      "Haushalt / Schluss), höflicher Abschluss mit Kontaktangebot. Sei persönlich, seriös und äusserst prägnant. " +
+      "LÄNGE: Der gesamte Fliesstext darf maximal 220 Wörter umfassen. Das Schreiben muss zwingend auf EINE einzige A4-Seite passen — kürze konsequent, wenn nötig. " +
       "Füge KEINEN Platzhalter ein — nutze nur die gelieferten Angaben.",
     fields: [
       { key: "firstName",       label: "Vorname",                          type: "text",     required: true,  section: "Persönliche Angaben" },
