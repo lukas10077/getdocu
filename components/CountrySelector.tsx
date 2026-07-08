@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 import { useCountry } from "./CountryProvider";
 import { COUNTRIES, Country } from "@/lib/countries";
 
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const m = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=([^;]+)`));
+  return m ? m[1] : null;
+}
+
 // ── Moved to module level — avoids React remounting these on every parent render ──
 
 function CountryButton({
@@ -51,8 +57,17 @@ function Group({
 // ── Main modal ────────────────────────────────────────────────────────────────────
 
 export default function CountrySelector() {
-  const { showSelector, setCountry, setShowSelector } = useCountry();
+  const { showSelector, setCountry, setShowSelector, country } = useCountry();
   const [search, setSearch] = useState("");
+  const [detectedCountry, setDetectedCountry] = useState<Country | null>(null);
+
+  useEffect(() => {
+    const code = readCookie("getdocu_detected_country");
+    if (code) {
+      const found = COUNTRIES.find((c) => c.code === code) ?? null;
+      setDetectedCountry(found);
+    }
+  }, []);
 
   // Close on Escape key
   useEffect(() => {
@@ -71,11 +86,16 @@ export default function CountrySelector() {
     ? COUNTRIES.filter((c) => c.name.toLowerCase().includes(q))
     : COUNTRIES;
 
-  const europe   = filtered.filter((c) => c.continent === "europe");
-  const americas = filtered.filter((c) => c.continent === "americas");
-  const asia     = filtered.filter((c) => c.continent === "asia");
-  const oceania  = filtered.filter((c) => c.continent === "oceania");
-  const total    = europe.length + americas.length + asia.length + oceania.length;
+  // Pinned = aktuell gewähltes Land oder erkanntes Land
+  const pinned = country ?? detectedCountry;
+  const filteredWithoutPinned = pinned ? filtered.filter((c) => c.code !== pinned.code) : filtered;
+
+  const europe   = filteredWithoutPinned.filter((c) => c.continent === "europe");
+  const americas = filteredWithoutPinned.filter((c) => c.continent === "americas");
+  const asia     = filteredWithoutPinned.filter((c) => c.continent === "asia");
+  const oceania  = filteredWithoutPinned.filter((c) => c.continent === "oceania");
+  const pinnedInFiltered = pinned ? filtered.find((c) => c.code === pinned.code) : null;
+  const total    = europe.length + americas.length + asia.length + oceania.length + (pinnedInFiltered ? 1 : 0);
 
   return (
     // Backdrop — click outside the card to close
@@ -109,6 +129,27 @@ export default function CountrySelector() {
 
         {/* Country list */}
         <div className="overflow-y-auto px-6 py-5">
+          {/* Gepinntes Land zuoberst */}
+          {pinnedInFiltered && (
+            <div className="mb-6">
+              <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">
+                {country ? "Ausgewählt" : "Erkannt"}
+              </p>
+              <div className="grid grid-cols-2 gap-0.5 sm:grid-cols-3">
+                <button
+                  onClick={() => setCountry(pinnedInFiltered)}
+                  className="flex items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm font-semibold text-swiss-gold ring-1 ring-swiss-gold/30 bg-ink-800 transition hover:bg-ink-700 active:scale-[0.98]"
+                >
+                  <span className="flex-shrink-0 text-lg leading-none">{pinnedInFiltered.flag}</span>
+                  <span className="truncate">{pinnedInFiltered.name}</span>
+                  <svg className="ml-auto flex-shrink-0" width="10" height="8" viewBox="0 0 10 8" fill="none">
+                    <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
+
           <Group label="Europa"              list={europe}   onSelect={setCountry} />
           <Group label="Amerika"             list={americas} onSelect={setCountry} />
           <Group label="Asien & Naher Osten" list={asia}     onSelect={setCountry} />

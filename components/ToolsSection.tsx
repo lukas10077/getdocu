@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { getTool, TOOL_CATEGORIES } from "@/lib/tools";
 import PriceTag from "./PriceTag";
+import ToolsCountryBadge from "./ToolsCountryBadge";
 
 function ToolCard({ href, title, description, priceChfRappen, startLabel }: {
   href: string; title: string; description: string; priceChfRappen: number; startLabel: string;
@@ -29,9 +30,14 @@ export default function ToolsSection({ locale, dict }: { locale: Locale; dict: a
   return (
     <section id="tools" className="bg-ink-950 px-6 py-24 md:py-32">
       <div className="mx-auto max-w-content">
-        <h2 className="font-serif text-4xl font-medium text-cream md:text-5xl">{dict.tools.title}</h2>
-        <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
-        <p className="mt-4 max-w-xl text-base text-cream-muted">{dict.tools.subtitle}</p>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="font-serif text-4xl font-medium text-cream md:text-5xl">{dict.tools.title}</h2>
+            <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
+            <p className="mt-4 max-w-xl text-base text-cream-muted">{dict.tools.subtitle}</p>
+          </div>
+          <ToolsCountryBadge />
+        </div>
 
         <div className="mt-14 space-y-14">
           {TOOL_CATEGORIES.map((cat) => (
