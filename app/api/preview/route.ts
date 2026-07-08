@@ -124,7 +124,7 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string): string {
     `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen, > für Blockquotes.\n` +
     `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Betreff oder Abschnittstitel, normale Satzzeichen.\n` +
     `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n` +
-    `BETREFF-REGEL: Schreibe den Betreff OHNE das Wort "BETREFF:" davor — nur den Betreff-Text in GROSSBUCHSTABEN als EINZELNE Zeile (kein Umbruch). Niemals auf mehrere Zeilen aufteilen.\n`;
+    `BETREFF-REGEL: Schreibe den Betreff mit dem Präfix "BETREFF: " gefolgt vom Betreff-Text in normaler Schreibweise (nicht in Grossbuchstaben), als einzelne Zeile ohne Umbruch, z.B. "BETREFF: Bewerbung für die Wohnung an der Musterstrasse 1". Das Präfix BETREFF: darf nie weggelassen werden.\n`;
 
   if (!countryCode) return `${formatRule}\n${basePrompt}`;
   const country = getCountry(countryCode);

@@ -556,32 +556,33 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         <div className="overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
           <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
             {isCV ? renderCVDisplay(cleanResult, true) : (() => {
-              const paras = cleanResult.split(/\n\n+/);
-              const isSubject = (p: string) => ((t: string) => { const line = t.trim().split('\n')[0].trim(); const l = line.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return line.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(p.trim());
-              const isDate    = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
-              const isClose   = (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
+              const rawParas = cleanResult.split(/\n\n+/);
+              const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim());
+              const dispP  = (p: string) => p.replace(/^BETREFF:\s*/i, '');
+              const isDate = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
+              const isClose= (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
               const pStyle = (p: string): React.CSSProperties => ({
                 marginBottom: "1.2em",
                 marginTop: (isDate(p) || isClose(p)) ? "1.8em" : 0,
-                fontWeight: isSubject(p) ? 700 : 400,
+                fontWeight: isBet(p) ? 700 : 400,
                 whiteSpace: "pre-line",
               });
-              const header = paras.slice(0, 2);
-              const body   = paras.slice(2);
+              const header = rawParas.slice(0, 2);
+              const body   = rawParas.slice(2);
               return (
                 <>
                   {profilePhotoUrl ? (
                     <div style={{ display: "flex", gap: 0, marginBottom: 0 }}>
                       <div style={{ flex: 1, paddingRight: 16 }}>
-                        {header.map((p, i) => <p key={i} style={pStyle(p)}>{p}</p>)}
+                        {header.map((p, i) => <p key={i} style={pStyle(p)}>{dispP(p)}</p>)}
                       </div>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 135, height: 168, objectFit: "cover", borderRadius: 2, flexShrink: 0, boxShadow: "0 2px 8px rgba(0,0,0,0.15)", alignSelf: "flex-start" }} />
                     </div>
                   ) : (
-                    header.map((p, i) => <p key={i} style={pStyle(p)}>{p}</p>)
+                    header.map((p, i) => <p key={i} style={pStyle(p)}>{dispP(p)}</p>)
                   )}
-                  {body.map((p, i) => <p key={i + 2} style={pStyle(p)}>{p}</p>)}
+                  {body.map((p, i) => <p key={i + 2} style={pStyle(p)}>{dispP(p)}</p>)}
                 </>
               );
             })()}
@@ -630,14 +631,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               const w = window.open("", "_blank")!;
               // Hilfsfunktion: Absatz → HTML
               function renderP(p: string): string {
+                const isBet   = /^BETREFF:\s*/i.test(p.trim());
                 const cleaned = p.trim().replace(/^BETREFF:\s*/i, '');
                 const esc = cleaned.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                const isSubject = ((t: string) => { const l = t.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return !t.includes('\n') && t.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(cleaned);
-                const isDate = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
+                const isDate  = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
                 const isClose = /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
                 let s = 'margin:0 0 1.2em 0;white-space:pre-line;font-size:13px;line-height:1.85;';
                 if (isDate || isClose) s += 'margin-top:1.8em;';
-                if (isSubject) s += 'font-weight:700;letter-spacing:0.03em;';
+                if (isBet) s += 'font-weight:700;letter-spacing:0.01em;';
                 return `<p style="${s}">${esc}</p>`;
               }
               function renderCVHtml(cvText: string, withPhoto: boolean): string {
@@ -736,24 +737,25 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           {/* Dokument-Body */}
           <div style={{ background: "#faf8f4", padding: "40px 48px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
             {(() => {
-              const paras = previewText.split(/\n\n+/).map(p => p.replace(/^BETREFF:\s*/i, ''));
-              const isSubject = (p: string) => ((t: string) => { const line = t.trim().split('\n')[0].trim(); const l = line.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return line.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(p.trim());
-              const header = paras.slice(0, 2);
-              const body   = paras.slice(2);
+              const rawParas = previewText.split(/\n\n+/);
+              const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim());
+              const dispP  = (p: string) => p.replace(/^BETREFF:\s*/i, '');
+              const header = rawParas.slice(0, 2);
+              const body   = rawParas.slice(2);
               return (
                 <>
                   {profilePhotoUrl ? (
                     <div style={{ display: "flex", gap: 0 }}>
                       <div style={{ flex: 1, paddingRight: 16 }}>
-                        {header.map((p, i) => <p key={i} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isSubject(p) ? 700 : 400 }}>{p}</p>)}
+                        {header.map((p, i) => <p key={i} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isBet(p) ? 700 : 400 }}>{dispP(p)}</p>)}
                       </div>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={profilePhotoUrl} alt="Foto" style={{ width: 135, height: 168, objectFit: "cover", borderRadius: 2, flexShrink: 0, alignSelf: "flex-start", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }} />
                     </div>
                   ) : (
-                    header.map((p, i) => <p key={i} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isSubject(p) ? 700 : 400 }}>{p}</p>)
+                    header.map((p, i) => <p key={i} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isBet(p) ? 700 : 400 }}>{dispP(p)}</p>)
                   )}
-                  {body.map((p, i) => <p key={i + 2} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isSubject(p) ? 700 : 400 }}>{p}</p>)}
+                  {body.map((p, i) => <p key={i + 2} style={{ marginBottom: "1.2em", whiteSpace: "pre-line", fontWeight: isBet(p) ? 700 : 400 }}>{dispP(p)}</p>)}
                 </>
               );
             })()}
