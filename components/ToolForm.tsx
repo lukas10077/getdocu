@@ -83,13 +83,15 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const { country } = useCountry();
   const [stage, setStage] = useState<Stage>("form");
   const [values, setValues] = useState<Record<string, string>>(() => {
-    const hasBirthDate = tool.fields.some(f => f.key === "birthDate");
-    if (!hasBirthDate) return {};
-    const today = new Date();
-    const y = today.getFullYear() - 30;
-    const m = String(today.getMonth() + 1).padStart(2, "0");
-    const d = String(today.getDate()).padStart(2, "0");
-    return { birthDate: `${y}-${m}-${d}` };
+    const init: Record<string, string> = {};
+    if (tool.fields.some(f => f.key === "birthDate")) {
+      const today = new Date();
+      const y = today.getFullYear() - 30;
+      const m = String(today.getMonth() + 1).padStart(2, "0");
+      const d = String(today.getDate()).padStart(2, "0");
+      init.birthDate = `${y}-${m}-${d}`;
+    }
+    return init;
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [withdrawalConsent, setWithdrawalConsent] = useState(false);
