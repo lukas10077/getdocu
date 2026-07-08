@@ -8,6 +8,8 @@ interface CountryContextType {
   setCountry: (c: Country) => void;
   showSelector: boolean;
   setShowSelector: (v: boolean) => void;
+  scrollTarget: string | null;
+  setScrollTarget: (t: string | null) => void;
 }
 
 const CountryContext = createContext<CountryContextType>({
@@ -15,6 +17,8 @@ const CountryContext = createContext<CountryContextType>({
   setCountry: () => {},
   showSelector: false,
   setShowSelector: () => {},
+  scrollTarget: null,
+  setScrollTarget: () => {},
 });
 
 export function useCountry() {
@@ -24,6 +28,7 @@ export function useCountry() {
 export function CountryProvider({ children }: { children: React.ReactNode }) {
   const [country, setCountryState] = useState<Country | null>(null);
   const [showSelector, setShowSelector] = useState(false);
+  const [scrollTarget, setScrollTarget] = useState<string | null>(null);
 
   useEffect(() => {
     // Cookie auslesen
@@ -51,7 +56,7 @@ export function CountryProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <CountryContext.Provider value={{ country, setCountry, showSelector, setShowSelector }}>
+    <CountryContext.Provider value={{ country, setCountry, showSelector, setShowSelector, scrollTarget, setScrollTarget }}>
       {children}
     </CountryContext.Provider>
   );

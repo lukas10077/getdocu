@@ -57,7 +57,17 @@ function Group({
 // ── Main modal ────────────────────────────────────────────────────────────────────
 
 export default function CountrySelector() {
-  const { showSelector, setCountry, setShowSelector, country } = useCountry();
+  const { showSelector, setCountry, setShowSelector, country, scrollTarget, setScrollTarget } = useCountry();
+
+  function handleSelect(c: Country) {
+    setCountry(c);
+    if (scrollTarget) {
+      setScrollTarget(null);
+      setTimeout(() => {
+        document.getElementById(scrollTarget)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }
   const [search, setSearch] = useState("");
   const [detectedCountry, setDetectedCountry] = useState<Country | null>(null);
 
@@ -137,7 +147,7 @@ export default function CountrySelector() {
               </p>
               <div className="grid grid-cols-2 gap-0.5 sm:grid-cols-3">
                 <button
-                  onClick={() => setCountry(pinnedInFiltered)}
+                  onClick={() => handleSelect(pinnedInFiltered)}
                   className="flex items-center gap-2.5 rounded-sm px-3 py-2 text-left text-sm font-semibold text-swiss-gold ring-1 ring-swiss-gold/30 bg-ink-800 transition hover:bg-ink-700 active:scale-[0.98]"
                 >
                   <span className="flex-shrink-0 text-lg leading-none">{pinnedInFiltered.flag}</span>
@@ -150,10 +160,10 @@ export default function CountrySelector() {
             </div>
           )}
 
-          <Group label="Europa"              list={europe}   onSelect={setCountry} />
-          <Group label="Amerika"             list={americas} onSelect={setCountry} />
-          <Group label="Asien & Naher Osten" list={asia}     onSelect={setCountry} />
-          <Group label="Ozeanien"            list={oceania}  onSelect={setCountry} />
+          <Group label="Europa"              list={europe}   onSelect={handleSelect} />
+          <Group label="Amerika"             list={americas} onSelect={handleSelect} />
+          <Group label="Asien & Naher Osten" list={asia}     onSelect={handleSelect} />
+          <Group label="Ozeanien"            list={oceania}  onSelect={handleSelect} />
 
           {total === 0 && (
             <p className="py-10 text-center text-sm text-cream-subtle">

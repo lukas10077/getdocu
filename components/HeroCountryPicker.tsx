@@ -3,14 +3,14 @@
 import { useCountry } from "./CountryProvider";
 
 export default function HeroCountryPicker() {
-  const { country, setShowSelector } = useCountry();
+  const { country, setShowSelector, setScrollTarget } = useCountry();
 
   return (
     <div className="mt-6 max-w-md text-base leading-relaxed text-cream-muted md:text-lg">
       <p>
         Wähle dein{" "}
         <button
-          onClick={() => setShowSelector(true)}
+          onClick={() => { setScrollTarget("tools"); setShowSelector(true); }}
           className="inline-flex items-center gap-1 border-b border-swiss-gold text-swiss-gold pb-0.5 hover:opacity-75 transition-opacity"
         >
           <span>Land</span>
