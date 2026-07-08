@@ -19,8 +19,8 @@ const config: Config = {
           },
           red: "#D52B1E",
           redDark: "#B7221A",
-          gold: "#F0B429",
-          goldDark: "#C8902E",
+          gold: "#B8891A",
+          goldDark: "#9A7215",
         },
         // Dark premium palette
         ink: {
