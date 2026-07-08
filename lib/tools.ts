@@ -228,7 +228,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "da der Vermieter selbst beurteilt was normale Abnutzung ist und was nicht → Bitte um schriftliche " +
       "Rückmeldung → freundlicher Abschluss. " +
       "TONFALL: kooperativ, sachlich und freundlich — wie eine normale Mitteilung, keine Drohung, " +
-      "keine Forderungen. Ziel ist einzig die schriftliche Dokumentation der vorgefundenen Schäden.",
+      "keine Forderungen. Ziel ist einzig die schriftliche Dokumentation der vorgefundenen Schäden. " +
+      "PFLICHTABSCHNITT AM SCHLUSS (vor der Bitte um Rückmeldung): Ein kurzer Absatz der festhält, dass " +
+      "alle aufgeführten Schäden sowie die beigefügte Fotodokumentation der Feststellung des Zustands der " +
+      "Wohnung bei Mietbeginn dienen und bei einem späteren Auszug zur Beweissicherung beigezogen werden.",
     fields: [
       { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                     type: "text",     required: true  },
