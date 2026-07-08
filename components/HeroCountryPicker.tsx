@@ -12,7 +12,7 @@ export default function HeroCountryPicker() {
         onClick={() => setShowSelector(true)}
         className="inline-flex items-center gap-1 border-b border-swiss-gold text-swiss-gold pb-0.5 hover:opacity-75 transition-opacity"
       >
-        <span>{country ? `${country.flag} ${country.name}` : "Land"}</span>
+        <span>Land</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="13"
