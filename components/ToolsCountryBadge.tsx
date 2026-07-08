@@ -9,17 +9,17 @@ export default function ToolsCountryBadge() {
   return (
     <button
       onClick={() => setShowSelector(true)}
-      className="flex items-center gap-2 rounded-sm border border-ink-700 bg-ink-900 px-4 py-2.5 text-sm text-cream-muted transition hover:border-swiss-gold/50 hover:text-cream"
+      className="flex items-center gap-3 rounded-sm border border-ink-700 bg-ink-900 px-6 py-4 text-base text-cream-muted transition hover:border-swiss-gold/50 hover:text-cream"
     >
-      <span className="text-base leading-none">{country.flag}</span>
+      <span className="text-2xl leading-none">{country.flag}</span>
       <span>
         Dokumente nach{" "}
         <span className="text-cream">{country.name}-Standards</span>
       </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="12"
-        height="12"
+        width="15"
+        height="15"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
