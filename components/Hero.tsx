@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Locale } from "@/i18n/config";
 import HeroMinPrice from "./HeroMinPrice";
+import HeroCountryPicker from "./HeroCountryPicker";
 
 export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
   return (
@@ -42,9 +43,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
 
           <div className="mt-8 h-px w-10 bg-swiss-gold opacity-70" />
 
-          <p className="mt-6 max-w-md text-base leading-relaxed text-cream-muted md:text-lg">
-            {dict.hero.subheadline}
-          </p>
+          <HeroCountryPicker />
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link
