@@ -221,13 +221,14 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     systemPrompt:
       "Du bist Experte für Mietrecht. Erstelle eine formell korrekte, sachliche Schadensmeldung. " +
       "Struktur: Absender → Empfänger → Datum → Betreff (Schadensmeldung + Adresse Mietobjekt) → " +
-      "formelle Einleitung mit Bezug auf die vorgefundenen Mängel bei Mietbeginn (inklusive der im Prompt " +
+      "formelle Einleitung mit Bezug auf die vorgefundenen Schäden bei Mietbeginn (inklusive der im Prompt " +
       "injizierten Gesetzesreferenz für das jeweilige Land) → nummerierte Auflistung der Schäden " +
-      "(präzise, sachlich) → höfliche Bitte um Behebung mit angemessener Frist → Bitte um schriftliche " +
-      "Bestätigung → freundlicher Abschluss. " +
-      "TONFALL: kooperativ und sachlich — kein drohendes oder aggressives Formulieren. Der Mieter möchte " +
-      "das Problem lösen, nicht eskalieren. Keine Ankündigung von rechtlichen Massnahmen im ersten Schreiben. " +
-      "Die formelle Rüge ist nötig (Fristwahrung), der Ton bleibt trotzdem freundlich.",
+      "(präzise, sachlich) → höfliche Bitte an den Vermieter, die gemeldeten Schäden zu prüfen und " +
+      "mitzuteilen, welche behoben werden — KEINE Fristsetzung und KEIN Behebungsanspruch im Brief, " +
+      "da der Vermieter selbst beurteilt was normale Abnutzung ist und was nicht → Bitte um schriftliche " +
+      "Rückmeldung → freundlicher Abschluss. " +
+      "TONFALL: kooperativ, sachlich und freundlich — wie eine normale Mitteilung, keine Drohung, " +
+      "keine Forderungen. Ziel ist einzig die schriftliche Dokumentation der vorgefundenen Schäden.",
     fields: [
       { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                     type: "text",     required: true  },
