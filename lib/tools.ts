@@ -219,11 +219,15 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     descriptionDe:
       "Schäden in der Wohnung melden — schriftlich, fristwahrend, korrekt adressiert.",
     systemPrompt:
-      "Du bist Experte für Mietrecht in der Schweiz. Erstelle eine formell korrekte Schadensmeldung " +
-      "auf Deutsch. Struktur: Absender, Empfänger, Datum, Betreff (Schadensmeldung + Adresse Mietobjekt), " +
-      "Einleitung (Bezug zum Mietvertrag), Auflistung der Schäden (nummeriert, präzise beschrieben), " +
-      "Fristsetzung zur Behebung, Ankündigung weiterer Schritte bei Nicht-Behebung (ohne konkrete " +
-      "Rechtsdrohung), Bitte um Bestätigung, Abschluss. Kein Tonfall, der unnötig aggressiv ist.",
+      "Du bist Experte für Mietrecht. Erstelle eine formell korrekte, sachliche Schadensmeldung. " +
+      "Struktur: Absender → Empfänger → Datum → Betreff (Schadensmeldung + Adresse Mietobjekt) → " +
+      "formelle Einleitung mit Bezug auf die vorgefundenen Mängel bei Mietbeginn (inklusive der im Prompt " +
+      "injizierten Gesetzesreferenz für das jeweilige Land) → nummerierte Auflistung der Schäden " +
+      "(präzise, sachlich) → höfliche Bitte um Behebung mit angemessener Frist → Bitte um schriftliche " +
+      "Bestätigung → freundlicher Abschluss. " +
+      "TONFALL: kooperativ und sachlich — kein drohendes oder aggressives Formulieren. Der Mieter möchte " +
+      "das Problem lösen, nicht eskalieren. Keine Ankündigung von rechtlichen Massnahmen im ersten Schreiben. " +
+      "Die formelle Rüge ist nötig (Fristwahrung), der Ton bleibt trotzdem freundlich.",
     fields: [
       { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                     type: "text",     required: true  },

@@ -15,7 +15,7 @@ type CountryRefs = Partial<Record<ToolSlug, LegalRef[]>>;
 export const LEGAL_REFS: Record<string, CountryRefs> = {
   CH: {
     "maengelruege": [
-      { law: "OR", articles: "Art. 259a–259i", note: "Mängel an der Mietsache, Mietzinsherabsetzung, Kündigung" },
+      { law: "OR", articles: "Art. 258 ff.", note: "Zustand der Mietsache bei Übergabe und Mängelansprüche des Mieters" },
     ],
     "kuendigung-wohnung": [
       { law: "OR", articles: "Art. 266a–266o", note: "Kündigungsfristen, Form, Schutz vor missbräuchlicher Kündigung" },

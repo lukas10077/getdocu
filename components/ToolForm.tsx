@@ -529,7 +529,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         : `Beilage — ${photos.length} Foto${photos.length !== 1 ? "s" : ""}`;
       const cells = chunk.map((ph, j) =>
         `<div>
-          <div style="width:100%;height:62mm;overflow:hidden;border-radius:4px;background-image:url('${ph.dataUrl}');background-size:cover;background-position:center;-webkit-print-color-adjust:exact;print-color-adjust:exact"></div>
+          <div style="padding-bottom:75%;position:relative;overflow:hidden;border-radius:4px;background-color:#f0f0f0;background-image:url('${ph.dataUrl}');background-size:contain;background-position:center;background-repeat:no-repeat;-webkit-print-color-adjust:exact;print-color-adjust:exact"></div>
           <p style="font-size:10px;color:#aaa;margin:5px 0 0;text-align:center">${pi + j + 1}</p>
         </div>`
       ).join("");
