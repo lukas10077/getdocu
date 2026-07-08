@@ -519,16 +519,28 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       );
     };
 
-    const photosHtml = photos.length > 0
-      ? `<div style="margin-top:48px;border-top:1px solid #ddd;padding-top:24px">
-           <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#999;margin-bottom:16px">
-             Beilage — ${photos.length} Foto${photos.length !== 1 ? "s" : ""}
-           </h3>
-           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-             ${photos.map((p, i) => `<div><img src="${p.dataUrl}" alt="Foto ${i + 1}" style="width:100%;border-radius:3px;object-fit:cover" /><p style="font-size:10px;color:#aaa;margin:4px 0 0">${i + 1}</p></div>`).join("")}
-           </div>
-         </div>`
-      : "";
+    // Fotos: max. 4 pro Seite, 2-Spalten-Grid, background-image für drucksicheres Seitenverhältnis
+    const PHOTOS_PER_PAGE = 4;
+    const photoPageHtmls: string[] = [];
+    for (let pi = 0; pi < photos.length; pi += PHOTOS_PER_PAGE) {
+      const chunk = photos.slice(pi, pi + PHOTOS_PER_PAGE);
+      const pageLabel = photos.length > PHOTOS_PER_PAGE
+        ? `Beilage — Fotos ${pi + 1}–${Math.min(pi + PHOTOS_PER_PAGE, photos.length)} / ${photos.length}`
+        : `Beilage — ${photos.length} Foto${photos.length !== 1 ? "s" : ""}`;
+      const cells = chunk.map((ph, j) =>
+        `<div>
+          <div style="padding-bottom:75%;position:relative;overflow:hidden;border-radius:4px;background-image:url('${ph.dataUrl}');background-size:cover;background-position:center;-webkit-print-color-adjust:exact;print-color-adjust:exact"></div>
+          <p style="font-size:10px;color:#aaa;margin:5px 0 0;text-align:center">${pi + j + 1}</p>
+        </div>`
+      ).join("");
+      photoPageHtmls.push(
+        `<div class="page"><div class="body" style="padding:14mm 18mm">
+          <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#999;margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid #eee">${pageLabel}</h3>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">${cells}</div>
+        </div></div>`
+      );
+    }
+    const photosHtml = photoPageHtmls.join("");
 
     return (
       <div className="mt-10">
@@ -545,7 +557,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
             {isCV ? renderCVDisplay(cleanResult, true) : (() => {
               const paras = cleanResult.split(/\n\n+/);
-              const isSubject = (p: string) => ((t: string) => { const l = t.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return !t.includes('\n') && t.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(p.trim());
+              const isSubject = (p: string) => ((t: string) => { const line = t.trim().split('\n')[0].trim(); const l = line.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return line.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(p.trim());
               const isDate    = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
               const isClose   = (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
               const pStyle = (p: string): React.CSSProperties => ({
@@ -677,9 +689,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
 
               const doc1Html = buildDocHtml(cleanResult, true, true, isCV, !!lebenslaufResult);
               const doc2Html = lebenslaufResult ? buildDocHtml(lebenslaufResult, false, false, true, false) : '';
-              const photosSection = photosHtml
-                ? `<div class="page"><div class="body">${photosHtml}</div></div>`
-                : '';
+              const photosSection = photosHtml; // already contains full page divs
 
               w.document.write(`<html><head><title>${tool.documentTitleDe}</title><meta charset="utf-8">
                 <style>
@@ -727,7 +737,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div style={{ background: "#faf8f4", padding: "40px 48px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
             {(() => {
               const paras = previewText.split(/\n\n+/).map(p => p.replace(/^BETREFF:\s*/i, ''));
-              const isSubject = (p: string) => ((t: string) => { const l = t.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return !t.includes('\n') && t.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(p.trim());
+              const isSubject = (p: string) => ((t: string) => { const line = t.trim().split('\n')[0].trim(); const l = line.replace(/[^a-zA-ZäöüÄÖÜ]/g,''); return line.length >= 8 && l.length > 3 && l === l.toUpperCase(); })(p.trim());
               const header = paras.slice(0, 2);
               const body   = paras.slice(2);
               return (
