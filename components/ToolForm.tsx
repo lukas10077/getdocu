@@ -76,6 +76,19 @@ function readFileAsPhoto(file: File): Promise<Photo> {
 
 export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   const t = dict?.tools ?? {};
+  // i18n: Formular-UI-Strings (Fallback = Deutsch)
+  const f = (dict?.form ?? {}) as Record<string, string>;
+  const fs = (key: string, fallback: string) => f[key] ?? fallback;
+  // i18n: Select-Optionen (Werte bleiben Deutsch, nur Anzeige wird übersetzt)
+  const optionsMap = (dict?.options ?? {}) as Record<string, string>;
+  const optLabel = (opt: string) => optionsMap[opt] ?? opt;
+  // i18n: Tool-spezifische Upload-Texte
+  const toolDict = (t.items as Record<string, any> | undefined)?.[tool.slug] ?? {};
+  const uploadLabel = toolDict.uploadLabel ?? tool.uploadLabelDe;
+  const uploadHint = toolDict.uploadHint ?? tool.uploadHintDe;
+  const galleryLabel = toolDict.photoGalleryLabel ?? tool.photoGalleryLabelDe;
+  const galleryHint = toolDict.photoGalleryHint ?? tool.photoGalleryHintDe;
+  const toolTitle = toolDict.title ?? tool.documentTitleDe;
   const selectPlaceholder  = t.selectPlaceholder  ?? "— bitte wählen —";
   const withdrawalText     = t.withdrawalConsent  ?? "Ich stimme zu, dass die Lieferung des digitalen Dokuments sofort nach der Zahlung beginnt, und ich bestätige, dass ich damit mein gesetzliches Widerrufsrecht verliere. Ich habe die AGB gelesen und akzeptiere sie.";
   const withdrawalErrText  = t.withdrawalError    ?? "Bitte bestätige die Zustimmung, um fortzufahren.";
@@ -426,7 +439,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       const { url } = await res.json();
       window.location.href = url;
     } catch {
-      setErrorMsg("Fehler beim Aufrufen der Zahlungsseite. Bitte erneut versuchen.");
+      setErrorMsg(fs("checkoutError", "Fehler beim Aufrufen der Zahlungsseite. Bitte erneut versuchen."));
       setStage("error");
     }
   }
@@ -445,17 +458,17 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     </div>
   );
 
-  if (stage === "previewing") return <Spinner label="Vorschau wird erstellt…" sub="Dauert ca. 5 Sekunden." />;
-  if (stage === "generating") return <Spinner label="Vollständiges Dokument wird erstellt…" sub="Das dauert ca. 10–20 Sekunden." />;
-  if (stage === "redirecting") return <Spinner label="Weiterleitung zur Zahlung…" />;
+  if (stage === "previewing") return <Spinner label={fs("previewLoading", "Vorschau wird erstellt…")} sub={fs("previewLoadingSub", "Dauert ca. 5 Sekunden.")} />;
+  if (stage === "generating") return <Spinner label={fs("generating", "Vollständiges Dokument wird erstellt…")} sub={fs("generatingSub", "Das dauert ca. 10–20 Sekunden.")} />;
+  if (stage === "redirecting") return <Spinner label={fs("redirecting", "Weiterleitung zur Zahlung…")} />;
 
   if (stage === "error") {
     return (
       <div className="mt-10 rounded-sm border border-red-800/50 bg-red-900/20 p-6">
-        <p className="text-sm font-medium text-red-400">Ein Fehler ist aufgetreten</p>
+        <p className="text-sm font-medium text-red-400">{fs("errorTitle", "Ein Fehler ist aufgetreten")}</p>
         <p className="mt-1 text-sm text-red-300">{errorMsg}</p>
         <button onClick={() => { setStage("form"); setErrorMsg(""); }} className="mt-4 text-sm text-red-400 underline hover:text-red-300">
-          Zurück zum Formular
+          {fs("backToForm", "Zurück zum Formular")}
         </button>
       </div>
     );
@@ -519,24 +532,27 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       );
     };
 
-    // Fotos: max. 4 pro Seite, 2-Spalten-Grid, background-image für drucksicheres Seitenverhältnis
+    // Fotos: max. 4 pro Seite (2×2-Grid). background-size:contain → kein Beschnitt,
+    // keine Verzerrung (Hochformat bekommt seitliche Ränder). Feste mm-Höhen, damit
+    // 2 Reihen sicher auf eine A4-Seite passen; jede Foto-Seite beginnt auf neuem Blatt.
     const PHOTOS_PER_PAGE = 4;
     const photoPageHtmls: string[] = [];
     for (let pi = 0; pi < photos.length; pi += PHOTOS_PER_PAGE) {
       const chunk = photos.slice(pi, pi + PHOTOS_PER_PAGE);
+      const fotoWord = fs("photoPlural", "Fotos");
       const pageLabel = photos.length > PHOTOS_PER_PAGE
-        ? `Beilage — Fotos ${pi + 1}–${Math.min(pi + PHOTOS_PER_PAGE, photos.length)} / ${photos.length}`
-        : `Beilage — ${photos.length} Foto${photos.length !== 1 ? "s" : ""}`;
+        ? `${fs("attachment", "Beilage")} — ${fotoWord} ${pi + 1}–${Math.min(pi + PHOTOS_PER_PAGE, photos.length)} / ${photos.length}`
+        : `${fs("attachment", "Beilage")} — ${photos.length} ${photos.length === 1 ? fs("photoSingular", "Foto") : fotoWord}`;
       const cells = chunk.map((ph, j) =>
-        `<div>
-          <div style="padding-bottom:75%;position:relative;overflow:hidden;border-radius:4px;background-image:url('${ph.dataUrl}');background-size:cover;background-position:center;-webkit-print-color-adjust:exact;print-color-adjust:exact"></div>
-          <p style="font-size:10px;color:#aaa;margin:5px 0 0;text-align:center">${pi + j + 1}</p>
+        `<div style="page-break-inside:avoid;break-inside:avoid">
+          <div style="height:105mm;border-radius:4px;background-color:#f4f2ee;background-image:url('${ph.dataUrl}');background-size:contain;background-repeat:no-repeat;background-position:center;-webkit-print-color-adjust:exact;print-color-adjust:exact"></div>
+          <p style="font-size:10px;color:#aaa;margin:2mm 0 0;text-align:center">${pi + j + 1}</p>
         </div>`
       ).join("");
       photoPageHtmls.push(
-        `<div class="page"><div class="body" style="padding:14mm 18mm">
-          <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#999;margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid #eee">${pageLabel}</h3>
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">${cells}</div>
+        `<div class="page photo-page"><div class="body" style="padding:12mm 16mm">
+          <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#999;margin:0 0 6mm;padding-bottom:8px;border-bottom:1px solid #eee">${pageLabel}</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm 8mm">${cells}</div>
         </div></div>`
       );
     }
@@ -546,12 +562,12 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       <div className="mt-10">
         <div className="mb-6 flex items-center gap-3">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-swiss-gold text-sm text-ink-950">✓</span>
-          <h2 className="text-lg font-medium text-cream">{lebenslaufResult ? "Deine Bewerbungsunterlagen sind fertig" : "Dein Dokument ist fertig"}</h2>
+          <h2 className="text-lg font-medium text-cream">{lebenslaufResult ? fs("doneBundleTitle", "Deine Bewerbungsunterlagen sind fertig") : fs("doneTitle", "Dein Dokument ist fertig")}</h2>
         </div>
 
         {/* Dokument-Vorschau — Paper-Design, gleiche Formatierung wie PDF */}
         {lebenslaufResult && (
-          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Bewerbungsschreiben</p>
+          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">{fs("coverLetter", "Bewerbungsschreiben")}</p>
         )}
         <div className="overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
           <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
@@ -592,7 +608,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         {/* Lebenslauf-Karte (nur bei Komplettbewerbung) */}
         {lebenslaufResult && (
           <div className="mt-6">
-            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Lebenslauf</p>
+            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">{fs("cv", "Lebenslauf")}</p>
             <div className="overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
               <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
                 {renderCVDisplay(lebenslaufResult, false)}
@@ -604,7 +620,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         {/* HINWEIS — separat anzeigen, nicht im Dokument */}
         {hinweisText && (
           <div className="mt-4 rounded-sm border border-amber-500/30 bg-amber-500/10 p-4">
-            <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">Hinweis zur Überprüfung</p>
+            <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">{fs("noteTitle", "Hinweis zur Überprüfung")}</p>
             <p className="text-sm text-cream-muted">{hinweisText.replace(/^HINWEIS[:\s]*/i, "")}</p>
           </div>
         )}
@@ -613,7 +629,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         {photos.length > 0 && (
           <div className="mt-6">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-subtle">
-              Beilage — {photos.length} Foto{photos.length !== 1 ? "s" : ""}
+              {fs("attachment", "Beilage")} — {photos.length} {photos.length === 1 ? fs("photoSingular", "Foto") : fs("photoPlural", "Fotos")}
             </p>
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
               {photos.map((photo, i) => (
@@ -692,7 +708,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               const doc2Html = lebenslaufResult ? buildDocHtml(lebenslaufResult, false, false, true, false) : '';
               const photosSection = photosHtml; // already contains full page divs
 
-              w.document.write(`<html><head><title>${tool.documentTitleDe}</title><meta charset="utf-8">
+              w.document.write(`<html><head><title>${toolTitle}</title><meta charset="utf-8">
                 <style>
                   *{box-sizing:border-box;margin:0;padding:0}
                   body{font-family:Arial,sans-serif;background:#f0ede8;padding:30px 20px}
@@ -702,6 +718,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     @page{margin:0;size:A4 portrait}
                     body{background:#fff;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
                     .page{box-shadow:none;max-width:100%;width:100%;margin:0}
+                    .photo-page{page-break-before:always;page-break-inside:avoid}
                   }
                 </style></head>
                 <body>${doc1Html}${doc2Html}${photosSection}</body></html>`);
@@ -710,7 +727,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             }}
             className="bg-swiss-gold px-6 py-3 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
           >
-            Als PDF herunterladen
+            {fs("downloadPdf", "Als PDF herunterladen")}
           </button>
 
         </div>
@@ -722,15 +739,15 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     return (
       <div className="mt-10">
         <div className="mb-4 flex items-center gap-2">
-          <span className="text-xs font-medium uppercase tracking-widest text-swiss-gold">Vorschau</span>
-          <span className="text-xs text-cream-muted">— Bezahle um das vollständige Dokument zu erhalten</span>
+          <span className="text-xs font-medium uppercase tracking-widest text-swiss-gold">{fs("previewTag", "Vorschau")}</span>
+          <span className="text-xs text-cream-muted">{fs("previewPayNote", "— Bezahle um das vollständige Dokument zu erhalten")}</span>
         </div>
 
         <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: 2 }}>
           {/* Wasserzeichen */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center" style={{ zIndex: 4 }}>
             <span className="select-none text-5xl font-medium uppercase" style={{ transform: "rotate(-30deg)", letterSpacing: "0.3em", color: "rgba(0,0,0,0.07)" }}>
-              VORSCHAU
+              {fs("watermark", "VORSCHAU")}
             </span>
           </div>
 
@@ -766,28 +783,28 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         </div>
 
         <div className="mt-4 rounded-sm border border-amber-500/30 bg-amber-500/10 p-4">
-          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">Vor dem Kauf überprüfen</p>
-          <p className="text-sm text-cream-muted">Bitte kontrolliere deine Angaben: vollständiger Name, Adresse, E-Mail-Adresse, Name des Unternehmens und genaue Berufsbezeichnung. Fehlerhafte Angaben können das Dokument beeinträchtigen.</p>
-          <button onClick={() => setStage("form")} className="mt-2 text-xs text-amber-400 underline hover:text-amber-300">Angaben ändern</button>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">{fs("checkTitle", "Vor dem Kauf überprüfen")}</p>
+          <p className="text-sm text-cream-muted">{fs("checkBody", "Bitte kontrolliere deine Angaben: vollständiger Name, Adresse, E-Mail-Adresse, Name des Unternehmens und genaue Berufsbezeichnung. Fehlerhafte Angaben können das Dokument beeinträchtigen.")}</p>
+          <button onClick={() => setStage("form")} className="mt-2 text-xs text-amber-400 underline hover:text-amber-300">{fs("editData", "Angaben ändern")}</button>
         </div>
 
         <div className="mt-4 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
           <p className="mb-4 text-sm text-cream-muted">
-            <strong className="font-medium text-cream">Dein persönliches Dokument ist bereit.</strong>{" "}
-            Bezahle einmalig {priceDisplay} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.
+            <strong className="font-medium text-cream">{fs("readyTitle", "Dein persönliches Dokument ist bereit.")}</strong>{" "}
+            {fs("readyBody", "Bezahle einmalig {price} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.").replace("{price}", priceDisplay)}
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <button onClick={proceedToCheckout} className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark">
-              Vollständiges Dokument — {priceDisplay}
+              {fs("payButton", "Vollständiges Dokument — {price}").replace("{price}", priceDisplay)}
             </button>
             <button onClick={() => setStage("form")} className="text-sm text-cream-subtle underline hover:text-cream-muted">
-              Angaben ändern
+              {fs("editData", "Angaben ändern")}
             </button>
           </div>
           <p className="mt-3 text-xs text-cream-subtle">
             {country?.code === "CH"
-              ? "💳 Kreditkarte · TWINT · Apple Pay · Google Pay"
-              : "💳 Kreditkarte · Apple Pay · Google Pay"}
+              ? `💳 ${fs("creditCard", "Kreditkarte")} · TWINT · Apple Pay · Google Pay`
+              : `💳 ${fs("creditCard", "Kreditkarte")} · Apple Pay · Google Pay`}
           </p>
         </div>
       </div>
@@ -851,7 +868,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               <div className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={profilePhotoUrl} alt="Bewerbungsfoto" className="h-24 w-24 rounded-full object-cover border-2 border-swiss-gold/40" />
-                <span className="absolute -bottom-5 left-0 right-0 text-center text-xs text-swiss-gold">ändern</span>
+                <span className="absolute -bottom-5 left-0 right-0 text-center text-xs text-swiss-gold">{fs("changePhoto", "ändern")}</span>
               </div>
             ) : (
               <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full border-2 border-dashed border-ink-700 bg-ink-950 transition group-hover:border-swiss-gold/50">
@@ -860,8 +877,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             )}
           </label>
           <div className="pt-1">
-            <p className="text-sm font-medium text-cream">Bewerbungsfoto (optional)</p>
-            <p className="mt-1 text-xs leading-relaxed text-cream-muted">Lade ein Foto hoch — es wird oben rechts ins Dokument eingebettet. In der Schweiz ist ein Foto üblich, aber nicht Pflicht.</p>
+            <p className="text-sm font-medium text-cream">{fs("photoLabel", "Bewerbungsfoto (optional)")}</p>
+            <p className="mt-1 text-xs leading-relaxed text-cream-muted">{fs("photoHint", "Lade ein Foto hoch — es wird oben rechts ins Dokument eingebettet. In der Schweiz ist ein Foto üblich, aber nicht Pflicht.")}</p>
           </div>
         </div>
       )}
@@ -869,22 +886,22 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       {/* Einzelbild-Upload (Vision-Tools) */}
       {tool.supportsDocumentUpload && (
         <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
-          <p className="mb-1 text-sm font-medium text-cream">{tool.uploadLabelDe}</p>
-          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{tool.uploadHintDe}</p>
+          <p className="mb-1 text-sm font-medium text-cream">{uploadLabel}</p>
+          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{uploadHint}</p>
           <label className="group cursor-pointer">
             <input type="file" accept="image/*" capture="environment" className="sr-only" onChange={handleImageUpload} />
             {imagePreviewUrl ? (
               <div className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={imagePreviewUrl} alt="Hochgeladenes Dokument" className="max-h-64 w-full rounded-sm object-contain" />
-                <span className="mt-2 block text-xs text-swiss-gold">✓ Bild hochgeladen — tippe um zu ändern</span>
+                <span className="mt-2 block text-xs text-swiss-gold">{fs("imageUploaded", "✓ Bild hochgeladen — tippe um zu ändern")}</span>
               </div>
             ) : (
               <div className="flex flex-col items-center gap-3 rounded-sm border border-ink-700 py-8 transition group-hover:border-swiss-gold/50">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-swiss-gold/60">
                   <rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" />
                 </svg>
-                <span className="text-xs text-cream-muted">Foto aufnehmen oder aus Galerie wählen</span>
+                <span className="text-xs text-cream-muted">{fs("takePhoto", "Foto aufnehmen oder aus Galerie wählen")}</span>
               </div>
             )}
           </label>
@@ -894,8 +911,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       {/* Multi-Format Upload: Bild + PDF + DOCX (z. B. Arbeitszeugnis) */}
       {tool.supportsAllDocumentTypes && (
         <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
-          <p className="mb-1 text-sm font-medium text-cream">{tool.uploadLabelDe}</p>
-          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{tool.uploadHintDe}</p>
+          <p className="mb-1 text-sm font-medium text-cream">{uploadLabel}</p>
+          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{uploadHint}</p>
           <label className="group cursor-pointer">
             <input
               type="file"
@@ -911,10 +928,10 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 ) : null}
                 <p className="text-xs text-swiss-gold">
                   ✓ {uploadedFileName}
-                  {docxText && <span className="ml-2 text-cream-muted">(Text extrahiert)</span>}
+                  {docxText && <span className="ml-2 text-cream-muted">({fs("textExtracted", "Text extrahiert")})</span>}
                   {imageMimeType === "application/pdf" && <span className="ml-2 text-cream-muted">(PDF)</span>}
                 </p>
-                <p className="mt-1 text-xs text-cream-muted">Tippe um eine andere Datei zu wählen</p>
+                <p className="mt-1 text-xs text-cream-muted">{fs("changeFile", "Tippe um eine andere Datei zu wählen")}</p>
               </div>
             ) : (
               <div className="flex flex-col items-center gap-3 rounded-sm border border-ink-700 py-8 transition group-hover:border-swiss-gold/50">
@@ -924,7 +941,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   <line x1="12" y1="18" x2="12" y2="12" />
                   <line x1="9" y1="15" x2="15" y2="15" />
                 </svg>
-                <span className="text-xs text-cream-muted">Foto, PDF oder Word-Datei hochladen</span>
+                <span className="text-xs text-cream-muted">{fs("uploadPrompt", "Foto, PDF oder Word-Datei hochladen")}</span>
                 <span className="text-xs text-cream-muted/60">(.jpg, .png, .pdf, .docx)</span>
               </div>
             )}
@@ -941,7 +958,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               <div className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={profilePhotoUrl} alt="Profilfoto" className="h-24 w-24 rounded-full object-cover border-2 border-swiss-gold/40" />
-                <span className="absolute -bottom-5 left-0 right-0 text-center text-xs text-swiss-gold">ändern</span>
+                <span className="absolute -bottom-5 left-0 right-0 text-center text-xs text-swiss-gold">{fs("changePhoto", "ändern")}</span>
               </div>
             ) : (
               <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full border-2 border-dashed border-ink-700 bg-ink-950 transition group-hover:border-swiss-gold/50">
@@ -950,8 +967,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
             )}
           </label>
           <div className="pt-1">
-            <p className="text-sm font-medium text-cream">Dein Foto (optional)</p>
-            <p className="mt-1 text-xs leading-relaxed text-cream-muted">Für einen überzeugenden Lebenslauf empfehlen wir ein freundliches, professionelles Foto — es macht deine Bewerbung persönlicher und hinterlässt einen bleibenden ersten Eindruck.</p>
+            <p className="text-sm font-medium text-cream">{fs("cvPhotoLabel", "Dein Foto (optional)")}</p>
+            <p className="mt-1 text-xs leading-relaxed text-cream-muted">{fs("cvPhotoHint", "Für einen überzeugenden Lebenslauf empfehlen wir ein freundliches, professionelles Foto — es macht deine Bewerbung persönlicher und hinterlässt einen bleibenden ersten Eindruck.")}</p>
           </div>
         </div>
       )}
@@ -959,8 +976,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       {/* Foto-Galerie (kein Vision — nur Beilage) */}
       {tool.supportsPhotoGallery && (
         <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
-          <p className="mb-1 text-sm font-medium text-cream">{tool.photoGalleryLabelDe}</p>
-          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{tool.photoGalleryHintDe}</p>
+          <p className="mb-1 text-sm font-medium text-cream">{galleryLabel}</p>
+          <p className="mb-4 text-xs leading-relaxed text-cream-muted">{galleryHint}</p>
 
           {/* Bereits hochgeladene Fotos */}
           {photos.length > 0 && (
@@ -976,7 +993,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   <button
                     type="button"
                     onClick={() => removePhoto(i)}
-                    aria-label="Foto entfernen"
+                    aria-label={fs("removePhoto", "Foto entfernen")}
                     className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-ink-950/80 text-xs text-cream opacity-0 transition hover:bg-red-900 group-hover:opacity-100"
                   >
                     ✕
@@ -1003,15 +1020,15 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 </svg>
                 <span className="text-xs text-cream-muted">
                   {photos.length === 0
-                    ? "Fotos auswählen (mehrere möglich)"
-                    : `Weitere Fotos hinzufügen (${photos.length}/${maxPhotos})`}
+                    ? fs("selectPhotos", "Fotos auswählen (mehrere möglich)")
+                    : `${fs("addMorePhotos", "Weitere Fotos hinzufügen")} (${photos.length}/${maxPhotos})`}
                 </span>
               </div>
             </label>
           )}
 
           {photos.length >= maxPhotos && (
-            <p className="mt-2 text-xs text-cream-subtle">Maximum von {maxPhotos} Fotos erreicht.</p>
+            <p className="mt-2 text-xs text-cream-subtle">{fs("maxPhotosReached", "Maximum von {max} Fotos erreicht.").replace("{max}", String(maxPhotos))}</p>
           )}
         </div>
       )}
@@ -1038,14 +1055,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     <div className="grid grid-cols-3 gap-2">
                       <input
                         type="text"
-                        placeholder="Strasse"
+                        placeholder={fs("street", "Strasse")}
                         value={getAddressParts(field.key).street}
                         onChange={e => setAddressPart(field.key, "street", e.target.value)}
                         className={`${inputClass} col-span-2 ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                       />
                       <input
                         type="text"
-                        placeholder="Nr."
+                        placeholder={fs("nr", "Nr.")}
                         value={getAddressParts(field.key).nr}
                         onChange={e => setAddressPart(field.key, "nr", e.target.value)}
                         className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
@@ -1054,14 +1071,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     <div className="grid grid-cols-3 gap-2">
                       <input
                         type="text"
-                        placeholder="PLZ"
+                        placeholder={fs("zip", "PLZ")}
                         value={getAddressParts(field.key).zip}
                         onChange={e => setAddressPart(field.key, "zip", e.target.value)}
                         className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                       />
                       <input
                         type="text"
-                        placeholder="Ort"
+                        placeholder={fs("city", "Ort")}
                         value={getAddressParts(field.key).city}
                         onChange={e => setAddressPart(field.key, "city", e.target.value)}
                         className={`${inputClass} col-span-2 ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
@@ -1075,21 +1092,21 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                         <div className="mb-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
                           <input
                             type="text"
-                            placeholder="Stelle / Funktion"
+                            placeholder={fs("rolePlaceholder", "Stelle / Funktion")}
                             value={entry.role}
                             onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, role: e.target.value } : x))}
                             className={`${inputClass} border-ink-700`}
                           />
                           <input
                             type="text"
-                            placeholder="Firma"
+                            placeholder={fs("companyPlaceholder", "Firma")}
                             value={entry.company}
                             onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, company: e.target.value } : x))}
                             className={`${inputClass} border-ink-700`}
                           />
                           <input
                             type="text"
-                            placeholder="Ort (optional)"
+                            placeholder={fs("cityOptional", "Ort (optional)")}
                             value={entry.city}
                             onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, city: e.target.value } : x))}
                             className={`${inputClass} border-ink-700 sm:col-span-1 col-span-2`}
@@ -1101,7 +1118,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                             onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, from: e.target.value } : x))}
                             className={`${inputClass} border-ink-700 flex-1`}
                           >
-                            <option value="">Von (Jahr)</option>
+                            <option value="">{fs("fromYear", "Von (Jahr)")}</option>
                             {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
                           </select>
                           <span className="text-cream-subtle">–</span>
@@ -1110,7 +1127,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                             onChange={e => setWorkEntries(prev => prev.map((x, j) => j === i ? { ...x, to: e.target.value } : x))}
                             className={`${inputClass} border-ink-700 flex-1`}
                           >
-                            <option value="">Bis heute</option>
+                            <option value="">{fs("untilToday", "Bis heute")}</option>
                             {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
                           </select>
                           {workEntries.length > 1 && (
@@ -1125,7 +1142,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                       onClick={() => setWorkEntries(prev => [...prev, { role: "", company: "", city: "", from: "", to: "" }])}
                       className="flex items-center gap-2 text-xs text-swiss-gold hover:text-swiss-goldDark transition"
                     >
-                      <span className="text-base leading-none">+</span> Weitere Stelle hinzufügen
+                      <span className="text-base leading-none">+</span> {fs("addPosition", "Weitere Stelle hinzufügen")}
                     </button>
                   </div>
                 ) : field.key === "education" ? (
@@ -1135,14 +1152,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                         <div className="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
                           <input
                             type="text"
-                            placeholder="Abschluss / Kurs"
+                            placeholder={fs("degreePlaceholder", "Abschluss / Kurs")}
                             value={entry.title}
                             onChange={e => setEduEntries(prev => prev.map((x, j) => j === i ? { ...x, title: e.target.value } : x))}
                             className={`${inputClass} border-ink-700`}
                           />
                           <input
                             type="text"
-                            placeholder="Schule / Institution"
+                            placeholder={fs("institutionPlaceholder", "Schule / Institution")}
                             value={entry.institution}
                             onChange={e => setEduEntries(prev => prev.map((x, j) => j === i ? { ...x, institution: e.target.value } : x))}
                             className={`${inputClass} border-ink-700`}
@@ -1154,7 +1171,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                             onChange={e => setEduEntries(prev => prev.map((x, j) => j === i ? { ...x, from: e.target.value } : x))}
                             className={`${inputClass} border-ink-700 flex-1`}
                           >
-                            <option value="">Von (Jahr)</option>
+                            <option value="">{fs("fromYear", "Von (Jahr)")}</option>
                             {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
                           </select>
                           <span className="text-cream-subtle">–</span>
@@ -1163,7 +1180,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                             onChange={e => setEduEntries(prev => prev.map((x, j) => j === i ? { ...x, to: e.target.value } : x))}
                             className={`${inputClass} border-ink-700 flex-1`}
                           >
-                            <option value="">Bis heute</option>
+                            <option value="">{fs("untilToday", "Bis heute")}</option>
                             {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
                           </select>
                           {eduEntries.length > 1 && (
@@ -1178,7 +1195,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                       onClick={() => setEduEntries(prev => [...prev, { title: "", institution: "", from: "", to: "" }])}
                       className="flex items-center gap-2 text-xs text-swiss-gold hover:text-swiss-goldDark transition"
                     >
-                      <span className="text-base leading-none">+</span> Weitere Ausbildung hinzufügen
+                      <span className="text-base leading-none">+</span> {fs("addEducation", "Weitere Ausbildung hinzufügen")}
                     </button>
                   </div>
                 ) : field.type === "select" ? (
@@ -1189,7 +1206,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   >
                     <option value="">{selectPlaceholder}</option>
-                    {(field.countryOptions?.[country?.code ?? ""] ?? field.options ?? []).map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+                    {(field.countryOptions?.[country?.code ?? ""] ?? field.options ?? []).map((opt) => <option key={opt} value={opt}>{optLabel(opt)}</option>)}
                   </select>
                 ) : field.type === "tel" ? (
                   <div className="flex gap-2">
@@ -1254,11 +1271,11 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 )}
                 {field.autoFilledHint && values[field.key] && (
                   <p className="mt-1 text-xs text-swiss-gold/70">
-                    ✓ Automatisch berechnet — du kannst das Datum anpassen.
+                    {fs("autoCalculated", "✓ Automatisch berechnet — du kannst das Datum anpassen.")}
                   </p>
                 )}
                 {field.hint && (
-                  <p className="mt-1.5 text-xs text-cream-muted/70">{field.hint}</p>
+                  <p className="mt-1.5 text-xs text-cream-muted/70">{(dict?.fieldHints as Record<string, string> | undefined)?.[field.key] ?? field.hint}</p>
                 )}
                 {errors[field.key] && <p className="mt-1 text-xs text-red-400">{errors[field.key]}</p>}
               </div>
@@ -1300,10 +1317,10 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           type="submit"
           className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
         >
-          Vorschau erstellen — kostenlos
+          {fs("previewButton", "Vorschau erstellen — kostenlos")}
         </button>
         <span className="text-xs text-cream-muted">
-          Danach {priceDisplay} für das vollständige Dokument
+          {fs("previewAfter", "Danach {price} für das vollständige Dokument").replace("{price}", priceDisplay)}
         </span>
       </div>
     </form>
