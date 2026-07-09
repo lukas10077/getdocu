@@ -16,7 +16,7 @@ export type ToolSlug =
 export interface FieldDef {
   key: string;
   label: string;
-  type: "text" | "textarea" | "select" | "email" | "tel" | "number" | "date" | "address";
+  type: "text" | "textarea" | "select" | "email" | "tel" | "number" | "date" | "address" | "monthyear";
   placeholder?: string;
   placeholderKey?: string;                   // i18n-Schlüssel → dict.placeholders[key]
   required?: boolean;
@@ -206,8 +206,8 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "lastName",      label: "Nachname",                     type: "text",     required: true },
       { key: "position",      label: "Deine Stelle / Funktion",      type: "text",     required: true },
       { key: "employer",      label: "Name des Arbeitgebers",        type: "text",     required: true },
-      { key: "startDate",     label: "Eintrittsdatum",               type: "date",     required: true, section: "Beschäftigungsdauer" },
-      { key: "endDate",       label: "Austrittsdatum",               type: "date",     required: true },
+      { key: "startDate",     label: "Eintrittsdatum",               type: "monthyear", required: true, section: "Beschäftigungsdauer" },
+      { key: "endDate",       label: "Austrittsdatum",               type: "monthyear", required: true },
       { key: "whatToImprove", label: "Was soll verbessert werden?",  type: "textarea", required: false,
         section: "Verbesserungen",
         hint: "Kein Problem, wenn du nichts weisst — wir analysieren das Zeugnis und verbessern es automatisch." },
