@@ -195,6 +195,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "konkreten Leistungen und Soft Skills, Schlussformel mit Dank und Wunsch für die Zukunft). " +
       "Keine negativen Kodierungen. Schweizer Du/Sie-Form konsistent. Gib das vollständige, " +
       "umgeschriebene Zeugnis aus — keine Erklärungen oder Kommentare. " +
+      "WICHTIG: Erfinde KEINE Informationen über das Unternehmen (keine Grösse wie 'mittelständisch' " +
+      "oder 'international', keine Branche, keine Mitarbeiterzahl), ausser diese sind explizit im " +
+      "hochgeladenen Zeugnis angegeben. Schreibe nur was du weisst. " +
       "WICHTIG: Zitiere KEINE Gesetzesartikel (wie OR Art. 330a) im Zeugnis. Gesetzliche Grundlagen " +
       "sind Hintergrundinformation für dich, gehören aber nicht in den Dokumenttext. " +
       "Unterschriftsblock am Schluss: Firmenname und Datum, dann eine Leerzeile, dann nur " +

@@ -563,7 +563,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
             {isCV ? renderCVDisplay(cleanResult, true) : (() => {
               const rawParas = cleanResult.split(/\n\n+/);
-              const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim());
+              const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim()) || /^[A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ][A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ\s\-]{3,}$/.test(p.trim());
               const dispP  = (p: string) => p.replace(/^BETREFF:\s*/i, '');
               const isDate = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
               const isClose= (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
@@ -637,7 +637,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               const w = window.open("", "_blank")!;
               // Hilfsfunktion: Absatz → HTML
               function renderP(p: string): string {
-                const isBet   = /^BETREFF:\s*/i.test(p.trim());
+                const isBet   = /^BETREFF:\s*/i.test(p.trim()) || /^[A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ][A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ\s\-]{3,}$/.test(p.trim());
                 const cleaned = p.trim().replace(/^BETREFF:\s*/i, '');
                 const esc = cleaned.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
                 const isDate  = /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
@@ -744,7 +744,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div style={{ background: "#faf8f4", padding: "40px 48px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
             {(() => {
               const rawParas = previewText.split(/\n\n+/);
-              const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim());
+              const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim()) || /^[A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ][A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ\s\-]{3,}$/.test(p.trim());
               const dispP  = (p: string) => p.replace(/^BETREFF:\s*/i, '');
               const header = rawParas.slice(0, 2);
               const body   = rawParas.slice(2);
