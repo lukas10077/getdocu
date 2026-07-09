@@ -26,7 +26,6 @@ export async function POST(req: NextRequest) {
     const session = event.data.object as Stripe.Checkout.Session;
     const toolSlug = session.metadata?.toolSlug;
     // TODO: await incrementAnonymousUsageCounter(toolSlug) — bewusst kein PII-Logging.
-    console.log(`[anonym] Verkauf abgeschlossen für Tool: ${toolSlug}`);
   }
 
   return NextResponse.json({ received: true });

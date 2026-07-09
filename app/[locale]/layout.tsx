@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
     title: dict.meta.title,
     description: dict.meta.description,
     metadataBase: new URL(BASE_URL),
+    icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
     openGraph: {
       title: dict.meta.title,
       description: dict.meta.description,
