@@ -31,10 +31,6 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "OR", articles: "Art. 197–210", note: "Gewährleistung bei Kauf" },
       { law: "OR", articles: "Art. 368–371", note: "Gewährleistung beim Werkvertrag" },
     ],
-    "krankenkasse": [
-      { law: "KVG", articles: "Art. 7", note: "Wechsel der Krankenkasse, Fristen" },
-      { law: "KVG", articles: "Art. 64", note: "Prämien und Prämienverbilligung" },
-    ],
     "kuendigung": [
       { law: "OR", articles: "Art. 335–335i", note: "Ordentliche Kündigung" },
     ],
@@ -64,9 +60,6 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "BGB", articles: "§§ 437–441", note: "Rechte des Käufers bei Sachmängeln" },
       { law: "BGB", articles: "§ 438", note: "Verjährung der Mängelansprüche" },
     ],
-    "krankenkasse": [
-      { law: "SGB V", articles: "§ 175", note: "Kassenwechsel, Kündigungsfristen" },
-    ],
     "kuendigung": [
       { law: "BGB", articles: "§ 622", note: "Kündigungsfristen" },
     ],
@@ -94,9 +87,6 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "ABGB", articles: "§§ 922–933b", note: "Gewährleistung" },
       { law: "KSchG", articles: "§ 8", note: "Gewährleistung gegenüber Verbrauchern" },
     ],
-    "krankenkasse": [
-      { law: "ASVG", articles: "§ 16", note: "Selbstversicherung, Wechsel" },
-    ],
     "kuendigung": [
       { law: "ABGB", articles: "§ 1159", note: "Kündigungsfristen" },
     ],
@@ -123,9 +113,6 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Code de la consommation", articles: "L. 217-1 à L. 217-20", note: "Garantie légale de conformité" },
       { law: "Code civil", articles: "Art. 1641–1649", note: "Garantie des vices cachés" },
-    ],
-    "krankenkasse": [
-      { law: "Code de la sécurité sociale", articles: "L. 861-1", note: "Complémentaire santé solidaire" },
     ],
     "kuendigung": [
       { law: "Code du travail", articles: "L. 1234-1", note: "Délai de préavis" },
@@ -319,7 +306,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "UCC", articles: "Art. 2 §§ 2-313–2-316", note: "Express and implied warranties (state law)" },
     ],
     "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [],
-    "maengelruege": [], "kuendigung-wohnung": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "maengelruege": [], "kuendigung-wohnung": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   CA: {
@@ -335,7 +322,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Consumer Protection Act 2002 (Ontario)", articles: "s. 9", note: "Implied conditions and warranties" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   BR: {
@@ -357,7 +344,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "kuendigung": [
       { law: "CLT", articles: "Art. 487", note: "Aviso prévio" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "krankenkasse": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [],
   },
 
   MX: {
@@ -376,7 +363,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "kuendigung": [
       { law: "LFT", articles: "Art. 51", note: "Rescisión del contrato" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [],
   },
 
   AR: {
@@ -395,7 +382,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "kuendigung": [
       { law: "LCT (Ley 20.744)", articles: "Art. 231", note: "Preaviso" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [],
   },
 
   CO: {
@@ -411,7 +398,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Ley 1480/2011 (Estatuto del Consumidor)", articles: "Art. 7–11", note: "Garantía legal de calidad" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   CL: {
@@ -427,7 +414,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Ley 19.496 (Protección al Consumidor)", articles: "Art. 20", note: "Garantía legal por defectos" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   // ── Asien & Naher Osten ──────────────────────────────────────
@@ -449,7 +436,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "消費者契約法", articles: "Art. 8–10", note: "消費者の権利 (Verbraucherrechte)" },
       { law: "民法", articles: "562–570条", note: "売買における契約不適合責任" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "kuendigung": [],
   },
 
   IN: {
@@ -465,7 +452,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Consumer Protection Act 2019", articles: "s. 2(47), s. 34–36", note: "Unfair trade practices, defective goods" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   AE: {
@@ -481,7 +468,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Federal Law No. 15 of 2020 (Consumer Protection)", articles: "Art. 10", note: "Warranty and liability for defective goods" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   // ── Ozeanien ─────────────────────────────────────────────────
@@ -505,7 +492,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "kuendigung": [
       { law: "Fair Work Act 2009", articles: "s. 117", note: "Notice periods" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "krankenkasse": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [],
   },
 
   NZ: {
@@ -521,7 +508,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Consumer Guarantees Act 1993", articles: "s. 6–18", note: "Guarantees as to acceptable quality, fitness for purpose" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   // ── Afrika ───────────────────────────────────────────────────
@@ -539,7 +526,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Consumer Protection Act 68 of 2008", articles: "s. 55–61", note: "Consumer's right to safe, good quality goods" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   // ── Osteuropa / GUS ───────────────────────────────────────────
@@ -560,7 +547,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Закон о защите прав потребителей", articles: "ст. 18–21", note: "Права потребителя при продаже товара ненадлежащего качества" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "kuendigung": [],
   },
 
   UA: {
@@ -576,7 +563,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "reklamation": [
       { law: "Закон України «Про захист прав споживачів»", articles: "ст. 8", note: "Права споживача у разі придбання товару неналежної якості" },
     ],
-    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "krankenkasse": [], "kuendigung": [],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
   TR: {

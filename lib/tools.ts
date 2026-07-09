@@ -11,8 +11,7 @@ export type ToolSlug =
   | "lebenslauf"
   | "komplettbewerbung"
   | "kuendigung"
-  | "reklamation"
-  | "krankenkasse";
+  | "reklamation";
 
 export interface FieldDef {
   key: string;
@@ -319,32 +318,6 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     ],
   },
 
-  krankenkasse: {
-    slug: "krankenkasse",
-    priceChfRappen: 400,
-    documentTitleDe: "Krankenkassen-Brief",
-    descriptionDe:
-      "Prämienreduktion, Leistungsanfragen, Kündigung — korrekt und auf Deutsch formuliert.",
-    systemPrompt:
-      "Du bist Experte für Schweizer Krankenversicherung (KVG/VVG). Erstelle einen formellen " +
-      "Brief an eine Schweizer Krankenkasse auf Deutsch. Struktur: Absender mit Policennummer, " +
-      "Empfänger, Datum, klarer Betreff, präzises Anliegen, Bitte um schriftliche Antwort, " +
-      "Abschluss. Ton: sachlich, respektvoll, klar. Keine juristischen Versprechen machen.",
-    fields: [
-      { key: "firstName",      label: "Vorname",                   type: "text",     required: true,  section: "Deine Angaben" },
-      { key: "lastName",       label: "Nachname",                  type: "text",     required: true  },
-      { key: "currentAddress", label: "Deine Adresse",             type: "address",     required: true  },
-      { key: "birthDate",      label: "Geburtsdatum",              type: "date",     required: true  },
-      { key: "insuranceName",  label: "Name der Krankenkasse",     type: "text",     required: true,  section: "Krankenkasse" },
-      { key: "policyNumber",   label: "Versicherungs-/Policennummer", type: "text",  required: true  },
-      { key: "topic",          label: "Thema des Briefes",         type: "select",   required: true,
-        options: ["Prämienreduktion beantragen", "Kostengutsprache / Leistungsanfrage", "Kündigung der Zusatzversicherung", "Reklamation / Einsprache", "Andere Anfrage"] },
-      { key: "details",        label: "Dein Anliegen",             type: "textarea", required: true,
-        placeholderKey: "concernDetails",
-        section: "Anliegen" },
-    ],
-  },
-
   "kuendigung-wohnung": {
     slug: "kuendigung-wohnung",
     priceChfRappen: 300,
@@ -464,5 +437,5 @@ export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
   { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "maengelruege"] },
   { key: "arbeit", slugs: ["komplettbewerbung", "jobbewerbung", "lebenslauf", "kuendigung-arbeit", "arbeitszeugnis"] },
-  { key: "alltag", slugs: ["kuendigung", "reklamation", "krankenkasse"] },
+  { key: "alltag", slugs: ["kuendigung", "reklamation"] },
 ];
