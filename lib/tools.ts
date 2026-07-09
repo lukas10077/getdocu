@@ -248,9 +248,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   reklamation: {
     slug: "reklamation",
     priceChfRappen: 300,
-    supportsDocumentUpload: true,
-    uploadLabelDe: "Foto der Rechnung oder des Produkts hochladen (optional)",
-    uploadHintDe: "Hast du eine fehlerhafte Rechnung oder ein defektes Produkt? Lade ein Foto hoch.",
+    supportsPhotoGallery: true,
+    maxPhotos: 20,
+    photoGalleryLabelDe: "Fotos hochladen (optional)",
+    photoGalleryHintDe: "Lade Fotos des defekten Produkts, der Rechnung oder des Schadens hoch — sie werden als Beilage ans Dokument angehängt.",
     documentTitleDe: "Reklamationsbrief",
     descriptionDe:
       "Defekte Ware, schlechte Dienstleistung, falsche Rechnung — klar und bestimmt reklamieren.",
