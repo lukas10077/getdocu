@@ -194,7 +194,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "positiver Ton, klare Struktur (Einleitung mit Stellen-/Aufgabenbeschreibung, Hauptteil mit " +
       "konkreten Leistungen und Soft Skills, Schlussformel mit Dank und Wunsch für die Zukunft). " +
       "Keine negativen Kodierungen. Schweizer Du/Sie-Form konsistent. Gib das vollständige, " +
-      "umgeschriebene Zeugnis aus — keine Erklärungen oder Kommentare.",
+      "umgeschriebene Zeugnis aus — keine Erklärungen oder Kommentare. " +
+      "WICHTIG: Zitiere KEINE Gesetzesartikel (wie OR Art. 330a) im Zeugnis. Gesetzliche Grundlagen " +
+      "sind Hintergrundinformation für dich, gehören aber nicht in den Dokumenttext.",
     fields: [
       { key: "firstName",     label: "Vorname",                      type: "text",     required: true, section: "Deine Angaben" },
       { key: "lastName",      label: "Nachname",                     type: "text",     required: true },
