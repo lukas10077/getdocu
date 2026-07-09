@@ -198,13 +198,16 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "WICHTIG: Zitiere KEINE Gesetzesartikel (wie OR Art. 330a) im Zeugnis. Gesetzliche Grundlagen " +
       "sind Hintergrundinformation für dich, gehören aber nicht in den Dokumenttext. " +
       "Unterschriftsblock am Schluss: Firmenname und Datum, dann eine Leerzeile, dann nur " +
-      "\"_________________\" als Platzhalter für die Unterschrift — kein Text wie [Funktion Unterzeichner].",
+      "\"_________________\" als Platzhalter für die Unterschrift — kein Text wie [Funktion Unterzeichner]. " +
+      "Verwende KEINE Platzhalter in Klammern wie (Abteilung), (Anzahl Mitarbeiter) o.ä. " +
+      "Wenn eine Information nicht vorhanden ist, lasse den betreffenden Satzteil einfach weg.",
     fields: [
       { key: "firstName",     label: "Vorname",                      type: "text",     required: true, section: "Deine Angaben" },
       { key: "lastName",      label: "Nachname",                     type: "text",     required: true },
       { key: "position",      label: "Deine Stelle / Funktion",      type: "text",     required: true },
       { key: "employer",      label: "Name des Arbeitgebers",        type: "text",     required: true },
-      { key: "duration",      label: "Beschäftigungsdauer",          type: "text",     required: true, placeholderKey: "dateRange" },
+      { key: "startDate",     label: "Eintrittsdatum",               type: "date",     required: true, section: "Beschäftigungsdauer" },
+      { key: "endDate",       label: "Austrittsdatum",               type: "date",     required: true },
       { key: "whatToImprove", label: "Was soll verbessert werden?",  type: "textarea", required: false,
         section: "Verbesserungen",
         hint: "Kein Problem, wenn du nichts weisst — wir analysieren das Zeugnis und verbessern es automatisch." },
