@@ -104,8 +104,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "Loi n° 89-462 du 6 juillet 1989", articles: "Art. 12", note: "Congé donné par le locataire, préavis" },
     ],
     "kuendigung-arbeit": [
-      { law: "Code du travail", articles: "L. 1237-19 à L. 1237-19-14", note: "Rupture conventionnelle / démission" },
-      { law: "Code du travail", articles: "L. 1234-1", note: "Préavis de démission" },
+      { law: "Code du travail", articles: "L. 1237-1", note: "Démission, préavis selon convention collective" },
     ],
     "arbeitszeugnis": [
       { law: "Code du travail", articles: "L. 1234-19", note: "Certificat de travail obligatoire" },
@@ -156,8 +155,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "LAU", articles: "Art. 11", note: "Desistimiento del contrato por el arrendatario" },
     ],
     "kuendigung-arbeit": [
-      { law: "ET", articles: "Art. 49.1.d", note: "Extinción del contrato por dimisión del trabajador" },
-      { law: "ET", articles: "Art. 15", note: "Preaviso en caso de dimisión" },
+      { law: "ET", articles: "Art. 49.1.d", note: "Dimisión del trabajador, preaviso según convenio (habitualmente 15 días)" },
     ],
     "arbeitszeugnis": [
       { law: "ET", articles: "Art. 8.5", note: "Certificado de empresa" },
@@ -228,7 +226,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "Housing Act 2004", articles: "HHSRS", note: "Housing Health and Safety Rating System" },
     ],
     "kuendigung-wohnung": [
-      { law: "Housing Act 1988", articles: "s. 21", note: "No-fault notice to quit by tenant" },
+      { law: "Protection from Eviction Act 1977", articles: "s. 5", note: "Notice to quit by tenant: written, minimum 4 weeks" },
     ],
     "kuendigung-arbeit": [
       { law: "Employment Rights Act 1996", articles: "s. 86", note: "Minimum statutory notice periods" },
@@ -298,9 +296,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
   // ── Amerika ──────────────────────────────────────────────────
 
   US: {
-    "kuendigung-arbeit": [
-      { law: "WARN Act", articles: "29 U.S.C. §§ 2101–2109", note: "60-day notice required for mass layoffs (50+ employees)" },
-    ],
+    "kuendigung-arbeit": [],
     "reklamation": [
       { law: "Magnuson-Moss Warranty Act", articles: "15 U.S.C. §§ 2301–2312", note: "Federal warranty law for consumer products" },
       { law: "UCC", articles: "Art. 2 §§ 2-313–2-316", note: "Express and implied warranties (state law)" },
@@ -424,7 +420,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "民法 (Minpō)", articles: "606条", note: "賃貸人の修繕義務 (Pflicht zur Reparatur)" },
     ],
     "kuendigung-wohnung": [
-      { law: "借地借家法", articles: "28条", note: "賃貸人による解約申入れ (Kündigung durch Vermieter)" },
+      { law: "民法", articles: "617条・618条", note: "解約の申入れ (Kündigung durch Mieter; bei Gebäuden 3 Monate, sofern vertraglich nichts anderes gilt)" },
     ],
     "kuendigung-arbeit": [
       { law: "労働基準法 (Labor Standards Act)", articles: "20条", note: "解雇予告 (Kündigungsankündigung, 30 Tage)" },
@@ -607,7 +603,8 @@ export function getLegalReferences(toolSlug: ToolSlug, countryCode: string): str
   if (!lines) return "";
 
   return (
-    `Zitiere im Dokument an passender Stelle folgende Rechtsgrundlagen:\n${lines}\n` +
-    `Erwähne diese Artikel als kurze, professionelle Referenz im Brieftext (z.B. "gemäss § 536 BGB" oder "conformément à l'art. 1719 du Code civil").`
+    `RECHTSGRUNDLAGEN (geprüft — NUR diese dürfen zitiert werden):\n${lines}\n` +
+    `Erwähne höchstens ein bis zwei dieser Artikel als kurze, professionelle Referenz im Brieftext (z.B. "gemäss § 536 BGB" oder "conformément à l'art. 1719 du Code civil"), nur wo es inhaltlich passt.\n` +
+    `Zitiere KEINE anderen Gesetzesartikel und nenne keine konkreten gesetzlichen Fristen aus eigenem Wissen — verwende ausschliesslich die vom Nutzer angegebene Frist.`
   );
 }

@@ -4,6 +4,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { getTool } from "@/lib/tools";
 import { getCountry, LANG_NAMES } from "@/lib/countries";
 import { getLegalReferences } from "@/lib/legalRefs";
+import { getDocStandards } from "@/lib/docStandards";
 
 export async function POST(req: NextRequest) {
   const { toolSlug, sessionId, formData } = await req.json();
@@ -174,11 +175,14 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: 
     currencyNote +
     `Verfasse das gesamte Dokument auf ${langName}.\n`;
 
-  // Gesetzesreferenzen für dieses Land und Dokument-Typ
+  // Gesetzesreferenzen + landesübliche Dokument-Standards für dieses Land
   const legalRefs = toolSlug
     ? getLegalReferences(toolSlug as import("@/lib/tools").ToolSlug, countryCode)
     : "";
+  const docStandards = toolSlug
+    ? getDocStandards(toolSlug as import("@/lib/tools").ToolSlug, countryCode)
+    : "";
 
-  const parts = [formatRule, countryNote, legalRefs, adapted].filter(Boolean);
+  const parts = [formatRule, countryNote, docStandards, legalRefs, adapted].filter(Boolean);
   return parts.join("\n");
 }

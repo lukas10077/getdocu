@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { getTool } from "@/lib/tools";
 import { getCountry, LANG_NAMES } from "@/lib/countries";
+import { getDocStandards } from "@/lib/docStandards";
 
 // ── Rate-Limiting ────────────────────────────────────────────────────────────
 // Pro IP: max. 5 Vorschauen pro Minute.
@@ -63,7 +64,7 @@ export async function POST(req: NextRequest) {
   const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (nur die ersten 2–3 Absätze, ca. 120–150 Wörter) basierend auf folgenden Angaben. Höre mitten im Text auf — das vollständige Dokument wird nach Zahlung generiert.\n\n${lines}`;
 
   // Länderkontext in System-Prompt injizieren
-  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode);
+  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug);
 
   const userContent: Anthropic.MessageParam["content"] = [];
 
@@ -117,7 +118,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ previewText });
 }
 
-function buildSystemPrompt(basePrompt: string, countryCode?: string): string {
+function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: string): string {
   const formatRule =
     `AUSGABEFORMAT — ZWINGEND:\n` +
     `Erstelle das Dokument als sauberen, druckfertigen Brief ohne jegliches Markdown.\n` +
@@ -155,5 +156,9 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string): string {
     currencyNote +
     `Verfasse das gesamte Dokument auf ${langName}.\n`;
 
-  return `${formatRule}\n${countryNote}\n${adapted}`;
+  const docStandards = toolSlug
+    ? getDocStandards(toolSlug as import("@/lib/tools").ToolSlug, countryCode)
+    : "";
+
+  return [formatRule, countryNote, docStandards, adapted].filter(Boolean).join("\n");
 }
