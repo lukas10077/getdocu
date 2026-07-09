@@ -196,7 +196,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Keine negativen Kodierungen. Schweizer Du/Sie-Form konsistent. Gib das vollständige, " +
       "umgeschriebene Zeugnis aus — keine Erklärungen oder Kommentare. " +
       "WICHTIG: Zitiere KEINE Gesetzesartikel (wie OR Art. 330a) im Zeugnis. Gesetzliche Grundlagen " +
-      "sind Hintergrundinformation für dich, gehören aber nicht in den Dokumenttext.",
+      "sind Hintergrundinformation für dich, gehören aber nicht in den Dokumenttext. " +
+      "Unterschriftsblock am Schluss: Firmenname und Datum, dann eine Leerzeile, dann nur " +
+      "\"_________________\" als Platzhalter für die Unterschrift — kein Text wie [Funktion Unterzeichner].",
     fields: [
       { key: "firstName",     label: "Vorname",                      type: "text",     required: true, section: "Deine Angaben" },
       { key: "lastName",      label: "Nachname",                     type: "text",     required: true },
