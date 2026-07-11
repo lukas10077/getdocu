@@ -14,7 +14,8 @@
     "react-dom": "^18.3.1",
     "@anthropic-ai/sdk": "^0.27.0",
     "stripe": "^16.8.0",
-    "mammoth": "^1.8.0"
+    "mammoth": "^1.8.0",
+    "resend": "^4.0.0"
   },
   "devDependencies": {
     "typescript": "^5.5.4",
