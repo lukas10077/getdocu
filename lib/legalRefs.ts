@@ -101,7 +101,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "Loi n° 89-462 du 6 juillet 1989", articles: "Art. 6", note: "Obligation de délivrer un logement décent" },
     ],
     "kuendigung-wohnung": [
-      { law: "Loi n° 89-462 du 6 juillet 1989", articles: "Art. 12", note: "Congé donné par le locataire, préavis" },
+      { law: "Loi n° 89-462 du 6 juillet 1989", articles: "Art. 12 et 15", note: "Congé donné par le locataire, délai de préavis (3 mois, réduit à 1 mois en zone tendue ou logement meublé)" },
     ],
     "kuendigung-arbeit": [
       { law: "Code du travail", articles: "L. 1237-1", note: "Démission, préavis selon convention collective" },
@@ -226,7 +226,7 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
       { law: "Housing Act 2004", articles: "HHSRS", note: "Housing Health and Safety Rating System" },
     ],
     "kuendigung-wohnung": [
-      { law: "Protection from Eviction Act 1977", articles: "s. 5", note: "Notice to quit by tenant: written, minimum 4 weeks" },
+      { law: "Renters' Rights Act 2025", articles: "s. 20", note: "Notice to quit by tenant: written, minimum 2 months (shorter if the tenancy agreement allows), expiring at the end of a rent period" },
     ],
     "kuendigung-arbeit": [
       { law: "Employment Rights Act 1996", articles: "s. 86", note: "Minimum statutory notice periods" },

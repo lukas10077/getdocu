@@ -478,6 +478,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     const cleanResult = bundleSepIdx >= 0 ? fullResult.slice(0, bundleSepIdx).trim() : fullResult;
     const lebenslaufResult = bundleSepIdx >= 0 ? fullResult.slice(bundleSepIdx).replace(/^===LEBENSLAUF===\n*/, "").trim() : null;
     const isCV = tool.slug === "lebenslauf";
+    // Design "Goldlinie" — nur für Bewerbungs-Tools
+    const goldAccent = ["mietbewerbung", "jobbewerbung", "lebenslauf", "komplettbewerbung"].includes(tool.slug);
 
     // CV-Rendering für Lebenslauf-Tool (mit Foto) und Komplettbewerbung-Lebenslauf (ohne Foto)
     const renderCVDisplay = (cvText: string, withPhoto: boolean): React.ReactNode => {
@@ -498,6 +500,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
               <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 88, height: 110, objectFit: 'cover', borderRadius: 2, flexShrink: 0, boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }} />
             )}
           </div>
+          {goldAccent && <div style={{ height: 1, background: "#C8902E", opacity: 0.5, margin: "12px 0 4px" }} />}
           {bodyParas.map((p, i) => {
             if (isSec(p)) return (
               <div key={i} style={{ marginTop: 18, paddingTop: 12, borderTop: '0.5px solid #d8d5ce' }}>
@@ -560,7 +563,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Bewerbungsschreiben</p>
         )}
         <div className="overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
-          <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
+          <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780, position: "relative" }}>
+            {goldAccent && <div style={{ position: "absolute", left: 20, top: 32, bottom: 32, width: 2, background: "#C8902E" }} />}
             {isCV ? renderCVDisplay(cleanResult, true) : (() => {
               const rawParas = cleanResult.split(/\n\n+/);
               const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim()) || /^[A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ][A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ\s\-]{3,}$/.test(p.trim());
@@ -600,7 +604,8 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
           <div className="mt-6">
             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">Lebenslauf</p>
             <div className="overflow-hidden shadow-xl" style={{ borderRadius: 2, minHeight: 780 }}>
-              <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780 }}>
+              <div style={{ background: "#faf8f4", padding: "36px 44px", fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", minHeight: 780, position: "relative" }}>
+                {goldAccent && <div style={{ position: "absolute", left: 20, top: 32, bottom: 32, width: 2, background: "#C8902E" }} />}
                 {renderCVDisplay(lebenslaufResult, false)}
               </div>
             </div>
@@ -674,7 +679,10 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                   }
                   return `<p style="font-size:11.5px;color:#444;line-height:1.6;margin:0 0 8px;white-space:pre-line">${esc(p)}</p>`;
                 }).join('');
-                return nameHtml + bodyHtml;
+                const nameDivider = goldAccent
+                  ? `<div style="height:1px;background:#C8902E;opacity:0.5;margin:12px 0 4px;-webkit-print-color-adjust:exact;print-color-adjust:exact"></div>`
+                  : '';
+                return nameHtml + nameDivider + bodyHtml;
               }
 
               function buildDocHtml(docText: string, withPhoto: boolean, isFirstDoc: boolean, isCVDoc: boolean, hasNextPage?: boolean): string {
@@ -691,7 +699,10 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                 })();
                 const pageBreakStyle = (isFirstDoc && hasNextPage) ? 'page-break-after:always;' : '';
                 const padding = isCVDoc ? '14mm 18mm 14mm 20mm' : '16mm 20mm 16mm 22mm';
-                return `<div class="page" style="${pageBreakStyle}"><div class="body" style="padding:${padding};font-size:13px;line-height:1.85;color:#1a1a1a">${content}</div></div>`;
+                const accentBar = goldAccent
+                  ? `<div style="position:absolute;left:11mm;top:14mm;bottom:14mm;width:0.7mm;background:#C8902E;-webkit-print-color-adjust:exact;print-color-adjust:exact"></div>`
+                  : '';
+                return `<div class="page" style="position:relative;${pageBreakStyle}">${accentBar}<div class="body" style="padding:${padding};font-size:13px;line-height:1.85;color:#1a1a1a">${content}</div></div>`;
               }
 
               const doc1Html = buildDocHtml(cleanResult, true, true, isCV, !!lebenslaufResult);
@@ -725,6 +736,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
   }
 
   if (stage === "preview") {
+    const goldAccent = ["mietbewerbung", "jobbewerbung", "lebenslauf", "komplettbewerbung"].includes(tool.slug);
     return (
       <div className="mt-10">
         <div className="mb-4 flex items-center gap-2">
@@ -742,6 +754,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
 
           {/* Dokument-Body */}
           <div style={{ background: "#faf8f4", padding: "40px 48px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
+            {goldAccent && <div style={{ position: "absolute", left: 22, top: 36, bottom: 36, width: 2, background: "#C8902E" }} />}
             {(() => {
               const rawParas = previewText.split(/\n\n+/);
               const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim()) || /^[A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ][A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ\s\-]{3,}$/.test(p.trim());

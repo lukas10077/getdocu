@@ -107,7 +107,8 @@ const STANDARDS: Record<string, CountryStandards> = {
   GB: {
     arbeitszeugnis: ZEUGNIS_FACTUAL_EN,
     lebenslauf: "CV, maximal 2 Seiten. " + CV_NO_PHOTO_EN,
-    "kuendigung-wohnung": "Schriftliches 'notice to quit', mindestens 4 Wochen. Klarer, knapper Stil.",
+    "kuendigung-wohnung":
+      "Schriftliches 'notice to quit'. Seit dem Renters' Rights Act 2025 gilt für Mieter mindestens 2 Monate Frist (kürzer nur, wenn der Vertrag es erlaubt), endend auf das Ende einer Mietperiode. Nenne im Brief nur die vom Nutzer angegebene Frist. Klarer, knapper Stil.",
     "kuendigung-arbeit": "Kurzes, professionelles 'resignation letter'. Gesetzliches Minimum 1 Woche, vertraglich oft mehr — nur die vom Nutzer angegebene Frist nennen.",
     reklamation: "Auf den Consumer Rights Act 2015 verweisen: innert 30 Tagen volle Rückerstattung möglich, danach Reparatur/Ersatz.",
   },

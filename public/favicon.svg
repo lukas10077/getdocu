@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- GetDocu Favicon: Dokument mit Uhr, Gold auf Dunkel -->
+  <rect width="64" height="64" rx="12" fill="#100E0B"/>
+  <!-- Dokument mit Eselsohr -->
+  <path d="M18 12 h20 l8 8 v32 a2 2 0 0 1 -2 2 H18 a2 2 0 0 1 -2 -2 V14 a2 2 0 0 1 2 -2 Z"
+        fill="none" stroke="#F0B429" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M38 12 v8 h8" fill="none" stroke="#F0B429" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Textzeilen -->
+  <line x1="22" y1="28" x2="34" y2="28" stroke="#F0B429" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  <line x1="22" y1="34" x2="30" y2="34" stroke="#F0B429" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  <!-- Uhr unten rechts -->
+  <circle cx="44" cy="46" r="11" fill="#100E0B" stroke="#F0B429" stroke-width="3"/>
+  <path d="M44 40.5 V46 l4 2.5" fill="none" stroke="#F0B429" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
