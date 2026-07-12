@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
+import Script from "next/script";
 import { locales, isRtl, getDictionary, Locale } from "@/i18n/config";
 import { CountryProvider } from "@/components/CountryProvider";
 import CountrySelector from "@/components/CountrySelector";
@@ -18,7 +19,7 @@ export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocu.ch";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocunow.com";
 
 export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
   const dict = await getDictionary(params.locale);
@@ -52,6 +53,20 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
   const dir = isRtl(params.locale) ? "rtl" : "ltr";
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18318795248"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18318795248');
+          `}
+        </Script>
+      </head>
       <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased`} suppressHydrationWarning>
         <CountryProvider>
           <CountrySelector />
