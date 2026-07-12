@@ -44,6 +44,7 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
       images: [ogImage],
     },
     alternates: { canonical: `${BASE_URL}/${params.locale}` },
+    verification: { google: "nRDR8stm8HQD851NWN5-HGEvULriGIuPJsPjI9uF3jg" },
   };
 }
 
