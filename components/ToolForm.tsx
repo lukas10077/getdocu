@@ -339,6 +339,14 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
       .then(async ({ documentText }) => {
         setResult(documentText);
         sessionStorage.removeItem(storageKey);
+        // Google Ads Conversion-Tracking
+        if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+          (window as any).gtag("event", "conversion", {
+            send_to: "AW-18318795248/Pxn5CPvrsM8cEPDDip9E",
+            value: 1.0,
+            currency: "CHF",
+          });
+        }
         // Fotos aus IndexedDB laden (überleben Stripe-Redirect)
         if (tool.supportsPhotoGallery) {
           const saved = await idbLoad<Photo[]>(photosIdbKey);
