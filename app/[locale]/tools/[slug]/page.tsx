@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import ToolForm from "@/components/ToolForm";
 import ToolPageHeader from "@/components/ToolPageHeader";
 import ChOnlyGuard from "@/components/ChOnlyGuard";
+import CountryOnlyBlock from "@/components/CountryOnlyBlock";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocu.ch";
 
@@ -80,39 +81,45 @@ export default async function ToolPage({
             </div>
 
             {params.locale === "de" && tool.slug === "kuendigung-wohnung" && (
-              <p className="mt-5 text-xs text-cream-muted">
-                Musst du vorzeitig aus dem Mietvertrag raus?{" "}
-                <Link
-                  href={`/${params.locale}/ratgeber/ausserterminliche-kuendigung`}
-                  className="text-swiss-gold underline hover:opacity-80"
-                >
-                  Ratgeber: Ausserterminliche Kündigung mit Nachmieter →
-                </Link>
-              </p>
+              <CountryOnlyBlock country="CH">
+                <p className="mt-5 text-xs text-cream-muted">
+                  Musst du vorzeitig aus dem Mietvertrag raus?{" "}
+                  <Link
+                    href={`/${params.locale}/ratgeber/ausserterminliche-kuendigung`}
+                    className="text-swiss-gold underline hover:opacity-80"
+                  >
+                    Ratgeber: Ausserterminliche Kündigung mit Nachmieter →
+                  </Link>
+                </p>
+              </CountryOnlyBlock>
             )}
 
             {params.locale === "de" && tool.slug === "maengelruege" && (
-              <p className="mt-5 text-xs text-cream-muted">
-                Mangel wird nicht behoben?{" "}
-                <Link
-                  href={`/${params.locale}/ratgeber/fristlose-kuendigung-wohnung`}
-                  className="text-swiss-gold underline hover:opacity-80"
-                >
-                  Ratgeber: Fristlose Kündigung aus wichtigem Grund →
-                </Link>
-              </p>
+              <CountryOnlyBlock country="CH">
+                <p className="mt-5 text-xs text-cream-muted">
+                  Mangel wird nicht behoben?{" "}
+                  <Link
+                    href={`/${params.locale}/ratgeber/fristlose-kuendigung-wohnung`}
+                    className="text-swiss-gold underline hover:opacity-80"
+                  >
+                    Ratgeber: Fristlose Kündigung aus wichtigem Grund →
+                  </Link>
+                </p>
+              </CountryOnlyBlock>
             )}
 
             {params.locale === "en" && tool.slug === "kuendigung-arbeit" && (
-              <p className="mt-5 text-xs text-cream-muted">
-                Need to quit fast?{" "}
-                <Link
-                  href={`/${params.locale}/ratgeber/resign-immediately`}
-                  className="text-swiss-gold underline hover:opacity-80"
-                >
-                  Guide: How to resign immediately (no notice) →
-                </Link>
-              </p>
+              <CountryOnlyBlock country="US">
+                <p className="mt-5 text-xs text-cream-muted">
+                  Need to quit fast?{" "}
+                  <Link
+                    href={`/${params.locale}/ratgeber/resign-immediately`}
+                    className="text-swiss-gold underline hover:opacity-80"
+                  >
+                    Guide: How to resign immediately (no notice) →
+                  </Link>
+                </p>
+              </CountryOnlyBlock>
             )}
           </div>
 
