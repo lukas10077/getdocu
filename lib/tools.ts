@@ -4,6 +4,7 @@
 export type ToolSlug =
   | "mietbewerbung"
   | "kuendigung-wohnung"
+  | "ausserterminliche-kuendigung"
   | "maengelruege"
   | "jobbewerbung"
   | "kuendigung-arbeit"
@@ -355,6 +356,49 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     ],
   },
 
+  "ausserterminliche-kuendigung": {
+    slug: "ausserterminliche-kuendigung",
+    priceChfRappen: 400,
+    documentTitleDe: "Ausserterminliche Kündigung (Nachmieter)",
+    descriptionDe:
+      "Vorzeitig aus dem Mietvertrag — mit Nachmieter-Vorschlag korrekt und fristwahrend formuliert.",
+    systemPrompt:
+      "Du bist Experte für Schweizer Mietrecht. Erstelle ein formell korrektes Schreiben für eine " +
+      "AUSSERTERMINLICHE Kündigung bzw. vorzeitige Rückgabe des Mietobjekts auf Deutsch. Der Mieter " +
+      "möchte die Wohnung vor dem ordentlichen Kündigungstermin zurückgeben und schlägt dafür einen " +
+      "Nachmieter vor. " +
+      "STRUKTUR: vollständiger Absender (Mieter), Vermieter/Verwaltung als Empfänger, Ort und Datum, " +
+      "Betreff mit Adresse des Mietobjekts und dem gewünschten vorzeitigen Rückgabedatum, dann der " +
+      "Text. " +
+      "INHALT: (1) Erkläre klar den Wunsch, das Mietverhältnis vorzeitig — per angegebenem Datum — zu " +
+      "beenden bzw. das Mietobjekt vorzeitig zurückzugeben. (2) Falls Nachmieter-Angaben vorhanden " +
+      "sind: schlage den Nachmieter mit Namen und Kontaktangaben vor und halte fest, dass dieser " +
+      "bereit ist, den Mietvertrag zu den GLEICHEN Bedingungen (gleicher Mietzins, gleiche Nebenkosten, " +
+      "gleiche Modalitäten) zu übernehmen, sowie ab wann er übernahmebereit ist. (3) Falls KEINE " +
+      "Nachmieter-Angaben vorhanden sind: halte fest, dass der Mieter einen zumutbaren und " +
+      "zahlungsfähigen Nachmieter stellen wird, und bitte um Mitteilung der Anforderungen. (4) Bitte " +
+      "den Vermieter höflich, den Nachmieter zu prüfen und den Mieter ab dessen Übernahme aus dem " +
+      "Vertrag zu entlassen. (5) Bitte um schriftliche Bestätigung. Höflicher Abschluss. " +
+      "TONFALL: sachlich, höflich, kooperativ. Formuliere neutral als 'vorzeitige Rückgabe des " +
+      "Mietobjekts'. Zitiere KEINE Gesetzesartikel im Brief und behaupte keine Fristen — das ist keine " +
+      "Rechtsberatung. Verwende KEINE Platzhalter in Klammern; lasse fehlende Angaben einfach weg.",
+    fields: [
+      { key: "firstName",          label: "Vorname",                          type: "text",     required: true,  section: "Mieter" },
+      { key: "lastName",           label: "Nachname",                         type: "text",     required: true  },
+      { key: "currentAddress",     label: "Adresse des Mietobjekts",          type: "address",  required: true  },
+      { key: "landlordName",       label: "Name des Vermieters / Verwaltung", type: "text",     required: true,  section: "Vermieter" },
+      { key: "landlordAddress",    label: "Adresse des Vermieters",           type: "address",  required: true  },
+      { key: "moveOutDate",        label: "Gewünschtes Rückgabedatum",        type: "date",     required: true,  section: "Vorzeitiger Auszug" },
+      { key: "reason",             label: "Grund für den vorzeitigen Auszug (optional)", type: "textarea", required: false,
+        placeholder: "z.B. Umzug in eine andere Stadt, neuer Job, familiäre Gründe" },
+      { key: "successorName",      label: "Name des Nachmieters (optional)",  type: "text",     required: false, section: "Nachmieter",
+        hint: "Falls du schon jemanden hast — sonst leer lassen." },
+      { key: "successorAddress",   label: "Adresse des Nachmieters (optional)", type: "address", required: false },
+      { key: "successorContact",   label: "Kontakt des Nachmieters (Telefon / E-Mail, optional)", type: "text", required: false },
+      { key: "successorDate",      label: "Ab wann übernahmebereit (optional)", type: "date",    required: false },
+    ],
+  },
+
   komplettbewerbung: {
     slug: "komplettbewerbung",
     priceChfRappen: 800,
@@ -445,7 +489,7 @@ export const allToolSlugs: ToolSlug[] = Object.keys(tools) as ToolSlug[];
 export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
-  { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "maengelruege"] },
+  { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "ausserterminliche-kuendigung", "maengelruege"] },
   { key: "arbeit", slugs: ["komplettbewerbung", "jobbewerbung", "lebenslauf", "kuendigung-arbeit", "arbeitszeugnis"] },
   { key: "alltag", slugs: ["kuendigung", "reklamation"] },
 ];
