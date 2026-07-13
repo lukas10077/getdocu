@@ -90,6 +90,18 @@ export default async function ToolPage({
                 </Link>
               </p>
             )}
+
+            {params.locale === "de" && tool.slug === "maengelruege" && (
+              <p className="mt-5 text-xs text-cream-muted">
+                Mangel wird nicht behoben?{" "}
+                <Link
+                  href={`/${params.locale}/ratgeber/fristlose-kuendigung-wohnung`}
+                  className="text-swiss-gold underline hover:opacity-80"
+                >
+                  Ratgeber: Fristlose Kündigung aus wichtigem Grund →
+                </Link>
+              </p>
+            )}
           </div>
 
           <ChOnlyGuard enabled={tool.chOnly} locale={params.locale}>

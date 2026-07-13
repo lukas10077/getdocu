@@ -363,7 +363,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     slug: "ausserterminliche-kuendigung",
     priceChfRappen: 400,
     chOnly: true,
-    documentTitleDe: "Ausserterminliche Kündigung (Nachmieter)",
+    documentTitleDe: "Vorzeitig kündigen mit Nachmieter",
     descriptionDe:
       "Vorzeitig aus dem Mietvertrag — mit Nachmieter-Vorschlag korrekt und fristwahrend formuliert.",
     systemPrompt:
@@ -406,7 +406,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   "ausserordentliche-kuendigung": {
     slug: "ausserordentliche-kuendigung",
     priceChfRappen: 400,
-    documentTitleDe: "Ausserordentliche Kündigung (wichtiger Grund)",
+    documentTitleDe: "Kündigen aus wichtigem Grund",
     descriptionDe:
       "Vorzeitig aus dem Mietvertrag aus wichtigem Grund — z.B. schwere Mängel oder unbewohnbare Wohnung.",
     systemPrompt:
