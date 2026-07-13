@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { locale: "de", slug: "ausserterminliche-kuendigung" },
     { locale: "de", slug: "fristlose-kuendigung-wohnung" },
     { locale: "en", slug: "resign-immediately" },
+    { locale: "es", slug: "carta-de-renuncia" },
   ];
   for (const g of guides) {
     entries.push({

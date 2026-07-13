@@ -121,6 +121,20 @@ export default async function ToolPage({
                 </p>
               </CountryOnlyBlock>
             )}
+
+            {params.locale === "es" && tool.slug === "kuendigung-arbeit" && (
+              <CountryOnlyBlock country="US">
+                <p className="mt-5 text-xs text-cream-muted">
+                  ¿En inglés o en español?{" "}
+                  <Link
+                    href={`/${params.locale}/ratgeber/carta-de-renuncia`}
+                    className="text-swiss-gold underline hover:opacity-80"
+                  >
+                    Guía: cómo escribir tu carta de renuncia →
+                  </Link>
+                </p>
+              </CountryOnlyBlock>
+            )}
           </div>
 
           <ChOnlyGuard enabled={tool.chOnly} locale={params.locale}>
