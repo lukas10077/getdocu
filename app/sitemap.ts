@@ -22,5 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Ratgeber-Seiten (SEO-Landingpages). Aktuell nur Deutsch/Schweiz.
+  entries.push({
+    url: `${BASE_URL}/de/ratgeber/ausserterminliche-kuendigung`,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  });
+
   return entries;
 }
