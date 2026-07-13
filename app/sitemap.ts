@@ -22,10 +22,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Ratgeber-Seiten (SEO-Landingpages). Aktuell nur Deutsch/Schweiz.
-  for (const guide of ["ausserterminliche-kuendigung", "fristlose-kuendigung-wohnung"]) {
+  // Ratgeber-Seiten (SEO-Landingpages). Jeweils sprachspezifisch.
+  const guides: { locale: string; slug: string }[] = [
+    { locale: "de", slug: "ausserterminliche-kuendigung" },
+    { locale: "de", slug: "fristlose-kuendigung-wohnung" },
+    { locale: "en", slug: "resign-immediately" },
+  ];
+  for (const g of guides) {
     entries.push({
-      url: `${BASE_URL}/de/ratgeber/${guide}`,
+      url: `${BASE_URL}/${g.locale}/ratgeber/${g.slug}`,
       changeFrequency: "monthly",
       priority: 0.7,
     });

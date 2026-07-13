@@ -102,6 +102,18 @@ export default async function ToolPage({
                 </Link>
               </p>
             )}
+
+            {params.locale === "en" && tool.slug === "kuendigung-arbeit" && (
+              <p className="mt-5 text-xs text-cream-muted">
+                Need to quit fast?{" "}
+                <Link
+                  href={`/${params.locale}/ratgeber/resign-immediately`}
+                  className="text-swiss-gold underline hover:opacity-80"
+                >
+                  Guide: How to resign immediately (no notice) →
+                </Link>
+              </p>
+            )}
           </div>
 
           <ChOnlyGuard enabled={tool.chOnly} locale={params.locale}>
