@@ -34,6 +34,14 @@
       "💳 Seguro via Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Rescindir antecipadamente com inquilino substituto",
+        "description": "Saia do contrato de arrendamento mais cedo — com proposta de um inquilino substituto, de forma correta e dentro do prazo."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Rescindir por motivo grave",
+        "description": "Saia do contrato de arrendamento mais cedo por motivo grave — p. ex. defeitos graves ou habitação inabitável."
+      },
       "komplettbewerbung": {
         "title": "Candidatura completa",
         "description": "Carta de motivação + CV num só — profissionais, perfeitamente coordenados, prontos a enviar.",
@@ -193,6 +201,14 @@
     "concernDetails": "Descreva a sua solicitação o mais precisamente possível."
   },
   "fieldLabels": {
+    "moveOutDate": "Data de entrega pretendida",
+    "successorName": "Nome do inquilino substituto (opcional)",
+    "successorAddress": "Morada do inquilino substituto (opcional)",
+    "successorContact": "Contacto do inquilino substituto (telefone / e-mail, opcional)",
+    "successorDate": "Disponível para assumir a partir de (opcional)",
+    "importantReason": "Motivo grave",
+    "reasonDetails": "Descreva o motivo em detalhe",
+    "remedyDeadline": "Prazo para reparação (dias, opcional)",
     "firstName": "Nome próprio",
     "lastName": "Apelido",
     "birthDate": "Data de nascimento",
@@ -247,6 +263,11 @@
     "languages": "Idiomas (com nível)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Habitação inabitável",
+    "Erhebliche Mängel": "Defeitos significativos",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Risco para a saúde (p. ex. bolor)",
+    "Pflichtverletzung des Vermieters": "Incumprimento do senhorio",
+    "Anderer wichtiger Grund": "Outro motivo grave",
     "Staatsbürger/in": "Cidadão/ã",
     "Dauerhaftes Aufenthaltsrecht": "Residência permanente",
     "Befristetes Aufenthaltsrecht": "Residência temporária",
@@ -342,6 +363,9 @@
     "whatToImprove": "Não faz mal se não souberes — analisamos a referência e melhoramo-la automaticamente."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Saída antecipada",
+    "Nachmieter": "Inquilino substituto",
+    "Grund der Kündigung": "Motivo da rescisão",
     "Persönliche Angaben": "Dados pessoais",
     "Wohnsituation": "Situação habitacional",
     "Motivationstext": "Motivação",

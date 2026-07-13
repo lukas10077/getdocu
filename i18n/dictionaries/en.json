@@ -34,6 +34,14 @@
       "💳 Secure via Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Terminate Early with Successor Tenant",
+        "description": "Leave your lease early — with a successor-tenant proposal, correctly and on time."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Terminate for Good Cause",
+        "description": "Leave your lease early for good cause — e.g. serious defects or an uninhabitable apartment."
+      },
       "komplettbewerbung": {
         "title": "Complete Application",
         "description": "Cover letter + CV in one — professional, perfectly matched, ready to send.",
@@ -193,6 +201,14 @@
     "concernDetails": "Describe your concern as precisely as possible."
   },
   "fieldLabels": {
+    "moveOutDate": "Requested move-out date",
+    "successorName": "Successor tenant name (optional)",
+    "successorAddress": "Successor tenant address (optional)",
+    "successorContact": "Successor tenant contact (phone / email, optional)",
+    "successorDate": "Ready to take over from (optional)",
+    "importantReason": "Important reason",
+    "reasonDetails": "Describe the reason in detail",
+    "remedyDeadline": "Deadline to fix (days, optional)",
     "firstName": "First name",
     "lastName": "Last name",
     "birthDate": "Date of birth",
@@ -250,6 +266,11 @@
     "residencePermit": "Residence status"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Uninhabitable apartment",
+    "Erhebliche Mängel": "Significant defects",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Health hazard (e.g. mould)",
+    "Pflichtverletzung des Vermieters": "Landlord breach of duty",
+    "Anderer wichtiger Grund": "Other important reason",
     "Staatsbürger/in": "Citizen",
     "Dauerhaftes Aufenthaltsrecht": "Permanent residence",
     "Befristetes Aufenthaltsrecht": "Temporary residence",
@@ -345,6 +366,9 @@
     "whatToImprove": "No problem if you don't know — we analyse the reference and improve it automatically."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Early move-out",
+    "Nachmieter": "Successor tenant",
+    "Grund der Kündigung": "Reason for termination",
     "Persönliche Angaben": "Personal details",
     "Wohnsituation": "Housing situation",
     "Motivationstext": "Motivation",

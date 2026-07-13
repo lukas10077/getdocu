@@ -34,6 +34,14 @@
       "💳 Безпечно через Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Дострокове розірвання з новим орендарем",
+        "description": "Достроково розірвіть договір оренди — із пропозицією нового орендаря, коректно й вчасно."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Розірвання з поважної причини",
+        "description": "Достроково розірвіть договір оренди з поважної причини — наприклад, серйозні недоліки або непридатне для проживання житло."
+      },
       "komplettbewerbung": {
         "title": "Повний пакет для працевлаштування",
         "description": "Мотиваційний лист + резюме в одному — професійно, узгоджено, одразу готово до надсилання.",
@@ -193,6 +201,14 @@
     "concernDetails": "Опишіть ваш запит якомога точніше."
   },
   "fieldLabels": {
+    "moveOutDate": "Бажана дата повернення житла",
+    "successorName": "Ім'я нового орендаря (необов'язково)",
+    "successorAddress": "Адреса нового орендаря (необов'язково)",
+    "successorContact": "Контакт нового орендаря (телефон / e-mail, необов'язково)",
+    "successorDate": "Готовий прийняти з (необов'язково)",
+    "importantReason": "Поважна причина",
+    "reasonDetails": "Опишіть причину детально",
+    "remedyDeadline": "Строк на усунення (днів, необов'язково)",
     "firstName": "Ім'я",
     "lastName": "Прізвище",
     "birthDate": "Дата народження",
@@ -247,6 +263,11 @@
     "languages": "Мови (з рівнем)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Непридатне для проживання житло",
+    "Erhebliche Mängel": "Суттєві недоліки",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Небезпека для здоров'я (напр. цвіль)",
+    "Pflichtverletzung des Vermieters": "Порушення обов'язків орендодавцем",
+    "Anderer wichtiger Grund": "Інша поважна причина",
     "Staatsbürger/in": "Громадянин/громадянка",
     "Dauerhaftes Aufenthaltsrecht": "Постійний дозвіл на проживання",
     "Befristetes Aufenthaltsrecht": "Тимчасовий дозвіл на проживання",
@@ -342,6 +363,9 @@
     "whatToImprove": "Нічого страшного, якщо не знаєте — ми проаналізуємо рекомендацію та покращимо її автоматично."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Достроковий виїзд",
+    "Nachmieter": "Новий орендар",
+    "Grund der Kündigung": "Причина розірвання",
     "Persönliche Angaben": "Особисті дані",
     "Wohnsituation": "Житлова ситуація",
     "Motivationstext": "Мотивація",

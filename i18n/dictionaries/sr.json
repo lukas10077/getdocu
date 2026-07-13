@@ -34,6 +34,14 @@
       "💳 Sigurno putem Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Prevremeni otkaz uz zamenskog stanara",
+        "description": "Napustite zakup pre roka — uz predlog zamenskog stanara, ispravno i u roku."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Otkaz iz važnog razloga",
+        "description": "Napustite zakup pre roka iz važnog razloga — npr. ozbiljni nedostaci ili neuslovni stan."
+      },
       "komplettbewerbung": {
         "title": "Kompletna prijava za posao",
         "description": "Motivaciono pismo + CV u jednom — profesionalno, međusobno usklađeno, odmah spremno za slanje.",
@@ -193,6 +201,14 @@
     "concernDetails": "Opišite vaš zahtev što preciznije moguće."
   },
   "fieldLabels": {
+    "moveOutDate": "Željeni datum predaje",
+    "successorName": "Ime zamenskog stanara (opciono)",
+    "successorAddress": "Adresa zamenskog stanara (opciono)",
+    "successorContact": "Kontakt zamenskog stanara (telefon / e-mail, opciono)",
+    "successorDate": "Spreman da preuzme od (opciono)",
+    "importantReason": "Važan razlog",
+    "reasonDetails": "Opišite razlog detaljno",
+    "remedyDeadline": "Rok za otklanjanje (dana, opciono)",
     "firstName": "Ime",
     "lastName": "Prezime",
     "birthDate": "Datum rođenja",
@@ -247,6 +263,11 @@
     "languages": "Jezici (sa nivoom)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Neuslovni stan",
+    "Erhebliche Mängel": "Ozbiljni nedostaci",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Opasnost po zdravlje (npr. buđ)",
+    "Pflichtverletzung des Vermieters": "Kršenje obaveza od strane zakupodavca",
+    "Anderer wichtiger Grund": "Drugi važan razlog",
     "Staatsbürger/in": "Državljanin/ka",
     "Dauerhaftes Aufenthaltsrecht": "Stalni boravak",
     "Befristetes Aufenthaltsrecht": "Privremeni boravak",
@@ -342,6 +363,9 @@
     "whatToImprove": "Nema problema ako ne znaš — analiziramo preporuku i automatski je poboljšavamo."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Prevremeni odlazak",
+    "Nachmieter": "Zamenski stanar",
+    "Grund der Kündigung": "Razlog otkaza",
     "Persönliche Angaben": "Lični podaci",
     "Wohnsituation": "Stambena situacija",
     "Motivationstext": "Motivacija",

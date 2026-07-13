@@ -34,6 +34,14 @@
       "💳 Sigurt via Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Zgjidhje e parakohshme me qiramarrës zëvendësues",
+        "description": "Dilni nga qiraja para afatit — me propozimin e një qiramarrësi zëvendësues, saktë dhe në afat."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Zgjidhje për shkak të rëndësishëm",
+        "description": "Dilni nga qiraja para afatit për shkak të rëndësishëm — p.sh. defekte të rënda ose banesë e pabanueshme."
+      },
       "komplettbewerbung": {
         "title": "Aplikim i plotë",
         "description": "Letër motivimi + CV në një — profesionale, të përshtatura me njëra-tjetrën, gati për dërgim.",
@@ -193,6 +201,14 @@
     "concernDetails": "Përshkruani kërkesën tuaj sa më saktë të jetë e mundur."
   },
   "fieldLabels": {
+    "moveOutDate": "Data e dëshiruar e dorëzimit",
+    "successorName": "Emri i qiramarrësit zëvendësues (opsionale)",
+    "successorAddress": "Adresa e qiramarrësit zëvendësues (opsionale)",
+    "successorContact": "Kontakti i qiramarrësit zëvendësues (telefon / e-mail, opsionale)",
+    "successorDate": "Gati për të marrë përsipër nga (opsionale)",
+    "importantReason": "Shkak i rëndësishëm",
+    "reasonDetails": "Përshkruani shkakun në detaje",
+    "remedyDeadline": "Afati për riparim (ditë, opsionale)",
     "firstName": "Emri",
     "lastName": "Mbiemri",
     "birthDate": "Data e lindjes",
@@ -247,6 +263,11 @@
     "languages": "Gjuhët (me nivel)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Banesë e pabanueshme",
+    "Erhebliche Mängel": "Defekte të konsiderueshme",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Rrezik për shëndetin (p.sh. myk)",
+    "Pflichtverletzung des Vermieters": "Shkelje e detyrimeve nga qiradhënësi",
+    "Anderer wichtiger Grund": "Arsye tjetër e rëndësishme",
     "Staatsbürger/in": "Shtetas/e",
     "Dauerhaftes Aufenthaltsrecht": "Leje qëndrimi e përhershme",
     "Befristetes Aufenthaltsrecht": "Leje qëndrimi e përkohshme",
@@ -342,6 +363,9 @@
     "whatToImprove": "S'ka problem nëse nuk e di — ne e analizojmë referencën dhe e përmirësojmë automatikisht."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Largim i parakohshëm",
+    "Nachmieter": "Qiramarrës zëvendësues",
+    "Grund der Kündigung": "Arsyeja e zgjidhjes",
     "Persönliche Angaben": "Të dhëna personale",
     "Wohnsituation": "Situata e banesës",
     "Motivationstext": "Motivimi",

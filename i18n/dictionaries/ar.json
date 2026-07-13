@@ -34,6 +34,14 @@
       "💳 آمن عبر Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "إنهاء مبكر مع مستأجر بديل",
+        "description": "غادر عقد الإيجار مبكرًا — باقتراح مستأجر بديل، بشكل صحيح وفي الوقت المحدد."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "إنهاء لسبب جوهري",
+        "description": "غادر عقد الإيجار مبكرًا لسبب جوهري — مثل عيوب جسيمة أو مسكن غير صالح للسكن."
+      },
       "komplettbewerbung": {
         "title": "طلب توظيف كامل",
         "description": "رسالة تحفيزية + سيرة ذاتية في مستند واحد — احترافيان، متناسقان، جاهزان للإرسال فوراً.",
@@ -193,6 +201,14 @@
     "concernDetails": "صف طلبك بأكبر قدر من الدقة."
   },
   "fieldLabels": {
+    "moveOutDate": "تاريخ التسليم المطلوب",
+    "successorName": "اسم المستأجر البديل (اختياري)",
+    "successorAddress": "عنوان المستأجر البديل (اختياري)",
+    "successorContact": "وسيلة التواصل مع المستأجر البديل (هاتف / بريد إلكتروني، اختياري)",
+    "successorDate": "جاهز للاستلام اعتبارًا من (اختياري)",
+    "importantReason": "سبب جوهري",
+    "reasonDetails": "صف السبب بالتفصيل",
+    "remedyDeadline": "مهلة الإصلاح (أيام، اختياري)",
     "firstName": "الاسم",
     "lastName": "اللقب",
     "birthDate": "تاريخ الميلاد",
@@ -247,6 +263,11 @@
     "languages": "اللغات (مع المستوى)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "مسكن غير صالح للسكن",
+    "Erhebliche Mängel": "عيوب جسيمة",
+    "Gesundheitsgefahr (z.B. Schimmel)": "خطر صحي (مثل العفن)",
+    "Pflichtverletzung des Vermieters": "إخلال المؤجر بالتزاماته",
+    "Anderer wichtiger Grund": "سبب جوهري آخر",
     "Staatsbürger/in": "مواطن/ة",
     "Dauerhaftes Aufenthaltsrecht": "إقامة دائمة",
     "Befristetes Aufenthaltsrecht": "إقامة مؤقتة",
@@ -342,6 +363,9 @@
     "whatToImprove": "لا مشكلة إن لم تكن تعرف — نحلل الشهادة ونحسّنها تلقائياً."
   },
   "sections": {
+    "Vorzeitiger Auszug": "مغادرة مبكرة",
+    "Nachmieter": "مستأجر بديل",
+    "Grund der Kündigung": "سبب الإنهاء",
     "Persönliche Angaben": "المعلومات الشخصية",
     "Wohnsituation": "وضع السكن",
     "Motivationstext": "الدافع",

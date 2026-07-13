@@ -34,6 +34,14 @@
       "💳 Seguro via Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Rescindir anticipadamente con inquilino de reemplazo",
+        "description": "Deja tu contrato de alquiler antes de tiempo — con propuesta de un inquilino de reemplazo, de forma correcta y en plazo."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Rescindir por causa justificada",
+        "description": "Deja tu contrato de alquiler antes de tiempo por causa justificada — p. ej. defectos graves o vivienda inhabitable."
+      },
       "komplettbewerbung": {
         "title": "Candidatura completa",
         "description": "Carta de motivación + CV en uno — profesionales, perfectamente coordinados, listos para enviar.",
@@ -193,6 +201,14 @@
     "concernDetails": "Describe tu solicitud de la manera más precisa posible."
   },
   "fieldLabels": {
+    "moveOutDate": "Fecha de entrega deseada",
+    "successorName": "Nombre del inquilino de reemplazo (opcional)",
+    "successorAddress": "Dirección del inquilino de reemplazo (opcional)",
+    "successorContact": "Contacto del inquilino de reemplazo (teléfono / correo, opcional)",
+    "successorDate": "Disponible para asumir desde (opcional)",
+    "importantReason": "Causa justificada",
+    "reasonDetails": "Describe el motivo en detalle",
+    "remedyDeadline": "Plazo para subsanar (días, opcional)",
     "firstName": "Nombre",
     "lastName": "Apellido",
     "birthDate": "Fecha de nacimiento",
@@ -247,6 +263,11 @@
     "languages": "Idiomas (con nivel)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Vivienda inhabitable",
+    "Erhebliche Mängel": "Defectos importantes",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Riesgo para la salud (p. ej. moho)",
+    "Pflichtverletzung des Vermieters": "Incumplimiento del arrendador",
+    "Anderer wichtiger Grund": "Otra causa justificada",
     "Staatsbürger/in": "Ciudadano/a",
     "Dauerhaftes Aufenthaltsrecht": "Residencia permanente",
     "Befristetes Aufenthaltsrecht": "Residencia temporal",
@@ -342,6 +363,9 @@
     "whatToImprove": "No pasa nada si no lo sabes — analizamos la referencia y la mejoramos automáticamente."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Salida anticipada",
+    "Nachmieter": "Inquilino de reemplazo",
+    "Grund der Kündigung": "Motivo de la rescisión",
     "Persönliche Angaben": "Datos personales",
     "Wohnsituation": "Situación de vivienda",
     "Motivationstext": "Motivación",

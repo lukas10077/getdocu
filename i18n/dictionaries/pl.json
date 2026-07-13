@@ -34,6 +34,14 @@
       "💳 Bezpieczne przez Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Wcześniejsze wypowiedzenie z następcą",
+        "description": "Zakończ najem wcześniej — z propozycją najemcy na zastępstwo, poprawnie i w terminie."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Wypowiedzenie z ważnej przyczyny",
+        "description": "Zakończ najem wcześniej z ważnej przyczyny — np. poważne wady lub lokal nienadający się do zamieszkania."
+      },
       "komplettbewerbung": {
         "title": "Kompletna aplikacja",
         "description": "List motywacyjny + CV w jednym — profesjonalne, idealnie dopasowane, gotowe do wysłania.",
@@ -193,6 +201,14 @@
     "concernDetails": "Opisz swoje życzenie jak najdokładniej."
   },
   "fieldLabels": {
+    "moveOutDate": "Żądana data zwrotu lokalu",
+    "successorName": "Imię i nazwisko następcy (opcjonalnie)",
+    "successorAddress": "Adres następcy (opcjonalnie)",
+    "successorContact": "Kontakt do następcy (telefon / e-mail, opcjonalnie)",
+    "successorDate": "Gotowy do przejęcia od (opcjonalnie)",
+    "importantReason": "Ważna przyczyna",
+    "reasonDetails": "Opisz dokładnie przyczynę",
+    "remedyDeadline": "Termin na usunięcie (dni, opcjonalnie)",
     "firstName": "Imię",
     "lastName": "Nazwisko",
     "birthDate": "Data urodzenia",
@@ -247,6 +263,11 @@
     "languages": "Języki (z poziomem)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Lokal nienadający się do zamieszkania",
+    "Erhebliche Mängel": "Poważne wady",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Zagrożenie dla zdrowia (np. pleśń)",
+    "Pflichtverletzung des Vermieters": "Naruszenie obowiązków przez wynajmującego",
+    "Anderer wichtiger Grund": "Inna ważna przyczyna",
     "Staatsbürger/in": "Obywatel/ka",
     "Dauerhaftes Aufenthaltsrecht": "Pobyt stały",
     "Befristetes Aufenthaltsrecht": "Pobyt czasowy",
@@ -342,6 +363,9 @@
     "whatToImprove": "Nie szkodzi, jeśli nie wiesz — przeanalizujemy referencje i poprawimy je automatycznie."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Wcześniejsza wyprowadzka",
+    "Nachmieter": "Następca (najemca)",
+    "Grund der Kündigung": "Powód wypowiedzenia",
     "Persönliche Angaben": "Dane osobowe",
     "Wohnsituation": "Sytuacja mieszkaniowa",
     "Motivationstext": "Motywacja",

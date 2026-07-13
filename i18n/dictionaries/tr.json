@@ -34,6 +34,14 @@
       "💳 Stripe ile güvenli"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Yeni kiracıyla erken fesih",
+        "description": "Kira sözleşmenizden erken çıkın — yeni kiracı önerisiyle, doğru ve süresinde."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Haklı nedenle fesih",
+        "description": "Kira sözleşmenizden haklı nedenle erken çıkın — ör. ağır ayıplar veya oturulamaz konut."
+      },
       "komplettbewerbung": {
         "title": "Eksiksiz Başvuru",
         "description": "Ön yazı + CV bir arada — profesyonel, birbiriyle uyumlu, hemen gönderime hazır.",
@@ -193,6 +201,14 @@
     "concernDetails": "Talebinizi mümkün olduğunca kesin bir şekilde açıklayın."
   },
   "fieldLabels": {
+    "moveOutDate": "İstenen teslim tarihi",
+    "successorName": "Yeni kiracının adı (isteğe bağlı)",
+    "successorAddress": "Yeni kiracının adresi (isteğe bağlı)",
+    "successorContact": "Yeni kiracının iletişimi (telefon / e-posta, isteğe bağlı)",
+    "successorDate": "Devralmaya hazır olduğu tarih (isteğe bağlı)",
+    "importantReason": "Haklı neden",
+    "reasonDetails": "Nedeni ayrıntılı açıklayın",
+    "remedyDeadline": "Giderme süresi (gün, isteğe bağlı)",
     "firstName": "Ad",
     "lastName": "Soyad",
     "birthDate": "Doğum tarihi",
@@ -247,6 +263,11 @@
     "languages": "Diller (seviyeyle)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Oturulamaz konut",
+    "Erhebliche Mängel": "Önemli ayıplar",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Sağlık riski (ör. küf)",
+    "Pflichtverletzung des Vermieters": "Kiraya verenin yükümlülük ihlali",
+    "Anderer wichtiger Grund": "Başka haklı neden",
     "Staatsbürger/in": "Vatandaş",
     "Dauerhaftes Aufenthaltsrecht": "Süresiz oturma izni",
     "Befristetes Aufenthaltsrecht": "Süreli oturma izni",
@@ -342,6 +363,9 @@
     "whatToImprove": "Bilmiyorsan sorun değil — referansı analiz edip otomatik olarak iyileştiriyoruz."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Erken çıkış",
+    "Nachmieter": "Yeni kiracı",
+    "Grund der Kündigung": "Fesih nedeni",
     "Persönliche Angaben": "Kişisel bilgiler",
     "Wohnsituation": "Konut durumu",
     "Motivationstext": "Motivasyon",

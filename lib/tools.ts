@@ -433,7 +433,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "currentAddress",  label: "Adresse des Mietobjekts",          type: "address",  required: true  },
       { key: "landlordName",    label: "Name des Vermieters / Verwaltung", type: "text",     required: true,  section: "Vermieter" },
       { key: "landlordAddress", label: "Adresse des Vermieters",           type: "address",  required: true  },
-      { key: "reason",          label: "Wichtiger Grund",                  type: "select",   required: true,  section: "Grund der Kündigung",
+      { key: "importantReason", label: "Wichtiger Grund",                  type: "select",   required: true,  section: "Grund der Kündigung",
         options: ["Unbewohnbare Wohnung", "Erhebliche Mängel", "Gesundheitsgefahr (z.B. Schimmel)", "Pflichtverletzung des Vermieters", "Anderer wichtiger Grund"] },
       { key: "reasonDetails",   label: "Beschreibe den Grund genau",       type: "textarea", required: true,
         placeholder: "z.B. seit dem Einzug massiver Schimmel im Schlafzimmer trotz mehrfacher Meldung" },

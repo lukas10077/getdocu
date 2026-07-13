@@ -34,6 +34,14 @@
       "💳 Sécurisé via Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Résilier par anticipation avec locataire de remplacement",
+        "description": "Quittez votre bail par anticipation — avec proposition d'un locataire de remplacement, correctement et dans les délais."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Résilier pour motif grave",
+        "description": "Quittez votre bail par anticipation pour motif grave — p. ex. défauts graves ou logement inhabitable."
+      },
       "komplettbewerbung": {
         "title": "Candidature complète",
         "description": "Lettre de motivation + CV en un — professionnels, parfaitement coordonnés, prêts à l'envoi.",
@@ -193,6 +201,14 @@
     "concernDetails": "Décrivez votre demande aussi précisément que possible."
   },
   "fieldLabels": {
+    "moveOutDate": "Date de restitution souhaitée",
+    "successorName": "Nom du locataire de remplacement (facultatif)",
+    "successorAddress": "Adresse du locataire de remplacement (facultatif)",
+    "successorContact": "Contact du locataire de remplacement (téléphone / e-mail, facultatif)",
+    "successorDate": "Disponible pour la reprise à partir du (facultatif)",
+    "importantReason": "Motif grave",
+    "reasonDetails": "Décrivez le motif en détail",
+    "remedyDeadline": "Délai pour remédier (jours, facultatif)",
     "firstName": "Prénom",
     "lastName": "Nom de famille",
     "birthDate": "Date de naissance",
@@ -247,6 +263,11 @@
     "languages": "Langues (avec niveau)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Logement inhabitable",
+    "Erhebliche Mängel": "Défauts importants",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Risque sanitaire (p. ex. moisissures)",
+    "Pflichtverletzung des Vermieters": "Manquement du bailleur à ses obligations",
+    "Anderer wichtiger Grund": "Autre motif grave",
     "Staatsbürger/in": "Citoyen/ne",
     "Dauerhaftes Aufenthaltsrecht": "Droit de séjour permanent",
     "Befristetes Aufenthaltsrecht": "Droit de séjour temporaire",
@@ -342,6 +363,9 @@
     "whatToImprove": "Pas de problème si vous ne savez pas — nous analysons le certificat et l'améliorons automatiquement."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Départ anticipé",
+    "Nachmieter": "Locataire de remplacement",
+    "Grund der Kündigung": "Motif de la résiliation",
     "Persönliche Angaben": "Renseignements personnels",
     "Wohnsituation": "Situation de logement",
     "Motivationstext": "Motivation",

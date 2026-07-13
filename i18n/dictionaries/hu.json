@@ -34,6 +34,14 @@
       "💳 Biztonságos Stripe-on"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Előzetes felmondás utódbérlővel",
+        "description": "Lépjen ki a bérletből idő előtt — utódbérlő javaslatával, szabályosan és határidőben."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Felmondás fontos okból",
+        "description": "Lépjen ki a bérletből idő előtt fontos okból — pl. súlyos hibák vagy lakhatatlan lakás."
+      },
       "komplettbewerbung": {
         "title": "Teljes pályázat",
         "description": "Motivációs levél + önéletrajz egyben — professzionális, összehangolt, azonnal küldhető.",
@@ -193,6 +201,14 @@
     "concernDetails": "Írja le kérelmét a lehető legpontosabban."
   },
   "fieldLabels": {
+    "moveOutDate": "Kívánt átadási dátum",
+    "successorName": "Utódbérlő neve (opcionális)",
+    "successorAddress": "Utódbérlő címe (opcionális)",
+    "successorContact": "Utódbérlő elérhetősége (telefon / e-mail, opcionális)",
+    "successorDate": "Átvételre kész ettől (opcionális)",
+    "importantReason": "Fontos ok",
+    "reasonDetails": "Írja le részletesen az okot",
+    "remedyDeadline": "Javítási határidő (nap, opcionális)",
     "firstName": "Keresztnév",
     "lastName": "Vezetéknév",
     "birthDate": "Születési dátum",
@@ -247,6 +263,11 @@
     "languages": "Nyelvek (szinttel)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Lakhatatlan lakás",
+    "Erhebliche Mängel": "Jelentős hibák",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Egészségügyi kockázat (pl. penész)",
+    "Pflichtverletzung des Vermieters": "A bérbeadó kötelezettségszegése",
+    "Anderer wichtiger Grund": "Egyéb fontos ok",
     "Staatsbürger/in": "Állampolgár",
     "Dauerhaftes Aufenthaltsrecht": "Állandó tartózkodási jog",
     "Befristetes Aufenthaltsrecht": "Ideiglenes tartózkodási jog",
@@ -342,6 +363,9 @@
     "whatToImprove": "Nem gond, ha nem tudod — elemezzük a referenciát és automatikusan javítjuk."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Korai kiköltözés",
+    "Nachmieter": "Utódbérlő",
+    "Grund der Kündigung": "A felmondás oka",
     "Persönliche Angaben": "Személyes adatok",
     "Wohnsituation": "Lakáshelyzet",
     "Motivationstext": "Motiváció",

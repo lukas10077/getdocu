@@ -1216,7 +1216,7 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
                     className={`${inputClass} ${errors[field.key] ? "border-red-500" : "border-ink-700"}`}
                   >
                     <option value="">{selectPlaceholder}</option>
-                    {(field.countryOptions?.[country?.code ?? ""] ?? field.options ?? []).map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+                    {(field.countryOptions?.[country?.code ?? ""] ?? field.options ?? []).map((opt) => <option key={opt} value={opt}>{(dict?.options as Record<string, string> | undefined)?.[opt] ?? opt}</option>)}
                   </select>
                 ) : field.type === "tel" ? (
                   <div className="flex gap-2">

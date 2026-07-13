@@ -34,6 +34,14 @@
       "💳 Sicuro via Stripe"
     ],
     "items": {
+      "ausserterminliche-kuendigung": {
+        "title": "Disdetta anticipata con subentrante",
+        "description": "Esci dal contratto d'affitto in anticipo — con proposta di un subentrante, in modo corretto e nei termini."
+      },
+      "ausserordentliche-kuendigung": {
+        "title": "Disdetta per gravi motivi",
+        "description": "Esci dal contratto d'affitto in anticipo per gravi motivi — ad es. difetti gravi o alloggio inagibile."
+      },
       "komplettbewerbung": {
         "title": "Candidatura completa",
         "description": "Lettera di motivazione + CV in uno — professionali, perfettamente coordinati, subito pronti all'invio.",
@@ -193,6 +201,14 @@
     "concernDetails": "Descrivi la tua richiesta nel modo più preciso possibile."
   },
   "fieldLabels": {
+    "moveOutDate": "Data di riconsegna desiderata",
+    "successorName": "Nome del subentrante (facoltativo)",
+    "successorAddress": "Indirizzo del subentrante (facoltativo)",
+    "successorContact": "Contatto del subentrante (telefono / e-mail, facoltativo)",
+    "successorDate": "Disponibile a subentrare dal (facoltativo)",
+    "importantReason": "Motivo grave",
+    "reasonDetails": "Descrivi il motivo in dettaglio",
+    "remedyDeadline": "Termine per la riparazione (giorni, facoltativo)",
     "firstName": "Nome",
     "lastName": "Cognome",
     "birthDate": "Data di nascita",
@@ -247,6 +263,11 @@
     "languages": "Lingue (con livello)"
   },
   "options": {
+    "Unbewohnbare Wohnung": "Alloggio inagibile",
+    "Erhebliche Mängel": "Difetti rilevanti",
+    "Gesundheitsgefahr (z.B. Schimmel)": "Rischio per la salute (es. muffa)",
+    "Pflichtverletzung des Vermieters": "Inadempimento del locatore",
+    "Anderer wichtiger Grund": "Altro motivo grave",
     "Staatsbürger/in": "Cittadino/a",
     "Dauerhaftes Aufenthaltsrecht": "Diritto di soggiorno permanente",
     "Befristetes Aufenthaltsrecht": "Diritto di soggiorno temporaneo",
@@ -342,6 +363,9 @@
     "whatToImprove": "Nessun problema se non lo sai — analizziamo la referenza e la miglioriamo automaticamente."
   },
   "sections": {
+    "Vorzeitiger Auszug": "Uscita anticipata",
+    "Nachmieter": "Subentrante",
+    "Grund der Kündigung": "Motivo della disdetta",
     "Persönliche Angaben": "Dati personali",
     "Wohnsituation": "Situazione abitativa",
     "Motivationstext": "Motivazione",
