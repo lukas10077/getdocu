@@ -73,7 +73,7 @@ export default async function RatgeberPage({
   if (params.locale !== GUIDE_LOCALE) notFound();
 
   const dict = await getDictionary(params.locale);
-  const toolHref = `/${params.locale}/tools/ausserterminliche-kuendigung`;
+  const toolHref = `/${params.locale}/tools/ausserterminliche-kuendigung?country=CH`;
 
   const faqSchema = {
     "@context": "https://schema.org",

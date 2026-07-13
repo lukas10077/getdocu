@@ -8,6 +8,7 @@ import ToolForm from "@/components/ToolForm";
 import ToolPageHeader from "@/components/ToolPageHeader";
 import ChOnlyGuard from "@/components/ChOnlyGuard";
 import CountryOnlyBlock from "@/components/CountryOnlyBlock";
+import CountryPresetter from "@/components/CountryPresetter";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocu.ch";
 
@@ -20,7 +21,7 @@ export default async function ToolPage({
   searchParams,
 }: {
   params: { locale: Locale; slug: string };
-  searchParams?: { session_id?: string };
+  searchParams?: { session_id?: string; country?: string };
 }) {
   const tool = getTool(params.slug);
   if (!tool) notFound();
@@ -54,6 +55,8 @@ export default async function ToolPage({
       />
 
       <Nav locale={params.locale} dict={dict} />
+
+      <CountryPresetter code={searchParams?.country} />
 
       {/* Back button */}
       <div className="bg-ink-950 px-6 pt-8">

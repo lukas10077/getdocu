@@ -72,7 +72,7 @@ export default async function RatgeberPage({
   if (params.locale !== GUIDE_LOCALE) notFound();
 
   const dict = await getDictionary(params.locale);
-  const toolHref = `/${params.locale}/tools/kuendigung-arbeit`;
+  const toolHref = `/${params.locale}/tools/kuendigung-arbeit?country=US`;
 
   const faqSchema = {
     "@context": "https://schema.org",
