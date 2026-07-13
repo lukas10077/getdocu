@@ -122,7 +122,7 @@ export default async function RatgeberPage({
             Du willst vor dem nächsten offiziellen Kündigungstermin aus deiner Wohnung – wegen
             Umzug, neuem Job oder einer anderen Lebenssituation? In der Schweiz geht das: mit einer
             ausserterminlichen Kündigung und einem zumutbaren Nachmieter. Wir erstellen dir das
-            rechtlich korrekte Schreiben in wenigen Minuten – ohne Konto, ohne Abo, ab 3.00 CHF.
+            rechtlich korrekte Schreiben in wenigen Minuten – ohne Konto, ohne Abo, für 4.00 CHF.
           </p>
 
           <div className="mt-8">
