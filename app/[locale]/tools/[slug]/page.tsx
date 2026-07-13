@@ -77,6 +77,18 @@ export default async function ToolPage({
                 </span>
               ))}
             </div>
+
+            {params.locale === "de" && tool.slug === "kuendigung-wohnung" && (
+              <p className="mt-5 text-xs text-cream-muted">
+                Musst du vorzeitig aus dem Mietvertrag raus?{" "}
+                <Link
+                  href={`/${params.locale}/ratgeber/ausserterminliche-kuendigung`}
+                  className="text-swiss-gold underline hover:opacity-80"
+                >
+                  Ratgeber: Ausserterminliche Kündigung mit Nachmieter →
+                </Link>
+              </p>
+            )}
           </div>
 
           <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} />
