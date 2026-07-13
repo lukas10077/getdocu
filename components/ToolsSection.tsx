@@ -1,27 +1,7 @@
-import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { getTool, TOOL_CATEGORIES } from "@/lib/tools";
-import PriceTag from "./PriceTag";
 import ToolsCountryBadge from "./ToolsCountryBadge";
-
-function ToolCard({ href, title, description, priceChfRappen, startLabel }: {
-  href: string; title: string; description: string; priceChfRappen: number; startLabel: string;
-}) {
-  return (
-    <Link href={href} className="group flex h-full flex-col justify-between rounded-sm border border-ink-700 bg-ink-900 p-6 transition hover:border-swiss-gold/40 hover:bg-ink-800">
-      <div>
-        <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
-          <PriceTag priceChfRappen={priceChfRappen} />
-        </p>
-        <h3 className="font-serif text-xl font-medium leading-snug text-cream">{title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-cream-muted">{description}</p>
-      </div>
-      <div className="mt-6">
-        <span className="text-xs font-medium uppercase tracking-widest text-cream-subtle transition group-hover:text-swiss-gold">{startLabel}</span>
-      </div>
-    </Link>
-  );
-}
+import ToolCard from "./ToolCard";
 
 export default function ToolsSection({ locale, dict }: { locale: Locale; dict: any }) {
   const startLabel: string = dict.tools.startButton ?? "Starten →";
@@ -63,6 +43,7 @@ export default function ToolsSection({ locale, dict }: { locale: Locale; dict: a
                       description={item?.description ?? tool.descriptionDe}
                       priceChfRappen={tool.priceChfRappen}
                       startLabel={startLabel}
+                      chOnly={tool.chOnly}
                     />
                   );
                 })}

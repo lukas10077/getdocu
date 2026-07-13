@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ToolForm from "@/components/ToolForm";
 import ToolPageHeader from "@/components/ToolPageHeader";
+import ChOnlyGuard from "@/components/ChOnlyGuard";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocu.ch";
 
@@ -91,7 +92,9 @@ export default async function ToolPage({
             )}
           </div>
 
-          <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} />
+          <ChOnlyGuard enabled={tool.chOnly} locale={params.locale}>
+            <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} />
+          </ChOnlyGuard>
         </div>
       </section>
 

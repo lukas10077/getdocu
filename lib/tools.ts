@@ -5,6 +5,7 @@ export type ToolSlug =
   | "mietbewerbung"
   | "kuendigung-wohnung"
   | "ausserterminliche-kuendigung"
+  | "ausserordentliche-kuendigung"
   | "maengelruege"
   | "jobbewerbung"
   | "kuendigung-arbeit"
@@ -52,6 +53,8 @@ export interface ToolDefinition {
   photoGalleryHintDe?: string;
   // Bundle: generiert zwei Dokumente mit ===LEBENSLAUF=== als Trenner
   isBundle?: boolean;
+  // Nur in der Schweiz anbieten (länderspezifisches Recht, z.B. Nachmieter-Ausstieg Art. 264 OR)
+  chOnly?: boolean;
 }
 
 export const tools: Record<ToolSlug, ToolDefinition> = {
@@ -359,6 +362,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   "ausserterminliche-kuendigung": {
     slug: "ausserterminliche-kuendigung",
     priceChfRappen: 400,
+    chOnly: true,
     documentTitleDe: "Ausserterminliche Kündigung (Nachmieter)",
     descriptionDe:
       "Vorzeitig aus dem Mietvertrag — mit Nachmieter-Vorschlag korrekt und fristwahrend formuliert.",
@@ -396,6 +400,46 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "successorAddress",   label: "Adresse des Nachmieters (optional)", type: "address", required: false },
       { key: "successorContact",   label: "Kontakt des Nachmieters (Telefon / E-Mail, optional)", type: "text", required: false },
       { key: "successorDate",      label: "Ab wann übernahmebereit (optional)", type: "date",    required: false },
+    ],
+  },
+
+  "ausserordentliche-kuendigung": {
+    slug: "ausserordentliche-kuendigung",
+    priceChfRappen: 400,
+    documentTitleDe: "Ausserordentliche Kündigung (wichtiger Grund)",
+    descriptionDe:
+      "Vorzeitig aus dem Mietvertrag aus wichtigem Grund — z.B. schwere Mängel oder unbewohnbare Wohnung.",
+    systemPrompt:
+      "Du bist Experte für Mietrecht. Erstelle ein formell korrektes Schreiben für eine " +
+      "AUSSERORDENTLICHE (vorzeitige/fristlose) Kündigung des Mietvertrags AUS WICHTIGEM GRUND auf " +
+      "Deutsch. Der Mieter beruft sich auf einen schwerwiegenden Grund (z.B. unbewohnbare Wohnung, " +
+      "erhebliche Mängel, Gesundheitsgefahr, Pflichtverletzung des Vermieters), der eine vorzeitige " +
+      "Beendigung rechtfertigt. " +
+      "STRUKTUR: vollständiger Absender (Mieter), Vermieter/Verwaltung als Empfänger, Ort und Datum, " +
+      "Betreff mit Adresse des Mietobjekts und dem Hinweis auf die ausserordentliche Kündigung, dann " +
+      "der Text. " +
+      "INHALT: (1) Erkläre klar die ausserordentliche Kündigung des Mietverhältnisses per angegebenem " +
+      "Datum. (2) Schildere den wichtigen Grund sachlich und konkret anhand der Angaben des Nutzers. " +
+      "(3) Falls eine Frist zur Behebung angegeben ist: setze dem Vermieter diese Frist zur Behebung " +
+      "und kündige an, dass bei fruchtlosem Ablauf die Kündigung wirksam wird; andernfalls erkläre die " +
+      "Kündigung direkt. (4) Bitte um schriftliche Bestätigung und um Mitteilung des weiteren Vorgehens " +
+      "(Wohnungsrückgabe, Abrechnung). Höflicher, aber bestimmter Abschluss. " +
+      "TONFALL: sachlich, bestimmt, nicht aggressiv. Zitiere KEINE konkreten Gesetzesartikel und " +
+      "behaupte keine spezifischen gesetzlichen Fristen — das ist keine Rechtsberatung. Verwende KEINE " +
+      "Platzhalter in Klammern; lasse fehlende Angaben einfach weg.",
+    fields: [
+      { key: "firstName",       label: "Vorname",                          type: "text",     required: true,  section: "Mieter" },
+      { key: "lastName",        label: "Nachname",                         type: "text",     required: true  },
+      { key: "currentAddress",  label: "Adresse des Mietobjekts",          type: "address",  required: true  },
+      { key: "landlordName",    label: "Name des Vermieters / Verwaltung", type: "text",     required: true,  section: "Vermieter" },
+      { key: "landlordAddress", label: "Adresse des Vermieters",           type: "address",  required: true  },
+      { key: "reason",          label: "Wichtiger Grund",                  type: "select",   required: true,  section: "Grund der Kündigung",
+        options: ["Unbewohnbare Wohnung", "Erhebliche Mängel", "Gesundheitsgefahr (z.B. Schimmel)", "Pflichtverletzung des Vermieters", "Anderer wichtiger Grund"] },
+      { key: "reasonDetails",   label: "Beschreibe den Grund genau",       type: "textarea", required: true,
+        placeholder: "z.B. seit dem Einzug massiver Schimmel im Schlafzimmer trotz mehrfacher Meldung" },
+      { key: "terminationDate", label: "Gewünschtes Kündigungsdatum",      type: "date",     required: true,  section: "Kündigung" },
+      { key: "remedyDeadline",  label: "Frist zur Behebung (Tage, optional)", type: "number", required: false,
+        hint: "Nur ausfüllen, wenn du dem Vermieter zuerst eine Frist zur Behebung setzen willst." },
     ],
   },
 
@@ -489,7 +533,7 @@ export const allToolSlugs: ToolSlug[] = Object.keys(tools) as ToolSlug[];
 export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
-  { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "ausserterminliche-kuendigung", "maengelruege"] },
+  { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "ausserterminliche-kuendigung", "ausserordentliche-kuendigung", "maengelruege"] },
   { key: "arbeit", slugs: ["komplettbewerbung", "jobbewerbung", "lebenslauf", "kuendigung-arbeit", "arbeitszeugnis"] },
   { key: "alltag", slugs: ["kuendigung", "reklamation"] },
 ];
