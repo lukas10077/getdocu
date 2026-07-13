@@ -219,6 +219,11 @@ export default async function RatgeberPage({
               </h2>
               <ul className="space-y-2 text-sm">
                 <li>
+                  <Link href={`/${params.locale}/ratgeber/resignation-email`} className="text-swiss-gold underline hover:opacity-80">
+                    How to write a resignation email (template &amp; examples)
+                  </Link>
+                </li>
+                <li>
                   <Link href={`/${params.locale}/tools/kuendigung-arbeit`} className="text-swiss-gold underline hover:opacity-80">
                     Resignation letter / email
                   </Link>
