@@ -55,6 +55,72 @@ export const brands: Record<string, Brand> = {
     sourceNote:
       "Angaben Stand 2026. Im Zweifel die in deinem Vertrag genannte Frist und Adresse prüfen.",
   },
+
+  vodafone: {
+    slug: "vodafone",
+    name: "Vodafone",
+    category: "Handyvertrag",
+    countryCode: "DE",
+    intro:
+      "Du willst deinen Vodafone-Vertrag (Mobilfunk, DSL oder Kabel) kündigen? Hier findest du die Frist, die richtige Kündigungsadresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Nach Ablauf der Mindestlaufzeit ist dein Vertrag seit der TKG-Reform 2021 jederzeit mit einer Frist von genau 1 Monat kündbar. Innerhalb der Laufzeit gilt die vereinbarte Frist zum Ende der Mindestlaufzeit.",
+    address: ["Vodafone GmbH", "40875 Ratingen"],
+    facts: [
+      "Diese Adresse gilt für Mobilfunk- und DSL-Verträge. Für Kabel-/TV-Verträge (teils ehemals Unitymedia) gelten andere Anschriften — die korrekte Adresse siehst du in „MeinVodafone“.",
+      "Kündige in Textform: schriftlich per Post oder Fax (Einschreiben mit Rückschein empfohlen). Je nach Vertrag ist auch eine Online-Kündigung möglich.",
+      "Massgebend ist der Zugang bei Vodafone, nicht der Poststempel — sende die Kündigung rechtzeitig vor Fristablauf.",
+    ],
+    faq: [
+      {
+        q: "Welche Kündigungsfrist hat Vodafone?",
+        a: "Nach der Mindestlaufzeit ist der Vertrag jederzeit mit einer Frist von genau 1 Monat kündbar. Innerhalb der Laufzeit gilt die vereinbarte Frist zum Ende der Mindestlaufzeit.",
+      },
+      {
+        q: "Wohin schicke ich die Vodafone-Kündigung?",
+        a: "Für Mobilfunk und DSL an Vodafone GmbH, 40875 Ratingen. Für Kabel-/TV-Verträge gelten andere Adressen — die korrekte findest du in „MeinVodafone“.",
+      },
+      {
+        q: "Muss die Kündigung schriftlich sein?",
+        a: "Vodafone verlangt Textform: per Post oder Fax, je nach Vertrag auch online oder per E-Mail. Ein eingeschriebener Brief mit Rückschein ist der sicherste Nachweis.",
+      },
+    ],
+    sourceNote:
+      "Angaben Stand 2026. Adresse je nach Vertragstyp unterschiedlich — im Zweifel „MeinVodafone“ oder den Vertrag prüfen.",
+  },
+
+  telekom: {
+    slug: "telekom",
+    name: "Telekom",
+    category: "Handyvertrag",
+    countryCode: "DE",
+    intro:
+      "Du willst deinen Telekom-Vertrag (Festnetz, DSL oder Mobilfunk) kündigen? Hier findest du die Frist, die Kündigungsadresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Festnetz- und DSL-Verträge sind nach der Mindestlaufzeit jederzeit mit 1 Monat Frist kündbar (TKG-Reform 2021). Mobilfunkverträge haben oft 24 Monate Mindestlaufzeit mit 3 Monaten Frist zum Laufzeitende — achte auf deinen Vertragstyp.",
+    address: ["Telekom Deutschland GmbH", "Kundenservice", "53171 Bonn"],
+    facts: [
+      "Kündige schriftlich — per Post, E-Mail, im Kundencenter oder über die MeinMagenta App. Für einen sicheren Nachweis ein Einschreiben mit Rückschein.",
+      "Massgebend ist der Zugang bei der Telekom, nicht der Poststempel — rechtzeitig vor Fristablauf senden.",
+      "Achte auf den Vertragstyp: Bei Mobilfunk gilt oft die längere 3-Monats-Frist, bei Festnetz/DSL nur 1 Monat nach der Mindestlaufzeit.",
+    ],
+    faq: [
+      {
+        q: "Welche Kündigungsfrist hat die Telekom?",
+        a: "Festnetz/DSL: nach der Mindestlaufzeit jederzeit mit 1 Monat Frist. Mobilfunk: meist 24 Monate Mindestlaufzeit mit 3 Monaten Frist zum Laufzeitende.",
+      },
+      {
+        q: "Wohin schicke ich die Telekom-Kündigung?",
+        a: "An Telekom Deutschland GmbH, Kundenservice, 53171 Bonn. Ein Einwurf-/Einschreiben dokumentiert die Zustellung nachweisbar.",
+      },
+      {
+        q: "Wie kann ich bei der Telekom kündigen?",
+        a: "Schriftlich per Post oder E-Mail, im Kundencenter oder über die MeinMagenta App. Ein schriftliches Schreiben per Einschreiben ist der sicherste Nachweis.",
+      },
+    ],
+    sourceNote:
+      "Angaben Stand 2026. Fristen je nach Vertragstyp (Festnetz/DSL vs. Mobilfunk) unterschiedlich — im Zweifel den Vertrag prüfen.",
+  },
 };
 
 export const allBrandSlugs: string[] = Object.keys(brands);
