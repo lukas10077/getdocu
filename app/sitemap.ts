@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
 import { allToolSlugs } from "@/lib/tools";
+import { allBrandSlugs } from "@/lib/brands";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.getdocunow.com";
 
@@ -33,6 +34,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const g of guides) {
     entries.push({
       url: `${BASE_URL}/${g.locale}/ratgeber/${g.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
+  // Marken-/Anbieter-Kündigungsseiten (aktuell nur Deutsch).
+  for (const slug of allBrandSlugs) {
+    entries.push({
+      url: `${BASE_URL}/de/ratgeber/anbieter/${slug}`,
       changeFrequency: "monthly",
       priority: 0.7,
     });
