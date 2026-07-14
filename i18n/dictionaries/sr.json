@@ -10,6 +10,9 @@
     "languages": "Jezik"
   },
   "hero": {
+    "pickCountry": "Izaberi {land} za koju kreiramo tvoj dokument.",
+    "pickCountryWord": "zemlju",
+    "pickCountryTagline": "Pomažemo ti da povećaš svoje šanse!",
     "fromPrice": "✓ od {price}",
     "imageAlt": "Profesionalni dokument sa olovkom",
     "eyebrow": "Napravljeno za Švajcarsku",

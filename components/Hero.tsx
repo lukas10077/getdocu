@@ -43,7 +43,11 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
 
           <div className="mt-8 h-px w-10 bg-swiss-gold opacity-70" />
 
-          <HeroCountryPicker />
+          <HeroCountryPicker
+            text={dict.hero.pickCountry}
+            landWord={dict.hero.pickCountryWord}
+            tagline={dict.hero.pickCountryTagline}
+          />
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link

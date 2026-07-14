@@ -10,6 +10,9 @@
     "languages": "Dil"
   },
   "hero": {
+    "pickCountry": "Belgeni hazırlayacağımız {land} seç.",
+    "pickCountryWord": "ülkeyi",
+    "pickCountryTagline": "Şansını artırmana yardımcı oluyoruz!",
     "fromPrice": "✓ {price} başlangıç fiyatıyla",
     "imageAlt": "Kalemli profesyonel belge",
     "eyebrow": "İsviçre için tasarlandı",

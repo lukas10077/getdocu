@@ -10,6 +10,9 @@
     "languages": "Język"
   },
   "hero": {
+    "pickCountry": "Wybierz {land}, dla którego stworzymy Twój dokument.",
+    "pickCountryWord": "kraj",
+    "pickCountryTagline": "Pomagamy zwiększyć Twoje szanse!",
     "fromPrice": "✓ od {price}",
     "imageAlt": "Profesjonalny dokument z długopisem",
     "eyebrow": "Stworzone dla Szwajcarii",

@@ -10,6 +10,9 @@
     "languages": "اللغة"
   },
   "hero": {
+    "pickCountry": "اختر {land} الذي سننشئ مستندك له.",
+    "pickCountryWord": "البلد",
+    "pickCountryTagline": "نساعدك على زيادة فرصك!",
     "fromPrice": "✓ ابتداءً من {price}",
     "imageAlt": "مستند احترافي مع قلم",
     "eyebrow": "صُنع لسويسرا",

@@ -10,6 +10,9 @@
     "languages": "Idioma"
   },
   "hero": {
+    "pickCountry": "Elige el {land} para el que crearemos tu documento.",
+    "pickCountryWord": "país",
+    "pickCountryTagline": "¡Te ayudamos a aumentar tus posibilidades!",
     "fromPrice": "✓ desde {price}",
     "imageAlt": "Documento profesional con bolígrafo",
     "eyebrow": "Hecho para Suiza",

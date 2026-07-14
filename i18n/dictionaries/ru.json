@@ -10,6 +10,9 @@
     "languages": "Язык"
   },
   "hero": {
+    "pickCountry": "Выбери {land}, для которой мы создадим твой документ.",
+    "pickCountryWord": "страну",
+    "pickCountryTagline": "Мы поможем повысить твои шансы!",
     "fromPrice": "✓ от {price}",
     "imageAlt": "Профессиональный документ с ручкой",
     "eyebrow": "Создано для Швейцарии",

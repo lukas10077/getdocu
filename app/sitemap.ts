@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
 import { allToolSlugs } from "@/lib/tools";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocu.ch";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.getdocunow.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

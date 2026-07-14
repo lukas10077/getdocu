@@ -44,7 +44,13 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
       description: dict.meta.description,
       images: [ogImage],
     },
-    alternates: { canonical: `${BASE_URL}/${params.locale}` },
+    alternates: {
+      canonical: `${BASE_URL}/${params.locale}`,
+      languages: {
+        ...Object.fromEntries(locales.map((l) => [l, `${BASE_URL}/${l}`])),
+        "x-default": `${BASE_URL}/de`,
+      },
+    },
     verification: { google: "nRDR8stm8HQD851NWN5-HGEvULriGIuPJsPjI9uF3jg" },
   };
 }

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getDictionary, Locale } from "@/i18n/config";
+import type { Metadata } from "next";
+import { getDictionary, locales, Locale } from "@/i18n/config";
 import { getTool, allToolSlugs } from "@/lib/tools";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -10,10 +11,42 @@ import ChOnlyGuard from "@/components/ChOnlyGuard";
 import CountryOnlyBlock from "@/components/CountryOnlyBlock";
 import CountryPresetter from "@/components/CountryPresetter";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocu.ch";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.getdocunow.com";
 
 export async function generateStaticParams() {
   return allToolSlugs.map((slug) => ({ slug }));
+}
+
+// SEO: eigener Titel, Beschreibung, Canonical und hreflang pro Tool-Seite.
+// Ohne dies erben alle Tool-Seiten die Homepage-Metadaten (Duplicate Content).
+export async function generateMetadata({ params }: { params: { locale: Locale; slug: string } }): Promise<Metadata> {
+  const tool = getTool(params.slug);
+  if (!tool) return {};
+  const dict = await getDictionary(params.locale);
+  const item = dict.tools?.items?.[params.slug];
+  const title = `${item?.title ?? tool.documentTitleDe} — GetDocu`;
+  const description = item?.description ?? tool.descriptionDe;
+  const url = `${BASE_URL}/${params.locale}/tools/${params.slug}`;
+  const languages: Record<string, string> = Object.fromEntries(
+    locales.map((l) => [l, `${BASE_URL}/${l}/tools/${params.slug}`])
+  );
+  languages["x-default"] = `${BASE_URL}/de/tools/${params.slug}`;
+  const ogImage = `${BASE_URL}/api/og?title=${encodeURIComponent(item?.title ?? tool.documentTitleDe)}&sub=${encodeURIComponent(description)}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url, languages },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "GetDocu",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: "GetDocu" }],
+      type: "website",
+      locale: params.locale,
+    },
+    twitter: { card: "summary_large_image", title, description, images: [ogImage] },
+  };
 }
 
 export default async function ToolPage({
@@ -35,8 +68,8 @@ export default async function ToolPage({
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: tool.documentTitleDe,
-    description: tool.descriptionDe,
+    name: dict.tools.items?.[tool.slug]?.title ?? tool.documentTitleDe,
+    description: dict.tools.items?.[tool.slug]?.description ?? tool.descriptionDe,
     url: `${BASE_URL}/${params.locale}/tools/${tool.slug}`,
     offers: {
       "@type": "Offer",

@@ -10,6 +10,9 @@
     "languages": "Language"
   },
   "hero": {
+    "pickCountry": "Choose the {land} we should create your document for.",
+    "pickCountryWord": "country",
+    "pickCountryTagline": "We help you boost your chances!",
     "fromPrice": "✓ from {price}",
     "imageAlt": "Professional document with a pen",
     "eyebrow": "Made for Switzerland",

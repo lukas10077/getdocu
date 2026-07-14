@@ -10,6 +10,9 @@
     "languages": "Gjuha"
   },
   "hero": {
+    "pickCountry": "Zgjidh {land} për të cilin do të krijojmë dokumentin tënd.",
+    "pickCountryWord": "vendin",
+    "pickCountryTagline": "Të ndihmojmë të rrisësh shanset e tua!",
     "fromPrice": "✓ nga {price}",
     "imageAlt": "Dokument profesional me stilolaps",
     "eyebrow": "Krijuar për Zvicrën",

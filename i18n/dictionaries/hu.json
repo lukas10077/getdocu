@@ -10,6 +10,9 @@
     "languages": "Nyelv"
   },
   "hero": {
+    "pickCountry": "Válaszd ki az {land}, amelyhez elkészítjük a dokumentumod.",
+    "pickCountryWord": "országot",
+    "pickCountryTagline": "Segítünk növelni az esélyeidet!",
     "fromPrice": "✓ már {price}-tól",
     "imageAlt": "Professzionális dokumentum tollal",
     "eyebrow": "Svájc számára készült",

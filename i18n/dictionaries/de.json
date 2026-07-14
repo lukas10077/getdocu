@@ -10,6 +10,9 @@
     "languages": "Sprache"
   },
   "hero": {
+    "pickCountry": "Wähle dein {land}, für welches wir dein Dokument erstellen können.",
+    "pickCountryWord": "Land",
+    "pickCountryTagline": "Wir helfen dir deine Chance zu erhöhen!",
     "eyebrow": "Gemacht für die Schweiz",
     "headline": "Bewerbung.|Kündigung.|Für dich —|in 20 Sekunden.",
     "subheadline": "Wir helfen dir deine Chance zu erhöhen.",
