@@ -244,6 +244,99 @@ export const brands: Record<string, Brand> = {
     defaultNoticePeriod: "1 Monat",
     sourceNote: "Angaben Stand 2026. Deine genaue Frist/Laufzeit steht in deinem Vertrag bzw. Kundenkonto.",
   },
+
+  swisscom: {
+    slug: "swisscom",
+    name: "Swisscom",
+    category: "Handyvertrag",
+    countryCode: "CH",
+    intro:
+      "Du willst dein Swisscom-Abo (Handy, Internet oder TV) kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Üblich sind 60 Tage Kündigungsfrist zum Ende der Mindestvertragsdauer; je nach Vertrag können auch 3 Monate gelten. Die Mindestlaufzeit beträgt oft 12 Monate (24 Monate bei vergünstigtem Gerät).",
+    address: ["Swisscom (Schweiz) AG", "Contact Center", "3050 Bern"],
+    facts: [
+      "Kündige schriftlich per eingeschriebenem Brief — das dokumentiert den Zugang nachweisbar. Eine telefonische Kündigung ist ebenfalls möglich.",
+      "Massgebend ist der Zugang bei Swisscom, nicht der Poststempel.",
+      "Prüfe deine Mindestvertragsdauer — bei subventioniertem Smartphone sind es oft 24 Monate.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat Swisscom?", a: "Üblicherweise 60 Tage zum Ende der Mindestvertragsdauer, je nach Vertrag teils 3 Monate. Ohne Mindestlaufzeit meist kürzer." },
+      { q: "Wohin schicke ich die Swisscom-Kündigung?", a: "An Swisscom (Schweiz) AG, Contact Center, 3050 Bern — am besten per Einschreiben." },
+      { q: "Kann ich telefonisch kündigen?", a: "Ja, telefonisch ist möglich. Ein schriftliches Schreiben per Einschreiben ist aber der sicherste Nachweis." },
+    ],
+    sourceNote: "Angaben Stand 2026. Deine genaue Frist/Laufzeit steht in deinem Vertrag.",
+  },
+
+  salt: {
+    slug: "salt",
+    name: "Salt",
+    category: "Handyvertrag",
+    countryCode: "CH",
+    intro:
+      "Du willst dein Salt-Abo kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Salt-Abos sind mit einer Frist von 60 Tagen zum Ende der Mindestvertragsdauer bzw. einer Verlängerung kündbar. Die Mindestlaufzeit beträgt oft 12 Monate (24 Monate bei vergünstigtem Gerät).",
+    address: ["Salt Mobile SA", "Avenue de Malley 2", "1008 Prilly"],
+    facts: [
+      "Kündige schriftlich per eingeschriebenem Brief — das dokumentiert den Zugang nachweisbar. Auch telefonisch ist eine Kündigung möglich.",
+      "Massgebend ist der Zugang bei Salt, nicht der Poststempel — rechtzeitig vor Fristablauf senden.",
+      "Prüfe deine Mindestvertragsdauer, bevor du kündigst.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat Salt?", a: "60 Tage zum Ende der Mindestvertragsdauer oder einer Verlängerung." },
+      { q: "Wohin schicke ich die Salt-Kündigung?", a: "An Salt Mobile SA, Avenue de Malley 2, 1008 Prilly — am besten per Einschreiben." },
+      { q: "Muss die Kündigung schriftlich sein?", a: "Schriftlich per Einschreiben ist der sicherste Weg; Salt akzeptiert auch eine telefonische Kündigung beim Kundendienst." },
+    ],
+    sourceNote: "Angaben Stand 2026. Deine genaue Frist/Laufzeit steht in deinem Vertrag.",
+  },
+
+  "1und1": {
+    slug: "1und1",
+    name: "1&1",
+    category: "Handyvertrag",
+    countryCode: "DE",
+    intro:
+      "Du willst deinen 1&1-Vertrag (Mobilfunk, DSL oder Glasfaser) kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Nach der Mindestlaufzeit gilt bei Verträgen ab Dezember 2021 eine Frist von 1 Monat zum Monatsende. Ältere Verträge haben 3 Monate Frist. Verträge ohne Mindestlaufzeit sind mit 14 Tagen zum Monatsende kündbar.",
+    address: ["1&1 Telecom GmbH", "Elgendorfer Straße 57", "56410 Montabaur"],
+    facts: [
+      "Kündigen kannst du per Post (Einschreiben empfohlen), per E-Mail an kuendigung@1und1.de oder online im 1&1 Control-Center.",
+      "Wichtig: Mobilfunk, DSL und Glasfaser sind getrennte Verträge mit je eigener Vertragsnummer — kündige jeden Vertrag separat und gib die passende Vertragsnummer an.",
+      "Massgebend ist der Zugang bei 1&1, nicht der Poststempel.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat 1&1?", a: "Nach der Mindestlaufzeit 1 Monat (Verträge ab Dez. 2021), ältere Verträge 3 Monate. Ohne Mindestlaufzeit 14 Tage zum Monatsende." },
+      { q: "Wohin schicke ich die 1&1-Kündigung?", a: "An 1&1 Telecom GmbH, Elgendorfer Straße 57, 56410 Montabaur — oder per E-Mail an kuendigung@1und1.de bzw. online im Control-Center." },
+      { q: "Muss ich jeden Vertrag einzeln kündigen?", a: "Ja. Mobilfunk, DSL und Glasfaser laufen getrennt mit eigener Vertragsnummer — eine pauschale Kündigung ist oft ungültig." },
+    ],
+    defaultNoticePeriod: "1 Monat",
+    sourceNote: "Angaben Stand 2026. Frist je nach Vertragsdatum unterschiedlich — im Zweifel Vertrag/Control-Center prüfen.",
+  },
+
+  "clever-fit": {
+    slug: "clever-fit",
+    name: "Clever Fit",
+    category: "Fitnessstudio",
+    countryCode: "DE",
+    intro:
+      "Du willst deinen Clever-Fit-Vertrag kündigen? Hier findest du die Frist, den richtigen Empfänger und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Verträge ab März 2022 sind nach der Erstlaufzeit mit 1 Monat Frist kündbar. Ältere Verträge haben meist 3 Monate Frist. Die Mindestlaufzeit beträgt oft 12 Monate.",
+    address: ["An dein lokales Clever-Fit-Studio", "(Adresse laut Mitgliedsvertrag bzw. Impressum der Studio-Website)"],
+    facts: [
+      "Wichtig: Clever Fit ist ein Franchise. Dein Vertragspartner ist dein lokales Studio, nicht die Zentrale — eine Kündigung an die Zentrale ist rechtlich unwirksam. Die genaue Adresse steht in deinem Vertrag oder im Impressum der Studio-Website.",
+      "Kündige in Textform (Brief oder E-Mail), am sichersten per Einschreiben mit Rückschein.",
+      "Massgebend ist das Eingangsdatum der Kündigung, nicht das Absendedatum.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat Clever Fit?", a: "Verträge ab März 2022: nach der Erstlaufzeit 1 Monat. Ältere Verträge meist 3 Monate. Die Mindestlaufzeit ist oft 12 Monate." },
+      { q: "Wohin schicke ich die Clever-Fit-Kündigung?", a: "An dein lokales Vertragsstudio — nicht an die Zentrale. Die Adresse findest du in deinem Mitgliedsvertrag oder im Impressum der Studio-Website." },
+      { q: "Warum nicht an die Zentrale?", a: "Weil Clever Fit ein Franchise ist: Vertragspartner ist der Betreiber deines Studios. Eine Kündigung an die Zentrale ist rechtlich unwirksam." },
+    ],
+    sourceNote: "Angaben Stand 2026. Kündigungsadresse = dein lokales Studio; Frist je nach Vertragsdatum unterschiedlich.",
+  },
 };
 
 export const allBrandSlugs: string[] = Object.keys(brands);
