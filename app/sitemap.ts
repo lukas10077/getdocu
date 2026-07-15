@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
 import { allToolSlugs } from "@/lib/tools";
 import { allBrandSlugs } from "@/lib/brands";
+import { ratgeberLocales } from "@/lib/guides";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.getdocunow.com";
 
@@ -21,6 +22,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const page of ["impressum", "datenschutz", "agb"]) {
       entries.push({ url: `${BASE_URL}/${locale}/legal/${page}`, changeFrequency: "yearly", priority: 0.3 });
     }
+  }
+
+  // Ratgeber-Übersichtsseiten
+  for (const locale of ratgeberLocales) {
+    entries.push({ url: `${BASE_URL}/${locale}/ratgeber`, changeFrequency: "weekly", priority: 0.6 });
   }
 
   // Ratgeber-Seiten (SEO-Landingpages). Jeweils sprachspezifisch.

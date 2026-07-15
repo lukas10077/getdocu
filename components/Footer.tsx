@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import CountryText from "./CountryText";
+import { ratgeberLocales, ratgeberLabel } from "@/lib/guides";
 
 export default function Footer({ locale, dict }: { locale: Locale; dict: any }) {
   return (
@@ -13,6 +14,9 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: any }) 
           <p className="mt-1 text-sm"><CountryText text={dict.footer.tagline} fallbackCountryName={dict.footer.yourCountry} /></p>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-6">
+          {ratgeberLocales.includes(locale) && (
+            <Link href={`/${locale}/ratgeber`} className="transition hover:text-cream">{ratgeberLabel[locale]}</Link>
+          )}
           <Link href={`/${locale}/legal/impressum`} className="transition hover:text-cream">{dict.footer.impressum}</Link>
           <Link href={`/${locale}/legal/datenschutz`} className="transition hover:text-cream">{dict.footer.datenschutz}</Link>
           <Link href={`/${locale}/legal/agb`} className="transition hover:text-cream">{dict.footer.agb}</Link>

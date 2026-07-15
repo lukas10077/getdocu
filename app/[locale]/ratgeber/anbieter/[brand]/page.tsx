@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getDictionary, Locale } from "@/i18n/config";
-import { getBrand, allBrandSlugs } from "@/lib/brands";
+import { getBrand, allBrandSlugs, brands } from "@/lib/brands";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -142,6 +142,28 @@ export default async function BrandPage({
                   </div>
                 ))}
               </div>
+            </section>
+
+            <section className="border-t border-ink-700 pt-8">
+              <h2 className="mb-3 text-xs font-medium uppercase tracking-widest text-cream">
+                Weitere Anbieter kündigen
+              </h2>
+              <ul className="space-y-2 text-sm">
+                {allBrandSlugs
+                  .filter((s) => s !== brand.slug)
+                  .map((s) => (
+                    <li key={s}>
+                      <Link href={`/${params.locale}/ratgeber/anbieter/${s}`} className="text-swiss-gold underline hover:opacity-80">
+                        {brands[s].name} kündigen
+                      </Link>
+                    </li>
+                  ))}
+                <li>
+                  <Link href={`/${params.locale}/ratgeber`} className="text-swiss-gold underline hover:opacity-80">
+                    Alle Ratgeber ansehen →
+                  </Link>
+                </li>
+              </ul>
             </section>
 
             <p className="border-t border-ink-700 pt-6 text-xs text-cream-subtle">
