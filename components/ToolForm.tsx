@@ -447,8 +447,13 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ toolSlug: tool.slug, locale, countryCode: country?.code }),
       });
-      const { url } = await res.json();
-      window.location.href = url;
+      const data = await res.json();
+      if (!res.ok || !data.url) {
+        setErrorMsg(data.error || fs("checkoutError", "Fehler beim Aufrufen der Zahlungsseite. Bitte erneut versuchen."));
+        setStage("error");
+        return;
+      }
+      window.location.href = data.url;
     } catch {
       setErrorMsg(fs("checkoutError", "Fehler beim Aufrufen der Zahlungsseite. Bitte erneut versuchen."));
       setStage("error");

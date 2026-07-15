@@ -28,29 +28,30 @@ export async function POST(req: NextRequest) {
     country?.currency ?? "CHF"
   );
 
-  // TWINT ist nur für CHF verfügbar
-  const paymentMethods: Stripe.Checkout.SessionCreateParams.PaymentMethodType[] =
-    currency === "chf" ? ["card", "twint"] : ["card"];
-
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-  const session = await stripe.checkout.sessions.create({
-    mode: "payment",
-    payment_method_types: paymentMethods,
-    line_items: [
-      {
-        price_data: {
-          currency,
-          unit_amount: amount,
-          product_data: { name: tool.documentTitleDe },
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: [
+        {
+          price_data: {
+            currency,
+            unit_amount: amount,
+            product_data: { name: tool.documentTitleDe },
+          },
+          quantity: 1,
         },
-        quantity: 1,
-      },
-    ],
-    metadata: { toolSlug: tool.slug, countryCode: countryCode ?? "CH" },
-    success_url: `${baseUrl}/${locale}/tools/${tool.slug}?session_id={CHECKOUT_SESSION_ID}&status=success`,
-    cancel_url: `${baseUrl}/${locale}/tools/${tool.slug}?status=cancelled`,
-  });
+      ],
+      metadata: { toolSlug: tool.slug, countryCode: countryCode ?? "CH" },
+      success_url: `${baseUrl}/${locale}/tools/${tool.slug}?session_id={CHECKOUT_SESSION_ID}&status=success`,
+      cancel_url: `${baseUrl}/${locale}/tools/${tool.slug}?status=cancelled`,
+    });
 
-  return NextResponse.json({ url: session.url, sessionId: session.id });
+    return NextResponse.json({ url: session.url, sessionId: session.id });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : "Unbekannter Stripe-Fehler";
+    console.error("Stripe checkout error:", msg);
+    return NextResponse.json({ error: msg }, { status: 500 });
+  }
 }
