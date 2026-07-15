@@ -168,7 +168,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "type",             label: "Was möchtest du kündigen?",              type: "select",   required: true,  section: "Kündigung",
         options: ["Versicherung", "Abonnement / Mitgliedschaft", "Anderes"] },
       { key: "recipientName",    label: "Name des Empfängers (Vermieter, Firma …)", type: "text",   required: true  },
-      { key: "recipientAddress", label: "Adresse des Empfängers",                type: "address",  required: true  },
+      { key: "recipientAddress", label: "Adresse des Empfängers",                type: "textarea", required: true  },
       { key: "contractRef",      label: "Vertrags-/Kunden-/Policennummer",        type: "text",     required: false, placeholderKey: "fallsAvailable" },
       { key: "noticePeriod",     label: "Kündigungsfrist",                        type: "select",   required: false,
         options: ["1 Monat", "2 Monate", "3 Monate", "6 Monate", "1 Jahr", "Weiss nicht / laut Vertrag"],

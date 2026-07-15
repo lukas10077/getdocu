@@ -18,6 +18,7 @@ interface Props {
   locale: string;
   sessionId: string | null;
   dict?: any;
+  prefill?: Record<string, string>;
 }
 
 // ── IndexedDB helpers für Fotos (überleben Stripe-Redirect) ──────────
@@ -74,7 +75,7 @@ function readFileAsPhoto(file: File): Promise<Photo> {
   });
 }
 
-export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
+export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Props) {
   const t = dict?.tools ?? {};
   // i18n: Formular-UI-Strings (Fallback = Deutsch). NICHT ENTFERNEN —
   // ohne diese Helper erscheinen alle UI-Texte in allen Sprachen auf Deutsch!
@@ -106,6 +107,18 @@ export default function ToolForm({ tool, locale, sessionId, dict }: Props) {
     }
     if (tool.fields.some(f => f.key === "endDate" && f.type === "monthyear")) {
       init.endDate = `${curY}-${curM}`;
+    }
+    // Vorbefüllung aus URL-Parametern (z.B. von Marken-/Ratgeber-Seiten)
+    if (prefill) {
+      for (const f of tool.fields) {
+        const v = prefill[f.key];
+        if (v == null || v === "") continue;
+        init[f.key] = v;
+        if (f.fillsDateField) {
+          const computed = calcTerminationDate(v);
+          if (computed) init[f.fillsDateField] = computed;
+        }
+      }
     }
     return init;
   });

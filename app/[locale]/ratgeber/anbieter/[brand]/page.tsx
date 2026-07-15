@@ -41,7 +41,14 @@ export default async function BrandPage({
   if (!brand || params.locale !== GUIDE_LOCALE) notFound();
 
   const dict = await getDictionary(params.locale);
-  const toolHref = `/${params.locale}/tools/kuendigung?country=${brand.countryCode}`;
+  const toolParams = new URLSearchParams({
+    country: brand.countryCode,
+    recipientName: brand.name,
+    recipientAddress: brand.address.join("\n"),
+    type: "Abonnement / Mitgliedschaft",
+  });
+  if (brand.defaultNoticePeriod) toolParams.set("noticePeriod", brand.defaultNoticePeriod);
+  const toolHref = `/${params.locale}/tools/kuendigung?${toolParams.toString()}`;
 
   const faqSchema = {
     "@context": "https://schema.org",

@@ -54,13 +54,21 @@ export default async function ToolPage({
   searchParams,
 }: {
   params: { locale: Locale; slug: string };
-  searchParams?: { session_id?: string; country?: string };
+  searchParams?: { session_id?: string; country?: string; [key: string]: string | string[] | undefined };
 }) {
   const tool = getTool(params.slug);
   if (!tool) notFound();
 
   const dict = await getDictionary(params.locale);
   const sessionId = searchParams?.session_id ?? null;
+
+  // Vorbefüllung: alle übrigen URL-Parameter (z.B. von Ratgeber-/Marken-Seiten)
+  // werden an das Formular gereicht und dort in die passenden Felder übernommen.
+  const reserved = new Set(["session_id", "country", "status"]);
+  const prefill: Record<string, string> = {};
+  for (const [k, v] of Object.entries(searchParams ?? {})) {
+    if (!reserved.has(k) && typeof v === "string") prefill[k] = v;
+  }
 
   const priceChf = (tool.priceChfRappen / 100).toFixed(2);
 
@@ -174,7 +182,7 @@ export default async function ToolPage({
           </div>
 
           <ChOnlyGuard enabled={tool.chOnly} locale={params.locale}>
-            <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} />
+            <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} prefill={prefill} />
           </ChOnlyGuard>
         </div>
       </section>

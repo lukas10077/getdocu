@@ -16,6 +16,10 @@ export interface Brand {
   facts: string[];       // Kernfakten (Form, Zustellung, Bestätigung …)
   faq: { q: string; a: string }[];
   sourceNote: string;    // Stand / Verifizierungshinweis
+  // Optionale Voreinstellung der Frist im Tool — NUR setzen, wenn eindeutig ein
+  // Wert aus der Auswahlliste passt ("1 Monat", "2 Monate", "3 Monate", "6 Monate", "1 Jahr").
+  // Bei uneindeutiger/vertragsabhängiger Frist weglassen (Nutzer wählt selbst).
+  defaultNoticePeriod?: string;
 }
 
 export const brands: Record<string, Brand> = {
@@ -52,6 +56,7 @@ export const brands: Record<string, Brand> = {
         a: "Es zählt der Zeitpunkt der Zustellung bei o2, nicht der Poststempel. Deshalb mindestens 5 Werktage vor Fristablauf verschicken.",
       },
     ],
+    defaultNoticePeriod: "1 Monat",
     sourceNote:
       "Angaben Stand 2026. Im Zweifel die in deinem Vertrag genannte Frist und Adresse prüfen.",
   },
@@ -85,6 +90,7 @@ export const brands: Record<string, Brand> = {
         a: "Vodafone verlangt Textform: per Post oder Fax, je nach Vertrag auch online oder per E-Mail. Ein eingeschriebener Brief mit Rückschein ist der sicherste Nachweis.",
       },
     ],
+    defaultNoticePeriod: "1 Monat",
     sourceNote:
       "Angaben Stand 2026. Adresse je nach Vertragstyp unterschiedlich — im Zweifel „MeinVodafone“ oder den Vertrag prüfen.",
   },
@@ -142,6 +148,7 @@ export const brands: Record<string, Brand> = {
       { q: "Wohin schicke ich die ADAC-Kündigung?", a: "An ADAC e.V., Hansastraße 19, 80686 München — oder per E-Mail an service@adac.de bzw. über das Kündigungsformular auf adac.de." },
       { q: "Muss die Kündigung schriftlich sein?", a: "Textform genügt: Post, E-Mail oder Online-Formular. Ein eingeschriebener Brief ist der sicherste Nachweis." },
     ],
+    defaultNoticePeriod: "3 Monate",
     sourceNote: "Angaben Stand 2026. Im Zweifel die in deinen Unterlagen genannte Frist prüfen.",
   },
 
@@ -234,6 +241,7 @@ export const brands: Record<string, Brand> = {
       { q: "Wohin schicke ich die Sky-Kündigung?", a: "An Sky Deutschland, 22033 Hamburg — oder per E-Mail an service@sky.de bzw. online im Kundenkonto." },
       { q: "Was passiert mit den Leihgeräten?", a: "Receiver und Smartcard musst du nach der Kündigung innerhalb von etwa 14 Tagen zurücksenden, sonst können Zusatzkosten entstehen." },
     ],
+    defaultNoticePeriod: "1 Monat",
     sourceNote: "Angaben Stand 2026. Deine genaue Frist/Laufzeit steht in deinem Vertrag bzw. Kundenkonto.",
   },
 };
