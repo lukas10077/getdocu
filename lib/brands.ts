@@ -121,6 +121,121 @@ export const brands: Record<string, Brand> = {
     sourceNote:
       "Angaben Stand 2026. Fristen je nach Vertragstyp (Festnetz/DSL vs. Mobilfunk) unterschiedlich — im Zweifel den Vertrag prüfen.",
   },
+
+  adac: {
+    slug: "adac",
+    name: "ADAC",
+    category: "Mitgliedschaft",
+    countryCode: "DE",
+    intro:
+      "Du willst deine ADAC-Mitgliedschaft kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Die Mitgliedschaft kann bis spätestens drei Monate vor Ende der Beitragsperiode gekündigt werden. Kündigst du nicht rechtzeitig, verlängert sie sich um ein weiteres Jahr.",
+    address: ["ADAC e.V.", "Hansastraße 19", "80686 München"],
+    facts: [
+      "Die Kündigung muss in Textform erfolgen — per Post, per E-Mail an service@adac.de oder über das Kündigungsformular auf adac.de.",
+      "Massgebend ist der Eingang beim ADAC, nicht das Absendedatum — rechtzeitig einreichen.",
+      "Ein eingeschriebener Brief dokumentiert die Zustellung nachweisbar.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat der ADAC?", a: "Du kannst bis spätestens drei Monate vor Ende der Beitragsperiode kündigen. Sonst verlängert sich die Mitgliedschaft um ein weiteres Jahr." },
+      { q: "Wohin schicke ich die ADAC-Kündigung?", a: "An ADAC e.V., Hansastraße 19, 80686 München — oder per E-Mail an service@adac.de bzw. über das Kündigungsformular auf adac.de." },
+      { q: "Muss die Kündigung schriftlich sein?", a: "Textform genügt: Post, E-Mail oder Online-Formular. Ein eingeschriebener Brief ist der sicherste Nachweis." },
+    ],
+    sourceNote: "Angaben Stand 2026. Im Zweifel die in deinen Unterlagen genannte Frist prüfen.",
+  },
+
+  mcfit: {
+    slug: "mcfit",
+    name: "McFit",
+    category: "Fitnessstudio",
+    countryCode: "DE",
+    intro:
+      "Du willst deinen McFit-Vertrag kündigen? Hier findest du die Frist, die richtige Adresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Bei McFit gilt eine Kündigungsfrist von 4 Wochen zum Ende der Vertragslaufzeit. Kündigst du nicht rechtzeitig, verlängert sich der Vertrag automatisch.",
+    address: ["RSG Group GmbH", "Tannenberg 4", "96132 Schlüsselfeld"],
+    facts: [
+      "Vertragspartner ist die Muttergesellschaft RSG Group GmbH — deshalb geht die Kündigung dorthin (Schlüsselfeld).",
+      "Gib immer deine McFit-Mitgliedsnummer an, damit die Kündigung zugeordnet werden kann.",
+      "Der sicherste Weg ist der Brief per Einschreiben; zusätzlich gibt es das offizielle Kontaktformular und die McFit-App. Massgebend ist das Eingangsdatum.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat McFit?", a: "4 Wochen zum Ende der Vertragslaufzeit. Verpasst du die Frist, verlängert sich der Vertrag automatisch." },
+      { q: "Wohin schicke ich die McFit-Kündigung?", a: "An RSG Group GmbH, Tannenberg 4, 96132 Schlüsselfeld — dein Vertragspartner ist die RSG Group." },
+      { q: "Was muss im Kündigungsschreiben stehen?", a: "Deine McFit-Mitgliedsnummer sowie Name und Adresse, damit die Kündigung eindeutig zugeordnet werden kann." },
+    ],
+    sourceNote: "Angaben Stand 2026. Deine genaue Laufzeit/Frist steht in deinem Vertrag bzw. der Members Area.",
+  },
+
+  fitx: {
+    slug: "fitx",
+    name: "FitX",
+    category: "Fitnessstudio",
+    countryCode: "DE",
+    intro:
+      "Du willst deinen FitX-Vertrag kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Verträge ab März 2022 sind nach der Mindestlaufzeit (12 Monate) mit einer Frist von genau 1 Monat kündbar. Ältere Verträge haben oft 3 Monate Frist zum Vertragsende.",
+    address: ["FitX Deutschland GmbH", "Stoppenberger Straße 61", "45141 Essen"],
+    facts: [
+      "Kündigen kannst du per Post, per E-Mail an info@fitx.de oder online in der Members Area (mein.fitx.de).",
+      "Massgebend ist das Eingangsdatum der Kündigung, nicht das Absendedatum.",
+      "Sonderkündigung möglich: bei dauerhafter Sportunfähigkeit, Schwangerschaft oder Umzug kannst du ausserordentlich kündigen.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat FitX?", a: "Verträge ab März 2022: nach der 12-monatigen Mindestlaufzeit 1 Monat Frist. Ältere Verträge oft 3 Monate zum Vertragsende." },
+      { q: "Wohin schicke ich die FitX-Kündigung?", a: "An FitX Deutschland GmbH, Stoppenberger Straße 61, 45141 Essen — oder per E-Mail an info@fitx.de bzw. online in der Members Area." },
+      { q: "Kann ich bei FitX ausserordentlich kündigen?", a: "Ja, z.B. bei dauerhafter Sportunfähigkeit, Schwangerschaft oder Umzug ist eine fristlose Kündigung möglich." },
+    ],
+    sourceNote: "Angaben Stand 2026. Frist je nach Vertragsdatum unterschiedlich — im Zweifel Vertrag/Members Area prüfen.",
+  },
+
+  parship: {
+    slug: "parship",
+    name: "Parship",
+    category: "Abo / Dating",
+    countryCode: "DE",
+    intro:
+      "Du willst deine Parship-Premium-Mitgliedschaft kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Die Frist variiert je nach Vertrag — meist 12 Wochen (3 Monate), teils nur 1 Monat. Deine genaue Frist steht in der Bestätigungsmail von Parship. Ohne rechtzeitige Kündigung verlängert sich die Mitgliedschaft automatisch.",
+    address: ["PE Digital GmbH", "Kundenservice PARSHIP Deutschland", "Speersort 10", "20095 Hamburg"],
+    facts: [
+      "Gib zur Zuordnung deine bei Parship hinterlegte E-Mail-Adresse bzw. Chiffre und dein Service-Passwort an.",
+      "Kündigen kannst du per Post, per E-Mail an kundenservice@parship.de oder per Fax an +49 40 46 00 26 596.",
+      "Die kostenlose Basis-Mitgliedschaft kannst du jederzeit ohne Frist beenden.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat Parship?", a: "Meist 12 Wochen (3 Monate), teils nur 1 Monat. Die für dich gültige Frist steht in deiner Parship-Bestätigungsmail." },
+      { q: "Wohin schicke ich die Parship-Kündigung?", a: "An PE Digital GmbH, Kundenservice PARSHIP Deutschland, Speersort 10, 20095 Hamburg — oder per E-Mail an kundenservice@parship.de." },
+      { q: "Was muss in der Kündigung stehen?", a: "Deine hinterlegte E-Mail-Adresse bzw. Chiffre und dein Service-Passwort, damit Parship die Kündigung zuordnen kann." },
+    ],
+    sourceNote: "Angaben Stand 2026. Deine genaue Frist steht in der Parship-Bestätigungsmail.",
+  },
+
+  sky: {
+    slug: "sky",
+    name: "Sky",
+    category: "Abo / TV",
+    countryCode: "DE",
+    intro:
+      "Du willst dein Sky-Abo kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Aktuelle Verträge sind in der Regel mit 1 Monat Frist zum Ablauf der 12-monatigen Mindestlaufzeit kündbar. Ältere Verträge haben teils bis zu 2 Monate Frist und verlängern sich sonst um weitere 12 Monate.",
+    address: ["Sky Deutschland", "22033 Hamburg"],
+    facts: [
+      "Kündigen kannst du per Brief, per E-Mail an service@sky.de, online im Kundenkonto, per Live-Chat oder Hotline.",
+      "Ein eingeschriebener Brief ist der sicherste Nachweis für den fristgerechten Eingang.",
+      "Nach der Kündigung Leihgeräte (Receiver, Smartcard) innerhalb von etwa 14 Tagen zurücksenden, um Zusatzkosten zu vermeiden.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat Sky?", a: "Aktuelle Verträge: 1 Monat vor Ablauf der 12-monatigen Mindestlaufzeit. Ältere Verträge teils bis zu 2 Monate." },
+      { q: "Wohin schicke ich die Sky-Kündigung?", a: "An Sky Deutschland, 22033 Hamburg — oder per E-Mail an service@sky.de bzw. online im Kundenkonto." },
+      { q: "Was passiert mit den Leihgeräten?", a: "Receiver und Smartcard musst du nach der Kündigung innerhalb von etwa 14 Tagen zurücksenden, sonst können Zusatzkosten entstehen." },
+    ],
+    sourceNote: "Angaben Stand 2026. Deine genaue Frist/Laufzeit steht in deinem Vertrag bzw. Kundenkonto.",
+  },
 };
 
 export const allBrandSlugs: string[] = Object.keys(brands);
