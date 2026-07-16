@@ -48,7 +48,11 @@
       "bodyCancel": "Par la présente, je résilie mon contrat en bonne et due forme, dans le respect du délai de préavis.",
       "bodyComplaint": "Par la présente, je vous adresse une réclamation concernant le point décrit ci-dessous et vous prie d'y remédier rapidement.",
       "bodyApply": "C'est avec grand intérêt que je vous adresse ma candidature et me permets de me présenter brièvement.",
-      "placeholder": "Votre demande personnelle apparaît ici – rédigée individuellement pour vous."
+      "placeholder": "Votre demande personnelle apparaît ici – rédigée individuellement pour vous.",
+      "body2": "Je vous serais reconnaissant d'une brève confirmation écrite.",
+      "subjectCancel": "Résiliation de mon contrat",
+      "subjectComplaint": "Réclamation",
+      "subjectApply": "Candidature"
     },
     "items": {
       "ausserterminliche-kuendigung": {

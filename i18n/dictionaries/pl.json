@@ -48,7 +48,11 @@
       "bodyCancel": "Niniejszym wypowiadam moją umowę prawidłowo i z zachowaniem okresu wypowiedzenia.",
       "bodyComplaint": "Niniejszym składam reklamację dotyczącą opisanej poniżej sprawy i proszę o szybkie rozwiązanie.",
       "bodyApply": "Z dużym zainteresowaniem składam moją aplikację i chciałbym się krótko przedstawić.",
-      "placeholder": "Tutaj pojawia się Twoja osobista sprawa – sformułowana indywidualnie dla Ciebie."
+      "placeholder": "Tutaj pojawia się Twoja osobista sprawa – sformułowana indywidualnie dla Ciebie.",
+      "body2": "Będę wdzięczny za krótkie pisemne potwierdzenie.",
+      "subjectCancel": "Wypowiedzenie mojej umowy",
+      "subjectComplaint": "Reklamacja",
+      "subjectApply": "Aplikacja"
     },
     "items": {
       "ausserterminliche-kuendigung": {

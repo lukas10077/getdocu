@@ -48,7 +48,11 @@
       "bodyCancel": "İşbu yazı ile sözleşmemi usulüne uygun olarak ve ihbar süresine uyarak feshediyorum.",
       "bodyComplaint": "İşbu yazı ile aşağıda açıklanan konuyla ilgili şikâyetimi iletiyor ve en kısa sürede çözüm rica ediyorum.",
       "bodyApply": "Büyük bir ilgiyle başvurumu sunuyor ve kendimi kısaca tanıtmak istiyorum.",
-      "placeholder": "Kişisel talebiniz burada yer alır – size özel olarak yazılır."
+      "placeholder": "Kişisel talebiniz burada yer alır – size özel olarak yazılır.",
+      "body2": "Kısa bir yazılı geri bildirim için minnettar olurum.",
+      "subjectCancel": "Sözleşmemin feshi",
+      "subjectComplaint": "Şikâyet",
+      "subjectApply": "Başvuru"
     },
     "items": {
       "ausserterminliche-kuendigung": {

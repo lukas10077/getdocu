@@ -18,7 +18,11 @@ interface SampleDict {
   bodyCancel?: string;
   bodyComplaint?: string;
   bodyApply?: string;
+  body2?: string;
   placeholder?: string;
+  subjectCancel?: string;
+  subjectComplaint?: string;
+  subjectApply?: string;
 }
 
 const FALLBACK: Required<SampleDict> = {
@@ -33,7 +37,11 @@ const FALLBACK: Required<SampleDict> = {
   bodyCancel: "Hiermit kündige ich meinen Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin.",
   bodyComplaint: "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",
   bodyApply: "Mit grossem Interesse bewerbe ich mich bei Ihnen und stelle mich Ihnen gerne kurz vor.",
+  body2: "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
   placeholder: "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
+  subjectCancel: "Kündigung meines Vertrags",
+  subjectComplaint: "Reklamation",
+  subjectApply: "Bewerbung",
 };
 
 // Tools ohne klassisches Anschreiben (Lebenslauf-artig) bekommen ein CV-Skelett.
@@ -46,6 +54,12 @@ function openingFor(slug: string, s: Required<SampleDict>): string {
   if (COMPLAINT_SLUGS.has(slug)) return s.bodyComplaint;
   if (APPLY_SLUGS.has(slug)) return s.bodyApply;
   return s.bodyCancel;
+}
+
+function subjectFor(slug: string, s: Required<SampleDict>): string {
+  if (COMPLAINT_SLUGS.has(slug)) return s.subjectComplaint;
+  if (APPLY_SLUGS.has(slug)) return s.subjectApply;
+  return s.subjectCancel;
 }
 
 const PAPER = "#FBFAF7";
@@ -74,8 +88,8 @@ export default function DocumentSample({
   rtl?: boolean;
 }) {
   const s: Required<SampleDict> = { ...FALLBACK, ...(dict?.tools?.sampleDoc ?? {}) };
-  const subject = dict?.tools?.items?.[tool.slug]?.title ?? tool.documentTitleDe;
   const isCv = CV_SLUGS.has(tool.slug);
+  const subject = subjectFor(tool.slug, s);
   const opening = openingFor(tool.slug, s);
 
   const recipientName = prefill?.recipientName;
@@ -163,10 +177,12 @@ export default function DocumentSample({
               <span style={{ color: "#8A6410", fontSize: 12, lineHeight: 1.5, fontStyle: "italic" }}>{s.placeholder}</span>
             </div>
 
+            {/* Zweiter echter Satz (Abschluss der Bitte) */}
+            <p style={{ color: INK, fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" }}>{s.body2}</p>
+
             {/* Angedeuteter Rest (Skelett) – verhindert vollständiges Abschreiben */}
             <div className="space-y-2">
-              <Bar w="84%" soft />
-              <Bar w="60%" soft />
+              <Bar w="70%" soft />
             </div>
 
             {/* Gruss + Signatur (übersetzt) */}

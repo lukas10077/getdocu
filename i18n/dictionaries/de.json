@@ -46,7 +46,11 @@
       "bodyCancel": "Hiermit kündige ich meinen Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin.",
       "bodyComplaint": "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",
       "bodyApply": "Mit grossem Interesse bewerbe ich mich bei Ihnen und stelle mich Ihnen gerne kurz vor.",
-      "placeholder": "Hier steht dein persönliches Anliegen – individuell für dich formuliert."
+      "placeholder": "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
+      "body2": "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
+      "subjectCancel": "Kündigung meines Vertrags",
+      "subjectComplaint": "Reklamation",
+      "subjectApply": "Bewerbung"
     },
     "items": {
       "mietbewerbung": {

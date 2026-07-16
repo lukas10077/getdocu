@@ -48,7 +48,11 @@
       "bodyCancel": "Pela presente, cancelo o meu contrato de forma correta e dentro do prazo de aviso prévio.",
       "bodyComplaint": "Pela presente, apresento uma reclamação sobre a situação descrita abaixo e peço uma solução rápida.",
       "bodyApply": "É com grande interesse que apresento a minha candidatura e gostaria de me apresentar brevemente.",
-      "placeholder": "Aqui aparece o seu pedido pessoal – redigido individualmente para si."
+      "placeholder": "Aqui aparece o seu pedido pessoal – redigido individualmente para si.",
+      "body2": "Agradeço desde já uma breve confirmação por escrito.",
+      "subjectCancel": "Cancelamento do meu contrato",
+      "subjectComplaint": "Reclamação",
+      "subjectApply": "Candidatura"
     },
     "items": {
       "ausserterminliche-kuendigung": {

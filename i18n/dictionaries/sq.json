@@ -48,7 +48,11 @@
       "bodyCancel": "Me këtë shkresë e anuloj kontratën time në mënyrë të rregullt dhe brenda afatit të njoftimit.",
       "bodyComplaint": "Me këtë shkresë paraqes një ankesë për çështjen e përshkruar më poshtë dhe kërkoj një zgjidhje të shpejtë.",
       "bodyApply": "Me shumë interes paraqes kandidaturën time dhe dëshiroj të prezantohem shkurt.",
-      "placeholder": "Këtu shfaqet kërkesa jote personale – e formuluar posaçërisht për ty."
+      "placeholder": "Këtu shfaqet kërkesa jote personale – e formuluar posaçërisht për ty.",
+      "body2": "Do të isha mirënjohës për një përgjigje të shkurtër me shkrim.",
+      "subjectCancel": "Anulimi i kontratës sime",
+      "subjectComplaint": "Ankesë",
+      "subjectApply": "Aplikim"
     },
     "items": {
       "ausserterminliche-kuendigung": {

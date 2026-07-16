@@ -48,7 +48,11 @@
       "bodyCancel": "I hereby cancel my contract properly and within the agreed notice period.",
       "bodyComplaint": "I am writing to formally complain about the matter described below and kindly ask for a prompt resolution.",
       "bodyApply": "It is with great interest that I submit my application and would like to briefly introduce myself.",
-      "placeholder": "Your personal request goes here – written individually for you."
+      "placeholder": "Your personal request goes here – written individually for you.",
+      "body2": "I would appreciate a brief written confirmation.",
+      "subjectCancel": "Cancellation of my contract",
+      "subjectComplaint": "Complaint",
+      "subjectApply": "Application"
     },
     "items": {
       "ausserterminliche-kuendigung": {

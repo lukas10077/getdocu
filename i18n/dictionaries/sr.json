@@ -48,7 +48,11 @@
       "bodyCancel": "Ovim putem otkazujem svoj ugovor uredno i u skladu sa otkaznim rokom.",
       "bodyComplaint": "Ovim putem podnosim reklamaciju u vezi sa dole opisanim slučajem i molim za brzo rešenje.",
       "bodyApply": "Sa velikim interesovanjem podnosim svoju prijavu i želeo bih ukratko da se predstavim.",
-      "placeholder": "Ovde stoji vaš lični zahtev – napisan individualno za vas."
+      "placeholder": "Ovde stoji vaš lični zahtev – napisan individualno za vas.",
+      "body2": "Bio bih zahvalan na kratkoj pisanoj potvrdi.",
+      "subjectCancel": "Otkaz mog ugovora",
+      "subjectComplaint": "Reklamacija",
+      "subjectApply": "Prijava"
     },
     "items": {
       "ausserterminliche-kuendigung": {
