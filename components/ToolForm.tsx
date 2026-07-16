@@ -64,6 +64,15 @@ async function idbDelete(key: string): Promise<void> {
   });
 }
 
+// ── Funnel-Tracking (Google Ads / GA) ───────────────────────────────
+// Feuert Zwischenschritte des Funnels, damit sichtbar wird, WO Nutzer
+// abspringen (nicht nur die finale Conversion nach der Zahlung).
+function track(event: string, params: Record<string, unknown> = {}) {
+  if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+    (window as any).gtag("event", event, params);
+  }
+}
+
 // ── Datei → Photo ────────────────────────────────────────────────────
 function readFileAsPhoto(file: File): Promise<Photo> {
   return new Promise((resolve) => {
@@ -413,8 +422,8 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validate()) return;
-    if (!withdrawalConsent) { setWithdrawalError(true); return; }
-    setWithdrawalError(false);
+    // Hinweis: Die Widerrufs-Einwilligung wird NICHT hier verlangt — die Vorschau
+    // ist gratis. Die Einwilligung erfolgt erst beim Kauf (proceedToCheckout).
     const effectiveValues = getEffectiveValues();
     setStage("previewing");
     try {
@@ -434,12 +443,19 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
       const { previewText } = await res.json();
       setPreviewText(previewText);
       setStage("preview");
+      track("preview_view", { tool: tool.slug });
     } catch {
-      await proceedToCheckout();
+      // Vorschau fehlgeschlagen → trotzdem Bezahl-/Einwilligungs-Box zeigen
+      setPreviewText(fs("previewFailed", "Die Vorschau konnte nicht geladen werden. Dein vollständiges Dokument wird direkt nach der Zahlung erstellt."));
+      setStage("preview");
     }
   }
 
   async function proceedToCheckout() {
+    // Widerrufs-Einwilligung erst hier verlangen (beim Kauf, nicht bei der Vorschau)
+    if (!withdrawalConsent) { setWithdrawalError(true); return; }
+    setWithdrawalError(false);
+    track("begin_checkout", { tool: tool.slug });
     const effectiveValues = getEffectiveValues();
     setStage("redirecting");
     sessionStorage.setItem(storageKey, JSON.stringify({
@@ -831,6 +847,29 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
             <strong className="font-medium text-cream">{fs("readyTitle", "Dein persönliches Dokument ist bereit.")}</strong>{" "}
             {fs("readyBody", "Bezahle einmalig {price} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.").replace("{price}", priceDisplay)}
           </p>
+
+          {/* Widerrufs-Einwilligung — hier beim Kauf, nicht bei der Gratis-Vorschau */}
+          <label className={`mb-3 flex cursor-pointer items-start gap-3 ${withdrawalError ? "text-red-400" : "text-cream-muted"}`}>
+            <input
+              type="checkbox"
+              checked={withdrawalConsent}
+              onChange={(e) => { setWithdrawalConsent(e.target.checked); setWithdrawalError(false); }}
+              className="mt-0.5 h-4 w-4 flex-shrink-0 accent-swiss-gold"
+            />
+            <span className="text-xs leading-relaxed">
+              {(() => {
+                const parts = withdrawalText.split("AGB");
+                if (parts.length === 2) {
+                  return <>{parts[0]}<a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a>{parts[1]}</>;
+                }
+                return <>{withdrawalText} <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a></>;
+              })()}
+            </span>
+          </label>
+          {withdrawalError && (
+            <p className="mb-3 text-xs text-red-400">{withdrawalErrText}</p>
+          )}
+
           <div className="flex flex-wrap items-center gap-4">
             <button onClick={proceedToCheckout} className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark">
               {fs("payButton", "Vollständiges Dokument — {price}").replace("{price}", priceDisplay)}
@@ -1349,31 +1388,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
         })}
       </div>
 
-      {/* Widerrufsrecht-Checkbox */}
-      <div className="mt-10">
-        <label className={`flex cursor-pointer items-start gap-3 ${withdrawalError ? "text-red-400" : "text-cream-muted"}`}>
-          <input
-            type="checkbox"
-            checked={withdrawalConsent}
-            onChange={(e) => { setWithdrawalConsent(e.target.checked); setWithdrawalError(false); }}
-            className="mt-0.5 h-4 w-4 flex-shrink-0 accent-swiss-gold"
-          />
-          <span className="text-xs leading-relaxed">
-            {(() => {
-              const parts = withdrawalText.split("AGB");
-              if (parts.length === 2) {
-                return <>{parts[0]}<a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a>{parts[1]}</>;
-              }
-              return <>{withdrawalText} <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a></>;
-            })()}
-          </span>
-        </label>
-        {withdrawalError && (
-          <p className="mt-2 text-xs text-red-400">{withdrawalErrText}</p>
-        )}
-      </div>
-
-      <p className="mt-4 text-xs leading-relaxed text-cream-subtle">
+      <p className="mt-10 text-xs leading-relaxed text-cream-subtle">
         {legalDisclaimer}
       </p>
 
