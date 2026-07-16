@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getDictionary, Locale } from "@/i18n/config";
 import { getBrand, allBrandSlugs, brands } from "@/lib/brands";
+import { hubForCategory } from "@/lib/categoryHubs";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -49,6 +50,7 @@ export default async function BrandPage({
   });
   if (brand.defaultNoticePeriod) toolParams.set("noticePeriod", brand.defaultNoticePeriod);
   const toolHref = `/${params.locale}/tools/kuendigung?${toolParams.toString()}`;
+  const hub = hubForCategory(brand.category);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -156,6 +158,13 @@ export default async function BrandPage({
                 Weitere Anbieter kündigen
               </h2>
               <ul className="space-y-2 text-sm">
+                {hub && (
+                  <li>
+                    <Link href={`/${params.locale}/ratgeber/kuendigen/${hub.slug}`} className="text-swiss-gold underline hover:opacity-80">
+                      {hub.title} — Übersicht &amp; Frist
+                    </Link>
+                  </li>
+                )}
                 {allBrandSlugs
                   .filter((s) => s !== brand.slug)
                   .map((s) => (

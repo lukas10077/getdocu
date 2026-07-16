@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getDictionary, Locale } from "@/i18n/config";
 import { guidesForLocale, ratgeberLocales, ratgeberLabel } from "@/lib/guides";
 import { brands, allBrandSlugs } from "@/lib/brands";
+import { categoryHubs, allCategoryHubSlugs } from "@/lib/categoryHubs";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -68,6 +69,16 @@ export default async function RatgeberIndex({
   for (const [name, items] of byCategory) categories.push({ name, items });
 
   if (params.locale === "de") {
+    const hubItems = allCategoryHubSlugs.map((slug) => {
+      const h = categoryHubs[slug];
+      return {
+        href: `/${params.locale}/ratgeber/kuendigen/${slug}`,
+        title: h.title,
+        desc: "Frist, Vorgehen und alle Anbieter auf einen Blick.",
+      };
+    });
+    if (hubItems.length) categories.push({ name: "Nach Kategorie kündigen", items: hubItems });
+
     const brandItems = allBrandSlugs.map((slug) => {
       const b = brands[slug];
       return {
