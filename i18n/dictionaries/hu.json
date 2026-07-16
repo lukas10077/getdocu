@@ -52,7 +52,11 @@
       "body2": "Hálás lennék egy rövid írásos visszaigazolásért.",
       "subjectCancel": "Szerződésem felmondása",
       "subjectComplaint": "Panasz",
-      "subjectApply": "Jelentkezés"
+      "subjectApply": "Jelentkezés az Önök állására",
+      "subjectApplyHome": "Jelentkezés az Önök lakására",
+      "subjectRent": "Bérleti szerződésem felmondása",
+      "subjectJobCancel": "Munkaviszonyom felmondása",
+      "subjectDefect": "Hibák a lakásomban"
     },
     "items": {
       "ausserterminliche-kuendigung": {

@@ -52,7 +52,11 @@
       "body2": "Bio bih zahvalan na kratkoj pisanoj potvrdi.",
       "subjectCancel": "Otkaz mog ugovora",
       "subjectComplaint": "Reklamacija",
-      "subjectApply": "Prijava"
+      "subjectApply": "Prijava za vaše radno mesto",
+      "subjectApplyHome": "Prijava za vaš stan",
+      "subjectRent": "Otkaz mog ugovora o zakupu",
+      "subjectJobCancel": "Otkaz mog radnog odnosa",
+      "subjectDefect": "Nedostaci u mom stanu"
     },
     "items": {
       "ausserterminliche-kuendigung": {

@@ -52,7 +52,11 @@
       "body2": "I would appreciate a brief written confirmation.",
       "subjectCancel": "Cancellation of my contract",
       "subjectComplaint": "Complaint",
-      "subjectApply": "Application"
+      "subjectApply": "Application for your position",
+      "subjectApplyHome": "Application for your apartment",
+      "subjectRent": "Termination of my tenancy",
+      "subjectJobCancel": "Resignation from my position",
+      "subjectDefect": "Defects in my apartment"
     },
     "items": {
       "ausserterminliche-kuendigung": {

@@ -52,7 +52,11 @@
       "body2": "Je vous serais reconnaissant d'une brève confirmation écrite.",
       "subjectCancel": "Résiliation de mon contrat",
       "subjectComplaint": "Réclamation",
-      "subjectApply": "Candidature"
+      "subjectApply": "Candidature à votre poste",
+      "subjectApplyHome": "Candidature pour votre logement",
+      "subjectRent": "Résiliation de mon bail",
+      "subjectJobCancel": "Démission de mon poste",
+      "subjectDefect": "Défauts dans mon logement"
     },
     "items": {
       "ausserterminliche-kuendigung": {

@@ -52,7 +52,11 @@
       "body2": "சுருக்கமான எழுத்துப்பூர்வ உறுதிப்படுத்தலுக்கு நன்றியுடன் இருப்பேன்.",
       "subjectCancel": "எனது ஒப்பந்தத்தை ரத்து செய்தல்",
       "subjectComplaint": "புகார்",
-      "subjectApply": "விண்ணப்பம்"
+      "subjectApply": "உங்கள் பணியிடத்திற்கான விண்ணப்பம்",
+      "subjectApplyHome": "உங்கள் வீட்டிற்கான விண்ணப்பம்",
+      "subjectRent": "எனது வாடகை ஒப்பந்தத்தை ரத்து செய்தல்",
+      "subjectJobCancel": "எனது பணியிலிருந்து விலகல்",
+      "subjectDefect": "எனது வீட்டில் உள்ள குறைபாடுகள்"
     },
     "items": {
       "ausserterminliche-kuendigung": {

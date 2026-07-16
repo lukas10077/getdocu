@@ -52,7 +52,11 @@
       "body2": "Le sarei grato di un breve riscontro scritto.",
       "subjectCancel": "Disdetta del mio contratto",
       "subjectComplaint": "Reclamo",
-      "subjectApply": "Candidatura"
+      "subjectApply": "Candidatura per la vostra posizione",
+      "subjectApplyHome": "Candidatura per il vostro appartamento",
+      "subjectRent": "Disdetta del mio contratto di locazione",
+      "subjectJobCancel": "Dimissioni dal mio posto di lavoro",
+      "subjectDefect": "Difetti nel mio appartamento"
     },
     "items": {
       "ausserterminliche-kuendigung": {

@@ -52,7 +52,11 @@
       "body2": "Do të isha mirënjohës për një përgjigje të shkurtër me shkrim.",
       "subjectCancel": "Anulimi i kontratës sime",
       "subjectComplaint": "Ankesë",
-      "subjectApply": "Aplikim"
+      "subjectApply": "Aplikim për pozitën tuaj",
+      "subjectApplyHome": "Aplikim për banesën tuaj",
+      "subjectRent": "Anulimi i kontratës sime të qirasë",
+      "subjectJobCancel": "Dorëheqje nga vendi im i punës",
+      "subjectDefect": "Të meta në banesën time"
     },
     "items": {
       "ausserterminliche-kuendigung": {

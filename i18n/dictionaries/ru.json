@@ -52,7 +52,11 @@
       "body2": "Буду признателен за краткое письменное подтверждение.",
       "subjectCancel": "Расторжение моего договора",
       "subjectComplaint": "Претензия",
-      "subjectApply": "Заявка"
+      "subjectApply": "Отклик на вашу вакансию",
+      "subjectApplyHome": "Заявка на вашу квартиру",
+      "subjectRent": "Расторжение договора аренды",
+      "subjectJobCancel": "Увольнение с моей должности",
+      "subjectDefect": "Недостатки в моей квартире"
     },
     "items": {
       "ausserterminliche-kuendigung": {

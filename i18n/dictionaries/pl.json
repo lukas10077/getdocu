@@ -52,7 +52,11 @@
       "body2": "Będę wdzięczny za krótkie pisemne potwierdzenie.",
       "subjectCancel": "Wypowiedzenie mojej umowy",
       "subjectComplaint": "Reklamacja",
-      "subjectApply": "Aplikacja"
+      "subjectApply": "Aplikacja na Państwa stanowisko",
+      "subjectApplyHome": "Aplikacja o Państwa mieszkanie",
+      "subjectRent": "Wypowiedzenie umowy najmu",
+      "subjectJobCancel": "Wypowiedzenie umowy o pracę",
+      "subjectDefect": "Wady w moim mieszkaniu"
     },
     "items": {
       "ausserterminliche-kuendigung": {

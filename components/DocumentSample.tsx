@@ -21,8 +21,12 @@ interface SampleDict {
   body2?: string;
   placeholder?: string;
   subjectCancel?: string;
+  subjectRent?: string;
+  subjectJobCancel?: string;
   subjectComplaint?: string;
+  subjectDefect?: string;
   subjectApply?: string;
+  subjectApplyHome?: string;
 }
 
 const FALLBACK: Required<SampleDict> = {
@@ -40,8 +44,12 @@ const FALLBACK: Required<SampleDict> = {
   body2: "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
   placeholder: "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
   subjectCancel: "Kündigung meines Vertrags",
+  subjectRent: "Kündigung meines Mietvertrags",
+  subjectJobCancel: "Kündigung meines Arbeitsvertrags",
   subjectComplaint: "Reklamation",
-  subjectApply: "Bewerbung",
+  subjectDefect: "Mängel in meiner Wohnung",
+  subjectApply: "Bewerbung um Ihre Stelle",
+  subjectApplyHome: "Bewerbung um Ihre Wohnung",
 };
 
 // Tools ohne klassisches Anschreiben (Lebenslauf-artig) bekommen ein CV-Skelett.
@@ -57,9 +65,25 @@ function openingFor(slug: string, s: Required<SampleDict>): string {
 }
 
 function subjectFor(slug: string, s: Required<SampleDict>): string {
-  if (COMPLAINT_SLUGS.has(slug)) return s.subjectComplaint;
-  if (APPLY_SLUGS.has(slug)) return s.subjectApply;
-  return s.subjectCancel;
+  switch (slug) {
+    case "mietbewerbung":
+      return s.subjectApplyHome;
+    case "jobbewerbung":
+    case "komplettbewerbung":
+      return s.subjectApply;
+    case "kuendigung-wohnung":
+    case "ausserterminliche-kuendigung":
+    case "ausserordentliche-kuendigung":
+      return s.subjectRent;
+    case "kuendigung-arbeit":
+      return s.subjectJobCancel;
+    case "reklamation":
+      return s.subjectComplaint;
+    case "maengelruege":
+      return s.subjectDefect;
+    default:
+      return s.subjectCancel; // kuendigung
+  }
 }
 
 const PAPER = "#FBFAF7";

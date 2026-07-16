@@ -52,7 +52,11 @@
       "body2": "سأكون ممتنًا لتأكيد خطي مختصر.",
       "subjectCancel": "إنهاء عقدي",
       "subjectComplaint": "شكوى",
-      "subjectApply": "طلب تقديم"
+      "subjectApply": "طلب توظيف لشغل وظيفتكم",
+      "subjectApplyHome": "طلب لاستئجار شقتكم",
+      "subjectRent": "إنهاء عقد إيجاري",
+      "subjectJobCancel": "استقالة من وظيفتي",
+      "subjectDefect": "عيوب في شقتي"
     },
     "items": {
       "ausserterminliche-kuendigung": {

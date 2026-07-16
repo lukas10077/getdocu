@@ -50,7 +50,11 @@
       "body2": "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
       "subjectCancel": "Kündigung meines Vertrags",
       "subjectComplaint": "Reklamation",
-      "subjectApply": "Bewerbung"
+      "subjectApply": "Bewerbung um Ihre Stelle",
+      "subjectApplyHome": "Bewerbung um Ihre Wohnung",
+      "subjectRent": "Kündigung meines Mietvertrags",
+      "subjectJobCancel": "Kündigung meines Arbeitsvertrags",
+      "subjectDefect": "Mängel in meiner Wohnung"
     },
     "items": {
       "mietbewerbung": {

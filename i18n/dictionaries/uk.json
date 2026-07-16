@@ -52,7 +52,11 @@
       "body2": "Буду вдячний за коротке письмове підтвердження.",
       "subjectCancel": "Розірвання мого договору",
       "subjectComplaint": "Претензія",
-      "subjectApply": "Заявка"
+      "subjectApply": "Відгук на вашу вакансію",
+      "subjectApplyHome": "Заявка на вашу квартиру",
+      "subjectRent": "Розірвання договору оренди",
+      "subjectJobCancel": "Звільнення з моєї посади",
+      "subjectDefect": "Недоліки в моїй квартирі"
     },
     "items": {
       "ausserterminliche-kuendigung": {

@@ -52,7 +52,11 @@
       "body2": "Kısa bir yazılı geri bildirim için minnettar olurum.",
       "subjectCancel": "Sözleşmemin feshi",
       "subjectComplaint": "Şikâyet",
-      "subjectApply": "Başvuru"
+      "subjectApply": "Pozisyonunuz için başvuru",
+      "subjectApplyHome": "Daireniz için başvuru",
+      "subjectRent": "Kira sözleşmemin feshi",
+      "subjectJobCancel": "İş sözleşmemin feshi",
+      "subjectDefect": "Dairemdeki kusurlar"
     },
     "items": {
       "ausserterminliche-kuendigung": {
