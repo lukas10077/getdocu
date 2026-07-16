@@ -337,6 +337,102 @@ export const brands: Record<string, Brand> = {
     ],
     sourceNote: "Angaben Stand 2026. Kündigungsadresse = dein lokales Studio; Frist je nach Vertragsdatum unterschiedlich.",
   },
+
+  a1: {
+    slug: "a1",
+    name: "A1",
+    category: "Handyvertrag",
+    countryCode: "AT",
+    intro:
+      "Du willst deinen A1-Vertrag (Handy, Internet oder TV) in Österreich kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Nach der Mindestvertragsdauer beträgt die Frist 1 Monat zum Monatsende (Verträge ab Februar 2016). Ältere Verträge: 3 Monate. Bei einer Preiserhöhung besteht ein ausserordentliches Kündigungsrecht.",
+    address: ["A1 Telekom Austria AG", "Postfach 1001", "1011 Wien"],
+    facts: [
+      "Kündige schriftlich per Post (Einschreiben empfohlen) oder eingescannt per E-Mail — so hast du einen Nachweis über die rechtzeitige Zustellung.",
+      "Massgebend ist der Zugang bei A1, nicht der Poststempel. Sende die Kündigung rechtzeitig vor Fristablauf.",
+      "Bei einer Preiserhöhung kannst du ausserordentlich kündigen — dann entfällt die reguläre Frist.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat A1?", a: "Nach der Mindestvertragsdauer 1 Monat zum Monatsende (Verträge ab Februar 2016), ältere Verträge 3 Monate." },
+      { q: "Wohin schicke ich die A1-Kündigung?", a: "An A1 Telekom Austria AG, Postfach 1001, 1011 Wien — am besten per Einschreiben." },
+      { q: "Kann ich A1 auch per E-Mail kündigen?", a: "Ja, eine eingescannte, unterschriebene Kündigung per E-Mail ist möglich. Ein Einschreiben ist aber der sicherste Nachweis." },
+    ],
+    defaultNoticePeriod: "1 Monat",
+    sourceNote: "Angaben Stand 2026. Deine genaue Frist/Laufzeit steht in deinem Vertrag.",
+  },
+
+  "huk-coburg": {
+    slug: "huk-coburg",
+    name: "HUK-Coburg",
+    category: "Versicherung",
+    countryCode: "DE",
+    intro:
+      "Du willst deine HUK-Coburg-Versicherung kündigen? Hier findest du die Frist, die Kündigungsadresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Bei der Kfz-Versicherung gilt 1 Monat Frist zum Ende des Versicherungsjahres — meist der 30. November. Andere Sparten haben oft 3 Monate Frist vor Ablauf. Bei einer Beitragserhöhung oder nach einem Schadenfall besteht ein Sonderkündigungsrecht.",
+    address: ["HUK-COBURG", "Kontakt-Center", "96444 Coburg"],
+    facts: [
+      "Kündige schriftlich per Brief (Einschreiben empfohlen), per Fax oder per E-Mail an info@huk-coburg.de — die Kündigung muss unterschrieben sein.",
+      "Gib unbedingt deine Versicherungsscheinnummer und die genaue Versicherungsart an, damit die Kündigung korrekt zugeordnet wird.",
+      "Massgebend ist der Zugang bei der HUK-Coburg, nicht der Poststempel. Vermerk auf dem Umschlag hilft (z.B. „KFZ-Versicherung“).",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat die HUK-Coburg?", a: "Kfz-Versicherung: 1 Monat zum Ende des Versicherungsjahres (meist 30. November). Andere Sparten meist 3 Monate vor Ablauf." },
+      { q: "Wohin schicke ich die HUK-Coburg-Kündigung?", a: "An HUK-COBURG, Kontakt-Center, 96444 Coburg — oder per E-Mail an info@huk-coburg.de. Ein Einschreiben ist der sicherste Nachweis." },
+      { q: "Kann ich wegen Beitragserhöhung sofort kündigen?", a: "Ja. Bei einer Beitragserhöhung oder nach einem Schadenfall hast du ein Sonderkündigungsrecht und musst die reguläre Frist nicht abwarten." },
+    ],
+    defaultNoticePeriod: "1 Monat",
+    sourceNote: "Angaben Stand 2026. Frist je nach Sparte unterschiedlich — im Zweifel Police prüfen.",
+  },
+
+  congstar: {
+    slug: "congstar",
+    name: "congstar",
+    category: "Handyvertrag",
+    countryCode: "DE",
+    intro:
+      "Du willst deinen congstar-Vertrag kündigen? Hier findest du die Frist, die Kündigungsadresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Nach der Mindestlaufzeit ist der Vertrag jederzeit mit 1 Monat Frist kündbar. Innerhalb einer 24-Monats-Laufzeit musst du bis spätestens 1 Monat vor Ende kündigen. Prepaid-Tarife sind jederzeit ohne Frist kündbar.",
+    address: ["congstar Services GmbH", "Weinsbergstraße 70", "50823 Köln"],
+    facts: [
+      "Kündigen kannst du per Post (Einschreiben empfohlen), per E-Mail an kundenservice@congstar.de, in der congstar-App oder über das Online-Kündigungsformular.",
+      "Massgebend ist der Zugang bei congstar, nicht der Poststempel.",
+      "Gib deine Rufnummer und Kundennummer an, damit die Kündigung eindeutig zugeordnet wird.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat congstar?", a: "Nach der Mindestlaufzeit 1 Monat, jederzeit kündbar. Innerhalb einer 24-Monats-Laufzeit bis 1 Monat vor Ende. Prepaid jederzeit ohne Frist." },
+      { q: "Wohin schicke ich die congstar-Kündigung?", a: "An congstar Services GmbH, Weinsbergstraße 70, 50823 Köln — oder per E-Mail an kundenservice@congstar.de." },
+      { q: "Kann ich meinen Prepaid-Tarif jederzeit kündigen?", a: "Ja, Prepaid-Tarife haben keine feste Kündigungsfrist und sind jederzeit kündbar." },
+    ],
+    defaultNoticePeriod: "1 Monat",
+    sourceNote: "Angaben Stand 2026. Deine genaue Frist/Laufzeit steht in deinem Vertrag bzw. Kundenkonto.",
+  },
+
+  fitnesspark: {
+    slug: "fitnesspark",
+    name: "Fitnesspark",
+    category: "Fitnessstudio",
+    countryCode: "CH",
+    intro:
+      "Du willst dein Fitnesspark-Abo (Migros) kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Die Mitgliedschaft ist mit einer Frist von 2 Monaten auf das Ende der Vertragsdauer schriftlich kündbar. Das genaue Vertragsende steht in deinen Vertragsunterlagen.",
+    address: ["Fitnesspark / movemi AG", "z.H. Kundenservice", "Thurgauerstrasse 32", "8050 Zürich"],
+    facts: [
+      "Kündige schriftlich per Brief — ein Einschreiben ist der sicherste Nachweis für die rechtzeitige Zustellung.",
+      "Massgebend ist der Zugang beim Fitnesspark, nicht der Poststempel. Sende die Kündigung mindestens 2 Monate vor Vertragsende.",
+      "Prüfe dein genaues Vertragsende in den Unterlagen, bevor du kündigst.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat der Fitnesspark?", a: "2 Monate auf das Ende der Vertragsdauer. Das genaue Datum steht in deinem Vertrag." },
+      { q: "Wohin schicke ich die Fitnesspark-Kündigung?", a: "An Fitnesspark / movemi AG, z.H. Kundenservice, Thurgauerstrasse 32, 8050 Zürich — am besten per Einschreiben." },
+      { q: "Muss die Kündigung schriftlich sein?", a: "Ja, die Kündigung muss schriftlich erfolgen. Ein Einschreiben dokumentiert den Zugang nachweisbar." },
+    ],
+    defaultNoticePeriod: "2 Monate",
+    sourceNote: "Angaben Stand 2026. Dein genaues Vertragsende steht in deinen Unterlagen.",
+  },
 };
 
 export const allBrandSlugs: string[] = Object.keys(brands);
