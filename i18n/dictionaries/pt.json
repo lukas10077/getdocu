@@ -36,6 +36,16 @@
       "⚡ Documento em 20 seg.",
       "💳 Seguro via Stripe"
     ],
+    "sampleDoc": {
+      "eyebrow": "É assim que fica o seu documento pronto",
+      "badge": "Exemplo",
+      "salutation": "Prezados Senhores",
+      "closing": "Com os melhores cumprimentos",
+      "benefit1": "Layout limpo e profissional",
+      "benefit2": "Saudação e assunto corretos",
+      "benefit3": "Descarregar em PDF",
+      "caption": "Pré-visualização grátis · Só paga quando estiver satisfeito"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Rescindir antecipadamente com inquilino substituto",

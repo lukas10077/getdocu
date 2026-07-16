@@ -34,6 +34,16 @@
       "⚡ Dokument in 20 Sek.",
       "💳 Sicher via Stripe"
     ],
+    "sampleDoc": {
+      "eyebrow": "So sieht dein fertiges Dokument aus",
+      "badge": "Beispiel",
+      "salutation": "Sehr geehrte Damen und Herren",
+      "closing": "Freundliche Grüsse",
+      "benefit1": "Sauberes, professionelles Layout",
+      "benefit2": "Korrekte Anrede und Betreff",
+      "benefit3": "Als PDF zum Herunterladen",
+      "caption": "Vorschau gratis · Erst zahlen, wenn du zufrieden bist"
+    },
     "items": {
       "mietbewerbung": {
         "title": "Bewerbung Wohnung",

@@ -36,6 +36,16 @@
       "⚡ Dokument w 20 sek.",
       "💳 Bezpieczne przez Stripe"
     ],
+    "sampleDoc": {
+      "eyebrow": "Tak wygląda Twój gotowy dokument",
+      "badge": "Przykład",
+      "salutation": "Szanowni Państwo",
+      "closing": "Z poważaniem",
+      "benefit1": "Czysty, profesjonalny układ",
+      "benefit2": "Poprawne powitanie i temat",
+      "benefit3": "Pobierz jako PDF",
+      "caption": "Bezpłatny podgląd · Płacisz tylko, gdy jesteś zadowolony"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Wcześniejsze wypowiedzenie z następcą",

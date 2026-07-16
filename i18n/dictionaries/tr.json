@@ -36,6 +36,16 @@
       "⚡ Belge 20 saniyede",
       "💳 Stripe ile güvenli"
     ],
+    "sampleDoc": {
+      "eyebrow": "Tamamlanmış belgeniz böyle görünür",
+      "badge": "Örnek",
+      "salutation": "Sayın Yetkili",
+      "closing": "Saygılarımla",
+      "benefit1": "Temiz, profesyonel düzen",
+      "benefit2": "Doğru hitap ve konu satırı",
+      "benefit3": "PDF olarak indir",
+      "caption": "Ücretsiz önizleme · Yalnızca memnun kaldığınızda ödeyin"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Yeni kiracıyla erken fesih",

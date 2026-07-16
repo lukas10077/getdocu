@@ -36,6 +36,16 @@
       "⚡ Documento in 20 sec.",
       "💳 Sicuro via Stripe"
     ],
+    "sampleDoc": {
+      "eyebrow": "Ecco come apparirà il tuo documento finito",
+      "badge": "Esempio",
+      "salutation": "Gentili Signore e Signori",
+      "closing": "Cordiali saluti",
+      "benefit1": "Impaginazione pulita e professionale",
+      "benefit2": "Formula di apertura e oggetto corretti",
+      "benefit3": "Download in PDF",
+      "caption": "Anteprima gratuita · Paghi solo se sei soddisfatto"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Disdetta anticipata con subentrante",

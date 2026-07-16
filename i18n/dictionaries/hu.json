@@ -36,6 +36,16 @@
       "⚡ Dokumentum 20 mp alatt",
       "💳 Biztonságos Stripe-on"
     ],
+    "sampleDoc": {
+      "eyebrow": "Így néz ki az elkészült dokumentumod",
+      "badge": "Példa",
+      "salutation": "Tisztelt Hölgyem/Uram!",
+      "closing": "Üdvözlettel",
+      "benefit1": "Letiszta, profi elrendezés",
+      "benefit2": "Helyes megszólítás és tárgy",
+      "benefit3": "Letöltés PDF-ként",
+      "caption": "Ingyenes előnézet · Csak akkor fizet, ha elégedett"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Előzetes felmondás utódbérlővel",

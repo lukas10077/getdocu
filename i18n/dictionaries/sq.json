@@ -36,6 +36,16 @@
       "⚡ Dokument në 20 sek.",
       "💳 Sigurt via Stripe"
     ],
+    "sampleDoc": {
+      "eyebrow": "Kështu duket dokumenti yt i përfunduar",
+      "badge": "Shembull",
+      "salutation": "Të nderuar zonja dhe zotërinj",
+      "closing": "Me respekt",
+      "benefit1": "Faqosje e pastër dhe profesionale",
+      "benefit2": "Përshëndetje dhe subjekt të saktë",
+      "benefit3": "Shkarko si PDF",
+      "caption": "Pamje paraprake falas · Paguan vetëm kur je i kënaqur"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Zgjidhje e parakohshme me qiramarrës zëvendësues",

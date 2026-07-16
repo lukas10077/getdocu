@@ -36,6 +36,16 @@
       "⚡ Document in 20 sec.",
       "💳 Secure via Stripe"
     ],
+    "sampleDoc": {
+      "eyebrow": "This is what your finished document looks like",
+      "badge": "Example",
+      "salutation": "Dear Sir or Madam",
+      "closing": "Kind regards",
+      "benefit1": "Clean, professional layout",
+      "benefit2": "Correct salutation and subject line",
+      "benefit3": "Download as PDF",
+      "caption": "Free preview · Pay only when you're happy"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Terminate Early with Successor Tenant",

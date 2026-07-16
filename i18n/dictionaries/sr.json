@@ -36,6 +36,16 @@
       "⚡ Dokument za 20 sek.",
       "💳 Sigurno putem Stripe"
     ],
+    "sampleDoc": {
+      "eyebrow": "Ovako izgleda vaš gotov dokument",
+      "badge": "Primer",
+      "salutation": "Poštovani",
+      "closing": "S poštovanjem",
+      "benefit1": "Čist i profesionalan izgled",
+      "benefit2": "Tačno oslovljavanje i naslov",
+      "benefit3": "Preuzimanje u PDF-u",
+      "caption": "Besplatan pregled · Plaćate samo kada ste zadovoljni"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Prevremeni otkaz uz zamenskog stanara",

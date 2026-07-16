@@ -36,6 +36,16 @@
       "⚡ Document en 20 sec.",
       "💳 Sécurisé via Stripe"
     ],
+    "sampleDoc": {
+      "eyebrow": "Voici à quoi ressemble votre document final",
+      "badge": "Exemple",
+      "salutation": "Madame, Monsieur",
+      "closing": "Cordialement",
+      "benefit1": "Mise en page soignée et professionnelle",
+      "benefit2": "Formule d'appel et objet corrects",
+      "benefit3": "Téléchargement en PDF",
+      "caption": "Aperçu gratuit · Payez seulement si vous êtes satisfait"
+    },
     "items": {
       "ausserterminliche-kuendigung": {
         "title": "Résilier par anticipation avec locataire de remplacement",
