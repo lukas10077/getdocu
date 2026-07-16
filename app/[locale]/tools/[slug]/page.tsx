@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getDictionary, locales, Locale } from "@/i18n/config";
+import { getDictionary, locales, Locale, isRtl } from "@/i18n/config";
 import { getTool, allToolSlugs } from "@/lib/tools";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -182,7 +182,7 @@ export default async function ToolPage({
             )}
           </div>
 
-          <DocumentSample tool={tool} dict={dict} prefill={prefill} />
+          <DocumentSample tool={tool} dict={dict} prefill={prefill} rtl={isRtl(params.locale)} />
 
           <ChOnlyGuard enabled={tool.chOnly} locale={params.locale}>
             <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} prefill={prefill} />

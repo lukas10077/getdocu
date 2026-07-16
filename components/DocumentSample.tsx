@@ -66,10 +66,12 @@ export default function DocumentSample({
   tool,
   dict,
   prefill,
+  rtl = false,
 }: {
   tool: ToolDefinition;
   dict: any;
   prefill?: Record<string, string>;
+  rtl?: boolean;
 }) {
   const s: Required<SampleDict> = { ...FALLBACK, ...(dict?.tools?.sampleDoc ?? {}) };
   const subject = dict?.tools?.items?.[tool.slug]?.title ?? tool.documentTitleDe;
@@ -90,8 +92,8 @@ export default function DocumentSample({
 
       <div className="relative overflow-hidden rounded-lg" style={{ backgroundColor: PAPER, padding: "24px 26px" }}>
         <div
-          className="absolute right-[-6px] top-4 rounded-sm text-[10px] font-medium uppercase tracking-widest"
-          style={{ backgroundColor: "#F0B429", color: "#4A3606", padding: "5px 12px" }}
+          className="absolute top-4 rounded-sm text-[10px] font-medium uppercase tracking-widest"
+          style={{ backgroundColor: "#F0B429", color: "#4A3606", padding: "5px 12px", [rtl ? "left" : "right"]: -6 }}
         >
           {s.badge}
         </div>
