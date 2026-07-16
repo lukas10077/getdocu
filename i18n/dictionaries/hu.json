@@ -44,7 +44,11 @@
       "benefit1": "Letiszta, profi elrendezés",
       "benefit2": "Helyes megszólítás és tárgy",
       "benefit3": "Letöltés PDF-ként",
-      "caption": "Ingyenes előnézet · Csak akkor fizet, ha elégedett"
+      "caption": "Ingyenes előnézet · Csak akkor fizet, ha elégedett",
+      "bodyCancel": "Ezúton felmondom a szerződésemet szabályosan, a felmondási idő betartásával.",
+      "bodyComplaint": "Ezúton panaszt teszek az alább leírt üggyel kapcsolatban, és mielőbbi megoldást kérek.",
+      "bodyApply": "Nagy érdeklődéssel nyújtom be a jelentkezésemet, és szeretnék röviden bemutatkozni.",
+      "placeholder": "Ide kerül a személyes kérésed – egyénileg, neked megfogalmazva."
     },
     "items": {
       "ausserterminliche-kuendigung": {

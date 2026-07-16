@@ -44,7 +44,11 @@
       "benefit1": "Layout limpo e profissional",
       "benefit2": "Saudação e assunto corretos",
       "benefit3": "Descarregar em PDF",
-      "caption": "Pré-visualização grátis · Só paga quando estiver satisfeito"
+      "caption": "Pré-visualização grátis · Só paga quando estiver satisfeito",
+      "bodyCancel": "Pela presente, cancelo o meu contrato de forma correta e dentro do prazo de aviso prévio.",
+      "bodyComplaint": "Pela presente, apresento uma reclamação sobre a situação descrita abaixo e peço uma solução rápida.",
+      "bodyApply": "É com grande interesse que apresento a minha candidatura e gostaria de me apresentar brevemente.",
+      "placeholder": "Aqui aparece o seu pedido pessoal – redigido individualmente para si."
     },
     "items": {
       "ausserterminliche-kuendigung": {

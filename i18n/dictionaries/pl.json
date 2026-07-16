@@ -44,7 +44,11 @@
       "benefit1": "Czysty, profesjonalny układ",
       "benefit2": "Poprawne powitanie i temat",
       "benefit3": "Pobierz jako PDF",
-      "caption": "Bezpłatny podgląd · Płacisz tylko, gdy jesteś zadowolony"
+      "caption": "Bezpłatny podgląd · Płacisz tylko, gdy jesteś zadowolony",
+      "bodyCancel": "Niniejszym wypowiadam moją umowę prawidłowo i z zachowaniem okresu wypowiedzenia.",
+      "bodyComplaint": "Niniejszym składam reklamację dotyczącą opisanej poniżej sprawy i proszę o szybkie rozwiązanie.",
+      "bodyApply": "Z dużym zainteresowaniem składam moją aplikację i chciałbym się krótko przedstawić.",
+      "placeholder": "Tutaj pojawia się Twoja osobista sprawa – sformułowana indywidualnie dla Ciebie."
     },
     "items": {
       "ausserterminliche-kuendigung": {

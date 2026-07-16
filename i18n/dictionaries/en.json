@@ -44,7 +44,11 @@
       "benefit1": "Clean, professional layout",
       "benefit2": "Correct salutation and subject line",
       "benefit3": "Download as PDF",
-      "caption": "Free preview · Pay only when you're happy"
+      "caption": "Free preview · Pay only when you're happy",
+      "bodyCancel": "I hereby cancel my contract properly and within the agreed notice period.",
+      "bodyComplaint": "I am writing to formally complain about the matter described below and kindly ask for a prompt resolution.",
+      "bodyApply": "It is with great interest that I submit my application and would like to briefly introduce myself.",
+      "placeholder": "Your personal request goes here – written individually for you."
     },
     "items": {
       "ausserterminliche-kuendigung": {

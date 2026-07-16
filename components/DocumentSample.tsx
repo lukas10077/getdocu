@@ -15,6 +15,10 @@ interface SampleDict {
   benefit2?: string;
   benefit3?: string;
   caption?: string;
+  bodyCancel?: string;
+  bodyComplaint?: string;
+  bodyApply?: string;
+  placeholder?: string;
 }
 
 const FALLBACK: Required<SampleDict> = {
@@ -23,13 +27,26 @@ const FALLBACK: Required<SampleDict> = {
   salutation: "Sehr geehrte Damen und Herren",
   closing: "Freundliche Grüsse",
   benefit1: "Sauberes, professionelles Layout",
-  benefit2: "Korrekte Anrede & Betreff",
+  benefit2: "Korrekte Anrede und Betreff",
   benefit3: "Als PDF zum Herunterladen",
   caption: "Vorschau gratis · Erst zahlen, wenn du zufrieden bist",
+  bodyCancel: "Hiermit kündige ich meinen Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin.",
+  bodyComplaint: "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",
+  bodyApply: "Mit grossem Interesse bewerbe ich mich bei Ihnen und stelle mich Ihnen gerne kurz vor.",
+  placeholder: "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
 };
 
 // Tools ohne klassisches Anschreiben (Lebenslauf-artig) bekommen ein CV-Skelett.
 const CV_SLUGS = new Set(["lebenslauf", "arbeitszeugnis"]);
+// Ordnet jedem Brief-Tool einen passenden echten Einleitungssatz zu.
+const COMPLAINT_SLUGS = new Set(["reklamation", "maengelruege"]);
+const APPLY_SLUGS = new Set(["mietbewerbung", "jobbewerbung", "komplettbewerbung"]);
+
+function openingFor(slug: string, s: Required<SampleDict>): string {
+  if (COMPLAINT_SLUGS.has(slug)) return s.bodyComplaint;
+  if (APPLY_SLUGS.has(slug)) return s.bodyApply;
+  return s.bodyCancel;
+}
 
 const PAPER = "#FBFAF7";
 const BAR = "#E7E3DA";
@@ -57,6 +74,7 @@ export default function DocumentSample({
   const s: Required<SampleDict> = { ...FALLBACK, ...(dict?.tools?.sampleDoc ?? {}) };
   const subject = dict?.tools?.items?.[tool.slug]?.title ?? tool.documentTitleDe;
   const isCv = CV_SLUGS.has(tool.slug);
+  const opening = openingFor(tool.slug, s);
 
   const recipientName = prefill?.recipientName;
   const recipientLines = prefill?.recipientAddress
@@ -129,14 +147,24 @@ export default function DocumentSample({
             </p>
 
             {/* Anrede (übersetzt) */}
-            <p style={{ color: INK, fontSize: 12, lineHeight: 1.7, margin: "0 0 12px" }}>{s.salutation}</p>
+            <p style={{ color: INK, fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" }}>{s.salutation}</p>
 
-            {/* Fliesstext-Skelett */}
+            {/* Ein echter, überzeugender Einleitungssatz (pro Tool-Typ) */}
+            <p style={{ color: INK, fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" }}>{opening}</p>
+
+            {/* Hervorgehobene Platzhalter-Zeile: zeigt die Individualisierung */}
+            <div
+              className="flex items-center gap-2"
+              style={{ backgroundColor: "#FBF0D5", borderRadius: 5, padding: "8px 10px", margin: "0 0 12px" }}
+            >
+              <span style={{ color: "#B07E12", fontSize: 12 }}>✎</span>
+              <span style={{ color: "#8A6410", fontSize: 12, lineHeight: 1.5, fontStyle: "italic" }}>{s.placeholder}</span>
+            </div>
+
+            {/* Angedeuteter Rest (Skelett) – verhindert vollständiges Abschreiben */}
             <div className="space-y-2">
-              <Bar w="96%" />
-              <Bar w="100%" />
-              <Bar w="88%" />
-              <Bar w="72%" soft />
+              <Bar w="84%" soft />
+              <Bar w="60%" soft />
             </div>
 
             {/* Gruss + Signatur (übersetzt) */}

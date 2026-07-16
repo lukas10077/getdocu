@@ -44,7 +44,11 @@
       "benefit1": "Čist i profesionalan izgled",
       "benefit2": "Tačno oslovljavanje i naslov",
       "benefit3": "Preuzimanje u PDF-u",
-      "caption": "Besplatan pregled · Plaćate samo kada ste zadovoljni"
+      "caption": "Besplatan pregled · Plaćate samo kada ste zadovoljni",
+      "bodyCancel": "Ovim putem otkazujem svoj ugovor uredno i u skladu sa otkaznim rokom.",
+      "bodyComplaint": "Ovim putem podnosim reklamaciju u vezi sa dole opisanim slučajem i molim za brzo rešenje.",
+      "bodyApply": "Sa velikim interesovanjem podnosim svoju prijavu i želeo bih ukratko da se predstavim.",
+      "placeholder": "Ovde stoji vaš lični zahtev – napisan individualno za vas."
     },
     "items": {
       "ausserterminliche-kuendigung": {

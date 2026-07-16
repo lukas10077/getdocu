@@ -44,7 +44,11 @@
       "benefit1": "Mise en page soignée et professionnelle",
       "benefit2": "Formule d'appel et objet corrects",
       "benefit3": "Téléchargement en PDF",
-      "caption": "Aperçu gratuit · Payez seulement si vous êtes satisfait"
+      "caption": "Aperçu gratuit · Payez seulement si vous êtes satisfait",
+      "bodyCancel": "Par la présente, je résilie mon contrat en bonne et due forme, dans le respect du délai de préavis.",
+      "bodyComplaint": "Par la présente, je vous adresse une réclamation concernant le point décrit ci-dessous et vous prie d'y remédier rapidement.",
+      "bodyApply": "C'est avec grand intérêt que je vous adresse ma candidature et me permets de me présenter brièvement.",
+      "placeholder": "Votre demande personnelle apparaît ici – rédigée individuellement pour vous."
     },
     "items": {
       "ausserterminliche-kuendigung": {

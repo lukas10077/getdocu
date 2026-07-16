@@ -44,7 +44,11 @@
       "benefit1": "Temiz, profesyonel düzen",
       "benefit2": "Doğru hitap ve konu satırı",
       "benefit3": "PDF olarak indir",
-      "caption": "Ücretsiz önizleme · Yalnızca memnun kaldığınızda ödeyin"
+      "caption": "Ücretsiz önizleme · Yalnızca memnun kaldığınızda ödeyin",
+      "bodyCancel": "İşbu yazı ile sözleşmemi usulüne uygun olarak ve ihbar süresine uyarak feshediyorum.",
+      "bodyComplaint": "İşbu yazı ile aşağıda açıklanan konuyla ilgili şikâyetimi iletiyor ve en kısa sürede çözüm rica ediyorum.",
+      "bodyApply": "Büyük bir ilgiyle başvurumu sunuyor ve kendimi kısaca tanıtmak istiyorum.",
+      "placeholder": "Kişisel talebiniz burada yer alır – size özel olarak yazılır."
     },
     "items": {
       "ausserterminliche-kuendigung": {

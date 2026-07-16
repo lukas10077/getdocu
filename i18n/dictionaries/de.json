@@ -42,7 +42,11 @@
       "benefit1": "Sauberes, professionelles Layout",
       "benefit2": "Korrekte Anrede und Betreff",
       "benefit3": "Als PDF zum Herunterladen",
-      "caption": "Vorschau gratis · Erst zahlen, wenn du zufrieden bist"
+      "caption": "Vorschau gratis · Erst zahlen, wenn du zufrieden bist",
+      "bodyCancel": "Hiermit kündige ich meinen Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin.",
+      "bodyComplaint": "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",
+      "bodyApply": "Mit grossem Interesse bewerbe ich mich bei Ihnen und stelle mich Ihnen gerne kurz vor.",
+      "placeholder": "Hier steht dein persönliches Anliegen – individuell für dich formuliert."
     },
     "items": {
       "mietbewerbung": {

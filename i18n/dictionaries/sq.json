@@ -44,7 +44,11 @@
       "benefit1": "Faqosje e pastër dhe profesionale",
       "benefit2": "Përshëndetje dhe subjekt të saktë",
       "benefit3": "Shkarko si PDF",
-      "caption": "Pamje paraprake falas · Paguan vetëm kur je i kënaqur"
+      "caption": "Pamje paraprake falas · Paguan vetëm kur je i kënaqur",
+      "bodyCancel": "Me këtë shkresë e anuloj kontratën time në mënyrë të rregullt dhe brenda afatit të njoftimit.",
+      "bodyComplaint": "Me këtë shkresë paraqes një ankesë për çështjen e përshkruar më poshtë dhe kërkoj një zgjidhje të shpejtë.",
+      "bodyApply": "Me shumë interes paraqes kandidaturën time dhe dëshiroj të prezantohem shkurt.",
+      "placeholder": "Këtu shfaqet kërkesa jote personale – e formuluar posaçërisht për ty."
     },
     "items": {
       "ausserterminliche-kuendigung": {
