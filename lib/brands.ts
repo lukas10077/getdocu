@@ -433,6 +433,121 @@ export const brands: Record<string, Brand> = {
     defaultNoticePeriod: "2 Monate",
     sourceNote: "Angaben Stand 2026. Dein genaues Vertragsende steht in deinen Unterlagen.",
   },
+
+  allianz: {
+    slug: "allianz",
+    name: "Allianz",
+    category: "Versicherung",
+    countryCode: "DE",
+    intro:
+      "Du willst deine Allianz-Versicherung kündigen? Hier findest du die Frist, die Kündigungsadresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Kfz-Versicherung: 1 Monat zum Ende des Versicherungsjahres (meist 30. November). Andere Sparten: oft 3 Monate vor Ablauf. Bei Beitragserhöhung, Schadenfall oder Fahrzeugwechsel besteht ein Sonderkündigungsrecht mit 1 Monat Frist.",
+    address: ["Allianz Versicherungs-AG", "Kundenbetreuung", "10900 Berlin"],
+    facts: [
+      "Kündige schriftlich per Brief (Einschreiben empfohlen) oder per E-Mail an sachversicherung@allianz.de.",
+      "Gib deine Versicherungsscheinnummer und die genaue Versicherungsart an, damit die Kündigung korrekt zugeordnet wird.",
+      "Massgebend ist der Zugang bei der Allianz, nicht der Poststempel.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat die Allianz?", a: "Kfz-Versicherung 1 Monat zum Ende des Versicherungsjahres (meist 30. November), andere Sparten oft 3 Monate vor Ablauf." },
+      { q: "Wohin schicke ich die Allianz-Kündigung?", a: "An Allianz Versicherungs-AG, Kundenbetreuung, 10900 Berlin — oder per E-Mail an sachversicherung@allianz.de." },
+      { q: "Kann ich nach einem Schadenfall sofort kündigen?", a: "Ja. Nach einem Schadenfall, bei Beitragserhöhung oder Fahrzeugwechsel hast du ein Sonderkündigungsrecht mit 1 Monat Frist." },
+    ],
+    sourceNote: "Angaben Stand 2026. Frist je nach Sparte unterschiedlich — im Zweifel Police prüfen.",
+  },
+
+  axa: {
+    slug: "axa",
+    name: "AXA",
+    category: "Versicherung",
+    countryCode: "DE",
+    intro:
+      "Du willst deine AXA-Versicherung kündigen? Hier findest du die Frist, die Kündigungsadresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Bei Verträgen mit mehr als einem Jahr Laufzeit meist 3 Monate zum Ende der Vertragslaufzeit. Kfz-Versicherung: 1 Monat zum Ende des Versicherungsjahres. Bei Beitragserhöhung oder Schadenfall besteht ein Sonderkündigungsrecht.",
+    address: ["AXA Versicherung AG", "Kundenbetreuung", "51171 Köln"],
+    facts: [
+      "Kündige schriftlich per Brief (Einschreiben empfohlen) oder per E-Mail an service@axa.de — mit Unterschrift.",
+      "Gib deine Versicherungsscheinnummer und die Versicherungsart an.",
+      "Massgebend ist der Zugang bei der AXA, nicht der Poststempel.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat die AXA?", a: "Bei Verträgen über einem Jahr meist 3 Monate zum Ende der Laufzeit; Kfz-Versicherung 1 Monat zum Ende des Versicherungsjahres." },
+      { q: "Wohin schicke ich die AXA-Kündigung?", a: "An AXA Versicherung AG, Kundenbetreuung, 51171 Köln — oder per E-Mail an service@axa.de." },
+      { q: "Muss die Kündigung schriftlich sein?", a: "Ja, per Brief oder E-Mail mit Unterschrift. Ein Einschreiben ist der sicherste Nachweis." },
+    ],
+    sourceNote: "Angaben Stand 2026. Frist je nach Sparte unterschiedlich — im Zweifel Police prüfen.",
+  },
+
+  ergo: {
+    slug: "ergo",
+    name: "ERGO",
+    category: "Versicherung",
+    countryCode: "DE",
+    intro:
+      "Du willst deine ERGO-Versicherung kündigen? Hier findest du die Frist, die Kündigungsadresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Kfz- und Lebensversicherung: 1 Monat zum Ende des Versicherungsjahres. Haftpflicht, Hausrat und weitere Sparten: 3 Monate vor Ablauf. Eine Kündigung in Textform (Brief oder E-Mail) genügt.",
+    address: ["ERGO Versicherung AG", "ERGO-Platz 1", "40477 Düsseldorf"],
+    facts: [
+      "Eine Kündigung in Textform reicht — per Brief oder per E-Mail an service@ergo.de. Wichtig ist, dass du als Absender erkennbar bist.",
+      "Gib deine Versicherungsscheinnummer und die Versicherungsart an.",
+      "Massgebend ist der Zugang bei der ERGO, nicht der Poststempel.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat die ERGO?", a: "Kfz und Leben 1 Monat zum Ende des Versicherungsjahres; Haftpflicht, Hausrat und weitere Sparten 3 Monate vor Ablauf." },
+      { q: "Wohin schicke ich die ERGO-Kündigung?", a: "An ERGO Versicherung AG, ERGO-Platz 1, 40477 Düsseldorf — oder per E-Mail an service@ergo.de." },
+      { q: "Reicht eine Kündigung per E-Mail?", a: "Ja, ERGO akzeptiert die Textform. Für einen Zustellnachweis ist ein Einschreiben dennoch sicherer." },
+    ],
+    sourceNote: "Angaben Stand 2026. Frist je nach Sparte unterschiedlich — im Zweifel Police prüfen.",
+  },
+
+  devk: {
+    slug: "devk",
+    name: "DEVK",
+    category: "Versicherung",
+    countryCode: "DE",
+    intro:
+      "Du willst deine DEVK-Versicherung kündigen? Hier findest du die Frist, die Kündigungsadresse und wie du in wenigen Minuten ein rechtssicheres Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Kfz-Versicherung: 1 Monat zum Ende des Versicherungsjahres (meist 30. November). Andere Sparten: 3 Monate vor Ablauf. Eine Kündigung in Textform (Brief, Fax oder E-Mail) genügt.",
+    address: ["DEVK Versicherungen", "Riehler Straße 190", "50735 Köln"],
+    facts: [
+      "Kündige in Textform per Brief (Einschreiben empfohlen), Fax oder E-Mail an info@devk.de.",
+      "Gib deine Versicherungsscheinnummer und die Versicherungsart an.",
+      "Massgebend ist der Zugang bei der DEVK, nicht der Poststempel.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat die DEVK?", a: "Kfz-Versicherung 1 Monat zum Ende des Versicherungsjahres (meist 30. November); andere Sparten 3 Monate vor Ablauf." },
+      { q: "Wohin schicke ich die DEVK-Kündigung?", a: "An DEVK Versicherungen, Riehler Straße 190, 50735 Köln — oder per E-Mail an info@devk.de." },
+      { q: "In welcher Form muss ich kündigen?", a: "In Textform — per Brief, Fax oder E-Mail. Ein Einschreiben liefert den sichersten Zustellnachweis." },
+    ],
+    sourceNote: "Angaben Stand 2026. Frist je nach Sparte unterschiedlich — im Zweifel Police prüfen.",
+  },
+
+  "die-mobiliar": {
+    slug: "die-mobiliar",
+    name: "Die Mobiliar",
+    category: "Versicherung",
+    countryCode: "CH",
+    intro:
+      "Du willst deine Versicherung bei der Mobiliar kündigen? Hier findest du die Frist, die Kündigungsadresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Je nach Vertrag 1 bis 3 Monate zum Vertragsende — die genaue Frist steht in deiner Police bzw. den Allgemeinen Versicherungsbedingungen (AVB). Nach einem Schadenfall besteht oft ein Sonderkündigungsrecht.",
+    address: ["Schweizerische Mobiliar Versicherungsgesellschaft AG", "Bundesgasse 35", "3001 Bern"],
+    facts: [
+      "Kündige schriftlich per eingeschriebenem Brief — das dokumentiert den Zugang nachweisbar.",
+      "Massgebend ist der Zugang bei der Mobiliar, nicht der Poststempel. Das Risiko einer verspäteten Zustellung trägt der Absender.",
+      "Bitte im Schreiben um eine schriftliche Bestätigung und bewahre die Postquittung auf, bis diese eintrifft.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat die Mobiliar?", a: "Je nach Vertrag 1 bis 3 Monate zum Vertragsende. Die genaue Frist steht in deiner Police bzw. den AVB." },
+      { q: "Wohin schicke ich die Mobiliar-Kündigung?", a: "An Schweizerische Mobiliar Versicherungsgesellschaft AG, Bundesgasse 35, 3001 Bern — am besten per Einschreiben." },
+      { q: "Kann ich nach einem Schadenfall kündigen?", a: "Ja, nach einem Schadenfall besteht in der Regel ein Sonderkündigungsrecht. Die Details stehen in deinen AVB." },
+    ],
+    sourceNote: "Angaben Stand 2026. Deine genaue Frist steht in deiner Police bzw. den AVB.",
+  },
 };
 
 export const allBrandSlugs: string[] = Object.keys(brands);
