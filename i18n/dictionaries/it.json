@@ -58,9 +58,15 @@
       "subjectJobCancel": "Dimissioni dal mio posto di lavoro",
       "subjectDefect": "Difetti nel mio appartamento",
       "subjectWithdraw": "Recesso dal mio contratto",
-      "bodyWithdraw": "Con la presente recedo dal mio contratto o dal mio ordine entro il termine previsto."
+      "bodyWithdraw": "Con la presente recedo dal mio contratto o dal mio ordine entro il termine previsto.",
+      "subjectObjection": "Opposizione al vostro provvedimento",
+      "bodyObjection": "Con la presente presento opposizione, nei termini, contro il provvedimento sopra indicato."
     },
     "items": {
+      "widerspruch": {
+        "title": "Opposizione",
+        "description": "Ti aiutiamo a presentare opposizione a un provvedimento nei termini."
+      },
       "widerruf": {
         "title": "Recesso",
         "description": "Ti aiutiamo a recedere da un acquisto o da un contratto nei termini."
@@ -232,6 +238,8 @@
     "concernDetails": "Descrivi la tua richiesta nel modo più preciso possibile."
   },
   "fieldLabels": {
+    "bescheidDate": "Data del provvedimento",
+    "bescheidRef": "Riferimento / numero di pratica",
     "moveOutDate": "Data di riconsegna desiderata",
     "successorName": "Nome del subentrante (facoltativo)",
     "successorAddress": "Indirizzo del subentrante (facoltativo)",

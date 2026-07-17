@@ -19,6 +19,7 @@ interface SampleDict {
   bodyComplaint?: string;
   bodyApply?: string;
   bodyWithdraw?: string;
+  bodyObjection?: string;
   body2?: string;
   placeholder?: string;
   subjectCancel?: string;
@@ -29,6 +30,7 @@ interface SampleDict {
   subjectApply?: string;
   subjectApplyHome?: string;
   subjectWithdraw?: string;
+  subjectObjection?: string;
 }
 
 const FALLBACK: Required<SampleDict> = {
@@ -44,6 +46,7 @@ const FALLBACK: Required<SampleDict> = {
   bodyComplaint: "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",
   bodyApply: "Mit grossem Interesse bewerbe ich mich bei Ihnen und stelle mich Ihnen gerne kurz vor.",
   bodyWithdraw: "Hiermit widerrufe ich meinen Vertrag beziehungsweise meine Bestellung fristgerecht.",
+  bodyObjection: "Hiermit lege ich fristwahrend Widerspruch gegen den oben genannten Bescheid ein.",
   body2: "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
   placeholder: "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
   subjectCancel: "Kündigung meines Vertrags",
@@ -54,6 +57,7 @@ const FALLBACK: Required<SampleDict> = {
   subjectApply: "Bewerbung um Ihre Stelle",
   subjectApplyHome: "Bewerbung um Ihre Wohnung",
   subjectWithdraw: "Widerruf meines Vertrags",
+  subjectObjection: "Widerspruch gegen Ihren Bescheid",
 };
 
 // Tools ohne klassisches Anschreiben (Lebenslauf-artig) bekommen ein CV-Skelett.
@@ -64,6 +68,7 @@ const APPLY_SLUGS = new Set(["mietbewerbung", "jobbewerbung", "komplettbewerbung
 
 function openingFor(slug: string, s: Required<SampleDict>): string {
   if (slug === "widerruf") return s.bodyWithdraw;
+  if (slug === "widerspruch") return s.bodyObjection;
   if (COMPLAINT_SLUGS.has(slug)) return s.bodyComplaint;
   if (APPLY_SLUGS.has(slug)) return s.bodyApply;
   return s.bodyCancel;
@@ -73,6 +78,8 @@ function subjectFor(slug: string, s: Required<SampleDict>): string {
   switch (slug) {
     case "widerruf":
       return s.subjectWithdraw;
+    case "widerspruch":
+      return s.subjectObjection;
     case "mietbewerbung":
       return s.subjectApplyHome;
     case "jobbewerbung":

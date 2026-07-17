@@ -58,9 +58,15 @@
       "subjectJobCancel": "İş sözleşmemin feshi",
       "subjectDefect": "Dairemdeki kusurlar",
       "subjectWithdraw": "Sözleşmemden cayma",
-      "bodyWithdraw": "İşbu yazı ile sözleşmemden veya siparişimden süresi içinde cayıyorum."
+      "bodyWithdraw": "İşbu yazı ile sözleşmemden veya siparişimden süresi içinde cayıyorum.",
+      "subjectObjection": "Kararınıza itiraz",
+      "bodyObjection": "İşbu yazı ile yukarıda belirtilen karara süresi içinde itiraz ediyorum."
     },
     "items": {
+      "widerspruch": {
+        "title": "İtiraz",
+        "description": "Bir karara süresi içinde itiraz etmene yardımcı oluruz."
+      },
       "widerruf": {
         "title": "Cayma hakkı",
         "description": "Bir alışverişten veya sözleşmeden süresi içinde caymana yardımcı oluruz."
@@ -232,6 +238,8 @@
     "concernDetails": "Talebinizi mümkün olduğunca kesin bir şekilde açıklayın."
   },
   "fieldLabels": {
+    "bescheidDate": "Kararın tarihi",
+    "bescheidRef": "Dosya / referans numarası",
     "moveOutDate": "İstenen teslim tarihi",
     "successorName": "Yeni kiracının adı (isteğe bağlı)",
     "successorAddress": "Yeni kiracının adresi (isteğe bağlı)",

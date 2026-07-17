@@ -58,9 +58,15 @@
       "subjectJobCancel": "Resignation from my position",
       "subjectDefect": "Defects in my apartment",
       "subjectWithdraw": "Withdrawal from my contract",
-      "bodyWithdraw": "I hereby withdraw from my contract or order within the applicable period."
+      "bodyWithdraw": "I hereby withdraw from my contract or order within the applicable period.",
+      "subjectObjection": "Objection to your decision",
+      "bodyObjection": "I hereby file a timely objection against the decision referred to above."
     },
     "items": {
+      "widerspruch": {
+        "title": "Formal objection",
+        "description": "We help you file a timely objection against an official decision."
+      },
       "widerruf": {
         "title": "Right of withdrawal",
         "description": "We help you withdraw from a purchase or contract in time."
@@ -232,6 +238,8 @@
     "concernDetails": "Describe your concern as precisely as possible."
   },
   "fieldLabels": {
+    "bescheidDate": "Date of the decision",
+    "bescheidRef": "Reference / case number",
     "moveOutDate": "Requested move-out date",
     "successorName": "Successor tenant name (optional)",
     "successorAddress": "Successor tenant address (optional)",

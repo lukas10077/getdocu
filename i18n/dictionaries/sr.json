@@ -58,9 +58,15 @@
       "subjectJobCancel": "Otkaz mog radnog odnosa",
       "subjectDefect": "Nedostaci u mom stanu",
       "subjectWithdraw": "Odustanak od mog ugovora",
-      "bodyWithdraw": "Ovim putem odustajem od svog ugovora ili porudžbine u predviđenom roku."
+      "bodyWithdraw": "Ovim putem odustajem od svog ugovora ili porudžbine u predviđenom roku.",
+      "subjectObjection": "Prigovor na vaše rešenje",
+      "bodyObjection": "Ovim putem blagovremeno podnosim prigovor na gore navedeno rešenje."
     },
     "items": {
+      "widerspruch": {
+        "title": "Prigovor",
+        "description": "Pomažemo ti da na vreme podneseš prigovor na rešenje."
+      },
       "widerruf": {
         "title": "Odustanak od ugovora",
         "description": "Pomažemo ti da odustaneš od kupovine ili ugovora na vreme."
@@ -232,6 +238,8 @@
     "concernDetails": "Opišite vaš zahtev što preciznije moguće."
   },
   "fieldLabels": {
+    "bescheidDate": "Datum rešenja",
+    "bescheidRef": "Broj predmeta / referenca",
     "moveOutDate": "Željeni datum predaje",
     "successorName": "Ime zamenskog stanara (opciono)",
     "successorAddress": "Adresa zamenskog stanara (opciono)",

@@ -58,9 +58,15 @@
       "subjectJobCancel": "Démission de mon poste",
       "subjectDefect": "Défauts dans mon logement",
       "subjectWithdraw": "Rétractation de mon contrat",
-      "bodyWithdraw": "Par la présente, je me rétracte de mon contrat ou de ma commande dans le délai imparti."
+      "bodyWithdraw": "Par la présente, je me rétracte de mon contrat ou de ma commande dans le délai imparti.",
+      "subjectObjection": "Opposition à votre décision",
+      "bodyObjection": "Par la présente, je forme opposition, dans les délais, contre la décision mentionnée ci-dessus."
     },
     "items": {
+      "widerspruch": {
+        "title": "Opposition",
+        "description": "Nous vous aidons à former opposition contre une décision dans les délais."
+      },
       "widerruf": {
         "title": "Rétractation",
         "description": "Nous vous aidons à vous rétracter d'un achat ou d'un contrat dans les délais."
@@ -232,6 +238,8 @@
     "concernDetails": "Décrivez votre demande aussi précisément que possible."
   },
   "fieldLabels": {
+    "bescheidDate": "Date de la décision",
+    "bescheidRef": "Référence / numéro de dossier",
     "moveOutDate": "Date de restitution souhaitée",
     "successorName": "Nom du locataire de remplacement (facultatif)",
     "successorAddress": "Adresse du locataire de remplacement (facultatif)",

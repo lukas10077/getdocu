@@ -58,9 +58,15 @@
       "subjectJobCancel": "Dorëheqje nga vendi im i punës",
       "subjectDefect": "Të meta në banesën time",
       "subjectWithdraw": "Tërheqje nga kontrata ime",
-      "bodyWithdraw": "Me këtë shkresë tërhiqem nga kontrata ose porosia ime brenda afatit të parashikuar."
+      "bodyWithdraw": "Me këtë shkresë tërhiqem nga kontrata ose porosia ime brenda afatit të parashikuar.",
+      "subjectObjection": "Kundërshtim ndaj vendimit tuaj",
+      "bodyObjection": "Me këtë shkresë paraqes kundërshtim, brenda afatit, ndaj vendimit të lartpërmendur."
     },
     "items": {
+      "widerspruch": {
+        "title": "Kundërshtim",
+        "description": "Të ndihmojmë të paraqesësh kundërshtim ndaj një vendimi brenda afatit."
+      },
       "widerruf": {
         "title": "Tërheqje nga kontrata",
         "description": "Të ndihmojmë të tërhiqesh nga një blerje ose kontratë brenda afatit."
@@ -232,6 +238,8 @@
     "concernDetails": "Përshkruani kërkesën tuaj sa më saktë të jetë e mundur."
   },
   "fieldLabels": {
+    "bescheidDate": "Data e vendimit",
+    "bescheidRef": "Numri i referencës / dosjes",
     "moveOutDate": "Data e dëshiruar e dorëzimit",
     "successorName": "Emri i qiramarrësit zëvendësues (opsionale)",
     "successorAddress": "Adresa e qiramarrësit zëvendësues (opsionale)",

@@ -56,9 +56,15 @@
       "subjectJobCancel": "Kündigung meines Arbeitsvertrags",
       "subjectDefect": "Mängel in meiner Wohnung",
       "subjectWithdraw": "Widerruf meines Vertrags",
-      "bodyWithdraw": "Hiermit widerrufe ich meinen Vertrag beziehungsweise meine Bestellung fristgerecht."
+      "bodyWithdraw": "Hiermit widerrufe ich meinen Vertrag beziehungsweise meine Bestellung fristgerecht.",
+      "subjectObjection": "Widerspruch gegen Ihren Bescheid",
+      "bodyObjection": "Hiermit lege ich fristwahrend Widerspruch gegen den oben genannten Bescheid ein."
     },
     "items": {
+      "widerspruch": {
+        "title": "Widerspruch",
+        "description": "Wir helfen dir, fristwahrend Widerspruch gegen einen Bescheid einzulegen."
+      },
       "widerruf": {
         "title": "Widerruf",
         "description": "Wir helfen dir, einen Kauf oder Vertrag fristgerecht zu widerrufen."
@@ -208,6 +214,8 @@
     "concernDetails": "Beschreibe dein Anliegen so präzise wie möglich."
   },
   "fieldLabels": {
+    "bescheidDate": "Datum des Bescheids",
+    "bescheidRef": "Aktenzeichen / Geschäftszeichen",
     "firstName": "Vorname",
     "lastName": "Nachname",
     "birthDate": "Geburtsdatum",

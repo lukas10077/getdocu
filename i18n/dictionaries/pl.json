@@ -58,9 +58,15 @@
       "subjectJobCancel": "Wypowiedzenie umowy o pracę",
       "subjectDefect": "Wady w moim mieszkaniu",
       "subjectWithdraw": "Odstąpienie od mojej umowy",
-      "bodyWithdraw": "Niniejszym odstępuję od mojej umowy lub zamówienia w obowiązującym terminie."
+      "bodyWithdraw": "Niniejszym odstępuję od mojej umowy lub zamówienia w obowiązującym terminie.",
+      "subjectObjection": "Odwołanie od Państwa decyzji",
+      "bodyObjection": "Niniejszym składam w terminie odwołanie od wskazanej powyżej decyzji."
     },
     "items": {
+      "widerspruch": {
+        "title": "Odwołanie",
+        "description": "Pomożemy Ci złożyć odwołanie od decyzji w terminie."
+      },
       "widerruf": {
         "title": "Odstąpienie od umowy",
         "description": "Pomożemy Ci odstąpić od zakupu lub umowy w terminie."
@@ -232,6 +238,8 @@
     "concernDetails": "Opisz swoje życzenie jak najdokładniej."
   },
   "fieldLabels": {
+    "bescheidDate": "Data decyzji",
+    "bescheidRef": "Sygnatura / numer sprawy",
     "moveOutDate": "Żądana data zwrotu lokalu",
     "successorName": "Imię i nazwisko następcy (opcjonalnie)",
     "successorAddress": "Adres następcy (opcjonalnie)",

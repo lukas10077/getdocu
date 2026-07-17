@@ -58,9 +58,15 @@
       "subjectJobCancel": "Munkaviszonyom felmondása",
       "subjectDefect": "Hibák a lakásomban",
       "subjectWithdraw": "Elállás a szerződésemtől",
-      "bodyWithdraw": "Ezúton elállok a szerződésemtől vagy megrendelésemtől a rendelkezésre álló határidőn belül."
+      "bodyWithdraw": "Ezúton elállok a szerződésemtől vagy megrendelésemtől a rendelkezésre álló határidőn belül.",
+      "subjectObjection": "Kifogás a határozatuk ellen",
+      "bodyObjection": "Ezúton határidőn belül kifogást nyújtok be a fent megjelölt határozat ellen."
     },
     "items": {
+      "widerspruch": {
+        "title": "Kifogás",
+        "description": "Segítünk határidőn belül kifogást benyújtani egy határozat ellen."
+      },
       "widerruf": {
         "title": "Elállás",
         "description": "Segítünk határidőn belül elállni egy vásárlástól vagy szerződéstől."
@@ -232,6 +238,8 @@
     "concernDetails": "Írja le kérelmét a lehető legpontosabban."
   },
   "fieldLabels": {
+    "bescheidDate": "A határozat dátuma",
+    "bescheidRef": "Ügyszám / hivatkozási szám",
     "moveOutDate": "Kívánt átadási dátum",
     "successorName": "Utódbérlő neve (opcionális)",
     "successorAddress": "Utódbérlő címe (opcionális)",

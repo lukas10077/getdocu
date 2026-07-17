@@ -14,7 +14,8 @@ export type ToolSlug =
   | "komplettbewerbung"
   | "kuendigung"
   | "reklamation"
-  | "widerruf";
+  | "widerruf"
+  | "widerspruch";
 
 export interface FieldDef {
   key: string;
@@ -554,6 +555,37 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     ],
   },
 
+  widerspruch: {
+    slug: "widerspruch",
+    priceChfRappen: 500,
+    documentTitleDe: "Widerspruch",
+    descriptionDe:
+      "Widerspruch gegen einen Bescheid — fristwahrend eingelegt, damit dein Anspruch nicht verfällt.",
+    systemPrompt:
+      "Du bist Experte für formelle Behördenkorrespondenz. Erstelle ein formell korrektes, " +
+      "FRISTWAHRENDES Widerspruchsschreiben auf Deutsch gegen einen Bescheid. " +
+      "STRUKTUR: vollständiger Absender, Empfänger (Behörde/Stelle), Ort und Datum, Betreff mit klarer " +
+      "Nennung des Widerspruchs, dem Datum des Bescheids und — falls vorhanden — dem Aktenzeichen, " +
+      "dann der Text. " +
+      "INHALT: (1) Erkläre klar und unmissverständlich, dass gegen den genannten Bescheid Widerspruch " +
+      "eingelegt wird. (2) Nenne das Datum des Bescheids und, sofern angegeben, das Aktenzeichen zur " +
+      "eindeutigen Zuordnung. (3) Halte fest, dass die ausführliche Begründung nachgereicht wird. " +
+      "(4) Bitte um eine schriftliche Eingangsbestätigung. Höflicher, sachlicher Abschluss. " +
+      "ZWINGEND EINHALTEN: Formuliere KEINE juristische Begründung, KEINE Argumente, warum der Bescheid " +
+      "falsch sei, und bewerte den Sachverhalt NICHT. Das Schreiben dient ausschliesslich der Fristwahrung. " +
+      "Zitiere KEINE Gesetzesartikel und behaupte KEINE konkreten Fristen — das ist keine Rechtsberatung. " +
+      "Verwende KEINE Platzhalter in Klammern; lasse fehlende Angaben einfach weg.",
+    fields: [
+      { key: "firstName",        label: "Vorname",                         type: "text",     required: true,  section: "Deine Angaben" },
+      { key: "lastName",         label: "Nachname",                        type: "text",     required: true  },
+      { key: "currentAddress",   label: "Deine Adresse",                   type: "address",  required: true  },
+      { key: "recipientName",    label: "Name der Behörde / Stelle",       type: "text",     required: true,  section: "Empfänger" },
+      { key: "recipientAddress", label: "Adresse des Empfängers",          type: "textarea", required: true  },
+      { key: "bescheidDate",     label: "Datum des Bescheids",             type: "date",     required: true  },
+      { key: "bescheidRef",      label: "Aktenzeichen / Geschäftszeichen", type: "text",     required: false, placeholderKey: "fallsAvailable" },
+    ],
+  },
+
 };
 
 export function getTool(slug: string): ToolDefinition | undefined {
@@ -568,7 +600,8 @@ export const allToolSlugs: ToolSlug[] = Object.keys(tools) as ToolSlug[];
 export const RELATED_TOOLS: Partial<Record<ToolSlug, ToolSlug[]>> = {
   kuendigung:                     ["widerruf", "reklamation"],
   widerruf:                       ["reklamation", "kuendigung"],
-  reklamation:                    ["widerruf", "kuendigung"],
+  reklamation:                    ["widerruf", "widerspruch"],
+  widerspruch:                    ["reklamation", "kuendigung"],
   "kuendigung-wohnung":           ["ausserterminliche-kuendigung", "maengelruege"],
   "ausserterminliche-kuendigung": ["kuendigung-wohnung", "maengelruege"],
   "ausserordentliche-kuendigung": ["maengelruege", "kuendigung-wohnung"],
@@ -590,5 +623,5 @@ export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
   { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "ausserterminliche-kuendigung", "ausserordentliche-kuendigung", "maengelruege"] },
   { key: "arbeit", slugs: ["komplettbewerbung", "jobbewerbung", "lebenslauf", "kuendigung-arbeit", "arbeitszeugnis"] },
-  { key: "alltag", slugs: ["kuendigung", "reklamation", "widerruf"] },
+  { key: "alltag", slugs: ["kuendigung", "reklamation", "widerruf", "widerspruch"] },
 ];

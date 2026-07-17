@@ -58,9 +58,15 @@
       "subjectJobCancel": "Renuncia a mi puesto de trabajo",
       "subjectDefect": "Defectos en mi vivienda",
       "subjectWithdraw": "Desistimiento de mi contrato",
-      "bodyWithdraw": "Por la presente, desisto de mi contrato o pedido dentro del plazo previsto."
+      "bodyWithdraw": "Por la presente, desisto de mi contrato o pedido dentro del plazo previsto.",
+      "subjectObjection": "Recurso contra su resolución",
+      "bodyObjection": "Por la presente, presento recurso, dentro del plazo, contra la resolución arriba indicada."
     },
     "items": {
+      "widerspruch": {
+        "title": "Recurso",
+        "description": "Te ayudamos a presentar un recurso contra una resolución dentro del plazo."
+      },
       "widerruf": {
         "title": "Desistimiento",
         "description": "Te ayudamos a desistir de una compra o contrato dentro del plazo."
@@ -232,6 +238,8 @@
     "concernDetails": "Describe tu solicitud de la manera más precisa posible."
   },
   "fieldLabels": {
+    "bescheidDate": "Fecha de la resolución",
+    "bescheidRef": "Referencia / número de expediente",
     "moveOutDate": "Fecha de entrega deseada",
     "successorName": "Nombre del inquilino de reemplazo (opcional)",
     "successorAddress": "Dirección del inquilino de reemplazo (opcional)",

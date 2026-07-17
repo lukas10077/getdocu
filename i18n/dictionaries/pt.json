@@ -58,9 +58,15 @@
       "subjectJobCancel": "Demissão do meu posto de trabalho",
       "subjectDefect": "Defeitos no meu apartamento",
       "subjectWithdraw": "Retratação do meu contrato",
-      "bodyWithdraw": "Pela presente, retrato-me do meu contrato ou da minha encomenda dentro do prazo."
+      "bodyWithdraw": "Pela presente, retrato-me do meu contrato ou da minha encomenda dentro do prazo.",
+      "subjectObjection": "Reclamação da vossa decisão",
+      "bodyObjection": "Pela presente, apresento reclamação, dentro do prazo, contra a decisão acima referida."
     },
     "items": {
+      "widerspruch": {
+        "title": "Reclamação",
+        "description": "Ajudamos-te a apresentar reclamação contra uma decisão dentro do prazo."
+      },
       "widerruf": {
         "title": "Direito de retratação",
         "description": "Ajudamos-te a retratar-te de uma compra ou contrato dentro do prazo."
@@ -232,6 +238,8 @@
     "concernDetails": "Descreva a sua solicitação o mais precisamente possível."
   },
   "fieldLabels": {
+    "bescheidDate": "Data da decisão",
+    "bescheidRef": "Referência / número do processo",
     "moveOutDate": "Data de entrega pretendida",
     "successorName": "Nome do inquilino substituto (opcional)",
     "successorAddress": "Morada do inquilino substituto (opcional)",
