@@ -151,7 +151,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   kuendigung: {
     slug: "kuendigung",
-    priceChfRappen: 300,
+    priceChfRappen: 500,
     documentTitleDe: "Kündigung",
     descriptionDe:
       "Versicherung, Abonnement, Mitgliedschaft — korrekt und fristgerecht kündigen.",
@@ -224,7 +224,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   maengelruege: {
     slug: "maengelruege",
-    priceChfRappen: 400,
+    priceChfRappen: 600,
     supportsPhotoGallery: true,
     maxPhotos: 100,
     photoGalleryLabelDe: "Fotos der Schäden hochladen (optional)",
@@ -261,7 +261,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   reklamation: {
     slug: "reklamation",
-    priceChfRappen: 300,
+    priceChfRappen: 500,
     supportsPhotoGallery: true,
     maxPhotos: 20,
     photoGalleryLabelDe: "Fotos hochladen (optional)",
@@ -335,7 +335,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "kuendigung-wohnung": {
     slug: "kuendigung-wohnung",
-    priceChfRappen: 300,
+    priceChfRappen: 500,
     documentTitleDe: "Kündigung Wohnung",
     descriptionDe:
       "Mietvertrag korrekt kündigen — mit Frist, Adresse und Bitte um Bestätigung.",
@@ -362,7 +362,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "ausserterminliche-kuendigung": {
     slug: "ausserterminliche-kuendigung",
-    priceChfRappen: 400,
+    priceChfRappen: 600,
     chOnly: true,
     documentTitleDe: "Vorzeitig kündigen mit Nachmieter",
     descriptionDe:
@@ -406,7 +406,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "ausserordentliche-kuendigung": {
     slug: "ausserordentliche-kuendigung",
-    priceChfRappen: 400,
+    priceChfRappen: 600,
     documentTitleDe: "Kündigen aus wichtigem Grund",
     descriptionDe:
       "Vorzeitig aus dem Mietvertrag aus wichtigem Grund — z.B. schwere Mängel oder unbewohnbare Wohnung.",
@@ -497,7 +497,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "kuendigung-arbeit": {
     slug: "kuendigung-arbeit",
-    priceChfRappen: 300,
+    priceChfRappen: 500,
     documentTitleDe: "Kündigung Arbeitsstelle",
     descriptionDe:
       "Arbeitsvertrag professionell kündigen — klar, höflich und fristgerecht.",
@@ -525,7 +525,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   widerruf: {
     slug: "widerruf",
-    priceChfRappen: 300,
+    priceChfRappen: 500,
     documentTitleDe: "Widerruf",
     descriptionDe:
       "Online-Kauf oder Vertrag fristgerecht widerrufen — klar, korrekt und mit Bitte um Rückerstattung.",

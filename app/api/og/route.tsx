@@ -44,7 +44,7 @@ export async function GET(req: NextRequest) {
 
         {/* Bottom badges */}
         <div style={{ position: "absolute", bottom: "60px", left: "80px", display: "flex", gap: "24px" }}>
-          {["✓ Kein Abo", "✓ Kein Konto", "✓ Daten gelöscht", "✓ ab CHF 3.–"].map((b) => (
+          {["✓ Kein Abo", "✓ Kein Konto", "✓ Daten gelöscht", "✓ ab CHF 5.–"].map((b) => (
             <div key={b} style={{ fontSize: "20px", color: "#C8BDB0", background: "#221E19", padding: "8px 20px", borderRadius: "4px" }}>
               {b}
             </div>
