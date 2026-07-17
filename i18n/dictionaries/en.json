@@ -368,6 +368,7 @@
     "cv": "CV",
     "crossSellTitle": "Need anything else?",
     "valueLine": "No writing needed · Print-ready PDF · Available right after payment",
+    "downloadWord": "Download as Word file",
     "downloadPdf":"Download as PDF",
     "noteTitle": "Note for review",
     "attachment": "Attachment",
@@ -407,6 +408,7 @@
     "whatToImprove": "No problem if you don't know — we analyse the reference and improve it automatically."
   },
   "sections": {
+    "Bescheid": "The decision",
     "Vorzeitiger Auszug": "Early move-out",
     "Nachmieter": "Successor tenant",
     "Grund der Kündigung": "Reason for termination",

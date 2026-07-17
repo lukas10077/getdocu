@@ -581,7 +581,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "currentAddress",   label: "Deine Adresse",                   type: "address",  required: true  },
       { key: "recipientName",    label: "Name der Behörde / Stelle",       type: "text",     required: true,  section: "Empfänger" },
       { key: "recipientAddress", label: "Adresse des Empfängers",          type: "textarea", required: true  },
-      { key: "bescheidDate",     label: "Datum des Bescheids",             type: "date",     required: true  },
+      { key: "bescheidDate",     label: "Datum des Bescheids",             type: "date",     required: true,  section: "Bescheid" },
       { key: "bescheidRef",      label: "Aktenzeichen / Geschäftszeichen", type: "text",     required: false, placeholderKey: "fallsAvailable" },
     ],
   },

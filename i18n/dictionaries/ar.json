@@ -365,6 +365,7 @@
     "cv": "السيرة الذاتية",
     "crossSellTitle": "هل تحتاج شيئًا آخر؟",
     "valueLine": "لا حاجة للكتابة · ملف PDF جاهز للطباعة · متاح فور الدفع",
+    "downloadWord": "تنزيل كملف Word",
     "downloadPdf":"تنزيل كملف PDF",
     "noteTitle": "ملاحظة للمراجعة",
     "attachment": "ملحق",
@@ -404,6 +405,7 @@
     "whatToImprove": "لا مشكلة إن لم تكن تعرف — نحلل الشهادة ونحسّنها تلقائياً."
   },
   "sections": {
+    "Bescheid": "القرار",
     "Vorzeitiger Auszug": "مغادرة مبكرة",
     "Nachmieter": "مستأجر بديل",
     "Grund der Kündigung": "سبب الإنهاء",

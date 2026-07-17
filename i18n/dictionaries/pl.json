@@ -365,6 +365,7 @@
     "cv": "CV",
     "crossSellTitle": "Potrzebujesz czegoś jeszcze?",
     "valueLine": "Nic nie musisz pisać · PDF gotowy do druku · Dostępny zaraz po płatności",
+    "downloadWord": "Pobierz jako plik Word",
     "downloadPdf":"Pobierz jako PDF",
     "noteTitle": "Uwaga do sprawdzenia",
     "attachment": "Załącznik",
@@ -404,6 +405,7 @@
     "whatToImprove": "Nie szkodzi, jeśli nie wiesz — przeanalizujemy referencje i poprawimy je automatycznie."
   },
   "sections": {
+    "Bescheid": "Decyzja",
     "Vorzeitiger Auszug": "Wcześniejsza wyprowadzka",
     "Nachmieter": "Następca (najemca)",
     "Grund der Kündigung": "Powód wypowiedzenia",

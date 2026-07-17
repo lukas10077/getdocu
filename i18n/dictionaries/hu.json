@@ -365,6 +365,7 @@
     "cv": "Önéletrajz",
     "crossSellTitle": "Szükséged van még valamire?",
     "valueLine": "Semmit nem kell írnod · Nyomtatásra kész PDF · Fizetés után azonnal elérhető",
+    "downloadWord": "Letöltés Word-fájlként",
     "downloadPdf":"Letöltés PDF-ként",
     "noteTitle": "Ellenőrizendő megjegyzés",
     "attachment": "Melléklet",
@@ -404,6 +405,7 @@
     "whatToImprove": "Nem gond, ha nem tudod — elemezzük a referenciát és automatikusan javítjuk."
   },
   "sections": {
+    "Bescheid": "A határozat",
     "Vorzeitiger Auszug": "Korai kiköltözés",
     "Nachmieter": "Utódbérlő",
     "Grund der Kündigung": "A felmondás oka",

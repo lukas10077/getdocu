@@ -365,6 +365,7 @@
     "cv": "CV",
     "crossSellTitle": "¿Necesitas algo más?",
     "valueLine": "No tienes que redactar nada · PDF listo para imprimir · Disponible justo tras el pago",
+    "downloadWord": "Descargar como archivo Word",
     "downloadPdf":"Descargar como PDF",
     "noteTitle": "Nota para revisar",
     "attachment": "Anexo",
@@ -404,6 +405,7 @@
     "whatToImprove": "No pasa nada si no lo sabes — analizamos la referencia y la mejoramos automáticamente."
   },
   "sections": {
+    "Bescheid": "La resolución",
     "Vorzeitiger Auszug": "Salida anticipada",
     "Nachmieter": "Inquilino de reemplazo",
     "Grund der Kündigung": "Motivo de la rescisión",

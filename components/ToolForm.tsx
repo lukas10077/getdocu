@@ -787,6 +787,36 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
             {fs("downloadPdf", "Als PDF herunterladen")}
           </button>
 
+          {/* Word-Export: gleiche Inhalte als bearbeitbare Datei — Nutzer können nachträglich anpassen */}
+          <button
+            onClick={() => {
+              const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+              const paras = (docText: string) =>
+                docText
+                  .split(/\n\n+/)
+                  .map((p) => `<p style="margin:0 0 12pt 0;white-space:pre-wrap">${esc(p)}</p>`)
+                  .join("");
+              let bodyHtml = paras(cleanResult);
+              if (lebenslaufResult) {
+                bodyHtml += `<br style="page-break-before:always">` + paras(lebenslaufResult);
+              }
+              const html =
+                `<html xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8">` +
+                `<title>${esc(toolTitle)}</title></head>` +
+                `<body style="font-family:Arial,sans-serif;font-size:11pt;line-height:1.6">${bodyHtml}</body></html>`;
+              const blob = new Blob(["﻿", html], { type: "application/msword" });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = `${tool.slug}.doc`;
+              a.click();
+              URL.revokeObjectURL(url);
+            }}
+            className="border border-ink-700 px-6 py-3 text-sm font-medium uppercase tracking-widest text-cream transition hover:border-swiss-gold"
+          >
+            {fs("downloadWord", "Als Word-Datei herunterladen")}
+          </button>
+
         </div>
 
         {/* Cross-Sell: passende weitere Dokumente — erhöht den Wert pro Kunde */}

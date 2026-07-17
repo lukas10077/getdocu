@@ -365,6 +365,7 @@
     "cv": "CV",
     "crossSellTitle": "Besoin d'autre chose ?",
     "valueLine": "Plus rien à rédiger · PDF prêt à imprimer · Disponible juste après le paiement",
+    "downloadWord": "Télécharger en fichier Word",
     "downloadPdf":"Télécharger en PDF",
     "noteTitle": "Remarque à vérifier",
     "attachment": "Annexe",
@@ -404,6 +405,7 @@
     "whatToImprove": "Pas de problème si vous ne savez pas — nous analysons le certificat et l'améliorons automatiquement."
   },
   "sections": {
+    "Bescheid": "La décision",
     "Vorzeitiger Auszug": "Départ anticipé",
     "Nachmieter": "Locataire de remplacement",
     "Grund der Kündigung": "Motif de la résiliation",

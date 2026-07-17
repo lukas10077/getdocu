@@ -365,6 +365,7 @@
     "cv": "CV",
     "crossSellTitle": "Başka bir şeye ihtiyacın var mı?",
     "valueLine": "Hiçbir şey yazmana gerek yok · Baskıya hazır PDF · Ödemeden hemen sonra hazır",
+    "downloadWord": "Word dosyası olarak indir",
     "downloadPdf":"PDF olarak indir",
     "noteTitle": "Kontrol notu",
     "attachment": "Ek",
@@ -404,6 +405,7 @@
     "whatToImprove": "Bilmiyorsan sorun değil — referansı analiz edip otomatik olarak iyileştiriyoruz."
   },
   "sections": {
+    "Bescheid": "Karar",
     "Vorzeitiger Auszug": "Erken çıkış",
     "Nachmieter": "Yeni kiracı",
     "Grund der Kündigung": "Fesih nedeni",

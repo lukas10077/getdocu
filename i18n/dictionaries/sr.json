@@ -365,6 +365,7 @@
     "cv": "CV",
     "crossSellTitle": "Treba li ti još nešto?",
     "valueLine": "Ne moraš ništa da pišeš · PDF spreman za štampu · Dostupno odmah nakon plaćanja",
+    "downloadWord": "Preuzmi kao Word datoteku",
     "downloadPdf":"Preuzmi kao PDF",
     "noteTitle": "Napomena za proveru",
     "attachment": "Prilog",
@@ -404,6 +405,7 @@
     "whatToImprove": "Nema problema ako ne znaš — analiziramo preporuku i automatski je poboljšavamo."
   },
   "sections": {
+    "Bescheid": "Rešenje",
     "Vorzeitiger Auszug": "Prevremeni odlazak",
     "Nachmieter": "Zamenski stanar",
     "Grund der Kündigung": "Razlog otkaza",
