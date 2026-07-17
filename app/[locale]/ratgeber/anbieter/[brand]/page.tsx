@@ -6,6 +6,7 @@ import { getBrand, allBrandSlugs, brands } from "@/lib/brands";
 import { hubForCategory } from "@/lib/categoryHubs";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import NoticeDeadline from "@/components/NoticeDeadline";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocunow.com";
 const GUIDE_LOCALE: Locale = "de";
@@ -90,6 +91,11 @@ export default async function BrandPage({
           <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
 
           <p className="mt-8 text-base leading-relaxed text-cream-muted">{brand.intro}</p>
+
+          {/* Konkretes Datum statt abstrakter Frist — nur wo die Frist eindeutig ist */}
+          {brand.defaultNoticePeriod && (
+            <NoticeDeadline noticePeriod={brand.defaultNoticePeriod} brandName={brand.name} />
+          )}
 
           <div className="mt-8">
             <Link href={toolHref} className={ctaClass}>

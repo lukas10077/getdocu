@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ToolDefinition, getRelatedTools } from "@/lib/tools";
+import { calcTerminationDate } from "@/lib/notice";
 import { useCountry } from "./CountryProvider";
 import { getStripeAmount, formatAmount } from "@/lib/countries";
 
@@ -938,19 +939,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     return (dict?.sections as Record<string, string> | undefined)?.[section] ?? section;
   }
 
-  // ── Kündigungsfrist → Datum automatisch berechnen ─────────────
-  function calcTerminationDate(noticePeriodValue: string): string {
-    const monthMap: Record<string, number> = {
-      "1 Monat": 1, "2 Monate": 2, "3 Monate": 3, "6 Monate": 6, "1 Jahr": 12,
-    };
-    const months = monthMap[noticePeriodValue];
-    if (!months) return "";
-    const d = new Date();
-    d.setMonth(d.getMonth() + months);
-    // Letzter Tag des Zielmonats (typisch für Kündigungen)
-    d.setDate(new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate());
-    return d.toISOString().split("T")[0]; // YYYY-MM-DD
-  }
+  // Kündigungsfrist → Datum: zentrale Funktion aus lib/notice (identisch zu den Marken-Seiten)
 
   function handleFieldChange(key: string, value: string) {
     const updated: Record<string, string> = { ...values, [key]: value };
