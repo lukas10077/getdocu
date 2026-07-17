@@ -562,6 +562,29 @@ export function getTool(slug: string): ToolDefinition | undefined {
 
 export const allToolSlugs: ToolSlug[] = Object.keys(tools) as ToolSlug[];
 
+// Cross-Sell nach dem Kauf: thematisch passende Folge-Dokumente.
+// Erhöht den Wert pro Kunde, ohne zusätzlichen Traffic zu benötigen.
+// Max. 2 Vorschläge pro Tool — mehr wirkt wie Werbung statt Hilfe.
+export const RELATED_TOOLS: Partial<Record<ToolSlug, ToolSlug[]>> = {
+  kuendigung:                     ["widerruf", "reklamation"],
+  widerruf:                       ["reklamation", "kuendigung"],
+  reklamation:                    ["widerruf", "kuendigung"],
+  "kuendigung-wohnung":           ["ausserterminliche-kuendigung", "maengelruege"],
+  "ausserterminliche-kuendigung": ["kuendigung-wohnung", "maengelruege"],
+  "ausserordentliche-kuendigung": ["maengelruege", "kuendigung-wohnung"],
+  maengelruege:                   ["ausserordentliche-kuendigung", "reklamation"],
+  "kuendigung-arbeit":            ["jobbewerbung", "lebenslauf"],
+  mietbewerbung:                  ["kuendigung-wohnung", "lebenslauf"],
+  jobbewerbung:                   ["lebenslauf", "komplettbewerbung"],
+  lebenslauf:                     ["jobbewerbung", "komplettbewerbung"],
+  komplettbewerbung:              ["arbeitszeugnis", "kuendigung-arbeit"],
+  arbeitszeugnis:                 ["lebenslauf", "jobbewerbung"],
+};
+
+export function getRelatedTools(slug: string): ToolSlug[] {
+  return RELATED_TOOLS[slug as ToolSlug] ?? [];
+}
+
 export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [

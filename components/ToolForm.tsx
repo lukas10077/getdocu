@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ToolDefinition } from "@/lib/tools";
+import { ToolDefinition, getRelatedTools } from "@/lib/tools";
 import { useCountry } from "./CountryProvider";
 import { getStripeAmount, formatAmount } from "@/lib/countries";
 
@@ -522,6 +522,8 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   }
 
   if (stage === "done") {
+    // Passende Folge-Dokumente für den Cross-Sell nach dem Kauf
+    const related = getRelatedTools(tool.slug);
     // HINWEIS vom Dokument trennen — darf nicht in PDF erscheinen
     const hinweisIdx = result.search(/\n*HINWEIS[:\s]/i);
     const fullResult = hinweisIdx >= 0 ? result.slice(0, hinweisIdx).trim() : result;
@@ -785,6 +787,27 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           </button>
 
         </div>
+
+        {/* Cross-Sell: passende weitere Dokumente — erhöht den Wert pro Kunde */}
+        {related.length > 0 && (
+          <div className="mt-10 border-t border-ink-700 pt-6">
+            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-cream-muted">
+              {fs("crossSellTitle", "Brauchst du noch etwas?")}
+            </p>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {related.map((slug) => (
+                <a
+                  key={slug}
+                  href={`/${locale}/tools/${slug}`}
+                  className="flex items-center justify-between rounded-sm border border-ink-700 bg-ink-900 px-4 py-3 text-sm text-cream transition hover:border-swiss-gold"
+                >
+                  <span>{(t.items as Record<string, any> | undefined)?.[slug]?.title ?? slug}</span>
+                  <span className="text-swiss-gold">→</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -848,6 +871,11 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           <p className="mb-4 text-sm text-cream-muted">
             <strong className="font-medium text-cream">{fs("readyTitle", "Dein persönliches Dokument ist bereit.")}</strong>{" "}
             {fs("readyBody", "Bezahle einmalig {price} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.").replace("{price}", priceDisplay)}
+          </p>
+
+          {/* Wertrahmung: macht sichtbar, wofür der Preis steht */}
+          <p className="mb-4 text-xs text-cream-subtle">
+            {fs("valueLine", "Spart dir das Formulieren · Druckfertiges PDF · Sofort nach der Zahlung verfügbar")}
           </p>
 
           {/* Widerrufs-Einwilligung — hier beim Kauf, nicht bei der Gratis-Vorschau */}
