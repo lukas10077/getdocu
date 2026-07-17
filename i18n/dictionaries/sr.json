@@ -56,9 +56,15 @@
       "subjectApplyHome": "Prijava za vaš stan",
       "subjectRent": "Otkaz mog ugovora o zakupu",
       "subjectJobCancel": "Otkaz mog radnog odnosa",
-      "subjectDefect": "Nedostaci u mom stanu"
+      "subjectDefect": "Nedostaci u mom stanu",
+      "subjectWithdraw": "Odustanak od mog ugovora",
+      "bodyWithdraw": "Ovim putem odustajem od svog ugovora ili porudžbine u predviđenom roku."
     },
     "items": {
+      "widerruf": {
+        "title": "Odustanak od ugovora",
+        "description": "Pomažemo ti da odustaneš od kupovine ili ugovora na vreme."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Prevremeni otkaz uz zamenskog stanara",
         "description": "Napustite zakup pre roka — uz predlog zamenskog stanara, ispravno i u roku."

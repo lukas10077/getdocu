@@ -56,9 +56,15 @@
       "subjectApplyHome": "طلب لاستئجار شقتكم",
       "subjectRent": "إنهاء عقد إيجاري",
       "subjectJobCancel": "استقالة من وظيفتي",
-      "subjectDefect": "عيوب في شقتي"
+      "subjectDefect": "عيوب في شقتي",
+      "subjectWithdraw": "الانسحاب من عقدي",
+      "bodyWithdraw": "بموجب هذا الخطاب أنسحب من عقدي أو طلبي ضمن المهلة المحددة."
     },
     "items": {
+      "widerruf": {
+        "title": "حق الانسحاب",
+        "description": "نساعدك على الانسحاب من عملية شراء أو عقد ضمن المهلة."
+      },
       "ausserterminliche-kuendigung": {
         "title": "إنهاء مبكر مع مستأجر بديل",
         "description": "غادر عقد الإيجار مبكرًا — باقتراح مستأجر بديل، بشكل صحيح وفي الوقت المحدد."

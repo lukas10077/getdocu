@@ -13,7 +13,8 @@ export type ToolSlug =
   | "lebenslauf"
   | "komplettbewerbung"
   | "kuendigung"
-  | "reklamation";
+  | "reklamation"
+  | "widerruf";
 
 export interface FieldDef {
   key: string;
@@ -522,6 +523,37 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
     ],
   },
 
+  widerruf: {
+    slug: "widerruf",
+    priceChfRappen: 300,
+    documentTitleDe: "Widerruf",
+    descriptionDe:
+      "Online-Kauf oder Vertrag fristgerecht widerrufen — klar, korrekt und mit Bitte um Rückerstattung.",
+    systemPrompt:
+      "Du bist Experte für Verbraucherrecht. Erstelle ein formell korrektes Widerrufsschreiben auf Deutsch. " +
+      "Der Nutzer widerruft einen Vertrag oder eine Bestellung innerhalb der gesetzlichen Widerrufsfrist. " +
+      "STRUKTUR: vollständiger Absender, Empfänger (Verkäufer/Unternehmen), Ort und Datum, Betreff mit klarer " +
+      "Nennung des Widerrufs und — falls vorhanden — der Bestell-/Vertragsnummer, dann der Text. " +
+      "INHALT: (1) Erkläre klar und unmissverständlich den Widerruf des Vertrags bzw. der Bestellung. " +
+      "(2) Nenne, sofern angegeben, die Bestell-/Vertragsnummer und den Gegenstand. (3) Formuliere so, dass es " +
+      "sowohl für einen Warenkauf als auch für einen Vertrag/eine Dienstleistung passt: Bei erhaltener Ware " +
+      "kündige an, diese zurückzusenden, und bitte um Erstattung des vollständigen Kaufpreises inklusive " +
+      "Versandkosten auf das genutzte Zahlungsmittel; bei einem Vertrag/Abo bitte um Bestätigung des Widerrufs " +
+      "und Rückerstattung bereits gezahlter Beträge. (4) Bitte um eine schriftliche Bestätigung des Eingangs. " +
+      "Höflicher Abschluss. TONFALL: sachlich, bestimmt, höflich. Ein Widerruf muss NICHT begründet werden — " +
+      "verlange also keinen Grund und erfinde keinen. Zitiere KEINE konkreten Gesetzesartikel und behaupte keine " +
+      "spezifischen Fristen — das ist keine Rechtsberatung. Verwende KEINE Platzhalter in Klammern; lasse " +
+      "fehlende Angaben einfach weg.",
+    fields: [
+      { key: "firstName",        label: "Vorname",                                  type: "text",     required: true,  section: "Deine Angaben" },
+      { key: "lastName",         label: "Nachname",                                 type: "text",     required: true  },
+      { key: "currentAddress",   label: "Deine Adresse",                            type: "address",  required: true  },
+      { key: "recipientName",    label: "Name des Empfängers (Verkäufer, Firma …)", type: "text",     required: true,  section: "Empfänger" },
+      { key: "recipientAddress", label: "Adresse des Empfängers",                   type: "textarea", required: true  },
+      { key: "contractRef",      label: "Bestell-/Vertragsnummer",                  type: "text",     required: false, placeholderKey: "fallsAvailable" },
+    ],
+  },
+
 };
 
 export function getTool(slug: string): ToolDefinition | undefined {
@@ -535,5 +567,5 @@ export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
   { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "ausserterminliche-kuendigung", "ausserordentliche-kuendigung", "maengelruege"] },
   { key: "arbeit", slugs: ["komplettbewerbung", "jobbewerbung", "lebenslauf", "kuendigung-arbeit", "arbeitszeugnis"] },
-  { key: "alltag", slugs: ["kuendigung", "reklamation"] },
+  { key: "alltag", slugs: ["kuendigung", "reklamation", "widerruf"] },
 ];

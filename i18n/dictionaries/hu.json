@@ -56,9 +56,15 @@
       "subjectApplyHome": "Jelentkezés az Önök lakására",
       "subjectRent": "Bérleti szerződésem felmondása",
       "subjectJobCancel": "Munkaviszonyom felmondása",
-      "subjectDefect": "Hibák a lakásomban"
+      "subjectDefect": "Hibák a lakásomban",
+      "subjectWithdraw": "Elállás a szerződésemtől",
+      "bodyWithdraw": "Ezúton elállok a szerződésemtől vagy megrendelésemtől a rendelkezésre álló határidőn belül."
     },
     "items": {
+      "widerruf": {
+        "title": "Elállás",
+        "description": "Segítünk határidőn belül elállni egy vásárlástól vagy szerződéstől."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Előzetes felmondás utódbérlővel",
         "description": "Lépjen ki a bérletből idő előtt — utódbérlő javaslatával, szabályosan és határidőben."

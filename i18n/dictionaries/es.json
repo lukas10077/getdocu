@@ -56,9 +56,15 @@
       "subjectApplyHome": "Solicitud para su vivienda",
       "subjectRent": "Rescisión de mi contrato de alquiler",
       "subjectJobCancel": "Renuncia a mi puesto de trabajo",
-      "subjectDefect": "Defectos en mi vivienda"
+      "subjectDefect": "Defectos en mi vivienda",
+      "subjectWithdraw": "Desistimiento de mi contrato",
+      "bodyWithdraw": "Por la presente, desisto de mi contrato o pedido dentro del plazo previsto."
     },
     "items": {
+      "widerruf": {
+        "title": "Desistimiento",
+        "description": "Te ayudamos a desistir de una compra o contrato dentro del plazo."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Rescindir anticipadamente con inquilino de reemplazo",
         "description": "Deja tu contrato de alquiler antes de tiempo — con propuesta de un inquilino de reemplazo, de forma correcta y en plazo."

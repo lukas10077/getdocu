@@ -56,9 +56,15 @@
       "subjectApplyHome": "Aplikacja o Państwa mieszkanie",
       "subjectRent": "Wypowiedzenie umowy najmu",
       "subjectJobCancel": "Wypowiedzenie umowy o pracę",
-      "subjectDefect": "Wady w moim mieszkaniu"
+      "subjectDefect": "Wady w moim mieszkaniu",
+      "subjectWithdraw": "Odstąpienie od mojej umowy",
+      "bodyWithdraw": "Niniejszym odstępuję od mojej umowy lub zamówienia w obowiązującym terminie."
     },
     "items": {
+      "widerruf": {
+        "title": "Odstąpienie od umowy",
+        "description": "Pomożemy Ci odstąpić od zakupu lub umowy w terminie."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Wcześniejsze wypowiedzenie z następcą",
         "description": "Zakończ najem wcześniej — z propozycją najemcy na zastępstwo, poprawnie i w terminie."

@@ -56,9 +56,15 @@
       "subjectApplyHome": "Aplikim për banesën tuaj",
       "subjectRent": "Anulimi i kontratës sime të qirasë",
       "subjectJobCancel": "Dorëheqje nga vendi im i punës",
-      "subjectDefect": "Të meta në banesën time"
+      "subjectDefect": "Të meta në banesën time",
+      "subjectWithdraw": "Tërheqje nga kontrata ime",
+      "bodyWithdraw": "Me këtë shkresë tërhiqem nga kontrata ose porosia ime brenda afatit të parashikuar."
     },
     "items": {
+      "widerruf": {
+        "title": "Tërheqje nga kontrata",
+        "description": "Të ndihmojmë të tërhiqesh nga një blerje ose kontratë brenda afatit."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Zgjidhje e parakohshme me qiramarrës zëvendësues",
         "description": "Dilni nga qiraja para afatit — me propozimin e një qiramarrësi zëvendësues, saktë dhe në afat."

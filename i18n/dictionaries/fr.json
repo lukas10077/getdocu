@@ -56,9 +56,15 @@
       "subjectApplyHome": "Candidature pour votre logement",
       "subjectRent": "Résiliation de mon bail",
       "subjectJobCancel": "Démission de mon poste",
-      "subjectDefect": "Défauts dans mon logement"
+      "subjectDefect": "Défauts dans mon logement",
+      "subjectWithdraw": "Rétractation de mon contrat",
+      "bodyWithdraw": "Par la présente, je me rétracte de mon contrat ou de ma commande dans le délai imparti."
     },
     "items": {
+      "widerruf": {
+        "title": "Rétractation",
+        "description": "Nous vous aidons à vous rétracter d'un achat ou d'un contrat dans les délais."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Résilier par anticipation avec locataire de remplacement",
         "description": "Quittez votre bail par anticipation — avec proposition d'un locataire de remplacement, correctement et dans les délais."

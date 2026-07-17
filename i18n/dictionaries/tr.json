@@ -56,9 +56,15 @@
       "subjectApplyHome": "Daireniz için başvuru",
       "subjectRent": "Kira sözleşmemin feshi",
       "subjectJobCancel": "İş sözleşmemin feshi",
-      "subjectDefect": "Dairemdeki kusurlar"
+      "subjectDefect": "Dairemdeki kusurlar",
+      "subjectWithdraw": "Sözleşmemden cayma",
+      "bodyWithdraw": "İşbu yazı ile sözleşmemden veya siparişimden süresi içinde cayıyorum."
     },
     "items": {
+      "widerruf": {
+        "title": "Cayma hakkı",
+        "description": "Bir alışverişten veya sözleşmeden süresi içinde caymana yardımcı oluruz."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Yeni kiracıyla erken fesih",
         "description": "Kira sözleşmenizden erken çıkın — yeni kiracı önerisiyle, doğru ve süresinde."

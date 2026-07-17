@@ -54,9 +54,15 @@
       "subjectApplyHome": "Bewerbung um Ihre Wohnung",
       "subjectRent": "Kündigung meines Mietvertrags",
       "subjectJobCancel": "Kündigung meines Arbeitsvertrags",
-      "subjectDefect": "Mängel in meiner Wohnung"
+      "subjectDefect": "Mängel in meiner Wohnung",
+      "subjectWithdraw": "Widerruf meines Vertrags",
+      "bodyWithdraw": "Hiermit widerrufe ich meinen Vertrag beziehungsweise meine Bestellung fristgerecht."
     },
     "items": {
+      "widerruf": {
+        "title": "Widerruf",
+        "description": "Wir helfen dir, einen Kauf oder Vertrag fristgerecht zu widerrufen."
+      },
       "mietbewerbung": {
         "title": "Bewerbung Wohnung",
         "description": "Wir helfen dir deine Chance auf die Wohnung zu erhöhen."

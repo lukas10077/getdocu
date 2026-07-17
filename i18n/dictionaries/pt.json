@@ -56,9 +56,15 @@
       "subjectApplyHome": "Candidatura ao vosso apartamento",
       "subjectRent": "Rescisão do meu contrato de arrendamento",
       "subjectJobCancel": "Demissão do meu posto de trabalho",
-      "subjectDefect": "Defeitos no meu apartamento"
+      "subjectDefect": "Defeitos no meu apartamento",
+      "subjectWithdraw": "Retratação do meu contrato",
+      "bodyWithdraw": "Pela presente, retrato-me do meu contrato ou da minha encomenda dentro do prazo."
     },
     "items": {
+      "widerruf": {
+        "title": "Direito de retratação",
+        "description": "Ajudamos-te a retratar-te de uma compra ou contrato dentro do prazo."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Rescindir antecipadamente com inquilino substituto",
         "description": "Saia do contrato de arrendamento mais cedo — com proposta de um inquilino substituto, de forma correta e dentro do prazo."

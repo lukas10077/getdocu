@@ -56,9 +56,15 @@
       "subjectApplyHome": "Application for your apartment",
       "subjectRent": "Termination of my tenancy",
       "subjectJobCancel": "Resignation from my position",
-      "subjectDefect": "Defects in my apartment"
+      "subjectDefect": "Defects in my apartment",
+      "subjectWithdraw": "Withdrawal from my contract",
+      "bodyWithdraw": "I hereby withdraw from my contract or order within the applicable period."
     },
     "items": {
+      "widerruf": {
+        "title": "Right of withdrawal",
+        "description": "We help you withdraw from a purchase or contract in time."
+      },
       "ausserterminliche-kuendigung": {
         "title": "Terminate Early with Successor Tenant",
         "description": "Leave your lease early — with a successor-tenant proposal, correctly and on time."

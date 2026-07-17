@@ -18,6 +18,7 @@ interface SampleDict {
   bodyCancel?: string;
   bodyComplaint?: string;
   bodyApply?: string;
+  bodyWithdraw?: string;
   body2?: string;
   placeholder?: string;
   subjectCancel?: string;
@@ -27,6 +28,7 @@ interface SampleDict {
   subjectDefect?: string;
   subjectApply?: string;
   subjectApplyHome?: string;
+  subjectWithdraw?: string;
 }
 
 const FALLBACK: Required<SampleDict> = {
@@ -41,6 +43,7 @@ const FALLBACK: Required<SampleDict> = {
   bodyCancel: "Hiermit kündige ich meinen Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin.",
   bodyComplaint: "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",
   bodyApply: "Mit grossem Interesse bewerbe ich mich bei Ihnen und stelle mich Ihnen gerne kurz vor.",
+  bodyWithdraw: "Hiermit widerrufe ich meinen Vertrag beziehungsweise meine Bestellung fristgerecht.",
   body2: "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
   placeholder: "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
   subjectCancel: "Kündigung meines Vertrags",
@@ -50,6 +53,7 @@ const FALLBACK: Required<SampleDict> = {
   subjectDefect: "Mängel in meiner Wohnung",
   subjectApply: "Bewerbung um Ihre Stelle",
   subjectApplyHome: "Bewerbung um Ihre Wohnung",
+  subjectWithdraw: "Widerruf meines Vertrags",
 };
 
 // Tools ohne klassisches Anschreiben (Lebenslauf-artig) bekommen ein CV-Skelett.
@@ -59,6 +63,7 @@ const COMPLAINT_SLUGS = new Set(["reklamation", "maengelruege"]);
 const APPLY_SLUGS = new Set(["mietbewerbung", "jobbewerbung", "komplettbewerbung"]);
 
 function openingFor(slug: string, s: Required<SampleDict>): string {
+  if (slug === "widerruf") return s.bodyWithdraw;
   if (COMPLAINT_SLUGS.has(slug)) return s.bodyComplaint;
   if (APPLY_SLUGS.has(slug)) return s.bodyApply;
   return s.bodyCancel;
@@ -66,6 +71,8 @@ function openingFor(slug: string, s: Required<SampleDict>): string {
 
 function subjectFor(slug: string, s: Required<SampleDict>): string {
   switch (slug) {
+    case "widerruf":
+      return s.subjectWithdraw;
     case "mietbewerbung":
       return s.subjectApplyHome;
     case "jobbewerbung":
