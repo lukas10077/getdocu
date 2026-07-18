@@ -798,12 +798,16 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
               const paras = (docText: string) =>
                 docText
                   .split(/\n\n+/)
-                  .map((p) => {
+                  .map((p, i) => {
                     const cleaned = p.trim().replace(/^BETREFF:\s*/i, "");
-                    let s = "margin:0 0 12pt 0;white-space:pre-wrap;";
+                    let s = "margin:0 0 12pt 0;";
+                    // Empfängerblock (2. Absatz) deutlich vom Absender absetzen — Briefkonvention
+                    if (i === 1) s += "margin-top:28pt;";
                     if (isDate(p) || isClose(p)) s += "margin-top:22pt;";
                     if (isBet(p)) s += "font-weight:bold;";
-                    return `<p style="${s}">${esc(cleaned)}</p>`;
+                    // Word ignoriert white-space:pre-wrap — Zeilenumbrüche müssen als <br> rein,
+                    // sonst kollabieren Adressblöcke zu einer Zeile.
+                    return `<p style="${s}">${esc(cleaned).replace(/\n/g, "<br>")}</p>`;
                   })
                   .join("");
               let bodyHtml = paras(cleanResult);
