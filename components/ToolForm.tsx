@@ -787,14 +787,24 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
             {fs("downloadPdf", "Als PDF herunterladen")}
           </button>
 
-          {/* Word-Export: gleiche Inhalte als bearbeitbare Datei — Nutzer können nachträglich anpassen */}
+          {/* Word-Export: gleiche Inhalte als bearbeitbare Datei — Nutzer können nachträglich anpassen.
+              Nutzt dieselbe Absatz-Logik wie das PDF (BETREFF fett ohne Präfix, Abstände vor Datum/Gruss). */}
           <button
             onClick={() => {
               const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+              const isBet = (p: string) => /^BETREFF:\s*/i.test(p.trim()) || /^[A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ][A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ\s\-]{3,}$/.test(p.trim());
+              const isDate = (p: string) => /^[A-ZÄÖÜ][a-zäöüA-ZÄÖÜ]{1,20},\s+\d/.test(p.trim());
+              const isClose = (p: string) => /^(Freundliche|Mit freundlichen|Herzliche|Viele\s+Gr[üu]sse|Mit besten|Hochachtungsvoll)/i.test(p.trim());
               const paras = (docText: string) =>
                 docText
                   .split(/\n\n+/)
-                  .map((p) => `<p style="margin:0 0 12pt 0;white-space:pre-wrap">${esc(p)}</p>`)
+                  .map((p) => {
+                    const cleaned = p.trim().replace(/^BETREFF:\s*/i, "");
+                    let s = "margin:0 0 12pt 0;white-space:pre-wrap;";
+                    if (isDate(p) || isClose(p)) s += "margin-top:22pt;";
+                    if (isBet(p)) s += "font-weight:bold;";
+                    return `<p style="${s}">${esc(cleaned)}</p>`;
+                  })
                   .join("");
               let bodyHtml = paras(cleanResult);
               if (lebenslaufResult) {
@@ -802,8 +812,11 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
               }
               const html =
                 `<html xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8">` +
-                `<title>${esc(toolTitle)}</title></head>` +
-                `<body style="font-family:Arial,sans-serif;font-size:11pt;line-height:1.6">${bodyHtml}</body></html>`;
+                `<title>${esc(toolTitle)}</title>` +
+                `<style>@page WordSection1 {size:595.3pt 841.9pt; margin:70.85pt 70.85pt 56.7pt 70.85pt;} div.WordSection1 {page:WordSection1;}</style>` +
+                `</head>` +
+                `<body style="font-family:Arial,sans-serif;font-size:11pt;line-height:1.6">` +
+                `<div class="WordSection1">${bodyHtml}</div></body></html>`;
               const blob = new Blob(["﻿", html], { type: "application/msword" });
               const url = URL.createObjectURL(blob);
               const a = document.createElement("a");
