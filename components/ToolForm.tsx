@@ -98,7 +98,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   const galleryHint = toolDict.photoGalleryHint ?? tool.photoGalleryHintDe;
   const toolTitle = toolDict.title ?? tool.documentTitleDe;
   const selectPlaceholder  = t.selectPlaceholder  ?? "— bitte wählen —";
-  const withdrawalText     = t.withdrawalConsent  ?? "Ich stimme zu, dass die Lieferung des digitalen Dokuments sofort nach der Zahlung beginnt, und ich bestätige, dass ich damit mein gesetzliches Widerrufsrecht verliere. Ich habe die AGB gelesen und akzeptiere sie.";
+  const withdrawalText     = t.withdrawalConsent  ?? "Ja, ich möchte mein Dokument sofort nach der Zahlung erhalten. Mir ist bewusst, dass das Widerrufsrecht bei sofortiger Bereitstellung digitaler Inhalte entfällt. Ich akzeptiere die AGB.";
   const withdrawalErrText  = t.withdrawalError    ?? "Bitte bestätige die Zustimmung, um fortzufahren.";
   const legalDisclaimer    = t.legalDisclaimer    ?? "Das generierte Dokument ist kein Ersatz für eine Rechtsberatung. Deine Formulardaten werden nach der Generierung sofort gelöscht.";
   const { country } = useCountry();
@@ -911,8 +911,8 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
         </div>
 
         <div className="mt-4 rounded-sm border border-amber-500/30 bg-amber-500/10 p-4">
-          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">{fs("checkTitle", "Vor dem Kauf überprüfen")}</p>
-          <p className="text-sm text-cream-muted">Bitte kontrolliere deine Angaben: vollständiger Name, Adresse, E-Mail-Adresse, Name des Unternehmens und genaue Berufsbezeichnung. Fehlerhafte Angaben können das Dokument beeinträchtigen.</p>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">{fs("checkTitle", "Kurz prüfen")}</p>
+          <p className="text-sm text-cream-muted">{fs("checkBody", "Wirf noch einen kurzen Blick auf deine Angaben (Name, Adresse, Empfänger) – so passt dein Dokument auf Anhieb.")}</p>
           <button onClick={() => setStage("form")} className="mt-2 text-xs text-amber-400 underline hover:text-amber-300">{fs("editData", "Angaben ändern")}</button>
         </div>
 
@@ -952,9 +952,6 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           <div className="flex flex-wrap items-center gap-4">
             <button onClick={proceedToCheckout} className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark">
               {fs("payButton", "Vollständiges Dokument — {price}").replace("{price}", priceDisplay)}
-            </button>
-            <button onClick={() => setStage("form")} className="text-sm text-cream-subtle underline hover:text-cream-muted">
-              {fs("editData", "Angaben ändern")}
             </button>
           </div>
           <p className="mt-3 text-xs text-cream-subtle">
