@@ -41,6 +41,15 @@ const STANDARDS: Record<string, CountryStandards> = {
       "Kündigung üblicherweise auf ein Monatsende. Höflicher, professioneller Ton; Dank für die Zusammenarbeit und Bitte um Arbeitszeugnis gehören zum Standard.",
     reklamation:
       "Sachlich-bestimmter Ton. Verweis auf die zweijährige Gewährleistung ist üblich; zuerst Nachbesserung/Ersatz verlangen, mit klarer Frist.",
+    widerruf:
+      "WICHTIG: In der Schweiz gibt es KEIN allgemeines gesetzliches Widerrufsrecht für Online-Käufe. " +
+      "Behaupte deshalb NIE ein gesetzliches Widerrufsrecht. Stütze den Widerruf auf das vertragliche " +
+      "Rückgaberecht bzw. die Rückgabebedingungen des Anbieters (Formulierung z.B. 'gestützt auf Ihre " +
+      "Rückgabebedingungen'). Formuliere als höfliches, bestimmtes Rückabwicklungs-Begehren.",
+    widerspruch:
+      "In der Schweiz heisst der Rechtsbehelf gegen Verfügungen in der Regel 'Einsprache'. Verwende " +
+      "durchgehend die Begriffe 'Einsprache' und 'Verfügung' statt 'Widerspruch' und 'Bescheid' — " +
+      "auch im Betreff.",
   },
   DE: {
     arbeitszeugnis: ZEUGNIS_DACH,
@@ -51,6 +60,13 @@ const STANDARDS: Record<string, CountryStandards> = {
       "Kündigung üblicherweise zum 15. oder zum Monatsende. Höflicher Ton, Dank und Bitte um qualifiziertes Arbeitszeugnis sind Standard.",
     reklamation:
       "Zuerst Nacherfüllung (Reparatur oder Ersatzlieferung) mit angemessener Frist verlangen — erst danach Rücktritt oder Minderung. Diese Reihenfolge im Brief einhalten.",
+    widerruf:
+      "Bei Fernabsatzverträgen ist das 14-tägige Widerrufsrecht Standard; Textform genügt. " +
+      "Bitte um Erstattung aller Zahlungen einschliesslich der Standard-Lieferkosten auf das " +
+      "ursprüngliche Zahlungsmittel.",
+    widerspruch:
+      "Der Widerspruch wird an die Behörde gerichtet, die den Bescheid erlassen hat. " +
+      "Übliche Formulierung: 'lege ich hiermit fristwahrend Widerspruch ein'.",
   },
   AT: {
     arbeitszeugnis: ZEUGNIS_DACH,
@@ -61,6 +77,12 @@ const STANDARDS: Record<string, CountryStandards> = {
       "Angestellte kündigen üblicherweise zum Monatsletzten. Höflicher Ton, Bitte um Dienstzeugnis üblich.",
     reklamation:
       "Gewährleistung: zuerst Verbesserung oder Austausch verlangen, mit angemessener Frist.",
+    widerruf:
+      "Bei Fernabsatzverträgen ist das 14-tägige Rücktrittsrecht Standard — verwende die in Österreich " +
+      "übliche Terminologie 'Rücktritt' ('trete ich vom Vertrag zurück') statt 'Widerruf'.",
+    widerspruch:
+      "In Österreich heisst der Rechtsbehelf gegen Bescheide in der Regel 'Beschwerde'. Verwende die " +
+      "Begriffe 'Beschwerde' und 'Bescheid' — auch im Betreff (z.B. 'Beschwerde gegen den Bescheid vom …').",
   },
   FR: {
     arbeitszeugnis:
