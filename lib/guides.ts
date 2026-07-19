@@ -40,10 +40,45 @@ export const guides: GuideLink[] = [
   },
   {
     locale: "es",
+    slug: "como-hacer-un-curriculum",
+    title: "Cómo hacer un currículum profesional",
+    desc: "Qué incluir, cómo ordenarlo y los errores que más restan.",
+    category: "Currículum",
+  },
+  {
+    locale: "es",
+    slug: "plantillas-de-curriculum",
+    title: "Plantillas de currículum",
+    desc: "Cómo elegir y rellenar la plantilla adecuada para tu perfil.",
+    category: "Currículum",
+  },
+  {
+    locale: "es",
+    slug: "carta-de-presentacion",
+    title: "Cómo escribir una carta de presentación",
+    desc: "Estructura en cuatro párrafos y cómo adaptarla a cada oferta.",
+    category: "Carta de presentación",
+  },
+  {
+    locale: "es",
+    slug: "ejemplos-carta-de-presentacion",
+    title: "Ejemplos de carta de presentación",
+    desc: "Modelos con experiencia, sin experiencia y cambio de sector.",
+    category: "Carta de presentación",
+  },
+  {
+    locale: "es",
+    slug: "carta-de-renuncia-voluntaria",
+    title: "Carta de renuncia voluntaria",
+    desc: "Qué incluir, cuánto preaviso dar y cómo dejar constancia.",
+    category: "Renuncia laboral",
+  },
+  {
+    locale: "es",
     slug: "carta-de-renuncia",
     title: "Cómo escribir una carta de renuncia",
     desc: "En inglés para tu empleador en EE. UU., o en español.",
-    category: "Trabajo",
+    category: "Renuncia laboral",
   },
 ];
 

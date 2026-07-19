@@ -37,6 +37,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { locale: "en", slug: "resign-immediately" },
     { locale: "en", slug: "resignation-email" },
     { locale: "es", slug: "carta-de-renuncia" },
+    { locale: "es", slug: "como-hacer-un-curriculum" },
+    { locale: "es", slug: "plantillas-de-curriculum" },
+    { locale: "es", slug: "carta-de-presentacion" },
+    { locale: "es", slug: "ejemplos-carta-de-presentacion" },
+    { locale: "es", slug: "carta-de-renuncia-voluntaria" },
   ];
   for (const g of guides) {
     entries.push({
