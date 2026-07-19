@@ -52,6 +52,9 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
       },
     },
     verification: { google: "nRDR8stm8HQD851NWN5-HGEvULriGIuPJsPjI9uF3jg" },
+    other: {
+      "trustpilot-one-time-domain-verification-id": "eee798e1-85e4-4e4e-9a6e-c1c5544ef828",
+    },
   };
 }
 
