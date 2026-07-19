@@ -123,23 +123,26 @@ export async function POST(req: NextRequest) {
     try {
       const wordHtml = buildWordDoc(generatedText, tool.documentTitleDe);
       const wordBase64 = Buffer.from("﻿" + wordHtml, "utf8").toString("base64");
+      const amount = ((session.amount_total ?? 0) / 100).toFixed(2);
+      const currency = (session.currency ?? "chf").toUpperCase();
+      const date = new Date().toLocaleDateString("de-CH", { day: "numeric", month: "long", year: "numeric" });
       const resend = new Resend(resendKey);
       await resend.emails.send({
         from: "GetDocu <noreply@getdocunow.com>",
         to: customerEmail,
-        subject: `Dein Dokument: ${tool.documentTitleDe}`,
-        html: buildDocumentEmailHtml(tool.documentTitleDe),
+        subject: `Deine Bestellung: ${tool.documentTitleDe}`,
+        html: buildOrderEmailHtml(tool.documentTitleDe, amount, currency, date),
         attachments: [{ filename: `${tool.slug}.doc`, content: wordBase64 }],
       });
     } catch (err) {
-      console.error("Word-E-Mail konnte nicht gesendet werden:", err);
+      console.error("Bestell-E-Mail konnte nicht gesendet werden:", err);
     }
   }
 
   return NextResponse.json({ documentText: generatedText, title: tool.documentTitleDe });
 }
 
-function buildDocumentEmailHtml(toolName: string): string {
+function buildOrderEmailHtml(toolName: string, amount: string, currency: string, date: string): string {
   return `<!DOCTYPE html>
 <html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
@@ -151,9 +154,19 @@ function buildDocumentEmailHtml(toolName: string): string {
           <p style="margin:6px 0 0;font-size:13px;color:#888;">Professionelle Dokumente in Minuten</p>
         </td></tr>
         <tr><td style="padding:40px;">
-          <p style="margin:0 0 8px;font-size:20px;font-weight:600;color:#1a1a1a;">Dein Dokument ist fertig</p>
-          <p style="margin:0 0 24px;font-size:15px;color:#555;line-height:1.6;">Im Anhang findest du <strong>${toolName}</strong> als bearbeitbare Word-Datei (.doc) — so kannst du jederzeit noch etwas anpassen und selbst weiterverwenden.</p>
-          <p style="margin:0 0 6px;font-size:14px;color:#555;line-height:1.6;">Öffne die Datei einfach in Word, Google Docs, Pages oder LibreOffice.</p>
+          <p style="margin:0 0 8px;font-size:20px;font-weight:600;color:#1a1a1a;">Vielen Dank für deinen Kauf!</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#555;line-height:1.6;">Dein Dokument ist fertig. Im Anhang findest du <strong>${toolName}</strong> als bearbeitbare Word-Datei (.doc) — falls du später noch etwas nacharbeiten möchtest, hast du damit jederzeit eine anpassbare Kopie.</p>
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f8f8;border-radius:8px;padding:24px;margin-bottom:24px;">
+            <tr><td style="font-size:13px;color:#888;padding-bottom:12px;">BESTELLDETAILS</td></tr>
+            <tr><td style="font-size:15px;color:#1a1a1a;font-weight:500;padding-bottom:6px;">${toolName}</td></tr>
+            <tr><td style="border-top:1px solid #e5e5e5;padding-top:12px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr><td style="font-size:14px;color:#555;">Betrag</td><td align="right" style="font-size:14px;font-weight:600;color:#1a1a1a;">${currency} ${amount}</td></tr>
+                <tr><td style="font-size:14px;color:#555;padding-top:6px;">Datum</td><td align="right" style="font-size:14px;color:#555;padding-top:6px;">${date}</td></tr>
+              </table>
+            </td></tr>
+          </table>
+          <p style="margin:0 0 6px;font-size:14px;color:#555;line-height:1.6;">Die Word-Datei öffnest du einfach in Word, Google Docs, Pages oder LibreOffice.</p>
           <p style="margin:0;font-size:14px;color:#555;line-height:1.6;">Bei Fragen antworte einfach auf diese E-Mail.</p>
           <p style="margin:28px 0 0;font-size:14px;color:#1a1a1a;font-weight:500;">Das GetDocu-Team</p>
         </td></tr>

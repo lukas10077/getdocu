@@ -924,7 +924,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
 
           {/* Wertrahmung: macht sichtbar, wofür der Preis steht */}
           <p className="mb-4 text-xs text-cream-subtle">
-            {fs("valueLine", "Druckfertiges PDF · Bearbeitbare Word-Datei per E-Mail · Sofort verfügbar")}
+            {fs("valueLine", "Druckfertiges PDF · Word-Datei per E-Mail zum Nacharbeiten · Sofort verfügbar")}
           </p>
 
           {/* Widerrufs-Einwilligung — hier beim Kauf, nicht bei der Gratis-Vorschau */}
