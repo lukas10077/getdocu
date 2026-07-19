@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
 import { allToolSlugs } from "@/lib/tools";
 import { allBrandSlugs } from "@/lib/brands";
+import { allBrandEsSlugs } from "@/lib/brandsEs";
 import { allCategoryHubSlugs } from "@/lib/categoryHubs";
 import { ratgeberLocales } from "@/lib/guides";
 
@@ -55,6 +56,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const slug of allBrandSlugs) {
     entries.push({
       url: `${BASE_URL}/de/ratgeber/anbieter/${slug}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
+  // Spanische Anbieter-/Kündigungsseiten ("dar de baja").
+  for (const slug of allBrandEsSlugs) {
+    entries.push({
+      url: `${BASE_URL}/es/ratgeber/dar-de-baja/${slug}`,
       changeFrequency: "monthly",
       priority: 0.7,
     });

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getDictionary, Locale } from "@/i18n/config";
 import { guidesForLocale, ratgeberLocales, ratgeberLabel } from "@/lib/guides";
 import { brands, allBrandSlugs } from "@/lib/brands";
+import { brandsEs, allBrandEsSlugs } from "@/lib/brandsEs";
 import { categoryHubs, allCategoryHubSlugs } from "@/lib/categoryHubs";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -88,6 +89,24 @@ export default async function RatgeberIndex({
       };
     });
     if (brandItems.length) categories.push({ name: "Anbieter kündigen", items: brandItems });
+  }
+
+  if (params.locale === "es") {
+    const esCountryOrder = ["España", "México", "Colombia", "Argentina"];
+    const byCountry = new Map<string, { href: string; title: string; desc: string }[]>();
+    for (const slug of allBrandEsSlugs) {
+      const b = brandsEs[slug];
+      const item = {
+        href: `/${params.locale}/ratgeber/dar-de-baja/${b.slug}`,
+        title: `Dar de baja ${b.name}`,
+        desc: `${b.category} — teléfono, pasos y carta de baja.`,
+      };
+      byCountry.set(b.countryName, [...(byCountry.get(b.countryName) ?? []), item]);
+    }
+    for (const country of esCountryOrder) {
+      const items = byCountry.get(country);
+      if (items && items.length) categories.push({ name: `Dar de baja en ${country}`, items });
+    }
   }
 
   return (
