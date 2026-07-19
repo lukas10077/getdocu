@@ -959,6 +959,9 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
               ? `💳 ${fs("creditCard", "Kreditkarte")} · TWINT · Apple Pay · Google Pay`
               : `💳 ${fs("creditCard", "Kreditkarte")} · Apple Pay · Google Pay`}
           </p>
+          <p className="mt-2 text-xs text-cream-subtle">
+            {fs("payTrust", "🔒 Sichere Zahlung via Stripe · Dein Dokument hast du oben schon gesehen · Daten nach der Erstellung sofort gelöscht")}
+          </p>
         </div>
       </div>
     );

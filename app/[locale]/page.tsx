@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import ToolsSection from "@/components/ToolsSection";
 import HowItWorks from "@/components/HowItWorks";
 import TrustSection from "@/components/TrustSection";
+import AboutFounder from "@/components/AboutFounder";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
@@ -48,6 +49,7 @@ export default async function LandingPage({ params }: { params: { locale: Locale
       <ToolsSection locale={params.locale} dict={dict} />
       <HowItWorks dict={dict} />
       <TrustSection dict={dict} />
+      <AboutFounder />
       <FAQSection dict={dict} />
       <Footer locale={params.locale} dict={dict} />
     </main>
