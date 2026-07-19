@@ -69,6 +69,19 @@ export default async function Datenschutz({ params }: { params: { locale: Locale
 
             <div>
               <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
+                Zustellung des Dokuments per E-Mail
+              </h2>
+              <p>
+                Nach dem Kauf senden wir dir dein fertiges Dokument als bearbeitbare Word-Datei an
+                die im Bezahlvorgang angegebene E-Mail-Adresse, damit du eine Kopie behältst. Der
+                E-Mail-Versand erfolgt über den Dienstleister Resend (resend.com). Übermittelt werden
+                dabei nur deine E-Mail-Adresse und das erstellte Dokument; nach dem Versand
+                speichern wir den Dokumentinhalt nicht dauerhaft.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-cream">
                 Zahlungsabwicklung (Stripe)
               </h2>
               <p>

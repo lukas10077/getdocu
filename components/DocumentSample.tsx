@@ -40,7 +40,7 @@ const FALLBACK: Required<SampleDict> = {
   closing: "Freundliche Grüsse",
   benefit1: "Sauberes, professionelles Layout",
   benefit2: "Korrekte Anrede und Betreff",
-  benefit3: "Als PDF zum Herunterladen",
+  benefit3: "Als PDF & bearbeitbare Word-Datei",
   caption: "Vorschau gratis · Erst zahlen, wenn du zufrieden bist",
   bodyCancel: "Hiermit kündige ich meinen Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin.",
   bodyComplaint: "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",

@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import Anthropic from "@anthropic-ai/sdk";
+import { Resend } from "resend";
 import { getTool } from "@/lib/tools";
 import { getCountry, LANG_NAMES } from "@/lib/countries";
 import { getLegalReferences } from "@/lib/legalRefs";
 import { getDocStandards } from "@/lib/docStandards";
+import { buildWordDoc } from "@/lib/wordDoc";
 
 export async function POST(req: NextRequest) {
   const { toolSlug, sessionId, formData } = await req.json();
@@ -112,7 +114,56 @@ export async function POST(req: NextRequest) {
     .map((b) => b.text)
     .join("\n");
 
+  // 5. Bearbeitbare Word-Datei per E-Mail an den Kunden senden.
+  //    Sicherheitsnetz (Kunde behält eine Kopie) + Mehrwert (nachträglich anpassbar).
+  //    Fehler hier dürfen die Dokument-Auslieferung NIE abbrechen.
+  const resendKey = process.env.RESEND_API_KEY;
+  const customerEmail = session.customer_details?.email;
+  if (resendKey && customerEmail) {
+    try {
+      const wordHtml = buildWordDoc(generatedText, tool.documentTitleDe);
+      const wordBase64 = Buffer.from("﻿" + wordHtml, "utf8").toString("base64");
+      const resend = new Resend(resendKey);
+      await resend.emails.send({
+        from: "GetDocu <noreply@getdocunow.com>",
+        to: customerEmail,
+        subject: `Dein Dokument: ${tool.documentTitleDe}`,
+        html: buildDocumentEmailHtml(tool.documentTitleDe),
+        attachments: [{ filename: `${tool.slug}.doc`, content: wordBase64 }],
+      });
+    } catch (err) {
+      console.error("Word-E-Mail konnte nicht gesendet werden:", err);
+    }
+  }
+
   return NextResponse.json({ documentText: generatedText, title: tool.documentTitleDe });
+}
+
+function buildDocumentEmailHtml(toolName: string): string {
+  return `<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 20px;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <tr><td style="background:#0f0f0f;padding:32px 40px;text-align:center;">
+          <p style="margin:0;font-size:22px;font-weight:700;color:#c9a84c;letter-spacing:0.05em;">GetDocu</p>
+          <p style="margin:6px 0 0;font-size:13px;color:#888;">Professionelle Dokumente in Minuten</p>
+        </td></tr>
+        <tr><td style="padding:40px;">
+          <p style="margin:0 0 8px;font-size:20px;font-weight:600;color:#1a1a1a;">Dein Dokument ist fertig</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#555;line-height:1.6;">Im Anhang findest du <strong>${toolName}</strong> als bearbeitbare Word-Datei (.doc) — so kannst du jederzeit noch etwas anpassen und selbst weiterverwenden.</p>
+          <p style="margin:0 0 6px;font-size:14px;color:#555;line-height:1.6;">Öffne die Datei einfach in Word, Google Docs, Pages oder LibreOffice.</p>
+          <p style="margin:0;font-size:14px;color:#555;line-height:1.6;">Bei Fragen antworte einfach auf diese E-Mail.</p>
+          <p style="margin:28px 0 0;font-size:14px;color:#1a1a1a;font-weight:500;">Das GetDocu-Team</p>
+        </td></tr>
+        <tr><td style="background:#f8f8f8;padding:20px 40px;text-align:center;border-top:1px solid #eee;">
+          <p style="margin:0;font-size:12px;color:#aaa;">© ${new Date().getFullYear()} GetDocu · getdocunow.com</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
 }
 
 function formatFieldValue(type: string, value: string): string {
