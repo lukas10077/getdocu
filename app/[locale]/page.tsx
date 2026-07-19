@@ -49,7 +49,7 @@ export default async function LandingPage({ params }: { params: { locale: Locale
       <ToolsSection locale={params.locale} dict={dict} />
       <HowItWorks dict={dict} />
       <TrustSection dict={dict} />
-      <AboutFounder />
+      <AboutFounder locale={params.locale} />
       <FAQSection dict={dict} />
       <Footer locale={params.locale} dict={dict} />
     </main>

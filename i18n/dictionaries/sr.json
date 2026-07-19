@@ -366,6 +366,7 @@
     "crossSellTitle": "Treba li ti još nešto?",
     "valueLine": "Ne moraš ništa da pišeš · PDF spreman za štampu · Dostupno odmah nakon plaćanja",
     "downloadWord": "Preuzmi kao Word datoteku",
+    "payTrust": "🔒 Sigurno plaćanje preko Stripe-a · Dokument si već video iznad · Podaci se brišu odmah nakon kreiranja",
     "downloadPdf":"Preuzmi kao PDF",
     "noteTitle": "Napomena za proveru",
     "attachment": "Prilog",

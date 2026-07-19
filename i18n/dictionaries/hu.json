@@ -366,6 +366,7 @@
     "crossSellTitle": "Szükséged van még valamire?",
     "valueLine": "Semmit nem kell írnod · Nyomtatásra kész PDF · Fizetés után azonnal elérhető",
     "downloadWord": "Letöltés Word-fájlként",
+    "payTrust": "🔒 Biztonságos fizetés a Stripe-on · A dokumentumot fent már láttad · Az adatok a létrehozás után azonnal törlődnek",
     "downloadPdf":"Letöltés PDF-ként",
     "noteTitle": "Ellenőrizendő megjegyzés",
     "attachment": "Melléklet",

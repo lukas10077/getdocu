@@ -366,6 +366,7 @@
     "crossSellTitle": "¿Necesitas algo más?",
     "valueLine": "No tienes que redactar nada · PDF listo para imprimir · Disponible justo tras el pago",
     "downloadWord": "Descargar como archivo Word",
+    "payTrust": "🔒 Pago seguro con Stripe · Ya has visto tu documento arriba · Datos eliminados de inmediato tras la creación",
     "downloadPdf":"Descargar como PDF",
     "noteTitle": "Nota para revisar",
     "attachment": "Anexo",
