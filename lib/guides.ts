@@ -80,6 +80,34 @@ export const guides: GuideLink[] = [
     desc: "En inglés para tu empleador en EE. UU., o en español.",
     category: "Renuncia laboral",
   },
+  {
+    locale: "es",
+    slug: "cancelar-seguro",
+    title: "Cancelar un seguro en España",
+    desc: "Plazo de preaviso, cómo comunicarlo por escrito y excepciones.",
+    category: "Seguros",
+  },
+  {
+    locale: "es",
+    slug: "recurrir-una-multa",
+    title: "Cómo recurrir una multa de tráfico",
+    desc: "Plazos de 20 días y un mes, ante quién y el descuento del 50%.",
+    category: "Multas y recursos",
+  },
+  {
+    locale: "es",
+    slug: "carta-de-reclamacion",
+    title: "Cómo reclamar a una empresa",
+    desc: "Hoja de reclamaciones, carta por burofax y arbitraje de consumo.",
+    category: "Reclamaciones",
+  },
+  {
+    locale: "es",
+    slug: "derecho-de-desistimiento",
+    title: "Derecho de desistimiento: 14 días",
+    desc: "Desistir de una compra online: plazo, formulario y devolución.",
+    category: "Desistimiento",
+  },
 ];
 
 // Locales, für die eine Ratgeber-Übersicht existiert (Footer-Link + Overview-Seite).

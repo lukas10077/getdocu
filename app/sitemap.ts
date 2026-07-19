@@ -43,6 +43,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { locale: "es", slug: "carta-de-presentacion" },
     { locale: "es", slug: "ejemplos-carta-de-presentacion" },
     { locale: "es", slug: "carta-de-renuncia-voluntaria" },
+    { locale: "es", slug: "cancelar-seguro" },
+    { locale: "es", slug: "recurrir-una-multa" },
+    { locale: "es", slug: "carta-de-reclamacion" },
+    { locale: "es", slug: "derecho-de-desistimiento" },
   ];
   for (const g of guides) {
     entries.push({
