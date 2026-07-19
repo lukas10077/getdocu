@@ -131,7 +131,7 @@ export async function POST(req: NextRequest) {
         from: "GetDocu <noreply@getdocunow.com>",
         to: customerEmail,
         subject: `Deine Bestellung: ${tool.documentTitleDe}`,
-        html: buildOrderEmailHtml(tool.documentTitleDe, amount, currency, date),
+        html: buildOrderEmailHtml(tool.documentTitleDe, amount, currency, date, process.env.REVIEW_URL),
         attachments: [{ filename: `${tool.slug}.doc`, content: wordBase64 }],
       });
     } catch (err) {
@@ -142,7 +142,13 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ documentText: generatedText, title: tool.documentTitleDe });
 }
 
-function buildOrderEmailHtml(toolName: string, amount: string, currency: string, date: string): string {
+function buildOrderEmailHtml(toolName: string, amount: string, currency: string, date: string, reviewUrl?: string): string {
+  const reviewBlock = reviewUrl
+    ? `<table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;"><tr><td style="border-top:1px solid #eee;padding-top:24px;">
+         <p style="margin:0 0 12px;font-size:14px;color:#555;line-height:1.6;">Zufrieden mit deinem Dokument? Eine kurze Bewertung hilft uns riesig — danke!</p>
+         <a href="${reviewUrl}" style="display:inline-block;background:#c9a84c;color:#0f0f0f;font-size:14px;font-weight:600;text-decoration:none;padding:10px 20px;border-radius:6px;">Jetzt bewerten</a>
+       </td></tr></table>`
+    : "";
   return `<!DOCTYPE html>
 <html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
@@ -166,9 +172,9 @@ function buildOrderEmailHtml(toolName: string, amount: string, currency: string,
               </table>
             </td></tr>
           </table>
-          <p style="margin:0 0 6px;font-size:14px;color:#555;line-height:1.6;">Die Word-Datei öffnest du einfach in Word, Google Docs, Pages oder LibreOffice.</p>
-          <p style="margin:0;font-size:14px;color:#555;line-height:1.6;">Bei Fragen antworte einfach auf diese E-Mail.</p>
-          <p style="margin:28px 0 0;font-size:14px;color:#1a1a1a;font-weight:500;">Das GetDocu-Team</p>
+          <p style="margin:0 0 24px;font-size:14px;color:#555;line-height:1.6;">Die Word-Datei öffnest du einfach in Word, Google Docs, Pages oder LibreOffice. Bei Fragen antworte einfach auf diese E-Mail.</p>
+          ${reviewBlock}
+          <p style="margin:0;font-size:14px;color:#1a1a1a;font-weight:500;">Das GetDocu-Team</p>
         </td></tr>
         <tr><td style="background:#f8f8f8;padding:20px 40px;text-align:center;border-top:1px solid #eee;">
           <p style="margin:0;font-size:12px;color:#aaa;">© ${new Date().getFullYear()} GetDocu · getdocunow.com</p>
