@@ -94,8 +94,17 @@ export default async function RatgeberIndex({
   if (params.locale === "es") {
     const esCountryOrder = ["España", "México", "Colombia", "Argentina"];
     const byCountry = new Map<string, { href: string; title: string; desc: string }[]>();
+    const globalItems: { href: string; title: string; desc: string }[] = [];
     for (const slug of allBrandEsSlugs) {
       const b = brandsEs[slug];
+      if (b.global) {
+        globalItems.push({
+          href: `/${params.locale}/ratgeber/dar-de-baja/${b.slug}`,
+          title: `Cancelar ${b.name}`,
+          desc: `${b.category} — cómo darte de baja paso a paso.`,
+        });
+        continue;
+      }
       const item = {
         href: `/${params.locale}/ratgeber/dar-de-baja/${b.slug}`,
         title: `Dar de baja ${b.name}`,
@@ -107,6 +116,7 @@ export default async function RatgeberIndex({
       const items = byCountry.get(country);
       if (items && items.length) categories.push({ name: `Dar de baja en ${country}`, items });
     }
+    if (globalItems.length) categories.push({ name: "Cancelar streaming y suscripciones", items: globalItems });
   }
 
   return (

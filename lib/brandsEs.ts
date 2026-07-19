@@ -20,6 +20,7 @@ export interface BrandEs {
   facts: string[];         // Kernfakten (permanencia, portabilidad, equipos, plazos …)
   faq: { q: string; a: string }[];
   sourceNote: string;      // Stand / Verifizierungshinweis
+  global?: boolean;        // true = internationaler Dienst (Streaming); wird nicht nach Land gruppiert
 }
 
 export const brandsEs: Record<string, BrandEs> = {
@@ -534,6 +535,274 @@ export const brandsEs: Record<string, BrandEs> = {
     ],
     sourceNote:
       "Datos verificados en fuentes públicas (ayuda oficial de Movistar Argentina y comparadores), julio 2026. Los teléfonos y condiciones pueden cambiar; confirmá en la web oficial antes de tramitar.",
+  },
+
+  // ── Gimnasios (España) ────────────────────────────────────────────────
+  "basic-fit": {
+    slug: "basic-fit",
+    name: "Basic-Fit",
+    category: "Gimnasios",
+    countryCode: "ES",
+    countryName: "España",
+    intro:
+      "¿Quieres darte de baja de Basic-Fit? Te explicamos cómo cancelar tu cuota, el preaviso que debes respetar y cómo generar una carta de baja formal en minutos para dejar constancia.",
+    cancelMethods: [
+      "Online: solicita la baja desde tu área personal Mi Basic-Fit (web o app); recibirás un email de confirmación.",
+      "También puedes usar el formulario de cancelación disponible en la web de Basic-Fit.",
+    ],
+    facts: [
+      "Respeta el preaviso de tu contrato y la permanencia mínima (habitualmente 4 o 52 semanas): la cuota se detiene cuando termina el preaviso o la permanencia.",
+      "Con la tarifa Flex puedes cancelar en cualquier momento con solo 1 semana de preaviso.",
+      "Si contrataste online o por teléfono, tienes 14 días naturales de derecho de desistimiento desde la firma.",
+      "Desconfía de terceros que ofrezcan «tramitar tu baja»: no están afiliados a Basic-Fit y pueden cobrarte.",
+    ],
+    faq: [
+      {
+        q: "¿Cómo me doy de baja de Basic-Fit?",
+        a: "Desde tu área Mi Basic-Fit o con el formulario de cancelación de su web, respetando el preaviso de tu contrato. Recibirás un email de confirmación.",
+      },
+      {
+        q: "¿Cuánto preaviso necesito en Basic-Fit?",
+        a: "Depende de tu contrato y de la permanencia mínima (4 o 52 semanas). Con la tarifa Flex basta 1 semana.",
+      },
+      {
+        q: "¿Puedo cancelar en los primeros días?",
+        a: "Sí. Si contrataste online o por teléfono, tienes 14 días naturales para desistir desde la firma.",
+      },
+    ],
+    sourceNote:
+      "Datos verificados en la web oficial de Basic-Fit y guías de consumo (OCU), julio 2026. Las condiciones pueden cambiar; confirma en tu contrato y en la web oficial antes de tramitar.",
+  },
+  mcfit: {
+    slug: "mcfit",
+    name: "McFit",
+    category: "Gimnasios",
+    countryCode: "ES",
+    countryName: "España",
+    intro:
+      "¿Vas a darte de baja de McFit? Aquí tienes cómo comunicar la baja, el preaviso y cómo generar una carta de baja formal en minutos, lista para enviar por burofax o correo.",
+    cancelMethods: [
+      "Por escrito con 30 días de preaviso: burofax o carta certificada al centro, correo a C/ Fuencarral 6, 3ª planta, 28004 Madrid, fax al 91 182 90 01 o email a atencioncliente@mcfit.com.",
+      "También puedes acudir a tu gimnasio y comunicar la baja al personal (te pedirán un formulario o carta).",
+    ],
+    facts: [
+      "Indica tu nombre y apellidos, tu número de socio y que solicitas la BAJA DEFINITIVA del contrato.",
+      "El preaviso es de 30 días y aplica tanto a contratos de duración determinada como indefinida.",
+      "Tienes 14 días naturales desde la firma para desistir del contrato.",
+      "Un burofax o carta certificada con acuse de recibo es la forma más segura de dejar constancia de tu baja.",
+    ],
+    faq: [
+      {
+        q: "¿Cómo me doy de baja de McFit?",
+        a: "Por escrito con 30 días de preaviso: burofax o carta certificada al centro, email a atencioncliente@mcfit.com, fax al 91 182 90 01, o en tu gimnasio. Indica tu número de socio y que pides la baja definitiva.",
+      },
+      {
+        q: "¿Cuánto preaviso pide McFit?",
+        a: "30 días, tanto para contratos de duración determinada como indefinida.",
+      },
+      {
+        q: "¿Por qué enviar un burofax?",
+        a: "Porque deja constancia legal de la fecha en que solicitaste la baja: es tu prueba si siguen cobrándote.",
+      },
+    ],
+    sourceNote:
+      "Datos verificados en la ayuda oficial de McFit, julio 2026. Las condiciones pueden cambiar; confirma en tu contrato y en la web oficial antes de tramitar.",
+  },
+  vivagym: {
+    slug: "vivagym",
+    name: "VivaGym",
+    category: "Gimnasios",
+    countryCode: "ES",
+    countryName: "España",
+    intro:
+      "¿Quieres darte de baja de VivaGym? Te explicamos cómo hacerlo, cuándo para que sea efectiva y cómo generar una carta de baja formal en minutos.",
+    cancelMethods: [
+      "Online: desde el área de cliente de la web de VivaGym en cualquier momento; recibirás confirmación por email (normalmente en 24 horas).",
+      "También por burofax o carta certificada con acuse de recibo al centro (la vía más segura para dejar constancia).",
+    ],
+    facts: [
+      "Para que la baja sea efectiva en el mes en curso, gestiónala antes del día 15 o 20 del mes (según tu club).",
+      "VivaGym no tiene permanencia: puedes darte de baja sin penalización en cualquier momento.",
+      "Si contrataste online, tienes 14 días naturales de derecho de desistimiento.",
+      "Los gimnasios suelen exigir el preaviso por escrito; un burofax con acuse de recibo es la prueba más segura.",
+    ],
+    faq: [
+      {
+        q: "¿Cómo me doy de baja de VivaGym?",
+        a: "Desde el área de cliente de su web (con confirmación por email) o por burofax/carta certificada. Hazlo antes del día 15 o 20 del mes para que sea efectiva ese mes.",
+      },
+      {
+        q: "¿VivaGym tiene permanencia?",
+        a: "No. Puedes cancelar cuando quieras sin penalización.",
+      },
+      {
+        q: "¿Hasta qué día del mes puedo darme de baja?",
+        a: "Antes del día 15 o 20, según tu club, para que la baja tenga efecto en el mes en curso.",
+      },
+    ],
+    sourceNote:
+      "Datos verificados en la web oficial de VivaGym, julio 2026. Las condiciones pueden cambiar; confirma en tu contrato y en la web oficial antes de tramitar.",
+  },
+
+  // ── Streaming (internacional) ─────────────────────────────────────────
+  netflix: {
+    slug: "netflix",
+    name: "Netflix",
+    category: "Streaming",
+    countryCode: "ES",
+    countryName: "Internacional",
+    global: true,
+    intro:
+      "¿Quieres cancelar tu suscripción a Netflix? Te explicamos cómo darte de baja desde tu cuenta en unos pocos pasos.",
+    cancelMethods: [
+      "Entra en netflix.com con tu cuenta, pulsa en tu perfil (arriba a la derecha) y ve a «Cuenta».",
+      "Selecciona «Cancelar suscripción» y confirma con «Completar cancelación».",
+    ],
+    facts: [
+      "Netflix no tiene permanencia: puedes seguir viendo hasta el final de tu periodo de facturación y no hay penalización.",
+      "No se puede cancelar desde la app en una tele o consola; hazlo desde la web o el navegador del móvil.",
+      "Si contrataste Netflix a través de tu operadora de móvil o internet, la baja se solicita a esa operadora, no a Netflix.",
+    ],
+    faq: [
+      {
+        q: "¿Cómo cancelo Netflix?",
+        a: "Desde netflix.com → tu perfil → «Cuenta» → «Cancelar suscripción» → «Completar cancelación».",
+      },
+      {
+        q: "¿Pierdo el acceso al cancelar?",
+        a: "No de inmediato: puedes seguir viendo hasta que acabe el periodo de facturación ya pagado.",
+      },
+      {
+        q: "Contraté Netflix con mi operadora, ¿cómo lo cancelo?",
+        a: "En ese caso la baja se gestiona con tu operadora (la que te factura Netflix), no en la web de Netflix.",
+      },
+    ],
+    sourceNote:
+      "Datos verificados en el centro de ayuda de Netflix, julio 2026. La interfaz puede cambiar; confirma en help.netflix.com antes de tramitar.",
+  },
+  "disney-plus": {
+    slug: "disney-plus",
+    name: "Disney+",
+    category: "Streaming",
+    countryCode: "ES",
+    countryName: "Internacional",
+    global: true,
+    intro:
+      "¿Quieres cancelar Disney+? Te explicamos cómo darte de baja desde tu cuenta y qué pasa si te suscribiste a través de un tercero.",
+    cancelMethods: [
+      "Entra en DisneyPlus.com desde un navegador con tu cuenta y ve a «Perfil» → «Cuenta».",
+      "En «Suscripción», selecciona «Cancelar suscripción» y confirma.",
+    ],
+    facts: [
+      "Sin permanencia: mantienes el acceso hasta el final del periodo ya pagado.",
+      "Si te suscribiste a través de un tercero (Apple, Google, Amazon o tu operadora), debes cancelar en esa plataforma, no en Disney+.",
+      "La cancelación desde algunas apps de TV no está disponible; usa un navegador web.",
+    ],
+    faq: [
+      {
+        q: "¿Cómo cancelo Disney+?",
+        a: "Desde DisneyPlus.com en un navegador: «Perfil» → «Cuenta» → «Cancelar suscripción». Si te suscribiste vía Apple, Google o una operadora, cancela allí.",
+      },
+      {
+        q: "¿Sigo teniendo acceso tras cancelar?",
+        a: "Sí, hasta que termine tu periodo de facturación actual.",
+      },
+    ],
+    sourceNote:
+      "Datos verificados en el centro de ayuda de Disney+, julio 2026. La interfaz puede cambiar; confirma en la web oficial antes de tramitar.",
+  },
+  "hbo-max": {
+    slug: "hbo-max",
+    name: "Max (HBO Max)",
+    category: "Streaming",
+    countryCode: "ES",
+    countryName: "Internacional",
+    global: true,
+    intro:
+      "¿Quieres cancelar Max (antes HBO Max)? Te explicamos cómo darte de baja desde tu cuenta y qué hacer si contrataste a través de un tercero.",
+    cancelMethods: [
+      "Entra en la web de Max (play.max.com) desde un navegador, ve a tu perfil y a «Configuración de la cuenta» → «Suscripción».",
+      "Selecciona «Cancelar suscripción» y confirma.",
+    ],
+    facts: [
+      "Conservas el acceso hasta el final del periodo ya pagado; sin penalización.",
+      "Si te suscribiste a través de Apple, Google, Amazon o tu operadora, la cancelación se hace en esa plataforma.",
+      "Cancela desde un navegador web: algunas apps de TV no permiten gestionar la suscripción.",
+    ],
+    faq: [
+      {
+        q: "¿Cómo cancelo Max / HBO Max?",
+        a: "Desde play.max.com en un navegador: perfil → «Configuración de la cuenta» → «Suscripción» → «Cancelar suscripción». Si te suscribiste vía un tercero, cancela en esa plataforma.",
+      },
+      {
+        q: "¿Pierdo el acceso al momento?",
+        a: "No: puedes seguir viendo hasta que acabe el periodo ya pagado.",
+      },
+    ],
+    sourceNote:
+      "Datos verificados en el centro de ayuda de Max, julio 2026. La interfaz puede cambiar; confirma en la web oficial antes de tramitar.",
+  },
+  "amazon-prime": {
+    slug: "amazon-prime",
+    name: "Amazon Prime (Prime Video)",
+    category: "Streaming",
+    countryCode: "ES",
+    countryName: "Internacional",
+    global: true,
+    intro:
+      "¿Quieres cancelar Amazon Prime o Prime Video? Te explicamos cómo finalizar tu membresía desde tu cuenta de Amazon.",
+    cancelMethods: [
+      "Entra en amazon.es y ve a «Mi cuenta» → «Prime» (Gestionar membresía).",
+      "Selecciona «Finalizar membresía» o «Cancelar suscripción» y confirma.",
+    ],
+    facts: [
+      "Prime Video se incluye en la membresía Prime: al cancelar Prime, finaliza también Prime Video.",
+      "Puedes seguir usando Prime hasta el final del periodo pagado; según el uso, Amazon puede reembolsar parte del importe.",
+      "Si contrataste solo Prime Video como suscripción independiente, cancélala en la sección «Canales» o «Prime Video» de tu cuenta.",
+    ],
+    faq: [
+      {
+        q: "¿Cómo cancelo Amazon Prime?",
+        a: "En amazon.es → «Mi cuenta» → «Prime» → «Finalizar membresía». Prime Video se cancela al finalizar la membresía Prime.",
+      },
+      {
+        q: "¿Me devuelven el dinero?",
+        a: "Si no has usado las ventajas de Prime, Amazon puede reembolsar el importe; si las has usado, el reembolso puede ser parcial o nulo.",
+      },
+    ],
+    sourceNote:
+      "Datos verificados en la ayuda oficial de Amazon, julio 2026. La interfaz puede cambiar; confirma en amazon.es antes de tramitar.",
+  },
+  spotify: {
+    slug: "spotify",
+    name: "Spotify",
+    category: "Streaming",
+    countryCode: "ES",
+    countryName: "Internacional",
+    global: true,
+    intro:
+      "¿Quieres cancelar Spotify Premium? Te explicamos cómo volver a la cuenta gratuita sin perder tus listas.",
+    cancelMethods: [
+      "Entra en spotify.com/account desde un navegador (no desde la app) e inicia sesión.",
+      "En «Tu plan» o «Gestionar plan», elige «Cancelar Premium» y confirma.",
+    ],
+    facts: [
+      "Al cancelar, tu cuenta pasa a Spotify Free al final del periodo ya pagado; no pierdes tus listas ni tu biblioteca.",
+      "Si contrataste Premium a través de Apple, Google o tu operadora, debes cancelar en esa plataforma.",
+      "La cancelación se gestiona desde la web: la app no permite dar de baja el plan.",
+    ],
+    faq: [
+      {
+        q: "¿Cómo cancelo Spotify Premium?",
+        a: "Desde spotify.com/account en un navegador: «Tu plan» → «Cancelar Premium». Si pagas vía Apple, Google o tu operadora, cancela en esa plataforma.",
+      },
+      {
+        q: "¿Pierdo mis listas al cancelar?",
+        a: "No. Tu cuenta pasa a Spotify Free y conservas tus listas y tu biblioteca.",
+      },
+    ],
+    sourceNote:
+      "Datos verificados en el centro de ayuda de Spotify, julio 2026. La interfaz puede cambiar; confirma en support.spotify.com antes de tramitar.",
   },
 };
 

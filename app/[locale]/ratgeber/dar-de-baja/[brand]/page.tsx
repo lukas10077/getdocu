@@ -20,8 +20,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const brand = getBrandEs(params.brand);
   if (!brand || params.locale !== GUIDE_LOCALE) return {};
-  const title = `Dar de baja ${brand.name} en ${brand.countryName} — teléfono, pasos y carta de baja`;
-  const description = `Cómo dar de baja ${brand.name} en ${brand.countryName}: teléfono, pasos y qué necesitas. Crea una carta de baja formal en minutos, sin cuenta y sin suscripción.`;
+  const title = brand.global
+    ? `Cancelar ${brand.name} — cómo darte de baja paso a paso`
+    : `Dar de baja ${brand.name} en ${brand.countryName} — teléfono, pasos y carta de baja`;
+  const description = brand.global
+    ? `Cómo cancelar ${brand.name}: pasos para darte de baja desde tu cuenta, sin complicaciones. Guía clara y actualizada.`
+    : `Cómo dar de baja ${brand.name} en ${brand.countryName}: teléfono, pasos y qué necesitas. Crea una carta de baja formal en minutos, sin cuenta y sin suscripción.`;
   const url = `${BASE_URL}/${GUIDE_LOCALE}/ratgeber/dar-de-baja/${brand.slug}`;
   return {
     title,
@@ -52,7 +56,12 @@ export default async function DarDeBajaPage({
   // Otras compañías de la misma categoría (enlazado interno hub-and-spoke)
   const siblings = allBrandEsSlugs
     .map((slug) => brandsEs[slug])
-    .filter((b) => b.countryCode === brand.countryCode && b.category === brand.category && b.slug !== brand.slug);
+    .filter(
+      (b) =>
+        b.slug !== brand.slug &&
+        b.category === brand.category &&
+        (brand.global ? b.global : !b.global && b.countryCode === brand.countryCode)
+    );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -90,28 +99,30 @@ export default async function DarDeBajaPage({
       <article className="px-6 py-10 md:py-16">
         <div className="mx-auto max-w-2xl">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-swiss-gold">
-            {brand.category} · {brand.countryName}
+            {brand.global ? brand.category : `${brand.category} · ${brand.countryName}`}
           </p>
           <h1 className="font-serif text-4xl font-medium text-cream md:text-5xl">
-            Dar de baja {brand.name}
+            {brand.global ? `Cancelar ${brand.name}` : `Dar de baja ${brand.name}`}
           </h1>
           <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
 
           <p className="mt-8 text-base leading-relaxed text-cream-muted">{brand.intro}</p>
 
-          <div className="mt-8">
-            <Link href={toolHref} className={ctaClass}>
-              Crear mi carta de baja →
-            </Link>
-            <p className="mt-3 text-xs text-cream-subtle">
-              Vista previa gratis · Pagas solo si te convence · Tus datos se eliminan después
-            </p>
-          </div>
+          {!brand.global && (
+            <div className="mt-8">
+              <Link href={toolHref} className={ctaClass}>
+                Crear mi carta de baja →
+              </Link>
+              <p className="mt-3 text-xs text-cream-subtle">
+                Vista previa gratis · Pagas solo si te convence · Tus datos se eliminan después
+              </p>
+            </div>
+          )}
 
           <div className="mt-12 space-y-10 text-base leading-relaxed text-cream-muted">
             <section>
               <h2 className="mb-3 font-serif text-2xl font-medium text-cream">
-                Cómo darte de baja de {brand.name}
+                {brand.global ? `Cómo cancelar ${brand.name}` : `Cómo darte de baja de ${brand.name}`}
               </h2>
               <ul className="space-y-3">
                 {brand.cancelMethods.map((m) => (
@@ -135,22 +146,24 @@ export default async function DarDeBajaPage({
               </ul>
             </section>
 
-            <section>
-              <h2 className="mb-3 font-serif text-2xl font-medium text-cream">
-                Deja constancia por escrito
-              </h2>
-              <p>
-                Aunque tramites la baja por teléfono, una carta de baja por escrito te sirve como
-                prueba de cuándo la solicitaste — útil si luego hay problemas con la facturación o si
-                quieres ejercer tu derecho de desistimiento. Con nuestra herramienta generas una carta
-                profesional para {brand.name} en minutos, lista para enviar o adjuntar.
-              </p>
-              <div className="mt-6">
-                <Link href={toolHref} className={ctaClass}>
-                  Crear mi carta de baja →
-                </Link>
-              </div>
-            </section>
+            {!brand.global && (
+              <section>
+                <h2 className="mb-3 font-serif text-2xl font-medium text-cream">
+                  Deja constancia por escrito
+                </h2>
+                <p>
+                  Aunque tramites la baja por teléfono, una carta de baja por escrito te sirve como
+                  prueba de cuándo la solicitaste — útil si luego hay problemas con la facturación o si
+                  quieres ejercer tu derecho de desistimiento. Con nuestra herramienta generas una carta
+                  profesional para {brand.name} en minutos, lista para enviar o adjuntar.
+                </p>
+                <div className="mt-6">
+                  <Link href={toolHref} className={ctaClass}>
+                    Crear mi carta de baja →
+                  </Link>
+                </div>
+              </section>
+            )}
 
             <section>
               <h2 className="mb-4 font-serif text-2xl font-medium text-cream">Preguntas frecuentes</h2>
@@ -167,7 +180,7 @@ export default async function DarDeBajaPage({
             {siblings.length > 0 && (
               <section className="border-t border-ink-700 pt-8">
                 <h2 className="mb-3 text-xs font-medium uppercase tracking-widest text-cream">
-                  Dar de baja otras compañías
+                  {brand.global ? "Cancelar otros servicios" : "Dar de baja otras compañías"}
                 </h2>
                 <ul className="space-y-2 text-sm">
                   {siblings.map((b) => (
@@ -176,7 +189,7 @@ export default async function DarDeBajaPage({
                         href={`/${params.locale}/ratgeber/dar-de-baja/${b.slug}`}
                         className="text-swiss-gold underline hover:opacity-80"
                       >
-                        Dar de baja {b.name}
+                        {b.global ? `Cancelar ${b.name}` : `Dar de baja ${b.name}`}
                       </Link>
                     </li>
                   ))}
