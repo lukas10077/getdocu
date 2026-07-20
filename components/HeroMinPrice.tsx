@@ -10,7 +10,7 @@ export default function HeroMinPrice({ label }: { label?: string }) {
   const { country } = useCountry();
 
   const { currency, amount } = country
-    ? getStripeAmount(MIN_RAPPEN, country.currency)
+    ? getStripeAmount(MIN_RAPPEN, country.currency, country.priceFactor ?? 1)
     : { currency: "chf", amount: MIN_RAPPEN };
 
   const template = label ?? "✓ ab {price}";

@@ -11,8 +11,8 @@ export default function HowItWorks({ dict }: { dict: any }) {
   const { country } = useCountry();
 
   // Preisspanne in Landeswährung berechnen
-  const minResult = country ? getStripeAmount(MIN_RAPPEN, country.currency) : null;
-  const maxResult = country ? getStripeAmount(MAX_RAPPEN, country.currency) : null;
+  const minResult = country ? getStripeAmount(MIN_RAPPEN, country.currency, country.priceFactor ?? 1) : null;
+  const maxResult = country ? getStripeAmount(MAX_RAPPEN, country.currency, country.priceFactor ?? 1) : null;
   const minCur = minResult?.currency ?? "chf";
   const minAmt = minResult?.amount ?? MIN_RAPPEN;
   const maxAmt = maxResult?.amount ?? MAX_RAPPEN;

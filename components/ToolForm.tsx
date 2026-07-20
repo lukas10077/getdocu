@@ -521,7 +521,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
 
   // Preisberechnung
   const { currency: priceCurrency, amount: priceAmount } = country
-    ? getStripeAmount(tool.priceChfRappen, country.currency)
+    ? getStripeAmount(tool.priceChfRappen, country.currency, country.priceFactor ?? 1)
     : { currency: "chf", amount: tool.priceChfRappen };
   const priceDisplay = formatAmount(priceAmount, priceCurrency);
 

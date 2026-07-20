@@ -182,6 +182,26 @@ const STANDARDS: Record<string, CountryStandards> = {
     reklamation:
       "Sachlich-bestimmter Ton; auf die Rechte aus dem Konsumentenschutz verweisen ('Libro de Reclamaciones' ist bekanntes Druckmittel); zuerst Reparatur, Ersatz oder Erstattung verlangen.",
   },
+  EC: {
+    arbeitszeugnis: ZEUGNIS_CERTIFICADO_LATAM,
+    lebenslauf: CV_LATAM,
+    "kuendigung-wohnung":
+      "Schriftliche Mitteilung mit Empfangsbestätigung ist üblich; bei Mietverhältnissen auf die Ley de Inquilinato Bezug nehmen und um schriftliche Bestätigung bitten.",
+    "kuendigung-arbeit":
+      "Die 'carta de renuncia' (desahucio) ist kurz und formell; üblich ist ein Aviso von 15 Tagen — nur die vom Nutzer angegebene Frist nennen.",
+    reklamation:
+      "Sachlich-bestimmter Ton; auf die Rechte aus der Ley de Defensa del Consumidor verweisen; zuerst Reparatur, Ersatz oder Erstattung mit klarer Frist verlangen.",
+  },
+  DO: {
+    arbeitszeugnis: ZEUGNIS_CERTIFICADO_LATAM,
+    lebenslauf: CV_LATAM,
+    "kuendigung-wohnung":
+      "Schriftliche Mitteilung mit Empfangsbestätigung ('acuse de recibo') ist üblich; ggf. Zustellung per alguacil (Gerichtsbote) erwähnen, wenn der Nutzer das angibt.",
+    "kuendigung-arbeit":
+      "Die 'carta de desahucio/renuncia' ist kurz und formell mit Dank; Preaviso nur nennen, wenn vom Nutzer angegeben.",
+    reklamation:
+      "Sachlich-bestimmter Ton; auf die Rechte aus der Ley 358-05 (Pro Consumidor) verweisen; zuerst Reparatur, Ersatz oder Erstattung mit klarer Frist verlangen.",
+  },
   NL: {
     arbeitszeugnis:
       "Das 'getuigschrift' ähnelt dem DACH-Zeugnis, ist aber direkter und ohne Codierungssprache: " +

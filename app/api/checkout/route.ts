@@ -25,7 +25,8 @@ export async function POST(req: NextRequest) {
   const country = countryCode ? getCountry(countryCode) : null;
   const { currency, amount } = getStripeAmount(
     tool.priceChfRappen,
-    country?.currency ?? "CHF"
+    country?.currency ?? "CHF",
+    country?.priceFactor ?? 1
   );
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";

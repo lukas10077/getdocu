@@ -5,6 +5,9 @@ export interface Country {
   currency: string;    // ISO 4217
   documentLang: string; // Sprache des generierten Dokuments
   continent: "europe" | "americas" | "asia" | "oceania";
+  // Optionaler Kaufkraft-Rabatt für Länder, deren Währung keinen eigenen
+  // Faktor erlaubt (z.B. Ecuador mit USD): multipliziert den Preis (0.8 = -20%).
+  priceFactor?: number;
 }
 
 // Stripe-Währungskonfiguration
@@ -33,6 +36,7 @@ export const CURRENCY_CONFIG: Record<string, { factor: number }> = {
   CLP: { factor: 9.4 },   // zero-decimal
   COP: { factor: 45 },    // zero-decimal
   PEN: { factor: 3.8 },
+  DOP: { factor: 60 },   // Markt ~75 DOP/CHF; bewusst ~20% Kaufkraft-Rabatt
   UYU: { factor: 45 },
   PYG: { factor: 760 },   // zero-decimal
   BOB: { factor: 7.5 },
@@ -80,7 +84,7 @@ export const THREE_DECIMAL_CURRENCIES = new Set([
 export const CURRENCY_FALLBACK: Record<string, string> = {
   // Karibik + Zentralamerika → USD
   CUP: "USD", HTG: "USD", JMD: "USD", TTD: "USD",
-  BBD: "USD", XCD: "USD", BSD: "USD", DOP: "USD",
+  BBD: "USD", XCD: "USD", BSD: "USD",
   GTQ: "USD", BZD: "USD", HNL: "USD", NIO: "USD", CRC: "USD",
   // Sonstiges Europa → EUR
   MDL: "EUR", BYR: "EUR", MKD: "EUR", ALL: "EUR", BAM: "EUR", ISK: "EUR",
@@ -154,7 +158,7 @@ export const COUNTRIES: Country[] = [
   { code: "PE", name: "Peru",                           flag: "🇵🇪", currency: "PEN", documentLang: "es", continent: "americas" }, // ~33M
   { code: "VE", name: "Venezuela",                      flag: "🇻🇪", currency: "USD", documentLang: "es", continent: "americas" }, // ~28M
   { code: "CL", name: "Chile",                          flag: "🇨🇱", currency: "CLP", documentLang: "es", continent: "americas" }, // ~19M
-  { code: "EC", name: "Ecuador",                        flag: "🇪🇨", currency: "USD", documentLang: "es", continent: "americas" }, // ~18M
+  { code: "EC", name: "Ecuador",                        flag: "🇪🇨", currency: "USD", documentLang: "es", continent: "americas", priceFactor: 0.8 }, // ~18M; USD offiziell, daher Rabatt via priceFactor
   { code: "GT", name: "Guatemala",                      flag: "🇬🇹", currency: "GTQ", documentLang: "es", continent: "americas" }, // ~17M
   { code: "BO", name: "Bolivien",                       flag: "🇧🇴", currency: "BOB", documentLang: "es", continent: "americas" }, // ~12M
   { code: "HT", name: "Haiti",                          flag: "🇭🇹", currency: "HTG", documentLang: "fr", continent: "americas" }, // ~11M
@@ -242,11 +246,11 @@ export function getCountry(code: string): Country | undefined {
 }
 
 /** Ermittelt die Stripe-Währung und den Betrag für ein gegebenes Land */
-export function getStripeAmount(priceChfRappen: number, currency: string): { currency: string; amount: number } {
+export function getStripeAmount(priceChfRappen: number, currency: string, priceFactor = 1): { currency: string; amount: number } {
   const effectiveCurrency = CURRENCY_FALLBACK[currency] ?? currency;
   const config = CURRENCY_CONFIG[effectiveCurrency];
-  if (!config) return { currency: "chf", amount: priceChfRappen };
-  const amount = Math.round(priceChfRappen * config.factor);
+  if (!config) return { currency: "chf", amount: Math.round(priceChfRappen * priceFactor) };
+  const amount = Math.round(priceChfRappen * config.factor * priceFactor);
   return { currency: effectiveCurrency.toLowerCase(), amount };
 }
 

@@ -429,6 +429,38 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
+  EC: {
+    "maengelruege": [
+      { law: "Código Civil", articles: "Art. 1865", note: "Obligaciones del arrendador de mantener la cosa en estado de servir" },
+    ],
+    "kuendigung-wohnung": [
+      { law: "Ley de Inquilinato", articles: "Art. 30 ss.", note: "Terminación del arrendamiento y desahucio" },
+    ],
+    "kuendigung-arbeit": [
+      { law: "Código del Trabajo", articles: "Art. 184", note: "Desahucio: aviso del trabajador con 15 días de anticipación" },
+    ],
+    "reklamation": [
+      { law: "Ley Orgánica de Defensa del Consumidor", articles: "Art. 4", note: "Derechos del consumidor, garantía por bienes deficientes" },
+    ],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
+  },
+
+  DO: {
+    "maengelruege": [
+      { law: "Código Civil", articles: "Art. 1719", note: "Obligaciones del arrendador (entrega y mantenimiento de la cosa)" },
+    ],
+    "kuendigung-wohnung": [
+      { law: "Código Civil", articles: "Art. 1736", note: "Terminación del arrendamiento sin plazo fijo mediante aviso (desahucio)" },
+    ],
+    "kuendigung-arbeit": [
+      { law: "Código de Trabajo (Ley 16-92)", articles: "Art. 76 ss.", note: "Desahucio: terminación con aviso previo" },
+    ],
+    "reklamation": [
+      { law: "Ley 358-05 (Protección de los Derechos del Consumidor)", articles: "Art. 33", note: "Derechos fundamentales del consumidor" },
+    ],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
+  },
+
   // ── Asien & Naher Osten ──────────────────────────────────────
 
   JP: {

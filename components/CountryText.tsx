@@ -32,8 +32,8 @@ export default function CountryText({ text, className, fallbackCountryName }: { 
     ? localizedCountryName(country.code, locale, country.name)
     : fallbackCountryName ?? "deinem Land";
 
-  const minResult = country ? getStripeAmount(MIN_RAPPEN, country.currency) : null;
-  const maxResult = country ? getStripeAmount(MAX_RAPPEN, country.currency) : null;
+  const minResult = country ? getStripeAmount(MIN_RAPPEN, country.currency, country.priceFactor ?? 1) : null;
+  const maxResult = country ? getStripeAmount(MAX_RAPPEN, country.currency, country.priceFactor ?? 1) : null;
   const cur = minResult?.currency ?? "chf";
   const minAmt = minResult?.amount ?? MIN_RAPPEN;
   const maxAmt = maxResult?.amount ?? MAX_RAPPEN;
