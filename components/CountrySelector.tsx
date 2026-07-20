@@ -100,8 +100,10 @@ export default function CountrySelector() {
   const pinned = country ?? detectedCountry;
   const filteredWithoutPinned = pinned ? filtered.filter((c) => c.code !== pinned.code) : filtered;
 
-  const europe   = filteredWithoutPinned.filter((c) => c.continent === "europe");
-  const americas = filteredWithoutPinned.filter((c) => c.continent === "americas");
+  // Fokus-Länder (mit priority) zuerst, danach bisherige Reihenfolge (nach Bevölkerung)
+  const byPriority = (a: Country, b: Country) => (a.priority ?? 999) - (b.priority ?? 999);
+  const europe   = filteredWithoutPinned.filter((c) => c.continent === "europe").sort(byPriority);
+  const americas = filteredWithoutPinned.filter((c) => c.continent === "americas").sort(byPriority);
   const asia     = filteredWithoutPinned.filter((c) => c.continent === "asia");
   const oceania  = filteredWithoutPinned.filter((c) => c.continent === "oceania");
   const pinnedInFiltered = pinned ? filtered.find((c) => c.code === pinned.code) : null;
