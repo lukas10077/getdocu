@@ -129,7 +129,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Motivationsschreiben auf Deutsch. Halte dich an Schweizer Standards: Absender-Block oben links, " +
       "Empfänger-Block, Ort und Datum, Betreff, Anrede, klare Gliederung (Einleitung / Hauptteil mit " +
       "konkretem Bezug zur Stelle und zum Unternehmen / Schluss mit Call-to-Action), höflicher Abschluss. " +
-      "Keine Übertreibungen, keine leeren Phrasen. Beziehe dich konkret auf die angegebene Stelle.",
+      "Keine Übertreibungen, keine leeren Phrasen. Beziehe dich konkret auf die angegebene Stelle. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 250 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",       label: "Vorname",                              type: "text",     required: true,  section: "Über dich" },
       { key: "lastName",        label: "Nachname",                             type: "text",     required: true  },
@@ -162,7 +164,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "klarer Nennung des Vertrags/Gegenstands der Kündigung, das gewünschte Kündigungsdatum, Bitte um " +
       "schriftliche Bestätigung, höflicher Abschluss. Falls eine Kündigungsfrist angegeben ist, erwähne " +
       "sie im Brief (z.B. 'unter Einhaltung der vertraglich vereinbarten Frist von X Monaten'). " +
-      "Weise NICHT auf gesetzliche Fristen hin — das ist keine Rechtsberatung.",
+      "Weise NICHT auf gesetzliche Fristen hin — das ist keine Rechtsberatung. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 150 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",        label: "Vorname",                                type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                               type: "text",     required: true  },
@@ -209,7 +213,11 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Unterschriftsblock am Schluss: Firmenname und Datum, dann eine Leerzeile, dann nur " +
       "\"_________________\" als Platzhalter für die Unterschrift — kein Text wie [Funktion Unterzeichner]. " +
       "Verwende KEINE Platzhalter in Klammern wie (Abteilung), (Anzahl Mitarbeiter) o.ä. " +
-      "Wenn eine Information nicht vorhanden ist, lasse den betreffenden Satzteil einfach weg.",
+      "Wenn eine Information nicht vorhanden ist, lasse den betreffenden Satzteil einfach weg. " +
+      "LÄNGE — ZWINGEND: Das gesamte Zeugnis muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 300 Wörter Fliesstext (ohne Kopf- und Unterschriftsblock). Formuliere prägnant, " +
+      "fasse Leistungs- und Verhaltensbeurteilung eng zusammen und kürze konsequent, statt eine " +
+      "zweite Seite zu beginnen. Lieber weniger, dafür dichte, hochwertige Sätze.",
     fields: [
       { key: "firstName",     label: "Vorname",                      type: "text",     required: true, section: "Deine Angaben" },
       { key: "lastName",      label: "Nachname",                     type: "text",     required: true },
@@ -246,7 +254,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "keine Forderungen. Ziel ist einzig die schriftliche Dokumentation der vorgefundenen Schäden. " +
       "PFLICHTABSCHNITT AM SCHLUSS (vor der Bitte um Rückmeldung): Ein kurzer Absatz der festhält, dass " +
       "alle aufgeführten Schäden sowie die beigefügte Fotodokumentation der Feststellung des Zustands der " +
-      "Wohnung bei Mietbeginn dienen und bei einem späteren Auszug zur Beweissicherung beigezogen werden.",
+      "Wohnung bei Mietbeginn dienen und bei einem späteren Auszug zur Beweissicherung beigezogen werden. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. Halte die " +
+      "Schadensliste stichwortartig knapp (pro Schaden eine Zeile) und den übrigen Text auf maximal " +
+      "180 Wörter — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                     type: "text",     required: true  },
@@ -274,7 +285,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Du bist Experte für Kundenkorrespondenz in der Schweiz. Erstelle einen professionellen " +
       "Reklamationsbrief auf Deutsch. Struktur: Absender, Empfänger, Datum, Betreff, " +
       "sachliche Schilderung des Problems, konkrete Forderung (Rückerstattung / Reparatur / " +
-      "Entschuldigung / Nachlieferung), Frist, Abschluss. Ton: bestimmt, sachlich, nicht aggressiv.",
+      "Entschuldigung / Nachlieferung), Frist, Abschluss. Ton: bestimmt, sachlich, nicht aggressiv. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 200 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",        label: "Vorname",                      type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                     type: "text",     required: true  },
@@ -306,6 +319,8 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Erstelle einen professionellen Lebenslauf auf Deutsch. Falls ein bestehender Lebenslauf hochgeladen wurde, " +
       "berücksichtige ihn vollständig. Nutze alle vom Nutzer angegebenen Daten (Arbeitsstellen, Ausbildung, Sprachen etc.). " +
       "Schweizer Standard: prägnant, maximal eine Seite, rückwärts chronologisch. " +
+      "LÄNGE — ZWINGEND: Der gesamte Lebenslauf muss auf EINE einzige A4-Seite passen — fasse ältere " +
+      "oder weniger relevante Stationen zusammen und kürze Beschreibungen, statt eine zweite Seite zu beginnen. " +
       "Gib nur das Dokument aus — keine Erklärungen.\n\n" +
       "AUSGABEFORMAT LEBENSLAUF — ZWINGEND:\n" +
       "Erster Block: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4, nur wenn angegeben).\n" +
@@ -346,7 +361,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Betreff mit Adresse des Mietobjekts, klare Kündigungserklärung mit Datum, Bitte um schriftliche " +
       "Bestätigung, höflicher Abschluss. Falls eine Kündigungsfrist angegeben ist, erwähne sie im Brief " +
       "(z.B. 'unter Einhaltung der vertraglich vereinbarten Frist von X Monaten'). " +
-      "Weise NICHT auf gesetzliche Fristen hin.",
+      "Weise NICHT auf gesetzliche Fristen hin. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 150 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",        label: "Vorname",                           type: "text", required: true,  section: "Mieter" },
       { key: "lastName",         label: "Nachname",                          type: "text", required: true  },
@@ -387,7 +404,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Vertrag zu entlassen. (5) Bitte um schriftliche Bestätigung. Höflicher Abschluss. " +
       "TONFALL: sachlich, höflich, kooperativ. Formuliere neutral als 'vorzeitige Rückgabe des " +
       "Mietobjekts'. Zitiere KEINE Gesetzesartikel im Brief und behaupte keine Fristen — das ist keine " +
-      "Rechtsberatung. Verwende KEINE Platzhalter in Klammern; lasse fehlende Angaben einfach weg.",
+      "Rechtsberatung. Verwende KEINE Platzhalter in Klammern; lasse fehlende Angaben einfach weg. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 220 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",          label: "Vorname",                          type: "text",     required: true,  section: "Mieter" },
       { key: "lastName",           label: "Nachname",                         type: "text",     required: true  },
@@ -428,7 +447,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "(Wohnungsrückgabe, Abrechnung). Höflicher, aber bestimmter Abschluss. " +
       "TONFALL: sachlich, bestimmt, nicht aggressiv. Zitiere KEINE konkreten Gesetzesartikel und " +
       "behaupte keine spezifischen gesetzlichen Fristen — das ist keine Rechtsberatung. Verwende KEINE " +
-      "Platzhalter in Klammern; lasse fehlende Angaben einfach weg.",
+      "Platzhalter in Klammern; lasse fehlende Angaben einfach weg. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 220 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",       label: "Vorname",                          type: "text",     required: true,  section: "Mieter" },
       { key: "lastName",        label: "Nachname",                         type: "text",     required: true  },
@@ -461,7 +482,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "TEIL 1 — BEWERBUNGSSCHREIBEN:\n" +
       "Professionelles Motivationsschreiben nach Schweizer Standard: Absender-Block oben links, Empfänger-Block, " +
       "Ort und Datum, Betreff (in GROSSBUCHSTABEN), Anrede, klare Gliederung (Einleitung / Hauptteil mit " +
-      "konkretem Bezug zur Stelle und zum Unternehmen / Schluss mit Call-to-Action), höflicher Abschluss.\n\n" +
+      "konkretem Bezug zur Stelle und zum Unternehmen / Schluss mit Call-to-Action), höflicher Abschluss. " +
+      "LÄNGE — ZWINGEND: Das Bewerbungsschreiben muss auf EINE einzige A4-Seite passen. Maximal 250 Wörter " +
+      "Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.\n\n" +
       "Schreibe nach dem Bewerbungsschreiben auf einer eigenen Zeile exakt: ===LEBENSLAUF===\n\n" +
       "TEIL 2 — LEBENSLAUF:\n" +
       "Vollständiger, professioneller Lebenslauf nach Schweizer Standard: Persönliche Daten / " +
@@ -471,7 +494,10 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Erster Block: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4, nur wenn angegeben).\n" +
       "Sektionen in GROSSBUCHSTABEN (z.B. BERUFSERFAHRUNG, AUSBILDUNG, SPRACHEN, KENNTNISSE).\n" +
       "Pro Stelle: Berufsbezeichnung (Zeile 1), Firma und Ort (Zeile 2), Zeitraum wie '2020 – 2023' (Zeile 3), kurze Beschreibung (Zeile 4).\n" +
-      "Verwende alle angegebenen Arbeitsstellen und Jahreszahlen exakt wie angegeben. Lebenslauf maximal eine Seite. Kein Markdown, keine Bindestriche als Listenpunkte, keine --- Trennlinien.",
+      "Verwende alle angegebenen Arbeitsstellen und Jahreszahlen exakt wie angegeben. " +
+      "LÄNGE — ZWINGEND: Der Lebenslauf muss auf EINE einzige A4-Seite passen — fasse ältere oder weniger " +
+      "relevante Stationen zusammen und kürze Beschreibungen, statt eine zweite Seite zu beginnen. " +
+      "Kein Markdown, keine Bindestriche als Listenpunkte, keine --- Trennlinien.",
     fields: [
       { key: "firstName",       label: "Vorname",                              type: "text",     required: true,  section: "Über dich" },
       { key: "lastName",        label: "Nachname",                             type: "text",     required: true  },
@@ -508,7 +534,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Betreff mit Stellenbezeichnung, klare Kündigungserklärung mit Datum, Bitte um schriftliches " +
       "Arbeitszeugnis, Dank für die Zusammenarbeit, höflicher Abschluss. Falls eine Kündigungsfrist " +
       "angegeben ist, erwähne sie im Brief (z.B. 'unter Einhaltung der Kündigungsfrist von X Monaten'). " +
-      "Weise NICHT auf gesetzliche Fristen hin.",
+      "Weise NICHT auf gesetzliche Fristen hin. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 150 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",        label: "Vorname",                     type: "text", required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                    type: "text", required: true  },
@@ -544,7 +572,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "Höflicher Abschluss. TONFALL: sachlich, bestimmt, höflich. Ein Widerruf muss NICHT begründet werden — " +
       "verlange also keinen Grund und erfinde keinen. Zitiere KEINE konkreten Gesetzesartikel und behaupte keine " +
       "spezifischen Fristen — das ist keine Rechtsberatung. Verwende KEINE Platzhalter in Klammern; lasse " +
-      "fehlende Angaben einfach weg.",
+      "fehlende Angaben einfach weg. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 150 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",        label: "Vorname",                                  type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                                 type: "text",     required: true  },
@@ -574,7 +604,9 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       "ZWINGEND EINHALTEN: Formuliere KEINE juristische Begründung, KEINE Argumente, warum der Bescheid " +
       "falsch sei, und bewerte den Sachverhalt NICHT. Das Schreiben dient ausschliesslich der Fristwahrung. " +
       "Zitiere KEINE Gesetzesartikel und behaupte KEINE konkreten Fristen — das ist keine Rechtsberatung. " +
-      "Verwende KEINE Platzhalter in Klammern; lasse fehlende Angaben einfach weg.",
+      "Verwende KEINE Platzhalter in Klammern; lasse fehlende Angaben einfach weg. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 120 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
     fields: [
       { key: "firstName",        label: "Vorname",                         type: "text",     required: true,  section: "Deine Angaben" },
       { key: "lastName",         label: "Nachname",                        type: "text",     required: true  },
