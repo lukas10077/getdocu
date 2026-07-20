@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Dostępne tylko dla Szwajcarii",
+    "body": "Ten dokument opiera się na szwajcarskim prawie najmu (wcześniejsze rozwiązanie umowy przez wskazanie najemcy zastępczego). W {country} taka droga zwykle nie istnieje.",
+    "linkLead": "Dla Twojego kraju odpowiednie jest",
+    "linkText": "nadzwyczajne wypowiedzenie z ważnego powodu"
+  },
   "onboarding": {
     "title": "Twój język",
     "subtitle": "Już wykryty — zmień w razie potrzeby.",
@@ -24,7 +30,10 @@
     "description": "Dokumenty generowane przez AI dla Szwajcarii: podanie o wynajem, podanie o pracę, wypowiedzenie. Gotowe w kilka minut."
   },
   "nav": {
-    "tools": "Dokumenty",
+    "changeCountry": "Zmień kraj",
+    "menuOpen": "Otwórz menu",
+    "menuClose": "Zamknij menu",
+    "tools":"Dokumenty",
     "howItWorks": "Jak to działa",
     "pricing": "Cennik",
     "languages": "Język"
@@ -370,6 +379,7 @@
     "errorTitle": "Wystąpił błąd",
     "backToForm": "Powrót do formularza",
     "checkoutError": "Błąd podczas otwierania strony płatności. Spróbuj ponownie.",
+    "dataNotFound": "Nie znaleziono danych formularza. Spróbuj ponownie.",
     "previewTag": "Podgląd",
     "previewPayNote": "— Zapłać, aby otrzymać pełny dokument",
     "watermark": "PODGLĄD",

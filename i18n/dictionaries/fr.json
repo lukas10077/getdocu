@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Disponible uniquement pour la Suisse",
+    "body": "Ce document repose sur le droit du bail suisse (résiliation anticipée en proposant un locataire de remplacement). En {country}, cette voie n'existe généralement pas.",
+    "linkLead": "Ce qui convient à votre pays est la",
+    "linkText": "résiliation extraordinaire pour juste motif"
+  },
   "onboarding": {
     "title": "Votre langue",
     "subtitle": "Déjà détectée — modifiez si nécessaire.",
@@ -24,7 +30,10 @@
     "description": "Documents générés par IA pour la Suisse : candidature de location, lettre de motivation, résiliation. En quelques minutes."
   },
   "nav": {
-    "tools": "Documents",
+    "changeCountry": "Changer de pays",
+    "menuOpen": "Ouvrir le menu",
+    "menuClose": "Fermer le menu",
+    "tools":"Documents",
     "howItWorks": "Comment ça marche",
     "pricing": "Tarifs",
     "languages": "Langue"
@@ -370,6 +379,7 @@
     "errorTitle": "Une erreur est survenue",
     "backToForm": "Retour au formulaire",
     "checkoutError": "Erreur lors de l'ouverture de la page de paiement. Veuillez réessayer.",
+    "dataNotFound": "Données du formulaire introuvables. Veuillez réessayer.",
     "previewTag": "Aperçu",
     "previewPayNote": "— Payez pour recevoir le document complet",
     "watermark": "APERÇU",

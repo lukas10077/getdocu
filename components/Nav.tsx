@@ -30,7 +30,7 @@ export default function Nav({ locale, dict }: { locale: Locale; dict: any }) {
 
         {/* Right side */}
         <div className="flex items-center gap-3">
-          <CountryButton />
+          <CountryButton title={dict.nav.changeCountry} />
           <LanguageSwitcher current={locale} />
           {/* Desktop CTA */}
           <Link
@@ -42,7 +42,7 @@ export default function Nav({ locale, dict }: { locale: Locale; dict: any }) {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
-            aria-label={open ? "Menü schliessen" : "Menü öffnen"}
+            aria-label={open ? (dict.nav.menuClose ?? "Menü schliessen") : (dict.nav.menuOpen ?? "Menü öffnen")}
             aria-expanded={open}
             className="flex flex-col items-center justify-center gap-1.5 p-2 md:hidden"
           >

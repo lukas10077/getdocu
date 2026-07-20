@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Disponibile solo per la Svizzera",
+    "body": "Questo documento si basa sul diritto di locazione svizzero (uscita anticipata proponendo un subentrante). In {country} questa via generalmente non esiste.",
+    "linkLead": "Adatto al tuo paese è la",
+    "linkText": "disdetta straordinaria per motivi gravi"
+  },
   "onboarding": {
     "title": "La tua lingua",
     "subtitle": "Già rilevata — cambiala se necessario.",
@@ -24,7 +30,10 @@
     "description": "Documenti generati dall'IA per la Svizzera: candidatura per affitto, lettera di motivazione, disdetta. Pronti in pochi minuti."
   },
   "nav": {
-    "tools": "Documenti",
+    "changeCountry": "Cambia paese",
+    "menuOpen": "Apri il menu",
+    "menuClose": "Chiudi il menu",
+    "tools":"Documenti",
     "howItWorks": "Come funziona",
     "pricing": "Prezzi",
     "languages": "Lingua"
@@ -370,6 +379,7 @@
     "errorTitle": "Si è verificato un errore",
     "backToForm": "Torna al modulo",
     "checkoutError": "Errore nell'apertura della pagina di pagamento. Riprova.",
+    "dataNotFound": "Dati del modulo non trovati. Riprova.",
     "previewTag": "Anteprima",
     "previewPayNote": "— Paga per ricevere il documento completo",
     "watermark": "ANTEPRIMA",

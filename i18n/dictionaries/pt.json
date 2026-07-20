@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Disponível apenas para a Suíça",
+    "body": "Este documento baseia-se no direito de arrendamento suíço (saída antecipada propondo um inquilino substituto). Em {country} esta via geralmente não existe.",
+    "linkLead": "O adequado para o teu país é a",
+    "linkText": "rescisão extraordinária por justa causa"
+  },
   "onboarding": {
     "title": "O seu idioma",
     "subtitle": "Já detetado — altere se necessário.",
@@ -24,7 +30,10 @@
     "description": "Documentos gerados por IA para a Suíça: candidatura de arrendamento, candidatura de emprego, rescisão. Pronto em minutos."
   },
   "nav": {
-    "tools": "Documentos",
+    "changeCountry": "Mudar de país",
+    "menuOpen": "Abrir menu",
+    "menuClose": "Fechar menu",
+    "tools":"Documentos",
     "howItWorks": "Como funciona",
     "pricing": "Preços",
     "languages": "Idioma"
@@ -370,6 +379,7 @@
     "errorTitle": "Ocorreu um erro",
     "backToForm": "Voltar ao formulário",
     "checkoutError": "Erro ao abrir a página de pagamento. Tenta novamente.",
+    "dataNotFound": "Dados do formulário não encontrados. Tenta novamente.",
     "previewTag": "Pré-visualização",
     "previewPayNote": "— Paga para receber o documento completo",
     "watermark": "PRÉ-VISUALIZAÇÃO",

@@ -184,7 +184,7 @@ export default async function ToolPage({
 
           <DocumentSample tool={tool} dict={dict} prefill={prefill} rtl={isRtl(params.locale)} />
 
-          <ChOnlyGuard enabled={tool.chOnly} locale={params.locale}>
+          <ChOnlyGuard enabled={tool.chOnly} locale={params.locale} t={dict.chOnlyGuard}>
             <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} prefill={prefill} />
           </ChOnlyGuard>
         </div>

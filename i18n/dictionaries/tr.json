@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Yalnızca İsviçre için geçerlidir",
+    "body": "Bu belge İsviçre kira hukukuna dayanır (yedek kiracı önererek erken çıkış). {country} için bu yol genellikle mevcut değildir.",
+    "linkLead": "Ülkeniz için uygun olan:",
+    "linkText": "haklı nedenle olağanüstü fesih"
+  },
   "onboarding": {
     "title": "Diliniz",
     "subtitle": "Zaten algılandı — gerekirse değiştirin.",
@@ -24,7 +30,10 @@
     "description": "İsviçre için yapay zeka destekli belgeler: kira başvurusu, iş başvurusu, fesih. Dakikalar içinde hazır."
   },
   "nav": {
-    "tools": "Belgeler",
+    "changeCountry": "Ülkeyi değiştir",
+    "menuOpen": "Menüyü aç",
+    "menuClose": "Menüyü kapat",
+    "tools":"Belgeler",
     "howItWorks": "Nasıl çalışır",
     "pricing": "Fiyatlar",
     "languages": "Dil"
@@ -370,6 +379,7 @@
     "errorTitle": "Bir hata oluştu",
     "backToForm": "Forma geri dön",
     "checkoutError": "Ödeme sayfası açılırken hata oluştu. Lütfen tekrar dene.",
+    "dataNotFound": "Form verileri bulunamadı. Lütfen tekrar dene.",
     "previewTag": "Önizleme",
     "previewPayNote": "— Tam belgeyi almak için öde",
     "watermark": "ÖNİZLEME",

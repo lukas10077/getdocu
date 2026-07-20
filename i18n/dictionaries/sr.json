@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Dostupno samo za Švajcarsku",
+    "body": "Ovaj dokument se zasniva na švajcarskom stanarskom pravu (raniji izlazak predlaganjem zamenskog stanara). U {country} ovaj put po pravilu ne postoji.",
+    "linkLead": "Za tvoju zemlju odgovara",
+    "linkText": "vanredni otkaz iz važnog razloga"
+  },
   "onboarding": {
     "title": "Tvoj jezik",
     "subtitle": "Već prepoznat — promeni ako je potrebno.",
@@ -24,7 +30,10 @@
     "description": "Dokumenti generisani AI-jem za Švajcarsku: prijava za stan, prijava za posao, otkazivanje. Spremno za nekoliko minuta."
   },
   "nav": {
-    "tools": "Dokumenti",
+    "changeCountry": "Promeni zemlju",
+    "menuOpen": "Otvori meni",
+    "menuClose": "Zatvori meni",
+    "tools":"Dokumenti",
     "howItWorks": "Kako funkcioniše",
     "pricing": "Cijene",
     "languages": "Jezik"
@@ -370,6 +379,7 @@
     "errorTitle": "Došlo je do greške",
     "backToForm": "Nazad na formular",
     "checkoutError": "Greška pri otvaranju stranice za plaćanje. Pokušaj ponovo.",
+    "dataNotFound": "Podaci iz formulara nisu pronađeni. Pokušaj ponovo.",
     "previewTag": "Pregled",
     "previewPayNote": "— Plati da bi dobio/la kompletan dokument",
     "watermark": "PREGLED",

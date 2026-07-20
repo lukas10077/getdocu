@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Only available for Switzerland",
+    "body": "This document is based on Swiss tenancy law (early exit by proposing a replacement tenant). In {country}, this option generally does not exist.",
+    "linkLead": "The right fit for your country is the",
+    "linkText": "extraordinary termination for good cause"
+  },
   "onboarding": {
     "title": "Your language",
     "subtitle": "Already detected — change if needed.",
@@ -24,7 +30,10 @@
     "description": "AI-powered documents for Switzerland: rental applications, job applications, terminations. Done in minutes."
   },
   "nav": {
-    "tools": "Documents",
+    "changeCountry": "Change country",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "tools":"Documents",
     "howItWorks": "How it works",
     "pricing": "Pricing",
     "languages": "Language"
@@ -373,6 +382,7 @@
     "errorTitle": "Something went wrong",
     "backToForm": "Back to the form",
     "checkoutError": "Error opening the payment page. Please try again.",
+    "dataNotFound": "Form data not found. Please try again.",
     "previewTag": "Preview",
     "previewPayNote": "— Pay to receive the full document",
     "watermark": "PREVIEW",

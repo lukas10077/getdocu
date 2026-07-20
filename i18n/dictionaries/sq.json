@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "I disponueshëm vetëm për Zvicrën",
+    "body": "Ky dokument bazohet në të drejtën zvicerane të qirasë (dalje e parakohshme duke propozuar një qiramarrës zëvendësues). Në {country} kjo rrugë zakonisht nuk ekziston.",
+    "linkLead": "E përshtatshme për vendin tënd është",
+    "linkText": "zgjidhja e jashtëzakonshme e kontratës për arsye të rëndësishme"
+  },
   "onboarding": {
     "title": "Gjuha jote",
     "subtitle": "E dalluar tashmë — ndrysho nëse duhet.",
@@ -24,7 +30,10 @@
     "description": "Dokumente të krijuara nga AI për Zvicrën: kërkesë qiraje, kërkesë pune, ndërprerje kontrate. Gati në minuta."
   },
   "nav": {
-    "tools": "Dokumentet",
+    "changeCountry": "Ndrysho vendin",
+    "menuOpen": "Hap menynë",
+    "menuClose": "Mbyll menynë",
+    "tools":"Dokumentet",
     "howItWorks": "Si funksionon",
     "pricing": "Çmimet",
     "languages": "Gjuha"
@@ -370,6 +379,7 @@
     "errorTitle": "Ndodhi një gabim",
     "backToForm": "Kthehu te formulari",
     "checkoutError": "Gabim gjatë hapjes së faqes së pagesës. Provo përsëri.",
+    "dataNotFound": "Të dhënat e formularit nuk u gjetën. Provo përsëri.",
     "previewTag": "Pamje paraprake",
     "previewPayNote": "— Paguaj për të marrë dokumentin e plotë",
     "watermark": "PAMJE PARAPRAKE",

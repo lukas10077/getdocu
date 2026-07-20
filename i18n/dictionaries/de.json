@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Nur für die Schweiz verfügbar",
+    "body": "Dieses Dokument beruht auf schweizerischem Mietrecht (vorzeitiger Ausstieg durch Stellung eines Nachmieters). In {country} gibt es diesen Weg in der Regel nicht.",
+    "linkLead": "Passend für dein Land ist die",
+    "linkText": "ausserordentliche Kündigung aus wichtigem Grund"
+  },
   "onboarding": {
     "title": "Deine Sprache",
     "subtitle": "Bereits erkannt — ändern falls nötig.",
@@ -24,6 +30,9 @@
     "description": "KI-gestützte Dokumente für die Schweiz: Mietbewerbung, Bewerbung, Kündigung. In Minuten erledigt."
   },
   "nav": {
+    "changeCountry": "Land ändern",
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schliessen",
     "tools": "Dokumente",
     "howItWorks": "So funktioniert's",
     "pricing": "Preise",

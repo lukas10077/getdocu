@@ -1,4 +1,10 @@
 {
+  "chOnlyGuard": {
+    "title": "Csak Svájc számára érhető el",
+    "body": "Ez a dokumentum a svájci bérleti jogon alapul (korábbi kilépés helyettesítő bérlő állításával). {country} esetében ez a lehetőség általában nem létezik.",
+    "linkLead": "Az országodhoz illő megoldás a",
+    "linkText": "rendkívüli felmondás fontos okból"
+  },
   "onboarding": {
     "title": "A nyelved",
     "subtitle": "Már felismerve — módosítsd, ha szükséges.",
@@ -24,7 +30,10 @@
     "description": "AI által generált dokumentumok Svájc számára: lakásbérlési pályázat, állásra jelentkezés, felmondás. Percek alatt kész."
   },
   "nav": {
-    "tools": "Dokumentumok",
+    "changeCountry": "Ország módosítása",
+    "menuOpen": "Menü megnyitása",
+    "menuClose": "Menü bezárása",
+    "tools":"Dokumentumok",
     "howItWorks": "Hogyan működik",
     "pricing": "Árak",
     "languages": "Nyelv"
@@ -370,6 +379,7 @@
     "errorTitle": "Hiba történt",
     "backToForm": "Vissza az űrlaphoz",
     "checkoutError": "Hiba a fizetési oldal megnyitásakor. Próbáld újra.",
+    "dataNotFound": "Az űrlapadatok nem találhatók. Próbáld újra.",
     "previewTag": "Előnézet",
     "previewPayNote": "— Fizess a teljes dokumentumért",
     "watermark": "ELŐNÉZET",

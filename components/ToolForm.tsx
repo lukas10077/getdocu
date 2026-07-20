@@ -230,7 +230,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     return workEntries
       .filter(e => e.role.trim() || e.company.trim())
       .map(e => {
-        const range = e.from ? `${e.from} – ${e.to || "Bis heute"}` : (e.to || "");
+        const range = e.from ? `${e.from} – ${e.to || fs("untilToday", "Bis heute")}` : (e.to || "");
         const parts = [e.role, e.company, e.city].filter(Boolean).join(", ");
         return range ? `${range}: ${parts}` : parts;
       })
@@ -241,7 +241,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     return eduEntries
       .filter(e => e.title.trim() || e.institution.trim())
       .map(e => {
-        const range = e.from ? `${e.from} – ${e.to || "Bis heute"}` : (e.to || "");
+        const range = e.from ? `${e.from} – ${e.to || fs("untilToday", "Bis heute")}` : (e.to || "");
         const parts = [e.title, e.institution].filter(Boolean).join(", ");
         return range ? `${range}: ${parts}` : parts;
       })
@@ -353,7 +353,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
 
     const saved = sessionStorage.getItem(storageKey);
     if (!saved) {
-      setErrorMsg("Formulardaten nicht gefunden. Bitte erneut versuchen.");
+      setErrorMsg(fs("dataNotFound", "Formulardaten nicht gefunden. Bitte erneut versuchen."));
       setStage("error");
       return;
     }
