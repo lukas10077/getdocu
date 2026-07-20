@@ -339,6 +339,7 @@
     "Andere Anfrage": "Otra solicitud"
   },
   "form": {
+    "previewFailed": "No se pudo cargar la vista previa. Tu documento completo se creará justo después del pago.",
     "previewButton": "Crear vista previa — gratis",
     "previewAfter": "Después {price} por el documento completo",
     "previewLoading": "Creando vista previa…",

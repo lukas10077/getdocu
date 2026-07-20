@@ -47,7 +47,8 @@ export default async function BrandPage({
     country: brand.countryCode,
     recipientName: brand.name,
     recipientAddress: brand.address.join("\n"),
-    type: "Abonnement / Mitgliedschaft",
+    // Kündigungstyp aus der Marken-Kategorie ableiten (Wert = deutsche Option im Tool)
+    type: brand.category === "Versicherung" ? "Versicherung" : "Abonnement / Mitgliedschaft",
   });
   if (brand.defaultNoticePeriod) toolParams.set("noticePeriod", brand.defaultNoticePeriod);
   const toolHref = `/${params.locale}/tools/kuendigung?${toolParams.toString()}`;

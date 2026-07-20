@@ -92,22 +92,24 @@ export default async function CategoryHubPage({
             </p>
           </div>
 
-          {/* Spokes: alle Marken der Kategorie */}
-          <section className="mt-12">
-            <h2 className="mb-4 font-serif text-2xl font-medium text-cream">Anbieter direkt kündigen</h2>
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {hubBrands.map((b) => (
-                <Link
-                  key={b.slug}
-                  href={`/${params.locale}/ratgeber/anbieter/${b.slug}`}
-                  className="flex items-center justify-between rounded-sm border border-ink-700 bg-ink-900 px-4 py-3 text-sm text-cream transition hover:border-swiss-gold"
-                >
-                  <span>{b.name} kündigen</span>
-                  <span className="text-swiss-gold">→</span>
-                </Link>
-              ))}
-            </div>
-          </section>
+          {/* Spokes: alle Marken der Kategorie (Sektion nur zeigen, wenn es welche gibt) */}
+          {hubBrands.length > 0 && (
+            <section className="mt-12">
+              <h2 className="mb-4 font-serif text-2xl font-medium text-cream">Anbieter direkt kündigen</h2>
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {hubBrands.map((b) => (
+                  <Link
+                    key={b.slug}
+                    href={`/${params.locale}/ratgeber/anbieter/${b.slug}`}
+                    className="flex items-center justify-between rounded-sm border border-ink-700 bg-ink-900 px-4 py-3 text-sm text-cream transition hover:border-swiss-gold"
+                  >
+                    <span>{b.name} kündigen</span>
+                    <span className="text-swiss-gold">→</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Allgemeiner Ratgeber-Text */}
           <div className="mt-12 space-y-10 text-base leading-relaxed text-cream-muted">

@@ -339,6 +339,7 @@
     "Andere Anfrage": "Altra richiesta"
   },
   "form": {
+    "previewFailed": "Impossibile caricare l'anteprima. Il tuo documento completo sarà creato subito dopo il pagamento.",
     "previewButton": "Crea anteprima — gratis",
     "previewAfter": "Poi {price} per il documento completo",
     "previewLoading": "Creazione dell'anteprima…",

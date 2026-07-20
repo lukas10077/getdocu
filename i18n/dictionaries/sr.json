@@ -339,6 +339,7 @@
     "Andere Anfrage": "Drugi zahtev"
   },
   "form": {
+    "previewFailed": "Pregled nije mogao da se učita. Tvoj kompletan dokument biće kreiran odmah nakon plaćanja.",
     "previewButton": "Napravi pregled — besplatno",
     "previewAfter": "Zatim {price} za kompletan dokument",
     "previewLoading": "Pravi se pregled…",

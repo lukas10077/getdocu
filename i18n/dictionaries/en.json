@@ -342,6 +342,7 @@
     "Andere Anfrage": "Other request"
   },
   "form": {
+    "previewFailed": "The preview could not be loaded. Your full document will be created right after payment.",
     "previewButton": "Create preview — free",
     "previewAfter": "Then {price} for the full document",
     "previewLoading": "Creating preview…",

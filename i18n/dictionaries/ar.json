@@ -339,6 +339,7 @@
     "Andere Anfrage": "طلب آخر"
   },
   "form": {
+    "previewFailed": "تعذّر تحميل المعاينة. سيتم إنشاء مستندك الكامل مباشرة بعد الدفع.",
     "previewButton": "إنشاء معاينة — مجاناً",
     "previewAfter": "ثم {price} للمستند الكامل",
     "previewLoading": "جارٍ إنشاء المعاينة…",

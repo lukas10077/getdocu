@@ -339,6 +339,7 @@
     "Andere Anfrage": "Egyéb kérés"
   },
   "form": {
+    "previewFailed": "Az előnézet nem tölthető be. A teljes dokumentumod közvetlenül a fizetés után készül el.",
     "previewButton": "Előnézet készítése — ingyenes",
     "previewAfter": "Utána {price} a teljes dokumentumért",
     "previewLoading": "Előnézet készítése…",

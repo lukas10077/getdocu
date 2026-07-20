@@ -339,6 +339,7 @@
     "Andere Anfrage": "Kërkesë tjetër"
   },
   "form": {
+    "previewFailed": "Pamja paraprake nuk u ngarkua dot. Dokumenti yt i plotë do të krijohet menjëherë pas pagesës.",
     "previewButton": "Krijo pamjen paraprake — falas",
     "previewAfter": "Pastaj {price} për dokumentin e plotë",
     "previewLoading": "Po krijohet pamja paraprake…",

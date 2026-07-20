@@ -339,6 +339,7 @@
     "Andere Anfrage": "Autre demande"
   },
   "form": {
+    "previewFailed": "L'aperçu n'a pas pu être chargé. Ton document complet sera créé juste après le paiement.",
     "previewButton": "Créer l'aperçu — gratuit",
     "previewAfter": "Ensuite {price} pour le document complet",
     "previewLoading": "Création de l'aperçu…",

@@ -339,6 +339,7 @@
     "Andere Anfrage": "Diğer talep"
   },
   "form": {
+    "previewFailed": "Önizleme yüklenemedi. Tam belgen ödemeden hemen sonra oluşturulacak.",
     "previewButton": "Önizleme oluştur — ücretsiz",
     "previewAfter": "Ardından tam belge için {price}",
     "previewLoading": "Önizleme oluşturuluyor…",

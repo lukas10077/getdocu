@@ -339,6 +339,7 @@
     "Andere Anfrage": "Outro pedido"
   },
   "form": {
+    "previewFailed": "Não foi possível carregar a pré-visualização. O teu documento completo será criado logo após o pagamento.",
     "previewButton": "Criar pré-visualização — grátis",
     "previewAfter": "Depois {price} pelo documento completo",
     "previewLoading": "A criar a pré-visualização…",

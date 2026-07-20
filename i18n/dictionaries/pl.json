@@ -339,6 +339,7 @@
     "Andere Anfrage": "Inne zapytanie"
   },
   "form": {
+    "previewFailed": "Nie udało się załadować podglądu. Twój pełny dokument zostanie utworzony zaraz po płatności.",
     "previewButton": "Utwórz podgląd — bezpłatnie",
     "previewAfter": "Potem {price} za pełny dokument",
     "previewLoading": "Tworzenie podglądu…",
