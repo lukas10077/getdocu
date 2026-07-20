@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   }
 
   const stripe = new Stripe(stripeKey, { apiVersion: "2024-06-20" });
-  const { toolSlug, locale, countryCode } = await req.json();
+  const { toolSlug, locale, countryCode, gclid } = await req.json();
 
   const tool = getTool(toolSlug);
   if (!tool) {
@@ -43,7 +43,15 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      metadata: { toolSlug: tool.slug, countryCode: countryCode ?? "CH" },
+      metadata: {
+        toolSlug: tool.slug,
+        countryCode: countryCode ?? "CH",
+        // Google-Ads-Klick-ID (falls der Kauf über eine Anzeige kam) — ermöglicht
+        // serverseitigen Conversion-Import unabhängig vom Browser des Käufers.
+        ...(typeof gclid === "string" && gclid.length > 0 && gclid.length <= 200
+          ? { gclid }
+          : {}),
+      },
       success_url: `${baseUrl}/${locale}/tools/${tool.slug}?session_id={CHECKOUT_SESSION_ID}&status=success`,
       cancel_url: `${baseUrl}/${locale}/tools/${tool.slug}?status=cancelled`,
     });

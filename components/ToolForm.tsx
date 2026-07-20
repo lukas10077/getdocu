@@ -103,6 +103,16 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   const legalDisclaimer    = t.legalDisclaimer    ?? "Das generierte Dokument ist kein Ersatz für eine Rechtsberatung. Deine Formulardaten werden nach der Generierung sofort gelöscht.";
   const { country } = useCountry();
   const [stage, setStage] = useState<Stage>("form");
+
+  // Google-Ads-Klick-ID (gclid) einfangen und über den Stripe-Redirect hinweg merken.
+  // Wird beim Checkout an Stripe-Metadaten übergeben → Basis für serverseitiges
+  // Conversion-Tracking (Offline-Import), unabhängig von Adblockern im Browser.
+  useEffect(() => {
+    try {
+      const gclid = new URLSearchParams(window.location.search).get("gclid");
+      if (gclid) sessionStorage.setItem("getdocu_gclid", gclid);
+    } catch { /* sessionStorage nicht verfügbar — ignorieren */ }
+  }, []);
   const [values, setValues] = useState<Record<string, string>>(() => {
     const init: Record<string, string> = {};
     const today = new Date();
@@ -351,6 +361,19 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     setStage("generating");
     const formData = JSON.parse(saved);
 
+    // Google Ads Kauf-Conversion — SOFORT nach Rückkehr von Stripe feuern (Zahlung ist
+    // zu diesem Zeitpunkt abgeschlossen), nicht erst nach erfolgreicher Generierung.
+    // So geht die Conversion nicht verloren, wenn die Generierung fehlschlägt oder der
+    // Tab vorzeitig geschlossen wird. Google dedupliziert über transaction_id.
+    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+      (window as any).gtag("event", "conversion", {
+        send_to: "AW-18318795248/ROC5COjH4NIcEPDDip9E",
+        value: tool.priceChfRappen / 100,
+        currency: "CHF",
+        transaction_id: sessionId ?? "",
+      });
+    }
+
     // Bewerbungsfoto wiederherstellen (überlebt Stripe-Redirect via sessionStorage)
     if (formData.__profilePhotoBase64) {
       setProfilePhotoUrl(formData.__profilePhotoBase64);
@@ -372,15 +395,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
       .then(async ({ documentText }) => {
         setResult(documentText);
         sessionStorage.removeItem(storageKey);
-        // Google Ads Conversion-Tracking
-        if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-          (window as any).gtag("event", "conversion", {
-            send_to: "AW-18318795248/ROC5COjH4NIcEPDDip9E",
-            value: tool.priceChfRappen / 100,
-            currency: "CHF",
-            transaction_id: sessionId ?? "",
-          });
-        }
+        // (Kauf-Conversion wird bereits beim Mount nach Stripe-Rückkehr gefeuert — s.o.)
         // Fotos aus IndexedDB laden (überleben Stripe-Redirect)
         if (tool.supportsPhotoGallery) {
           const saved = await idbLoad<Photo[]>(photosIdbKey);
@@ -478,7 +493,13 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ toolSlug: tool.slug, locale, countryCode: country?.code }),
+        body: JSON.stringify({
+          toolSlug: tool.slug,
+          locale,
+          countryCode: country?.code,
+          // Google-Ads-Klick-ID für serverseitige Conversion-Zuordnung
+          gclid: (() => { try { return sessionStorage.getItem("getdocu_gclid") ?? undefined; } catch { return undefined; } })(),
+        }),
       });
       const data = await res.json();
       if (!res.ok || !data.url) {
