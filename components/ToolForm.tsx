@@ -371,6 +371,8 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
         value: tool.priceChfRappen / 100,
         currency: "CHF",
         transaction_id: sessionId ?? "",
+        // "land" = benutzerdefinierte Variable in Google Ads (Tag-String: land)
+        land: formData.__countryCode ?? "",
       });
     }
 
@@ -460,8 +462,9 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
       const { previewText } = await res.json();
       setPreviewText(previewText);
       setStage("preview");
-      // Google-Ads-Conversion "Vorschau angesehen" (sekundär, nur Beobachtung)
-      track("conversion", { send_to: "AW-18318795248/9S8sCOW13NEcEPDDip9E" });
+      // Google-Ads-Conversion "Vorschau angesehen" (sekundär, nur Beobachtung).
+      // "land" = benutzerdefinierte Variable in Google Ads (Tag-String: land).
+      track("conversion", { send_to: "AW-18318795248/9S8sCOW13NEcEPDDip9E", land: country?.code ?? "" });
     } catch {
       // Vorschau fehlgeschlagen → trotzdem Bezahl-/Einwilligungs-Box zeigen
       setPreviewText(fs("previewFailed", "Die Vorschau konnte nicht geladen werden. Dein vollständiges Dokument wird direkt nach der Zahlung erstellt."));
@@ -473,14 +476,16 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     // Widerrufs-Einwilligung erst hier verlangen (beim Kauf, nicht bei der Vorschau)
     if (!withdrawalConsent) { setWithdrawalError(true); return; }
     setWithdrawalError(false);
-    // Google-Ads-Conversion "Checkout gestartet" (sekundär, nur Beobachtung)
-    track("conversion", { send_to: "AW-18318795248/zeOCCOK13NEcEPDDip9E" });
+    // Google-Ads-Conversion "Checkout gestartet" (sekundär, nur Beobachtung).
+    // "land" = benutzerdefinierte Variable in Google Ads (Tag-String: land).
+    track("conversion", { send_to: "AW-18318795248/zeOCCOK13NEcEPDDip9E", land: country?.code ?? "" });
     const effectiveValues = getEffectiveValues();
     setStage("redirecting");
     sessionStorage.setItem(storageKey, JSON.stringify({
       ...effectiveValues,
       __imageBase64: tool.supportsPhotoGallery ? "" : (imageBase64 ?? ""),
       __imageMimeType: imageMimeType,
+      __countryCode: country?.code ?? "",
       __incomeCurrency: incomeCurrency,
       __docxText: docxText ?? "",
       __profilePhotoBase64: profilePhotoBase64 ?? "",

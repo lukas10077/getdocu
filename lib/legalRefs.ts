@@ -413,6 +413,22 @@ export const LEGAL_REFS: Record<string, CountryRefs> = {
     "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
   },
 
+  PE: {
+    "maengelruege": [
+      { law: "Código Civil", articles: "Art. 1680", note: "Obligaciones del arrendador (conservación y reparaciones de la cosa arrendada)" },
+    ],
+    "kuendigung-wohnung": [
+      { law: "Código Civil", articles: "Art. 1703", note: "Conclusión del arrendamiento de duración indeterminada mediante aviso" },
+    ],
+    "kuendigung-arbeit": [
+      { law: "D.S. 003-97-TR (LPCL)", articles: "Art. 18", note: "Renuncia del trabajador, aviso previo de 30 días" },
+    ],
+    "reklamation": [
+      { law: "Ley 29571 (Código de Protección y Defensa del Consumidor)", articles: "Art. 97", note: "Derechos ante productos defectuosos: reparación, reposición o devolución" },
+    ],
+    "mietbewerbung": [], "jobbewerbung": [], "lebenslauf": [], "arbeitszeugnis": [], "kuendigung": [],
+  },
+
   // ── Asien & Naher Osten ──────────────────────────────────────
 
   JP: {

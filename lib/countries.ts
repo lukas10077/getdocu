@@ -29,7 +29,7 @@ export const CURRENCY_CONFIG: Record<string, { factor: number }> = {
   CAD: { factor: 1.50 },
   MXN: { factor: 20 },
   BRL: { factor: 6 },
-  ARS: { factor: 10 },
+  ARS: { factor: 1500 }, // Stand Juli 2026: 1 CHF ≈ 1800 ARS; bewusst ~17% Kaufkraft-Rabatt. ACHTUNG Inflation: regelmässig prüfen!
   CLP: { factor: 9.4 },   // zero-decimal
   COP: { factor: 45 },    // zero-decimal
   PEN: { factor: 3.8 },

@@ -28,6 +28,15 @@ const CV_NO_PHOTO_EN =
   "KEIN Foto, KEIN Geburtsdatum/Alter, KEIN Familienstand, KEINE Nationalität (Antidiskriminierung). " +
   "Fokus auf Erfahrung, Verantwortung und konkrete Erfolge.";
 
+const ZEUGNIS_CERTIFICADO_LATAM =
+  "Üblich ist ein sachliches 'certificado de trabajo' (bzw. 'constancia laboral'): Bestätigung von " +
+  "Anstellungsdauer und Funktion, optional ein kurzer positiver Schlusssatz. KEINE ausführliche " +
+  "Leistungs- oder Verhaltensbeurteilung nach DACH-Muster.";
+
+const CV_LATAM =
+  "CV nach lateinamerikanischer Konvention: Foto und persönliche Angaben sind üblich (nur verwenden, " +
+  "wenn vom Nutzer angegeben). 1–2 Seiten, rückwärts chronologisch.";
+
 // ── Standards pro Land ──────────────────────────────────────────────
 
 const STANDARDS: Record<string, CountryStandards> = {
@@ -118,6 +127,60 @@ const STANDARDS: Record<string, CountryStandards> = {
     lebenslauf: "Foto und persönliche Angaben sind üblich. 1–2 Seiten, rückwärts chronologisch.",
     "kuendigung-wohnung": "Schriftliche Mitteilung mit mindestens 30 Tagen Vorlauf ist üblich.",
     "kuendigung-arbeit": "Übliches Preaviso: 15 Tage (bzw. laut Convenio) — nur die vom Nutzer angegebene Frist nennen.",
+  },
+
+  // ── Lateinamerika ───────────────────────────────────────────────────
+
+  AR: {
+    arbeitszeugnis: ZEUGNIS_CERTIFICADO_LATAM,
+    lebenslauf: CV_LATAM,
+    "kuendigung-wohnung":
+      "Formelle Kündigungen werden in Argentinien üblicherweise per 'carta documento' zugestellt — erwähne im Brief, dass die Mitteilung per carta documento erfolgt.",
+    "kuendigung-arbeit":
+      "Die 'carta de renuncia' ist kurz und formell; Versand per carta documento ist üblich. Preaviso nur nennen, wenn vom Nutzer angegeben.",
+    reklamation:
+      "Sachlich-bestimmter Ton. Auf die garantía legal verweisen; zuerst Reparatur oder Ersatz mit klarer Frist verlangen.",
+  },
+  MX: {
+    arbeitszeugnis: ZEUGNIS_CERTIFICADO_LATAM,
+    lebenslauf: CV_LATAM,
+    "kuendigung-wohnung":
+      "Schriftliche Mitteilung mit Empfangsbestätigung ('acuse de recibo') ist üblich; Frist laut Vertrag — nur die vom Nutzer angegebene Frist nennen.",
+    "kuendigung-arbeit":
+      "Die 'renuncia voluntaria' erfolgt schriftlich mit Datum und höflichem Dank; eine Kopie mit acuse de recibo behalten — im Brief um Empfangsbestätigung bitten.",
+    reklamation:
+      "Sachlich-bestimmter Ton; auf die Garantie verweisen. Zuerst Reparatur, Ersatz oder Erstattung mit klarer Frist verlangen.",
+  },
+  CO: {
+    arbeitszeugnis: ZEUGNIS_CERTIFICADO_LATAM,
+    lebenslauf:
+      "Die 'hoja de vida' ist der Standard: Foto und persönliche Angaben üblich, 1–2 Seiten, rückwärts chronologisch.",
+    "kuendigung-wohnung":
+      "Schriftliche Mitteilung per Einschreiben ('correo certificado') ist üblich — im Brief um schriftliche Bestätigung bitten.",
+    "kuendigung-arbeit":
+      "Die 'carta de renuncia' ist kurz und formell mit Dank; Preaviso nur nennen, wenn vom Nutzer angegeben.",
+    reklamation:
+      "Sachlich-bestimmter Ton; auf die garantía legal verweisen; zuerst Reparatur oder Ersatz mit klarer Frist verlangen.",
+  },
+  CL: {
+    arbeitszeugnis: ZEUGNIS_CERTIFICADO_LATAM,
+    lebenslauf: CV_LATAM,
+    "kuendigung-wohnung":
+      "Formelle Kündigungen werden in Chile üblicherweise per 'carta certificada' zugestellt — im Brief erwähnen und um Bestätigung bitten.",
+    "kuendigung-arbeit":
+      "Die 'carta de renuncia' ist kurz und formell; üblich ist ein Aviso von 30 Tagen — nur die vom Nutzer angegebene Frist nennen.",
+    reklamation:
+      "Sachlich-bestimmter Ton; auf die garantía legal verweisen; zuerst Reparatur, Ersatz oder Erstattung verlangen.",
+  },
+  PE: {
+    arbeitszeugnis: ZEUGNIS_CERTIFICADO_LATAM,
+    lebenslauf: CV_LATAM,
+    "kuendigung-wohnung":
+      "Formelle Kündigungen werden in Peru üblicherweise per 'carta notarial' zugestellt — erwähne im Brief, dass die Mitteilung per carta notarial erfolgt.",
+    "kuendigung-arbeit":
+      "Die 'carta de renuncia' ist kurz und formell; üblich ist ein Aviso von 30 Tagen — nur die vom Nutzer angegebene Frist nennen. Zustellung per carta notarial ist verbreitet.",
+    reklamation:
+      "Sachlich-bestimmter Ton; auf die Rechte aus dem Konsumentenschutz verweisen ('Libro de Reclamaciones' ist bekanntes Druckmittel); zuerst Reparatur, Ersatz oder Erstattung verlangen.",
   },
   NL: {
     arbeitszeugnis:
