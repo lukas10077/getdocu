@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "Votre langue",
+    "subtitle": "Déjà détectée — modifiez si nécessaire.",
+    "confirm": "Confirmer"
+  },
+  "countrySelector": {
+    "title": "Pour quel pays ?",
+    "subtitle": "Le document sera adapté aux conventions de votre pays.",
+    "searchPlaceholder": "Rechercher un pays…",
+    "selected": "Sélectionné",
+    "detected": "Détecté",
+    "showAll": "Afficher tous les pays ({count} autres)",
+    "notFound": "Aucun pays trouvé",
+    "footerHint": "Vous pouvez changer de pays à tout moment via l'icône du drapeau dans la navigation.",
+    "close": "Fermer",
+    "europe": "Europe",
+    "americas": "Amériques",
+    "asia": "Asie & Moyen-Orient",
+    "oceania": "Océanie"
+  },
   "meta": {
     "title": "GetDocu — Des documents importants, en toute simplicité",
     "description": "Documents générés par IA pour la Suisse : candidature de location, lettre de motivation, résiliation. En quelques minutes."

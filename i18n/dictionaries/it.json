@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "La tua lingua",
+    "subtitle": "Già rilevata — cambiala se necessario.",
+    "confirm": "Conferma"
+  },
+  "countrySelector": {
+    "title": "Per quale paese?",
+    "subtitle": "Il documento sarà adattato alle convenzioni del tuo paese.",
+    "searchPlaceholder": "Cerca paese…",
+    "selected": "Selezionato",
+    "detected": "Rilevato",
+    "showAll": "Mostra tutti i paesi ({count} altri)",
+    "notFound": "Nessun paese trovato",
+    "footerHint": "Puoi cambiare paese in qualsiasi momento tramite l'icona della bandiera nella navigazione.",
+    "close": "Chiudi",
+    "europe": "Europa",
+    "americas": "America",
+    "asia": "Asia e Medio Oriente",
+    "oceania": "Oceania"
+  },
   "meta": {
     "title": "GetDocu — Documenti importanti, semplicemente",
     "description": "Documenti generati dall'IA per la Svizzera: candidatura per affitto, lettera di motivazione, disdetta. Pronti in pochi minuti."

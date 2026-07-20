@@ -58,8 +58,9 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
   };
 }
 
-export default function LocaleLayout({ children, params }: { children: React.ReactNode; params: { locale: Locale } }) {
+export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: { locale: Locale } }) {
   const dir = isRtl(params.locale) ? "rtl" : "ltr";
+  const dict = await getDictionary(params.locale);
   return (
     <html lang={params.locale} dir={dir} suppressHydrationWarning>
       <head>
@@ -78,8 +79,8 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
       </head>
       <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased`} suppressHydrationWarning>
         <CountryProvider>
-          <CountrySelector />
-          <OnboardingCard locale={params.locale} />
+          <CountrySelector t={dict.countrySelector} />
+          <OnboardingCard locale={params.locale} t={dict.onboarding} />
           {children}
         </CountryProvider>
       </body>

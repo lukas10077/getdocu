@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "Diliniz",
+    "subtitle": "Zaten algılandı — gerekirse değiştirin.",
+    "confirm": "Onayla"
+  },
+  "countrySelector": {
+    "title": "Hangi ülke için?",
+    "subtitle": "Belge, ülkenizin kurallarına göre uyarlanır.",
+    "searchPlaceholder": "Ülke ara…",
+    "selected": "Seçildi",
+    "detected": "Algılandı",
+    "showAll": "Tüm ülkeleri göster ({count} tane daha)",
+    "notFound": "Ülke bulunamadı",
+    "footerHint": "Ülkeyi istediğiniz zaman gezinmedeki bayrak simgesinden değiştirebilirsiniz.",
+    "close": "Kapat",
+    "europe": "Avrupa",
+    "americas": "Amerika",
+    "asia": "Asya ve Orta Doğu",
+    "oceania": "Okyanusya"
+  },
   "meta": {
     "title": "GetDocu — Önemli belgeler, basitçe",
     "description": "İsviçre için yapay zeka destekli belgeler: kira başvurusu, iş başvurusu, fesih. Dakikalar içinde hazır."

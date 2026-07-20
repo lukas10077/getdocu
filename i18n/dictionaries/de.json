@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "Deine Sprache",
+    "subtitle": "Bereits erkannt — ändern falls nötig.",
+    "confirm": "Bestätigen"
+  },
+  "countrySelector": {
+    "title": "Für welches Land?",
+    "subtitle": "Das Dokument wird an die Konventionen deines Landes angepasst.",
+    "searchPlaceholder": "Land suchen…",
+    "selected": "Ausgewählt",
+    "detected": "Erkannt",
+    "showAll": "Alle Länder anzeigen ({count} weitere)",
+    "notFound": "Kein Land gefunden",
+    "footerHint": "Land kann jederzeit über das Flaggen-Symbol in der Navigation geändert werden.",
+    "close": "Schliessen",
+    "europe": "Europa",
+    "americas": "Amerika",
+    "asia": "Asien & Naher Osten",
+    "oceania": "Ozeanien"
+  },
   "meta": {
     "title": "GetDocu — Wichtige Dokumente einfach erstellen",
     "description": "KI-gestützte Dokumente für die Schweiz: Mietbewerbung, Bewerbung, Kündigung. In Minuten erledigt."

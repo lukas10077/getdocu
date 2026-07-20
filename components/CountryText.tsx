@@ -15,7 +15,7 @@ const MAX_RAPPEN = 500; // teuerstes Tool
 
 // Ländername in der UI-Sprache (statt des deutschen Namens aus countries.ts).
 // Fallback: deutscher Name, falls Intl.DisplayNames nicht verfügbar ist.
-function localizedCountryName(code: string, locale: string, germanName: string): string {
+export function localizedCountryName(code: string, locale: string, germanName: string): string {
   try {
     return new Intl.DisplayNames([locale], { type: "region" }).of(code) ?? germanName;
   } catch {

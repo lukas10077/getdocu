@@ -8,13 +8,26 @@ import { COUNTRIES, Country } from "@/lib/countries";
 
 const STORAGE_KEY = "getdocu_onboarded";
 
+// Übersetzbare Texte — aus i18n/dictionaries/<locale>.json (Key "onboarding"); Fallback Deutsch.
+export type OnboardingDict = {
+  title: string;
+  subtitle: string;
+  confirm: string;
+};
+
+const DEFAULT_T: OnboardingDict = {
+  title: "Deine Sprache",
+  subtitle: "Bereits erkannt — ändern falls nötig.",
+  confirm: "Bestätigen",
+};
+
 function readCookie(name: string): string | null {
   if (typeof document === "undefined") return null;
   const m = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=([^;]+)`));
   return m ? m[1] : null;
 }
 
-export default function OnboardingCard({ locale }: { locale: Locale }) {
+export default function OnboardingCard({ locale, t = DEFAULT_T }: { locale: Locale; t?: OnboardingDict }) {
   const [visible, setVisible] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const { setCountry, country } = useCountry();
@@ -73,12 +86,12 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
       {/* Header */}
       <div className="flex items-start justify-between border-b border-ink-700 px-5 py-4">
         <div>
-          <p className="font-serif text-lg font-medium text-cream">Deine Sprache</p>
-          <p className="mt-0.5 text-xs text-cream-subtle">Bereits erkannt — ändern falls nötig.</p>
+          <p className="font-serif text-lg font-medium text-cream">{t.title}</p>
+          <p className="mt-0.5 text-xs text-cream-subtle">{t.subtitle}</p>
         </div>
         <button
           onClick={dismiss}
-          aria-label="Schliessen"
+          aria-label={t.confirm}
           className="ml-3 mt-0.5 flex-shrink-0 text-cream-subtle transition hover:text-cream"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -118,7 +131,7 @@ export default function OnboardingCard({ locale }: { locale: Locale }) {
           onClick={dismiss}
           className="text-xs text-cream-subtle transition hover:text-cream"
         >
-          Bestätigen ✓
+          {t.confirm} ✓
         </button>
       </div>
 

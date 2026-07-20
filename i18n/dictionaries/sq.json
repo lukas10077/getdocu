@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "Gjuha jote",
+    "subtitle": "E dalluar tashmë — ndrysho nëse duhet.",
+    "confirm": "Konfirmo"
+  },
+  "countrySelector": {
+    "title": "Për cilin vend?",
+    "subtitle": "Dokumenti do të përshtatet me konventat e vendit tënd.",
+    "searchPlaceholder": "Kërko vendin…",
+    "selected": "I zgjedhur",
+    "detected": "I zbuluar",
+    "showAll": "Shfaq të gjitha vendet ({count} të tjera)",
+    "notFound": "Nuk u gjet asnjë vend",
+    "footerHint": "Vendin mund ta ndryshosh në çdo kohë përmes ikonës së flamurit në navigim.",
+    "close": "Mbyll",
+    "europe": "Evropa",
+    "americas": "Amerika",
+    "asia": "Azia dhe Lindja e Mesme",
+    "oceania": "Oqeania"
+  },
   "meta": {
     "title": "GetDocu — Dokumente të rëndësishme, thjesht",
     "description": "Dokumente të krijuara nga AI për Zvicrën: kërkesë qiraje, kërkesë pune, ndërprerje kontrate. Gati në minuta."

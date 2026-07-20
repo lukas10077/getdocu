@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "Tu idioma",
+    "subtitle": "Ya detectado — cámbialo si es necesario.",
+    "confirm": "Confirmar"
+  },
+  "countrySelector": {
+    "title": "¿Para qué país?",
+    "subtitle": "El documento se adaptará a las convenciones de tu país.",
+    "searchPlaceholder": "Buscar país…",
+    "selected": "Seleccionado",
+    "detected": "Detectado",
+    "showAll": "Mostrar todos los países ({count} más)",
+    "notFound": "No se encontró ningún país",
+    "footerHint": "Puedes cambiar de país en cualquier momento con el icono de la bandera en la navegación.",
+    "close": "Cerrar",
+    "europe": "Europa",
+    "americas": "América",
+    "asia": "Asia y Oriente Medio",
+    "oceania": "Oceanía"
+  },
   "meta": {
     "title": "GetDocu — Documentos importantes, de forma sencilla",
     "description": "Documentos generados por IA para Suiza: solicitud de alquiler, solicitud de empleo, cancelación. Listo en minutos."

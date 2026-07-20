@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "Tvoj jezik",
+    "subtitle": "Već prepoznat — promeni ako je potrebno.",
+    "confirm": "Potvrdi"
+  },
+  "countrySelector": {
+    "title": "Za koju zemlju?",
+    "subtitle": "Dokument će biti prilagođen konvencijama tvoje zemlje.",
+    "searchPlaceholder": "Pretraži zemlju…",
+    "selected": "Izabrano",
+    "detected": "Prepoznato",
+    "showAll": "Prikaži sve zemlje (još {count})",
+    "notFound": "Zemlja nije pronađena",
+    "footerHint": "Zemlju možeš promeniti u svakom trenutku preko ikone zastave u navigaciji.",
+    "close": "Zatvori",
+    "europe": "Evropa",
+    "americas": "Amerika",
+    "asia": "Azija i Bliski istok",
+    "oceania": "Okeanija"
+  },
   "meta": {
     "title": "GetDocu — Važni dokumenti, jednostavno",
     "description": "Dokumenti generisani AI-jem za Švajcarsku: prijava za stan, prijava za posao, otkazivanje. Spremno za nekoliko minuta."

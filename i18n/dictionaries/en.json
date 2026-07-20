@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "Your language",
+    "subtitle": "Already detected — change if needed.",
+    "confirm": "Confirm"
+  },
+  "countrySelector": {
+    "title": "Which country?",
+    "subtitle": "The document will be adapted to your country's conventions.",
+    "searchPlaceholder": "Search country…",
+    "selected": "Selected",
+    "detected": "Detected",
+    "showAll": "Show all countries ({count} more)",
+    "notFound": "No country found",
+    "footerHint": "You can change the country anytime via the flag icon in the navigation.",
+    "close": "Close",
+    "europe": "Europe",
+    "americas": "Americas",
+    "asia": "Asia & Middle East",
+    "oceania": "Oceania"
+  },
   "meta": {
     "title": "GetDocu — Important Documents, Made Simple",
     "description": "AI-powered documents for Switzerland: rental applications, job applications, terminations. Done in minutes."

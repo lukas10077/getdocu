@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "O seu idioma",
+    "subtitle": "Já detetado — altere se necessário.",
+    "confirm": "Confirmar"
+  },
+  "countrySelector": {
+    "title": "Para qual país?",
+    "subtitle": "O documento será adaptado às convenções do seu país.",
+    "searchPlaceholder": "Pesquisar país…",
+    "selected": "Selecionado",
+    "detected": "Detetado",
+    "showAll": "Mostrar todos os países ({count} mais)",
+    "notFound": "Nenhum país encontrado",
+    "footerHint": "Pode mudar de país a qualquer momento através do ícone da bandeira na navegação.",
+    "close": "Fechar",
+    "europe": "Europa",
+    "americas": "América",
+    "asia": "Ásia e Médio Oriente",
+    "oceania": "Oceânia"
+  },
   "meta": {
     "title": "GetDocu — Documentos importantes, de forma simples",
     "description": "Documentos gerados por IA para a Suíça: candidatura de arrendamento, candidatura de emprego, rescisão. Pronto em minutos."

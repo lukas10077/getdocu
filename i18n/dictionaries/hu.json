@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "A nyelved",
+    "subtitle": "Már felismerve — módosítsd, ha szükséges.",
+    "confirm": "Megerősítés"
+  },
+  "countrySelector": {
+    "title": "Melyik országhoz?",
+    "subtitle": "A dokumentum az országod szokásaihoz igazodik.",
+    "searchPlaceholder": "Ország keresése…",
+    "selected": "Kiválasztva",
+    "detected": "Felismerve",
+    "showAll": "Összes ország megjelenítése (még {count})",
+    "notFound": "Nincs találat",
+    "footerHint": "Az országot bármikor megváltoztathatod a navigációban található zászló ikonnal.",
+    "close": "Bezárás",
+    "europe": "Európa",
+    "americas": "Amerika",
+    "asia": "Ázsia és Közel-Kelet",
+    "oceania": "Óceánia"
+  },
   "meta": {
     "title": "GetDocu — Fontos dokumentumok, egyszerűen",
     "description": "AI által generált dokumentumok Svájc számára: lakásbérlési pályázat, állásra jelentkezés, felmondás. Percek alatt kész."

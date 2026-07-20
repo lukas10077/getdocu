@@ -1,4 +1,24 @@
 {
+  "onboarding": {
+    "title": "Twój język",
+    "subtitle": "Już wykryty — zmień w razie potrzeby.",
+    "confirm": "Potwierdź"
+  },
+  "countrySelector": {
+    "title": "Dla którego kraju?",
+    "subtitle": "Dokument zostanie dostosowany do konwencji Twojego kraju.",
+    "searchPlaceholder": "Szukaj kraju…",
+    "selected": "Wybrano",
+    "detected": "Wykryto",
+    "showAll": "Pokaż wszystkie kraje (jeszcze {count})",
+    "notFound": "Nie znaleziono kraju",
+    "footerHint": "Kraj możesz zmienić w każdej chwili za pomocą ikony flagi w nawigacji.",
+    "close": "Zamknij",
+    "europe": "Europa",
+    "americas": "Ameryka",
+    "asia": "Azja i Bliski Wschód",
+    "oceania": "Oceania"
+  },
   "meta": {
     "title": "GetDocu — Ważne dokumenty, w prosty sposób",
     "description": "Dokumenty generowane przez AI dla Szwajcarii: podanie o wynajem, podanie o pracę, wypowiedzenie. Gotowe w kilka minut."
