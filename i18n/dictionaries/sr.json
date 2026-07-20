@@ -142,7 +142,7 @@
     "selectPlaceholder": "— molimo izaberite —",
     "withdrawalConsent": "Slažem se da isporuka digitalnog dokumenta počinje odmah nakon plaćanja i potvrđujem da se odričem svog zakonskog prava na odustajanje. Pročitao/la sam i prihvatam Uslove i odredbe.",
     "withdrawalError": "Molimo potvrdite svoju saglasnost za nastavak.",
-    "legalDisclaimer": "Generisani dokument ne zamenjuje pravni savet. Vaši podaci se brišu odmah nakon generisanja."
+    "legalDisclaimer": "Ovaj dokument se generiše pomoću veštačke inteligencije (VI). Generisani dokument ne zamenjuje pravni savet. Vaši podaci se brišu odmah nakon generisanja."
   },
   "howItWorks": {
     "title": "Kako funkcioniše",

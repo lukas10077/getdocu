@@ -142,7 +142,7 @@
     "selectPlaceholder": "— veuillez sélectionner —",
     "withdrawalConsent": "J'accepte que la livraison du document numérique commence immédiatement après le paiement et je confirme renoncer ainsi à mon droit légal de rétractation. J'ai lu et j'accepte les CGV.",
     "withdrawalError": "Veuillez confirmer votre consentement pour continuer.",
-    "legalDisclaimer": "Le document généré ne remplace pas un conseil juridique. Vos données sont supprimées immédiatement après la génération."
+    "legalDisclaimer": "Ce document est généré à l'aide de l'intelligence artificielle (IA). Le document généré ne remplace pas un conseil juridique. Vos données sont supprimées immédiatement après la génération."
   },
   "howItWorks": {
     "title": "Comment ça marche",
