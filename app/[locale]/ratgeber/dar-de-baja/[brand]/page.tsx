@@ -51,6 +51,8 @@ export default async function DarDeBajaPage({
     recipientName: brand.name,
     type: "Abonnement / Mitgliedschaft",
   });
+  // Kündigungsadresse mitgeben, sofern strukturiert hinterlegt
+  if (brand.address?.length) toolParams.set("recipientAddress", brand.address.join("\n"));
   const toolHref = `/${params.locale}/tools/kuendigung?${toolParams.toString()}`;
 
   // Otras compañías de la misma categoría (enlazado interno hub-and-spoke)

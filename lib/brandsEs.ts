@@ -18,6 +18,7 @@ export interface BrandEs {
   countryCode: string;     // "ES" | "MX" | "CO" | "AR" — steuert die Länder-Voreinstellung im Tool
   countryName: string;     // Anzeigename des Landes ("España", ...)
   intro: string;           // 1–2 Sätze Einstieg
+  address?: string[];      // Postalische Kündigungsadresse (Zeilen) — wird ans Tool übergeben
   cancelMethods: string[]; // Wie man kündigt (Schriftform/Burofax, tienda, email …)
   facts: string[];         // Kernfakten (permanencia, preaviso, plazos …)
   faq: { q: string; a: string }[];
@@ -36,6 +37,7 @@ export const brandsEs: Record<string, BrandEs> = {
     countryName: "España",
     intro:
       "¿Vas a darte de baja de McFit? Aquí tienes cómo comunicar la baja, el preaviso y cómo generar una carta de baja formal en minutos, lista para enviar por burofax o correo.",
+    address: ["McFit España", "C/ Fuencarral 6, 3ª planta", "28004 Madrid"],
     cancelMethods: [
       "Por escrito con 30 días de preaviso: burofax o carta certificada al centro, correo a C/ Fuencarral 6, 3ª planta, 28004 Madrid, fax al 91 182 90 01 o email a atencioncliente@mcfit.com.",
       "También puedes acudir a tu gimnasio y comunicar la baja al personal (te pedirán un formulario o carta).",
