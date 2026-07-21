@@ -30,8 +30,12 @@ export default function Nav({ locale, dict }: { locale: Locale; dict: any }) {
 
         {/* Right side */}
         <div className="flex items-center gap-3">
-          <CountryButton title={dict.nav.changeCountry} />
-          <LanguageSwitcher current={locale} />
+          {/* Land + Sprache als eine Einheit: [🇨🇭 ⌄ | Deutsch ⌄] */}
+          <div className="flex items-center rounded-full border border-ink-700 transition hover:border-swiss-gold/50">
+            <CountryButton title={dict.nav.changeCountry} />
+            <span aria-hidden className="h-5 w-px bg-ink-700" />
+            <LanguageSwitcher current={locale} bare />
+          </div>
           {/* Desktop CTA */}
           <Link
             href={`/${locale}#tools`}

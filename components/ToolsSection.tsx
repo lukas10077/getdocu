@@ -38,6 +38,7 @@ export default function ToolsSection({ locale, dict }: { locale: Locale; dict: a
                   return (
                     <ToolCard
                       key={slug}
+                      slug={slug}
                       href={`/${locale}/tools/${slug}`}
                       title={item?.title ?? tool.documentTitleDe}
                       description={item?.description ?? tool.descriptionDe}

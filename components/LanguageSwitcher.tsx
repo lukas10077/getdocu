@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { locales, localeMeta, Locale } from "@/i18n/config";
 
-export default function LanguageSwitcher({ current }: { current: Locale }) {
+export default function LanguageSwitcher({ current, bare = false }: { current: Locale; bare?: boolean }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -31,7 +31,11 @@ export default function LanguageSwitcher({ current }: { current: Locale }) {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded-full border border-ink-700 px-4 py-2 text-sm font-medium text-cream transition hover:border-swiss-gold/50"
+        className={
+          bare
+            ? "flex items-center gap-2 rounded-r-full px-3 py-2 text-sm font-medium text-cream transition hover:bg-ink-800"
+            : "flex items-center gap-2 rounded-full border border-ink-700 px-4 py-2 text-sm font-medium text-cream transition hover:border-swiss-gold/50"
+        }
         aria-haspopup="listbox"
         aria-expanded={open}
       >
