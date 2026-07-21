@@ -420,33 +420,69 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   const [listingText, setListingText] = useState("");
   const [listingStatus, setListingStatus] = useState<"idle" | "ok" | "failed">("idle");
 
-  function validate() {
+  // Mehrstufiges Formular: Felder nach Sektionen gruppiert (kürzere Schritte = mehr
+  // Abschlüsse, v.a. mobil). Uploads/Extras erscheinen auf Schritt 1. Bei Tools mit
+  // nur einer Gruppe bleibt alles einseitig wie bisher.
+  const [formStep, setFormStep] = useState(0);
+  const fieldGroups = (() => {
+    const groups: { section?: string; fields: typeof tool.fields }[] = [];
+    for (const f of tool.fields) {
+      const last = groups[groups.length - 1];
+      if (last && (f.section ?? last.section) === last.section) last.fields.push(f);
+      else groups.push({ section: f.section, fields: [f] });
+    }
+    return groups;
+  })();
+  const isMultiStep = fieldGroups.length >= 2;
+  const totalSteps = fieldGroups.length;
+  const fieldStepIndex: Record<string, number> = {};
+  fieldGroups.forEach((g, i) => g.fields.forEach((f) => { fieldStepIndex[f.key] = i; }));
+
+  function validate(fields: typeof tool.fields = tool.fields): Record<string, string> {
+    const requiredMsg = fs("requiredField", "Pflichtfeld");
     const newErrors: Record<string, string> = {};
-    for (const field of tool.fields) {
+    for (const field of fields) {
       if (!field.required) continue;
       if (field.type === "address") {
         const p = getAddressParts(field.key);
-        if (!p.street.trim() || !p.city.trim()) newErrors[field.key] = "Pflichtfeld";
+        if (!p.street.trim() || !p.city.trim()) newErrors[field.key] = requiredMsg;
       } else if (field.key === "birthDate") {
         // Geburtsdatum: nur ungültig wenn leer ODER Jahr = aktuelles Jahr (= nicht verändert)
         const val = values[field.key]?.trim();
         if (!val) {
-          newErrors[field.key] = "Pflichtfeld";
+          newErrors[field.key] = requiredMsg;
         } else {
           const year = new Date(val).getFullYear();
-          if (year >= new Date().getFullYear()) newErrors[field.key] = "Pflichtfeld";
+          if (year >= new Date().getFullYear()) newErrors[field.key] = requiredMsg;
         }
       } else if (!values[field.key]?.trim()) {
-        newErrors[field.key] = "Pflichtfeld";
+        newErrors[field.key] = requiredMsg;
       }
     }
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return newErrors;
+  }
+
+  function goNext() {
+    const errs = validate(fieldGroups[formStep]?.fields ?? tool.fields);
+    if (Object.keys(errs).length > 0) return;
+    setFormStep((s) => Math.min(s + 1, totalSteps - 1));
+    document.getElementById("gd-form-top")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!validate()) return;
+    // Auf Zwischenschritten: Enter/Submit = "Weiter", nicht absenden
+    if (isMultiStep && formStep < totalSteps - 1) { goNext(); return; }
+    const submitErrors = validate();
+    if (Object.keys(submitErrors).length > 0) {
+      // Zum ersten Schritt mit Fehler springen
+      if (isMultiStep) {
+        const firstKey = tool.fields.find((f) => submitErrors[f.key])?.key;
+        if (firstKey && fieldStepIndex[firstKey] !== undefined) setFormStep(fieldStepIndex[firstKey]);
+      }
+      return;
+    }
     // Hinweis: Die Widerrufs-Einwilligung wird NICHT hier verlangt — die Vorschau
     // ist gratis. Die Einwilligung erfolgt erst beim Kauf (proceedToCheckout).
     const effectiveValues = getEffectiveValues();
@@ -1101,6 +1137,26 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
 
+      {/* Fortschritt (mehrstufiges Formular) */}
+      {isMultiStep && (
+        <div id="gd-form-top" className="mb-8 scroll-mt-24">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="text-xs font-medium uppercase tracking-widest text-cream-muted">
+              {fs("stepLabel", "Schritt {current} von {total}").replace("{current}", String(formStep + 1)).replace("{total}", String(totalSteps))}
+            </span>
+            {fieldGroups[formStep]?.section && (
+              <span className="text-xs text-cream-subtle">{getSectionLabel(fieldGroups[formStep].section!)}</span>
+            )}
+          </div>
+          <div className="h-1 w-full rounded-full bg-ink-800">
+            <div className="h-1 rounded-full bg-swiss-gold transition-all duration-300" style={{ width: `${((formStep + 1) / totalSteps) * 100}%` }} />
+          </div>
+        </div>
+      )}
+
+      {/* Uploads & Extras — beim mehrstufigen Formular nur auf Schritt 1 sichtbar */}
+      <div className={isMultiStep && formStep !== 0 ? "hidden" : ""}>
+
       {/* Inserat-Link — Bewerbung geht gezielt aufs Stellen-/Wohnungsinserat ein */}
       {tool.supportsListingUrl && (
         <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
@@ -1294,13 +1350,15 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
         </div>
       )}
 
+      </div>{/* Ende Uploads & Extras (Schritt 1) */}
+
       <div className="space-y-8">
         {tool.fields.map((field, idx) => {
           const prevField = tool.fields[idx - 1];
           const showSection = field.section && field.section !== prevField?.section;
 
           return (
-            <div key={field.key}>
+            <div key={field.key} className={isMultiStep && fieldStepIndex[field.key] !== formStep ? "hidden" : ""}>
               {showSection && (
                 <div className="mb-6 border-b border-ink-700 pb-2">
                   <h3 className="text-xs font-medium uppercase tracking-widest text-cream-muted">{getSectionLabel(field.section!)}</h3>
@@ -1572,20 +1630,43 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
         })}
       </div>
 
-      <p className="mt-10 text-xs leading-relaxed text-cream-subtle">
-        {legalDisclaimer}
-      </p>
+      {(!isMultiStep || formStep === totalSteps - 1) && (
+        <p className="mt-10 text-xs leading-relaxed text-cream-subtle">
+          {legalDisclaimer}
+        </p>
+      )}
 
-      <div className="mt-6 flex flex-wrap items-center gap-6">
-        <button
-          type="submit"
-          className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
-        >
-          {fs("previewButton", "Vorschau erstellen — kostenlos")}
-        </button>
-        <span className="text-xs text-cream-muted">
-          {fs("previewAfter", "Danach {price} für das vollständige Dokument").replace("{price}", priceDisplay)}
-        </span>
+      <div className="mt-6 flex flex-wrap items-center gap-4">
+        {isMultiStep && formStep > 0 && (
+          <button
+            type="button"
+            onClick={() => { setFormStep(formStep - 1); document.getElementById("gd-form-top")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+            className="border border-ink-700 px-6 py-4 text-sm font-medium uppercase tracking-widest text-cream transition hover:border-swiss-gold"
+          >
+            ← {fs("prevStep", "Zurück")}
+          </button>
+        )}
+        {isMultiStep && formStep < totalSteps - 1 ? (
+          <button
+            type="button"
+            onClick={goNext}
+            className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
+          >
+            {fs("nextStep", "Weiter")} →
+          </button>
+        ) : (
+          <>
+            <button
+              type="submit"
+              className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
+            >
+              {fs("previewButton", "Vorschau erstellen — kostenlos")}
+            </button>
+            <span className="text-xs text-cream-muted">
+              {fs("previewAfter", "Danach {price} für das vollständige Dokument").replace("{price}", priceDisplay)}
+            </span>
+          </>
+        )}
       </div>
     </form>
   );
