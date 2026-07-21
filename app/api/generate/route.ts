@@ -51,15 +51,21 @@ export async function POST(req: NextRequest) {
   const imageMimeType: string = formData.__imageMimeType ?? "image/jpeg";
   const incomeCurrency: string = formData.__incomeCurrency ?? "";
   const docxText: string = formData.__docxText ?? "";
+  const listingTextRaw: string = formData.__listingText ?? "";
   const cleanFormData = { ...formData };
   delete cleanFormData.__imageBase64;
   delete cleanFormData.__imageMimeType;
   delete cleanFormData.__incomeCurrency;
   delete cleanFormData.__docxText;
+  delete cleanFormData.__listingText;
 
   // 4. Dokument generieren
   const anthropic = new Anthropic({ apiKey: anthropicKey });
-  const textPrompt = buildUserPrompt(tool, cleanFormData);
+  // Verlinktes Inserat als Kontext — Bewerbung geht gezielt auf die Anforderungen ein
+  const listingBlock = listingTextRaw.trim()
+    ? `\n\nINHALT DES VERLINKTEN INSERATS (Stellen- oder Wohnungsinserat):\n${listingTextRaw.slice(0, 8000)}\n\nGehe im Dokument gezielt auf dieses Inserat ein: Greife die wichtigsten Anforderungen auf, betone passende Stärken des Bewerbers und übernimm erkennbare Empfängerdaten (Firma/Vermieter, Ansprechpartner, Adresse), sofern der Nutzer keine abweichenden Angaben gemacht hat. Ignoriere Navigations- und Werbetexte im Inserat-Inhalt.`
+    : "";
+  const textPrompt = buildUserPrompt(tool, cleanFormData) + listingBlock;
   const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug, incomeCurrency);
 
   const userContent: Anthropic.MessageParam["content"] = [];

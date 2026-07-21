@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { toolSlug, formData, imageBase64, imageMimeType, docxText, countryCode } = await req.json();
+  const { toolSlug, formData, imageBase64, imageMimeType, docxText, listingText, countryCode } = await req.json();
 
   const tool = getTool(toolSlug);
   if (!tool) {
@@ -61,7 +61,13 @@ export async function POST(req: NextRequest) {
     .join("\n");
 
   const today = new Date().toLocaleDateString("de-CH", { day: "numeric", month: "long", year: "numeric" });
-  const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (ca. 200–250 Wörter) basierend auf folgenden Angaben. Halte den Kopfbereich (Absender, Empfänger, Datum, Betreff) kompakt und lege das Gewicht auf den individuellen, persönlichen Fliesstext — der Leser soll spüren, dass dieses Dokument exakt für seine Situation geschrieben wurde. Brich am Ende MITTEN IM SATZ ab und beende die Ausgabe mit "…" (das vollständige Dokument wird nach Zahlung generiert).\n\n${lines}`;
+
+  // Verlinktes Inserat als Kontext — Bewerbung geht gezielt auf die Anforderungen ein
+  const listingBlock = typeof listingText === "string" && listingText.trim()
+    ? `\n\nINHALT DES VERLINKTEN INSERATS (Stellen- oder Wohnungsinserat):\n${listingText.slice(0, 8000)}\n\nGehe im Dokument gezielt auf dieses Inserat ein: Greife die wichtigsten Anforderungen auf, betone passende Stärken des Bewerbers und übernimm erkennbare Empfängerdaten (Firma/Vermieter, Ansprechpartner, Adresse), sofern der Nutzer keine abweichenden Angaben gemacht hat. Ignoriere Navigations- und Werbetexte im Inserat-Inhalt.`
+    : "";
+
+  const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (ca. 200–250 Wörter) basierend auf folgenden Angaben. Halte den Kopfbereich (Absender, Empfänger, Datum, Betreff) kompakt und lege das Gewicht auf den individuellen, persönlichen Fliesstext — der Leser soll spüren, dass dieses Dokument exakt für seine Situation geschrieben wurde. Brich am Ende MITTEN IM SATZ ab und beende die Ausgabe mit "…" (das vollständige Dokument wird nach Zahlung generiert).\n\n${lines}${listingBlock}`;
 
   // Länderkontext in System-Prompt injizieren
   const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug);

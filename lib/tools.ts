@@ -57,6 +57,9 @@ export interface ToolDefinition {
   isBundle?: boolean;
   // Nur in der Schweiz anbieten (länderspezifisches Recht, z.B. Nachmieter-Ausstieg Art. 264 OR)
   chOnly?: boolean;
+  // Optionales URL-Feld: Link zum Stellen-/Wohnungsinserat — Text wird serverseitig
+  // geholt (/api/fetch-listing) und der KI als Kontext mitgegeben
+  supportsListingUrl?: boolean;
 }
 
 export const tools: Record<ToolSlug, ToolDefinition> = {
@@ -66,6 +69,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   mietbewerbung: {
     slug: "mietbewerbung",
+    supportsListingUrl: true,
     priceChfRappen: 500,
     documentTitleDe: "Bewerbung Wohnung",
     descriptionDe:
@@ -119,6 +123,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   jobbewerbung: {
     slug: "jobbewerbung",
+    supportsListingUrl: true,
     priceChfRappen: 500,
     supportsProfilePhoto: true,
     documentTitleDe: "Bewerbung Arbeitsstelle",
@@ -468,6 +473,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   komplettbewerbung: {
     slug: "komplettbewerbung",
+    supportsListingUrl: true,
     priceChfRappen: 800,
     isBundle: true,
     supportsProfilePhoto: true,

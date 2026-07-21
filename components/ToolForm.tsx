@@ -414,6 +414,12 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
       });
   }, [sessionId]);
 
+  // Inserat-Link (Stellen-/Wohnungsinserat) — Text wird serverseitig geholt und
+  // der KI als Kontext mitgegeben (Bewerbung geht gezielt aufs Inserat ein)
+  const [listingUrl, setListingUrl] = useState("");
+  const [listingText, setListingText] = useState("");
+  const [listingStatus, setListingStatus] = useState<"idle" | "ok" | "failed">("idle");
+
   function validate() {
     const newErrors: Record<string, string> = {};
     for (const field of tool.fields) {
@@ -445,6 +451,27 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     // ist gratis. Die Einwilligung erfolgt erst beim Kauf (proceedToCheckout).
     const effectiveValues = getEffectiveValues();
     setStage("previewing");
+    // Inserat-Text holen (falls Link angegeben und noch nicht geholt)
+    let fetchedListing = listingText;
+    if (tool.supportsListingUrl && listingUrl.trim() && !fetchedListing) {
+      try {
+        const r = await fetch("/api/fetch-listing", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: listingUrl.trim() }),
+        });
+        const d = await r.json().catch(() => ({}));
+        if (r.ok && d.text) {
+          fetchedListing = d.text;
+          setListingText(d.text);
+          setListingStatus("ok");
+        } else {
+          setListingStatus("failed");
+        }
+      } catch {
+        setListingStatus("failed");
+      }
+    }
     try {
       const res = await fetch("/api/preview", {
         method: "POST",
@@ -456,6 +483,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           imageBase64: tool.supportsPhotoGallery ? null : imageBase64,
           imageMimeType,
           docxText: docxText || undefined,
+          listingText: fetchedListing || undefined,
           countryCode: country?.code,
         }),
       });
@@ -488,6 +516,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
       __countryCode: country?.code ?? "",
       __incomeCurrency: incomeCurrency,
       __docxText: docxText ?? "",
+      __listingText: listingText ?? "",
       __profilePhotoBase64: profilePhotoBase64 ?? "",
     }));
     // Fotos in IndexedDB speichern (sessionStorage zu klein für viele Bilder)
@@ -863,6 +892,18 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
 
         </div>
 
+        {/* Wiederverwendung: Das Dokument ist nicht "abgeschlossen", sondern eine Vorlage */}
+        {goldAccent && (
+          <div className="mt-6 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
+            <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-swiss-gold">
+              🔁 {fs("reuseTitle", "Nicht nur einmal — deine Vorlage für alle weiteren Bewerbungen")}
+            </p>
+            <p className="text-sm leading-relaxed text-cream-muted">
+              {fs("reuseBody", "Lade die Word-Datei herunter und nutze sie beliebig oft: einfach Firma bzw. Adresse und ein paar Details ändern — fertig ist die nächste Bewerbung. So bewirbst du dich in Minuten auf mehrere Stellen oder Wohnungen.")}
+            </p>
+          </div>
+        )}
+
         {/* Cross-Sell: passende weitere Dokumente — erhöht den Wert pro Kunde */}
         {related.length > 0 && (
           <div className="mt-10 border-t border-ink-700 pt-6">
@@ -953,6 +994,13 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           <p className="mb-4 text-xs text-cream-subtle">
             {fs("valueLine", "Druckfertiges PDF · Word-Datei per E-Mail zum Nacharbeiten · Sofort verfügbar")}
           </p>
+
+          {/* Wiederverwendung: Word-Datei = Vorlage für weitere Bewerbungen */}
+          {goldAccent && (
+            <p className="mb-4 text-xs leading-relaxed text-swiss-gold/90">
+              {fs("wordReuseValue", "🔁 Mehrfach nutzbar: Die Word-Datei ist deine Vorlage — Empfänger ändern und für weitere Bewerbungen wiederverwenden.")}
+            </p>
+          )}
 
           {/* Widerrufs-Einwilligung — hier beim Kauf, nicht bei der Gratis-Vorschau */}
           <label className={`mb-3 flex cursor-pointer items-start gap-3 ${withdrawalError ? "text-red-400" : "text-cream-muted"}`}>
@@ -1052,6 +1100,25 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
 
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10">
+
+      {/* Inserat-Link — Bewerbung geht gezielt aufs Stellen-/Wohnungsinserat ein */}
+      {tool.supportsListingUrl && (
+        <div className="mb-10 rounded-sm border border-dashed border-swiss-gold/40 bg-ink-900 p-6">
+          <p className="mb-1 text-sm font-medium text-cream">{fs("listingLabel", "Link zum Inserat (optional)")}</p>
+          <p className="mb-3 text-xs leading-relaxed text-cream-muted">{fs("listingHint", "Füge den Link zum Stellen- oder Wohnungsinserat ein — deine Bewerbung geht dann gezielt auf die Anforderungen ein.")}</p>
+          <input
+            type="url"
+            inputMode="url"
+            placeholder="https://…"
+            value={listingUrl}
+            onChange={(e) => { setListingUrl(e.target.value); setListingText(""); setListingStatus("idle"); }}
+            className={inputClass + " border-ink-700"}
+          />
+          {listingStatus === "failed" && (
+            <p className="mt-2 text-xs text-amber-400">{fs("listingFailed", "Inserat konnte nicht geladen werden — die Vorschau wird ohne Inserat erstellt. Tipp: Du kannst den Inserat-Text auch als Foto/PDF hochladen.")}</p>
+          )}
+        </div>
+      )}
 
       {/* Bewerbungsfoto (client-only) — nur für Jobbewerbung oben; Lebenslauf kommt nach dem CV-Upload */}
       {tool.supportsProfilePhoto && tool.slug !== "lebenslauf" && (
