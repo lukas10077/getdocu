@@ -890,7 +890,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   if (stage === "preview") {
     const goldAccent = ["mietbewerbung", "jobbewerbung", "lebenslauf", "komplettbewerbung"].includes(tool.slug);
     return (
-      <div className="mt-10">
+      <div className="mt-10 pb-24 md:pb-0">
         <div className="mb-4 flex items-center gap-2">
           <span className="text-xs font-medium uppercase tracking-widest text-swiss-gold">{fs("previewTag", "Vorschau")}</span>
           <span className="text-xs text-cream-muted">{fs("previewPayNote", "— Bezahle um das vollständige Dokument zu erhalten")}</span>
@@ -930,19 +930,20 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
                 </>
               );
             })()}
+
+            {/* Angedeutete Folge-Absätze — zeigen, dass das vollständige Dokument weitergeht */}
+            <div aria-hidden style={{ marginTop: 10 }}>
+              {[96, 100, 92, 88, 100, 95, 64].map((w, i) => (
+                <div key={i} style={{ height: 10, width: `${w}%`, background: "#e6e2da", borderRadius: 2, marginBottom: 11 }} />
+              ))}
+            </div>
           </div>
 
           {/* Fade-out unten */}
           <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, rgba(250,248,244,0) 0%, rgba(250,248,244,0.98) 100%)", zIndex: 3 }} />
         </div>
 
-        <div className="mt-4 rounded-sm border border-amber-500/30 bg-amber-500/10 p-4">
-          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">{fs("checkTitle", "Kurz prüfen")}</p>
-          <p className="text-sm text-cream-muted">{fs("checkBody", "Wirf noch einen kurzen Blick auf deine Angaben (Name, Adresse, Empfänger) – so passt dein Dokument auf Anhieb.")}</p>
-          <button onClick={() => setStage("form")} className="mt-2 text-xs text-amber-400 underline hover:text-amber-300">{fs("editData", "Angaben ändern")}</button>
-        </div>
-
-        <div className="mt-4 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
+        <div id="gd-paybox" className="mt-6 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
           <p className="mb-4 text-sm text-cream-muted">
             <strong className="font-medium text-cream">{fs("readyTitle", "Dein persönliches Dokument ist bereit.")}</strong>{" "}
             {fs("readyBody", "Bezahle einmalig {price} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.").replace("{price}", priceDisplay)}
@@ -988,6 +989,29 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           <p className="mt-2 text-xs text-cream-subtle">
             {fs("payTrust", "🔒 Sichere Zahlung via Stripe · Dein Dokument hast du oben schon gesehen · Daten nach der Erstellung sofort gelöscht")}
           </p>
+        </div>
+
+        <div className="mt-4 rounded-sm border border-amber-500/30 bg-amber-500/10 p-4">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-amber-400">{fs("checkTitle", "Kurz prüfen")}</p>
+          <p className="text-sm text-cream-muted">{fs("checkBody", "Wirf noch einen kurzen Blick auf deine Angaben (Name, Adresse, Empfänger) – so passt dein Dokument auf Anhieb.")}</p>
+          <button onClick={() => setStage("form")} className="mt-2 text-xs text-amber-400 underline hover:text-amber-300">{fs("editData", "Angaben ändern")}</button>
+        </div>
+
+        {/* Sticky Kauf-Leiste auf Mobile — Kauf-Button immer im Blick */}
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink-700 bg-ink-950/95 p-3 backdrop-blur md:hidden">
+          <button
+            onClick={() => {
+              if (!withdrawalConsent) {
+                setWithdrawalError(true);
+                document.getElementById("gd-paybox")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                return;
+              }
+              proceedToCheckout();
+            }}
+            className="w-full bg-swiss-gold px-6 py-3.5 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
+          >
+            {fs("payButton", "Vollständiges Dokument — {price}").replace("{price}", priceDisplay)}
+          </button>
         </div>
       </div>
     );

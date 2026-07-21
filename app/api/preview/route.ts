@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
     .join("\n");
 
   const today = new Date().toLocaleDateString("de-CH", { day: "numeric", month: "long", year: "numeric" });
-  const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (nur die ersten 2–3 Absätze, ca. 120–150 Wörter) basierend auf folgenden Angaben. Höre mitten im Text auf — das vollständige Dokument wird nach Zahlung generiert.\n\n${lines}`;
+  const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (ca. 200–250 Wörter) basierend auf folgenden Angaben. Halte den Kopfbereich (Absender, Empfänger, Datum, Betreff) kompakt und lege das Gewicht auf den individuellen, persönlichen Fliesstext — der Leser soll spüren, dass dieses Dokument exakt für seine Situation geschrieben wurde. Brich am Ende MITTEN IM SATZ ab und beende die Ausgabe mit "…" (das vollständige Dokument wird nach Zahlung generiert).\n\n${lines}`;
 
   // Länderkontext in System-Prompt injizieren
   const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug);
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
 
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
-    max_tokens: 350,
+    max_tokens: 550,
     system: systemPrompt,
     messages: [{ role: "user", content: userContent }],
   });
