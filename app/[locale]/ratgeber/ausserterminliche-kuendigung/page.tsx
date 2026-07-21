@@ -20,8 +20,9 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale };
 }): Promise<Metadata> {
-  if (params.locale !== GUIDE_LOCALE) return {};
   const url = `${BASE_URL}/${GUIDE_LOCALE}/ratgeber/${SLUG}`;
+  // Falsche Sprach-URL → Canonical aufs Original (konsolidiert Duplikate bei Google)
+  if (params.locale !== GUIDE_LOCALE) return { alternates: { canonical: url } };
   return {
     title: TITLE,
     description: DESCRIPTION,

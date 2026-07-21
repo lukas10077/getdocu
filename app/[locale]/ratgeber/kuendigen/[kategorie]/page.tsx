@@ -19,7 +19,11 @@ export async function generateMetadata({
   params: { locale: Locale; kategorie: string };
 }): Promise<Metadata> {
   const hub = getCategoryHub(params.kategorie);
-  if (!hub || params.locale !== GUIDE_LOCALE) return {};
+  if (!hub) return {};
+  // Falsche Sprach-URL → Canonical aufs Original (konsolidiert Duplikate bei Google)
+  if (params.locale !== GUIDE_LOCALE) {
+    return { alternates: { canonical: `${BASE_URL}/${GUIDE_LOCALE}/ratgeber/kuendigen/${hub.slug}` } };
+  }
   const title = `${hub.title} — Frist, Vorlage & Anbieter`;
   const description = `${hub.title}: Kündigungsfrist, das richtige Vorgehen und ein fertiges Kündigungsschreiben in wenigen Minuten. Inklusive Kündigungsadresse aller Anbieter.`;
   const url = `${BASE_URL}/${GUIDE_LOCALE}/ratgeber/kuendigen/${hub.slug}`;

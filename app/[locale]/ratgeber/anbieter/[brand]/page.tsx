@@ -21,7 +21,11 @@ export async function generateMetadata({
   params: { locale: Locale; brand: string };
 }): Promise<Metadata> {
   const brand = getBrand(params.brand);
-  if (!brand || params.locale !== GUIDE_LOCALE) return {};
+  if (!brand) return {};
+  // Falsche Sprach-URL → Canonical aufs Original (konsolidiert Duplikate bei Google)
+  if (params.locale !== GUIDE_LOCALE) {
+    return { alternates: { canonical: `${BASE_URL}/${GUIDE_LOCALE}/ratgeber/anbieter/${brand.slug}` } };
+  }
   const title = `${brand.name} kündigen — Vorlage, Frist & Adresse`;
   const description = `${brand.name} kündigen: Kündigungsfrist, Kündigungsadresse und ein fertiges Kündigungsschreiben in wenigen Minuten — ohne Konto, ohne Abo.`;
   const url = `${BASE_URL}/${GUIDE_LOCALE}/ratgeber/anbieter/${brand.slug}`;

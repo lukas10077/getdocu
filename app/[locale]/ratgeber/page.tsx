@@ -38,7 +38,8 @@ export async function generateMetadata({
   params: { locale: Locale };
 }): Promise<Metadata> {
   const m = META[params.locale];
-  if (!m) return {};
+  // Locales ohne eigene Ratgeber-Übersicht → Canonical auf die deutsche Hauptversion
+  if (!m) return { alternates: { canonical: `${BASE_URL}/de/ratgeber` } };
   const url = `${BASE_URL}/${params.locale}/ratgeber`;
   return {
     title: m.title,

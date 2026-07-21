@@ -19,7 +19,11 @@ export async function generateMetadata({
   params: { locale: Locale; brand: string };
 }): Promise<Metadata> {
   const brand = getBrandEs(params.brand);
-  if (!brand || params.locale !== GUIDE_LOCALE) return {};
+  if (!brand) return {};
+  // Falsche Sprach-URL → Canonical aufs Original (konsolidiert Duplikate bei Google)
+  if (params.locale !== GUIDE_LOCALE) {
+    return { alternates: { canonical: `${BASE_URL}/${GUIDE_LOCALE}/ratgeber/dar-de-baja/${brand.slug}` } };
+  }
   const title = brand.global
     ? `Cancelar ${brand.name} — cómo darte de baja paso a paso`
     : `Dar de baja ${brand.name} en ${brand.countryName} — teléfono, pasos y carta de baja`;
