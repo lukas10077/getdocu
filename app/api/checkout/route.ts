@@ -57,6 +57,17 @@ export async function POST(req: NextRequest) {
       cancel_url: `${baseUrl}/${locale}/tools/${tool.slug}?status=cancelled`,
     });
 
+    // Serverseitiges Funnel-Logging (adblock-unabhängig, keine PII) — Pendant zum
+    // clientseitigen "Checkout gestartet"-Event, das Adblocker unterdrücken.
+    console.log(JSON.stringify({
+      funnel: "checkout_started",
+      tool: tool.slug,
+      country: countryCode ?? "unknown",
+      locale: typeof locale === "string" ? locale : "unknown",
+      viaAd: typeof gclid === "string" && gclid.length > 0,
+      ts: new Date().toISOString(),
+    }));
+
     return NextResponse.json({ url: session.url, sessionId: session.id });
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Unbekannter Stripe-Fehler";

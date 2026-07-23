@@ -121,6 +121,16 @@ export async function POST(req: NextRequest) {
     .map((b) => b.text)
     .join("\n");
 
+  // Serverseitiges Funnel-Logging (adblock-unabhängig, keine PII) — die clientseitigen
+  // Google-Ads-Events werden von Adblockern geschluckt (bes. DACH); diese Log-Zeile in
+  // den Vercel-Logs zeigt die tatsächliche Zahl generierter Vorschauen pro Land/Tool.
+  console.log(JSON.stringify({
+    funnel: "preview_generated",
+    tool: tool.slug,
+    country: countryCode ?? "unknown",
+    ts: new Date().toISOString(),
+  }));
+
   return NextResponse.json({ previewText });
 }
 
