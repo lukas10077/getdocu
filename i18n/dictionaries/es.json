@@ -169,7 +169,8 @@
       "alltag": "Cotidiano"
     },
     "selectPlaceholder": "— seleccionar —",
-    "withdrawalConsent": "Acepto que la entrega del documento digital comienza inmediatamente después del pago y confirmo que renuncio a mi derecho legal de desistimiento. He leído y acepto los Términos y Condiciones.",
+    "withdrawalConsent": "Sí, quiero recibir mi documento inmediatamente después del pago. Soy consciente de que mi derecho legal de desistimiento se extingue al iniciarse la entrega. He leído y acepto los Términos y Condiciones.",
+    "withdrawalTermsLabel": "Términos y Condiciones",
     "withdrawalError": "Por favor confirma tu consentimiento para continuar.",
     "legalDisclaimer": "Este documento se genera con inteligencia artificial (IA). El documento generado no reemplaza el asesoramiento jurídico. Tus datos se eliminan inmediatamente después de la generación."
   },

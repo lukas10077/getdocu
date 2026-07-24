@@ -98,8 +98,12 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   const galleryHint = toolDict.photoGalleryHint ?? tool.photoGalleryHintDe;
   const toolTitle = toolDict.title ?? tool.documentTitleDe;
   const selectPlaceholder  = t.selectPlaceholder  ?? "— bitte wählen —";
-  const withdrawalText     = t.withdrawalConsent  ?? "Ja, ich möchte mein Dokument sofort nach der Zahlung erhalten. Mir ist bewusst, dass das Widerrufsrecht bei sofortiger Bereitstellung digitaler Inhalte entfällt. Ich akzeptiere die AGB.";
+  const withdrawalText     = t.withdrawalConsent  ?? "Ja, ich möchte mein Dokument sofort nach der Zahlung erhalten. Mir ist bewusst, dass mein gesetzliches Widerrufsrecht mit Beginn der Lieferung erlischt. Ich habe die AGB gelesen und akzeptiere sie.";
   const withdrawalErrText  = t.withdrawalError    ?? "Bitte bestätige die Zustimmung, um fortzufahren.";
+  // i18n: exakte Phrase INNERHALB von withdrawalConsent, die als AGB-Link gesetzt wird.
+  // Ohne diesen Key wurde in allen Nicht-DE-Sprachen ein deutsches "AGB" hinter den
+  // übersetzten Satz gehängt. Muss je Sprache wörtlich zum Text oben passen.
+  const termsLabel         = t.withdrawalTermsLabel ?? "AGB";
   const legalDisclaimer    = t.legalDisclaimer    ?? "Das generierte Dokument ist kein Ersatz für eine Rechtsberatung. Deine Formulardaten werden nach der Generierung sofort gelöscht.";
   const { country } = useCountry();
   const [stage, setStage] = useState<Stage>("form");
@@ -145,6 +149,8 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [withdrawalConsent, setWithdrawalConsent] = useState(false);
   const [withdrawalError, setWithdrawalError] = useState(false);
+  // Verhindert Mehrfachzählung der "Checkout gestartet"-Conversion bei wiederholten Klicks
+  const checkoutIntentTracked = useRef(false);
   const [previewText, setPreviewText] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
@@ -536,13 +542,23 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     }
   }
 
+  // Google-Ads-Conversion "Checkout gestartet" (sekundär, nur Beobachtung).
+  // WICHTIG: feuert beim KLICK auf den Kauf-Button, VOR der Einwilligungs-Prüfung.
+  // Vorher lag der Aufruf dahinter — dadurch waren alle Nutzer unsichtbar, die
+  // kaufen wollten, aber an der Checkbox hängenblieben. Der Ref verhindert
+  // Mehrfachzählung bei wiederholten Klicks.
+  // "land" = benutzerdefinierte Variable in Google Ads (Tag-String: land).
+  function trackCheckoutIntent() {
+    if (checkoutIntentTracked.current) return;
+    checkoutIntentTracked.current = true;
+    track("conversion", { send_to: "AW-18318795248/zeOCCOK13NEcEPDDip9E", land: country?.code ?? "" });
+  }
+
   async function proceedToCheckout() {
+    trackCheckoutIntent();
     // Widerrufs-Einwilligung erst hier verlangen (beim Kauf, nicht bei der Vorschau)
     if (!withdrawalConsent) { setWithdrawalError(true); return; }
     setWithdrawalError(false);
-    // Google-Ads-Conversion "Checkout gestartet" (sekundär, nur Beobachtung).
-    // "land" = benutzerdefinierte Variable in Google Ads (Tag-String: land).
-    track("conversion", { send_to: "AW-18318795248/zeOCCOK13NEcEPDDip9E", land: country?.code ?? "" });
     const effectiveValues = getEffectiveValues();
     setStage("redirecting");
     sessionStorage.setItem(storageKey, JSON.stringify({
@@ -1048,11 +1064,11 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
             />
             <span className="text-xs leading-relaxed">
               {(() => {
-                const parts = withdrawalText.split("AGB");
+                const parts = withdrawalText.split(termsLabel);
                 if (parts.length === 2) {
-                  return <>{parts[0]}<a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a>{parts[1]}</>;
+                  return <>{parts[0]}<a href={`/${locale}/legal/agb`} className="underline hover:text-cream">{termsLabel}</a>{parts[1]}</>;
                 }
-                return <>{withdrawalText} <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">AGB</a></>;
+                return <>{withdrawalText} <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">{termsLabel}</a></>;
               })()}
             </span>
           </label>
@@ -1085,6 +1101,9 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink-700 bg-ink-950/95 p-3 backdrop-blur md:hidden">
           <button
             onClick={() => {
+              // Auch auf Mobile VOR der Einwilligungs-Prüfung zählen — sonst bleibt
+              // genau der Teil des Traffics unsichtbar, der am häufigsten abspringt.
+              trackCheckoutIntent();
               if (!withdrawalConsent) {
                 setWithdrawalError(true);
                 document.getElementById("gd-paybox")?.scrollIntoView({ behavior: "smooth", block: "center" });

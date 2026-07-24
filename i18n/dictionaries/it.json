@@ -169,7 +169,8 @@
       "alltag": "Quotidiano"
     },
     "selectPlaceholder": "— seleziona —",
-    "withdrawalConsent": "Accetto che la consegna del documento digitale inizi immediatamente dopo il pagamento e confermo di rinunciare al mio diritto legale di recesso. Ho letto e accetto i Termini e Condizioni.",
+    "withdrawalConsent": "Sì, desidero ricevere il mio documento subito dopo il pagamento. Sono consapevole che il mio diritto legale di recesso decade con l'inizio della consegna. Ho letto e accetto i Termini e Condizioni.",
+    "withdrawalTermsLabel": "Termini e Condizioni",
     "withdrawalError": "Conferma il tuo consenso per continuare.",
     "legalDisclaimer": "Questo documento è generato con l'intelligenza artificiale (IA). Il documento generato non sostituisce una consulenza legale. I tuoi dati vengono eliminati immediatamente dopo la generazione."
   },

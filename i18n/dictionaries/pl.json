@@ -169,7 +169,8 @@
       "alltag": "Codzienność"
     },
     "selectPlaceholder": "— wybierz —",
-    "withdrawalConsent": "Zgadzam się, że dostarczenie dokumentu cyfrowego rozpoczyna się natychmiast po dokonaniu płatności i potwierdzam, że rezygnuję z przysługującego mi prawa do odstąpienia. Przeczytałem/am i akceptuję Regulamin.",
+    "withdrawalConsent": "Tak, chcę otrzymać swój dokument natychmiast po dokonaniu płatności. Mam świadomość, że przysługujące mi prawo do odstąpienia wygasa z chwilą rozpoczęcia dostawy. Przeczytałem/am i akceptuję Regulamin.",
+    "withdrawalTermsLabel": "Regulamin",
     "withdrawalError": "Prosimy o potwierdzenie zgody, aby kontynuować.",
     "legalDisclaimer": "Ten dokument jest generowany przy użyciu sztucznej inteligencji (SI). Wygenerowany dokument nie zastępuje porady prawnej. Twoje dane są usuwane natychmiast po wygenerowaniu."
   },

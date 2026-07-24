@@ -169,7 +169,8 @@
       "alltag": "Quotidien"
     },
     "selectPlaceholder": "— veuillez sélectionner —",
-    "withdrawalConsent": "J'accepte que la livraison du document numérique commence immédiatement après le paiement et je confirme renoncer ainsi à mon droit légal de rétractation. J'ai lu et j'accepte les CGV.",
+    "withdrawalConsent": "Oui, je souhaite recevoir mon document immédiatement après le paiement. Je comprends que mon droit légal de rétractation s'éteint dès le début de la livraison. J'ai lu et j'accepte les CGV.",
+    "withdrawalTermsLabel": "CGV",
     "withdrawalError": "Veuillez confirmer votre consentement pour continuer.",
     "legalDisclaimer": "Ce document est généré à l'aide de l'intelligence artificielle (IA). Le document généré ne remplace pas un conseil juridique. Vos données sont supprimées immédiatement après la génération."
   },
