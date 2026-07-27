@@ -409,6 +409,8 @@
     "valueLine": "Hiçbir şey yazmana gerek yok · Baskıya hazır PDF · Ödemeden hemen sonra hazır",
     "downloadWord": "Word dosyası olarak indir",
     "payTrust": "🔒 Stripe ile güvenli ödeme · Belgeni yukarıda zaten gördün · Veriler oluşturulduktan hemen sonra silinir",
+    "satisfactionGuarantee": "✓ 30 gün para iade garantisi — memnun değil misiniz? Düzeltiriz veya ücreti tam iade ederiz.",
+    "checkoutLegalNote": "Satın aldığınızda belgeniz hemen oluşturulur. Geçerli olan",
     "downloadPdf":"PDF olarak indir",
     "noteTitle": "Kontrol notu",
     "attachment": "Ek",

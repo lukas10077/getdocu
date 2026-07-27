@@ -556,9 +556,6 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
 
   async function proceedToCheckout() {
     trackCheckoutIntent();
-    // Widerrufs-Einwilligung erst hier verlangen (beim Kauf, nicht bei der Vorschau)
-    if (!withdrawalConsent) { setWithdrawalError(true); return; }
-    setWithdrawalError(false);
     const effectiveValues = getEffectiveValues();
     setStage("redirecting");
     sessionStorage.setItem(storageKey, JSON.stringify({
@@ -1054,27 +1051,16 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
             </p>
           )}
 
-          {/* Widerrufs-Einwilligung — hier beim Kauf, nicht bei der Gratis-Vorschau */}
-          <label className={`mb-3 flex cursor-pointer items-start gap-3 ${withdrawalError ? "text-red-400" : "text-cream-muted"}`}>
-            <input
-              type="checkbox"
-              checked={withdrawalConsent}
-              onChange={(e) => { setWithdrawalConsent(e.target.checked); setWithdrawalError(false); }}
-              className="mt-0.5 h-4 w-4 flex-shrink-0 accent-swiss-gold"
-            />
-            <span className="text-xs leading-relaxed">
-              {(() => {
-                const parts = withdrawalText.split(termsLabel);
-                if (parts.length === 2) {
-                  return <>{parts[0]}<a href={`/${locale}/legal/agb`} className="underline hover:text-cream">{termsLabel}</a>{parts[1]}</>;
-                }
-                return <>{withdrawalText} <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">{termsLabel}</a></>;
-              })()}
-            </span>
-          </label>
-          {withdrawalError && (
-            <p className="mb-3 text-xs text-red-400">{withdrawalErrText}</p>
-          )}
+          {/* Zufriedenheitsgarantie — Vertrauenssignal direkt am Kauf */}
+          <p className="mb-3 text-sm font-medium text-swiss-gold">
+            {fs("satisfactionGuarantee", "✓ 30 Tage Geld-zurück-Garantie — nicht zufrieden? Wir bessern nach oder erstatten den vollen Betrag.")}
+          </p>
+
+          {/* Passiver Rechtshinweis (kein blockierendes Häkchen mehr — Test) */}
+          <p className="mb-3 text-xs leading-relaxed text-cream-subtle">
+            {fs("checkoutLegalNote", "Mit dem Kauf startest du die sofortige Erstellung deines Dokuments. Es gelten unsere")}{" "}
+            <a href={`/${locale}/legal/agb`} className="underline hover:text-cream">{termsLabel}</a>.
+          </p>
 
           <div className="flex flex-wrap items-center gap-4">
             <button onClick={proceedToCheckout} className="bg-swiss-gold px-8 py-4 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark">
@@ -1100,17 +1086,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
         {/* Sticky Kauf-Leiste auf Mobile — Kauf-Button immer im Blick */}
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink-700 bg-ink-950/95 p-3 backdrop-blur md:hidden">
           <button
-            onClick={() => {
-              // Auch auf Mobile VOR der Einwilligungs-Prüfung zählen — sonst bleibt
-              // genau der Teil des Traffics unsichtbar, der am häufigsten abspringt.
-              trackCheckoutIntent();
-              if (!withdrawalConsent) {
-                setWithdrawalError(true);
-                document.getElementById("gd-paybox")?.scrollIntoView({ behavior: "smooth", block: "center" });
-                return;
-              }
-              proceedToCheckout();
-            }}
+            onClick={() => { proceedToCheckout(); }}
             className="w-full bg-swiss-gold px-6 py-3.5 text-sm font-medium uppercase tracking-widest text-ink-950 transition hover:bg-swiss-goldDark"
           >
             {fs("payButton", "Vollständiges Dokument — {price}").replace("{price}", priceDisplay)}
