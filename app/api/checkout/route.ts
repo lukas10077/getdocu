@@ -31,9 +31,22 @@ export async function POST(req: NextRequest) {
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
+  // Sprache der Stripe-Bezahlseite. Stripe akzeptiert nur bestimmte Locales —
+  // nicht unterstützte App-Sprachen (sq, sr, ar, uk, ta) fallen auf "auto"
+  // zurück, sonst würde stripe.checkout.sessions.create() einen Fehler werfen.
+  // Für spanischsprachige Länder in Amerika lateinamerikanisches Spanisch (es-419).
+  const STRIPE_LOCALES: Record<string, Stripe.Checkout.SessionCreateParams.Locale> = {
+    de: "de", en: "en", fr: "fr", it: "it", pt: "pt",
+    es: "es", pl: "pl", hu: "hu", tr: "tr", ru: "ru",
+  };
+  let checkoutLocale: Stripe.Checkout.SessionCreateParams.Locale =
+    STRIPE_LOCALES[locale as string] ?? "auto";
+  if (locale === "es" && country?.continent === "americas") checkoutLocale = "es-419";
+
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      locale: checkoutLocale,
       line_items: [
         {
           price_data: {
