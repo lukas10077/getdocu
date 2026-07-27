@@ -249,7 +249,10 @@ function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: 
     `Erwähne niemals die Schweiz im Dokumenttext, ausser das Land ist CH.\n` +
     `Verwende keine Schweizer Eigenheiten (Anführungszeichen «», CHF, ss/ß-Regel) ausser das Land ist CH.\n` +
     currencyNote +
-    `Verfasse das gesamte Dokument auf ${langName}.\n`;
+    `Verfasse das gesamte Dokument vollständig auf ${langName}.\n` +
+    (country.documentLang !== "de"
+      ? `WICHTIG — SPRACHE: Alle obigen Anweisungen und die Feldbezeichnungen der Nutzereingaben sind auf Deutsch und dienen nur deiner internen Orientierung. Übersetze im fertigen Dokument ausnahmslos jeden Begriff ins ${langName}; übernimm NIEMALS deutsche Wörter in den Dokumenttext (z.B. nicht „Frist", „Kündigung", „Vermieter", „Mieter", sondern jeweils die ${langName}-Entsprechung). Einzige Ausnahme: das strukturelle Präfix „BETREFF:" bleibt unverändert.\n`
+      : "");
 
   // Gesetzesreferenzen + landesübliche Dokument-Standards für dieses Land
   const legalRefs = toolSlug
