@@ -1034,14 +1034,9 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
         </div>
 
         <div id="gd-paybox" className="mt-6 rounded-sm border border-swiss-gold/25 bg-swiss-gold/5 p-5">
-          <p className="mb-4 text-sm text-cream-muted">
-            <strong className="font-medium text-cream">{fs("readyTitle", "Dein persönliches Dokument ist bereit.")}</strong>{" "}
-            {fs("readyBody", "Bezahle einmalig {price} für das vollständige, druckfertige Dokument — kein Abo, kein Konto.").replace("{price}", priceDisplay)}
-          </p>
-
-          {/* Wertrahmung: macht sichtbar, wofür der Preis steht */}
-          <p className="mb-4 text-xs text-cream-subtle">
-            {fs("valueLine", "Druckfertiges PDF · Word-Datei per E-Mail zum Nacharbeiten · Sofort verfügbar")}
+          {/* Was der Kunde bekommt — PDF sofort + Word per E-Mail */}
+          <p className="mb-4 text-sm leading-relaxed text-cream-muted">
+            {fs("valueLine", "Du bekommst sofort ein PDF zum Herunterladen und eine Word-Datei zum Nachbessern per E-Mail zugesendet.")}
           </p>
 
           {/* Wiederverwendung: Word-Datei = Vorlage für weitere Bewerbungen */}
@@ -1053,7 +1048,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
 
           {/* Zufriedenheitsgarantie — Vertrauenssignal direkt am Kauf */}
           <p className="mb-3 text-sm font-medium text-swiss-gold">
-            {fs("satisfactionGuarantee", "✓ 30 Tage Geld-zurück-Garantie — nicht zufrieden? Wir bessern nach oder erstatten den vollen Betrag.")}
+            {fs("satisfactionGuarantee", "✓ 30 Tage Geld-zurück-Garantie — nicht zufrieden? Wir erstatten den vollen Betrag.")}
           </p>
 
           {/* Passiver Rechtshinweis (kein blockierendes Häkchen mehr — Test) */}
@@ -1068,11 +1063,6 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
             </button>
           </div>
           <p className="mt-3 text-xs text-cream-subtle">
-            {country?.code === "CH"
-              ? `💳 ${fs("creditCard", "Kreditkarte")} · TWINT · Apple Pay · Google Pay`
-              : `💳 ${fs("creditCard", "Kreditkarte")} · Apple Pay · Google Pay`}
-          </p>
-          <p className="mt-2 text-xs text-cream-subtle">
             {fs("payTrust", "🔒 Sichere Zahlung via Stripe · Daten nach der Erstellung sofort gelöscht")}
           </p>
         </div>
