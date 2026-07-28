@@ -119,14 +119,23 @@ export default function DocumentSample({
   dict,
   prefill,
   rtl = false,
+  locale = "de",
 }: {
   tool: ToolDefinition;
   dict: any;
   prefill?: Record<string, string>;
   rtl?: boolean;
+  locale?: string;
 }) {
   const s: Required<SampleDict> = { ...FALLBACK, ...(dict?.tools?.sampleDoc ?? {}) };
   const isCv = CV_SLUGS.has(tool.slug);
+  // Echtes, lokalisiertes Datum — gibt dem Beispiel mehr Dokument-Charakter
+  let sampleDate = "";
+  try {
+    sampleDate = new Date().toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" });
+  } catch {
+    sampleDate = new Date().toLocaleDateString("de-CH", { day: "numeric", month: "long", year: "numeric" });
+  }
   const subject = subjectFor(tool.slug, s);
   const opening = openingFor(tool.slug, s);
 
@@ -190,9 +199,9 @@ export default function DocumentSample({
               )}
             </div>
 
-            {/* Datumzeile */}
-            <div className="mt-4 flex justify-start">
-              <Bar w="26%" soft />
+            {/* Datumzeile — echtes, lokalisiertes Datum (rechtsbündig wie im echten Brief) */}
+            <div className="mt-4" style={{ textAlign: rtl ? "left" : "right" }}>
+              <span style={{ color: INK_SOFT, fontSize: 12 }}>{sampleDate}</span>
             </div>
 
             {/* Betreff = lokalisierter Tool-Titel */}
