@@ -102,6 +102,12 @@
       "bodyObjection": "Por la presente, presento recurso, dentro del plazo, contra su resolución de fecha ___ (número de expediente ___)."
     },
     "items": {
+      "antwort-schreiben": {
+        "title": "Responder a una carta",
+        "description": "¿Un requerimiento, una carta oficial o del seguro? Sube la carta y recibe la respuesta adecuada.",
+        "uploadLabel": "Sube la carta que recibiste",
+        "uploadHint": "Sube la carta o el correo al que quieres responder — como foto, PDF o Word. Lo leemos automáticamente y tu respuesta se refiere a su contenido."
+      },
       "widerspruch": {
         "title": "Recurso",
         "description": "Te ayudamos a presentar un recurso contra una resolución dentro del plazo."
@@ -278,6 +284,8 @@
     "concernDetails": "Describe tu solicitud de la manera más precisa posible."
   },
   "fieldLabels": {
+    "responseGoal": "¿Qué quieres conseguir?",
+    "responseDetails": "Tu versión / detalles importantes",
     "bescheidDate": "Fecha de la resolución",
     "bescheidRef": "Referencia / número de expediente",
     "moveOutDate": "Fecha de entrega deseada",
@@ -342,6 +350,12 @@
     "languages": "Idiomas (con nivel)"
   },
   "options": {
+    "Widersprechen": "Oponerme / reclamar",
+    "Zustimmen": "Aceptar",
+    "Mehr Zeit verlangen": "Pedir más tiempo",
+    "Ratenzahlung vorschlagen": "Proponer pago a plazos",
+    "Erklärung verlangen": "Pedir una explicación",
+    "Freundlich klären": "Aclarar amistosamente",
     "Unbewohnbare Wohnung": "Vivienda inhabitable",
     "Erhebliche Mängel": "Defectos importantes",
     "Gesundheitsgefahr (z.B. Schimmel)": "Riesgo para la salud (p. ej. moho)",
@@ -391,6 +405,10 @@
     "backToForm": "Volver al formulario",
     "checkoutError": "Error al abrir la página de pago. Inténtalo de nuevo.",
     "dataNotFound": "Datos del formulario no encontrados. Inténtalo de nuevo.",
+    "toneLabel": "¿Cómo debe sonar el documento?",
+    "toneFriendly": "Amable",
+    "toneNeutral": "Neutral y objetivo",
+    "toneFirm": "Firme",
     "stepLabel": "Paso {current} de {total}",
     "nextStep": "Siguiente",
     "prevStep": "Atrás",
@@ -460,6 +478,7 @@
     "whatToImprove": "No pasa nada si no lo sabes — analizamos la referencia y la mejoramos automáticamente."
   },
   "sections": {
+    "Deine Antwort": "Tu respuesta",
     "Beschäftigungsdauer": "Período de empleo",
     "Bescheid": "La resolución",
     "Vorzeitiger Auszug": "Salida anticipada",

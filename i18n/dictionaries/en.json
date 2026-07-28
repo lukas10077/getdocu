@@ -102,6 +102,12 @@
       "bodyObjection": "I hereby file a timely objection against your decision dated ___ (reference number ___)."
     },
     "items": {
+      "antwort-schreiben": {
+        "title": "Reply to a letter",
+        "description": "Payment reminder, official letter, insurance notice? Upload the letter and get the right reply.",
+        "uploadLabel": "Upload the letter you received",
+        "uploadHint": "Upload the letter or email you want to reply to — as a photo, PDF or Word file. We read it automatically and address its content in your reply."
+      },
       "widerspruch": {
         "title": "Formal objection",
         "description": "We help you file a timely objection against an official decision."
@@ -278,6 +284,8 @@
     "concernDetails": "Describe your concern as precisely as possible."
   },
   "fieldLabels": {
+    "responseGoal": "What do you want to achieve?",
+    "responseDetails": "Your side / important details",
     "bescheidDate": "Date of the decision",
     "bescheidRef": "Reference / case number",
     "moveOutDate": "Requested move-out date",
@@ -345,6 +353,12 @@
     "residencePermit": "Residence status"
   },
   "options": {
+    "Widersprechen": "Object / dispute",
+    "Zustimmen": "Agree",
+    "Mehr Zeit verlangen": "Request more time",
+    "Ratenzahlung vorschlagen": "Propose installments",
+    "Erklärung verlangen": "Request an explanation",
+    "Freundlich klären": "Clarify amicably",
     "Unbewohnbare Wohnung": "Uninhabitable apartment",
     "Erhebliche Mängel": "Significant defects",
     "Gesundheitsgefahr (z.B. Schimmel)": "Health hazard (e.g. mould)",
@@ -394,6 +408,10 @@
     "backToForm": "Back to the form",
     "checkoutError": "Error opening the payment page. Please try again.",
     "dataNotFound": "Form data not found. Please try again.",
+    "toneLabel": "How should the document sound?",
+    "toneFriendly": "Friendly",
+    "toneNeutral": "Neutral & factual",
+    "toneFirm": "Firm",
     "stepLabel": "Step {current} of {total}",
     "nextStep": "Next",
     "prevStep": "Back",
@@ -463,6 +481,7 @@
     "whatToImprove": "No problem if you don't know — we analyse the reference and improve it automatically."
   },
   "sections": {
+    "Deine Antwort": "Your reply",
     "Beschäftigungsdauer": "Employment period",
     "Bescheid": "The decision",
     "Vorzeitiger Auszug": "Early move-out",

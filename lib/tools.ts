@@ -15,7 +15,8 @@ export type ToolSlug =
   | "kuendigung"
   | "reklamation"
   | "widerruf"
-  | "widerspruch";
+  | "widerspruch"
+  | "antwort-schreiben";
 
 export interface FieldDef {
   key: string;
@@ -306,6 +307,41 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
       { key: "demand",           label: "Was verlangst du?",            type: "textarea", required: true,
         placeholderKey: "desiredOutcome" },
       { key: "deadline",         label: "Frist (Werktage)",             type: "number",   required: false, placeholder: "10" },
+    ],
+  },
+
+  "antwort-schreiben": {
+    slug: "antwort-schreiben",
+    priceChfRappen: 500,
+    supportsAllDocumentTypes: true,
+    uploadLabelDe: "Erhaltenes Schreiben hochladen",
+    uploadHintDe:
+      "Lade den Brief oder die E-Mail hoch, auf die du antworten willst — als Foto, PDF oder Word-Datei. Wir lesen das Schreiben automatisch und gehen in der Antwort darauf ein.",
+    documentTitleDe: "Antwort auf ein Schreiben",
+    descriptionDe:
+      "Mahnung, Behördenbrief, Versicherungsschreiben? Lade das Schreiben hoch und erhalte die passende Antwort.",
+    systemPrompt:
+      "Du bist Experte für Korrespondenz in der Schweiz. Der Nutzer hat ein Schreiben erhalten " +
+      "(als Upload beigefügt) und möchte darauf antworten. Erstelle ein professionelles Antwortschreiben " +
+      "auf Deutsch. Gehe KONKRET auf den Inhalt des erhaltenen Schreibens ein: Übernimm erkennbare " +
+      "Referenzen (Aktenzeichen, Kunden-/Rechnungsnummer, Datum des Schreibens) und beziehe dich im " +
+      "Betreff darauf. Verfolge das vom Nutzer gewählte Ziel konsequent und argumentiere plausibel, " +
+      "ohne Tatsachen zu erfinden. Struktur: Absender, Empfänger, Datum, Betreff (mit Bezug aufs " +
+      "erhaltene Schreiben), Anrede, klare Antwort, konkrete nächste Schritte oder Gegenvorschlag, Abschluss. " +
+      "LÄNGE — ZWINGEND: Das gesamte Schreiben muss auf EINE einzige A4-Seite passen. " +
+      "Maximal 220 Wörter Fliesstext — kürze konsequent, statt eine zweite Seite zu beginnen.",
+    fields: [
+      { key: "firstName",        label: "Vorname",                              type: "text",     required: true,  section: "Deine Angaben" },
+      { key: "lastName",         label: "Nachname",                             type: "text",     required: true  },
+      { key: "currentAddress",   label: "Deine Adresse",                        type: "address",  required: true  },
+      { key: "recipientName",    label: "Name des Unternehmens",                type: "text",     required: false, section: "Empfänger",
+        hint: "Falls leer, übernehmen wir den Absender aus dem hochgeladenen Schreiben." },
+      { key: "recipientAddress", label: "Adresse des Empfängers",               type: "address",  required: false },
+      { key: "responseGoal",     label: "Was willst du erreichen?",             type: "select",   required: true,  section: "Deine Antwort",
+        options: ["Widersprechen", "Zustimmen", "Mehr Zeit verlangen", "Ratenzahlung vorschlagen", "Erklärung verlangen", "Freundlich klären"] },
+      { key: "responseDetails",  label: "Deine Sicht / wichtige Details",       type: "textarea", required: true,
+        placeholder: "z.B. Die Forderung ist zu hoch — ich habe bereits am 3. Juli bezahlt …" },
+      { key: "deadline",         label: "Frist im Schreiben (falls vorhanden)", type: "text",     required: false },
     ],
   },
 
@@ -661,5 +697,5 @@ export type CategoryKey = "wohnen" | "arbeit" | "alltag";
 export const TOOL_CATEGORIES: { key: CategoryKey; slugs: ToolSlug[] }[] = [
   { key: "wohnen", slugs: ["mietbewerbung", "kuendigung-wohnung", "ausserterminliche-kuendigung", "ausserordentliche-kuendigung", "maengelruege"] },
   { key: "arbeit", slugs: ["komplettbewerbung", "jobbewerbung", "lebenslauf", "kuendigung-arbeit", "arbeitszeugnis"] },
-  { key: "alltag", slugs: ["kuendigung", "reklamation", "widerruf", "widerspruch"] },
+  { key: "alltag", slugs: ["kuendigung", "reklamation", "widerruf", "widerspruch", "antwort-schreiben"] },
 ];

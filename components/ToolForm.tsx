@@ -441,6 +441,9 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   const [listingText, setListingText] = useState("");
   const [listingStatus, setListingStatus] = useState<"idle" | "ok" | "failed">("idle");
 
+  // Tonalität — fließt in Vorschau- und Generierungs-Prompt ein
+  const [tone, setTone] = useState<"freundlich" | "neutral" | "bestimmt">("neutral");
+
   // Mehrstufiges Formular: Felder nach Sektionen gruppiert (kürzere Schritte = mehr
   // Abschlüsse, v.a. mobil). Uploads/Extras erscheinen auf Schritt 1. Bei Tools mit
   // nur einer Gruppe bleibt alles einseitig wie bisher.
@@ -541,6 +544,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           imageMimeType,
           docxText: docxText || undefined,
           listingText: fetchedListing || undefined,
+          tone,
           countryCode: country?.code,
         }),
       });
@@ -581,6 +585,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
       __incomeCurrency: incomeCurrency,
       __docxText: docxText ?? "",
       __listingText: listingText ?? "",
+      __tone: tone,
       __profilePhotoBase64: profilePhotoBase64 ?? "",
     }));
     // Fotos in IndexedDB speichern (sessionStorage zu klein für viele Bilder)
@@ -1626,6 +1631,33 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           );
         })}
       </div>
+
+      {/* Tonalität — wie soll das Dokument klingen? */}
+      {(!isMultiStep || formStep === totalSteps - 1) && (
+        <div className="mt-10">
+          <p className="mb-3 text-sm font-medium text-cream">{fs("toneLabel", "Wie soll das Dokument klingen?")}</p>
+          <div className="flex flex-wrap gap-2">
+            {([
+              ["freundlich", fs("toneFriendly", "Freundlich")],
+              ["neutral", fs("toneNeutral", "Neutral & sachlich")],
+              ["bestimmt", fs("toneFirm", "Bestimmt")],
+            ] as const).map(([value, label]) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => setTone(value)}
+                className={`rounded-full border px-5 py-2.5 text-sm transition ${
+                  tone === value
+                    ? "border-swiss-gold bg-swiss-gold/15 font-medium text-swiss-gold"
+                    : "border-ink-700 text-cream-muted hover:border-ink-600 hover:text-cream"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {(!isMultiStep || formStep === totalSteps - 1) && (
         <p className="mt-10 text-xs leading-relaxed text-cream-subtle">

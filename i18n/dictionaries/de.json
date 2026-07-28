@@ -100,6 +100,10 @@
       "bodyObjection": "Hiermit lege ich fristwahrend Widerspruch gegen Ihren Bescheid vom ___ (Aktenzeichen ___) ein."
     },
     "items": {
+      "antwort-schreiben": {
+        "title": "Antwort auf ein Schreiben",
+        "description": "Mahnung, Behördenbrief, Versicherungsschreiben? Lade das Schreiben hoch und erhalte die passende Antwort."
+      },
       "widerspruch": {
         "title": "Widerspruch",
         "description": "Wir helfen dir, fristwahrend Widerspruch gegen einen Bescheid einzulegen."

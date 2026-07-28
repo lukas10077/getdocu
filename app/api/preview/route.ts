@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { toolSlug, formData, imageBase64, imageMimeType, docxText, listingText, countryCode } = await req.json();
+  const { toolSlug, formData, imageBase64, imageMimeType, docxText, listingText, tone, countryCode } = await req.json();
 
   const tool = getTool(toolSlug);
   if (!tool) {
@@ -67,7 +67,17 @@ export async function POST(req: NextRequest) {
     ? `\n\nINHALT DES VERLINKTEN INSERATS (Stellen- oder Wohnungsinserat):\n${listingText.slice(0, 8000)}\n\nGehe im Dokument gezielt auf dieses Inserat ein: Greife die wichtigsten Anforderungen auf, betone passende Stärken des Bewerbers und übernimm erkennbare Empfängerdaten (Firma/Vermieter, Ansprechpartner, Adresse), sofern der Nutzer keine abweichenden Angaben gemacht hat. Ignoriere Navigations- und Werbetexte im Inserat-Inhalt.`
     : "";
 
-  const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (ca. 200–250 Wörter) basierend auf folgenden Angaben. Beginne mit dem vollständigen Briefkopf: Absender, dann der EMPFÄNGER mit Name und Adresse (aus den Angaben oder dem Inserat — der Empfänger muss immer sichtbar sein, er zeigt dem Nutzer, dass das Dokument korrekt adressiert ist; fehlen Empfängerdaten komplett, setze eine realistische Platzhalter-Zeile wie den Firmen-/Vermieternamen), dann Ort/Datum und Betreff. Danach der individuelle, persönliche Fliesstext — der Leser soll spüren, dass dieses Dokument exakt für seine Situation geschrieben wurde. Brich am Ende MITTEN IM SATZ ab und beende die Ausgabe mit "…" (das vollständige Dokument wird nach Zahlung generiert).\n\n${lines}${listingBlock}`;
+  // Gewählte Tonalität (freundlich / neutral / bestimmt)
+  const TONES: Record<string, string> = {
+    freundlich: "freundlichen, warmen und persönlichen",
+    neutral: "neutralen, sachlichen und professionellen",
+    bestimmt: "bestimmten und nachdrücklichen, aber stets höflichen",
+  };
+  const toneBlock = typeof tone === "string" && TONES[tone]
+    ? `\n\nTONALITÄT — ZWINGEND: Verfasse das gesamte Dokument in einem ${TONES[tone]} Ton.`
+    : "";
+
+  const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (ca. 200–250 Wörter) basierend auf folgenden Angaben. Beginne mit dem vollständigen Briefkopf: Absender, dann der EMPFÄNGER mit Name und Adresse (aus den Angaben oder dem Inserat — der Empfänger muss immer sichtbar sein, er zeigt dem Nutzer, dass das Dokument korrekt adressiert ist; fehlen Empfängerdaten komplett, setze eine realistische Platzhalter-Zeile wie den Firmen-/Vermieternamen), dann Ort/Datum und Betreff. Danach der individuelle, persönliche Fliesstext — der Leser soll spüren, dass dieses Dokument exakt für seine Situation geschrieben wurde. Brich am Ende MITTEN IM SATZ ab und beende die Ausgabe mit "…" (das vollständige Dokument wird nach Zahlung generiert).\n\n${lines}${listingBlock}${toneBlock}`;
 
   // Länderkontext in System-Prompt injizieren
   const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug);

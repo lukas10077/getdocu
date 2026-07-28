@@ -52,12 +52,14 @@ export async function POST(req: NextRequest) {
   const incomeCurrency: string = formData.__incomeCurrency ?? "";
   const docxText: string = formData.__docxText ?? "";
   const listingTextRaw: string = formData.__listingText ?? "";
+  const toneRaw: string = formData.__tone ?? "";
   const cleanFormData = { ...formData };
   delete cleanFormData.__imageBase64;
   delete cleanFormData.__imageMimeType;
   delete cleanFormData.__incomeCurrency;
   delete cleanFormData.__docxText;
   delete cleanFormData.__listingText;
+  delete cleanFormData.__tone;
 
   // 4. Dokument generieren
   const anthropic = new Anthropic({ apiKey: anthropicKey });
@@ -65,7 +67,16 @@ export async function POST(req: NextRequest) {
   const listingBlock = listingTextRaw.trim()
     ? `\n\nINHALT DES VERLINKTEN INSERATS (Stellen- oder Wohnungsinserat):\n${listingTextRaw.slice(0, 8000)}\n\nGehe im Dokument gezielt auf dieses Inserat ein: Greife die wichtigsten Anforderungen auf, betone passende Stärken des Bewerbers und übernimm erkennbare Empfängerdaten (Firma/Vermieter, Ansprechpartner, Adresse), sofern der Nutzer keine abweichenden Angaben gemacht hat. Ignoriere Navigations- und Werbetexte im Inserat-Inhalt.`
     : "";
-  const textPrompt = buildUserPrompt(tool, cleanFormData) + listingBlock;
+  // Gewählte Tonalität (freundlich / neutral / bestimmt)
+  const TONES: Record<string, string> = {
+    freundlich: "freundlichen, warmen und persönlichen",
+    neutral: "neutralen, sachlichen und professionellen",
+    bestimmt: "bestimmten und nachdrücklichen, aber stets höflichen",
+  };
+  const toneBlock = TONES[toneRaw]
+    ? `\n\nTONALITÄT — ZWINGEND: Verfasse das gesamte Dokument in einem ${TONES[toneRaw]} Ton.`
+    : "";
+  const textPrompt = buildUserPrompt(tool, cleanFormData) + listingBlock + toneBlock;
   const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug, incomeCurrency);
 
   const userContent: Anthropic.MessageParam["content"] = [];
