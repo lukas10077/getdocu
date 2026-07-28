@@ -1062,9 +1062,6 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
               {fs("payButton", "Vollständiges Dokument — {price}").replace("{price}", priceDisplay)}
             </button>
           </div>
-          <p className="mt-3 text-xs text-cream-subtle">
-            {fs("payTrust", "🔒 Sichere Zahlung via Stripe · Daten nach der Erstellung sofort gelöscht")}
-          </p>
         </div>
 
         <div className="mt-4 rounded-sm border border-amber-500/30 bg-amber-500/10 p-4">
