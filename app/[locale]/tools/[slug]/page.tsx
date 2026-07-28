@@ -11,6 +11,7 @@ import ChOnlyGuard from "@/components/ChOnlyGuard";
 import CountryOnlyBlock from "@/components/CountryOnlyBlock";
 import CountryPresetter from "@/components/CountryPresetter";
 import DocumentSample from "@/components/DocumentSample";
+import PreviewGate from "@/components/PreviewGate";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.getdocunow.com";
 
@@ -182,7 +183,9 @@ export default async function ToolPage({
             )}
           </div>
 
-          <DocumentSample tool={tool} dict={dict} prefill={prefill} rtl={isRtl(params.locale)} locale={params.locale} />
+          <PreviewGate>
+            <DocumentSample tool={tool} dict={dict} prefill={prefill} rtl={isRtl(params.locale)} locale={params.locale} />
+          </PreviewGate>
 
           <ChOnlyGuard enabled={tool.chOnly} locale={params.locale} t={dict.chOnlyGuard}>
             <ToolForm tool={tool} locale={params.locale} sessionId={sessionId} dict={dict} prefill={prefill} />

@@ -114,6 +114,16 @@ function Bar({ w, soft }: { w: string; soft?: boolean }) {
   );
 }
 
+// Maskierte Zeile — stellt persönliche Daten (Name, Adresse …) als Punkte dar,
+// damit das Beispiel wie ein echter Brief wirkt, ohne echte oder erfundene Daten zu zeigen.
+function Mask({ groups, bold, dim }: { groups: number[]; bold?: boolean; dim?: boolean }) {
+  return (
+    <span style={{ color: dim ? "#BCB6AA" : INK_SOFT, fontSize: 12, lineHeight: 1.7, fontWeight: bold ? 600 : 400, letterSpacing: 1.5 }}>
+      {groups.map((n) => "•".repeat(n)).join(" ")}
+    </span>
+  );
+}
+
 export default function DocumentSample({
   tool,
   dict,
@@ -178,10 +188,13 @@ export default function DocumentSample({
           </div>
         ) : (
           <div style={{ fontFamily: "Georgia, serif" }}>
-            {/* Absenderzeile (neutral) */}
-            <Bar w="58%" soft />
+            {/* Absender — persönliche Daten maskiert */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              <Mask groups={[6, 7]} />
+              <Mask groups={[9, 2]} dim />
+            </div>
 
-            {/* Empfänger: echte Daten bei Markenseiten, sonst Skelett */}
+            {/* Empfänger: echte Daten bei Markenseiten, sonst maskiert */}
             <div className="mt-5">
               {hasRecipient ? (
                 <div style={{ color: INK, fontSize: 12, lineHeight: 1.6 }}>
@@ -191,10 +204,10 @@ export default function DocumentSample({
                   ))}
                 </div>
               ) : (
-                <div className="space-y-2">
-                  <Bar w="40%" />
-                  <Bar w="46%" soft />
-                  <Bar w="34%" soft />
+                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                  <Mask groups={[5, 7]} bold />
+                  <Mask groups={[8, 2]} dim />
+                  <Mask groups={[4, 6]} dim />
                 </div>
               )}
             </div>
@@ -227,14 +240,14 @@ export default function DocumentSample({
             {/* Zweiter echter Satz (Abschluss der Bitte) */}
             <p style={{ color: INK, fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" }}>{s.body2}</p>
 
-            {/* Angedeuteter Rest (Skelett) – verhindert vollständiges Abschreiben */}
-            <div className="space-y-2">
-              <Bar w="70%" soft />
+            {/* Angedeuteter Rest – maskiert, verhindert vollständiges Abschreiben */}
+            <div style={{ marginTop: 2 }}>
+              <Mask groups={[7, 5, 9, 4]} dim />
             </div>
 
-            {/* Gruss + Signatur (übersetzt) */}
+            {/* Gruss + Signatur (Name maskiert) */}
             <p style={{ color: INK_SOFT, fontSize: 12, lineHeight: 1.7, margin: "18px 0 8px" }}>{s.closing}</p>
-            <Bar w="30%" />
+            <Mask groups={[6, 7]} />
           </div>
         )}
       </div>

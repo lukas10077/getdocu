@@ -108,6 +108,12 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   const { country } = useCountry();
   const [stage, setStage] = useState<Stage>("form");
 
+  // Beispiel-Dokument oben ausblenden, sobald wir NICHT mehr im Formular sind
+  // (Vorschau/Generierung/fertig) — sonst stünde das Beispiel doppelt zur echten Vorschau.
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("gd-preview-active", { detail: stage !== "form" }));
+  }, [stage]);
+
   // Google-Ads-Klick-ID (gclid) einfangen und über den Stripe-Redirect hinweg merken.
   // Wird beim Checkout an Stripe-Metadaten übergeben → Basis für serverseitiges
   // Conversion-Tracking (Offline-Import), unabhängig von Adblockern im Browser.
