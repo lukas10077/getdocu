@@ -64,8 +64,7 @@
     "back": "← Volver",
     "trustPills": [
       "🔒 Datos eliminados",
-      "⚡ Documento en 20 seg.",
-      "💳 Seguro via Stripe"
+      "⚡ Documento en 20 seg."
     ],
     "sampleDoc": {
       "eyebrow": "Así se ve tu documento terminado",
@@ -76,22 +75,23 @@
       "benefit2": "Saludo y asunto correctos",
       "benefit3": "En PDF y archivo Word editable",
       "caption": "Vista previa gratis · Paga solo cuando estés satisfecho",
-      "bodyCancel": "Por la presente, cancelo el contrato vigente de forma correcta y dentro del plazo de preaviso. Le ruego que me confirme por escrito la cancelación y la fecha exacta de finalización.",
-      "bodyComplaint": "Por la presente, presento una reclamación sobre el asunto descrito a continuación y solicito una solución rápida y vinculante. Le ruego que me indique cómo y cuándo subsanará el problema.",
-      "bodyApply": "Con gran interés presento mi candidatura y me gustaría convencerle personalmente. Mi experiencia y mi motivación encajan muy bien con los requisitos indicados.",
+      "bodyCancel": "Por la presente, cancelo el contrato vigente (número de contrato ___) dentro del plazo de preaviso acordado, con efecto al ___. Esta carta le será enviada por correo certificado.",
+      "bodyComplaint": "Por la presente, presento una reclamación sobre ___ y solicito una solución rápida y vinculante. El problema existe desde ___.",
+      "bodyApply": "Con gran interés presento mi candidatura a ___. Mi experiencia como ___ y mi motivación encajan muy bien con sus requisitos.",
       "placeholder": "Aquí aparece tu solicitud personal, redactada individualmente para ti.",
-      "body2": "Le agradecería una breve confirmación por escrito.",
+      "body2": "El motivo es ___. Le ruego que me lo confirme por escrito y me indique los próximos pasos …",
+      "body2Apply": "Lo que más me importa es ___. Estaré encantado de convencerle personalmente — quedo a la espera de su respuesta …",
       "subjectCancel": "Cancelación de mi contrato",
       "subjectComplaint": "Reclamación",
       "subjectApply": "Candidatura para su puesto",
       "subjectApplyHome": "Solicitud para su vivienda",
-      "subjectRent": "Rescisión de mi contrato de alquiler",
+      "subjectRent": "Rescisión del contrato de alquiler del piso en ___",
       "subjectJobCancel": "Renuncia a mi puesto de trabajo",
       "subjectDefect": "Defectos en mi vivienda",
       "subjectWithdraw": "Desistimiento de mi contrato",
-      "bodyWithdraw": "Por la presente, desisto del contrato o pedido dentro del plazo previsto. Le ruego que me confirme brevemente por escrito la recepción de este desistimiento.",
+      "bodyWithdraw": "Por la presente, desisto dentro del plazo previsto del contrato celebrado el ___ (número de pedido/contrato ___).",
       "subjectObjection": "Recurso contra su resolución",
-      "bodyObjection": "Por la presente, presento recurso, dentro del plazo, contra la resolución arriba indicada. Le ruego que revise íntegramente la resolución y me comunique su decisión por escrito."
+      "bodyObjection": "Por la presente, presento recurso, dentro del plazo, contra su resolución de fecha ___ (número de expediente ___)."
     },
     "items": {
       "widerspruch": {

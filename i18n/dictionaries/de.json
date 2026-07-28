@@ -62,8 +62,7 @@
     "back": "← Zurück",
     "trustPills": [
       "🔒 Daten sofort gelöscht",
-      "⚡ Dokument in 20 Sek.",
-      "💳 Sicher via Stripe"
+      "⚡ Dokument in 20 Sek."
     ],
     "sampleDoc": {
       "eyebrow": "So sieht dein fertiges Dokument aus",
@@ -74,22 +73,23 @@
       "benefit2": "Korrekte Anrede und Betreff",
       "benefit3": "Als PDF & bearbeitbare Word-Datei",
       "caption": "Vorschau gratis · Erst zahlen, wenn du zufrieden bist",
-      "bodyCancel": "Hiermit kündige ich den bestehenden Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin. Ich bitte Sie, mir die Kündigung sowie das genaue Vertragsende schriftlich zu bestätigen.",
-      "bodyComplaint": "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe, verbindliche Lösung. Bitte teilen Sie mir mit, wie und bis wann Sie den Mangel beheben.",
-      "bodyApply": "Mit grossem Interesse bewerbe ich mich bei Ihnen und möchte Sie gerne persönlich von mir überzeugen. Meine Erfahrung und meine Motivation passen sehr gut zu den genannten Anforderungen.",
+      "bodyCancel": "Hiermit kündige ich den bestehenden Vertrag (Vertragsnummer ___) unter Einhaltung der vertraglich vereinbarten Frist ordentlich und fristgerecht auf den ___. Dieses Schreiben wird Ihnen per Einschreiben zugestellt.",
+      "bodyComplaint": "Hiermit reklamiere ich ___ und bitte Sie um eine zeitnahe, verbindliche Lösung. Der Mangel besteht seit ___.",
+      "bodyApply": "Mit grossem Interesse bewerbe ich mich um ___. Meine Erfahrung als ___ und meine Motivation passen sehr gut zu Ihren Anforderungen.",
       "placeholder": "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
-      "body2": "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
+      "body2": "Der Grund dafür ist ___. Ich bitte Sie, mir dies schriftlich zu bestätigen sowie mir die weiteren Schritte …",
+      "body2Apply": "Besonders wichtig ist mir dabei ___. Gerne überzeuge ich Sie in einem persönlichen Gespräch — ich freue mich auf Ihre Rückmeldung …",
       "subjectCancel": "Kündigung meines Vertrags",
       "subjectComplaint": "Reklamation",
       "subjectApply": "Bewerbung um Ihre Stelle",
       "subjectApplyHome": "Bewerbung um Ihre Wohnung",
-      "subjectRent": "Kündigung meines Mietvertrags",
+      "subjectRent": "Kündigung des Mietvertrags für die Wohnung an der ___",
       "subjectJobCancel": "Kündigung meines Arbeitsvertrags",
       "subjectDefect": "Mängel in meiner Wohnung",
       "subjectWithdraw": "Widerruf meines Vertrags",
-      "bodyWithdraw": "Hiermit widerrufe ich den mit Ihnen geschlossenen Vertrag beziehungsweise meine Bestellung fristgerecht. Ich bitte Sie, mir den Eingang dieses Widerrufs kurz schriftlich zu bestätigen.",
+      "bodyWithdraw": "Hiermit widerrufe ich den am ___ geschlossenen Vertrag (Bestell-/Vertragsnummer ___) fristgerecht.",
       "subjectObjection": "Widerspruch gegen Ihren Bescheid",
-      "bodyObjection": "Hiermit lege ich fristwahrend Widerspruch gegen den oben genannten Bescheid ein. Ich bitte Sie, den Bescheid vollständig zu überprüfen und mir Ihre Entscheidung schriftlich mitzuteilen."
+      "bodyObjection": "Hiermit lege ich fristwahrend Widerspruch gegen Ihren Bescheid vom ___ (Aktenzeichen ___) ein."
     },
     "items": {
       "widerspruch": {

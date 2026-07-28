@@ -64,8 +64,7 @@
     "back": "← Nazad",
     "trustPills": [
       "🔒 Podaci odmah obrisani",
-      "⚡ Dokument za 20 sek.",
-      "💳 Sigurno putem Stripe"
+      "⚡ Dokument za 20 sek."
     ],
     "sampleDoc": {
       "eyebrow": "Ovako izgleda vaš gotov dokument",

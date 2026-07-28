@@ -64,8 +64,7 @@
     "back": "← Wróć",
     "trustPills": [
       "🔒 Dane usunięte",
-      "⚡ Dokument w 20 sek.",
-      "💳 Bezpieczne przez Stripe"
+      "⚡ Dokument w 20 sek."
     ],
     "sampleDoc": {
       "eyebrow": "Tak wygląda Twój gotowy dokument",

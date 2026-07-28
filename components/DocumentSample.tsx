@@ -21,6 +21,7 @@ interface SampleDict {
   bodyWithdraw?: string;
   bodyObjection?: string;
   body2?: string;
+  body2Apply?: string;
   placeholder?: string;
   subjectCancel?: string;
   subjectRent?: string;
@@ -42,15 +43,16 @@ const FALLBACK: Required<SampleDict> = {
   benefit2: "Korrekte Anrede und Betreff",
   benefit3: "Als PDF & bearbeitbare Word-Datei",
   caption: "Vorschau gratis · Erst zahlen, wenn du zufrieden bist",
-  bodyCancel: "Hiermit kündige ich meinen Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin.",
-  bodyComplaint: "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",
-  bodyApply: "Mit grossem Interesse bewerbe ich mich bei Ihnen und stelle mich Ihnen gerne kurz vor.",
-  bodyWithdraw: "Hiermit widerrufe ich meinen Vertrag beziehungsweise meine Bestellung fristgerecht.",
-  bodyObjection: "Hiermit lege ich fristwahrend Widerspruch gegen den oben genannten Bescheid ein.",
-  body2: "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
+  bodyCancel: "Hiermit kündige ich den bestehenden Vertrag (Vertragsnummer ___) unter Einhaltung der vertraglich vereinbarten Frist ordentlich und fristgerecht auf den ___. Dieses Schreiben wird Ihnen per Einschreiben zugestellt.",
+  bodyComplaint: "Hiermit reklamiere ich ___ und bitte Sie um eine zeitnahe, verbindliche Lösung. Der Mangel besteht seit ___.",
+  bodyApply: "Mit grossem Interesse bewerbe ich mich um ___. Meine Erfahrung als ___ und meine Motivation passen sehr gut zu Ihren Anforderungen.",
+  bodyWithdraw: "Hiermit widerrufe ich den am ___ geschlossenen Vertrag (Bestell-/Vertragsnummer ___) fristgerecht.",
+  bodyObjection: "Hiermit lege ich fristwahrend Widerspruch gegen Ihren Bescheid vom ___ (Aktenzeichen ___) ein.",
+  body2: "Der Grund dafür ist ___. Ich bitte Sie, mir dies schriftlich zu bestätigen sowie mir die weiteren Schritte …",
+  body2Apply: "Besonders wichtig ist mir dabei ___. Gerne überzeuge ich Sie in einem persönlichen Gespräch — ich freue mich auf Ihre Rückmeldung …",
   placeholder: "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
   subjectCancel: "Kündigung meines Vertrags",
-  subjectRent: "Kündigung meines Mietvertrags",
+  subjectRent: "Kündigung des Mietvertrags für die Wohnung an der ___",
   subjectJobCancel: "Kündigung meines Arbeitsvertrags",
   subjectComplaint: "Reklamation",
   subjectDefect: "Mängel in meiner Wohnung",
@@ -124,6 +126,22 @@ function Mask({ groups, bold, dim }: { groups: number[]; bold?: boolean; dim?: b
   );
 }
 
+// Text mit Inline-Maskierung: "___" im Übersetzungstext wird als Punkte gerendert —
+// genau dort, wo im echten Dokument die Eingaben des Nutzers stehen.
+function MaskedText({ text }: { text: string }) {
+  const parts = text.split("___");
+  return (
+    <>
+      {parts.map((p, i) => (
+        <span key={i}>
+          {p}
+          {i < parts.length - 1 && <span style={{ color: "#9A948A", letterSpacing: 2 }}>••••••</span>}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default function DocumentSample({
   tool,
   dict,
@@ -148,6 +166,9 @@ export default function DocumentSample({
   }
   const subject = subjectFor(tool.slug, s);
   const opening = openingFor(tool.slug, s);
+
+  // Zweiter Absatz: bei Bewerbungs-Tools der Bewerbungs-Schluss, sonst Grund + Bestätigung
+  const second = APPLY_SLUGS.has(tool.slug) ? s.body2Apply : s.body2;
 
   const recipientName = prefill?.recipientName;
   const recipientLines = prefill?.recipientAddress
@@ -218,15 +239,15 @@ export default function DocumentSample({
               <Mask groups={[4]} />, {sampleDate}
             </p>
 
-            {/* Betreff = lokalisierter Tool-Titel (fett) */}
-            <p style={{ fontWeight: 700, margin: "1.8em 0 1.2em" }}>{subject}</p>
+            {/* Betreff = lokalisierter Tool-Titel (fett, ggf. mit maskierter Adresse) */}
+            <p style={{ fontWeight: 700, margin: "1.8em 0 1.2em" }}><MaskedText text={subject} /></p>
 
             {/* Anrede (übersetzt) */}
             <p style={{ margin: "0 0 1.2em" }}>{s.salutation}</p>
 
-            {/* Echte Einleitungssätze (pro Tool-Typ) */}
-            <p style={{ margin: "0 0 1.2em" }}>{opening}</p>
-            <p style={{ margin: "0 0 1.2em" }}>{s.body2}</p>
+            {/* Volltext wie in der echten Vorschau — Nutzereingaben als Punkte maskiert */}
+            <p style={{ margin: "0 0 1.2em" }}><MaskedText text={opening} /></p>
+            <p style={{ margin: "0 0 1.2em" }}><MaskedText text={second} /></p>
 
             {/* Angedeutete Folge-Zeilen — identisch zur echten Vorschau (Fade-out) */}
             <div style={{ marginTop: 10 }}>

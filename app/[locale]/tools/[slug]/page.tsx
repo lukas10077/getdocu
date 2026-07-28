@@ -119,7 +119,7 @@ export default async function ToolPage({
               description={dict.tools.items?.[tool.slug]?.description}
             />
             <div className="mt-5 flex flex-wrap gap-2">
-              {(dict.tools.trustPills ?? ["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek.", "💳 Sicher via Stripe"]).map((t: string) => (
+              {(dict.tools.trustPills ?? ["🔒 Daten sofort gelöscht", "⚡ Dokument in 20 Sek."]).map((t: string) => (
                 <span key={t} className="rounded-full border border-ink-700 px-3 py-1 text-xs text-cream-muted">
                   {t}
                 </span>

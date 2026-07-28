@@ -64,8 +64,7 @@
     "back": "← Back",
     "trustPills": [
       "🔒 Data deleted immediately",
-      "⚡ Document in 20 sec.",
-      "💳 Secure via Stripe"
+      "⚡ Document in 20 sec."
     ],
     "sampleDoc": {
       "eyebrow": "This is what your finished document looks like",
@@ -76,22 +75,23 @@
       "benefit2": "Correct salutation and subject line",
       "benefit3": "As PDF & editable Word file",
       "caption": "Free preview · Pay only when you're happy",
-      "bodyCancel": "I hereby cancel the existing contract properly and within the agreed notice period. Please confirm the cancellation and the exact end date to me in writing.",
-      "bodyComplaint": "I am writing to formally complain about the matter described below and kindly ask for a prompt, binding resolution. Please let me know how and by when you will remedy the issue.",
-      "bodyApply": "It is with great interest that I submit my application and would welcome the chance to convince you in person. My experience and motivation are an excellent match for the stated requirements.",
+      "bodyCancel": "I hereby cancel the existing contract (contract number ___) properly and within the agreed notice period, effective ___. This letter will be sent to you by registered mail.",
+      "bodyComplaint": "I am writing to formally complain about ___ and kindly ask for a prompt, binding resolution. The issue has existed since ___.",
+      "bodyApply": "It is with great interest that I apply for ___. My experience as ___ and my motivation are an excellent match for your requirements.",
       "placeholder": "Your personal request goes here – written individually for you.",
-      "body2": "I would appreciate a brief written confirmation.",
+      "body2": "The reason is ___. Please confirm this to me in writing and let me know the next steps …",
+      "body2Apply": "What matters most to me is ___. I would be happy to convince you in person — I look forward to hearing from you …",
       "subjectCancel": "Cancellation of my contract",
       "subjectComplaint": "Complaint",
       "subjectApply": "Application for your position",
       "subjectApplyHome": "Application for your apartment",
-      "subjectRent": "Termination of my tenancy",
+      "subjectRent": "Termination of the tenancy for the apartment at ___",
       "subjectJobCancel": "Resignation from my position",
       "subjectDefect": "Defects in my apartment",
       "subjectWithdraw": "Withdrawal from my contract",
-      "bodyWithdraw": "I hereby withdraw from the contract or order within the applicable period. Please confirm receipt of this withdrawal to me briefly in writing.",
+      "bodyWithdraw": "I hereby withdraw within the applicable period from the contract concluded on ___ (order/contract number ___).",
       "subjectObjection": "Objection to your decision",
-      "bodyObjection": "I hereby file a timely objection against the decision referred to above. Please review the decision in full and inform me of your decision in writing."
+      "bodyObjection": "I hereby file a timely objection against your decision dated ___ (reference number ___)."
     },
     "items": {
       "widerspruch": {

@@ -64,8 +64,7 @@
     "back": "← Retour",
     "trustPills": [
       "🔒 Données supprimées",
-      "⚡ Document en 20 sec.",
-      "💳 Sécurisé via Stripe"
+      "⚡ Document en 20 sec."
     ],
     "sampleDoc": {
       "eyebrow": "Voici à quoi ressemble votre document final",
