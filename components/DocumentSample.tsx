@@ -271,7 +271,6 @@ export default function DocumentSample({
         ))}
       </div>
 
-      <p className="mt-3 text-xs text-cream-subtle">{s.caption}</p>
     </div>
   );
 }
