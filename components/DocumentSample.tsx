@@ -43,7 +43,7 @@ const FALLBACK: Required<SampleDict> = {
   benefit2: "Korrekte Anrede und Betreff",
   benefit3: "Als PDF & bearbeitbare Word-Datei",
   caption: "Vorschau gratis · Erst zahlen, wenn du zufrieden bist",
-  bodyCancel: "Hiermit kündige ich den bestehenden Vertrag (Vertragsnummer ___) unter Einhaltung der vertraglich vereinbarten Frist ordentlich und fristgerecht auf den ___. Dieses Schreiben wird Ihnen per Einschreiben zugestellt.",
+  bodyCancel: "Hiermit kündige ich den bestehenden Vertrag unter Einhaltung der vertraglich vereinbarten Frist ordentlich und fristgerecht auf den ___. Dieses Schreiben wird Ihnen per Einschreiben zugestellt.",
   bodyComplaint: "Hiermit reklamiere ich ___ und bitte Sie um eine zeitnahe, verbindliche Lösung. Der Mangel besteht seit ___.",
   bodyApply: "Mit grossem Interesse bewerbe ich mich um ___. Meine Erfahrung als ___ und meine Motivation passen sehr gut zu Ihren Anforderungen.",
   bodyWithdraw: "Hiermit widerrufe ich den am ___ geschlossenen Vertrag (Bestell-/Vertragsnummer ___) fristgerecht.",
