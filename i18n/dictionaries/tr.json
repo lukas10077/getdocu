@@ -174,7 +174,7 @@
     "withdrawalConsent": "Evet, belgemi ödemenin hemen ardından almak istiyorum. Teslimatın başlamasıyla yasal cayma hakkımın sona erdiğini biliyorum. Şartlar ve Koşulları okudum ve kabul ediyorum.",
     "withdrawalTermsLabel": "Şartlar ve Koşulları",
     "withdrawalError": "Devam etmek için lütfen onayınızı doğrulayın.",
-    "legalDisclaimer": "Bu belge yapay zeka (YZ) ile oluşturulur. Oluşturulan belge hukuki danışmanlığın yerini tutmaz. Form verileriniz oluşturulduktan hemen sonra silinir."
+    "legalDisclaimer": "Bu belge yapay zeka (YZ) ile oluşturulur. Form verileriniz oluşturulduktan hemen sonra silinir."
   },
   "howItWorks": {
     "title": "Nasıl çalışır",

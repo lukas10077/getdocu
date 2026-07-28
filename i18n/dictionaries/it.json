@@ -174,7 +174,7 @@
     "withdrawalConsent": "Sì, desidero ricevere il mio documento subito dopo il pagamento. Sono consapevole che il mio diritto legale di recesso decade con l'inizio della consegna. Ho letto e accetto i Termini e Condizioni.",
     "withdrawalTermsLabel": "Termini e Condizioni",
     "withdrawalError": "Conferma il tuo consenso per continuare.",
-    "legalDisclaimer": "Questo documento è generato con l'intelligenza artificiale (IA). Il documento generato non sostituisce una consulenza legale. I tuoi dati vengono eliminati immediatamente dopo la generazione."
+    "legalDisclaimer": "Questo documento è generato con l'intelligenza artificiale (IA). I tuoi dati vengono eliminati immediatamente dopo la generazione."
   },
   "howItWorks": {
     "title": "Come funziona",

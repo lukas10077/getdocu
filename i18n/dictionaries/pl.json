@@ -174,7 +174,7 @@
     "withdrawalConsent": "Tak, chcę otrzymać swój dokument natychmiast po dokonaniu płatności. Mam świadomość, że przysługujące mi prawo do odstąpienia wygasa z chwilą rozpoczęcia dostawy. Przeczytałem/am i akceptuję Regulamin.",
     "withdrawalTermsLabel": "Regulamin",
     "withdrawalError": "Prosimy o potwierdzenie zgody, aby kontynuować.",
-    "legalDisclaimer": "Ten dokument jest generowany przy użyciu sztucznej inteligencji (SI). Wygenerowany dokument nie zastępuje porady prawnej. Twoje dane są usuwane natychmiast po wygenerowaniu."
+    "legalDisclaimer": "Ten dokument jest generowany przy użyciu sztucznej inteligencji (SI). Twoje dane są usuwane natychmiast po wygenerowaniu."
   },
   "howItWorks": {
     "title": "Jak to działa",

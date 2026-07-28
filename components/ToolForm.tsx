@@ -104,7 +104,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   // Ohne diesen Key wurde in allen Nicht-DE-Sprachen ein deutsches "AGB" hinter den
   // übersetzten Satz gehängt. Muss je Sprache wörtlich zum Text oben passen.
   const termsLabel         = t.withdrawalTermsLabel ?? "AGB";
-  const legalDisclaimer    = t.legalDisclaimer    ?? "Das generierte Dokument ist kein Ersatz für eine Rechtsberatung. Deine Formulardaten werden nach der Generierung sofort gelöscht.";
+  const legalDisclaimer    = t.legalDisclaimer    ?? "Dieses Dokument wird mit künstlicher Intelligenz (KI) erstellt. Deine Formulardaten werden nach der Generierung sofort gelöscht.";
   const { country } = useCountry();
   const [stage, setStage] = useState<Stage>("form");
 
@@ -1073,7 +1073,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
               : `💳 ${fs("creditCard", "Kreditkarte")} · Apple Pay · Google Pay`}
           </p>
           <p className="mt-2 text-xs text-cream-subtle">
-            {fs("payTrust", "🔒 Sichere Zahlung via Stripe · Dein Dokument hast du oben schon gesehen · Daten nach der Erstellung sofort gelöscht")}
+            {fs("payTrust", "🔒 Sichere Zahlung via Stripe · Daten nach der Erstellung sofort gelöscht")}
           </p>
         </div>
 

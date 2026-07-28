@@ -174,7 +174,7 @@
     "withdrawalConsent": "Igen, a fizetés után azonnal meg szeretném kapni a dokumentumomat. Tudomásul veszem, hogy törvényes elállási jogom a teljesítés megkezdésével megszűnik. Elolvastam és elfogadom az Általános Szerződési Feltételeket.",
     "withdrawalTermsLabel": "Általános Szerződési Feltételeket",
     "withdrawalError": "Kérjük, erősítse meg beleegyezését a folytatáshoz.",
-    "legalDisclaimer": "Ez a dokumentum mesterséges intelligenciával (MI) készül. A generált dokumentum nem helyettesíti a jogi tanácsadást. Adatai a generálás után azonnal törlésre kerülnek."
+    "legalDisclaimer": "Ez a dokumentum mesterséges intelligenciával (MI) készül. Adatai a generálás után azonnal törlésre kerülnek."
   },
   "howItWorks": {
     "title": "Hogyan működik",

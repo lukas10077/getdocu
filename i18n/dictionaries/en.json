@@ -174,7 +174,7 @@
     "withdrawalConsent": "Yes, I'd like to receive my document immediately after payment. I understand that my statutory right of withdrawal expires once delivery begins. I have read and accept the Terms & Conditions.",
     "withdrawalTermsLabel": "Terms & Conditions",
     "withdrawalError": "Please confirm your consent to proceed.",
-    "legalDisclaimer": "This document is generated using artificial intelligence (AI). The generated document is not a substitute for legal advice. Your form data is deleted immediately after generation."
+    "legalDisclaimer": "This document is generated using artificial intelligence (AI). Your form data is deleted immediately after generation."
   },
   "howItWorks": {
     "title": "How it works",

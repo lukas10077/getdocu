@@ -150,7 +150,7 @@
     "withdrawalConsent": "Ja, ich möchte mein Dokument sofort nach der Zahlung erhalten. Mir ist bewusst, dass mein gesetzliches Widerrufsrecht mit Beginn der Lieferung erlischt. Ich habe die AGB gelesen und akzeptiere sie.",
     "withdrawalTermsLabel": "AGB",
     "withdrawalError": "Bitte bestätige die Zustimmung, um fortzufahren.",
-    "legalDisclaimer": "Dieses Dokument wird mit künstlicher Intelligenz (KI) erstellt. Das generierte Dokument ist kein Ersatz für eine Rechtsberatung. Deine Formulardaten werden nach der Generierung sofort gelöscht.",
+    "legalDisclaimer": "Dieses Dokument wird mit künstlicher Intelligenz (KI) erstellt. Deine Formulardaten werden nach der Generierung sofort gelöscht.",
     "description": ""
   },
   "howItWorks": {

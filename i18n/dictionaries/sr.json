@@ -174,7 +174,7 @@
     "withdrawalConsent": "Da, želim da primim svoj dokument odmah nakon plaćanja. Svestan/na sam da moje zakonsko pravo na odustajanje prestaje početkom isporuke. Pročitao/la sam i prihvatam Uslove i odredbe.",
     "withdrawalTermsLabel": "Uslove i odredbe",
     "withdrawalError": "Molimo potvrdite svoju saglasnost za nastavak.",
-    "legalDisclaimer": "Ovaj dokument se generiše pomoću veštačke inteligencije (VI). Generisani dokument ne zamenjuje pravni savet. Vaši podaci se brišu odmah nakon generisanja."
+    "legalDisclaimer": "Ovaj dokument se generiše pomoću veštačke inteligencije (VI). Vaši podaci se brišu odmah nakon generisanja."
   },
   "howItWorks": {
     "title": "Kako funkcioniše",
