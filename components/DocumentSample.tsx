@@ -100,7 +100,7 @@ function subjectFor(slug: string, s: Required<SampleDict>): string {
   }
 }
 
-const PAPER = "#FBFAF7";
+const PAPER = "#faf8f4";
 const BAR = "#E7E3DA";
 const BAR_SOFT = "#EFEBE3";
 const INK = "#2A2723";
@@ -187,67 +187,53 @@ export default function DocumentSample({
             </div>
           </div>
         ) : (
-          <div style={{ fontFamily: "Georgia, serif" }}>
-            {/* Absender — persönliche Daten maskiert */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-              <Mask groups={[6, 7]} />
-              <Mask groups={[9, 2]} dim />
+          <div style={{ fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a", textAlign: rtl ? "right" : "left" }}>
+            {/* Absender — persönliche Daten maskiert (3 Zeilen wie im echten Brief) */}
+            <div>
+              <div><Mask groups={[4, 5]} /></div>
+              <div><Mask groups={[6, 2]} /></div>
+              <div><Mask groups={[4, 6]} /></div>
             </div>
 
             {/* Empfänger: echte Daten bei Markenseiten, sonst maskiert */}
-            <div className="mt-5">
+            <div style={{ marginTop: "1.2em" }}>
               {hasRecipient ? (
-                <div style={{ color: INK, fontSize: 12, lineHeight: 1.6 }}>
+                <>
                   <p style={{ margin: 0, fontWeight: 600 }}>{recipientName}</p>
                   {recipientLines.map((l, i) => (
                     <p key={i} style={{ margin: 0 }}>{l}</p>
                   ))}
-                </div>
+                </>
               ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                  <Mask groups={[5, 7]} bold />
-                  <Mask groups={[8, 2]} dim />
-                  <Mask groups={[4, 6]} dim />
-                </div>
+                <>
+                  <div><Mask groups={[5]} /></div>
+                  <div><Mask groups={[6, 4]} /></div>
+                  <div><Mask groups={[4, 5]} /></div>
+                </>
               )}
             </div>
 
-            {/* Datumzeile — echtes, lokalisiertes Datum (rechtsbündig wie im echten Brief) */}
-            <div className="mt-4" style={{ textAlign: rtl ? "left" : "right" }}>
-              <span style={{ color: INK_SOFT, fontSize: 12 }}>{sampleDate}</span>
-            </div>
-
-            {/* Betreff = lokalisierter Tool-Titel */}
-            <p className="mt-4" style={{ color: INK, fontSize: 13, fontWeight: 700, margin: "16px 0 12px" }}>
-              {subject}
+            {/* Ort, Datum — links, wie in der echten Vorschau (Ort maskiert, Datum echt) */}
+            <p style={{ margin: "1.8em 0 0" }}>
+              <Mask groups={[4]} />, {sampleDate}
             </p>
 
+            {/* Betreff = lokalisierter Tool-Titel (fett) */}
+            <p style={{ fontWeight: 700, margin: "1.8em 0 1.2em" }}>{subject}</p>
+
             {/* Anrede (übersetzt) */}
-            <p style={{ color: INK, fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" }}>{s.salutation}</p>
+            <p style={{ margin: "0 0 1.2em" }}>{s.salutation}</p>
 
-            {/* Ein echter, überzeugender Einleitungssatz (pro Tool-Typ) */}
-            <p style={{ color: INK, fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" }}>{opening}</p>
+            {/* Echte Einleitungssätze (pro Tool-Typ) */}
+            <p style={{ margin: "0 0 1.2em" }}>{opening}</p>
+            <p style={{ margin: "0 0 1.2em" }}>{s.body2}</p>
 
-            {/* Hervorgehobene Platzhalter-Zeile: zeigt die Individualisierung */}
-            <div
-              className="flex items-center gap-2"
-              style={{ backgroundColor: "#FBF0D5", borderRadius: 5, padding: "8px 10px", margin: "0 0 12px" }}
-            >
-              <span style={{ color: "#B07E12", fontSize: 12 }}>✎</span>
-              <span style={{ color: "#8A6410", fontSize: 12, lineHeight: 1.5, fontStyle: "italic" }}>{s.placeholder}</span>
+            {/* Angedeutete Folge-Zeilen — identisch zur echten Vorschau (Fade-out) */}
+            <div style={{ marginTop: 10 }}>
+              {[96, 100, 92, 88, 100, 64].map((w, i) => (
+                <div key={i} style={{ height: 10, width: `${w}%`, background: "#e6e2da", borderRadius: 2, marginBottom: 11, marginLeft: rtl ? "auto" : 0 }} />
+              ))}
             </div>
-
-            {/* Zweiter echter Satz (Abschluss der Bitte) */}
-            <p style={{ color: INK, fontSize: 12, lineHeight: 1.7, margin: "0 0 10px" }}>{s.body2}</p>
-
-            {/* Angedeuteter Rest – maskiert, verhindert vollständiges Abschreiben */}
-            <div style={{ marginTop: 2 }}>
-              <Mask groups={[7, 5, 9, 4]} dim />
-            </div>
-
-            {/* Gruss + Signatur (Name maskiert) */}
-            <p style={{ color: INK_SOFT, fontSize: 12, lineHeight: 1.7, margin: "18px 0 8px" }}>{s.closing}</p>
-            <Mask groups={[6, 7]} />
           </div>
         )}
       </div>
