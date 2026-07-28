@@ -1,6 +1,7 @@
 import { getDictionary, Locale } from "@/i18n/config";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import SituationBox from "@/components/SituationBox";
 import ToolsSection from "@/components/ToolsSection";
 import HowItWorks from "@/components/HowItWorks";
 import TrustSection from "@/components/TrustSection";
@@ -46,6 +47,7 @@ export default async function LandingPage({ params }: { params: { locale: Locale
       />
       <Nav locale={params.locale} dict={dict} />
       <Hero locale={params.locale} dict={dict} />
+      <SituationBox locale={params.locale} t={dict.situation} />
       <ToolsSection locale={params.locale} dict={dict} />
       <HowItWorks dict={dict} />
       <TrustSection dict={dict} />

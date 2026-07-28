@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Ou décrivez simplement ce que vous voulez régler",
+    "subtitle": "L'IA reconnaît le bon document et pré-remplit vos premières informations.",
+    "placeholder": "p.ex. Je veux résilier mon abonnement de fitness, mais je ne suis pas sûr du délai de préavis …",
+    "button": "Trouver le bon document",
+    "loading": "Un instant — analyse de votre situation …",
+    "error": "Cela n'a pas fonctionné. Choisissez votre document ci-dessous."
+  },
   "chOnlyGuard": {
     "title": "Disponible uniquement pour la Suisse",
     "body": "Ce document repose sur le droit du bail suisse (résiliation anticipée en proposant un locataire de remplacement). En {country}, cette voie n'existe généralement pas.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Des documents importants, en toute simplicité",
-    "description": "Documents générés par IA pour la Suisse : candidature de location, lettre de motivation, résiliation. En quelques minutes."
+    "description": "Documents générés par IA, adaptés à votre pays : candidature, CV, résiliation. En quelques minutes — sans compte ni abonnement."
   },
   "nav": {
     "changeCountry": "Changer de pays",

@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Ose thjesht përshkruaj çfarë do të zgjidhësh",
+    "subtitle": "IA njeh dokumentin e duhur dhe plotëson të dhënat e para për ty.",
+    "placeholder": "p.sh. Dua të anuloj abonimin në palestër, por s'jam i sigurt për afatin …",
+    "button": "Gjej dokumentin e duhur",
+    "loading": "Një moment — po analizoj situatën tënde …",
+    "error": "Nuk funksionoi. Zgjidh dokumentin më poshtë."
+  },
   "chOnlyGuard": {
     "title": "I disponueshëm vetëm për Zvicrën",
     "body": "Ky dokument bazohet në të drejtën zvicerane të qirasë (dalje e parakohshme duke propozuar një qiramarrës zëvendësues). Në {country} kjo rrugë zakonisht nuk ekziston.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Dokumente të rëndësishme, thjesht",
-    "description": "Dokumente të krijuara nga AI për Zvicrën: kërkesë qiraje, kërkesë pune, ndërprerje kontrate. Gati në minuta."
+    "description": "Dokumente të krijuara nga AI, të përshtatura për vendin tënd: aplikim pune, CV, ndërprerje kontrate. Gati në minuta — pa llogari, pa abonim."
   },
   "nav": {
     "changeCountry": "Ndrysho vendin",

@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Ou descreve simplesmente o que queres resolver",
+    "subtitle": "A IA reconhece o documento certo e preenche os primeiros dados.",
+    "placeholder": "p.ex. Quero cancelar a minha subscrição do ginásio, mas não tenho a certeza do prazo …",
+    "button": "Encontrar o documento certo",
+    "loading": "Um momento — a analisar a tua situação …",
+    "error": "Não funcionou. Escolhe o teu documento abaixo."
+  },
   "chOnlyGuard": {
     "title": "Disponível apenas para a Suíça",
     "body": "Este documento baseia-se no direito de arrendamento suíço (saída antecipada propondo um inquilino substituto). Em {country} esta via geralmente não existe.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Documentos importantes, de forma simples",
-    "description": "Documentos gerados por IA para a Suíça: candidatura de arrendamento, candidatura de emprego, rescisão. Pronto em minutos."
+    "description": "Documentos gerados por IA, adaptados ao teu país: candidatura, CV, rescisão. Pronto em minutos — sem conta nem subscrição."
   },
   "nav": {
     "changeCountry": "Mudar de país",

@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Vagy egyszerűen írd le, mit szeretnél elintézni",
+    "subtitle": "Az MI felismeri a megfelelő dokumentumot, és előre kitölti az első adatokat.",
+    "placeholder": "pl. Fel szeretném mondani az edzőtermi bérletem, de nem tudom a felmondási időt …",
+    "button": "Megfelelő dokumentum keresése",
+    "loading": "Egy pillanat — elemzem a helyzeted …",
+    "error": "Nem sikerült. Válaszd ki a dokumentumot lent."
+  },
   "chOnlyGuard": {
     "title": "Csak Svájc számára érhető el",
     "body": "Ez a dokumentum a svájci bérleti jogon alapul (korábbi kilépés helyettesítő bérlő állításával). {country} esetében ez a lehetőség általában nem létezik.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Fontos dokumentumok, egyszerűen",
-    "description": "AI által generált dokumentumok Svájc számára: lakásbérlési pályázat, állásra jelentkezés, felmondás. Percek alatt kész."
+    "description": "AI által generált, az országodhoz igazított dokumentumok: állásjelentkezés, önéletrajz, felmondás. Percek alatt kész — fiók és előfizetés nélkül."
   },
   "nav": {
     "changeCountry": "Ország módosítása",

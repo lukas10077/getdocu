@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Ili jednostavno opiši šta želiš da rešiš",
+    "subtitle": "AI prepoznaje pravi dokument i unapred popunjava prve podatke.",
+    "placeholder": "npr. Želim da otkažem članarinu u teretani, ali nisam siguran za otkazni rok …",
+    "button": "Pronađi pravi dokument",
+    "loading": "Trenutak — analiziram tvoju situaciju …",
+    "error": "Nije uspelo. Izaberi dokument ispod."
+  },
   "chOnlyGuard": {
     "title": "Dostupno samo za Švajcarsku",
     "body": "Ovaj dokument se zasniva na švajcarskom stanarskom pravu (raniji izlazak predlaganjem zamenskog stanara). U {country} ovaj put po pravilu ne postoji.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Važni dokumenti, jednostavno",
-    "description": "Dokumenti generisani AI-jem za Švajcarsku: prijava za stan, prijava za posao, otkazivanje. Spremno za nekoliko minuta."
+    "description": "Dokumenti generisani AI-jem, prilagođeni tvojoj zemlji: prijava za posao, CV, otkazivanje. Spremno za nekoliko minuta — bez naloga i pretplate."
   },
   "nav": {
     "changeCountry": "Promeni zemlju",

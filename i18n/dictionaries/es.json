@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "O simplemente describe lo que quieres resolver",
+    "subtitle": "La IA reconoce el documento adecuado y rellena los primeros datos por ti.",
+    "placeholder": "p.ej. Quiero cancelar mi suscripción del gimnasio, pero no estoy seguro del plazo de preaviso …",
+    "button": "Encontrar el documento adecuado",
+    "loading": "Un momento — analizando tu situación …",
+    "error": "No ha funcionado. Elige tu documento abajo."
+  },
   "chOnlyGuard": {
     "title": "Solo disponible para Suiza",
     "body": "Este documento se basa en el derecho de arrendamiento suizo (salida anticipada proponiendo un inquilino sustituto). En {country} esta vía generalmente no existe.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Documentos importantes, de forma sencilla",
-    "description": "Documentos generados por IA para Suiza: solicitud de alquiler, solicitud de empleo, cancelación. Listo en minutos."
+    "description": "Documentos generados por IA, adaptados a tu país: currículum, solicitud de empleo, cancelación. Listo en minutos — sin cuenta ni suscripción."
   },
   "nav": {
     "changeCountry": "Cambiar país",

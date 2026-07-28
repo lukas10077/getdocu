@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Ya da sadece ne halletmek istediğini anlat",
+    "subtitle": "Yapay zeka doğru belgeyi bulur ve ilk bilgileri senin için doldurur.",
+    "placeholder": "örn. Spor salonu üyeliğimi iptal etmek istiyorum ama fesih süresinden emin değilim …",
+    "button": "Doğru belgeyi bul",
+    "loading": "Bir dakika — durumunu analiz ediyorum …",
+    "error": "Olmadı. Belgeni aşağıdan seç."
+  },
   "chOnlyGuard": {
     "title": "Yalnızca İsviçre için geçerlidir",
     "body": "Bu belge İsviçre kira hukukuna dayanır (yedek kiracı önererek erken çıkış). {country} için bu yol genellikle mevcut değildir.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Önemli belgeler, basitçe",
-    "description": "İsviçre için yapay zeka destekli belgeler: kira başvurusu, iş başvurusu, fesih. Dakikalar içinde hazır."
+    "description": "Ülkenize uyarlanmış yapay zeka destekli belgeler: iş başvurusu, CV, fesih. Dakikalar içinde hazır — hesapsız, aboneliksiz."
   },
   "nav": {
     "changeCountry": "Ülkeyi değiştir",

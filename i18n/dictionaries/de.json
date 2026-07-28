@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Oder beschreibe einfach, was du erledigen willst",
+    "subtitle": "Die KI erkennt das passende Dokument und füllt erste Angaben für dich aus.",
+    "placeholder": "z.B. Ich möchte mein Fitnessabo bei Basefit kündigen, bin aber unsicher wegen der Frist …",
+    "button": "Passendes Dokument finden",
+    "loading": "Einen Moment — ich analysiere deine Situation …",
+    "error": "Das hat leider nicht geklappt. Wähle dein Dokument einfach unten aus."
+  },
   "chOnlyGuard": {
     "title": "Nur für die Schweiz verfügbar",
     "body": "Dieses Dokument beruht auf schweizerischem Mietrecht (vorzeitiger Ausstieg durch Stellung eines Nachmieters). In {country} gibt es diesen Weg in der Regel nicht.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Wichtige Dokumente einfach erstellen",
-    "description": "KI-gestützte Dokumente für die Schweiz: Mietbewerbung, Bewerbung, Kündigung. In Minuten erledigt."
+    "description": "KI-gestützte Dokumente, angepasst an dein Land: Bewerbung, Lebenslauf, Kündigung. In Minuten erledigt — ohne Konto, ohne Abo."
   },
   "nav": {
     "changeCountry": "Land ändern",

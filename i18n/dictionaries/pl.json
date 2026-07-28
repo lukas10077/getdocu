@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Albo po prostu opisz, co chcesz załatwić",
+    "subtitle": "AI rozpoznaje właściwy dokument i wstępnie wypełnia pierwsze dane.",
+    "placeholder": "np. Chcę wypowiedzieć karnet na siłownię, ale nie jestem pewien okresu wypowiedzenia …",
+    "button": "Znajdź właściwy dokument",
+    "loading": "Chwileczkę — analizuję Twoją sytuację …",
+    "error": "Nie udało się. Wybierz dokument poniżej."
+  },
   "chOnlyGuard": {
     "title": "Dostępne tylko dla Szwajcarii",
     "body": "Ten dokument opiera się na szwajcarskim prawie najmu (wcześniejsze rozwiązanie umowy przez wskazanie najemcy zastępczego). W {country} taka droga zwykle nie istnieje.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Ważne dokumenty, w prosty sposób",
-    "description": "Dokumenty generowane przez AI dla Szwajcarii: podanie o wynajem, podanie o pracę, wypowiedzenie. Gotowe w kilka minut."
+    "description": "Dokumenty generowane przez AI, dopasowane do Twojego kraju: podanie o pracę, CV, wypowiedzenie. Gotowe w kilka minut — bez konta i subskrypcji."
   },
   "nav": {
     "changeCountry": "Zmień kraj",

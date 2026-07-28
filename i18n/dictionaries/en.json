@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Or simply describe what you need to get done",
+    "subtitle": "The AI picks the right document and pre-fills your first details.",
+    "placeholder": "e.g. I want to cancel my gym membership, but I'm not sure about the notice period …",
+    "button": "Find the right document",
+    "loading": "One moment — analyzing your situation …",
+    "error": "That didn't work. Just pick your document below."
+  },
   "chOnlyGuard": {
     "title": "Only available for Switzerland",
     "body": "This document is based on Swiss tenancy law (early exit by proposing a replacement tenant). In {country}, this option generally does not exist.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Important Documents, Made Simple",
-    "description": "AI-powered documents for Switzerland: rental applications, job applications, terminations. Done in minutes."
+    "description": "AI-powered documents adapted to your country: job applications, CVs, terminations. Done in minutes — no account, no subscription."
   },
   "nav": {
     "changeCountry": "Change country",

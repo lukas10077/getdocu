@@ -1,4 +1,12 @@
 {
+  "situation": {
+    "title": "Oppure descrivi semplicemente cosa vuoi risolvere",
+    "subtitle": "L'IA riconosce il documento giusto e precompila i primi dati.",
+    "placeholder": "es. Voglio disdire il mio abbonamento in palestra, ma non sono sicuro del preavviso …",
+    "button": "Trova il documento giusto",
+    "loading": "Un attimo — sto analizzando la tua situazione …",
+    "error": "Non ha funzionato. Scegli il documento qui sotto."
+  },
   "chOnlyGuard": {
     "title": "Disponibile solo per la Svizzera",
     "body": "Questo documento si basa sul diritto di locazione svizzero (uscita anticipata proponendo un subentrante). In {country} questa via generalmente non esiste.",
@@ -27,7 +35,7 @@
   },
   "meta": {
     "title": "GetDocu — Documenti importanti, semplicemente",
-    "description": "Documenti generati dall'IA per la Svizzera: candidatura per affitto, lettera di motivazione, disdetta. Pronti in pochi minuti."
+    "description": "Documenti generati dall'IA, adattati al tuo paese: candidatura, CV, disdetta. Pronti in pochi minuti — senza account né abbonamento."
   },
   "nav": {
     "changeCountry": "Cambia paese",
