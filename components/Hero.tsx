@@ -72,7 +72,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
             </svg>
             <div>
               <p className="text-sm font-semibold text-cream">{dict.hero.guaranteeTitle ?? "Zufriedenheitsgarantie"}</p>
-              <p className="mt-0.5 text-xs leading-relaxed text-cream-muted">{dict.hero.guaranteeText ?? "Sieh dein fertiges Dokument gratis in der Vorschau — du zahlst erst, wenn du wirklich zufrieden bist."}</p>
+              <p className="mt-0.5 text-xs leading-relaxed text-cream-muted">{dict.hero.guaranteeText ?? "Nicht zufrieden mit deinem Dokument? Schreib uns eine kurze E-Mail und du bekommst dein Geld zurück."}</p>
             </div>
           </div>
 
