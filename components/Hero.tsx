@@ -64,7 +64,19 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
             </Link>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-widest text-cream-muted">
+          {/* Zufriedenheitsgarantie — "erst sehen, dann zahlen" (ehrlich, kein Geld-zurück) */}
+          <div className="mt-8 flex items-start gap-3 rounded-sm border border-swiss-gold/30 bg-swiss-gold/5 px-4 py-3 sm:max-w-md">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" className="mt-0.5 flex-shrink-0 text-swiss-gold" aria-hidden>
+              <path d="M12 2l2.4 1.8 3-.1 1 2.8 2.4 1.7-.9 2.9.9 2.9-2.4 1.7-1 2.8-3-.1L12 22l-2.4-1.8-3 .1-1-2.8L3.2 15.8l.9-2.9-.9-2.9 2.4-1.7 1-2.8 3 .1L12 2z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+              <path d="M8.5 12.2l2.3 2.3 4.7-4.9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <div>
+              <p className="text-sm font-semibold text-cream">{dict.hero.guaranteeTitle ?? "Zufriedenheitsgarantie"}</p>
+              <p className="mt-0.5 text-xs leading-relaxed text-cream-muted">{dict.hero.guaranteeText ?? "Sieh dein fertiges Dokument gratis in der Vorschau — du zahlst erst, wenn du wirklich zufrieden bist."}</p>
+            </div>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-widest text-cream-muted">
             {(dict.hero.badges ?? ["✓ Kein Konto", "✓ Kein Abo", "✓ Daten gelöscht"]).map((b: string) => (
               <span key={b}>{b}</span>
             ))}
