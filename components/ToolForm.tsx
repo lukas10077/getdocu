@@ -227,6 +227,15 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   ];
   const defaultPrefix = PHONE_PREFIXES.find(p => p.code === (country?.code ?? "CH"))?.prefix ?? "+41";
   const [phonePrefix, setPhonePrefix] = useState(defaultPrefix);
+  // Land lädt client-seitig verzögert (Cookie) — Prefix nachziehen, solange der
+  // Nutzer ihn nicht selbst geändert hat (sonst bliebe fälschlich +41 stehen).
+  const phonePrefixTouched = useRef(false);
+  useEffect(() => {
+    if (phonePrefixTouched.current || !country) return;
+    const p = PHONE_PREFIXES.find((x) => x.code === country.code)?.prefix;
+    if (p) setPhonePrefix(p);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [country?.code]);
 
   // Entry-Builder: Arbeitsstellen + Ausbildung
   interface WorkEntry { role: string; company: string; city: string; from: string; to: string; }
@@ -1183,7 +1192,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           </label>
           <div className="pt-1">
             <p className="text-sm font-medium text-cream">{fs("photoLabel", "Bewerbungsfoto (optional)")}</p>
-            <p className="mt-1 text-xs leading-relaxed text-cream-muted">{fs("photoHint", "Lade ein Foto hoch — es wird oben rechts ins Dokument eingebettet. In der Schweiz ist ein Foto üblich, aber nicht Pflicht.")}</p>
+            <p className="mt-1 text-xs leading-relaxed text-cream-muted">{fs("photoHint", "Lade ein Foto hoch — es wird oben rechts ins Dokument eingebettet. Je nach Land üblich, aber meist keine Pflicht.")}</p>
           </div>
         </div>
       )}
@@ -1519,7 +1528,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
                   <div className="flex gap-2">
                     <select
                       value={phonePrefix}
-                      onChange={e => setPhonePrefix(e.target.value)}
+                      onChange={e => { phonePrefixTouched.current = true; setPhonePrefix(e.target.value); }}
                       className={`${inputClass} border-ink-700 shrink-0`}
                       style={{ width: 90 }}
                     >

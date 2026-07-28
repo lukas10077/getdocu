@@ -418,7 +418,7 @@
     "photoSingular": "fotografija",
     "photoPlural": "fotografija",
     "photoLabel": "Fotografija za prijavu (opciono)",
-    "photoHint": "Otpremi fotografiju — biće postavljena u gornjem desnom uglu dokumenta. U Švajcarskoj je fotografija uobičajena, ali nije obavezna.",
+    "photoHint": "Otpremi fotografiju — biće postavljena u gornjem desnom uglu dokumenta. Uobičajena u mnogim zemljama, ali obično nije obavezna.",
     "cvPhotoLabel": "Tvoja fotografija (opciono)",
     "cvPhotoHint": "Za ubedljiv CV preporučujemo ljubaznu, profesionalnu fotografiju — čini prijavu ličnijom i ostavlja trajan prvi utisak.",
     "changePhoto": "promeni",

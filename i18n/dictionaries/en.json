@@ -422,7 +422,7 @@
     "photoSingular": "photo",
     "photoPlural": "photos",
     "photoLabel": "Application photo (optional)",
-    "photoHint": "Upload a photo — it will be embedded in the top right of the document. In Switzerland a photo is common but not mandatory.",
+    "photoHint": "Upload a photo — it will be embedded in the top right of the document. Common in many countries, but usually not mandatory.",
     "cvPhotoLabel": "Your photo (optional)",
     "cvPhotoHint": "For a convincing CV we recommend a friendly, professional photo — it makes your application more personal and leaves a lasting first impression.",
     "changePhoto": "change",

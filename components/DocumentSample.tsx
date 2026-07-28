@@ -167,8 +167,13 @@ export default function DocumentSample({
   const subject = subjectFor(tool.slug, s);
   const opening = openingFor(tool.slug, s);
 
-  // Zweiter Absatz: bei Bewerbungs-Tools der Bewerbungs-Schluss, sonst Grund + Bestätigung
-  const second = APPLY_SLUGS.has(tool.slug) ? s.body2Apply : s.body2;
+  // Zweiter Absatz: bei Bewerbungs-Tools der Bewerbungs-Schluss, sonst Grund + Bestätigung.
+  // WICHTIG: body2Apply existiert nur in DE/EN/ES — Sprachen ohne eigenen Wert nutzen
+  // ihr eigenes body2 (statt des deutschen Fallbacks aus FALLBACK).
+  const dictSample = dict?.tools?.sampleDoc ?? {};
+  const second = APPLY_SLUGS.has(tool.slug)
+    ? (dictSample.body2Apply ?? dictSample.body2 ?? FALLBACK.body2Apply)
+    : s.body2;
 
   const recipientName = prefill?.recipientName;
   const recipientLines = prefill?.recipientAddress

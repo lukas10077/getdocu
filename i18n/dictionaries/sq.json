@@ -418,7 +418,7 @@
     "photoSingular": "foto",
     "photoPlural": "foto",
     "photoLabel": "Foto aplikimi (opsionale)",
-    "photoHint": "Ngarko një foto — do të vendoset lart djathtas në dokument. Në Zvicër fotoja është e zakonshme, por jo e detyrueshme.",
+    "photoHint": "Ngarko një foto — do të vendoset lart djathtas në dokument. E zakonshme në shumë vende, por zakonisht jo e detyrueshme.",
     "cvPhotoLabel": "Fotoja jote (opsionale)",
     "cvPhotoHint": "Për një CV bindëse rekomandojmë një foto miqësore dhe profesionale — e bën aplikimin më personal dhe lë një përshtypje të parë të qëndrueshme.",
     "changePhoto": "ndrysho",

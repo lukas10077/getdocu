@@ -418,7 +418,7 @@
     "photoSingular": "foto",
     "photoPlural": "fotos",
     "photoLabel": "Foto de candidatura (opcional)",
-    "photoHint": "Carrega uma foto — será inserida no canto superior direito do documento. Na Suíça a foto é comum, mas não obrigatória.",
+    "photoHint": "Carrega uma foto — será inserida no canto superior direito do documento. Comum em muitos países, mas normalmente não obrigatória.",
     "cvPhotoLabel": "A tua foto (opcional)",
     "cvPhotoHint": "Para um CV convincente recomendamos uma foto profissional e simpática — torna a candidatura mais pessoal e deixa uma primeira impressão duradoura.",
     "changePhoto": "alterar",

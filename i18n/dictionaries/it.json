@@ -418,7 +418,7 @@
     "photoSingular": "foto",
     "photoPlural": "foto",
     "photoLabel": "Foto di candidatura (facoltativa)",
-    "photoHint": "Carica una foto — sarà inserita in alto a destra nel documento. In Svizzera la foto è comune ma non obbligatoria.",
+    "photoHint": "Carica una foto — sarà inserita in alto a destra nel documento. Comune in molti paesi, ma di solito non obbligatoria.",
     "cvPhotoLabel": "La tua foto (facoltativa)",
     "cvPhotoHint": "Per un CV convincente consigliamo una foto professionale e cordiale — rende la candidatura più personale e lascia una prima impressione duratura.",
     "changePhoto": "cambia",
