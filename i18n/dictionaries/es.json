@@ -76,9 +76,9 @@
       "benefit2": "Saludo y asunto correctos",
       "benefit3": "En PDF y archivo Word editable",
       "caption": "Vista previa gratis · Paga solo cuando estés satisfecho",
-      "bodyCancel": "Por la presente, cancelo mi contrato de forma correcta y dentro del plazo de preaviso.",
-      "bodyComplaint": "Por la presente, presento una reclamación sobre el asunto descrito a continuación y solicito una solución rápida.",
-      "bodyApply": "Con gran interés presento mi candidatura y me gustaría presentarme brevemente.",
+      "bodyCancel": "Por la presente, cancelo el contrato vigente de forma correcta y dentro del plazo de preaviso. Le ruego que me confirme por escrito la cancelación y la fecha exacta de finalización.",
+      "bodyComplaint": "Por la presente, presento una reclamación sobre el asunto descrito a continuación y solicito una solución rápida y vinculante. Le ruego que me indique cómo y cuándo subsanará el problema.",
+      "bodyApply": "Con gran interés presento mi candidatura y me gustaría convencerle personalmente. Mi experiencia y mi motivación encajan muy bien con los requisitos indicados.",
       "placeholder": "Aquí aparece tu solicitud personal, redactada individualmente para ti.",
       "body2": "Le agradecería una breve confirmación por escrito.",
       "subjectCancel": "Cancelación de mi contrato",
@@ -89,9 +89,9 @@
       "subjectJobCancel": "Renuncia a mi puesto de trabajo",
       "subjectDefect": "Defectos en mi vivienda",
       "subjectWithdraw": "Desistimiento de mi contrato",
-      "bodyWithdraw": "Por la presente, desisto de mi contrato o pedido dentro del plazo previsto.",
+      "bodyWithdraw": "Por la presente, desisto del contrato o pedido dentro del plazo previsto. Le ruego que me confirme brevemente por escrito la recepción de este desistimiento.",
       "subjectObjection": "Recurso contra su resolución",
-      "bodyObjection": "Por la presente, presento recurso, dentro del plazo, contra la resolución arriba indicada."
+      "bodyObjection": "Por la presente, presento recurso, dentro del plazo, contra la resolución arriba indicada. Le ruego que revise íntegramente la resolución y me comunique su decisión por escrito."
     },
     "items": {
       "widerspruch": {

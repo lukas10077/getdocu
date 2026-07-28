@@ -74,9 +74,9 @@
       "benefit2": "Korrekte Anrede und Betreff",
       "benefit3": "Als PDF & bearbeitbare Word-Datei",
       "caption": "Vorschau gratis · Erst zahlen, wenn du zufrieden bist",
-      "bodyCancel": "Hiermit kündige ich meinen Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin.",
-      "bodyComplaint": "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe Lösung.",
-      "bodyApply": "Mit grossem Interesse bewerbe ich mich bei Ihnen und stelle mich Ihnen gerne kurz vor.",
+      "bodyCancel": "Hiermit kündige ich den bestehenden Vertrag ordentlich und fristgerecht zum nächstmöglichen Termin. Ich bitte Sie, mir die Kündigung sowie das genaue Vertragsende schriftlich zu bestätigen.",
+      "bodyComplaint": "Hiermit reklamiere ich den nachstehend geschilderten Sachverhalt und bitte Sie um eine zeitnahe, verbindliche Lösung. Bitte teilen Sie mir mit, wie und bis wann Sie den Mangel beheben.",
+      "bodyApply": "Mit grossem Interesse bewerbe ich mich bei Ihnen und möchte Sie gerne persönlich von mir überzeugen. Meine Erfahrung und meine Motivation passen sehr gut zu den genannten Anforderungen.",
       "placeholder": "Hier steht dein persönliches Anliegen – individuell für dich formuliert.",
       "body2": "Über eine kurze schriftliche Rückmeldung würde ich mich freuen.",
       "subjectCancel": "Kündigung meines Vertrags",
@@ -87,9 +87,9 @@
       "subjectJobCancel": "Kündigung meines Arbeitsvertrags",
       "subjectDefect": "Mängel in meiner Wohnung",
       "subjectWithdraw": "Widerruf meines Vertrags",
-      "bodyWithdraw": "Hiermit widerrufe ich meinen Vertrag beziehungsweise meine Bestellung fristgerecht.",
+      "bodyWithdraw": "Hiermit widerrufe ich den mit Ihnen geschlossenen Vertrag beziehungsweise meine Bestellung fristgerecht. Ich bitte Sie, mir den Eingang dieses Widerrufs kurz schriftlich zu bestätigen.",
       "subjectObjection": "Widerspruch gegen Ihren Bescheid",
-      "bodyObjection": "Hiermit lege ich fristwahrend Widerspruch gegen den oben genannten Bescheid ein."
+      "bodyObjection": "Hiermit lege ich fristwahrend Widerspruch gegen den oben genannten Bescheid ein. Ich bitte Sie, den Bescheid vollständig zu überprüfen und mir Ihre Entscheidung schriftlich mitzuteilen."
     },
     "items": {
       "widerspruch": {
