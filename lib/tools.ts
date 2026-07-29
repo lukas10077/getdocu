@@ -71,7 +71,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   mietbewerbung: {
     slug: "mietbewerbung",
     supportsListingUrl: true,
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     documentTitleDe: "Bewerbung Wohnung",
     descriptionDe:
       "Überzeuge Vermieter auf Anhieb. Professionell, persönlich, nach lokalem Standard.",
@@ -125,7 +125,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   jobbewerbung: {
     slug: "jobbewerbung",
     supportsListingUrl: true,
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     supportsProfilePhoto: true,
     documentTitleDe: "Bewerbung Arbeitsstelle",
     descriptionDe:
@@ -160,7 +160,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   kuendigung: {
     slug: "kuendigung",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     documentTitleDe: "Kündigung",
     descriptionDe:
       "Versicherung, Abonnement, Mitgliedschaft — korrekt und fristgerecht kündigen.",
@@ -197,7 +197,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   arbeitszeugnis: {
     slug: "arbeitszeugnis",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     supportsAllDocumentTypes: true,
     uploadLabelDe: "Zeugnis hochladen (optional)",
     uploadHintDe: "Lade dein Zeugnis hoch — als Foto, PDF oder Word-Datei. Wir lesen es automatisch.",
@@ -239,7 +239,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   maengelruege: {
     slug: "maengelruege",
-    priceChfRappen: 600,
+    priceChfRappen: 300,
     supportsPhotoGallery: true,
     maxPhotos: 100,
     photoGalleryLabelDe: "Fotos der Schäden hochladen (optional)",
@@ -279,7 +279,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   reklamation: {
     slug: "reklamation",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     supportsPhotoGallery: true,
     maxPhotos: 20,
     photoGalleryLabelDe: "Fotos hochladen (optional)",
@@ -312,7 +312,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "antwort-schreiben": {
     slug: "antwort-schreiben",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     supportsAllDocumentTypes: true,
     uploadLabelDe: "Erhaltenes Schreiben hochladen",
     uploadHintDe:
@@ -347,7 +347,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   lebenslauf: {
     slug: "lebenslauf",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     supportsAllDocumentTypes: true,
     supportsProfilePhoto: true,
     uploadLabelDe: "Bestehenden Lebenslauf hochladen (optional)",
@@ -392,7 +392,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "kuendigung-wohnung": {
     slug: "kuendigung-wohnung",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     documentTitleDe: "Kündigung Wohnung",
     descriptionDe:
       "Mietvertrag korrekt kündigen — mit Frist, Adresse und Bitte um Bestätigung.",
@@ -421,7 +421,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "ausserterminliche-kuendigung": {
     slug: "ausserterminliche-kuendigung",
-    priceChfRappen: 600,
+    priceChfRappen: 300,
     chOnly: true,
     documentTitleDe: "Vorzeitig kündigen mit Nachmieter",
     descriptionDe:
@@ -467,7 +467,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "ausserordentliche-kuendigung": {
     slug: "ausserordentliche-kuendigung",
-    priceChfRappen: 600,
+    priceChfRappen: 300,
     documentTitleDe: "Kündigen aus wichtigem Grund",
     descriptionDe:
       "Vorzeitig aus dem Mietvertrag aus wichtigem Grund — z.B. schwere Mängel oder unbewohnbare Wohnung.",
@@ -510,7 +510,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
   komplettbewerbung: {
     slug: "komplettbewerbung",
     supportsListingUrl: true,
-    priceChfRappen: 800,
+    priceChfRappen: 400,
     isBundle: true,
     supportsProfilePhoto: true,
     supportsAllDocumentTypes: true,
@@ -566,7 +566,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   "kuendigung-arbeit": {
     slug: "kuendigung-arbeit",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     documentTitleDe: "Kündigung Arbeitsstelle",
     descriptionDe:
       "Arbeitsvertrag professionell kündigen — klar, höflich und fristgerecht.",
@@ -596,7 +596,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   widerruf: {
     slug: "widerruf",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     documentTitleDe: "Widerruf",
     descriptionDe:
       "Online-Kauf oder Vertrag fristgerecht widerrufen — klar, korrekt und mit Bitte um Rückerstattung.",
@@ -629,7 +629,7 @@ export const tools: Record<ToolSlug, ToolDefinition> = {
 
   widerspruch: {
     slug: "widerspruch",
-    priceChfRappen: 500,
+    priceChfRappen: 250,
     documentTitleDe: "Widerspruch",
     descriptionDe:
       "Widerspruch gegen einen Bescheid — fristwahrend eingelegt, damit dein Anspruch nicht verfällt.",

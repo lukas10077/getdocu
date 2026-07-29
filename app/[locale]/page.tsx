@@ -21,7 +21,7 @@ export default async function LandingPage({ params }: { params: { locale: Locale
     mainEntity: (dict.faq?.items ?? []).map((item: { q: string; a: string }) => ({
       "@type": "Question",
       name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a.replace("{priceRange}", "3–5 CHF") },
+      acceptedAnswer: { "@type": "Answer", text: item.a.replace("{priceRange}", "2.50–4 CHF") },
     })),
   };
 

@@ -3,9 +3,9 @@
 import { useCountry } from "./CountryProvider";
 import { getStripeAmount, formatAmount } from "@/lib/countries";
 
-// Günstigstes Tool: 300 CHF Rappen, teuerstes: 500
-const MIN_RAPPEN = 300;
-const MAX_RAPPEN = 500;
+// Günstigstes Tool: 250 CHF Rappen, teuerstes: 400 (Preistest −50 %, Juli 2026)
+const MIN_RAPPEN = 250;
+const MAX_RAPPEN = 400;
 
 export default function HowItWorks({ dict }: { dict: any }) {
   const { country } = useCountry();

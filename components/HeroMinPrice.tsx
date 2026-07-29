@@ -3,8 +3,8 @@
 import { useCountry } from "./CountryProvider";
 import { getStripeAmount, formatAmount } from "@/lib/countries";
 
-// Günstigstes Tool: 300 CHF Rappen
-const MIN_RAPPEN = 300;
+// Günstigstes Tool: 250 CHF Rappen (Preistest −50 %, Juli 2026)
+const MIN_RAPPEN = 250;
 
 export default function HeroMinPrice({ label }: { label?: string }) {
   const { country } = useCountry();

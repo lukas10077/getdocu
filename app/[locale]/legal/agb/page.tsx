@@ -85,7 +85,7 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
               </h2>
               <p>
                 Die Zahlung erfolgt vor der Dokumentenerstellung über den Zahlungsdienstleister
-                Stripe (inkl. TWINT). Preise in Schweizer Franken (CHF), inklusive MwSt. Da die
+                Stripe. Preise in Schweizer Franken (CHF) bzw. der angezeigten Landeswährung, inklusive MwSt. Da die
                 digitale Leistung unmittelbar nach erfolgter Zahlung erbracht wird, besteht
                 grundsätzlich kein Widerrufsrecht nach abgeschlossener Generierung.
               </p>
