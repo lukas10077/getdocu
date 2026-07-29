@@ -8,27 +8,34 @@ import { brandsEs, allBrandEsSlugs } from "@/lib/brandsEs";
 import { categoryHubs, allCategoryHubSlugs } from "@/lib/categoryHubs";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import GuideDirectory from "@/components/GuideDirectory";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://getdocunow.com";
 
-const META: Record<string, { title: string; desc: string; eyebrow: string; intro: string }> = {
+const META: Record<string, { title: string; desc: string; eyebrow: string; intro: string; search: string; noResults: string }> = {
   de: {
     title: "Ratgeber — Kündigung, Miete & mehr | GetDocu",
     desc: "Verständliche Ratgeber zu Kündigung, Mietrecht und Anbieter-Kündigungen — plus fertige Dokumente in Minuten.",
     eyebrow: "Ratgeber",
     intro: "Verständlich erklärt, worauf es ankommt — und für jeden Fall das passende Dokument in Minuten.",
+    search: "Anbieter oder Thema suchen … (z.B. Netflix, Krankenkasse)",
+    noResults: "Nichts gefunden. Versuch es mit einem anderen Begriff.",
   },
   en: {
     title: "Guides — Resignation, Documents & more | GetDocu",
     desc: "Clear guides on resigning, documents and more — plus ready-to-use documents in minutes.",
     eyebrow: "Guides",
     intro: "Clear, practical guides — and the right document ready in minutes.",
+    search: "Search guides …",
+    noResults: "No results. Try a different search term.",
   },
   es: {
     title: "Guías — Renuncia, documentos y más | GetDocu",
     desc: "Guías claras sobre renuncia, documentos y más — con documentos listos en minutos.",
     eyebrow: "Guías",
     intro: "Guías claras y prácticas — y el documento adecuado listo en minutos.",
+    search: "Busca una compañía o un tema … (p. ej. Netflix, Movistar)",
+    noResults: "Sin resultados. Prueba con otro término.",
   },
 };
 
@@ -81,15 +88,20 @@ export default async function RatgeberIndex({
     });
     if (hubItems.length) categories.push({ name: "Nach Kategorie kündigen", items: hubItems });
 
-    const brandItems = allBrandSlugs.map((slug) => {
-      const b = brands[slug];
-      return {
-        href: `/${params.locale}/ratgeber/anbieter/${slug}`,
-        title: `${b.name} kündigen`,
-        desc: `${b.category} — Vorlage, Frist & Adresse.`,
-      };
-    });
-    if (brandItems.length) categories.push({ name: "Anbieter kündigen", items: brandItems });
+    const brandItems = allBrandSlugs
+      .map((slug) => {
+        const b = brands[slug];
+        return {
+          href: `/${params.locale}/ratgeber/anbieter/${slug}`,
+          title: `${b.name} kündigen`,
+          desc:
+            b.cancelChannel === "online"
+              ? `${b.category} — so kündigst du Schritt für Schritt.`
+              : `${b.category} — Vorlage, Frist & Adresse.`,
+        };
+      })
+      .sort((a, b) => a.title.localeCompare(b.title, "de"));
+    if (brandItems.length) categories.push({ name: "Anbieter kündigen (A–Z)", items: brandItems });
   }
 
   if (params.locale === "es") {
@@ -113,11 +125,13 @@ export default async function RatgeberIndex({
       };
       byCountry.set(b.countryName, [...(byCountry.get(b.countryName) ?? []), item]);
     }
+    const byTitleEs = (a: { title: string }, b: { title: string }) =>
+      a.title.localeCompare(b.title, "es");
     for (const country of esCountryOrder) {
       const items = byCountry.get(country);
-      if (items && items.length) categories.push({ name: `Dar de baja en ${country}`, items });
+      if (items && items.length) categories.push({ name: `Dar de baja en ${country}`, items: items.sort(byTitleEs) });
     }
-    if (globalItems.length) categories.push({ name: "Cancelar streaming y suscripciones", items: globalItems });
+    if (globalItems.length) categories.push({ name: "Cancelar streaming y suscripciones", items: globalItems.sort(byTitleEs) });
   }
 
   return (
@@ -139,25 +153,11 @@ export default async function RatgeberIndex({
           <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-cream-muted">{m.intro}</p>
 
-          <div className="mt-12 space-y-12">
-            {categories.map((cat) => (
-              <div key={cat.name}>
-                <h2 className="mb-5 text-xs font-medium uppercase tracking-widest text-cream-muted">{cat.name}</h2>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {cat.items.map((it) => (
-                    <Link
-                      key={it.href}
-                      href={it.href}
-                      className="group rounded-sm border border-ink-700 bg-ink-900 p-5 transition hover:border-swiss-gold/40 hover:bg-ink-800"
-                    >
-                      <h3 className="font-serif text-lg font-medium leading-snug text-cream">{it.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-cream-muted">{it.desc}</p>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <GuideDirectory
+            categories={categories}
+            searchPlaceholder={m.search}
+            noResultsText={m.noResults}
+          />
         </div>
       </section>
 
