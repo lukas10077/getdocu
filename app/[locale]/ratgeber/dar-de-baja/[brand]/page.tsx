@@ -112,7 +112,37 @@ export default async function DarDeBajaPage({
           </h1>
           <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
 
+          {/* Badges: cómo se cancela, de un vistazo */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            {(brand.cancelChannel === "online" || brand.cancelChannel === "beides") && (
+              <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300">🌐 Sin carta: online o por teléfono</span>
+            )}
+            {(brand.cancelChannel === "brief" || brand.cancelChannel === "beides" || !brand.cancelChannel) && (
+              <span className="rounded-full border border-swiss-gold/40 bg-swiss-gold/10 px-3 py-1 text-xs text-swiss-gold">✉️ Por escrito, con constancia</span>
+            )}
+          </div>
+
           <p className="mt-8 text-base leading-relaxed text-cream-muted">{brand.intro}</p>
+
+          {/* Pasos para cancelar online */}
+          {(brand.onlineSteps?.length ?? 0) > 0 && (
+            <div className="mt-8 rounded-sm border border-ink-700 bg-ink-900 p-5">
+              <h2 className="mb-3 font-serif text-2xl font-medium text-cream">Cómo cancelar, paso a paso</h2>
+              <ol className="space-y-2 text-sm leading-relaxed text-cream-muted">
+                {(brand.onlineSteps ?? []).map((s, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="font-medium text-swiss-gold">{i + 1}.</span>
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ol>
+              {brand.onlineUrl && (
+                <a href={brand.onlineUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm text-swiss-gold underline hover:opacity-80">
+                  Ir a la página de cancelación de {brand.name} →
+                </a>
+              )}
+            </div>
+          )}
 
           {!brand.global && (
             <div className="mt-8">

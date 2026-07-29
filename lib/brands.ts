@@ -20,6 +20,15 @@ export interface Brand {
   // Wert aus der Auswahlliste passt ("1 Monat", "2 Monate", "3 Monate", "6 Monate", "1 Jahr").
   // Bei uneindeutiger/vertragsabhängiger Frist weglassen (Nutzer wählt selbst).
   defaultNoticePeriod?: string;
+  // Kündigungsweg: steuert Badge + Aufbau der Seite.
+  // "online"  → Schritt-für-Schritt-Anleitung im Vordergrund, Tool nur als dezenter Hinweis
+  // "brief"   → Brief ist der sichere/verlangte Weg, Tool-CTA im Vordergrund (Standard)
+  // "beides"  → beide Wege gleichwertig zeigen
+  cancelChannel?: "online" | "brief" | "beides";
+  // Schritt-für-Schritt für die Online-Kündigung (bei cancelChannel online/beides)
+  onlineSteps?: string[];
+  // Direktlink zur Kündigungs-/Kontoseite des Anbieters
+  onlineUrl?: string;
 }
 
 export const brands: Record<string, Brand> = {
@@ -276,6 +285,299 @@ export const brands: Record<string, Brand> = {
       { q: "Kann ich nach einem Schadenfall kündigen?", a: "Ja, nach einem Schadenfall besteht in der Regel ein Sonderkündigungsrecht. Die Details stehen in deinen AVB." },
     ],
     sourceNote: "Angaben Stand 2026. Deine genaue Frist steht in deiner Police bzw. den AVB.",
+  },
+  // ── Streaming & Digital-Abos (online kündbar) ────────────────────────
+  // Bewusst aufgenommen für SEO-Reichweite: Die Seite zeigt ehrlich den Online-Weg
+  // Schritt für Schritt; das Kündigungs-Tool erscheint nur als dezenter Hinweis.
+  netflix: {
+    slug: "netflix",
+    name: "Netflix",
+    category: "Streaming",
+    countryCode: "DE",
+    cancelChannel: "online",
+    intro:
+      "Netflix kündigst du direkt im Konto — ganz ohne Brief. Hier siehst du Schritt für Schritt, wie es geht, und worauf du achten solltest.",
+    noticePeriod:
+      "Keine Kündigungsfrist: Du kannst jederzeit kündigen. Das Abo läuft bis zum Ende des bereits bezahlten Abrechnungszeitraums weiter und endet dann automatisch.",
+    address: [],
+    onlineSteps: [
+      "Melde dich auf netflix.com in deinem Konto an.",
+      "Öffne über dein Profilbild oben rechts den Punkt „Konto“.",
+      "Klicke unter „Mitgliedschaft“ auf „Mitgliedschaft kündigen“ und bestätige.",
+      "Du erhältst eine Bestätigungs-E-Mail — das Abo läuft bis zum Ende des bezahlten Zeitraums.",
+    ],
+    onlineUrl: "https://www.netflix.com/cancelplan",
+    facts: [
+      "Nach der Kündigung kannst du bis zum Ende des bezahlten Zeitraums normal weiterschauen.",
+      "Zahlst du über einen Drittanbieter (z.B. Apple, Google oder deinen Telekom-Anbieter), musst du dort kündigen — nicht bei Netflix.",
+      "Dein Profil samt Merkliste bleibt 10 Monate gespeichert, falls du zurückkommst.",
+    ],
+    faq: [
+      { q: "Wie kündige ich Netflix?", a: "Im Konto auf netflix.com unter „Mitgliedschaft“ → „Mitgliedschaft kündigen“. Ein Brief ist nicht nötig." },
+      { q: "Gibt es bei Netflix eine Kündigungsfrist?", a: "Nein. Du kündigst jederzeit, das Abo endet zum Ende des bezahlten Abrechnungszeitraums." },
+      { q: "Ich zahle über Apple/Google — wo kündige ich?", a: "Direkt beim Zahlungsanbieter: im App Store unter Abos bzw. bei Google Play unter Abos & Dienste." },
+    ],
+    sourceNote: "Angaben Stand Juli 2026, Netflix-Hilfe.",
+  },
+
+  spotify: {
+    slug: "spotify",
+    name: "Spotify",
+    category: "Streaming",
+    countryCode: "DE",
+    cancelChannel: "online",
+    intro:
+      "Spotify Premium kündigst du in wenigen Klicks im Browser — nicht in der App. Hier ist der genaue Weg.",
+    noticePeriod:
+      "Keine Kündigungsfrist: Premium läuft bis zum Ende des bezahlten Abrechnungszeitraums und wechselt danach automatisch in die kostenlose Version.",
+    address: [],
+    onlineSteps: [
+      "Öffne spotify.com/account im Browser und melde dich an (in der App geht es nicht).",
+      "Gehe zu „Verfügbare Abos“ bzw. „Abo verwalten“.",
+      "Wähle bei Premium „Kündigen“ und bestätige die Abfrage.",
+      "Auf der Kontoseite steht anschließend das Datum, bis zu dem Premium aktiv bleibt.",
+    ],
+    onlineUrl: "https://www.spotify.com/account/",
+    facts: [
+      "In der Spotify-App selbst kannst du nicht kündigen — nur über die Konto-Seite im Browser.",
+      "Nach dem Premium-Ende behältst du dein Konto, Playlists und Follower — nur mit Werbung und ohne Downloads.",
+      "Hast du Premium über einen Drittanbieter (z.B. Apple oder deinen Mobilfunkanbieter) abgeschlossen, kündigst du dort.",
+    ],
+    faq: [
+      { q: "Wie kündige ich Spotify Premium?", a: "Auf spotify.com/account im Browser anmelden, „Abo verwalten“ öffnen und Premium kündigen. In der App ist das nicht möglich." },
+      { q: "Verliere ich meine Playlists?", a: "Nein. Konto, Playlists und gespeicherte Musik bleiben — du wechselst nur in die Gratis-Version mit Werbung." },
+      { q: "Wann endet Premium nach der Kündigung?", a: "Zum Ende des bereits bezahlten Abrechnungszeitraums. Das genaue Datum siehst du auf deiner Kontoseite." },
+    ],
+    sourceNote: "Angaben Stand Juli 2026, Spotify-Support.",
+  },
+
+  "disney-plus": {
+    slug: "disney-plus",
+    name: "Disney+",
+    category: "Streaming",
+    countryCode: "DE",
+    cancelChannel: "online",
+    intro:
+      "Disney+ kündigst du online im Konto — je nachdem, wo du das Abo abgeschlossen hast. Hier ist der Weg Schritt für Schritt.",
+    noticePeriod:
+      "Beim Monatsabo gibt es keine Frist: Es endet zum Ende des bezahlten Monats. Beim Jahresabo endet der Zugang zum Ende des bezahlten Jahres.",
+    address: [],
+    onlineSteps: [
+      "Melde dich auf disneyplus.com im Browser an.",
+      "Öffne über dein Profil „Konto“.",
+      "Wähle dein Abo aus und klicke auf „Abo kündigen“, dann bestätigen.",
+      "Du kannst bis zum Ende des bezahlten Zeitraums weiterschauen.",
+    ],
+    onlineUrl: "https://www.disneyplus.com/account",
+    facts: [
+      "Hast du Disney+ über Apple, Google oder Amazon abonniert, kündigst du direkt dort (App Store / Google Play / Amazon-Konto).",
+      "Nach der Kündigung läuft der Zugang bis zum Ende des bezahlten Zeitraums — kein anteiliges Geld zurück.",
+      "Beim Jahresabo lohnt ein Kalender-Reminder kurz vor der Verlängerung.",
+    ],
+    faq: [
+      { q: "Wie kündige ich Disney+?", a: "Auf disneyplus.com anmelden, unter „Konto“ dein Abo auswählen und „Abo kündigen“ bestätigen." },
+      { q: "Ich habe über Apple/Google/Amazon abonniert — wo kündige ich?", a: "Direkt beim jeweiligen Anbieter: App Store-Abos, Google Play-Abos bzw. Amazon-Konto unter Mitgliedschaften." },
+      { q: "Bekomme ich Geld zurück?", a: "Nein, in der Regel nicht. Das Abo läuft bis zum Ende des bezahlten Zeitraums und endet dann." },
+    ],
+    sourceNote: "Angaben Stand Juli 2026, Disney+-Hilfe.",
+  },
+
+  "amazon-prime": {
+    slug: "amazon-prime",
+    name: "Amazon Prime",
+    category: "Streaming",
+    countryCode: "DE",
+    cancelChannel: "online",
+    intro:
+      "Amazon Prime kündigst du direkt im Amazon-Konto. Hier siehst du den genauen Weg — und wann dir Amazon sogar Geld zurückerstattet.",
+    noticePeriod:
+      "Keine Kündigungsfrist: Du kündigst jederzeit zum Ende des bezahlten Zeitraums. Hast du Prime-Vorteile seit der letzten Zahlung nicht genutzt, erstattet Amazon den Beitrag oft anteilig oder ganz.",
+    address: [],
+    onlineSteps: [
+      "Melde dich bei Amazon an und öffne „Konto und Listen“ → „Prime“.",
+      "Klicke auf „Mitgliedschaft verwalten“ → „Mitgliedschaft aktualisieren, kündigen und mehr“.",
+      "Wähle „Mitgliedschaft beenden“ und bestätige die Abfragen (Amazon fragt mehrfach nach).",
+      "Du siehst am Ende, bis wann Prime aktiv bleibt bzw. ob eine Erstattung möglich ist.",
+    ],
+    onlineUrl: "https://www.amazon.de/mc",
+    facts: [
+      "Amazon zeigt im Kündigungsdialog mehrere Zwischenschritte — erst nach der letzten Bestätigung ist die Kündigung wirklich aktiv.",
+      "Alternativ kannst du „An Mitgliedschaft erinnern“ wählen: Amazon erinnert dich vor der nächsten Verlängerung.",
+      "Prime Video als Einzel-Abo kündigst du unter „Konten & Einstellungen“ direkt bei Prime Video.",
+    ],
+    faq: [
+      { q: "Wie kündige ich Amazon Prime?", a: "Im Amazon-Konto unter „Prime“ → „Mitgliedschaft verwalten“ → „Mitgliedschaft beenden“ und alle Abfragen bestätigen." },
+      { q: "Bekomme ich Geld zurück?", a: "Wenn du seit der letzten Abbuchung keine Prime-Vorteile genutzt hast, erstattet Amazon den Beitrag in der Regel." },
+      { q: "Gibt es eine Kündigungsfrist?", a: "Nein. Prime endet zum Ende des bezahlten Zeitraums — oder sofort mit Erstattung, wenn du es nicht genutzt hast." },
+    ],
+    sourceNote: "Angaben Stand Juli 2026, Amazon-Hilfe.",
+  },
+
+  dazn: {
+    slug: "dazn",
+    name: "DAZN",
+    category: "Streaming",
+    countryCode: "DE",
+    cancelChannel: "online",
+    intro:
+      "DAZN kündigst du im Konto auf der Website — Achtung bei Jahresverträgen mit monatlicher Zahlung. Hier ist der genaue Weg.",
+    noticePeriod:
+      "Flexibles Monatsabo: jederzeit zum Ende des Abrechnungsmonats kündbar. Jahresabo (auch bei monatlicher Zahlung): Kündigung erst zum Ende der 12-monatigen Laufzeit möglich.",
+    address: [],
+    onlineSteps: [
+      "Melde dich auf dazn.com im Browser an (in der TV-App geht es nicht).",
+      "Öffne „Mein Konto“ → „Abonnement“.",
+      "Klicke auf „Abonnement kündigen“ und bestätige die Abfragen.",
+      "Du erhältst eine Bestätigung mit dem Enddatum deines Zugangs.",
+    ],
+    onlineUrl: "https://www.dazn.com/account",
+    facts: [
+      "Wichtig: „Monatlich zahlen“ heißt bei DAZN nicht automatisch monatlich kündbar — beim Jahresvertrag bist du 12 Monate gebunden.",
+      "Kündige einige Tage vor Ende des Abrechnungszeitraums, damit die Kündigung sicher rechtzeitig greift.",
+      "Bei Abschluss über Apple, Google oder Amazon kündigst du direkt dort.",
+    ],
+    faq: [
+      { q: "Wie kündige ich DAZN?", a: "Auf dazn.com anmelden, unter „Mein Konto“ → „Abonnement“ auf „Abonnement kündigen“ klicken und bestätigen." },
+      { q: "Ich zahle monatlich — kann ich monatlich kündigen?", a: "Nur beim flexiblen Monatsabo. Beim Jahresvertrag mit monatlicher Zahlung bist du 12 Monate gebunden." },
+      { q: "Wann endet mein Zugang?", a: "Beim Monatsabo zum Ende des Abrechnungsmonats, beim Jahresabo zum Ende der 12-Monats-Laufzeit." },
+    ],
+    sourceNote: "Angaben Stand Juli 2026, DAZN-Hilfe.",
+  },
+
+  // ── Telekom & Fitness & Krankenkasse (CH) ─────────────────────────────
+  sunrise: {
+    slug: "sunrise",
+    name: "Sunrise",
+    category: "Handyvertrag",
+    countryCode: "CH",
+    cancelChannel: "online",
+    intro:
+      "Wichtig zu wissen: Sunrise akzeptiert keine schriftlichen Kündigungen mehr. Gekündigt wird telefonisch oder per Chat — hier ist der genaue Ablauf.",
+    noticePeriod:
+      "In der Regel 60 Tage Kündigungsfrist auf Ende Monat (nach Ablauf einer allfälligen Mindestlaufzeit). Deine genaue Frist steht im Vertrag bzw. in My Sunrise.",
+    address: [],
+    onlineSteps: [
+      "Rufe die Sunrise-Hotline 0800 100 600 an (kostenlos) oder starte den Chat auf sunrise.ch.",
+      "Sage klar, dass du dein Abo kündigen willst — lass dich nicht in ein Rückhalte-Angebot drängen, wenn du sicher bist.",
+      "Halte Kundennummer und Vertragsdaten bereit.",
+      "Verlange eine schriftliche Kündigungsbestätigung per E-Mail und notiere Datum, Uhrzeit und Namen der Kontaktperson.",
+    ],
+    onlineUrl: "https://www.sunrise.ch/de/hilfe",
+    facts: [
+      "Briefe und E-Mails werden von Sunrise als Kündigung nicht akzeptiert — nur Telefon oder Chat zählen.",
+      "Gerade deshalb ist Dokumentation wichtig: Bestätigungs-E-Mail verlangen und das Gespräch (Datum/Zeit/Name) festhalten.",
+      "Bei Kündigung während der Mindestlaufzeit können Restgebühren anfallen.",
+    ],
+    faq: [
+      { q: "Kann ich Sunrise per Brief kündigen?", a: "Nein. Sunrise akzeptiert schriftliche Kündigungen nicht mehr — kündige telefonisch (0800 100 600) oder per Chat und verlange eine schriftliche Bestätigung." },
+      { q: "Welche Kündigungsfrist hat Sunrise?", a: "In der Regel 60 Tage auf Ende Monat, nach Ablauf einer allfälligen Mindestlaufzeit. Details stehen in deinem Vertrag." },
+      { q: "Wie sichere ich mich ab?", a: "Verlange im Gespräch/Chat eine Kündigungsbestätigung per E-Mail und notiere Datum, Uhrzeit und den Namen der Kontaktperson." },
+    ],
+    defaultNoticePeriod: "2 Monate",
+    sourceNote: "Angaben Stand Juli 2026, recherchiert. Konditionen können ändern — prüfe deinen Vertrag bzw. My Sunrise.",
+  },
+
+  swisscom: {
+    slug: "swisscom",
+    name: "Swisscom",
+    category: "Handyvertrag",
+    countryCode: "CH",
+    cancelChannel: "beides",
+    intro:
+      "Swisscom kannst du telefonisch, im Chat oder klassisch per Brief kündigen. Der Brief per Einschreiben ist der Weg mit dem besten Nachweis — hier findest du beides.",
+    noticePeriod:
+      "Die Frist hängt von deinem Abo ab: Viele Abos sind nach Ablauf der Mindestlaufzeit (oft 12–24 Monate) mit kurzer Frist kündbar. Deine genaue Laufzeit und Frist siehst du in My Swisscom. Massgebend ist das Eingangsdatum der Kündigung.",
+    address: ["Swisscom (Schweiz) AG", "Kundenservice", "Alte Tiefenaustrasse 6", "3050 Bern"],
+    onlineSteps: [
+      "Rufe die Swisscom-Hotline 0800 800 800 an oder starte den Chat auf swisscom.ch.",
+      "Halte Kundennummer und Vertragsdaten bereit und nenne den gewünschten Kündigungstermin.",
+      "Verlange eine schriftliche Kündigungsbestätigung per E-Mail.",
+    ],
+    onlineUrl: "https://www.swisscom.ch/de/privatkunden/hilfe.html",
+    facts: [
+      "Der eingeschriebene Brief an den Kundenservice in Bern ist der sicherste Nachweis für die rechtzeitige Kündigung.",
+      "Bei Kündigung während der Mindestlaufzeit können Restgebühren anfallen — Laufzeit vorher in My Swisscom prüfen.",
+      "Gib im Schreiben Kundennummer, Rufnummer bzw. Vertragsnummer und den Kündigungstermin an.",
+    ],
+    faq: [
+      { q: "Wie kündige ich mein Swisscom-Abo?", a: "Telefonisch (0800 800 800), per Chat — oder am sichersten per eingeschriebenem Brief an Swisscom (Schweiz) AG, Kundenservice, Alte Tiefenaustrasse 6, 3050 Bern." },
+      { q: "Welche Kündigungsfrist gilt?", a: "Das hängt vom Abo ab. Laufzeit und Frist siehst du in My Swisscom; massgebend ist das Eingangsdatum der Kündigung." },
+      { q: "Was kostet die Kündigung während der Mindestlaufzeit?", a: "Es können Restgebühren bis zum Ende der Mindestlaufzeit anfallen. Prüfe deine Laufzeit vor der Kündigung." },
+    ],
+    sourceNote: "Angaben Stand Juli 2026, recherchiert. Konditionen abovariabel — prüfe My Swisscom.",
+  },
+
+  "activ-fitness": {
+    slug: "activ-fitness",
+    name: "Activ Fitness",
+    category: "Fitnessstudio",
+    countryCode: "CH",
+    cancelChannel: "brief",
+    intro:
+      "Du willst dein Activ-Fitness-Abo kündigen? Hier findest du die Frist, die Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Das Abo ist mit einer Frist von 2 Monaten auf das Ende der Vertragsdauer schriftlich kündbar. Ohne rechtzeitige Kündigung verlängert es sich.",
+    address: ["ACTIV FITNESS / movemi AG", "z.H. Kundenservice", "Thurgauerstrasse 32", "8050 Zürich"],
+    facts: [
+      "Kündige schriftlich per Brief — ein Einschreiben ist der sicherste Nachweis für die rechtzeitige Zustellung.",
+      "Massgebend ist der Zugang bei Activ Fitness, nicht der Poststempel.",
+      "Gib Mitgliedernummer und dein Studio an, damit die Kündigung zugeordnet werden kann.",
+    ],
+    faq: [
+      { q: "Welche Kündigungsfrist hat Activ Fitness?", a: "2 Monate auf das Ende der Vertragsdauer. Das genaue Vertragsende steht in deinen Unterlagen." },
+      { q: "Wohin schicke ich die Activ-Fitness-Kündigung?", a: "An ACTIV FITNESS / movemi AG, z.H. Kundenservice, Thurgauerstrasse 32, 8050 Zürich — am besten per Einschreiben." },
+      { q: "Muss die Kündigung schriftlich sein?", a: "Ja. Ein eingeschriebener Brief dokumentiert den Zugang nachweisbar." },
+    ],
+    defaultNoticePeriod: "2 Monate",
+    sourceNote: "Angaben Stand Juli 2026, recherchiert. Dein genaues Vertragsende steht in deinen Unterlagen.",
+  },
+
+  helsana: {
+    slug: "helsana",
+    name: "Helsana",
+    category: "Versicherung",
+    countryCode: "CH",
+    cancelChannel: "brief",
+    intro:
+      "Du willst deine Helsana-Krankenversicherung kündigen? Hier findest du Stichtag, Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Grundversicherung: Die Kündigung muss bis spätestens 30. November bei Helsana eintreffen, damit du per 1. Januar wechseln kannst. Zusatzversicherungen haben meist längere Fristen (oft 3 Monate auf Jahresende) — prüfe deine Police.",
+    address: ["Helsana Versicherungen AG", "IDPH Kündigungen D-CH", "Postfach", "8081 Zürich"],
+    facts: [
+      "Massgebend ist der Eingang bei Helsana, nicht der Poststempel — sende die Kündigung deutlich vor dem 30. November per Einschreiben.",
+      "Alternativ akzeptiert Helsana Kündigungen per E-Mail an cancellation@helsana.ch — verlange eine Bestätigung.",
+      "Die Grundversicherung darf erst enden, wenn der neue Versicherer die Aufnahme bestätigt hat — schliesse die neue Versicherung vorher ab.",
+    ],
+    faq: [
+      { q: "Bis wann muss ich die Helsana-Grundversicherung kündigen?", a: "Die Kündigung muss bis 30. November bei Helsana eintreffen (Wechsel per 1. Januar). Der Poststempel zählt nicht." },
+      { q: "Wohin schicke ich die Helsana-Kündigung?", a: "An Helsana Versicherungen AG, IDPH Kündigungen D-CH, Postfach, 8081 Zürich — oder per E-Mail an cancellation@helsana.ch." },
+      { q: "Gilt der Stichtag auch für Zusatzversicherungen?", a: "Nein, Zusatzversicherungen haben eigene, meist längere Fristen (oft 3 Monate auf Jahresende). Prüfe deine Police." },
+    ],
+    sourceNote: "Angaben Stand Juli 2026, recherchiert. Fristen der Zusatzversicherungen stehen in deiner Police.",
+  },
+
+  css: {
+    slug: "css",
+    name: "CSS",
+    category: "Versicherung",
+    countryCode: "CH",
+    cancelChannel: "brief",
+    intro:
+      "Du willst deine CSS-Krankenversicherung kündigen? Hier findest du Stichtag, Adresse und wie du in wenigen Minuten ein korrektes Kündigungsschreiben erstellst.",
+    noticePeriod:
+      "Grundversicherung: Die Kündigung muss bis spätestens 30. November bei der CSS eintreffen, damit du per 1. Januar wechseln kannst. Zusatzversicherungen haben meist 3 Monate Frist auf Jahresende — prüfe deine Police.",
+    address: ["CSS Versicherung", "Kundenbetreuung", "Postfach 2550", "6002 Luzern"],
+    facts: [
+      "Massgebend ist der Eingang bei der CSS, nicht der Poststempel — sende die Kündigung deutlich vor dem 30. November per Einschreiben.",
+      "Gib Versichertennummer und die zu kündigende Versicherung (Grund- bzw. Zusatzversicherung) klar an.",
+      "Die Grundversicherung endet erst, wenn der neue Versicherer die Aufnahme bestätigt hat — schliesse die neue Versicherung vorher ab.",
+    ],
+    faq: [
+      { q: "Bis wann muss ich die CSS-Grundversicherung kündigen?", a: "Die Kündigung muss bis 30. November bei der CSS eintreffen (Wechsel per 1. Januar). Der Poststempel zählt nicht." },
+      { q: "Wohin schicke ich die CSS-Kündigung?", a: "An CSS Versicherung, Kundenbetreuung, Postfach 2550, 6002 Luzern — am besten per Einschreiben." },
+      { q: "Welche Frist gilt für Zusatzversicherungen?", a: "Meist 3 Monate auf Jahresende — die genaue Frist steht in deiner Police." },
+    ],
+    sourceNote: "Angaben Stand Juli 2026, recherchiert. Fristen der Zusatzversicherungen stehen in deiner Police.",
   },
 };
 

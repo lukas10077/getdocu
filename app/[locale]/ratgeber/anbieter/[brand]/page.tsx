@@ -50,10 +50,10 @@ export default async function BrandPage({
   const toolParams = new URLSearchParams({
     country: brand.countryCode,
     recipientName: brand.name,
-    recipientAddress: brand.address.join("\n"),
     // Kündigungstyp aus der Marken-Kategorie ableiten (Wert = deutsche Option im Tool)
     type: brand.category === "Versicherung" ? "Versicherung" : "Abonnement / Mitgliedschaft",
   });
+  if (brand.address.length > 0) toolParams.set("recipientAddress", brand.address.join("\n"));
   if (brand.defaultNoticePeriod) toolParams.set("noticePeriod", brand.defaultNoticePeriod);
   const toolHref = `/${params.locale}/tools/kuendigung?${toolParams.toString()}`;
   const hub = hubForCategory(brand.category);
@@ -91,9 +91,24 @@ export default async function BrandPage({
             Ratgeber · {brand.category} kündigen
           </p>
           <h1 className="font-serif text-4xl font-medium text-cream md:text-5xl">
-            {brand.name} kündigen — Vorlage, Frist &amp; Adresse
+            {brand.cancelChannel === "online"
+              ? <>{brand.name} kündigen — so geht&apos;s Schritt für Schritt</>
+              : <>{brand.name} kündigen — Vorlage, Frist &amp; Adresse</>}
           </h1>
           <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
+
+          {/* Kündigungsweg-Badges: auf einen Blick, wie man hier rauskommt */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            {(brand.cancelChannel === "online" || brand.cancelChannel === "beides") && (
+              <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300">🌐 Online kündbar</span>
+            )}
+            {(brand.cancelChannel === "brief" || brand.cancelChannel === "beides" || !brand.cancelChannel) && (
+              <span className="rounded-full border border-swiss-gold/40 bg-swiss-gold/10 px-3 py-1 text-xs text-swiss-gold">✉️ Schriftlich mit Nachweis</span>
+            )}
+            {brand.defaultNoticePeriod && (
+              <span className="rounded-full border border-ink-700 bg-ink-900 px-3 py-1 text-xs text-cream-muted">⏱ Frist: {brand.defaultNoticePeriod}</span>
+            )}
+          </div>
 
           <p className="mt-8 text-base leading-relaxed text-cream-muted">{brand.intro}</p>
 
@@ -102,14 +117,46 @@ export default async function BrandPage({
             <NoticeDeadline noticePeriod={brand.defaultNoticePeriod} brandName={brand.name} />
           )}
 
-          <div className="mt-8">
-            <Link href={toolHref} className={ctaClass}>
-              Kündigung jetzt erstellen →
-            </Link>
-            <p className="mt-3 text-xs text-cream-subtle">
-              Vorschau gratis · Erst zahlen, wenn du zufrieden bist · Daten danach gelöscht
+          {/* Online-Anleitung (bei online/beides) */}
+          {(brand.cancelChannel === "online" || brand.cancelChannel === "beides") && (brand.onlineSteps?.length ?? 0) > 0 && (
+            <div className="mt-8 rounded-sm border border-ink-700 bg-ink-900 p-5">
+              <h2 className="mb-3 font-serif text-2xl font-medium text-cream">
+                {brand.cancelChannel === "beides" ? "Weg 1: Direkt beim Anbieter kündigen" : "So kündigst du Schritt für Schritt"}
+              </h2>
+              <ol className="space-y-2 text-sm leading-relaxed text-cream-muted">
+                {(brand.onlineSteps ?? []).map((s, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="font-medium text-swiss-gold">{i + 1}.</span>
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ol>
+              {brand.onlineUrl && (
+                <a href={brand.onlineUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm text-swiss-gold underline hover:opacity-80">
+                  Zur Kündigungsseite von {brand.name} →
+                </a>
+              )}
+            </div>
+          )}
+
+          {brand.cancelChannel === "online" ? (
+            <p className="mt-6 text-sm text-cream-muted">
+              Du willst einen schriftlichen Nachweis oder kommst online nicht weiter?{" "}
+              <Link href={toolHref} className="text-swiss-gold underline hover:opacity-80">
+                Erstelle in 3 Minuten ein Kündigungsschreiben
+              </Link>
+              .
             </p>
-          </div>
+          ) : (
+            <div className="mt-8">
+              <Link href={toolHref} className={ctaClass}>
+                {brand.cancelChannel === "beides" ? "Weg 2: Kündigungsschreiben erstellen →" : "Kündigung jetzt erstellen →"}
+              </Link>
+              <p className="mt-3 text-xs text-cream-subtle">
+                Vorschau gratis · Erst zahlen, wenn du zufrieden bist · Daten danach gelöscht
+              </p>
+            </div>
+          )}
 
           <div className="mt-12 space-y-10 text-base leading-relaxed text-cream-muted">
             <section>
@@ -117,14 +164,16 @@ export default async function BrandPage({
               <p>{brand.noticePeriod}</p>
             </section>
 
-            <section>
-              <h2 className="mb-3 font-serif text-2xl font-medium text-cream">Kündigungsadresse</h2>
-              <div className="rounded-sm border border-ink-700 bg-ink-900 p-5 text-sm text-cream">
-                {brand.address.map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
-              </div>
-            </section>
+            {brand.address.length > 0 && (
+              <section>
+                <h2 className="mb-3 font-serif text-2xl font-medium text-cream">Kündigungsadresse</h2>
+                <div className="rounded-sm border border-ink-700 bg-ink-900 p-5 text-sm text-cream">
+                  {brand.address.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section>
               <h2 className="mb-3 font-serif text-2xl font-medium text-cream">Das solltest du beachten</h2>
@@ -138,6 +187,7 @@ export default async function BrandPage({
               </ul>
             </section>
 
+            {brand.cancelChannel !== "online" && (
             <section>
               <h2 className="mb-3 font-serif text-2xl font-medium text-cream">In Minuten zum fertigen Schreiben</h2>
               <p>
@@ -151,6 +201,7 @@ export default async function BrandPage({
                 </Link>
               </div>
             </section>
+            )}
 
             <section>
               <h2 className="mb-4 font-serif text-2xl font-medium text-cream">Häufige Fragen</h2>
