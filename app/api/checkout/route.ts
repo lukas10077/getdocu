@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { getTool } from "@/lib/tools";
 import { getCountry, getStripeAmount } from "@/lib/countries";
+import { getDictionary, type Locale } from "@/i18n/config";
 
 // Erstellt eine Stripe Checkout Session für ein Tool.
 // WICHTIG: Die Formulardaten des Nutzers werden hier NICHT an Stripe übermittelt
@@ -20,6 +21,13 @@ export async function POST(req: NextRequest) {
   if (!tool) {
     return NextResponse.json({ error: "Unbekanntes Tool." }, { status: 400 });
   }
+
+  // Lokalisierter Produktname für die Stripe-Bezahlseite — gleiche Logik wie auf
+  // den Tool-Seiten (dict.tools.items[slug].title, Fallback: deutscher Titel).
+  // getDictionary fällt bei unbekannter Locale auf Deutsch zurück.
+  const dict = await getDictionary(locale as Locale);
+  const productName: string =
+    dict?.tools?.items?.[tool.slug]?.title ?? tool.documentTitleDe;
 
   // Währung und Betrag nach Land bestimmen
   const country = countryCode ? getCountry(countryCode) : null;
@@ -52,7 +60,7 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency,
             unit_amount: amount,
-            product_data: { name: tool.documentTitleDe },
+            product_data: { name: productName },
           },
           quantity: 1,
         },
