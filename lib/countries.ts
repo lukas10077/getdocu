@@ -119,7 +119,7 @@ export const COUNTRIES: Country[] = [
   { code: "CZ", name: "Tschechien",                     flag: "🇨🇿", currency: "CZK", documentLang: "cs", continent: "europe" }, // ~10.9M
   { code: "GR", name: "Griechenland",                   flag: "🇬🇷", currency: "EUR", documentLang: "el", continent: "europe" }, // ~10.7M
   { code: "SE", name: "Schweden",                       flag: "🇸🇪", currency: "SEK", documentLang: "sv", continent: "europe" }, // ~10.5M
-  { code: "PT", name: "Portugal",                       flag: "🇵🇹", currency: "EUR", documentLang: "pt", continent: "europe" }, // ~10.3M
+  { code: "PT", name: "Portugal",                       flag: "🇵🇹", currency: "EUR", documentLang: "pt", continent: "europe", priority: 5 }, // ~10.3M
   { code: "HU", name: "Ungarn",                         flag: "🇭🇺", currency: "HUF", documentLang: "hu", continent: "europe" }, // ~9.7M
   { code: "BY", name: "Belarus",                        flag: "🇧🇾", currency: "BYR", documentLang: "be", continent: "europe" }, // ~9.4M
   { code: "AT", name: "Österreich",                     flag: "🇦🇹", currency: "EUR", documentLang: "de", continent: "europe", priority: 2 }, // ~9.1M
@@ -153,20 +153,20 @@ export const COUNTRIES: Country[] = [
 
   // ── Amerika (nach Bevölkerung) ────────────────────────
   { code: "US", name: "USA",                            flag: "🇺🇸", currency: "USD", documentLang: "en", continent: "americas" }, // ~335M
-  { code: "BR", name: "Brasilien",                      flag: "🇧🇷", currency: "BRL", documentLang: "pt", continent: "americas" }, // ~215M
+  { code: "BR", name: "Brasilien",                      flag: "🇧🇷", currency: "BRL", documentLang: "pt", continent: "americas", priority: 2 }, // ~215M
   { code: "MX", name: "Mexiko",                         flag: "🇲🇽", currency: "MXN", documentLang: "es", continent: "americas", priority: 1 }, // ~128M
-  { code: "CO", name: "Kolumbien",                      flag: "🇨🇴", currency: "COP", documentLang: "es", continent: "americas", priority: 2 }, // ~52M
-  { code: "AR", name: "Argentinien",                    flag: "🇦🇷", currency: "ARS", documentLang: "es", continent: "americas", priority: 3 }, // ~46M
+  { code: "CO", name: "Kolumbien",                      flag: "🇨🇴", currency: "COP", documentLang: "es", continent: "americas", priority: 3 }, // ~52M
+  { code: "AR", name: "Argentinien",                    flag: "🇦🇷", currency: "ARS", documentLang: "es", continent: "americas", priority: 4 }, // ~46M
   { code: "CA", name: "Kanada",                         flag: "🇨🇦", currency: "CAD", documentLang: "en", continent: "americas" }, // ~38M
-  { code: "PE", name: "Peru",                           flag: "🇵🇪", currency: "PEN", documentLang: "es", continent: "americas", priority: 4 }, // ~33M
+  { code: "PE", name: "Peru",                           flag: "🇵🇪", currency: "PEN", documentLang: "es", continent: "americas", priority: 5 }, // ~33M
   { code: "VE", name: "Venezuela",                      flag: "🇻🇪", currency: "USD", documentLang: "es", continent: "americas" }, // ~28M
-  { code: "CL", name: "Chile",                          flag: "🇨🇱", currency: "CLP", documentLang: "es", continent: "americas", priority: 6 }, // ~19M
-  { code: "EC", name: "Ecuador",                        flag: "🇪🇨", currency: "USD", documentLang: "es", continent: "americas", priceFactor: 0.8, priority: 5 }, // ~18M; USD offiziell, daher Rabatt via priceFactor
+  { code: "CL", name: "Chile",                          flag: "🇨🇱", currency: "CLP", documentLang: "es", continent: "americas", priority: 7 }, // ~19M
+  { code: "EC", name: "Ecuador",                        flag: "🇪🇨", currency: "USD", documentLang: "es", continent: "americas", priceFactor: 0.8, priority: 6 }, // ~18M; USD offiziell, daher Rabatt via priceFactor
   { code: "GT", name: "Guatemala",                      flag: "🇬🇹", currency: "GTQ", documentLang: "es", continent: "americas" }, // ~17M
   { code: "BO", name: "Bolivien",                       flag: "🇧🇴", currency: "BOB", documentLang: "es", continent: "americas" }, // ~12M
   { code: "HT", name: "Haiti",                          flag: "🇭🇹", currency: "HTG", documentLang: "fr", continent: "americas" }, // ~11M
   { code: "CU", name: "Kuba",                           flag: "🇨🇺", currency: "CUP", documentLang: "es", continent: "americas" }, // ~11M
-  { code: "DO", name: "Dominikanische Republik",        flag: "🇩🇴", currency: "DOP", documentLang: "es", continent: "americas", priority: 7 }, // ~11M
+  { code: "DO", name: "Dominikanische Republik",        flag: "🇩🇴", currency: "DOP", documentLang: "es", continent: "americas", priority: 8 }, // ~11M
   { code: "HN", name: "Honduras",                       flag: "🇭🇳", currency: "HNL", documentLang: "es", continent: "americas" }, // ~10M
   { code: "PY", name: "Paraguay",                       flag: "🇵🇾", currency: "PYG", documentLang: "es", continent: "americas" }, // ~7M
   { code: "NI", name: "Nicaragua",                      flag: "🇳🇮", currency: "NIO", documentLang: "es", continent: "americas" }, // ~6.8M
