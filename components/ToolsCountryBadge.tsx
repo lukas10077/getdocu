@@ -2,9 +2,15 @@
 
 import { useCountry } from "./CountryProvider";
 
-export default function ToolsCountryBadge() {
+// label kommt aus dem Dictionary (tools.countryBadge) und enthält den
+// Platzhalter {country}, z.B. "Documentos no padrão {country}".
+// Fallback: deutscher Text (bisheriges Verhalten für Sprachen ohne Key).
+export default function ToolsCountryBadge({ label }: { label?: string }) {
   const { country, setShowSelector } = useCountry();
   if (!country) return null;
+
+  const template = label && label.includes("{country}") ? label : "Dokumente nach {country}-Standards";
+  const [before, after] = template.split("{country}");
 
   return (
     <button
@@ -13,8 +19,9 @@ export default function ToolsCountryBadge() {
     >
       <span className="text-2xl leading-none">{country.flag}</span>
       <span>
-        Dokumente nach{" "}
-        <span className="text-cream">{country.name}-Standards</span>
+        {before}
+        <span className="text-cream">{country.name}</span>
+        {after}
       </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"

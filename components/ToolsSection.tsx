@@ -16,7 +16,7 @@ export default function ToolsSection({ locale, dict }: { locale: Locale; dict: a
             <div className="mt-3 h-px w-10 bg-swiss-gold opacity-60" />
             <p className="mt-4 max-w-xl text-base text-cream-muted">{dict.tools.subtitle}</p>
           </div>
-          <ToolsCountryBadge />
+          <ToolsCountryBadge label={dict.tools?.countryBadge} />
         </div>
 
         <div className="mt-14 space-y-14">

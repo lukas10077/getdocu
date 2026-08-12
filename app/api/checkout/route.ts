@@ -50,6 +50,9 @@ export async function POST(req: NextRequest) {
   let checkoutLocale: Stripe.Checkout.SessionCreateParams.Locale =
     STRIPE_LOCALES[locale as string] ?? "auto";
   if (locale === "es" && country?.continent === "americas") checkoutLocale = "es-419";
+  // Brasilianisches Portugiesisch für Nutzer in Amerika (Zielmarkt Brasilien) —
+  // "pt" wäre europäisches Portugiesisch und wirkt für Brasilianer fremd.
+  if (locale === "pt" && country?.continent === "americas") checkoutLocale = "pt-BR";
 
   try {
     const session = await stripe.checkout.sessions.create({

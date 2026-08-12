@@ -260,6 +260,10 @@ export function getStripeAmount(priceChfRappen: number, currency: string, priceF
 /** Betrag für die Anzeige (berücksichtigt zero- und three-decimal Währungen) */
 export function formatAmount(amount: number, currency: string): string {
   const cur = currency.toUpperCase();
+  // Brasilianisches Preisformat: "R$ 15,00" statt "15.00 BRL" (Zielmarkt Brasilien)
+  if (cur === "BRL") {
+    return `R$ ${(amount / 100).toFixed(2).replace(".", ",")}`;
+  }
   if (ZERO_DECIMAL_CURRENCIES.has(cur)) {
     return `${amount.toLocaleString("de-CH")} ${cur}`;
   }
