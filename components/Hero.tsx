@@ -4,14 +4,23 @@ import { Locale } from "@/i18n/config";
 import HeroMinPrice from "./HeroMinPrice";
 import HeroCountryPicker from "./HeroCountryPicker";
 
+// Hero-Bild pro Sprache. Das Standardbild zeigt ein Dokument mit deutscher
+// Aufschrift "BEWERBUNG" — für andere Sprachen hier ein lokalisiertes Bild
+// eintragen, sobald die Datei in /public liegt (z.B. "pt": "/hero-pt.jpg").
+const HERO_IMAGES: Partial<Record<Locale, string>> = {
+  "pt": "/hero-pt.jpg",
+  "es": "/hero-es.jpg",
+};
+
 export default function Hero({ locale, dict }: { locale: Locale; dict: any }) {
+  const heroSrc = HERO_IMAGES[locale] ?? "/hero.jpg";
   return (
     <section className="relative overflow-hidden bg-black px-6">
 
       {/* Desktop only: full-bleed photo on right */}
       <div className="hidden md:block absolute inset-y-0 right-0 w-[58%] bg-black">
         <Image
-          src="/hero.jpg"
+          src={heroSrc}
           alt={dict.hero.imageAlt ?? "Professionelles Dokument mit Stift"}
           fill
           className="object-contain object-right"
