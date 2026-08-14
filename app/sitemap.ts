@@ -20,9 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       entries.push({ url: `${BASE_URL}/${locale}/tools/${slug}`, changeFrequency: "monthly", priority: 0.8 });
     }
 
-    // Legal
-    for (const page of ["impressum", "datenschutz", "agb"]) {
-      entries.push({ url: `${BASE_URL}/${locale}/legal/${page}`, changeFrequency: "yearly", priority: 0.3 });
+    // Legal (nur auf Deutsch vorhanden -> nur die de-URLs listen, passend zum Canonical)
+    if (locale === "de") {
+      for (const page of ["impressum", "datenschutz", "agb"]) {
+        entries.push({ url: `${BASE_URL}/${locale}/legal/${page}`, changeFrequency: "yearly", priority: 0.3 });
+      }
     }
   }
 

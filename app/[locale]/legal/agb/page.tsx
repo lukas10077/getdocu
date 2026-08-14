@@ -1,7 +1,22 @@
+import type { Metadata } from "next";
 import { getDictionary, Locale } from "@/i18n/config";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.getdocunow.com";
+
+// Die Rechtsseiten existieren nur auf Deutsch. Ohne eigene Metadaten erben alle
+// Locale-URLs (z.B. /hu/legal/agb) die Homepage-Metadaten und liefern identischen
+// deutschen Text, was Google als Soft 404 / Duplikat wertet. Wir kanonisieren
+// deshalb jede Locale-Variante auf die deutsche Version.
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Allgemeine Geschäftsbedingungen — GetDocu",
+    description: "Allgemeine Geschäftsbedingungen (AGB) für die Nutzung von GetDocu.",
+    alternates: { canonical: `${BASE_URL}/de/legal/agb` },
+  };
+}
 
 export default async function Agb({ params }: { params: { locale: Locale } }) {
   const dict = await getDictionary(params.locale);

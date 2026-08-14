@@ -1,7 +1,20 @@
+import type { Metadata } from "next";
 import { getDictionary, Locale } from "@/i18n/config";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.getdocunow.com";
+
+// Nur auf Deutsch vorhanden: alle Locale-URLs auf die deutsche Version kanonisieren,
+// damit Google die Varianten nicht als Duplikat/Soft 404 wertet.
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Datenschutzerklärung — GetDocu",
+    description: "Informationen zur Verarbeitung deiner Daten bei GetDocu.",
+    alternates: { canonical: `${BASE_URL}/de/legal/datenschutz` },
+  };
+}
 
 export default async function Datenschutz({ params }: { params: { locale: Locale } }) {
   const dict = await getDictionary(params.locale);
