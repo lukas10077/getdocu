@@ -101,16 +101,16 @@
       "subjectObjection": "Recurso contra a sua decisão",
       "bodyObjection": "Venho por meio desta apresentar recurso, dentro do prazo, contra a decisão acima referida.",
       "subjectReference": "Carta de referência",
-      "bodyReference": "___ trabalhou na nossa empresa como ___ de ___ a ___.",
-      "body2Reference": "___ executou sempre as tarefas atribuídas com fiabilidade, autonomia e para nossa total satisfação …",
+      "bodyReference": "___ trabalhou em nossa empresa como ___ de ___ a ___.",
+      "body2Reference": "___ sempre executou as tarefas atribuídas com confiabilidade, autonomia e para nossa total satisfação …",
       "subjectReply": "Resposta à sua carta de ___",
-      "bodyReply": "Venho por este meio fazer referência à sua carta de ___ e pronunciar-me da seguinte forma.",
+      "bodyReply": "Venho por meio desta fazer referência à sua carta de ___ e me posicionar da seguinte forma.",
       "cvExperience": "Experiência profissional",
       "cvEducation": "Formação",
-      "cvSkills": "Competências",
-      "cvExpText": "Responsável por ___ e pela colaboração com clientes e equipa na área de ___.",
+      "cvSkills": "Habilidades",
+      "cvExpText": "Responsável por ___ e pela colaboração com clientes e equipe na área de ___.",
       "cvEduText": "Formação como ___ com especialização em ___.",
-      "cvSkillsText": "Línguas, competências informáticas e pontos fortes pessoais – apresentados de forma clara e organizada."
+      "cvSkillsText": "Idiomas, conhecimentos de informática e pontos fortes pessoais – apresentados de forma clara e organizada."
     },
     "items": {
       "antwort-schreiben": {
