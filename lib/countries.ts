@@ -35,7 +35,7 @@ export const CURRENCY_CONFIG: Record<string, { factor: number }> = {
   CAD: { factor: 1.50 },
   MXN: { factor: 20 },
   BRL: { factor: 6 },
-  ARS: { factor: 1500 }, // Stand Juli 2026: 1 CHF ≈ 1800 ARS; bewusst ~17% Kaufkraft-Rabatt. ACHTUNG Inflation: regelmässig prüfen!
+  // ARS entfernt (Aug 2026): Karten lehnen ARS an ausländische Händler ab → AR nutzt USD (s. CURRENCY_FALLBACK)
   CLP: { factor: 9.4 },   // zero-decimal
   COP: { factor: 45 },    // zero-decimal
   PEN: { factor: 3.8 },
@@ -91,8 +91,8 @@ export const CURRENCY_FALLBACK: Record<string, string> = {
   GTQ: "USD", BZD: "USD", HNL: "USD", NIO: "USD", CRC: "USD",
   // Sonstiges Europa → EUR
   MDL: "EUR", BYR: "EUR", MKD: "EUR", ALL: "EUR", BAM: "EUR", ISK: "EUR",
-  // Südamerika → USD
-  GYD: "USD", SRD: "USD",
+  // Südamerika → USD (ARS: Karten lehnen ARS-Fremdwährungszahlungen ab, s. oben)
+  GYD: "USD", SRD: "USD", ARS: "USD",
   // Zentralasien → USD
   KZT: "USD", UZS: "USD",
   // Restliches Asien → USD oder SGD
@@ -156,7 +156,10 @@ export const COUNTRIES: Country[] = [
   { code: "BR", name: "Brasilien",                      flag: "🇧🇷", currency: "BRL", documentLang: "pt", continent: "americas", priority: 2 }, // ~215M
   { code: "MX", name: "Mexiko",                         flag: "🇲🇽", currency: "MXN", documentLang: "es", continent: "americas", priority: 1 }, // ~128M
   { code: "CO", name: "Kolumbien",                      flag: "🇨🇴", currency: "COP", documentLang: "es", continent: "americas", priority: 3 }, // ~52M
-  { code: "AR", name: "Argentinien",                    flag: "🇦🇷", currency: "ARS", documentLang: "es", continent: "americas", priority: 4 }, // ~46M
+  // ARS → USD (Aug 2026): Karten lehnen ARS-Zahlungen an ausländische Händler fast
+  // immer ab (selbst europäische Visa, live getestet). USD ist in AR die gewohnte
+  // Referenzwährung; Preis bleibt ~gleich (ARS 3'750 ≈ USD 2.75).
+  { code: "AR", name: "Argentinien",                    flag: "🇦🇷", currency: "USD", documentLang: "es", continent: "americas", priority: 4 }, // ~46M
   { code: "CA", name: "Kanada",                         flag: "🇨🇦", currency: "CAD", documentLang: "en", continent: "americas" }, // ~38M
   { code: "PE", name: "Peru",                           flag: "🇵🇪", currency: "PEN", documentLang: "es", continent: "americas", priority: 5 }, // ~33M
   { code: "VE", name: "Venezuela",                      flag: "🇻🇪", currency: "USD", documentLang: "es", continent: "americas" }, // ~28M
