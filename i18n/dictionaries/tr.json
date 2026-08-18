@@ -98,7 +98,15 @@
       "subjectWithdraw": "Sözleşmemden cayma",
       "bodyWithdraw": "İşbu yazı ile sözleşmemden veya siparişimden süresi içinde cayıyorum.",
       "subjectObjection": "Kararınıza itiraz",
-      "bodyObjection": "İşbu yazı ile yukarıda belirtilen karara süresi içinde itiraz ediyorum."
+      "bodyObjection": "İşbu yazı ile yukarıda belirtilen karara süresi içinde itiraz ediyorum.",
+      "subjectReference": "Çalışma belgesi",
+      "bodyReference": "___, şirketimizde ___ olarak ___ – ___ tarihleri arasında çalışmıştır.",
+      "body2Reference": "___, kendisine verilen görevleri her zaman güvenilir, bağımsız ve tam memnuniyetimizi kazanacak şekilde yerine getirmiştir …",
+      "subjectReply": "___ tarihli yazınıza yanıt",
+      "bodyReply": "İşbu yazı ile ___ tarihli yazınıza istinaden görüşümü aşağıdaki şekilde bildiririm.",
+      "cvExperience": "İş deneyimi",
+      "cvEducation": "Eğitim",
+      "cvSkills": "Beceriler"
     },
     "items": {
       "widerspruch": {

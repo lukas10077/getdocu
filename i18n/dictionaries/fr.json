@@ -98,7 +98,15 @@
       "subjectWithdraw": "Rétractation de mon contrat",
       "bodyWithdraw": "Par la présente, je me rétracte de mon contrat ou de ma commande dans le délai imparti.",
       "subjectObjection": "Opposition à votre décision",
-      "bodyObjection": "Par la présente, je forme opposition, dans les délais, contre la décision mentionnée ci-dessus."
+      "bodyObjection": "Par la présente, je forme opposition, dans les délais, contre la décision mentionnée ci-dessus.",
+      "subjectReference": "Certificat de travail",
+      "bodyReference": "___ a travaillé dans notre entreprise en tant que ___ du ___ au ___.",
+      "body2Reference": "___ a toujours accompli les tâches confiées avec fiabilité, autonomie et à notre entière satisfaction …",
+      "subjectReply": "Réponse à votre courrier du ___",
+      "bodyReply": "Par la présente, je fais suite à votre courrier du ___ et prends position comme suit.",
+      "cvExperience": "Expérience professionnelle",
+      "cvEducation": "Formation",
+      "cvSkills": "Compétences"
     },
     "items": {
       "widerspruch": {

@@ -100,7 +100,15 @@
       "subjectWithdraw": "Desistimiento de mi contrato",
       "bodyWithdraw": "Por la presente, desisto dentro del plazo previsto del contrato celebrado el ___ (número de pedido/contrato ___).",
       "subjectObjection": "Recurso contra su resolución",
-      "bodyObjection": "Por la presente, presento recurso, dentro del plazo, contra su resolución de fecha ___ (número de expediente ___)."
+      "bodyObjection": "Por la presente, presento recurso, dentro del plazo, contra su resolución de fecha ___ (número de expediente ___).",
+      "subjectReference": "Certificado de trabajo",
+      "bodyReference": "___ trabajó en nuestra empresa como ___ desde ___ hasta ___.",
+      "body2Reference": "___ realizó siempre las tareas asignadas de forma fiable, autónoma y a nuestra plena satisfacción …",
+      "subjectReply": "Respuesta a su carta del ___",
+      "bodyReply": "Por la presente hago referencia a su carta del ___ y me pronuncio de la siguiente manera.",
+      "cvExperience": "Experiencia profesional",
+      "cvEducation": "Formación",
+      "cvSkills": "Competencias"
     },
     "items": {
       "antwort-schreiben": {

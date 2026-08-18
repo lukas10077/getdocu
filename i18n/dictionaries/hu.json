@@ -98,7 +98,15 @@
       "subjectWithdraw": "Elállás a szerződésemtől",
       "bodyWithdraw": "Ezúton elállok a szerződésemtől vagy megrendelésemtől a rendelkezésre álló határidőn belül.",
       "subjectObjection": "Kifogás a határozatuk ellen",
-      "bodyObjection": "Ezúton határidőn belül kifogást nyújtok be a fent megjelölt határozat ellen."
+      "bodyObjection": "Ezúton határidőn belül kifogást nyújtok be a fent megjelölt határozat ellen.",
+      "subjectReference": "Munkáltatói igazolás",
+      "bodyReference": "___ ___ és ___ között vállalatunknál dolgozott ___ munkakörben.",
+      "body2Reference": "___ a rábízott feladatokat mindig megbízhatóan, önállóan és teljes megelégedésünkre végezte el …",
+      "subjectReply": "Válasz az Önök ___ keltezésű levelére",
+      "bodyReply": "Ezúton hivatkozom az Önök ___ keltezésű levelére, és az alábbiak szerint foglalok állást.",
+      "cvExperience": "Szakmai tapasztalat",
+      "cvEducation": "Tanulmányok",
+      "cvSkills": "Készségek"
     },
     "items": {
       "widerspruch": {

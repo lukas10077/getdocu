@@ -98,7 +98,15 @@
       "subjectWithdraw": "Widerruf meines Vertrags",
       "bodyWithdraw": "Hiermit widerrufe ich den am ___ geschlossenen Vertrag (Bestell-/Vertragsnummer ___) fristgerecht.",
       "subjectObjection": "Widerspruch gegen Ihren Bescheid",
-      "bodyObjection": "Hiermit lege ich fristwahrend Widerspruch gegen Ihren Bescheid vom ___ (Aktenzeichen ___) ein."
+      "bodyObjection": "Hiermit lege ich fristwahrend Widerspruch gegen Ihren Bescheid vom ___ (Aktenzeichen ___) ein.",
+      "subjectReference": "Arbeitszeugnis",
+      "bodyReference": "___ war vom ___ bis ___ in unserem Unternehmen als ___ tätig.",
+      "body2Reference": "Die übertragenen Aufgaben erledigte ___ stets zuverlässig, selbstständig und zu unserer vollen Zufriedenheit …",
+      "subjectReply": "Antwort auf Ihr Schreiben vom ___",
+      "bodyReply": "Hiermit nehme ich Bezug auf Ihr Schreiben vom ___ und nehme dazu wie folgt Stellung.",
+      "cvExperience": "Berufserfahrung",
+      "cvEducation": "Ausbildung",
+      "cvSkills": "Kenntnisse"
     },
     "items": {
       "antwort-schreiben": {

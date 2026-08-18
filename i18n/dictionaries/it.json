@@ -98,7 +98,15 @@
       "subjectWithdraw": "Recesso dal mio contratto",
       "bodyWithdraw": "Con la presente recedo dal mio contratto o dal mio ordine entro il termine previsto.",
       "subjectObjection": "Opposizione al vostro provvedimento",
-      "bodyObjection": "Con la presente presento opposizione, nei termini, contro il provvedimento sopra indicato."
+      "bodyObjection": "Con la presente presento opposizione, nei termini, contro il provvedimento sopra indicato.",
+      "subjectReference": "Certificato di lavoro",
+      "bodyReference": "___ ha lavorato nella nostra azienda come ___ dal ___ al ___.",
+      "body2Reference": "___ ha sempre svolto i compiti assegnati in modo affidabile, autonomo e con nostra piena soddisfazione …",
+      "subjectReply": "Risposta alla vostra lettera del ___",
+      "bodyReply": "Con la presente faccio riferimento alla vostra lettera del ___ e prendo posizione come segue.",
+      "cvExperience": "Esperienza professionale",
+      "cvEducation": "Formazione",
+      "cvSkills": "Competenze"
     },
     "items": {
       "widerspruch": {

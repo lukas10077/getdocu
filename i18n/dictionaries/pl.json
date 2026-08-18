@@ -98,7 +98,15 @@
       "subjectWithdraw": "Odstąpienie od mojej umowy",
       "bodyWithdraw": "Niniejszym odstępuję od mojej umowy lub zamówienia w obowiązującym terminie.",
       "subjectObjection": "Odwołanie od Państwa decyzji",
-      "bodyObjection": "Niniejszym składam w terminie odwołanie od wskazanej powyżej decyzji."
+      "bodyObjection": "Niniejszym składam w terminie odwołanie od wskazanej powyżej decyzji.",
+      "subjectReference": "Świadectwo pracy",
+      "bodyReference": "___ był(a) zatrudniony(-a) w naszej firmie na stanowisku ___ od ___ do ___.",
+      "body2Reference": "Powierzone zadania ___ wykonywał(a) zawsze rzetelnie, samodzielnie i ku naszemu pełnemu zadowoleniu …",
+      "subjectReply": "Odpowiedź na Państwa pismo z dnia ___",
+      "bodyReply": "Niniejszym nawiązuję do Państwa pisma z dnia ___ i zajmuję następujące stanowisko.",
+      "cvExperience": "Doświadczenie zawodowe",
+      "cvEducation": "Wykształcenie",
+      "cvSkills": "Umiejętności"
     },
     "items": {
       "widerspruch": {

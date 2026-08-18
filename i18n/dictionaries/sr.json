@@ -98,7 +98,15 @@
       "subjectWithdraw": "Odustanak od mog ugovora",
       "bodyWithdraw": "Ovim putem odustajem od svog ugovora ili porudžbine u predviđenom roku.",
       "subjectObjection": "Prigovor na vaše rešenje",
-      "bodyObjection": "Ovim putem blagovremeno podnosim prigovor na gore navedeno rešenje."
+      "bodyObjection": "Ovim putem blagovremeno podnosim prigovor na gore navedeno rešenje.",
+      "subjectReference": "Potvrda o zaposlenju",
+      "bodyReference": "___ je radio/la u našoj kompaniji kao ___ od ___ do ___.",
+      "body2Reference": "___ je poverene zadatke uvek obavljao/la pouzdano, samostalno i na naše puno zadovoljstvo …",
+      "subjectReply": "Odgovor na vaš dopis od ___",
+      "bodyReply": "Ovim putem se pozivam na vaš dopis od ___ i izjašnjavam se na sledeći način.",
+      "cvExperience": "Radno iskustvo",
+      "cvEducation": "Obrazovanje",
+      "cvSkills": "Veštine"
     },
     "items": {
       "widerspruch": {

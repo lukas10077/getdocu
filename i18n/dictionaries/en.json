@@ -100,7 +100,15 @@
       "subjectWithdraw": "Withdrawal from my contract",
       "bodyWithdraw": "I hereby withdraw within the applicable period from the contract concluded on ___ (order/contract number ___).",
       "subjectObjection": "Objection to your decision",
-      "bodyObjection": "I hereby file a timely objection against your decision dated ___ (reference number ___)."
+      "bodyObjection": "I hereby file a timely objection against your decision dated ___ (reference number ___).",
+      "subjectReference": "Employment reference",
+      "bodyReference": "___ was employed at our company as ___ from ___ to ___.",
+      "body2Reference": "___ always carried out the assigned tasks reliably, independently and to our full satisfaction …",
+      "subjectReply": "Response to your letter dated ___",
+      "bodyReply": "I hereby refer to your letter dated ___ and respond as follows.",
+      "cvExperience": "Work experience",
+      "cvEducation": "Education",
+      "cvSkills": "Skills"
     },
     "items": {
       "antwort-schreiben": {

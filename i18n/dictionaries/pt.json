@@ -99,7 +99,15 @@
       "subjectWithdraw": "Desistência do meu contrato",
       "bodyWithdraw": "Venho por meio desta exercer, dentro do prazo, meu direito de arrependimento em relação ao contrato ou pedido.",
       "subjectObjection": "Recurso contra a sua decisão",
-      "bodyObjection": "Venho por meio desta apresentar recurso, dentro do prazo, contra a decisão acima referida."
+      "bodyObjection": "Venho por meio desta apresentar recurso, dentro do prazo, contra a decisão acima referida.",
+      "subjectReference": "Carta de referência",
+      "bodyReference": "___ trabalhou na nossa empresa como ___ de ___ a ___.",
+      "body2Reference": "___ executou sempre as tarefas atribuídas com fiabilidade, autonomia e para nossa total satisfação …",
+      "subjectReply": "Resposta à sua carta de ___",
+      "bodyReply": "Venho por este meio fazer referência à sua carta de ___ e pronunciar-me da seguinte forma.",
+      "cvExperience": "Experiência profissional",
+      "cvEducation": "Formação",
+      "cvSkills": "Competências"
     },
     "items": {
       "antwort-schreiben": {

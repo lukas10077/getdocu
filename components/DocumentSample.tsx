@@ -32,6 +32,14 @@ interface SampleDict {
   subjectApplyHome?: string;
   subjectWithdraw?: string;
   subjectObjection?: string;
+  subjectReference?: string;
+  bodyReference?: string;
+  body2Reference?: string;
+  subjectReply?: string;
+  bodyReply?: string;
+  cvExperience?: string;
+  cvEducation?: string;
+  cvSkills?: string;
 }
 
 const FALLBACK: Required<SampleDict> = {
@@ -60,10 +68,18 @@ const FALLBACK: Required<SampleDict> = {
   subjectApplyHome: "Bewerbung um Ihre Wohnung",
   subjectWithdraw: "Widerruf meines Vertrags",
   subjectObjection: "Widerspruch gegen Ihren Bescheid",
+  subjectReference: "Arbeitszeugnis",
+  bodyReference: "___ war vom ___ bis ___ in unserem Unternehmen als ___ tätig.",
+  body2Reference: "Die übertragenen Aufgaben erledigte ___ stets zuverlässig, selbstständig und zu unserer vollen Zufriedenheit …",
+  subjectReply: "Antwort auf Ihr Schreiben vom ___",
+  bodyReply: "Hiermit nehme ich Bezug auf Ihr Schreiben vom ___ und nehme dazu wie folgt Stellung.",
+  cvExperience: "Berufserfahrung",
+  cvEducation: "Ausbildung",
+  cvSkills: "Kenntnisse",
 };
 
-// Tools ohne klassisches Anschreiben (Lebenslauf-artig) bekommen ein CV-Skelett.
-const CV_SLUGS = new Set(["lebenslauf", "arbeitszeugnis"]);
+// Nur der Lebenslauf bekommt das CV-Layout; das Arbeitszeugnis wird als Brief gerendert.
+const CV_SLUGS = new Set(["lebenslauf"]);
 // Ordnet jedem Brief-Tool einen passenden echten Einleitungssatz zu.
 const COMPLAINT_SLUGS = new Set(["reklamation", "maengelruege"]);
 const APPLY_SLUGS = new Set(["mietbewerbung", "jobbewerbung", "komplettbewerbung"]);
@@ -71,6 +87,8 @@ const APPLY_SLUGS = new Set(["mietbewerbung", "jobbewerbung", "komplettbewerbung
 function openingFor(slug: string, s: Required<SampleDict>): string {
   if (slug === "widerruf") return s.bodyWithdraw;
   if (slug === "widerspruch") return s.bodyObjection;
+  if (slug === "arbeitszeugnis") return s.bodyReference;
+  if (slug === "antwort-schreiben") return s.bodyReply;
   if (COMPLAINT_SLUGS.has(slug)) return s.bodyComplaint;
   if (APPLY_SLUGS.has(slug)) return s.bodyApply;
   return s.bodyCancel;
@@ -97,6 +115,10 @@ function subjectFor(slug: string, s: Required<SampleDict>): string {
       return s.subjectComplaint;
     case "maengelruege":
       return s.subjectDefect;
+    case "arbeitszeugnis":
+      return s.subjectReference;
+    case "antwort-schreiben":
+      return s.subjectReply;
     default:
       return s.subjectCancel; // kuendigung
   }
@@ -173,7 +195,12 @@ export default function DocumentSample({
   const dictSample = dict?.tools?.sampleDoc ?? {};
   const second = APPLY_SLUGS.has(tool.slug)
     ? (dictSample.body2Apply ?? dictSample.body2 ?? FALLBACK.body2Apply)
-    : s.body2;
+    : tool.slug === "arbeitszeugnis"
+      ? s.body2Reference
+      : s.body2;
+
+  // Arbeitszeugnis: wird vom Arbeitgeber ausgestellt — ohne Empfängerblock und Anrede.
+  const isReference = tool.slug === "arbeitszeugnis";
 
   const recipientName = prefill?.recipientName;
   const recipientLines = prefill?.recipientAddress
@@ -219,11 +246,15 @@ export default function DocumentSample({
             {/* Trennlinie */}
             <div style={{ height: 1, backgroundColor: BAR, margin: "16px 0 18px" }} />
 
-            {/* Abschnitte: je Gold-Überschrift, Datum (maskiert) + Position + Fliesstext */}
+            {/* Abschnitte: echte übersetzte Überschrift, Datum (maskiert) + Position + Fliesstext */}
             <div className="space-y-5">
-              {[["94%", "80%"], ["92%", "72%"], ["90%", "84%"]].map((widths, b) => (
+              {[
+                { title: s.cvExperience, widths: ["94%", "80%"] },
+                { title: s.cvEducation, widths: ["92%", "72%"] },
+                { title: s.cvSkills, widths: ["90%", "84%"] },
+              ].map(({ title, widths }, b) => (
                 <div key={b}>
-                  <div style={{ height: 9, width: "34%", borderRadius: 999, backgroundColor: "#C9A24B", marginLeft: rtl ? "auto" : 0 }} />
+                  <div style={{ color: "#B8901F", fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase" }}>{title}</div>
                   <div className="mt-3" style={{ display: "flex", flexDirection: rtl ? "row-reverse" : "row", gap: 12 }}>
                     <span style={{ color: "#BCB6AA", fontSize: 11, letterSpacing: 1.5, whiteSpace: "nowrap", marginTop: 2 }}>{"••••"}</span>
                     <div style={{ flex: 1 }}>
@@ -247,23 +278,25 @@ export default function DocumentSample({
               <div><Mask groups={[4, 6]} /></div>
             </div>
 
-            {/* Empfänger: echte Daten bei Markenseiten, sonst maskiert */}
-            <div style={{ marginTop: "1.2em" }}>
-              {hasRecipient ? (
-                <>
-                  <p style={{ margin: 0, fontWeight: 600 }}>{recipientName}</p>
-                  {recipientLines.map((l, i) => (
-                    <p key={i} style={{ margin: 0 }}>{l}</p>
-                  ))}
-                </>
-              ) : (
-                <>
-                  <div><Mask groups={[5]} /></div>
-                  <div><Mask groups={[6, 4]} /></div>
-                  <div><Mask groups={[4, 5]} /></div>
-                </>
-              )}
-            </div>
+            {/* Empfänger: echte Daten bei Markenseiten, sonst maskiert (entfällt beim Zeugnis) */}
+            {!isReference && (
+              <div style={{ marginTop: "1.2em" }}>
+                {hasRecipient ? (
+                  <>
+                    <p style={{ margin: 0, fontWeight: 600 }}>{recipientName}</p>
+                    {recipientLines.map((l, i) => (
+                      <p key={i} style={{ margin: 0 }}>{l}</p>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <div><Mask groups={[5]} /></div>
+                    <div><Mask groups={[6, 4]} /></div>
+                    <div><Mask groups={[4, 5]} /></div>
+                  </>
+                )}
+              </div>
+            )}
 
             {/* Ort, Datum — links, wie in der echten Vorschau (Ort maskiert, Datum echt) */}
             <p style={{ margin: "1.8em 0 0" }}>
@@ -273,8 +306,8 @@ export default function DocumentSample({
             {/* Betreff = lokalisierter Tool-Titel (fett, ggf. mit maskierter Adresse) */}
             <p style={{ fontWeight: 700, margin: "1.8em 0 1.2em" }}><MaskedText text={subject} /></p>
 
-            {/* Anrede (übersetzt) */}
-            <p style={{ margin: "0 0 1.2em" }}>{s.salutation}</p>
+            {/* Anrede (übersetzt) — entfällt beim Zeugnis */}
+            {!isReference && <p style={{ margin: "0 0 1.2em" }}>{s.salutation}</p>}
 
             {/* Volltext wie in der echten Vorschau — Nutzereingaben als Punkte maskiert */}
             <p style={{ margin: "0 0 1.2em" }}><MaskedText text={opening} /></p>

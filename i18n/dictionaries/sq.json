@@ -98,7 +98,15 @@
       "subjectWithdraw": "Tërheqje nga kontrata ime",
       "bodyWithdraw": "Me këtë shkresë tërhiqem nga kontrata ose porosia ime brenda afatit të parashikuar.",
       "subjectObjection": "Kundërshtim ndaj vendimit tuaj",
-      "bodyObjection": "Me këtë shkresë paraqes kundërshtim, brenda afatit, ndaj vendimit të lartpërmendur."
+      "bodyObjection": "Me këtë shkresë paraqes kundërshtim, brenda afatit, ndaj vendimit të lartpërmendur.",
+      "subjectReference": "Vërtetim pune",
+      "bodyReference": "___ ka punuar në kompaninë tonë si ___ nga ___ deri më ___.",
+      "body2Reference": "___ i ka kryer detyrat e ngarkuara gjithmonë me besueshmëri, pavarësi dhe në kënaqësinë tonë të plotë …",
+      "subjectReply": "Përgjigje ndaj shkresës suaj të datës ___",
+      "bodyReply": "Me këtë i referohem shkresës suaj të datës ___ dhe shprehem si më poshtë.",
+      "cvExperience": "Përvoja e punës",
+      "cvEducation": "Arsimi",
+      "cvSkills": "Aftësitë"
     },
     "items": {
       "widerspruch": {
