@@ -196,17 +196,43 @@ export default function DocumentSample({
         </div>
 
         {isCv ? (
-          <div style={{ fontFamily: "Georgia, serif" }}>
-            <div style={{ height: 14, width: "45%", borderRadius: 999, backgroundColor: INK }} />
-            <div className="mt-2" style={{ height: 9, width: "32%", borderRadius: 999, backgroundColor: INK_SOFT }} />
-            <div className="mt-6 space-y-5">
-              {[0, 1, 2].map((b) => (
+          // Lebenslauf-Skelett: sieht wie ein echter, professioneller CV aus —
+          // Foto, Name, Rolle, Kontaktzeile und datierte Abschnitte. Persönliche
+          // Daten sind als Punkte maskiert (kein Text → in allen 15 Sprachen korrekt).
+          <div style={{ fontFamily: "Georgia, serif", textAlign: rtl ? "right" : "left" }}>
+            {/* Kopfbereich: Foto + Name + Rolle */}
+            <div style={{ display: "flex", flexDirection: rtl ? "row-reverse" : "row", alignItems: "center", gap: 16 }}>
+              <div style={{ width: 54, height: 54, borderRadius: 8, backgroundColor: BAR_SOFT, flexShrink: 0 }} />
+              <div>
+                <div style={{ marginBottom: 6 }}><Mask groups={[4, 6]} bold /></div>
+                <span style={{ color: "#B8901F", fontSize: 12, letterSpacing: 1.5 }}>{"••••• ••••"}</span>
+              </div>
+            </div>
+
+            {/* Kontaktzeile (E-Mail, Telefon, Adresse — maskiert) */}
+            <div style={{ display: "flex", flexDirection: rtl ? "row-reverse" : "row", gap: 14, marginTop: 12, flexWrap: "wrap" }}>
+              {[5, 4, 6].map((n, i) => (
+                <span key={i} style={{ color: "#BCB6AA", fontSize: 11, letterSpacing: 1.5 }}>{"•".repeat(n)}</span>
+              ))}
+            </div>
+
+            {/* Trennlinie */}
+            <div style={{ height: 1, backgroundColor: BAR, margin: "16px 0 18px" }} />
+
+            {/* Abschnitte: je Gold-Überschrift, Datum (maskiert) + Position + Fliesstext */}
+            <div className="space-y-5">
+              {[["94%", "80%"], ["92%", "72%"], ["90%", "84%"]].map((widths, b) => (
                 <div key={b}>
-                  <div style={{ height: 9, width: "38%", borderRadius: 999, backgroundColor: "#C9A24B" }} />
-                  <div className="mt-3 space-y-2">
-                    <Bar w="92%" />
-                    <Bar w="86%" soft />
-                    <Bar w="70%" soft />
+                  <div style={{ height: 9, width: "34%", borderRadius: 999, backgroundColor: "#C9A24B", marginLeft: rtl ? "auto" : 0 }} />
+                  <div className="mt-3" style={{ display: "flex", flexDirection: rtl ? "row-reverse" : "row", gap: 12 }}>
+                    <span style={{ color: "#BCB6AA", fontSize: 11, letterSpacing: 1.5, whiteSpace: "nowrap", marginTop: 2 }}>{"••••"}</span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ marginBottom: 8 }}><Mask groups={[5, 3]} bold dim /></div>
+                      <div className="space-y-2">
+                        <Bar w={widths[0]} />
+                        <Bar w={widths[1]} soft />
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
