@@ -106,7 +106,10 @@
       "bodyReply": "Hiermit nehme ich Bezug auf Ihr Schreiben vom ___ und nehme dazu wie folgt Stellung.",
       "cvExperience": "Berufserfahrung",
       "cvEducation": "Ausbildung",
-      "cvSkills": "Kenntnisse"
+      "cvSkills": "Kenntnisse",
+      "cvExpText": "Verantwortlich für ___ sowie für die Zusammenarbeit mit Kunden und Team im Bereich ___.",
+      "cvEduText": "Abschluss als ___ mit Schwerpunkt ___.",
+      "cvSkillsText": "Sprachen, IT-Kenntnisse und persönliche Stärken – klar und übersichtlich dargestellt."
     },
     "items": {
       "antwort-schreiben": {

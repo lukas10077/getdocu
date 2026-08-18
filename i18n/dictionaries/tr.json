@@ -106,7 +106,10 @@
       "bodyReply": "İşbu yazı ile ___ tarihli yazınıza istinaden görüşümü aşağıdaki şekilde bildiririm.",
       "cvExperience": "İş deneyimi",
       "cvEducation": "Eğitim",
-      "cvSkills": "Beceriler"
+      "cvSkills": "Beceriler",
+      "cvExpText": "___ konusundan ve ___ alanında müşteriler ve ekiple iş birliğinden sorumlu.",
+      "cvEduText": "___ bölümünden mezun, uzmanlık alanı ___.",
+      "cvSkillsText": "Diller, bilgisayar becerileri ve kişisel güçlü yönler – açık ve düzenli şekilde sunulur."
     },
     "items": {
       "widerspruch": {

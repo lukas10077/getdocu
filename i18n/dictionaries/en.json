@@ -108,7 +108,10 @@
       "bodyReply": "I hereby refer to your letter dated ___ and respond as follows.",
       "cvExperience": "Work experience",
       "cvEducation": "Education",
-      "cvSkills": "Skills"
+      "cvSkills": "Skills",
+      "cvExpText": "Responsible for ___ and for working with clients and the team in the area of ___.",
+      "cvEduText": "Degree as ___ with a focus on ___.",
+      "cvSkillsText": "Languages, IT skills and personal strengths – presented clearly and concisely."
     },
     "items": {
       "antwort-schreiben": {

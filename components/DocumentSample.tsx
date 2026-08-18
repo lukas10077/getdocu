@@ -40,6 +40,9 @@ interface SampleDict {
   cvExperience?: string;
   cvEducation?: string;
   cvSkills?: string;
+  cvExpText?: string;
+  cvEduText?: string;
+  cvSkillsText?: string;
 }
 
 const FALLBACK: Required<SampleDict> = {
@@ -76,6 +79,9 @@ const FALLBACK: Required<SampleDict> = {
   cvExperience: "Berufserfahrung",
   cvEducation: "Ausbildung",
   cvSkills: "Kenntnisse",
+  cvExpText: "Verantwortlich für ___ sowie für die Zusammenarbeit mit Kunden und Team im Bereich ___.",
+  cvEduText: "Abschluss als ___ mit Schwerpunkt ___.",
+  cvSkillsText: "Sprachen, IT-Kenntnisse und persönliche Stärken – klar und übersichtlich dargestellt.",
 };
 
 // Nur der Lebenslauf bekommt das CV-Layout; das Arbeitszeugnis wird als Brief gerendert.
@@ -246,23 +252,24 @@ export default function DocumentSample({
             {/* Trennlinie */}
             <div style={{ height: 1, backgroundColor: BAR, margin: "16px 0 18px" }} />
 
-            {/* Abschnitte: echte übersetzte Überschrift, Datum (maskiert) + Position + Fliesstext */}
+            {/* Abschnitte: echte übersetzte Überschrift + echter Beispieltext (Eingaben maskiert) */}
             <div className="space-y-5">
               {[
-                { title: s.cvExperience, widths: ["94%", "80%"] },
-                { title: s.cvEducation, widths: ["92%", "72%"] },
-                { title: s.cvSkills, widths: ["90%", "84%"] },
-              ].map(({ title, widths }, b) => (
+                { title: s.cvExperience, text: s.cvExpText, dated: true },
+                { title: s.cvEducation, text: s.cvEduText, dated: true },
+                { title: s.cvSkills, text: s.cvSkillsText, dated: false },
+              ].map(({ title, text, dated }, b) => (
                 <div key={b}>
                   <div style={{ color: "#B8901F", fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase" }}>{title}</div>
                   <div className="mt-3" style={{ display: "flex", flexDirection: rtl ? "row-reverse" : "row", gap: 12 }}>
-                    <span style={{ color: "#BCB6AA", fontSize: 11, letterSpacing: 1.5, whiteSpace: "nowrap", marginTop: 2 }}>{"••••"}</span>
+                    {dated && (
+                      <span style={{ color: "#BCB6AA", fontSize: 11, letterSpacing: 1.5, whiteSpace: "nowrap", marginTop: 2 }}>{"•••• – ••••"}</span>
+                    )}
                     <div style={{ flex: 1 }}>
-                      <div style={{ marginBottom: 8 }}><Mask groups={[5, 3]} bold dim /></div>
-                      <div className="space-y-2">
-                        <Bar w={widths[0]} />
-                        <Bar w={widths[1]} soft />
-                      </div>
+                      {dated && <div style={{ marginBottom: 6 }}><Mask groups={[5, 3]} bold dim /></div>}
+                      <p style={{ margin: 0, fontSize: 12.5, lineHeight: 1.7, color: "#3A372F", fontFamily: "Arial, sans-serif" }}>
+                        <MaskedText text={text} />
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -313,12 +320,14 @@ export default function DocumentSample({
             <p style={{ margin: "0 0 1.2em" }}><MaskedText text={opening} /></p>
             <p style={{ margin: "0 0 1.2em" }}><MaskedText text={second} /></p>
 
-            {/* Angedeutete Folge-Zeilen — identisch zur echten Vorschau (Fade-out) */}
-            <div style={{ marginTop: 10 }}>
-              {[96, 100, 92, 88, 100, 64].map((w, i) => (
-                <div key={i} style={{ height: 10, width: `${w}%`, background: "#e6e2da", borderRadius: 2, marginBottom: 11, marginLeft: rtl ? "auto" : 0 }} />
-              ))}
-            </div>
+            {/* Hinweis auf das persönliche Anliegen — kursiv, leicht abgesetzt (entfällt beim Zeugnis) */}
+            {!isReference && (
+              <p style={{ margin: "0 0 1.2em", fontStyle: "italic", color: INK_SOFT }}>{s.placeholder}</p>
+            )}
+
+            {/* Grussformel + maskierte Unterschrift — der Brief wirkt vollständig */}
+            <p style={{ margin: "1.6em 0 0" }}>{s.closing}</p>
+            <p style={{ margin: "0.4em 0 0" }}><Mask groups={[4, 6]} bold /></p>
           </div>
         )}
       </div>

@@ -106,7 +106,10 @@
       "bodyReply": "Ezúton hivatkozom az Önök ___ keltezésű levelére, és az alábbiak szerint foglalok állást.",
       "cvExperience": "Szakmai tapasztalat",
       "cvEducation": "Tanulmányok",
-      "cvSkills": "Készségek"
+      "cvSkills": "Készségek",
+      "cvExpText": "Felelős: ___, valamint együttműködés az ügyfelekkel és a csapattal a ___ területén.",
+      "cvEduText": "Végzettség: ___, szakirány: ___.",
+      "cvSkillsText": "Nyelvek, informatikai ismeretek és személyes erősségek – áttekinthetően bemutatva."
     },
     "items": {
       "widerspruch": {

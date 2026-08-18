@@ -106,7 +106,10 @@
       "bodyReply": "Niniejszym nawiązuję do Państwa pisma z dnia ___ i zajmuję następujące stanowisko.",
       "cvExperience": "Doświadczenie zawodowe",
       "cvEducation": "Wykształcenie",
-      "cvSkills": "Umiejętności"
+      "cvSkills": "Umiejętności",
+      "cvExpText": "Odpowiedzialny(-a) za ___ oraz za współpracę z klientami i zespołem w obszarze ___.",
+      "cvEduText": "Dyplom ___ ze specjalizacją w zakresie ___.",
+      "cvSkillsText": "Języki, umiejętności IT i mocne strony – przedstawione jasno i przejrzyście."
     },
     "items": {
       "widerspruch": {

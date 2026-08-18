@@ -106,7 +106,10 @@
       "bodyReply": "Con la presente faccio riferimento alla vostra lettera del ___ e prendo posizione come segue.",
       "cvExperience": "Esperienza professionale",
       "cvEducation": "Formazione",
-      "cvSkills": "Competenze"
+      "cvSkills": "Competenze",
+      "cvExpText": "Responsabile di ___ e della collaborazione con clienti e team nel settore ___.",
+      "cvEduText": "Diploma come ___ con specializzazione in ___.",
+      "cvSkillsText": "Lingue, competenze informatiche e punti di forza personali – presentati in modo chiaro e ordinato."
     },
     "items": {
       "widerspruch": {

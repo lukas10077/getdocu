@@ -106,7 +106,10 @@
       "bodyReply": "Par la présente, je fais suite à votre courrier du ___ et prends position comme suit.",
       "cvExperience": "Expérience professionnelle",
       "cvEducation": "Formation",
-      "cvSkills": "Compétences"
+      "cvSkills": "Compétences",
+      "cvExpText": "Responsable de ___ ainsi que de la collaboration avec les clients et l'équipe dans le domaine de ___.",
+      "cvEduText": "Diplôme de ___ avec spécialisation en ___.",
+      "cvSkillsText": "Langues, compétences informatiques et atouts personnels – présentés de manière claire et structurée."
     },
     "items": {
       "widerspruch": {

@@ -108,7 +108,10 @@
       "bodyReply": "Por la presente hago referencia a su carta del ___ y me pronuncio de la siguiente manera.",
       "cvExperience": "Experiencia profesional",
       "cvEducation": "Formación",
-      "cvSkills": "Competencias"
+      "cvSkills": "Competencias",
+      "cvExpText": "Responsable de ___ y de la colaboración con clientes y equipo en el área de ___.",
+      "cvEduText": "Titulación como ___ con especialización en ___.",
+      "cvSkillsText": "Idiomas, conocimientos informáticos y fortalezas personales – presentados de forma clara y ordenada."
     },
     "items": {
       "antwort-schreiben": {

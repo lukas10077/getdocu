@@ -106,7 +106,10 @@
       "bodyReply": "Me këtë i referohem shkresës suaj të datës ___ dhe shprehem si më poshtë.",
       "cvExperience": "Përvoja e punës",
       "cvEducation": "Arsimi",
-      "cvSkills": "Aftësitë"
+      "cvSkills": "Aftësitë",
+      "cvExpText": "Përgjegjës për ___ si dhe për bashkëpunimin me klientët dhe ekipin në fushën e ___.",
+      "cvEduText": "Diplomuar si ___ me specializim në ___.",
+      "cvSkillsText": "Gjuhët, njohuritë e IT-së dhe pikat e forta personale – të paraqitura qartë dhe në mënyrë të strukturuar."
     },
     "items": {
       "widerspruch": {
