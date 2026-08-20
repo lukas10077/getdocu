@@ -220,14 +220,21 @@ function buildUserPrompt(tool: NonNullable<ReturnType<typeof getTool>>, formData
 }
 
 function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: string, incomeCurrency?: string): string {
-  // Formatierungsregel: immer gültiger sauberer Brieftext, kein Markdown
+  // Formatierungsregel: immer gültiges sauberes Dokument, kein Markdown.
+  // Der Lebenslauf ist kein Brief — er bekommt eine CV-Struktur statt der Brief-Struktur,
+  // sonst widersprechen sich formatRule und tool.systemPrompt (Ergebnis: Brief statt CV).
+  const isCv = toolSlug === "lebenslauf";
+  const structureRule = isCv
+    ? `Struktur: Kopfblock (Name / Berufsbezeichnung / Adresse / Kontakt) → Sektionen in GROSSBUCHSTABEN (z.B. BERUFSERFAHRUNG, AUSBILDUNG, SPRACHEN, KENNTNISSE).\n` +
+      `KEIN Absender-/Empfängerblock, KEIN Betreff, KEINE Anrede, KEINE Grussformel — ein Lebenslauf ist kein Brief.\n`
+    : `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n` +
+      `BETREFF-REGEL: Schreibe den Betreff mit dem Präfix "BETREFF: " gefolgt vom Betreff-Text in normaler Schreibweise (nicht in Grossbuchstaben), als einzelne Zeile ohne Umbruch, z.B. "BETREFF: Bewerbung für die Wohnung an der Musterstrasse 1". Das Präfix BETREFF: darf nie weggelassen werden.\n`;
   const formatRule =
     `AUSGABEFORMAT — ZWINGEND:\n` +
-    `Erstelle das Dokument als sauberen, druckfertigen Brief ohne jegliches Markdown.\n` +
+    `Erstelle das Dokument als ${isCv ? "sauberen, druckfertigen Lebenslauf" : "sauberen, druckfertigen Brief"} ohne jegliches Markdown.\n` +
     `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen.\n` +
-    `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Betreff oder Abschnittstitel, normale Satzzeichen.\n` +
-    `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n` +
-    `BETREFF-REGEL: Schreibe den Betreff mit dem Präfix "BETREFF: " gefolgt vom Betreff-Text in normaler Schreibweise (nicht in Grossbuchstaben), als einzelne Zeile ohne Umbruch, z.B. "BETREFF: Bewerbung für die Wohnung an der Musterstrasse 1". Das Präfix BETREFF: darf nie weggelassen werden.\n` +
+    `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für ${isCv ? "Sektionstitel" : "Betreff oder Abschnittstitel"}, normale Satzzeichen.\n` +
+    structureRule +
     `SEITENREGEL: Das gesamte Dokument muss auf EINE A4-Seite passen. Formuliere präzise und kompakt. Kein unnötiger Fülltext.\n` +
     `KEINE PLATZHALTER: Fehlt eine Information (z.B. Telefonnummer), lass sie vollständig weg — niemals X, ?, 000 oder ähnliche Füllwerte einfügen.\n` +
     `KEINE ERFINDUNGEN: Nur die vom Nutzer explizit angegebenen Daten verwenden. Sprachen, Kenntnisse und Angaben nie eigenmächtig ergänzen oder erfinden.\n`;

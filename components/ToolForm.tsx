@@ -631,6 +631,59 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     </div>
   );
 
+  // Design "Goldlinie" — nur für Bewerbungs-Tools (Vorschau + fertiges Dokument)
+  const goldAccent = ["mietbewerbung", "jobbewerbung", "lebenslauf", "komplettbewerbung"].includes(tool.slug);
+  const isCV = tool.slug === "lebenslauf";
+
+  // CV-Rendering für Lebenslauf-Tool (mit Foto) und Komplettbewerbung-Lebenslauf (ohne Foto).
+  // Wird von Vorschau UND fertigem Dokument genutzt — beide müssen identisch aussehen.
+  const renderCVDisplay = (cvText: string, withPhoto: boolean): React.ReactNode => {
+    const cvParas = cvText.split(/\n\n+/);
+    // Sektionstitel: Zeile komplett in Grossbuchstaben — inkl. akzentuierter Zeichen (EDUCACIÓN, FORMAÇÃO …)
+    const isSec = (p: string) => /^[A-ZÀ-ÖØ-Þ][A-ZÀ-ÖØ-Þ\s&]{3,}$/.test(p.trim()) && !p.includes('\n');
+    const firstLines = (cvParas[0] ?? '').split('\n').filter(Boolean);
+    const bodyParas = cvParas.slice(1);
+    return (
+      <>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
+          <div>
+            {firstLines[0] && <p style={{ fontSize: 15, fontWeight: 700, margin: '0 0 5px', letterSpacing: '0.01em' }}>{firstLines[0]}</p>}
+            {firstLines[1] && <p style={{ fontSize: 12, color: '#666', margin: '0 0 5px' }}>{firstLines[1]}</p>}
+            {firstLines.length > 2 && <p style={{ fontSize: 11.5, color: '#555', lineHeight: 1.6, margin: 0, whiteSpace: 'pre-line' }}>{firstLines.slice(2).join('\n')}</p>}
+          </div>
+          {withPhoto && profilePhotoUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 88, height: 110, objectFit: 'cover', borderRadius: 2, flexShrink: 0, boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }} />
+          )}
+        </div>
+        {goldAccent && <div style={{ height: 1, background: "#C8902E", opacity: 0.5, margin: "12px 0 4px" }} />}
+        {bodyParas.map((p, i) => {
+          if (isSec(p)) return (
+            <div key={i} style={{ marginTop: 18, paddingTop: 12, borderTop: '0.5px solid #d8d5ce' }}>
+              <p style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#888', margin: '0 0 10px' }}>{p.trim()}</p>
+            </div>
+          );
+          const lines = p.split('\n').filter(Boolean);
+          const dateIdx = lines.findIndex(l => /^\d{4}/.test(l.trim()));
+          if (lines.length >= 2 && dateIdx >= 0) {
+            const date = lines[dateIdx];
+            const others = lines.filter((_, j) => j !== dateIdx);
+            return (
+              <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0 16px', marginBottom: 10 }}>
+                <div>
+                  <p style={{ fontSize: 12, fontWeight: 700, margin: '0 0 5px', color: '#1a1a1a' }}>{others[0]}</p>
+                  {others.slice(1).map((l, j) => <p key={j} style={{ fontSize: 11.5, color: '#555', margin: '0 0 4px' }}>{l}</p>)}
+                </div>
+                <span style={{ fontSize: 11, color: '#999', textAlign: 'right' as const, whiteSpace: 'nowrap', paddingTop: 1 }}>{date}</span>
+              </div>
+            );
+          }
+          return <p key={i} style={{ fontSize: 11.5, color: '#444', lineHeight: 1.6, margin: '0 0 8px', whiteSpace: 'pre-line' }}>{p}</p>;
+        })}
+      </>
+    );
+  };
+
   if (stage === "previewing") return <Spinner label={fs("previewLoading", "Vorschau wird erstellt…")} sub={fs("previewLoadingSub", "Dauert ca. 5 Sekunden.")} />;
   if (stage === "generating") return <Spinner label={fs("generating", "Vollständiges Dokument wird erstellt…")} sub={fs("generatingSub", "Das dauert ca. 10–20 Sekunden.")} />;
   if (stage === "redirecting") return <Spinner label={fs("redirecting", "Weiterleitung zur Zahlung…")} />;
@@ -659,57 +712,6 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
     const bundleSepIdx = fullResult.search(/===LEBENSLAUF===/);
     const cleanResult = bundleSepIdx >= 0 ? fullResult.slice(0, bundleSepIdx).trim() : fullResult;
     const lebenslaufResult = bundleSepIdx >= 0 ? fullResult.slice(bundleSepIdx).replace(/^===LEBENSLAUF===\n*/, "").trim() : null;
-    const isCV = tool.slug === "lebenslauf";
-    // Design "Goldlinie" — nur für Bewerbungs-Tools
-    const goldAccent = ["mietbewerbung", "jobbewerbung", "lebenslauf", "komplettbewerbung"].includes(tool.slug);
-
-    // CV-Rendering für Lebenslauf-Tool (mit Foto) und Komplettbewerbung-Lebenslauf (ohne Foto)
-    const renderCVDisplay = (cvText: string, withPhoto: boolean): React.ReactNode => {
-      const cvParas = cvText.split(/\n\n+/);
-      const isSec = (p: string) => /^[A-ZÄÖÜ][A-ZÄÖÜ\s&]{3,}$/.test(p.trim()) && !p.includes('\n');
-      const firstLines = (cvParas[0] ?? '').split('\n').filter(Boolean);
-      const bodyParas = cvParas.slice(1);
-      return (
-        <>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
-            <div>
-              {firstLines[0] && <p style={{ fontSize: 15, fontWeight: 700, margin: '0 0 5px', letterSpacing: '0.01em' }}>{firstLines[0]}</p>}
-              {firstLines[1] && <p style={{ fontSize: 12, color: '#666', margin: '0 0 5px' }}>{firstLines[1]}</p>}
-              {firstLines.length > 2 && <p style={{ fontSize: 11.5, color: '#555', lineHeight: 1.6, margin: 0, whiteSpace: 'pre-line' }}>{firstLines.slice(2).join('\n')}</p>}
-            </div>
-            {withPhoto && profilePhotoUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={profilePhotoUrl} alt="Bewerbungsfoto" style={{ width: 88, height: 110, objectFit: 'cover', borderRadius: 2, flexShrink: 0, boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }} />
-            )}
-          </div>
-          {goldAccent && <div style={{ height: 1, background: "#C8902E", opacity: 0.5, margin: "12px 0 4px" }} />}
-          {bodyParas.map((p, i) => {
-            if (isSec(p)) return (
-              <div key={i} style={{ marginTop: 18, paddingTop: 12, borderTop: '0.5px solid #d8d5ce' }}>
-                <p style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#888', margin: '0 0 10px' }}>{p.trim()}</p>
-              </div>
-            );
-            const lines = p.split('\n').filter(Boolean);
-            const dateIdx = lines.findIndex(l => /^\d{4}/.test(l.trim()));
-            if (lines.length >= 2 && dateIdx >= 0) {
-              const date = lines[dateIdx];
-              const others = lines.filter((_, j) => j !== dateIdx);
-              return (
-                <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0 16px', marginBottom: 10 }}>
-                  <div>
-                    <p style={{ fontSize: 12, fontWeight: 700, margin: '0 0 5px', color: '#1a1a1a' }}>{others[0]}</p>
-                    {others.slice(1).map((l, j) => <p key={j} style={{ fontSize: 11.5, color: '#555', margin: '0 0 4px' }}>{l}</p>)}
-                  </div>
-                  <span style={{ fontSize: 11, color: '#999', textAlign: 'right' as const, whiteSpace: 'nowrap', paddingTop: 1 }}>{date}</span>
-                </div>
-              );
-            }
-            return <p key={i} style={{ fontSize: 11.5, color: '#444', lineHeight: 1.6, margin: '0 0 8px', whiteSpace: 'pre-line' }}>{p}</p>;
-          })}
-        </>
-      );
-    };
-
     // Fotos: max. 4 pro Seite, 2-Spalten-Grid, background-image für drucksicheres Seitenverhältnis
     const PHOTOS_PER_PAGE = 4;
     const photoPageHtmls: string[] = [];
@@ -998,7 +1000,6 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
   }
 
   if (stage === "preview") {
-    const goldAccent = ["mietbewerbung", "jobbewerbung", "lebenslauf", "komplettbewerbung"].includes(tool.slug);
     return (
       <div className="mt-10 pb-24 md:pb-0">
         <div className="mb-4 flex items-center gap-2">
@@ -1017,7 +1018,7 @@ export default function ToolForm({ tool, locale, sessionId, dict, prefill }: Pro
           {/* Dokument-Body */}
           <div style={{ background: "#faf8f4", padding: "40px 48px", position: "relative", zIndex: 1, fontFamily: "Arial, sans-serif", fontSize: 13, lineHeight: 1.85, color: "#1a1a1a" }}>
             {goldAccent && <div style={{ position: "absolute", left: 22, top: 36, bottom: 36, width: 2, background: "#C8902E" }} />}
-            {(() => {
+            {isCV ? renderCVDisplay(previewText, true) : (() => {
               const rawParas = previewText.split(/\n\n+/);
               const isBet  = (p: string) => /^BETREFF:\s*/i.test(p.trim()) || /^[A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ][A-ZÄÖÜÀÁÂÃÉÈÊËÍÌÎÏÓÒÔÕÚÙÛÜ\s\-]{3,}$/.test(p.trim());
               const dispP  = (p: string) => p.replace(/^BETREFF:\s*/i, '');

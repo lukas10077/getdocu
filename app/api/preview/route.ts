@@ -77,10 +77,16 @@ export async function POST(req: NextRequest) {
     ? `\n\nTONALITÄT — ZWINGEND: Verfasse das gesamte Dokument in einem ${TONES[tone]} Ton.`
     : "";
 
-  const textPrompt = `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (ca. 200–250 Wörter) basierend auf folgenden Angaben. Beginne mit dem vollständigen Briefkopf: Absender, dann der EMPFÄNGER mit Name und Adresse (aus den Angaben oder dem Inserat — der Empfänger muss immer sichtbar sein, er zeigt dem Nutzer, dass das Dokument korrekt adressiert ist; fehlen Empfängerdaten komplett, setze eine realistische Platzhalter-Zeile wie den Firmen-/Vermieternamen), dann Ort/Datum und Betreff. Danach der individuelle, persönliche Fliesstext — der Leser soll spüren, dass dieses Dokument exakt für seine Situation geschrieben wurde. Brich am Ende MITTEN IM SATZ ab und beende die Ausgabe mit "…" (das vollständige Dokument wird nach Zahlung generiert).\n\n${lines}${listingBlock}${toneBlock}`;
+  // Lebenslauf ist kein Brief: Die Vorschau muss wie das fertige CV-Dokument aussehen
+  // (Kopfblock + Sektionen), nicht wie ein Bewerbungsschreiben mit Empfänger/Betreff.
+  const isCvTool = tool.slug === "lebenslauf";
+
+  const textPrompt = isCvTool
+    ? `Heute ist der ${today}.\n\nErstelle den ANFANG des Lebenslaufs (ca. 180–220 Wörter) basierend auf folgenden Angaben. KEIN Briefkopf, KEIN Empfänger, KEIN Betreff, KEINE Anrede — ein Lebenslauf ist kein Brief. Beginne mit dem Kopfblock: Vor- und Nachname (Zeile 1), Berufsbezeichnung (Zeile 2), Adresse (Zeile 3), E-Mail und Telefon (Zeile 4, nur wenn angegeben). Danach die Sektion BERUFSERFAHRUNG mit den ersten Stationen (pro Stelle: Berufsbezeichnung Zeile 1, Firma und Ort Zeile 2, Zeitraum wie '2020 – 2023' Zeile 3, kurze Beschreibung Zeile 4), danach — falls noch Platz — der Beginn der Sektion AUSBILDUNG. Brich am Ende MITTEN IM SATZ ab und beende die Ausgabe mit "…" (das vollständige Dokument wird nach Zahlung generiert).\n\n${lines}${listingBlock}${toneBlock}`
+    : `Heute ist der ${today}. Verwende dieses Datum im Dokument.\n\nErstelle den ANFANG des Dokuments (ca. 200–250 Wörter) basierend auf folgenden Angaben. Beginne mit dem vollständigen Briefkopf: Absender, dann der EMPFÄNGER mit Name und Adresse (aus den Angaben oder dem Inserat — der Empfänger muss immer sichtbar sein, er zeigt dem Nutzer, dass das Dokument korrekt adressiert ist; fehlen Empfängerdaten komplett, setze eine realistische Platzhalter-Zeile wie den Firmen-/Vermieternamen), dann Ort/Datum und Betreff. Danach der individuelle, persönliche Fliesstext — der Leser soll spüren, dass dieses Dokument exakt für seine Situation geschrieben wurde. Brich am Ende MITTEN IM SATZ ab und beende die Ausgabe mit "…" (das vollständige Dokument wird nach Zahlung generiert).\n\n${lines}${listingBlock}${toneBlock}`;
 
   // Länderkontext in System-Prompt injizieren
-  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug);
+  const systemPrompt = buildSystemPrompt(tool.systemPrompt, countryCode, tool.slug, isCvTool);
 
   const userContent: Anthropic.MessageParam["content"] = [];
 
@@ -144,14 +150,20 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ previewText });
 }
 
-function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: string): string {
-  const formatRule =
-    `AUSGABEFORMAT — ZWINGEND:\n` +
-    `Erstelle das Dokument als sauberen, druckfertigen Brief ohne jegliches Markdown.\n` +
-    `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen, > für Blockquotes.\n` +
-    `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Betreff oder Abschnittstitel, normale Satzzeichen.\n` +
-    `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n` +
-    `BETREFF-REGEL: Schreibe den Betreff mit dem Präfix "BETREFF: " gefolgt vom Betreff-Text in normaler Schreibweise (nicht in Grossbuchstaben), als einzelne Zeile ohne Umbruch, z.B. "BETREFF: Bewerbung für die Wohnung an der Musterstrasse 1". Das Präfix BETREFF: darf nie weggelassen werden.\n`;
+function buildSystemPrompt(basePrompt: string, countryCode?: string, toolSlug?: string, isCv?: boolean): string {
+  const formatRule = isCv
+    ? `AUSGABEFORMAT — ZWINGEND:\n` +
+      `Erstelle das Dokument als sauberen, druckfertigen LEBENSLAUF ohne jegliches Markdown.\n` +
+      `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen, > für Blockquotes.\n` +
+      `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Sektionstitel, normale Satzzeichen.\n` +
+      `Struktur: Kopfblock (Name / Berufsbezeichnung / Adresse / Kontakt) → Sektionen in GROSSBUCHSTABEN (z.B. BERUFSERFAHRUNG, AUSBILDUNG, SPRACHEN, KENNTNISSE).\n` +
+      `KEIN Absender-/Empfängerblock, KEIN Betreff, KEINE Anrede, KEINE Grussformel — ein Lebenslauf ist kein Brief.\n`
+    : `AUSGABEFORMAT — ZWINGEND:\n` +
+      `Erstelle das Dokument als sauberen, druckfertigen Brief ohne jegliches Markdown.\n` +
+      `Verboten: # ## ### für Überschriften, ** oder __ für Fett, --- als Trennlinie, | für Tabellen, > für Blockquotes.\n` +
+      `Erlaubt: Leerzeilen zur Gliederung, GROSSBUCHSTABEN für Betreff oder Abschnittstitel, normale Satzzeichen.\n` +
+      `Struktur: Absender → Empfänger → Ort/Datum → Betreff → Anrede → Fliesstext → Gruss → Name.\n` +
+      `BETREFF-REGEL: Schreibe den Betreff mit dem Präfix "BETREFF: " gefolgt vom Betreff-Text in normaler Schreibweise (nicht in Grossbuchstaben), als einzelne Zeile ohne Umbruch, z.B. "BETREFF: Bewerbung für die Wohnung an der Musterstrasse 1". Das Präfix BETREFF: darf nie weggelassen werden.\n`;
 
   if (!countryCode) return `${formatRule}\n${basePrompt}`;
   const country = getCountry(countryCode);
