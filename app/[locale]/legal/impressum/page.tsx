@@ -45,9 +45,9 @@ export default async function Impressum({ params }: { params: { locale: Locale }
                 Betreiber
               </h2>
               <p>GetDocu</p>
-              <p>c/o F2BII E-Commerce #942</p>
-              <p>Hintergoldingerstrasse 30</p>
-              <p>8638 Goldingen</p>
+              <p>c/o JL Consulting Group GmbH #942</p>
+              <p>Zürcherstrasse 84</p>
+              <p>8852 Altendorf</p>
               <p>Schweiz</p>
             </div>
 

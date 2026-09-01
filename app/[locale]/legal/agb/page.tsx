@@ -49,8 +49,8 @@ export default async function Agb({ params }: { params: { locale: Locale } }) {
               </h2>
               <p>
                 Diese Allgemeinen Geschäftsbedingungen (AGB) regeln die Nutzung von GetDocu
-                (getdocu.ch), betrieben von c/o F2BII E-Commerce #942, Hintergoldingerstrasse 30,
-                8638 Goldingen, Schweiz. Mit der Nutzung des Dienstes akzeptierst du diese AGB.
+                (getdocu.ch), betrieben von c/o JL Consulting Group GmbH #942, Zürcherstrasse 84,
+                8852 Altendorf, Schweiz. Mit der Nutzung des Dienstes akzeptierst du diese AGB.
               </p>
             </div>
 

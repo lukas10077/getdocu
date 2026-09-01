@@ -46,7 +46,7 @@ export default async function Datenschutz({ params }: { params: { locale: Locale
                 Verantwortliche Stelle
               </h2>
               <p>
-                GetDocu, c/o F2BII E-Commerce #942, Hintergoldingerstrasse 30, 8638 Goldingen,
+                GetDocu, c/o JL Consulting Group GmbH #942, Zürcherstrasse 84, 8852 Altendorf,
                 Schweiz.{" "}
                 <a href="mailto:support.lukaslast@gmail.com" className="text-swiss-gold underline hover:opacity-80">
                   support.lukaslast@gmail.com
